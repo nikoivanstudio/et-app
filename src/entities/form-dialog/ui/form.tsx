@@ -63,6 +63,8 @@ export const Form = <
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    console.log('handleSubmit', formData);
+
     const errors = validate();
 
     if (errors) {
@@ -112,6 +114,7 @@ export const Form = <
           Сохранить
         </Button>
       </div>
+      {!!errors && <span>{JSON.stringify(errors)}</span>}
     </form>
   );
 };
