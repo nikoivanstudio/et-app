@@ -8,8 +8,6 @@ import { LinkButton } from '@/shared/ui/link-button';
 import { HomePosts } from '@/widgets/posts/containers/home-posts';
 
 export const HomeView: FC = async () => {
-  'use cache';
-
   return (
     <AppMain
       mainHead={

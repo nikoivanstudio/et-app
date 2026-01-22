@@ -46,7 +46,7 @@ export function tourToTourEntity(
 
   if (
     !Array.isArray(photos) ||
-    !photos.some(photo => !tourTypeguards.isPhotoEntity(photo))
+    photos.some(photo => !tourTypeguards.isPhotoEntity(photo))
   ) {
     throw new Error('Сущность photos - имеет неверный тип данных');
   }

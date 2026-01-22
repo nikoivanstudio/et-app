@@ -11,12 +11,16 @@ export async function getTours(req: NextRequest): Promise<Response> {
     const cookies = req.cookies.get('session')?.value;
 
     if (!cookies) {
+      console.log('Cookie not found');
       return handleError({ body: 'Cookies not found' });
     }
 
     const { session } = await sessionService.verifySession(cookies);
 
+    console.log({ session });
+
     if (!session) {
+      console.log('Cookie not found');
       return handleError({ body: 'Session not found' });
     }
 
@@ -25,12 +29,16 @@ export async function getTours(req: NextRequest): Promise<Response> {
     const searchParams = req.nextUrl.searchParams;
     const params = tourSearchParamsUtils.getParamsBySearchParams(searchParams);
 
+    console.log({ params });
+
     const eitherResult: Either<string, GetToursResponse> =
       await tourService.getUserTours({
         authorId: id,
         role: role,
         ...params
       });
+
+    console.log({ eitherResult });
 
     if (eitherResult.type === 'left') {
       return handleError({ body: eitherResult.error });

@@ -44,6 +44,8 @@ const createTour = async (
       throw new Error('Ошибка при создание основного фото тура');
     }
 
+    const tour = await prisma.tour.findUnique({ where: { slug: rest.slug } });
+
     return prisma.tour.create({
       data: {
         ...rest,

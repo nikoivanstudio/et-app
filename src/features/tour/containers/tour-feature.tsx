@@ -24,6 +24,7 @@ type Props =
       data?: TourDomain.TourEntity;
       title?: ReactNode;
       triggerBtn?: ReactNode;
+      authorId: number;
     }
   | {
       type: 'edit';
@@ -97,7 +98,10 @@ export const TourFeature: FC<Props> = ({
         title={dialogTitle}
         triggerButton={triggerBtn || dialogTitle}
         formDataModel={createTourModel}
-        initialData={initialData}
+        initialData={{
+          ...initialData,
+          authorId: 'authorId' in props ? props.authorId : undefined
+        }}
         onSubmit={isCreateType ? onCreate : onEdit}
         schema={schema}
         type={type === 'edit' ? 'patch' : 'put'}

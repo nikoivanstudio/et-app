@@ -1,5 +1,4 @@
 import { Either, left, right } from '@/shared/lib/either';
-import { urlUtils } from '@/shared/lib/url-utils';
 import { isStringArray } from '@/shared/lib/typeguargs/string-array';
 import { apiClient } from '@/shared/api/api-client';
 import { queryOptions } from '@tanstack/react-query';
@@ -26,9 +25,10 @@ export const createTour = async (
   formData: FormData
 ): Promise<Either<string, string>> => {
   try {
-    const response = await fetch(`${urlUtils.getApiUrl()}/${baseUrl}`, {
-      method: 'POST',
-      body: formData
+    const response = await apiClient.post<Response>({
+      url: baseUrl,
+      body: formData,
+      withoutParse: true
     });
 
     if (response.status >= 300) {
@@ -66,8 +66,9 @@ const editTour = async (formData: FormData): Promise<Either<string, Tour>> => {
 
 const deleteTour = async (id: number): Promise<Either<string, Tour>> => {
   try {
-    const response = await fetch(`${urlUtils.getApiUrl()}/tour?id=${id}`, {
-      method: 'DELETE'
+    const response = await apiClient.del<Response>({
+      url: baseUrl,
+      queryParams: { id }
     });
 
     if (response.status >= 300) {

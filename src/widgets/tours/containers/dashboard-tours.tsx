@@ -12,7 +12,7 @@ const cnDashboardTours = cn('DashboardTours');
 
 export const DashboardTours: FC<{
   session: SessionDomain.SessionEntity;
-}> = () => (
+}> = ({ session }) => (
   <ClientLayout
     className={cnDashboardTours(null, ['p-4'])}
     title={null}
@@ -28,6 +28,7 @@ export const DashboardTours: FC<{
           </div>
         }
         type='create'
+        authorId={session.id}
       />
     }
   />

@@ -5,9 +5,10 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider   = "prisma-client" // or `prisma-client-js`
-  output     = "../generated/prisma"
-  engineType = "client" // enable Prisma ORM without Rust
+  provider      = "prisma-client" // or `prisma-client-js`
+  output        = "../generated/prisma"
+  engineType    = "client" // enable Prisma ORM without Rust
+  compilerBuild = "fast" // "fast" | "small"
 }
 
 datasource db {

@@ -5,7 +5,6 @@ import { roleUtils } from '@/entities/user';
 import { prepareDataUtils } from '@/features/tour/lib/prepare-data-utils';
 
 import { tourService } from '@/features/tour/services/tour-service';
-import { PhotoDomain } from '@/entities/photo';
 import { sessionUtils } from '@/entities/user/lib/session-utils';
 import { serverPhotoUtils } from '@/entities/photo/server';
 
@@ -43,27 +42,27 @@ export async function postTour(req: NextRequest): Promise<Response> {
       });
     }
 
-    const photosEntities = photos?.length
-      ? await Promise.all(
-          photos
-            ?.map(
-              async file =>
-                await serverPhotoUtils.getPhotoEntity({
-                  file,
-                  authorId: session.id,
-                  keywords: []
-                })
-            )
-            .filter(Boolean)
-        )
-      : undefined;
+    // const photosEntities = photos?.length
+    //   ? await Promise.all(
+    //       photos
+    //         ?.map(
+    //           async file =>
+    //             await serverPhotoUtils.getPhotoEntity({
+    //               file,
+    //               authorId: session.id,
+    //               keywords: []
+    //             })
+    //         )
+    //         .filter(Boolean)
+    //     )
+    //   : undefined;
 
     const tour = await tourService.createTour({
       authorId: session.id,
       ...rest,
       title,
       mainPhoto: mainPhotoEntity,
-      photos: photosEntities as Omit<PhotoDomain.PhotoEntity, 'id'>[]
+      photos: []
     });
 
     if (!tour) {
