@@ -2,6 +2,7 @@ import { dbClient } from '@/shared/lib/db';
 import { CreateTourData } from '@/features/tour/domain';
 import { PhotoDomain } from '@/entities/photo';
 import { Prisma, Tour } from 'generated/prisma/client';
+import { TourOmit } from '../../../../generated/prisma/models/Tour';
 import TourSelect = Prisma.TourSelect;
 
 type Payload<T extends Prisma.TourFindManyArgs> = Prisma.TourGetPayload<T>;
@@ -19,7 +20,21 @@ const getTour = (id: number, select?: TourSelect): Promise<Tour | null> =>
 
 const getTours = <T extends Prisma.TourFindManyArgs>(
   args?: Prisma.SelectSubset<T, Prisma.TourFindManyArgs>
-): Promise<Payload<T>[]> => dbClient.tour.findMany(args);
+): Promise<Payload<T>[]> =>
+  dbClient.tour.findMany(
+    args
+      ? {
+          ...(args as Prisma.TourFindManyArgs),
+          omit: {
+            author: { passwordHash: true, login: true }
+          } as unknown as TourOmit
+        }
+      : {
+          omit: {
+            author: { passwordHash: true, login: true }
+          } as unknown as TourOmit
+        }
+  ) as unknown as Promise<Payload<T>[]>;
 
 const createTour = async (
   data: Omit<CreateTourData, 'mainPhoto' | 'photos'> & {
@@ -43,8 +58,6 @@ const createTour = async (
     if (!mainPhoto) {
       throw new Error('Ошибка при создание основного фото тура');
     }
-
-    const tour = await prisma.tour.findUnique({ where: { slug: rest.slug } });
 
     return prisma.tour.create({
       data: {

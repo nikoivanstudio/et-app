@@ -7,6 +7,7 @@ import { prepareDataUtils } from '@/features/tour/lib/prepare-data-utils';
 import { tourService } from '@/features/tour/services/tour-service';
 import { sessionUtils } from '@/entities/user/lib/session-utils';
 import { serverPhotoUtils } from '@/entities/photo/server';
+import { PhotoEntity } from '@/entities/photo/domain';
 
 export async function postTour(req: NextRequest): Promise<Response> {
   try {
@@ -42,27 +43,27 @@ export async function postTour(req: NextRequest): Promise<Response> {
       });
     }
 
-    // const photosEntities = photos?.length
-    //   ? await Promise.all(
-    //       photos
-    //         ?.map(
-    //           async file =>
-    //             await serverPhotoUtils.getPhotoEntity({
-    //               file,
-    //               authorId: session.id,
-    //               keywords: []
-    //             })
-    //         )
-    //         .filter(Boolean)
-    //     )
-    //   : undefined;
+    const photosEntities: Omit<PhotoEntity, 'id'>[] = photos?.length
+      ? ((await Promise.all(
+          photos
+            ?.map(
+              async file =>
+                await serverPhotoUtils.getPhotoEntity({
+                  file,
+                  authorId: session.id,
+                  keywords: []
+                })
+            )
+            .filter(Boolean)
+        )) as Omit<PhotoEntity, 'id'>[])
+      : [];
 
     const tour = await tourService.createTour({
       authorId: session.id,
       ...rest,
       title,
       mainPhoto: mainPhotoEntity,
-      photos: []
+      photos: photosEntities
     });
 
     if (!tour) {
