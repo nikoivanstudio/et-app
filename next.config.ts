@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'ay-petry.ru',
+        hostname: 'okryme.ru',
         pathname: '/images/**',
         port: ''
       },
