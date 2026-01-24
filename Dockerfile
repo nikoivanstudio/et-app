@@ -1,3 +1,14 @@
+FROM node:24-alpine AS deps
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --legacy-peer-deps
+
+FROM node:24-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npx prisma generate && npx prisma migrate deploy && npm run build
+
 FROM node:24-alpine AS runner
 WORKDIR /app
 
