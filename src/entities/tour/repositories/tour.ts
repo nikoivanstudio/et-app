@@ -24,10 +24,7 @@ const getTours = <T extends Prisma.TourFindManyArgs>(
   dbClient.tour.findMany(
     args
       ? {
-          ...(args as Prisma.TourFindManyArgs),
-          omit: {
-            author: { passwordHash: true, login: true }
-          } as unknown as TourOmit
+          ...(args as Prisma.TourFindManyArgs)
         }
       : {
           omit: {

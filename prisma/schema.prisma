@@ -44,6 +44,8 @@ model Otp {
   tel       String   @db.VarChar(80)
   createdAt DateTime @default(now())
   code      String   @db.VarChar(12)
+
+  @@map("otp")
 }
 
 model Post {
@@ -83,6 +85,8 @@ model Review {
   user          User   @relation(fields: [authorId], references: [id])
   tour          Tour   @relation(fields: [tourId], references: [id])
   tourId        Int
+
+  @@map("review")
 }
 
 model Photo {
@@ -97,6 +101,8 @@ model Photo {
   tour       Tour?     @relation(fields: [tourId], references: [id])
   activityId Int?      @map("activity_id")
   activity   Activity? @relation(fields: [activityId], references: [id])
+
+  @@map("photo")
 }
 
 model Tour {
@@ -122,6 +128,8 @@ model Tour {
   rating          Float?
   descriptionText String?    @map("description_text")
   startPlace      Json?      @map("start_place")
+
+  @@map("tour")
 }
 
 model Order {
@@ -136,6 +144,8 @@ model Order {
   activityId  Int?         @map("activity_id")
   activity    Activity?    @relation(fields: [activityId], references: [id])
   transaction Transaction?
+
+  @@map("order")
 }
 
 model Transaction {
@@ -145,6 +155,8 @@ model Transaction {
   amount   Int
   orderId  Int   @unique
   order    Order @relation(fields: [orderId], references: [id])
+
+  @@map("transaction")
 }
 
 model Activity {
@@ -170,6 +182,8 @@ model Activity {
   categories   String[]
   discount     Int?
   photos       Photo[]
+
+  @@map("activity")
 }
 
 model File {
@@ -179,4 +193,6 @@ model File {
   originalName String
   createdAt    DateTime @default(now())
   size         Int
+
+  @@map("file")
 }
