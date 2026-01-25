@@ -1,3 +1,5 @@
+export { legaciesPostJSONSchema } from '@/features/post/lib/validation-schemas';
+
 export { postServices } from '@/features/post/services/post-services';
 
 export { getExportPosts } from '@/features/post/routes/get-export-posts';

@@ -1,10 +1,6 @@
 import { z } from 'zod';
-import {
-  legacyPostJSONSchema,
-  legacyPostSchema
-} from '@/features/post/lib/validation-schemas';
+import { legaciesPostJSONSchema } from '@/features/post/lib/validation-schemas';
 import { PostDomain } from '@/entities/post/server';
-import { convertJsonToPostEntity } from '@/features/post/lib/legacy-utils';
 import { initialPostCreateFormData } from '@/features/post/model/create-posts-model';
 import { v4 } from 'uuid';
 
@@ -28,19 +24,11 @@ const getDataSourcePosts = async (
       ? await getFormDataPosts(dataSource)
       : dataSource;
 
-  const result = z.array(legacyPostJSONSchema).safeParse(data);
+  const result = z.array(legaciesPostJSONSchema).safeParse(data);
 
-  if (!result.success) {
-    console.log({ failedResult: result.error.format()._errors });
+  console.log({ errors: result.error?.format()._errors });
 
-    throw new Error('Не удалось получить посты');
-  }
-
-  const posts = result.data.map(post =>
-    convertJsonToPostEntity(post, authorId)
-  );
-
-  return posts.filter(post => legacyPostSchema.safeParse(post).success);
+  return data;
 };
 
 const getInitialPostData = () => ({ ...initialPostCreateFormData, guid: v4() });

@@ -58,32 +58,27 @@ export const WpUniomPostMetaSchema = z
   .union([z.array(WPPostmetaSchema), WPPostmetaSchema])
   .optional();
 
-export const legacyPostJSONSchema = z.object({
-  title: z.string().optional().nullable(),
-  link: z.string().url(),
-  images: z
-    .array(z.object({ image: z.string() }))
-    .optional()
-    .nullable(),
-  pubDate: z.string(), // RFC-822 date string as exported by WP
-  'dc:creator': z.string(),
-  'wp:comment': z.any(),
-  guid: WPGuidSchema,
-  description: z.string().nullable(),
-  'content:encoded': z.string(),
-  'excerpt:encoded': z.string().nullable(),
-  'wp:post_id': z.string(),
-  'wp:post_date': z.string(), // "YYYY-MM-DD HH:mm:ss"
-  'wp:post_date_gmt': z.string(), // "YYYY-MM-DD HH:mm:ss"
-  'wp:comment_status': z.string(), // e.g., "open" | "closed"
-  'wp:ping_status': z.string(), // e.g., "open" | "closed"
-  'wp:post_name': z.string().optional().nullable(),
-  'wp:status': z.string(), // e.g., "publish", "draft"
-  'wp:post_parent': z.string(),
-  'wp:menu_order': z.string(),
-  'wp:post_type': z.string(), // e.g., "post", "page"
-  'wp:post_password': z.string().nullable(),
-  'wp:is_sticky': z.string(), // "0" | "1" as strings in WXR
-  category: WPCategoryUnionSchema,
-  'wp:postmeta': WpUniomPostMetaSchema
+export const legaciesPostJSONSchema = z.object({
+  id: z.number(),
+  title: z.string().optional(),
+  description: z.string().optional(),
+  content: z.string().optional(),
+  postAuthorId: z.number().optional(),
+  type: z.string().optional(),
+  guid: z.string().optional(),
+  image: z.string().optional(),
+  images: z.array(z.string()).optional(),
+  status: z.string().optional(),
+  slug: z.string().optional(),
+  metaKeywords: z.array(z.string()).optional(),
+  categories: z.array(z.string()).optional(),
+  metaTitle: z.string().optional(),
+  metaDescription: z.string().optional(),
+  link: z.string().optional(),
+  pubDate: z.string().optional(),
+  price: z.number().nullable().optional(),
+  duration: z.number().nullable().optional(),
+  rating: z.number().nullable().optional(),
+  metaDuration: z.string().nullable().optional(),
+  metaPrice: z.string().nullable().optional()
 });
