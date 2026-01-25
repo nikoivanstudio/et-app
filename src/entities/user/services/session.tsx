@@ -33,6 +33,8 @@ async function addSession(user: UserEntity): Promise<void> {
   const session = await encrypt(sessionData);
   const cookiesStore = await cookies();
 
+  cookiesStore.delete('session');
+
   cookiesStore.set('session', session, {
     httpOnly: true,
     // secure: true,
