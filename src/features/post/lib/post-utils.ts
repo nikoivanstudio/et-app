@@ -31,6 +31,8 @@ const getDataSourcePosts = async (
   const result = z.array(legacyPostJSONSchema).safeParse(data);
 
   if (!result.success) {
+    console.log({ failedResult: result.error.format()._errors });
+
     throw new Error('Не удалось получить посты');
   }
 
