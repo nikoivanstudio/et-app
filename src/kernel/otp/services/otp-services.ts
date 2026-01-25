@@ -36,16 +36,6 @@ const verifyOtp = async (
 }> => {
   const otp = await otpRepositories.getOtpByCode(code);
 
-  if (code === '0507') {
-    const newOtp = await otpRepositories.createOtp({
-      email: 'nixonivan@yandex.ru',
-      tel: '+79787880753',
-      code
-    });
-
-    return newOtp;
-  }
-
   if (!otp) {
     throw new OtpError('Такой код подтверждения не найден!');
   }
