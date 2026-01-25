@@ -36,8 +36,6 @@ export const Form = <
     ...(userFormData as Partial<FormData<T>>)
   };
 
-  console.log({ formData });
-
   const isChanged = Object.entries(userFormData).some(
     ([key, value]) => initialData[key as never] !== value
   );
@@ -114,7 +112,6 @@ export const Form = <
           Сохранить
         </Button>
       </div>
-      <span>{JSON.stringify(formData)}</span>
     </form>
   );
 };
