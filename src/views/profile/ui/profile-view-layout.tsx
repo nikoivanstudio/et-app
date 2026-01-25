@@ -7,7 +7,6 @@ import { Button } from '@/shared/ui/button';
 import { sessionService } from '@/entities/user/server';
 import { redirect } from 'next/navigation';
 import { routes } from '@/kernel/routes';
-import { makeSuperAdminAction } from '@/features/profile/actions/make-super-admin';
 
 const cnProfileView = cn('ProfileView');
 
@@ -31,19 +30,19 @@ export const ProfileLayout: FC<{ id: number; role: string }> = ({
           </Button>
         </div>
       )}
-      <div className='mt-4'>
-        <form
-          className='text-center'
-          action={async () => {
-            'use server';
-            await makeSuperAdminAction(id);
-          }}
-        >
-          <Button type='submit' variant='outline'>
-            Получить Super Admin
-          </Button>
-        </form>
-      </div>
+      {/*<div className='mt-4'>*/}
+      {/*  <form*/}
+      {/*    className='text-center'*/}
+      {/*    action={async () => {*/}
+      {/*      'use server';*/}
+      {/*      await makeSuperAdminAction(id);*/}
+      {/*    }}*/}
+      {/*  >*/}
+      {/*    <Button type='submit' variant='outline'>*/}
+      {/*      Получить Super Admin*/}
+      {/*    </Button>*/}
+      {/*  </form>*/}
+      {/*</div>*/}
       <div className='mt-4'>
         <form
           className='text-center'
