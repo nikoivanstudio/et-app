@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       disallow: '/'
     },
-    sitemap: 'https://energy-tur.ru/sitemap.xml'
+    sitemap: 'https://okryme.ru/sitemap.xml'
   };
 }
