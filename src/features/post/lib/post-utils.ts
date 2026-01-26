@@ -18,17 +18,27 @@ const getFormDataPosts = async (formData: FormData): Promise<unknown> => {
 const getDataSourcePosts = async (
   dataSource: FormData | unknown,
   authorId: number
-): Promise<Omit<PostDomain.PostEntity, 'id' | 'user'>[]> => {
+): Promise<PostDomain.PostEntity[]> => {
   const data =
     dataSource instanceof FormData
       ? await getFormDataPosts(dataSource)
       : dataSource;
 
+  const some = 9;
   const result = z.array(legaciesPostJSONSchema).safeParse(data);
 
-  console.log({ errors: result.error?.format()._errors });
+  if (!result.success) {
+    console.log({
+      errors: result.error.errors,
+      formatErrors: result.error.format()._errors
+    });
+  }
 
-  return data;
+  if (some > 1) {
+    return [];
+  }
+
+  return result.data as PostDomain.PostEntity[];
 };
 
 const getInitialPostData = () => ({ ...initialPostCreateFormData, guid: v4() });
