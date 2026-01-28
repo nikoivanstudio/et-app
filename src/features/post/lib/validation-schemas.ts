@@ -58,7 +58,7 @@ export const WpUniomPostMetaSchema = z
   .union([z.array(WPPostmetaSchema), WPPostmetaSchema])
   .optional();
 
-export const legaciesPostJSONSchema = z.object({
+export const postProdSchema = z.object({
   id: z.number(),
   title: z.string().optional(),
   description: z.string().optional(),

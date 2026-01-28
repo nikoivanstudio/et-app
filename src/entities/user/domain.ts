@@ -28,7 +28,7 @@ export type UserEntity = {
 
 export type UserEntityUpdate = Partial<UserEntity> & { id: number };
 
-export type SessionEntity = Omit<UserEntity, 'passwordHash'> & {
+export type SessionEntity = Omit<UserEntity, 'passwordHash' | 'salt'> & {
   expiredAt: string;
 };
 
@@ -36,9 +36,7 @@ export const userToSession = (
   user: UserEntity,
   expiredAt: string
 ): SessionEntity => {
-  // Security
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { passwordHash, ...userSession } = user;
+  const { passwordHash: _, salt: _s, ...userSession } = user;
 
   return {
     ...userSession,

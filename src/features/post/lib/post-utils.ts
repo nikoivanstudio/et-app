@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { legaciesPostJSONSchema } from '@/features/post/lib/validation-schemas';
+import { postProdSchema } from '@/features/post/lib/validation-schemas';
 import { PostDomain } from '@/entities/post/server';
 import { initialPostCreateFormData } from '@/features/post/model/create-posts-model';
 import { v4 } from 'uuid';
@@ -25,7 +25,7 @@ const getDataSourcePosts = async (
       : dataSource;
 
   const some = 9;
-  const result = z.array(legaciesPostJSONSchema).safeParse(data);
+  const result = z.array(postProdSchema).safeParse(data);
 
   if (!result.success) {
     console.log({

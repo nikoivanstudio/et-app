@@ -1,4 +1,4 @@
-export { legaciesPostJSONSchema } from '@/features/post/lib/validation-schemas';
+export { postProdSchema } from '@/features/post/lib/validation-schemas';
 
 export { postServices } from '@/features/post/services/post-services';
 
