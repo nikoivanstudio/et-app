@@ -11,7 +11,7 @@ export default function YandexMetrika() {
   const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    if (!YM_ID || !window.ym) return;
+    if (!YM_ID || !('ym' in window)) return;
 
     // Skip first SSR hit
     if (isFirstLoad.current) {
@@ -19,6 +19,8 @@ export default function YandexMetrika() {
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     window.ym(Number(YM_ID), 'hit', pathname);
   }, [pathname]);
 

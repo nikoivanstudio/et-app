@@ -5,7 +5,6 @@ import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 const LIMIT_FILES = 10;
 
 export const getFiles = async () => {
-  console.log('getFiles');
   try {
     const files = await dbClient.file.findMany({
       take: LIMIT_FILES,
@@ -19,8 +18,6 @@ export const getFiles = async () => {
       }
     });
 
-    console.log({ files });
-
     if (!files.length) {
       handleError({ body: 'Ошибка получения файлов' });
     }
@@ -31,8 +28,6 @@ export const getFiles = async () => {
       originalFileName: file.originalName,
       fileSize: file.size
     }));
-
-    console.log({ filesWithProps: filesWithProps });
 
     return handleSuccess({ body: filesWithProps });
   } catch (e) {

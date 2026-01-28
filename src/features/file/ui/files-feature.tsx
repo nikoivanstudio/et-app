@@ -23,7 +23,6 @@ export const FilesFeature: FC = () => {
 
     if (!body?.length) return;
 
-    console.log({ body });
     // set isDeleting to false for all files after fetching
     setFiles(body?.map(file => ({ ...file, isDeleting: false })));
   };

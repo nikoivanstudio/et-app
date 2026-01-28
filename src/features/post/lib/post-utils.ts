@@ -18,13 +18,12 @@ const getFormDataPosts = async (formData: FormData): Promise<unknown> => {
 const getDataSourcePosts = async (
   dataSource: FormData | unknown,
   authorId: number
-): Promise<PostDomain.PostEntity[]> => {
+): Promise<Omit<PostDomain.PostEntity, 'id' | 'user'>[]> => {
   const data =
     dataSource instanceof FormData
       ? await getFormDataPosts(dataSource)
       : dataSource;
 
-  const some = 9;
   const result = z.array(postProdSchema).safeParse(data);
 
   if (!result.success) {
@@ -32,13 +31,15 @@ const getDataSourcePosts = async (
       errors: result.error.errors,
       formatErrors: result.error.format()._errors
     });
-  }
 
-  if (some > 1) {
     return [];
   }
 
-  return result.data as PostDomain.PostEntity[];
+  const validPosts = result.data
+    .filter(post => !!post)
+    .map(({ id: _, ...post }) => post);
+
+  return validPosts as unknown as Omit<PostDomain.PostEntity, 'id' | 'user'>[];
 };
 
 const getInitialPostData = () => ({ ...initialPostCreateFormData, guid: v4() });

@@ -60,7 +60,7 @@ export const WpUniomPostMetaSchema = z
 
 export const postProdSchema = z.object({
   id: z.number(),
-  title: z.string().optional(),
+  title: z.string(),
   description: z.string().optional(),
   content: z.string().optional(),
   postAuthorId: z.number().optional(),
