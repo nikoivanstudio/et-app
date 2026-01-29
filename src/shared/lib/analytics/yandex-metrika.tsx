@@ -13,7 +13,6 @@ export default function YandexMetrika() {
   useEffect(() => {
     if (!YM_ID || !('ym' in window)) return;
 
-    // Skip first SSR hit
     if (isFirstLoad.current) {
       isFirstLoad.current = false;
       return;
