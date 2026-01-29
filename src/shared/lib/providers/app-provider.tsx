@@ -7,15 +7,34 @@ import { queryClient } from '@/shared/api/query-client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider
-      attribute='class'
-      defaultTheme='dark'
-      enableSystem
-      disableTransitionOnChange
-    >
-      {children}
-    </ThemeProvider>
-    <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
+  <>
+    <script
+      type='application/ld+json'
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'TouristInformationCenter',
+          name: 'Energy Tour',
+          url: 'https://energy-tur.ru',
+          telephone: '+79787880753',
+          address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'RU',
+            addressRegion: 'Крым'
+          }
+        })
+      }}
+    />
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider
+        attribute='class'
+        defaultTheme='dark'
+        enableSystem
+        disableTransitionOnChange
+      >
+        {children}
+      </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </>
 );
