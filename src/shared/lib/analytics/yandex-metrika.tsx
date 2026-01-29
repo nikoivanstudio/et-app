@@ -2,18 +2,17 @@
 
 import Script from 'next/script';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 
 const YM_ID = process.env.NEXT_PUBLIC_YM_ID;
 
-export default function YandexMetrika() {
+export const YandexMetrika: FC = () => {
   const pathname = usePathname();
   const isFirstLoad = useRef(true);
 
   useEffect(() => {
     if (!YM_ID || !('ym' in window)) return;
 
-    // Skip first SSR hit
     if (isFirstLoad.current) {
       isFirstLoad.current = false;
       return;
@@ -48,4 +47,4 @@ export default function YandexMetrika() {
       `}
     </Script>
   );
-}
+};
