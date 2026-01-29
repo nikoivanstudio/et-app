@@ -16,7 +16,7 @@ export default function robots(): MetadataRoute.Robots {
 //       {
 //         userAgent: '*',
 //         allow: '/',
-//         disallow: ['/api', '/account', '/dashboard']
+//         disallow: ['/api', '/account', '/dashboard', '/sign-in', '/sign-up']
 //       }
 //     ],
 //     sitemap: 'https://energy-tur.ru/sitemap.xml'
