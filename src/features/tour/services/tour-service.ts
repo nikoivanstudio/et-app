@@ -76,6 +76,10 @@ const getTourCards = async (
   return draftTourCards.map(draftTourToTourCardEntity);
 };
 
+// const getTours =()=> {
+//   const tours
+// }
+
 export const getTours = async (
   params?: Prisma.TourFindManyArgs & { page?: number }
 ) => {
