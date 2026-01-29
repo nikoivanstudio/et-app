@@ -26,10 +26,47 @@ const caladea = Caladea({
 });
 
 export const metadata: Metadata = {
-  title:
-    'Джип туры и индивидуальные экскурсии по Крыму 2026 Бахчисарай, Ялта, Севастополь',
+  metadataBase: new URL('https://energy-tur.ru'),
+
+  title: {
+    default: 'Джип туры и индивидуальные экскурсии по Крыму — Energy Tour',
+    template: '%s | Energy Tour'
+  },
+
   description:
-    'Джип туры и лучшие индивидуальные экскурсии по Крыму в 2026. Организация туров и ваших развлечений. Мы предоставим лучшие цены для вас +7(978)7880753'
+    'Джип туры и индивидуальные экскурсии по Крыму в 2026 году. Бахчисарай, Ялта, Севастополь. Организация отдыха под ключ. Лучшие цены +7 (978) 788-07-53',
+
+  alternates: {
+    canonical: '/'
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large'
+    }
+  },
+
+  openGraph: {
+    type: 'website',
+    locale: 'ru_RU',
+    url: 'https://energy-tur.ru',
+    siteName: 'Energy Tour',
+    title: 'Джип туры и индивидуальные экскурсии по Крыму — Energy Tour',
+    description:
+      'Лучшие экскурсии и джип туры по Крыму. Индивидуальные маршруты. Бахчисарай, Ялта, Севастополь.',
+    images: [
+      {
+        url: '/og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Energy Tour Крым'
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
@@ -38,7 +75,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='ru' suppressHydrationWarning>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'TouristInformationCenter',
+            name: 'Energy Tour',
+            url: 'https://energy-tur.ru',
+            telephone: '+79787880753',
+            address: {
+              '@type': 'PostalAddress',
+              addressCountry: 'RU',
+              addressRegion: 'Крым'
+            }
+          })
+        }}
+      />
       <body
         className={cn(
           oswald.variable,
