@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/shared/api/query-client';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { YandexMetrika } from '@/shared/lib/analytics/yandex-metrika';
 
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
   <>
@@ -25,6 +26,7 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
         })
       }}
     />
+    <YandexMetrika />
     <QueryClientProvider client={queryClient}>
       <ThemeProvider
         attribute='class'
