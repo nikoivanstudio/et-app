@@ -26,6 +26,8 @@ export async function postOtp(req: NextRequest): Promise<Response> {
 
     const { code, email } = otp;
 
+    console.log({ code, email });
+
     const emailOtp = await emailNotifications.sendToEmail({
       to: email,
       subject: 'Регистрация на сайте Energy-Tour',
