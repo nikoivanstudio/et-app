@@ -21,7 +21,7 @@ export async function postOtp(req: NextRequest): Promise<Response> {
     const otp = await otpService.createOtpRecord(bodyResult.data);
 
     if (!otp) {
-      throw new Error();
+      throw new Error('OTP receipt error');
     }
 
     const { code, email } = otp;
@@ -34,10 +34,12 @@ export async function postOtp(req: NextRequest): Promise<Response> {
       reactNode: RegistrationEmail({ code })
     });
 
+    console.log({ emailOtp });
+
     const success = !emailOtp.error;
 
     if (!emailOtp) {
-      throw new Error();
+      throw new Error('Have not email');
     }
 
     return handleSuccess({
