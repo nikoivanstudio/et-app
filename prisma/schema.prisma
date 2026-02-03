@@ -5,10 +5,10 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider      = "prisma-client" // or `prisma-client-js`
+  provider      = "prisma-client"
   output        = "../generated/prisma"
-  engineType    = "client" // enable Prisma ORM without Rust
-  compilerBuild = "fast" // "fast" | "small"
+  engineType    = "client"
+  compilerBuild = "fast"
 }
 
 datasource db {
@@ -34,6 +34,7 @@ model User {
   transactions  Transaction[]
   orders        Order[]
   photos        Photo[]
+  files         File[]
 
   @@map("user")
 }
@@ -42,7 +43,7 @@ model Otp {
   id        Int      @id @default(autoincrement())
   email     String   @db.VarChar(256)
   tel       String   @db.VarChar(80)
-  createdAt DateTime @default(now())
+  createdAt DateTime @default(now()) @map("created_at")
   code      String   @db.VarChar(12)
 
   @@map("otp")
@@ -66,7 +67,7 @@ model Post {
   metaTitle       String?  @map("meta_title") @db.VarChar(512)
   metaDescription String?  @map("meta_descriptions") @db.VarChar(512)
   link            String?  @db.VarChar(512)
-  pubDate         String?  @db.VarChar(128)
+  pubDate         String?  @map("pub_date") @db.VarChar(128)
   price           Int?
   duration        Int?
   rating          Int?
@@ -187,12 +188,16 @@ model Activity {
 }
 
 model File {
-  id           Int      @id @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   bucket       String
-  fileName     String   @unique
-  originalName String
-  createdAt    DateTime @default(now())
+  filename     String    @unique
+  originalName String    @map("original_name")
+  type         String    @db.VarChar(20)
+  createdAt    DateTime  @default(now()) @map("created_at")
   size         Int
+  authorId     Int       @map("author_id")
+  author       User      @relation(fields: [authorId], references: [id])
+  updatedAt    DateTime? @map("updated_at")
 
   @@map("file")
 }
