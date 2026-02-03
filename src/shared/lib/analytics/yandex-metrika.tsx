@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { usePathname } from 'next/navigation';
 import { FC, useEffect, useRef } from 'react';
 
+const isDev = process.env.NODE_ENV === 'development';
 const YM_ID = process.env.NEXT_PUBLIC_YM_ID;
 
 export const YandexMetrika: FC = () => {
@@ -11,7 +12,7 @@ export const YandexMetrika: FC = () => {
   const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    if (!YM_ID || !('ym' in window)) return;
+    if (isDev || !YM_ID || !('ym' in window)) return;
 
     if (isFirstLoad.current) {
       isFirstLoad.current = false;
@@ -26,8 +27,10 @@ export const YandexMetrika: FC = () => {
   if (!YM_ID) return null;
 
   return (
-    <Script id='yandex-metrika' strategy='afterInteractive'>
-      {`
+    <>
+      {isDev ? null : (
+        <Script id='yandex-metrika' strategy='afterInteractive'>
+          {`
         (function(m,e,t,r,i,k,a){
           m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
           m[i].l=1*new Date();
@@ -45,6 +48,8 @@ export const YandexMetrika: FC = () => {
           webvisor:true
         });
       `}
-    </Script>
+        </Script>
+      )}
+    </>
   );
 };
