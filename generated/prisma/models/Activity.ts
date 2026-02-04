@@ -280,7 +280,7 @@ export type ActivityGroupByOutputType = {
   status: string
   authorId: number
   createdAt: Date
-  updatedAt: Date
+  updatedAt: Date | null
   startTime: Date
   finishTime: Date
   places: number
@@ -324,7 +324,7 @@ export type ActivityWhereInput = {
   status?: Prisma.StringFilter<"Activity"> | string
   authorId?: Prisma.IntFilter<"Activity"> | number
   createdAt?: Prisma.DateTimeFilter<"Activity"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Activity"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Activity"> | Date | string | null
   startTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
   finishTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
   places?: Prisma.IntFilter<"Activity"> | number
@@ -349,7 +349,7 @@ export type ActivityOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   startTime?: Prisma.SortOrder
   finishTime?: Prisma.SortOrder
   places?: Prisma.SortOrder
@@ -377,7 +377,7 @@ export type ActivityWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.StringFilter<"Activity"> | string
   authorId?: Prisma.IntFilter<"Activity"> | number
   createdAt?: Prisma.DateTimeFilter<"Activity"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Activity"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Activity"> | Date | string | null
   startTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
   finishTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
   places?: Prisma.IntFilter<"Activity"> | number
@@ -402,7 +402,7 @@ export type ActivityOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-  updatedAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   startTime?: Prisma.SortOrder
   finishTime?: Prisma.SortOrder
   places?: Prisma.SortOrder
@@ -431,7 +431,7 @@ export type ActivityScalarWhereWithAggregatesInput = {
   status?: Prisma.StringWithAggregatesFilter<"Activity"> | string
   authorId?: Prisma.IntWithAggregatesFilter<"Activity"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Activity"> | Date | string
-  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Activity"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Activity"> | Date | string | null
   startTime?: Prisma.DateTimeWithAggregatesFilter<"Activity"> | Date | string
   finishTime?: Prisma.DateTimeWithAggregatesFilter<"Activity"> | Date | string
   places?: Prisma.IntWithAggregatesFilter<"Activity"> | number
@@ -450,7 +450,7 @@ export type ActivityCreateInput = {
   description: string
   status: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -474,7 +474,7 @@ export type ActivityUncheckedCreateInput = {
   status: string
   authorId: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -495,7 +495,7 @@ export type ActivityUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -519,7 +519,7 @@ export type ActivityUncheckedUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -542,7 +542,7 @@ export type ActivityCreateManyInput = {
   status: string
   authorId: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -561,7 +561,7 @@ export type ActivityUpdateManyMutationInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -581,7 +581,7 @@ export type ActivityUncheckedUpdateManyInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -845,7 +845,7 @@ export type ActivityCreateWithoutAuthorInput = {
   description: string
   status: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -867,7 +867,7 @@ export type ActivityUncheckedCreateWithoutAuthorInput = {
   description: string
   status: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -919,7 +919,7 @@ export type ActivityScalarWhereInput = {
   status?: Prisma.StringFilter<"Activity"> | string
   authorId?: Prisma.IntFilter<"Activity"> | number
   createdAt?: Prisma.DateTimeFilter<"Activity"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"Activity"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Activity"> | Date | string | null
   startTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
   finishTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
   places?: Prisma.IntFilter<"Activity"> | number
@@ -938,7 +938,7 @@ export type ActivityCreateWithoutPhotosInput = {
   description: string
   status: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -961,7 +961,7 @@ export type ActivityUncheckedCreateWithoutPhotosInput = {
   status: string
   authorId: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -997,7 +997,7 @@ export type ActivityUpdateWithoutPhotosInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1020,7 +1020,7 @@ export type ActivityUncheckedUpdateWithoutPhotosInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1040,7 +1040,7 @@ export type ActivityCreateWithoutTourInput = {
   description: string
   status: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -1063,7 +1063,7 @@ export type ActivityUncheckedCreateWithoutTourInput = {
   status: string
   authorId: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -1109,7 +1109,7 @@ export type ActivityCreateWithoutOrdersInput = {
   description: string
   status: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -1132,7 +1132,7 @@ export type ActivityUncheckedCreateWithoutOrdersInput = {
   status: string
   authorId: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -1168,7 +1168,7 @@ export type ActivityUpdateWithoutOrdersInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1191,7 +1191,7 @@ export type ActivityUncheckedUpdateWithoutOrdersInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1212,7 +1212,7 @@ export type ActivityCreateManyAuthorInput = {
   description: string
   status: string
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -1231,7 +1231,7 @@ export type ActivityUpdateWithoutAuthorInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1253,7 +1253,7 @@ export type ActivityUncheckedUpdateWithoutAuthorInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1275,7 +1275,7 @@ export type ActivityUncheckedUpdateManyWithoutAuthorInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1296,7 +1296,7 @@ export type ActivityCreateManyTourInput = {
   status: string
   authorId: number
   createdAt?: Date | string
-  updatedAt?: Date | string
+  updatedAt?: Date | string | null
   startTime: Date | string
   finishTime: Date | string
   places: number
@@ -1314,7 +1314,7 @@ export type ActivityUpdateWithoutTourInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1337,7 +1337,7 @@ export type ActivityUncheckedUpdateWithoutTourInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1359,7 +1359,7 @@ export type ActivityUncheckedUpdateManyWithoutTourInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   places?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1537,7 +1537,7 @@ export type $ActivityPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     status: string
     authorId: number
     createdAt: Date
-    updatedAt: Date
+    updatedAt: Date | null
     startTime: Date
     finishTime: Date
     places: number

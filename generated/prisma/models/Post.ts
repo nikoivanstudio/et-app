@@ -56,7 +56,8 @@ export type PostMinAggregateOutputType = {
   metaTitle: string | null
   metaDescription: string | null
   link: string | null
-  pubDate: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
   price: number | null
   duration: number | null
   rating: number | null
@@ -78,7 +79,8 @@ export type PostMaxAggregateOutputType = {
   metaTitle: string | null
   metaDescription: string | null
   link: string | null
-  pubDate: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
   price: number | null
   duration: number | null
   rating: number | null
@@ -103,7 +105,8 @@ export type PostCountAggregateOutputType = {
   metaTitle: number
   metaDescription: number
   link: number
-  pubDate: number
+  createdAt: number
+  updatedAt: number
   price: number
   duration: number
   rating: number
@@ -143,7 +146,8 @@ export type PostMinAggregateInputType = {
   metaTitle?: true
   metaDescription?: true
   link?: true
-  pubDate?: true
+  createdAt?: true
+  updatedAt?: true
   price?: true
   duration?: true
   rating?: true
@@ -165,7 +169,8 @@ export type PostMaxAggregateInputType = {
   metaTitle?: true
   metaDescription?: true
   link?: true
-  pubDate?: true
+  createdAt?: true
+  updatedAt?: true
   price?: true
   duration?: true
   rating?: true
@@ -190,7 +195,8 @@ export type PostCountAggregateInputType = {
   metaTitle?: true
   metaDescription?: true
   link?: true
-  pubDate?: true
+  createdAt?: true
+  updatedAt?: true
   price?: true
   duration?: true
   rating?: true
@@ -302,7 +308,8 @@ export type PostGroupByOutputType = {
   metaTitle: string | null
   metaDescription: string | null
   link: string | null
-  pubDate: string | null
+  createdAt: Date
+  updatedAt: Date | null
   price: number | null
   duration: number | null
   rating: number | null
@@ -350,7 +357,8 @@ export type PostWhereInput = {
   metaTitle?: Prisma.StringNullableFilter<"Post"> | string | null
   metaDescription?: Prisma.StringNullableFilter<"Post"> | string | null
   link?: Prisma.StringNullableFilter<"Post"> | string | null
-  pubDate?: Prisma.StringNullableFilter<"Post"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Post"> | Date | string | null
   price?: Prisma.IntNullableFilter<"Post"> | number | null
   duration?: Prisma.IntNullableFilter<"Post"> | number | null
   rating?: Prisma.IntNullableFilter<"Post"> | number | null
@@ -376,7 +384,8 @@ export type PostOrderByWithRelationInput = {
   metaTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   metaDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   link?: Prisma.SortOrderInput | Prisma.SortOrder
-  pubDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrderInput | Prisma.SortOrder
   duration?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -405,7 +414,8 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   metaTitle?: Prisma.StringNullableFilter<"Post"> | string | null
   metaDescription?: Prisma.StringNullableFilter<"Post"> | string | null
   link?: Prisma.StringNullableFilter<"Post"> | string | null
-  pubDate?: Prisma.StringNullableFilter<"Post"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Post"> | Date | string | null
   price?: Prisma.IntNullableFilter<"Post"> | number | null
   duration?: Prisma.IntNullableFilter<"Post"> | number | null
   rating?: Prisma.IntNullableFilter<"Post"> | number | null
@@ -431,7 +441,8 @@ export type PostOrderByWithAggregationInput = {
   metaTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   metaDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   link?: Prisma.SortOrderInput | Prisma.SortOrder
-  pubDate?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrderInput | Prisma.SortOrder
   duration?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -464,7 +475,8 @@ export type PostScalarWhereWithAggregatesInput = {
   metaTitle?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   metaDescription?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
   link?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
-  pubDate?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Post"> | Date | string | null
   price?: Prisma.IntNullableWithAggregatesFilter<"Post"> | number | null
   duration?: Prisma.IntNullableWithAggregatesFilter<"Post"> | number | null
   rating?: Prisma.IntNullableWithAggregatesFilter<"Post"> | number | null
@@ -487,7 +499,8 @@ export type PostCreateInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   link?: string | null
-  pubDate?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   price?: number | null
   duration?: number | null
   rating?: number | null
@@ -513,7 +526,8 @@ export type PostUncheckedCreateInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   link?: string | null
-  pubDate?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   price?: number | null
   duration?: number | null
   rating?: number | null
@@ -536,7 +550,8 @@ export type PostUpdateInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pubDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -562,7 +577,8 @@ export type PostUncheckedUpdateInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pubDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -587,7 +603,8 @@ export type PostCreateManyInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   link?: string | null
-  pubDate?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   price?: number | null
   duration?: number | null
   rating?: number | null
@@ -610,7 +627,8 @@ export type PostUpdateManyMutationInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pubDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -635,7 +653,8 @@ export type PostUncheckedUpdateManyInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pubDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -678,7 +697,8 @@ export type PostCountOrderByAggregateInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   link?: Prisma.SortOrder
-  pubDate?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   price?: Prisma.SortOrder
   duration?: Prisma.SortOrder
   rating?: Prisma.SortOrder
@@ -708,7 +728,8 @@ export type PostMaxOrderByAggregateInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   link?: Prisma.SortOrder
-  pubDate?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   price?: Prisma.SortOrder
   duration?: Prisma.SortOrder
   rating?: Prisma.SortOrder
@@ -730,7 +751,8 @@ export type PostMinOrderByAggregateInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   link?: Prisma.SortOrder
-  pubDate?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   price?: Prisma.SortOrder
   duration?: Prisma.SortOrder
   rating?: Prisma.SortOrder
@@ -830,7 +852,8 @@ export type PostCreateWithoutUserInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   link?: string | null
-  pubDate?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   price?: number | null
   duration?: number | null
   rating?: number | null
@@ -854,7 +877,8 @@ export type PostUncheckedCreateWithoutUserInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   link?: string | null
-  pubDate?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   price?: number | null
   duration?: number | null
   rating?: number | null
@@ -908,7 +932,8 @@ export type PostScalarWhereInput = {
   metaTitle?: Prisma.StringNullableFilter<"Post"> | string | null
   metaDescription?: Prisma.StringNullableFilter<"Post"> | string | null
   link?: Prisma.StringNullableFilter<"Post"> | string | null
-  pubDate?: Prisma.StringNullableFilter<"Post"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Post"> | Date | string | null
   price?: Prisma.IntNullableFilter<"Post"> | number | null
   duration?: Prisma.IntNullableFilter<"Post"> | number | null
   rating?: Prisma.IntNullableFilter<"Post"> | number | null
@@ -932,7 +957,8 @@ export type PostCreateManyUserInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   link?: string | null
-  pubDate?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   price?: number | null
   duration?: number | null
   rating?: number | null
@@ -955,7 +981,8 @@ export type PostUpdateWithoutUserInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pubDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -979,7 +1006,8 @@ export type PostUncheckedUpdateWithoutUserInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pubDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1003,7 +1031,8 @@ export type PostUncheckedUpdateManyWithoutUserInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   link?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  pubDate?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   price?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   duration?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1030,7 +1059,8 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   metaTitle?: boolean
   metaDescription?: boolean
   link?: boolean
-  pubDate?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   price?: boolean
   duration?: boolean
   rating?: boolean
@@ -1056,7 +1086,8 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   metaTitle?: boolean
   metaDescription?: boolean
   link?: boolean
-  pubDate?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   price?: boolean
   duration?: boolean
   rating?: boolean
@@ -1082,7 +1113,8 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   metaTitle?: boolean
   metaDescription?: boolean
   link?: boolean
-  pubDate?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   price?: boolean
   duration?: boolean
   rating?: boolean
@@ -1108,7 +1140,8 @@ export type PostSelectScalar = {
   metaTitle?: boolean
   metaDescription?: boolean
   link?: boolean
-  pubDate?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   price?: boolean
   duration?: boolean
   rating?: boolean
@@ -1116,7 +1149,7 @@ export type PostSelectScalar = {
   metaPrice?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "content" | "postAuthorId" | "type" | "guid" | "image" | "images" | "status" | "slug" | "metaKeywords" | "categories" | "metaTitle" | "metaDescription" | "link" | "pubDate" | "price" | "duration" | "rating" | "metaDuration" | "metaPrice", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "content" | "postAuthorId" | "type" | "guid" | "image" | "images" | "status" | "slug" | "metaKeywords" | "categories" | "metaTitle" | "metaDescription" | "link" | "createdAt" | "updatedAt" | "price" | "duration" | "rating" | "metaDuration" | "metaPrice", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -1149,7 +1182,8 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     metaTitle: string | null
     metaDescription: string | null
     link: string | null
-    pubDate: string | null
+    createdAt: Date
+    updatedAt: Date | null
     price: number | null
     duration: number | null
     rating: number | null
@@ -1595,7 +1629,8 @@ export interface PostFieldRefs {
   readonly metaTitle: Prisma.FieldRef<"Post", 'String'>
   readonly metaDescription: Prisma.FieldRef<"Post", 'String'>
   readonly link: Prisma.FieldRef<"Post", 'String'>
-  readonly pubDate: Prisma.FieldRef<"Post", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Post", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Post", 'DateTime'>
   readonly price: Prisma.FieldRef<"Post", 'Int'>
   readonly duration: Prisma.FieldRef<"Post", 'Int'>
   readonly rating: Prisma.FieldRef<"Post", 'Int'>

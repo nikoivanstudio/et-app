@@ -24,6 +24,8 @@ model User {
   phone         String?       @db.VarChar(80)
   firstName     String?       @map("first_name")
   lastName      String?       @map("last_name")
+  createdAt     DateTime      @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt     DateTime?     @updatedAt @map("updated_at") @db.Timestamp()
   avatarPhotoId Int?          @map("avatar_photo_id")
   email         String?
   rating        Float?
@@ -50,42 +52,45 @@ model Otp {
 }
 
 model Post {
-  id              Int      @id @default(autoincrement())
-  title           String   @db.VarChar(256)
+  id              Int       @id @default(autoincrement())
+  title           String    @db.VarChar(256)
   description     String
   content         String
-  user            User     @relation(fields: [postAuthorId], references: [id])
-  postAuthorId    Int      @map("post_author_id")
-  type            String   @db.VarChar(20)
-  guid            String   @db.VarChar(80)
-  image           String?  @db.VarChar(512)
-  images          String[] @db.VarChar(512)
-  status          String   @db.VarChar(20)
-  slug            String   @unique
-  metaKeywords    String[] @map("meta_keywords")
+  user            User      @relation(fields: [postAuthorId], references: [id])
+  postAuthorId    Int       @map("post_author_id")
+  type            String    @db.VarChar(20)
+  guid            String    @db.VarChar(80)
+  image           String?   @db.VarChar(512)
+  images          String[]  @db.VarChar(512)
+  status          String    @db.VarChar(20)
+  slug            String    @unique
+  metaKeywords    String[]  @map("meta_keywords")
   categories      String[]
-  metaTitle       String?  @map("meta_title") @db.VarChar(512)
-  metaDescription String?  @map("meta_descriptions") @db.VarChar(512)
-  link            String?  @db.VarChar(512)
-  pubDate         String?  @map("pub_date") @db.VarChar(128)
+  metaTitle       String?   @map("meta_title") @db.VarChar(512)
+  metaDescription String?   @map("meta_descriptions") @db.VarChar(512)
+  link            String?   @db.VarChar(512)
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt       DateTime? @updatedAt @map("updated_at") @db.Timestamp()
   price           Int?
   duration        Int?
   rating          Int?
-  metaDuration    String?  @map("meta_duration") @db.VarChar(512)
-  metaPrice       String?  @map("meta_price") @db.VarChar(256)
+  metaDuration    String?   @map("meta_duration") @db.VarChar(512)
+  metaPrice       String?   @map("meta_price") @db.VarChar(256)
 
   @@map("post")
 }
 
 model Review {
-  id            Int    @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   content       String
   estimation    Json
-  estimateValue Int    @map("estimate_value")
-  authorId      Int    @map("author_id")
-  user          User   @relation(fields: [authorId], references: [id])
-  tour          Tour   @relation(fields: [tourId], references: [id])
+  estimateValue Int       @map("estimate_value")
+  authorId      Int       @map("author_id")
   tourId        Int
+  user          User      @relation(fields: [authorId], references: [id])
+  tour          Tour      @relation(fields: [tourId], references: [id])
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt     DateTime? @updatedAt @map("updated_at") @db.Timestamp()
 
   @@map("review")
 }
@@ -126,6 +131,8 @@ model Tour {
   metaTitle       String?    @map("meta_title")
   metaDescription String?    @map("meta_description")
   metaKeywords    String[]   @map("meta_keywords")
+  createdAt       DateTime   @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt       DateTime?  @updatedAt @map("updated_at") @db.Timestamp()
   rating          Float?
   descriptionText String?    @map("description_text")
   startPlace      Json?      @map("start_place")
@@ -139,6 +146,8 @@ model Order {
   user        User         @relation(fields: [userId], references: [id])
   amount      Int
   status      String       @db.VarChar(80)
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt   DateTime?    @updatedAt @map("updated_at") @db.Timestamp()
   places      Int?
   tourId      Int?         @map("tour_id")
   tour        Tour?        @relation(fields: [tourId], references: [id])
@@ -161,23 +170,23 @@ model Transaction {
 }
 
 model Activity {
-  id           Int      @id @default(autoincrement())
-  title        String   @db.VarChar(180)
+  id           Int       @id @default(autoincrement())
+  title        String    @db.VarChar(180)
   description  String
-  status       String   @db.VarChar(80)
-  authorId     Int      @map("author_id")
-  author       User     @relation(fields: [authorId], references: [id])
-  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamp()
-  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamp()
-  startTime    DateTime @map("start_time")
-  finishTime   DateTime @map("finish_time")
+  status       String    @db.VarChar(80)
+  authorId     Int       @map("author_id")
+  author       User      @relation(fields: [authorId], references: [id])
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt    DateTime? @updatedAt @map("updated_at") @db.Timestamp()
+  startTime    DateTime  @map("start_time")
+  finishTime   DateTime  @map("finish_time")
   places       Int
   participants Int[]
-  groupPrice   Int      @map("group_price")
-  personPrice  Int      @map("person_price")
-  type         String   @db.VarChar(80)
-  tourId       Int      @map("tour_id")
-  tour         Tour     @relation(fields: [tourId], references: [id])
+  groupPrice   Int       @map("group_price")
+  personPrice  Int       @map("person_price")
+  type         String    @db.VarChar(80)
+  tourId       Int       @map("tour_id")
+  tour         Tour      @relation(fields: [tourId], references: [id])
   orders       Order[]
   tags         String[]
   categories   String[]

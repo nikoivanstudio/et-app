@@ -57,6 +57,8 @@ export type TourMinAggregateOutputType = {
   status: string | null
   metaTitle: string | null
   metaDescription: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
   rating: number | null
   descriptionText: string | null
 }
@@ -74,6 +76,8 @@ export type TourMaxAggregateOutputType = {
   status: string | null
   metaTitle: string | null
   metaDescription: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
   rating: number | null
   descriptionText: string | null
 }
@@ -93,6 +97,8 @@ export type TourCountAggregateOutputType = {
   metaTitle: number
   metaDescription: number
   metaKeywords: number
+  createdAt: number
+  updatedAt: number
   rating: number
   descriptionText: number
   startPlace: number
@@ -131,6 +137,8 @@ export type TourMinAggregateInputType = {
   status?: true
   metaTitle?: true
   metaDescription?: true
+  createdAt?: true
+  updatedAt?: true
   rating?: true
   descriptionText?: true
 }
@@ -148,6 +156,8 @@ export type TourMaxAggregateInputType = {
   status?: true
   metaTitle?: true
   metaDescription?: true
+  createdAt?: true
+  updatedAt?: true
   rating?: true
   descriptionText?: true
 }
@@ -167,6 +177,8 @@ export type TourCountAggregateInputType = {
   metaTitle?: true
   metaDescription?: true
   metaKeywords?: true
+  createdAt?: true
+  updatedAt?: true
   rating?: true
   descriptionText?: true
   startPlace?: true
@@ -274,6 +286,8 @@ export type TourGroupByOutputType = {
   metaTitle: string | null
   metaDescription: string | null
   metaKeywords: string[]
+  createdAt: Date
+  updatedAt: Date | null
   rating: number | null
   descriptionText: string | null
   startPlace: runtime.JsonValue | null
@@ -317,6 +331,8 @@ export type TourWhereInput = {
   metaTitle?: Prisma.StringNullableFilter<"Tour"> | string | null
   metaDescription?: Prisma.StringNullableFilter<"Tour"> | string | null
   metaKeywords?: Prisma.StringNullableListFilter<"Tour">
+  createdAt?: Prisma.DateTimeFilter<"Tour"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Tour"> | Date | string | null
   rating?: Prisma.FloatNullableFilter<"Tour"> | number | null
   descriptionText?: Prisma.StringNullableFilter<"Tour"> | string | null
   startPlace?: Prisma.JsonNullableFilter<"Tour">
@@ -342,6 +358,8 @@ export type TourOrderByWithRelationInput = {
   metaTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   metaDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   metaKeywords?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
   descriptionText?: Prisma.SortOrderInput | Prisma.SortOrder
   startPlace?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -370,6 +388,8 @@ export type TourWhereUniqueInput = Prisma.AtLeast<{
   metaTitle?: Prisma.StringNullableFilter<"Tour"> | string | null
   metaDescription?: Prisma.StringNullableFilter<"Tour"> | string | null
   metaKeywords?: Prisma.StringNullableListFilter<"Tour">
+  createdAt?: Prisma.DateTimeFilter<"Tour"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Tour"> | Date | string | null
   rating?: Prisma.FloatNullableFilter<"Tour"> | number | null
   descriptionText?: Prisma.StringNullableFilter<"Tour"> | string | null
   startPlace?: Prisma.JsonNullableFilter<"Tour">
@@ -395,6 +415,8 @@ export type TourOrderByWithAggregationInput = {
   metaTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   metaDescription?: Prisma.SortOrderInput | Prisma.SortOrder
   metaKeywords?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
   descriptionText?: Prisma.SortOrderInput | Prisma.SortOrder
   startPlace?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -423,6 +445,8 @@ export type TourScalarWhereWithAggregatesInput = {
   metaTitle?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
   metaDescription?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
   metaKeywords?: Prisma.StringNullableListFilter<"Tour">
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Tour"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Tour"> | Date | string | null
   rating?: Prisma.FloatNullableWithAggregatesFilter<"Tour"> | number | null
   descriptionText?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
   startPlace?: Prisma.JsonNullableWithAggregatesFilter<"Tour">
@@ -441,6 +465,8 @@ export type TourCreateInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -466,6 +492,8 @@ export type TourUncheckedCreateInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -488,6 +516,8 @@ export type TourUpdateInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -513,6 +543,8 @@ export type TourUncheckedUpdateInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -537,6 +569,8 @@ export type TourCreateManyInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -555,6 +589,8 @@ export type TourUpdateManyMutationInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -575,6 +611,8 @@ export type TourUncheckedUpdateManyInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -615,6 +653,8 @@ export type TourCountOrderByAggregateInput = {
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
   metaKeywords?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   descriptionText?: Prisma.SortOrder
   startPlace?: Prisma.SortOrder
@@ -642,6 +682,8 @@ export type TourMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   descriptionText?: Prisma.SortOrder
 }
@@ -659,6 +701,8 @@ export type TourMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   metaTitle?: Prisma.SortOrder
   metaDescription?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   descriptionText?: Prisma.SortOrder
 }
@@ -805,6 +849,8 @@ export type TourCreateWithoutAuthorInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -828,6 +874,8 @@ export type TourUncheckedCreateWithoutAuthorInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -881,6 +929,8 @@ export type TourScalarWhereInput = {
   metaTitle?: Prisma.StringNullableFilter<"Tour"> | string | null
   metaDescription?: Prisma.StringNullableFilter<"Tour"> | string | null
   metaKeywords?: Prisma.StringNullableListFilter<"Tour">
+  createdAt?: Prisma.DateTimeFilter<"Tour"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Tour"> | Date | string | null
   rating?: Prisma.FloatNullableFilter<"Tour"> | number | null
   descriptionText?: Prisma.StringNullableFilter<"Tour"> | string | null
   startPlace?: Prisma.JsonNullableFilter<"Tour">
@@ -899,6 +949,8 @@ export type TourCreateWithoutReviewsInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -923,6 +975,8 @@ export type TourUncheckedCreateWithoutReviewsInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -960,6 +1014,8 @@ export type TourUpdateWithoutReviewsInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -984,6 +1040,8 @@ export type TourUncheckedUpdateWithoutReviewsInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1005,6 +1063,8 @@ export type TourCreateWithoutPhotosInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1029,6 +1089,8 @@ export type TourUncheckedCreateWithoutPhotosInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1066,6 +1128,8 @@ export type TourUpdateWithoutPhotosInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1090,6 +1154,8 @@ export type TourUncheckedUpdateWithoutPhotosInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1111,6 +1177,8 @@ export type TourCreateWithoutOrdersInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1135,6 +1203,8 @@ export type TourUncheckedCreateWithoutOrdersInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1172,6 +1242,8 @@ export type TourUpdateWithoutOrdersInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1196,6 +1268,8 @@ export type TourUncheckedUpdateWithoutOrdersInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1217,6 +1291,8 @@ export type TourCreateWithoutActivitiesInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1241,6 +1317,8 @@ export type TourUncheckedCreateWithoutActivitiesInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1278,6 +1356,8 @@ export type TourUpdateWithoutActivitiesInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1302,6 +1382,8 @@ export type TourUncheckedUpdateWithoutActivitiesInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1324,6 +1406,8 @@ export type TourCreateManyAuthorInput = {
   metaTitle?: string | null
   metaDescription?: string | null
   metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1342,6 +1426,8 @@ export type TourUpdateWithoutAuthorInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1365,6 +1451,8 @@ export type TourUncheckedUpdateWithoutAuthorInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1388,6 +1476,8 @@ export type TourUncheckedUpdateManyWithoutAuthorInput = {
   metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
@@ -1466,6 +1556,8 @@ export type TourSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   metaTitle?: boolean
   metaDescription?: boolean
   metaKeywords?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   rating?: boolean
   descriptionText?: boolean
   startPlace?: boolean
@@ -1492,6 +1584,8 @@ export type TourSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   metaTitle?: boolean
   metaDescription?: boolean
   metaKeywords?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   rating?: boolean
   descriptionText?: boolean
   startPlace?: boolean
@@ -1513,6 +1607,8 @@ export type TourSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   metaTitle?: boolean
   metaDescription?: boolean
   metaKeywords?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   rating?: boolean
   descriptionText?: boolean
   startPlace?: boolean
@@ -1534,12 +1630,14 @@ export type TourSelectScalar = {
   metaTitle?: boolean
   metaDescription?: boolean
   metaKeywords?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   rating?: boolean
   descriptionText?: boolean
   startPlace?: boolean
 }
 
-export type TourOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "mainPhotoId" | "price" | "duration" | "content" | "slug" | "categories" | "authorId" | "status" | "metaTitle" | "metaDescription" | "metaKeywords" | "rating" | "descriptionText" | "startPlace", ExtArgs["result"]["tour"]>
+export type TourOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "mainPhotoId" | "price" | "duration" | "content" | "slug" | "categories" | "authorId" | "status" | "metaTitle" | "metaDescription" | "metaKeywords" | "createdAt" | "updatedAt" | "rating" | "descriptionText" | "startPlace", ExtArgs["result"]["tour"]>
 export type TourInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   reviews?: boolean | Prisma.Tour$reviewsArgs<ExtArgs>
@@ -1579,6 +1677,8 @@ export type $TourPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     metaTitle: string | null
     metaDescription: string | null
     metaKeywords: string[]
+    createdAt: Date
+    updatedAt: Date | null
     rating: number | null
     descriptionText: string | null
     startPlace: runtime.JsonValue | null
@@ -2024,6 +2124,8 @@ export interface TourFieldRefs {
   readonly metaTitle: Prisma.FieldRef<"Tour", 'String'>
   readonly metaDescription: Prisma.FieldRef<"Tour", 'String'>
   readonly metaKeywords: Prisma.FieldRef<"Tour", 'String[]'>
+  readonly createdAt: Prisma.FieldRef<"Tour", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Tour", 'DateTime'>
   readonly rating: Prisma.FieldRef<"Tour", 'Float'>
   readonly descriptionText: Prisma.FieldRef<"Tour", 'String'>
   readonly startPlace: Prisma.FieldRef<"Tour", 'Json'>

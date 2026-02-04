@@ -49,6 +49,8 @@ export type OrderMinAggregateOutputType = {
   userId: number | null
   amount: number | null
   status: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
   places: number | null
   tourId: number | null
   activityId: number | null
@@ -59,6 +61,8 @@ export type OrderMaxAggregateOutputType = {
   userId: number | null
   amount: number | null
   status: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
   places: number | null
   tourId: number | null
   activityId: number | null
@@ -69,6 +73,8 @@ export type OrderCountAggregateOutputType = {
   userId: number
   amount: number
   status: number
+  createdAt: number
+  updatedAt: number
   places: number
   tourId: number
   activityId: number
@@ -99,6 +105,8 @@ export type OrderMinAggregateInputType = {
   userId?: true
   amount?: true
   status?: true
+  createdAt?: true
+  updatedAt?: true
   places?: true
   tourId?: true
   activityId?: true
@@ -109,6 +117,8 @@ export type OrderMaxAggregateInputType = {
   userId?: true
   amount?: true
   status?: true
+  createdAt?: true
+  updatedAt?: true
   places?: true
   tourId?: true
   activityId?: true
@@ -119,6 +129,8 @@ export type OrderCountAggregateInputType = {
   userId?: true
   amount?: true
   status?: true
+  createdAt?: true
+  updatedAt?: true
   places?: true
   tourId?: true
   activityId?: true
@@ -216,6 +228,8 @@ export type OrderGroupByOutputType = {
   userId: number
   amount: number
   status: string
+  createdAt: Date
+  updatedAt: Date | null
   places: number | null
   tourId: number | null
   activityId: number | null
@@ -249,6 +263,8 @@ export type OrderWhereInput = {
   userId?: Prisma.IntFilter<"Order"> | number
   amount?: Prisma.IntFilter<"Order"> | number
   status?: Prisma.StringFilter<"Order"> | string
+  createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Order"> | Date | string | null
   places?: Prisma.IntNullableFilter<"Order"> | number | null
   tourId?: Prisma.IntNullableFilter<"Order"> | number | null
   activityId?: Prisma.IntNullableFilter<"Order"> | number | null
@@ -263,6 +279,8 @@ export type OrderOrderByWithRelationInput = {
   userId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   places?: Prisma.SortOrderInput | Prisma.SortOrder
   tourId?: Prisma.SortOrderInput | Prisma.SortOrder
   activityId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -280,6 +298,8 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   userId?: Prisma.IntFilter<"Order"> | number
   amount?: Prisma.IntFilter<"Order"> | number
   status?: Prisma.StringFilter<"Order"> | string
+  createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Order"> | Date | string | null
   places?: Prisma.IntNullableFilter<"Order"> | number | null
   tourId?: Prisma.IntNullableFilter<"Order"> | number | null
   activityId?: Prisma.IntNullableFilter<"Order"> | number | null
@@ -294,6 +314,8 @@ export type OrderOrderByWithAggregationInput = {
   userId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   places?: Prisma.SortOrderInput | Prisma.SortOrder
   tourId?: Prisma.SortOrderInput | Prisma.SortOrder
   activityId?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -312,6 +334,8 @@ export type OrderScalarWhereWithAggregatesInput = {
   userId?: Prisma.IntWithAggregatesFilter<"Order"> | number
   amount?: Prisma.IntWithAggregatesFilter<"Order"> | number
   status?: Prisma.StringWithAggregatesFilter<"Order"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Order"> | Date | string | null
   places?: Prisma.IntNullableWithAggregatesFilter<"Order"> | number | null
   tourId?: Prisma.IntNullableWithAggregatesFilter<"Order"> | number | null
   activityId?: Prisma.IntNullableWithAggregatesFilter<"Order"> | number | null
@@ -320,6 +344,8 @@ export type OrderScalarWhereWithAggregatesInput = {
 export type OrderCreateInput = {
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   user: Prisma.UserCreateNestedOneWithoutOrdersInput
   tour?: Prisma.TourCreateNestedOneWithoutOrdersInput
@@ -332,6 +358,8 @@ export type OrderUncheckedCreateInput = {
   userId: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
   activityId?: number | null
@@ -341,6 +369,8 @@ export type OrderUncheckedCreateInput = {
 export type OrderUpdateInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
   tour?: Prisma.TourUpdateOneWithoutOrdersNestedInput
@@ -353,6 +383,8 @@ export type OrderUncheckedUpdateInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -364,6 +396,8 @@ export type OrderCreateManyInput = {
   userId: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
   activityId?: number | null
@@ -372,6 +406,8 @@ export type OrderCreateManyInput = {
 export type OrderUpdateManyMutationInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
@@ -380,6 +416,8 @@ export type OrderUncheckedUpdateManyInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -400,6 +438,8 @@ export type OrderCountOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   places?: Prisma.SortOrder
   tourId?: Prisma.SortOrder
   activityId?: Prisma.SortOrder
@@ -419,6 +459,8 @@ export type OrderMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   places?: Prisma.SortOrder
   tourId?: Prisma.SortOrder
   activityId?: Prisma.SortOrder
@@ -429,6 +471,8 @@ export type OrderMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   places?: Prisma.SortOrder
   tourId?: Prisma.SortOrder
   activityId?: Prisma.SortOrder
@@ -591,6 +635,8 @@ export type OrderUncheckedUpdateManyWithoutActivityNestedInput = {
 export type OrderCreateWithoutUserInput = {
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   tour?: Prisma.TourCreateNestedOneWithoutOrdersInput
   activity?: Prisma.ActivityCreateNestedOneWithoutOrdersInput
@@ -601,6 +647,8 @@ export type OrderUncheckedCreateWithoutUserInput = {
   id?: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
   activityId?: number | null
@@ -641,6 +689,8 @@ export type OrderScalarWhereInput = {
   userId?: Prisma.IntFilter<"Order"> | number
   amount?: Prisma.IntFilter<"Order"> | number
   status?: Prisma.StringFilter<"Order"> | string
+  createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Order"> | Date | string | null
   places?: Prisma.IntNullableFilter<"Order"> | number | null
   tourId?: Prisma.IntNullableFilter<"Order"> | number | null
   activityId?: Prisma.IntNullableFilter<"Order"> | number | null
@@ -649,6 +699,8 @@ export type OrderScalarWhereInput = {
 export type OrderCreateWithoutTourInput = {
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   user: Prisma.UserCreateNestedOneWithoutOrdersInput
   activity?: Prisma.ActivityCreateNestedOneWithoutOrdersInput
@@ -660,6 +712,8 @@ export type OrderUncheckedCreateWithoutTourInput = {
   userId: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   activityId?: number | null
   transaction?: Prisma.TransactionUncheckedCreateNestedOneWithoutOrderInput
@@ -694,6 +748,8 @@ export type OrderUpdateManyWithWhereWithoutTourInput = {
 export type OrderCreateWithoutTransactionInput = {
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   user: Prisma.UserCreateNestedOneWithoutOrdersInput
   tour?: Prisma.TourCreateNestedOneWithoutOrdersInput
@@ -705,6 +761,8 @@ export type OrderUncheckedCreateWithoutTransactionInput = {
   userId: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
   activityId?: number | null
@@ -729,6 +787,8 @@ export type OrderUpdateToOneWithWhereWithoutTransactionInput = {
 export type OrderUpdateWithoutTransactionInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
   tour?: Prisma.TourUpdateOneWithoutOrdersNestedInput
@@ -740,6 +800,8 @@ export type OrderUncheckedUpdateWithoutTransactionInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -748,6 +810,8 @@ export type OrderUncheckedUpdateWithoutTransactionInput = {
 export type OrderCreateWithoutActivityInput = {
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   user: Prisma.UserCreateNestedOneWithoutOrdersInput
   tour?: Prisma.TourCreateNestedOneWithoutOrdersInput
@@ -759,6 +823,8 @@ export type OrderUncheckedCreateWithoutActivityInput = {
   userId: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
   transaction?: Prisma.TransactionUncheckedCreateNestedOneWithoutOrderInput
@@ -794,6 +860,8 @@ export type OrderCreateManyUserInput = {
   id?: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
   activityId?: number | null
@@ -802,6 +870,8 @@ export type OrderCreateManyUserInput = {
 export type OrderUpdateWithoutUserInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tour?: Prisma.TourUpdateOneWithoutOrdersNestedInput
   activity?: Prisma.ActivityUpdateOneWithoutOrdersNestedInput
@@ -812,6 +882,8 @@ export type OrderUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -822,6 +894,8 @@ export type OrderUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -832,6 +906,8 @@ export type OrderCreateManyTourInput = {
   userId: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   activityId?: number | null
 }
@@ -839,6 +915,8 @@ export type OrderCreateManyTourInput = {
 export type OrderUpdateWithoutTourInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
   activity?: Prisma.ActivityUpdateOneWithoutOrdersNestedInput
@@ -850,6 +928,8 @@ export type OrderUncheckedUpdateWithoutTourInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transaction?: Prisma.TransactionUncheckedUpdateOneWithoutOrderNestedInput
@@ -860,6 +940,8 @@ export type OrderUncheckedUpdateManyWithoutTourInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
@@ -869,6 +951,8 @@ export type OrderCreateManyActivityInput = {
   userId: number
   amount: number
   status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
 }
@@ -876,6 +960,8 @@ export type OrderCreateManyActivityInput = {
 export type OrderUpdateWithoutActivityInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
   tour?: Prisma.TourUpdateOneWithoutOrdersNestedInput
@@ -887,6 +973,8 @@ export type OrderUncheckedUpdateWithoutActivityInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transaction?: Prisma.TransactionUncheckedUpdateOneWithoutOrderNestedInput
@@ -897,6 +985,8 @@ export type OrderUncheckedUpdateManyWithoutActivityInput = {
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
@@ -908,6 +998,8 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   userId?: boolean
   amount?: boolean
   status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   places?: boolean
   tourId?: boolean
   activityId?: boolean
@@ -922,6 +1014,8 @@ export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   userId?: boolean
   amount?: boolean
   status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   places?: boolean
   tourId?: boolean
   activityId?: boolean
@@ -935,6 +1029,8 @@ export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   userId?: boolean
   amount?: boolean
   status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   places?: boolean
   tourId?: boolean
   activityId?: boolean
@@ -948,12 +1044,14 @@ export type OrderSelectScalar = {
   userId?: boolean
   amount?: boolean
   status?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   places?: boolean
   tourId?: boolean
   activityId?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "amount" | "status" | "places" | "tourId" | "activityId", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "amount" | "status" | "createdAt" | "updatedAt" | "places" | "tourId" | "activityId", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   tour?: boolean | Prisma.Order$tourArgs<ExtArgs>
@@ -984,6 +1082,8 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     userId: number
     amount: number
     status: string
+    createdAt: Date
+    updatedAt: Date | null
     places: number | null
     tourId: number | null
     activityId: number | null
@@ -1418,6 +1518,8 @@ export interface OrderFieldRefs {
   readonly userId: Prisma.FieldRef<"Order", 'Int'>
   readonly amount: Prisma.FieldRef<"Order", 'Int'>
   readonly status: Prisma.FieldRef<"Order", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Order", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Order", 'DateTime'>
   readonly places: Prisma.FieldRef<"Order", 'Int'>
   readonly tourId: Prisma.FieldRef<"Order", 'Int'>
   readonly activityId: Prisma.FieldRef<"Order", 'Int'>

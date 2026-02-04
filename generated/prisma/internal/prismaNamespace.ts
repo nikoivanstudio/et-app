@@ -1201,6 +1201,8 @@ export const UserScalarFieldEnum = {
   phone: 'phone',
   firstName: 'firstName',
   lastName: 'lastName',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   avatarPhotoId: 'avatarPhotoId',
   email: 'email',
   rating: 'rating'
@@ -1237,7 +1239,8 @@ export const PostScalarFieldEnum = {
   metaTitle: 'metaTitle',
   metaDescription: 'metaDescription',
   link: 'link',
-  pubDate: 'pubDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   price: 'price',
   duration: 'duration',
   rating: 'rating',
@@ -1254,7 +1257,9 @@ export const ReviewScalarFieldEnum = {
   estimation: 'estimation',
   estimateValue: 'estimateValue',
   authorId: 'authorId',
-  tourId: 'tourId'
+  tourId: 'tourId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -1289,6 +1294,8 @@ export const TourScalarFieldEnum = {
   metaTitle: 'metaTitle',
   metaDescription: 'metaDescription',
   metaKeywords: 'metaKeywords',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   rating: 'rating',
   descriptionText: 'descriptionText',
   startPlace: 'startPlace'
@@ -1302,6 +1309,8 @@ export const OrderScalarFieldEnum = {
   userId: 'userId',
   amount: 'amount',
   status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   places: 'places',
   tourId: 'tourId',
   activityId: 'activityId'
@@ -1347,10 +1356,13 @@ export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typ
 export const FileScalarFieldEnum = {
   id: 'id',
   bucket: 'bucket',
-  fileName: 'fileName',
+  filename: 'filename',
   originalName: 'originalName',
+  type: 'type',
   createdAt: 'createdAt',
-  size: 'size'
+  size: 'size',
+  authorId: 'authorId',
+  updatedAt: 'updatedAt'
 } as const
 
 export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
@@ -1439,20 +1451,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'Float'
- */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-/**
- * Reference to a field of type 'Float[]'
- */
-export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -1463,6 +1461,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
