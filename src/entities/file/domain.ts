@@ -51,3 +51,13 @@ export type UpdateFileDTO<
 export const MAX_FILE_SIZE_NEXTJS_ROUTE = 4;
 export const MAX_FILE_SIZE_S3_ENDPOINT = 100;
 export const FILE_NUMBER_LIMIT = 10;
+
+export type PreProcessFileInfo = {
+  originalName: string;
+  size: number;
+};
+
+export type PresignedFileInfo = PreProcessFileInfo & {
+  filename: string;
+  url: string;
+};

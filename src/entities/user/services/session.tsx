@@ -5,6 +5,7 @@ import { left, right } from '@/shared/lib/either';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
+const isProd = process.env.NODE_ENV === 'production';
 const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 
@@ -28,7 +29,9 @@ async function decrypt(session: string | undefined = '') {
 }
 
 async function addSession(user: UserEntity): Promise<void> {
-  const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+  const expiresAt = new Date(
+    Date.now() + (isProd ? 1 : 7 * 24) * 60 * 60 * 1000
+  );
   const sessionData = userToSession(user, expiresAt.toISOString());
   const session = await encrypt(sessionData);
   const cookiesStore = await cookies();
