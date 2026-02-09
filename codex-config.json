@@ -1,0 +1,18 @@
+
+{
+  "codeGeneration": {
+    "generateTests": true,
+    "generateTypes": true
+  },
+  "linting": {
+    "enabled": true,
+    "rules": "airbnb"
+  },
+  "errorHandling": {
+    "suggestFixes": true
+  },
+  "testFramework": {
+    "unit": "jest",
+    "e2e": "cucumber/playwright"
+  }
+}
