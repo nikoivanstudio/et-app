@@ -10,10 +10,10 @@
     "db:migrate:dev": "npx prisma migrate dev",
     "db:reset": "npx prisma migrate reset",
     "prettier": "prettier -w .",
-    "test": "jest --testMatch='**/*.test.ts'",
-    "test:components": "jest --testMatch='**/*.test.tsx'",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test": "set NODE_OPTIONS=--no-deprecation&& jest --testMatch='**/*.test.ts'",
+    "test:components": "set NODE_OPTIONS=--no-deprecation&& jest --testMatch='**/*.test.tsx'",
+    "test:watch": "set NODE_OPTIONS=--no-deprecation&& jest --watch",
+    "test:coverage": "set NODE_OPTIONS=--no-deprecation&& jest --coverage"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
