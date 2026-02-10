@@ -8,7 +8,7 @@ const getPresignedData = async (
   fileData: PreProcessFileInfo
 ): Promise<PresignedFileInfo> => {
   const filename = fileUtils.getUniqueFileName(fileData.originalName);
-  const url = await fileStorage.getPresignedUrlToUpload({
+  const url = await fileStorage.createPresignedUrlToUpload({
     bucketName,
     filename
   });
