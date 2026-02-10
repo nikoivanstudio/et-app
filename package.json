@@ -11,7 +11,7 @@
     "db:reset": "npx prisma migrate reset",
     "prettier": "prettier -w .",
     "test": "set NODE_OPTIONS=--no-deprecation&& jest --testMatch='**/*.test.ts'",
-    "test:components": "set NODE_OPTIONS=--no-deprecation&& jest --testMatch='**/*.test.tsx'",
+    "test:components": "vitest run --config vitest.config.ts",
     "test:watch": "set NODE_OPTIONS=--no-deprecation&& jest --watch",
     "test:coverage": "set NODE_OPTIONS=--no-deprecation&& jest --coverage"
   },
