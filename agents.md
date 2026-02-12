@@ -29,3 +29,16 @@
 - Помощь в код-ревью, проверка стиля и структуры кода.
 - Интеграция с инструментами для статики и линтинга (TypeScript, ESLint, Prettier).
 - Генерация документации и помощь в отладке.
+## 6. Component Testing Standard (Locked)
+
+Single source of truth for component testing rules:
+
+- `docs/component-testing-standard.md`
+
+## 7. API Unit Testing Standard (Locked)
+
+Single source of truth for API route unit testing rules:
+
+- `docs/component-testing-standard.md#api-unit-testing-standard-locked`
+- Prompt template for future API unit tests:
+- `docs/component-testing-standard.md#api-prompt-template`

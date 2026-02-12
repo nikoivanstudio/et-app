@@ -10,15 +10,9 @@ export default defineConfig({
     }
   },
   test: {
-    environment: 'jsdom',
-    setupFiles: './vitest.setup.tsx',
+    environment: 'node',
     globals: true,
-    include: [
-      'src/views/**/*.test.tsx',
-      'src/app/**/*.test.tsx',
-      'src/widgets/**/*.test.tsx',
-      'src/features/**/*.test.tsx'
-    ],
+    include: ['src/app/api/**/*.test.ts'],
     css: false
   }
 });
