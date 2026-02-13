@@ -1,6 +1,6 @@
+import { Either, left, right } from '@/shared/lib/either';
 import { s3Client } from '@/shared/lib/s3';
 import { Readable } from 'node:stream';
-import { Either, left, right } from '@/shared/lib/either';
 
 type PresignedData = {
   bucketName: string;
@@ -28,7 +28,7 @@ const createPresignedUrlToUpload = ({
   filename,
   expiry
 }: PresignedData): Promise<string> =>
-  s3Client.presignedPutObject(bucketName, filename, expiry);
+  s3Client.presignedPutObject(bucketName, filename, expiry || 1800);
 
 const createPresignedUrlToDownload = ({
   bucketName,

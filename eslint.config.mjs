@@ -1,5 +1,6 @@
 import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
 import nextTypescript from 'eslint-config-next/typescript';
+import unusedImports from 'eslint-plugin-unused-imports';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { FlatCompat } from '@eslint/eslintrc';
@@ -98,10 +99,21 @@ const eslintConfig = [
       'next-env.d.ts'
     ],
     plugins: {
-      'server-actions': serverActionsPlugin
+      'server-actions': serverActionsPlugin,
+      'unused-imports': unusedImports
     },
     rules: {
-      'server-actions/require-async-use-server': 'error'
+      'server-actions/require-async-use-server': 'error',
+      'unused-imports/no-unused-imports': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_'
+        }
+      ]
     }
   }
 ];

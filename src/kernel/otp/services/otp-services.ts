@@ -33,21 +33,22 @@ const verifyOtp = async (
   tel: string;
   createdAt: Date;
   code: string;
-}> => {
+} | null> => {
   const otp = await otpRepositories.getOtpByCode(code);
 
   if (!otp) {
-    throw new OtpError('Такой код подтверждения не найден!');
+    return null;
   }
 
   const otpCheckResult = await otpService.checkOtp(otp.code);
 
   if (otpCheckResult.type === 'left') {
-    throw new OtpError(otpCheckResult.error);
+    return null;
   }
 
   if (!otpCheckResult.value.success) {
-    throw new OtpError('Данный код уже просрочен, попробуйте снова!');
+    return null;
+    // throw new OtpError('Данный код уже просрочен, попробуйте снова!');
   }
 
   return otp;

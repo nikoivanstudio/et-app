@@ -10,9 +10,9 @@ type Props = {
 const cnFilesLibrary = cn('FilesLibrary');
 
 export const FilesLibraryLayout: FC<Props> = ({ header, fileList, footer }) => (
-  <div className={cnFilesLibrary()}>
+  <section className={`${cnFilesLibrary()} space-y-6`}>
     {header}
     {fileList}
     {footer}
-  </div>
+  </section>
 );

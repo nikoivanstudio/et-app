@@ -8,6 +8,8 @@ import { createUser, sessionService } from '@/entities/user/server';
 import { redirect } from 'next/navigation';
 import { turnstileService } from '@/shared/services/turnstile-service';
 
+const isDevMode = process.env.NODE_ENV === 'development';
+
 export const signUpAction = async (
   _: SignUpFormState,
   formData: FormData
@@ -34,17 +36,49 @@ export const signUpAction = async (
     };
   }
 
-  const { email, tel, id } = await otpService.verifyOtp(result.data.code);
+  const otp = await otpService.verifyOtp(result.data.code);
+
+  if (!otp && !isDevMode) {
+    return {
+      formData,
+      errors: {
+        login: 'Ошибка кода подтверждения'
+      }
+    };
+  }
 
   const createUserResult = await createUser({
-    login: email,
-    phone: tel,
+    login: isDevMode
+      ? result.data.login
+      : (
+          otp as {
+            id: number;
+            email: string;
+            tel: string;
+            createdAt: Date;
+            code: string;
+          }
+        ).email,
+    phone: isDevMode
+      ? result.data.tel
+      : (
+          otp as {
+            id: number;
+            email: string;
+            tel: string;
+            createdAt: Date;
+            code: string;
+          }
+        ).tel,
     password: result.data.password
   });
 
   if (createUserResult.type === 'right') {
     await sessionService.addSession(createUserResult.value);
-    await otpService.deleteOtp(id);
+
+    if (otp && otp.id) {
+      await otpService.deleteOtp(otp.id);
+    }
 
     redirect('/');
   }
