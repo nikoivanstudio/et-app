@@ -1,7 +1,7 @@
 import { File, Prisma } from '../../../../generated/prisma/client';
+import { BatchPayload } from '../../../../generated/prisma/internal/prismaNamespace';
 import { FileSelect } from '../../../../generated/prisma/models/File';
 import { CreateFileDTO, UpdateFileDTO } from '../domain';
-import { BatchPayload } from '../../../../generated/prisma/internal/prismaNamespace';
 
 import { dbClient } from '@/shared/lib/db';
 
@@ -15,7 +15,7 @@ const getFiles = <T extends Prisma.FileFindManyArgs>(
 const createFile = (file: CreateFileDTO): Promise<File> =>
   dbClient.file.create({ data: file });
 
-const createFiles = (files: CreateFileDTO): Promise<BatchPayload> =>
+const createFiles = (files: CreateFileDTO[]): Promise<BatchPayload> =>
   dbClient.file.createMany({ data: files });
 
 const updateFile = (file: UpdateFileDTO): Promise<File> =>

@@ -1,5 +1,5 @@
 import { apiClient } from '@/shared/api/api-client';
-import { ShortFileDto, ShortUrlDto } from '../domain';
+import { FullUrlDto, ShortFileDto, ShortUrlDto } from '../domain';
 
 const getPresignedUrlsDto = async (
   files: ShortFileDto[]
@@ -9,4 +9,21 @@ const getPresignedUrlsDto = async (
     body: JSON.stringify({ fileItems: files })
   });
 
-export const uploadFileApi = { getPresignedUrlsDto };
+const uploadToS3 = (url: string, file: File): Promise<Response> =>
+  apiClient.put({
+    url,
+    body: file,
+    headers: {
+      'Content-Type': file.type
+    },
+    withoutParse: true,
+    clearUrl: true
+  });
+
+const saveFilesInfo = (filesInfo: FullUrlDto[]) =>
+  apiClient.post<{ type: 'left' | 'right'; result: string }>({
+    url: 'files/upload/save',
+    body: JSON.stringify({ filesInfo })
+  });
+
+export const uploadFileApi = { getPresignedUrlsDto, uploadToS3, saveFilesInfo };

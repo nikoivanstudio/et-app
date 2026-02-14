@@ -1,4 +1,10 @@
-import { ShortFileDto, UploadFileKind, UploadFilePreviewItem } from '../domain';
+import { FileDomain } from '@/entities/file/server';
+import {
+  FullUrlDto,
+  ShortFileDto,
+  UploadFileKind,
+  UploadFilePreviewItem
+} from '../domain';
 
 const getFileKind = (file: File): UploadFileKind => {
   if (file.type.startsWith('image/')) return 'image';
@@ -27,9 +33,21 @@ const getShortFileDto = (fileItem: UploadFilePreviewItem): ShortFileDto => ({
   size: fileItem.file.size
 });
 
+const fullFileDtoToCreateFileDto = (
+  fileDto: FullUrlDto
+): FileDomain.CreateFileDTO => ({
+  filename: fileDto.fileNameInBucket,
+  originalName: fileDto.originalFileName,
+  bucket: 'wp-content',
+  size: fileDto.size,
+  type: fileDto.type,
+  authorId: fileDto.authorId
+});
+
 export const fileUtils = {
   getFileKind,
   formatFileSize,
   getExtension,
-  getShortFileDto
+  getShortFileDto,
+  fullFileDtoToCreateFileDto
 };

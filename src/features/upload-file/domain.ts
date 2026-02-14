@@ -10,6 +10,11 @@ export type ShortUrlDto = ShortFileDto & {
   fileNameInBucket: string;
 };
 
+export type FullUrlDto = ShortUrlDto & {
+  authorId: number;
+  type: UploadFileKind;
+};
+
 export type FileDto = ShortUrlDto & { file: File };
 
 export type UploadFilePreviewItem = {

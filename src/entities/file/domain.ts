@@ -4,9 +4,22 @@ type AuthorEntity = {
   role: string;
 };
 
+export type UploadFileKind = 'image' | 'video' | 'document';
+
 export type fileTypes = {
-  photo: ['jpg', 'jpeg', 'png', 'web3'];
+  image: ['jpg', 'jpeg', 'png', 'web3'];
   video: ['mp3', 'mov', 'avi'];
+  document: [
+    '.pdf',
+    '.doc',
+    '.docx',
+    '.xls',
+    '.xlsx',
+    '.txt',
+    '.rtf',
+    '.ppt',
+    '.pptx'
+  ];
 };
 
 export type FileEntity<T extends AuthorEntity = AuthorEntity> = {
@@ -15,10 +28,10 @@ export type FileEntity<T extends AuthorEntity = AuthorEntity> = {
   filename: string;
   originalName: string;
   type: keyof fileTypes;
-  createdAt: Date;
-  updatedAt?: Date;
   size: number;
   authorId: number;
+  createdAt?: Date;
+  updatedAt?: Date;
   author?: T;
 };
 
@@ -38,7 +51,7 @@ export type FileProps = ShortFileProp & {
 };
 
 export type CreateFileDTO<
-  T extends Omit<FileEntity, 'id' | 'author'> = Omit<
+  T extends Omit<FileEntity, 'id' | 'author' | 'createdAt'> = Omit<
     FileEntity,
     'id' | 'author'
   >

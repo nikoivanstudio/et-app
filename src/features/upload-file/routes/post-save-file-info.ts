@@ -2,11 +2,11 @@ import { NextRequest } from 'next/server';
 
 import { roleUtils } from '@/entities/user';
 import { sessionService } from '@/entities/user/server';
-import { postUtils } from '@/features/post/lib/post-utils';
-import { postServices } from '@/features/post/services/post-services';
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { saveFileInfoSchema } from '../model/schemas/short-file-dto-schema';
+import { fileService } from '../services/file-service';
 
-export async function postPosts(req: NextRequest): Promise<Response> {
+export async function postSaveFileInfo(req: NextRequest): Promise<Response> {
   try {
     const cookies = req.cookies.get('session')?.value;
 
@@ -24,21 +24,23 @@ export async function postPosts(req: NextRequest): Promise<Response> {
       return handleError({ body: 'У вас нет полномочий на загрузку файлов' });
     }
 
-    const hasJSONFile = !!req.nextUrl.searchParams.get('by_json');
-    const dataSource = hasJSONFile ? await req.formData() : await req.json();
-    const posts = await postUtils.getDataSourcePosts(dataSource, session.id);
+    const data = await req.json();
+    const validationResult = saveFileInfoSchema.safeParse(data);
 
-    if (!posts.length) {
-      return handleError({ body: 'Посты отсутствуют' });
+    if (!validationResult.success) {
+      return handleError({ body: 'Неверный формат переданных данных' });
     }
+    console.log({ files: validationResult.data.filesInfo });
 
-    const createResult = await postServices.createPosts(posts);
+    const saveResult = await fileService.saveFilesInfo(
+      validationResult.data.filesInfo
+    );
 
     return handleSuccess({
-      body:
-        createResult.type === 'right'
-          ? `Успешно создано ${createResult.value.count} постов.`
-          : 'Ну удалось создать посты.'
+      body: {
+        type: saveResult.type,
+        result: saveResult.type === 'left' ? saveResult.error : saveResult.value
+      }
     });
   } catch (error) {
     return handleError({ error });

@@ -4,6 +4,7 @@ type RequestParams = {
   url: string;
   queryParams?: Record<string, string | number>;
   withoutParse?: boolean;
+  clearUrl?: boolean;
 } & RequestInit;
 
 const request = async <T>({
@@ -13,17 +14,21 @@ const request = async <T>({
   signal,
   headers,
   queryParams,
-  withoutParse
+  withoutParse,
+  clearUrl
 }: RequestParams): Promise<T> => {
-  const response = await fetch(`${urlUtils.getUrl(url, queryParams)}`, {
-    method,
-    body,
-    signal,
-    headers: {
-      'X-API-KEY': process.env.NEXT_PUBLIC_X_API_KEY || '',
-      ...headers
+  const response = await fetch(
+    clearUrl ? url : `${urlUtils.getUrl(url, queryParams)}`,
+    {
+      method,
+      body,
+      signal,
+      headers: {
+        'X-API-KEY': process.env.NEXT_PUBLIC_X_API_KEY || '',
+        ...headers
+      }
     }
-  });
+  );
 
   return withoutParse ? (response as T) : await response.json();
 };

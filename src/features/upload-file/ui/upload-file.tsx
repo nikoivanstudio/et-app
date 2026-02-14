@@ -16,10 +16,12 @@ import { cn } from '@bem-react/classname';
 import { Upload } from 'lucide-react';
 import { ChangeEvent, FC, useState } from 'react';
 
+import { toast } from 'sonner';
 import { uploadFileApi } from '../api/upload-file-api';
-import { FileDto, UploadFilePreviewItem } from '../domain';
+import { FileDto, FullUrlDto, UploadFilePreviewItem } from '../domain';
 import { fileUtils } from '../lib/file-utils';
 import { validateFile } from '../model/validation/validation';
+import { ErrorInfo } from './error';
 import { PreviewFilesList } from './preview-files-list';
 import { UploadFileDialogContent } from './upload-file-dialog-content';
 import { UploadInput } from './upload-input';
@@ -33,6 +35,8 @@ type Props = {
 export const UploadFile: FC<Props> = ({ session }) => {
   const [isOpen, setOpen] = useState(false);
   const [fileItems, setItems] = useState<UploadFilePreviewItem[]>([]);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [errors, setErrors] = useState<string>();
 
   const onChangeFiles = (e: ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
@@ -52,6 +56,8 @@ export const UploadFile: FC<Props> = ({ session }) => {
   };
 
   const uploadFiles = async () => {
+    setLoading(true);
+
     const validFiles = [...fileItems].filter(
       ({ file }) => !Object.values(validateFile(file)).some(Boolean)
     );
@@ -74,7 +80,36 @@ export const UploadFile: FC<Props> = ({ session }) => {
       return { ...dto, ...currentItem };
     });
 
-    console.log({ filesDto });
+    const results = await Promise.all(
+      filesDto.map(
+        async dto => await uploadFileApi.uploadToS3(dto.url, dto.file)
+      )
+    );
+
+    const unUploaded = results.filter(res => res.status !== 200);
+
+    if (unUploaded.length) {
+      setErrors('Ошибка при загрузке файлов!');
+
+      return;
+    }
+
+    const fullFilesDto: FullUrlDto[] = filesDto.map(dto => ({
+      ...dto,
+      authorId: session.id,
+      type: fileUtils.getFileKind(dto.file)
+    }));
+
+    const saveResult = await uploadFileApi.saveFilesInfo(fullFilesDto);
+
+    if (saveResult.type === 'left') {
+      toast.error(saveResult.result);
+      setErrors(saveResult.result);
+    }
+
+    toast.success(saveResult.result);
+
+    setLoading(true);
   };
 
   return (
@@ -97,7 +132,12 @@ export const UploadFile: FC<Props> = ({ session }) => {
             </DialogDescription>
           </DialogHeader>
           <UploadFileDialogContent
-            header={<UploadInput onChange={onChangeFiles} />}
+            header={
+              <>
+                <UploadInput onChange={onChangeFiles} />
+                <ErrorInfo errors={errors} />
+              </>
+            }
             list={
               <PreviewFilesList fileItems={fileItems} onDelete={onDeleteItem} />
             }
