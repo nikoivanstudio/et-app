@@ -1,10 +1,14 @@
 import { FileDomain } from '@/entities/file/server';
+
 import {
+  FileDto,
   FullUrlDto,
   ShortFileDto,
+  ShortUrlDto,
   UploadFileKind,
   UploadFilePreviewItem
 } from '../domain';
+import { validateFile } from '../model/validation/validation';
 
 const getFileKind = (file: File): UploadFileKind => {
   if (file.type.startsWith('image/')) return 'image';
@@ -44,10 +48,42 @@ const fullFileDtoToCreateFileDto = (
   authorId: fileDto.authorId
 });
 
+const filterValidFileItems = (fileItems: UploadFilePreviewItem[]) =>
+  [...fileItems].filter(
+    ({ file }) => !Object.values(validateFile(file)).some(Boolean)
+  );
+
+const getFilesDto = (
+  validFiles: UploadFilePreviewItem[],
+  presignedUrlsDto: ShortUrlDto[]
+): FileDto[] =>
+  presignedUrlsDto.map(dto => {
+    const currentItem = validFiles.find(
+      item =>
+        dto.originalFileName === item.file.name && dto.size === item.file.size
+    );
+
+    if (!currentItem) {
+      throw new Error('Ошибка логики. Совпадающие fileDto не найдено');
+    }
+
+    return { ...dto, ...currentItem };
+  });
+
+const getFullFilesDto = (filesDto: FileDto[], userId: number) =>
+  filesDto.map(dto => ({
+    ...dto,
+    authorId: userId,
+    type: fileUtils.getFileKind(dto.file)
+  }));
+
 export const fileUtils = {
   getFileKind,
   formatFileSize,
   getExtension,
   getShortFileDto,
-  fullFileDtoToCreateFileDto
+  fullFileDtoToCreateFileDto,
+  filterValidFileItems,
+  getFilesDto,
+  getFullFilesDto
 };

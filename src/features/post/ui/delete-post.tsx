@@ -1,9 +1,12 @@
-import { FC } from 'react';
-import { Button } from '@/shared/ui/button';
 import { XCircle } from 'lucide-react';
-import { ConfirmDialog } from '@/entities/confirm-dialog';
-import { useDeletePost } from '@/features/post/hooks/use-delete-post';
+import { FC } from 'react';
 import { toast } from 'sonner';
+
+import { useDeletePost } from '@/features/post/hooks/use-delete-post';
+
+import { ConfirmDialog } from '@/entities/confirm-dialog';
+
+import { Button } from '@/shared/ui/button';
 
 export const DeletePost: FC<{ id: number }> = ({ id }) => {
   const successHandler = () => toast.success('Пост удален успешно');

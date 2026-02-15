@@ -1,7 +1,14 @@
 import { fileRepository } from '@/entities/file/server';
+
 import { Either, left, right } from '@/shared/lib/either';
 
-import { FullUrlDto } from '../domain';
+import { fileApi } from '../api/file-api';
+import {
+  FileDto,
+  FullUrlDto,
+  ShortUrlDto,
+  UploadFilePreviewItem
+} from '../domain';
 import { fileUtils } from '../lib/file-utils';
 
 const saveFilesInfo = async (
@@ -18,4 +25,31 @@ const saveFilesInfo = async (
   return right(`Успешно сохранено ${result.count} файлов`);
 };
 
-export const fileService = { saveFilesInfo };
+const getPresignedUrlsDto = async (
+  fileItems: UploadFilePreviewItem[]
+): Promise<ShortUrlDto[]> => {
+  const shortFilesDtos = fileItems.map(fileUtils.getShortFileDto);
+
+  const { presignedUrlsDto } =
+    await fileApi.getPresignedUrlsDto(shortFilesDtos);
+
+  return presignedUrlsDto;
+};
+
+const uploadToFileStorage = async (filesDto: FileDto[]) => {
+  const results = await Promise.all(
+    filesDto.map(async dto => await fileApi.uploadToS3(dto.url, dto.file))
+  );
+
+  const unUploaded = results.filter(res => res.status !== 200);
+
+  if (unUploaded.length) {
+    throw new Error('Ошибка при загрузке файлов!');
+  }
+};
+
+export const fileService = {
+  saveFilesInfo,
+  getPresignedUrlsDto,
+  uploadToFileStorage
+};

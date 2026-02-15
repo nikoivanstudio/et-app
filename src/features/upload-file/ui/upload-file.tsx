@@ -1,6 +1,13 @@
 'use client';
 
+import { cn } from '@bem-react/classname';
+import { errors } from 'jose';
+import { Upload } from 'lucide-react';
+import { FC, useState } from 'react';
+import { toast } from 'sonner';
+
 import { SessionDomain } from '@/entities/user/server';
+
 import { Button } from '@/shared/ui/button';
 import {
   Dialog,
@@ -12,15 +19,10 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/shared/ui/dialog';
-import { cn } from '@bem-react/classname';
-import { Upload } from 'lucide-react';
-import { ChangeEvent, FC, useState } from 'react';
+import { Spinner } from '@/shared/ui/spinner';
 
-import { toast } from 'sonner';
-import { uploadFileApi } from '../api/upload-file-api';
-import { FileDto, FullUrlDto, UploadFilePreviewItem } from '../domain';
-import { fileUtils } from '../lib/file-utils';
-import { validateFile } from '../model/validation/validation';
+import { useUploadFiles } from '../hooks/use-upload-file';
+
 import { ErrorInfo } from './error';
 import { PreviewFilesList } from './preview-files-list';
 import { UploadFileDialogContent } from './upload-file-dialog-content';
@@ -33,84 +35,13 @@ type Props = {
 };
 
 export const UploadFile: FC<Props> = ({ session }) => {
-  const [isOpen, setOpen] = useState(false);
-  const [fileItems, setItems] = useState<UploadFilePreviewItem[]>([]);
-  const [isLoading, setLoading] = useState<boolean>(false);
-  const [errors, setErrors] = useState<string>();
-
-  const onChangeFiles = (e: ChangeEvent<HTMLInputElement>) => {
-    const { files } = e.target;
-
-    if (!files?.length) return;
-
-    const fileItems: UploadFilePreviewItem[] = [...files].map(file => ({
-      id: `${file.name}-${file.size}-${file.lastModified}`,
-      file
-    }));
-
-    setItems(prev => [...prev, ...fileItems]);
-  };
-
-  const onDeleteItem = (id: string) => {
-    setItems(prev => prev.filter(item => item.id !== id));
-  };
-
-  const uploadFiles = async () => {
-    setLoading(true);
-
-    const validFiles = [...fileItems].filter(
-      ({ file }) => !Object.values(validateFile(file)).some(Boolean)
-    );
-
-    const shortFilesDtos = validFiles.map(fileUtils.getShortFileDto);
-
-    const { presignedUrlsDto } =
-      await uploadFileApi.getPresignedUrlsDto(shortFilesDtos);
-
-    const filesDto: FileDto[] = presignedUrlsDto.map(dto => {
-      const currentItem = validFiles.find(
-        item =>
-          dto.originalFileName === item.file.name && dto.size === item.file.size
-      );
-
-      if (!currentItem) {
-        throw new Error('Ошибка логики. Совпадающие fileDto не найдено');
-      }
-
-      return { ...dto, ...currentItem };
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const { onChangeFiles, onDeleteItem, uploadFiles, isLoading } =
+    useUploadFiles<string>({
+      userId: session.id,
+      onSuccess: e => toast.success(e),
+      onError: e => toast.error(e)
     });
-
-    const results = await Promise.all(
-      filesDto.map(
-        async dto => await uploadFileApi.uploadToS3(dto.url, dto.file)
-      )
-    );
-
-    const unUploaded = results.filter(res => res.status !== 200);
-
-    if (unUploaded.length) {
-      setErrors('Ошибка при загрузке файлов!');
-
-      return;
-    }
-
-    const fullFilesDto: FullUrlDto[] = filesDto.map(dto => ({
-      ...dto,
-      authorId: session.id,
-      type: fileUtils.getFileKind(dto.file)
-    }));
-
-    const saveResult = await uploadFileApi.saveFilesInfo(fullFilesDto);
-
-    if (saveResult.type === 'left') {
-      toast.error(saveResult.result);
-      setErrors(saveResult.result);
-    }
-
-    toast.success(saveResult.result);
-
-    setLoading(true);
-  };
 
   return (
     <div className={cnUploadFile(null, ['text-end'])}>
@@ -131,6 +62,7 @@ export const UploadFile: FC<Props> = ({ session }) => {
               превышать 1Mb. Общее количество файлов за раз не более 10 шт.
             </DialogDescription>
           </DialogHeader>
+          {isLoading && <Spinner />}
           <UploadFileDialogContent
             header={
               <>

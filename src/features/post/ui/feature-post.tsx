@@ -1,19 +1,21 @@
 'use client';
 
-import { FC, useState } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, useState } from 'react';
+
+import { FeatureTypes } from '@/features/post/domain';
+import { useCreatePost } from '@/features/post/hooks/use-create-post';
+import { useEditPost } from '@/features/post/hooks/use-edit-post';
+import { getTitleByType } from '@/features/post/lib/feature-utils';
 import { postUtils } from '@/features/post/lib/post-utils';
 import { createPostModel } from '@/features/post/model/create-posts-model';
-import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
-import { FeatureTypes } from '@/features/post/domain';
 import { FeatureTriggerIcon } from '@/features/post/ui/feature-trigger-icon';
-import { getTitleByType } from '@/features/post/lib/feature-utils';
-import { useEditPost } from '@/features/post/hooks/use-edit-post';
-import { useCreatePost } from '@/features/post/hooks/use-create-post';
+
+import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
+import { FormCheckTypes, Value } from '@/entities/form-dialog/domain';
 import { postEditSchema } from '@/entities/post';
 import { postCreateSchema } from '@/entities/post/model/schemas';
 import { SessionDomain } from '@/entities/user/server';
-import { FormCheckTypes, Value } from '@/entities/form-dialog/domain';
 
 type Props = {
   session: SessionDomain.SessionEntity;

@@ -1,16 +1,16 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from '@playwright/test';
 
-test("test of Home page", async ({ page }) => {
-  await page.goto("http://localhost:3000/");
-  await page.getByRole("button", { name: "Hellow" }).click();
-  await page.getByRole("button", { name: "Hellow" }).click();
-  await page.getByText("nikolaenko_i").click();
-  await page.getByRole("button", { name: "Hellow" }).click();
+test('test of Home page', async ({ page }) => {
+  await page.goto('http://localhost:3000/');
+  await page.getByRole('button', { name: 'Hellow' }).click();
+  await page.getByRole('button', { name: 'Hellow' }).click();
+  await page.getByText('nikolaenko_i').click();
+  await page.getByRole('button', { name: 'Hellow' }).click();
   await page
-    .getByText("Экскурсии по КрымуТурыУслугиИнтересноеПереключатель темыИН")
+    .getByText('Экскурсии по КрымуТурыУслугиИнтересноеПереключатель темыИН')
     .click();
-  await expect(page.getByRole("button", { name: "Hellow" })).toBeVisible();
-  await expect(page.locator("html")).toMatchAriaSnapshot(`
+  await expect(page.getByRole('button', { name: 'Hellow' })).toBeVisible();
+  await expect(page.locator('html')).toMatchAriaSnapshot(`
     - document:
       - banner:
         - link "Экскурсии по Крыму":
@@ -34,7 +34,7 @@ test("test of Home page", async ({ page }) => {
         - img
       - alert
     `);
-  await page.locator("html").click();
-  await page.getByRole("button", { name: "Переключатель темы" }).click();
-  await page.getByRole("menuitem", { name: "Тёмная" }).click();
+  await page.locator('html').click();
+  await page.getByRole('button', { name: 'Переключатель темы' }).click();
+  await page.getByRole('menuitem', { name: 'Тёмная' }).click();
 });

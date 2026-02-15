@@ -21,3 +21,9 @@ export type UploadFilePreviewItem = {
   id: string;
   file: File;
 };
+
+export type HookConfig<E> = {
+  onSuccess?: (value?: E) => (Promise<unknown> | unknown) | undefined;
+  onError?: (value?: E) => (Promise<unknown> | unknown) | undefined;
+  onSettled?: (value?: unknown) => void | Promise<void>;
+};

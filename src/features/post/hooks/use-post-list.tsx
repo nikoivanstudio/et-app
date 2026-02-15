@@ -1,11 +1,13 @@
-import { ReactNode, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { ReactNode, useState } from 'react';
+
 import { postApi } from '@/features/post/api/post-api';
-import { SimplePagination } from '@/shared/ui/simple-pagination';
-import { cn } from '@/shared/lib/css';
 import { GetPostsResponse } from '@/features/post/domain';
-import { Spinner } from '@/shared/ui/spinner';
+
+import { cn } from '@/shared/lib/css';
 import { SearchInput } from '@/shared/ui/search-input';
+import { SimplePagination } from '@/shared/ui/simple-pagination';
+import { Spinner } from '@/shared/ui/spinner';
 
 type PostListData = {
   data: NoInfer<GetPostsResponse> | undefined;

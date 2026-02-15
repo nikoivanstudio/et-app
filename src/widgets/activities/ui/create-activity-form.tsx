@@ -2,7 +2,10 @@
 
 import { FC } from 'react';
 import { cn } from '@bem-react/classname';
-import { createActivityFormModel, initialCreateActivityFormData } from '@/widgets/activities/model/create-activity';
+import {
+  createActivityFormModel,
+  initialCreateActivityFormData
+} from '@/widgets/activities/model/create-activity';
 
 import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
 import { createActivity } from '@/features/activity/api/activity-api';

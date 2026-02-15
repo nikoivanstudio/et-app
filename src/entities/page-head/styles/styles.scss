@@ -1,24 +1,23 @@
- .PageHead {
-   width: 100%;
-   height: 100vh;
-   background-position: bottom center;
-   background-size: cover;
-   background-repeat: no-repeat;
+.PageHead {
+  width: 100%;
+  height: 100vh;
+  background-position: bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-   &_type_home {
-     background-image: url("../../../shared/assets/images/backgrounds/bg-home-head.jpg");
-   }
+  &_type_home {
+    background-image: url('../../../shared/assets/images/backgrounds/bg-home-head.jpg');
+  }
 
-   &_type_tour {
-     height: 75vh;
-   }
+  &_type_tour {
+    height: 75vh;
+  }
 
-   &_type_services {
-     background-image: url("../../../shared/assets/images/backgrounds/bg-1.jpg");
-   }
+  &_type_services {
+    background-image: url('../../../shared/assets/images/backgrounds/bg-1.jpg');
+  }
 
-   &_type_tours {
-     background-image: url("../../../shared/assets/images/backgrounds/bg-5.jpg");
-   }
- }
-
+  &_type_tours {
+    background-image: url('../../../shared/assets/images/backgrounds/bg-5.jpg');
+  }
+}

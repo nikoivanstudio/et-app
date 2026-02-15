@@ -1,5 +1,6 @@
 import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
 import nextTypescript from 'eslint-config-next/typescript';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -100,20 +101,37 @@ const eslintConfig = [
     ],
     plugins: {
       'server-actions': serverActionsPlugin,
+      'simple-import-sort': simpleImportSort,
       'unused-imports': unusedImports
     },
     rules: {
       'server-actions/require-async-use-server': 'error',
-      'unused-imports/no-unused-imports': 'error',
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': [
+      'simple-import-sort/imports': [
         'error',
         {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_'
+          groups: [
+            // Side effect imports.
+            ['^\\u0000'],
+            // Node.js built-ins and external packages from node_modules.
+            ['^node:', '^@?\\w'],
+            // Project layers.
+            ['^@/app(?:/|$)'],
+            ['^@/widgets(?:/|$)'],
+            ['^@/features(?:/|$)'],
+            ['^@/entities(?:/|$)'],
+            ['^@/shared(?:/|$)'],
+            // Other absolute aliases (e.g. kernel, views).
+            ['^@/'],
+            // Relative imports must stay at the bottom.
+            ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+            ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$']
+          ]
         }
-      ]
+      ],
+      'simple-import-sort/exports': 'error',
+      'unused-imports/no-unused-imports': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'error'
     }
   }
 ];

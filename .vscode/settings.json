@@ -1,6 +1,9 @@
 {
   "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
-  }
+    "source.organizeImports": "never"
+  },
+  "typescript.suggest.autoImports": true,
+  "javascript.suggest.autoImports": true
 }

@@ -1,5 +1,11 @@
 import { InputProps } from '@/entities/form-dialog/domain';
-import { Select as SelectUI, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
+import {
+  Select as SelectUI,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/shared/ui/select';
 import { cn } from '@/shared/lib/css';
 
 export const Select = <

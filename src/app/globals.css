@@ -76,9 +76,9 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
-/*  app colors*/
-  --orange: #D19331;
-  --light-green: #81D178;
+  /*  app colors*/
+  --orange: #d19331;
+  --light-green: #81d178;
 }
 
 .dark {
@@ -116,7 +116,7 @@
 }
 
 .et-app {
-  background-color: #E6E6E6;
+  background-color: #e6e6e6;
 }
 
 h3 {
@@ -133,18 +133,16 @@ h3 {
 }
 
 .embla {
-    overflow: hidden;
+  overflow: hidden;
 }
 .embla__container {
-    display: flex;
+  display: flex;
 }
 .embla__slide {
-    flex: 0 0 100%;
-    min-width: 0;
+  flex: 0 0 100%;
+  min-width: 0;
 }
 
 .oswald_text {
   font-family: Oswald, Sans;
 }
-
-

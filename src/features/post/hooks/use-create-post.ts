@@ -1,6 +1,8 @@
-import { postApi } from '@/features/post/api/post-api';
-import { FormDialogDomain } from '@/entities/form-dialog';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { postApi } from '@/features/post/api/post-api';
+
+import { FormDialogDomain } from '@/entities/form-dialog';
 import { PostCreate } from '@/entities/post';
 import { postCreateSchema } from '@/entities/post/model/schemas';
 
