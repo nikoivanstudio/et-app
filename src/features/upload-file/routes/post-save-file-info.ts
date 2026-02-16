@@ -2,9 +2,11 @@ import { NextRequest } from 'next/server';
 
 import { roleUtils } from '@/entities/user';
 import { sessionService } from '@/entities/user/server';
+
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+
 import { saveFileInfoSchema } from '../model/schemas/short-file-dto-schema';
-import { fileService } from '../services/file-service';
+import { fileServiceServer } from '../services/file-service-server';
 
 export async function postSaveFileInfo(req: NextRequest): Promise<Response> {
   try {
@@ -30,9 +32,8 @@ export async function postSaveFileInfo(req: NextRequest): Promise<Response> {
     if (!validationResult.success) {
       return handleError({ body: 'Неверный формат переданных данных' });
     }
-    console.log({ files: validationResult.data.filesInfo });
 
-    const saveResult = await fileService.saveFilesInfo(
+    const saveResult = await fileServiceServer.saveFilesInfo(
       validationResult.data.filesInfo
     );
 

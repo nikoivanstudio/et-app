@@ -1,7 +1,12 @@
 'use client';
 
 import { cn } from '@bem-react/classname';
+import { LogOut, User } from 'lucide-react';
+import Link from 'next/link';
 import { FC } from 'react';
+
+import { Avatar, AvatarFallback } from '@/shared/ui/avatar';
+import { Button } from '@/shared/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,10 +16,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/shared/ui/dropdown-menu';
-import { Button } from '@/shared/ui/button';
-import { Avatar, AvatarFallback } from '@/shared/ui/avatar';
-import Link from 'next/link';
-import { LogOut, User } from 'lucide-react';
 
 const cnProfile = cn('Profile');
 

@@ -1,7 +1,6 @@
 'use client';
 
 import { cn } from '@bem-react/classname';
-import { errors } from 'jose';
 import { Upload } from 'lucide-react';
 import { FC, useState } from 'react';
 import { toast } from 'sonner';
@@ -36,11 +35,17 @@ type Props = {
 
 export const UploadFile: FC<Props> = ({ session }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
-  const { onChangeFiles, onDeleteItem, uploadFiles, isLoading } =
-    useUploadFiles<string>({
+  const [errors, setErrors] = useState('');
+  const { fileItems, onChangeFiles, onDeleteItem, uploadFiles, isLoading } =
+    useUploadFiles<Error>({
       userId: session.id,
-      onSuccess: e => toast.success(e),
-      onError: e => toast.error(e)
+      onSuccess: e => {
+        setErrors(e);
+        console.log({ e });
+        toast.success(e);
+        // setOpen(false);
+      },
+      onError: e => toast.error(e.message)
     });
 
   return (
@@ -67,7 +72,8 @@ export const UploadFile: FC<Props> = ({ session }) => {
             header={
               <>
                 <UploadInput onChange={onChangeFiles} />
-                <ErrorInfo errors={errors} />
+                <ErrorInfo />
+                {!!errors && JSON.stringify(errors)}
               </>
             }
             list={

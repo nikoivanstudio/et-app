@@ -1,6 +1,11 @@
 import { apiClient } from '@/shared/api/api-client';
 
-import { FullUrlDto, ShortFileDto, ShortUrlDto } from '../domain';
+import {
+  FullUrlDto,
+  SaveFilesInfoResult,
+  ShortFileDto,
+  ShortUrlDto
+} from '../domain';
 
 const baseKey = 'files';
 
@@ -25,8 +30,8 @@ const uploadToS3 = (url: string, file: File): Promise<Response> =>
 
 const saveFilesInfo = (
   filesInfo: FullUrlDto[]
-): Promise<{ type: 'left' | 'right'; result: string }> =>
-  apiClient.post<{ type: 'left' | 'right'; result: string }>({
+): Promise<SaveFilesInfoResult> =>
+  apiClient.post<SaveFilesInfoResult>({
     url: 'files/upload/save',
     body: JSON.stringify({ filesInfo })
   });

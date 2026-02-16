@@ -22,8 +22,16 @@ export type UploadFilePreviewItem = {
   file: File;
 };
 
-export type HookConfig<E> = {
-  onSuccess?: (value?: E) => (Promise<unknown> | unknown) | undefined;
-  onError?: (value?: E) => (Promise<unknown> | unknown) | undefined;
-  onSettled?: (value?: unknown) => void | Promise<void>;
+export type SaveFilesInfoResult = {
+  type: 'left' | 'right';
+  result: string;
+};
+
+export type HookConfig<E = Error> = {
+  onSuccess?: (value: SaveFilesInfoResult['result']) => Promise<unknown> | unknown;
+  onError?: (value: E) => Promise<unknown> | unknown;
+  onSettled?: (
+    value: SaveFilesInfoResult | undefined,
+    error: E | null
+  ) => void | Promise<void>;
 };

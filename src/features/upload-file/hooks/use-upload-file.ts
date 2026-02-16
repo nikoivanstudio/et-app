@@ -2,15 +2,34 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ChangeEvent, useState } from 'react';
 
 import { fileApi } from '../api/file-api';
-import { FullUrlDto, HookConfig, UploadFilePreviewItem } from '../domain';
+import {
+  FullUrlDto,
+  HookConfig,
+  SaveFilesInfoResult,
+  UploadFilePreviewItem
+} from '../domain';
 import { fileUtils } from '../lib/file-utils';
 import { fileService } from '../services/file-service';
 
 type Props<E> = HookConfig<E> & { userId: number };
 
-export const useUploadFiles = <E>({ userId, ...config }: Props<E>) => {
+export const useUploadFiles = <E = Error>({ userId, ...config }: Props<E>) => {
   const [fileItems, setItems] = useState<UploadFilePreviewItem[]>([]);
   const queryClient = useQueryClient();
+  const mutation = useMutation<SaveFilesInfoResult, E, FullUrlDto[]>({
+    mutationFn: data => fileApi.saveFilesInfo(data),
+    onSuccess: result => {
+      queryClient.invalidateQueries({ queryKey: [fileApi.baseKey] });
+
+      config.onSuccess?.(result.result);
+    },
+    onSettled: (result, error) => {
+      config.onSettled?.(result, error);
+    },
+    onError: error => {
+      config.onError?.(error);
+    }
+  });
 
   const onChangeFiles = (e: ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
@@ -29,27 +48,6 @@ export const useUploadFiles = <E>({ userId, ...config }: Props<E>) => {
     setItems(prev => prev.filter(item => item.id !== id));
   };
 
-  const mutation = useMutation<
-    { type: 'left' | 'right'; result: string },
-    E,
-    FullUrlDto[]
-  >({
-    mutationFn: data => fileApi.saveFilesInfo(data),
-    onSuccess: result => {
-      queryClient.invalidateQueries({ queryKey: [fileApi.baseKey] });
-
-      if (!config?.onSuccess) return;
-
-      config.onSuccess(result);
-    },
-    onSettled: message => {
-      !!config?.onSettled && config.onSettled(message);
-    },
-    onError: error => {
-      !!config?.onError && config.onError(error);
-    }
-  });
-
   const uploadFiles = async () => {
     const validFiles = fileUtils.filterValidFileItems(fileItems);
     const presignedUrlsDto = await fileService.getPresignedUrlsDto(validFiles);
@@ -63,6 +61,7 @@ export const useUploadFiles = <E>({ userId, ...config }: Props<E>) => {
   };
 
   return {
+    fileItems,
     onChangeFiles,
     uploadFiles,
     onDeleteItem,

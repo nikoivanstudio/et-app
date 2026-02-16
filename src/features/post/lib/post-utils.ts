@@ -1,8 +1,10 @@
-import { z } from 'zod';
-import { postProdSchema } from '@/features/post/lib/validation-schemas';
-import { PostDomain } from '@/entities/post/server';
-import { initialPostCreateFormData } from '@/features/post/model/create-posts-model';
 import { v4 } from 'uuid';
+import { z } from 'zod';
+
+import { postProdSchema } from '@/features/post/lib/validation-schemas';
+import { initialPostCreateFormData } from '@/features/post/model/create-posts-model';
+
+import { PostDomain } from '@/entities/post/server';
 
 const getFormDataPosts = async (formData: FormData): Promise<unknown> => {
   const file = formData.get('posts_file');
@@ -16,8 +18,7 @@ const getFormDataPosts = async (formData: FormData): Promise<unknown> => {
 };
 
 const getDataSourcePosts = async (
-  dataSource: FormData | unknown,
-  authorId: number
+  dataSource: FormData | unknown
 ): Promise<Omit<PostDomain.PostEntity, 'id' | 'user'>[]> => {
   const data =
     dataSource instanceof FormData
@@ -27,11 +28,6 @@ const getDataSourcePosts = async (
   const result = z.array(postProdSchema).safeParse(data);
 
   if (!result.success) {
-    console.log({
-      errors: result.error.errors,
-      formatErrors: result.error.format()._errors
-    });
-
     return [];
   }
 

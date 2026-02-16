@@ -1,35 +1,11 @@
-import { fileRepository } from '@/entities/file/server';
-
-import { Either, left, right } from '@/shared/lib/either';
-
 import { fileApi } from '../api/file-api';
-import {
-  FileDto,
-  FullUrlDto,
-  ShortUrlDto,
-  UploadFilePreviewItem
-} from '../domain';
+import { FileDto, ShortUrlDto, UploadFilePreviewItem } from '../domain';
 import { fileUtils } from '../lib/file-utils';
-
-const saveFilesInfo = async (
-  files: FullUrlDto[]
-): Promise<Either<string, string>> => {
-  const createFilesDto = files.map(fileUtils.fullFileDtoToCreateFileDto);
-
-  const result = await fileRepository.createFiles(createFilesDto);
-
-  if (!result.count) {
-    return left('Ошибка при сохранение файлов');
-  }
-
-  return right(`Успешно сохранено ${result.count} файлов`);
-};
 
 const getPresignedUrlsDto = async (
   fileItems: UploadFilePreviewItem[]
 ): Promise<ShortUrlDto[]> => {
   const shortFilesDtos = fileItems.map(fileUtils.getShortFileDto);
-
   const { presignedUrlsDto } =
     await fileApi.getPresignedUrlsDto(shortFilesDtos);
 
@@ -44,12 +20,11 @@ const uploadToFileStorage = async (filesDto: FileDto[]) => {
   const unUploaded = results.filter(res => res.status !== 200);
 
   if (unUploaded.length) {
-    throw new Error('Ошибка при загрузке файлов!');
+    throw new Error('РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ С„Р°Р№Р»РѕРІ!');
   }
 };
 
 export const fileService = {
-  saveFilesInfo,
   getPresignedUrlsDto,
   uploadToFileStorage
 };

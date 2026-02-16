@@ -1,4 +1,4 @@
-export const MAX_FILE_SIZE = 1024 * 1024;
+export const MAX_FILE_SIZE = 1024 * 1024 * 5;
 export const MIN_IMAGE_SIZE = 50 * 1024;
 
 export const DOC_MIME_TYPES = [
