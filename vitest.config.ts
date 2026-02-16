@@ -17,7 +17,8 @@ export default defineConfig({
       'src/views/**/*.test.tsx',
       'src/app/**/*.test.tsx',
       'src/widgets/**/*.test.tsx',
-      'src/features/**/*.test.tsx'
+      'src/features/**/*.test.tsx',
+      'src/entities/**/*.test.tsx'
     ],
     css: false
   }
