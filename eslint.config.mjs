@@ -33,7 +33,6 @@ const serverActionsPlugin = {
         const sourceCode = context.getSourceCode();
 
         function hasUseServerDirective(node) {
-          // Директивы возможны только при блочном теле: { "use server"; ... }
           if (!node.body || node.body.type !== 'BlockStatement') return false;
           const first = node.body.body?.[0];
           return (
@@ -52,7 +51,6 @@ const serverActionsPlugin = {
             node,
             messageId: 'mustBeAsync',
             fix(fixer) {
-              // FunctionDeclaration / FunctionExpression: вставляем async перед `function`
               if (
                 node.type === 'FunctionDeclaration' ||
                 node.type === 'FunctionExpression'
@@ -65,7 +63,6 @@ const serverActionsPlugin = {
                 return fixer.insertTextBefore(functionToken, 'async ');
               }
 
-              // ArrowFunctionExpression: вставляем async перед первым токеном стрелочной функции
               if (node.type === 'ArrowFunctionExpression') {
                 const firstToken = sourceCode.getFirstToken(node);
                 if (!firstToken) return null;
@@ -110,19 +107,14 @@ const eslintConfig = [
         'error',
         {
           groups: [
-            // Side effect imports.
             ['^\\u0000'],
-            // Node.js built-ins and external packages from node_modules.
             ['^node:', '^@?\\w'],
-            // Project layers.
             ['^@/app(?:/|$)'],
             ['^@/widgets(?:/|$)'],
             ['^@/features(?:/|$)'],
             ['^@/entities(?:/|$)'],
             ['^@/shared(?:/|$)'],
-            // Other absolute aliases (e.g. kernel, views).
             ['^@/'],
-            // Relative imports must stay at the bottom.
             ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
             ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$']
           ]
@@ -131,7 +123,14 @@ const eslintConfig = [
       'simple-import-sort/exports': 'error',
       'unused-imports/no-unused-imports': 'error',
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'error'
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          vars: 'all',
+          args: 'all',
+          ignoreRestSiblings: false
+        }
+      ]
     }
   }
 ];
