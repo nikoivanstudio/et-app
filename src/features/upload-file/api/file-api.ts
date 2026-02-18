@@ -13,7 +13,7 @@ const getPresignedUrlsDto = async (
   files: ShortFileDto[]
 ): Promise<{ presignedUrlsDto: ShortUrlDto[] }> =>
   apiClient.post<{ presignedUrlsDto: ShortUrlDto[] }>({
-    url: 'files/upload/presignedUrl',
+    url: 'files/upload',
     body: JSON.stringify({ fileItems: files })
   });
 
@@ -28,9 +28,7 @@ const uploadToS3 = (url: string, file: File): Promise<Response> =>
     clearUrl: true
   });
 
-const saveFilesInfo = (
-  filesInfo: FullUrlDto[]
-): Promise<SaveFilesInfoResult> =>
+const saveFilesInfo = (filesInfo: FullUrlDto[]): Promise<SaveFilesInfoResult> =>
   apiClient.post<SaveFilesInfoResult>({
     url: 'files/upload/save',
     body: JSON.stringify({ filesInfo })

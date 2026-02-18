@@ -1,56 +1,80 @@
-import { PostStatus } from '@/entities/post/domain';
 import { Prisma } from '../../../../generated/prisma/client';
 import FileWhereInput = Prisma.FileWhereInput;
 
 const getSearchParamsUtils = (
   searchQuery: string | null
-): { where: FileWhereInput } | undefined => {
+): FileWhereInput | undefined => {
   if (!searchQuery) {
     return;
   }
 
   return {
-    where: {
-      originalName: { contains: searchQuery, mode: 'insensitive' }
-    }
+    originalName: { contains: searchQuery, mode: 'insensitive' }
   };
 };
 
 const getAuthorParams = (
   authorId: string | null
-): { where: FileWhereInput } | undefined => {
+): FileWhereInput | undefined => {
   if (!authorId) {
     return;
   }
 
+  const parsedAuthorId = Number(authorId);
+
+  if (!Number.isFinite(parsedAuthorId)) {
+    return;
+  }
+
   return {
-    where: {
-      authorId: +authorId
-    }
+    authorId: parsedAuthorId
   };
 };
 
 const getDateParams = (
-  startDate: number | null,
-  finishDate: number | null
-): { where: FileWhereInput } | undefined => {
-  if (!startDate && !finishDate) {
+  startDate: string | null,
+  endDate: string | null
+): FileWhereInput | undefined => {
+  if (!startDate && !endDate) {
     return;
   }
 
-  const start = startDate ? new Date(startDate) : new Date();
-  start.setHours(0, 0, 0, 0);
+  const parseDate = (value: string | null): Date | null => {
+    if (!value) return null;
 
-  const end = finishDate ? new Date(finishDate) : new Date();
-  end.setDate(end.getDate() + 1);
+    const parsed = new Date(value);
+
+    if (Number.isNaN(parsed.getTime())) {
+      return null;
+    }
+
+    return parsed;
+  };
+
+  const start = parseDate(startDate);
+  const end = parseDate(endDate);
+
+  if (!start && !end) {
+    return;
+  }
+
+  const createdAt: Prisma.DateTimeFilter = {};
+
+  if (start) {
+    const rangeStart = new Date(start);
+    rangeStart.setHours(0, 0, 0, 0);
+    createdAt.gte = rangeStart;
+  }
+
+  if (end) {
+    const rangeEnd = new Date(end);
+    rangeEnd.setHours(0, 0, 0, 0);
+    rangeEnd.setDate(rangeEnd.getDate() + 1);
+    createdAt.lt = rangeEnd;
+  }
 
   return {
-    where: {
-      createdAt: {
-        gte: start,
-        lt: end
-      }
-    }
+    createdAt
   };
 };
 

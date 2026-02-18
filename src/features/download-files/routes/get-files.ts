@@ -3,13 +3,8 @@ import { NextRequest } from 'next/server';
 import { roleUtils } from '@/entities/user';
 import { sessionService } from '@/entities/user/server';
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
-
-// queryParams maybe:
-// page: number; - какую страницу отдавать
-// authorId: number - идентификатор автора
-// name: string - оригинальное название файла
-// fileType: string - enum of fileTypes
-// date: дата - дата загрузки
+import { downloadFilesService } from '../services/download-files-services';
+import { searchParamsUtils } from '../lib/search-params-utils';
 
 export async function getFiles(req: NextRequest): Promise<Response> {
   try {
@@ -30,8 +25,18 @@ export async function getFiles(req: NextRequest): Promise<Response> {
       return handleError({ body: 'У вас нет полномочий на cкачивание файлов' });
     }
 
+    const serviceParams =
+      searchParamsUtils.getParamsBySearchParams(searchParams);
+
+    const result =
+      await downloadFilesService.getContentFilesBySearchParams(serviceParams);
+
+    if (result.type === 'left') {
+      return handleError({ error: 'Ошибка при получение файлов' });
+    }
+
     return handleSuccess({
-      body: 'presignedUrlsDto'
+      body: { files: result.value }
     });
   } catch (error) {
     return handleError({ error });
