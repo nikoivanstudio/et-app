@@ -20,6 +20,10 @@ export async function postOtp(req: NextRequest): Promise<Response> {
 
     const otp = await otpService.createOtpRecord(bodyResult.data);
 
+    if (process.env.NODE_ENV !== 'production') {
+      console.log({ otp });
+    }
+
     if (!otp) {
       throw new Error('OTP receipt error');
     }
