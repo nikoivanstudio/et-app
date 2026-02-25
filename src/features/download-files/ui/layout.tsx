@@ -1,15 +1,9 @@
 'use client';
 
-import {
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Separator
-} from '@radix-ui/react-select';
-import { Badge, Search, Trash2 } from 'lucide-react';
-import { FC } from 'react';
-import { Button, Select } from 'react-day-picker';
+import { Separator } from '@radix-ui/react-select';
+import { Badge, Trash2 } from 'lucide-react';
+import { FC, ReactNode } from 'react';
+import { Button } from 'react-day-picker';
 
 import { SessionDomain } from '@/entities/user/server';
 
@@ -20,11 +14,10 @@ import {
   CardHeader,
   CardTitle
 } from '@/shared/ui/card';
-import { Input } from '@/shared/ui/input';
 
-type Props = { session: SessionDomain.SessionEntity };
+type Props = { searchPanel: ReactNode; session: SessionDomain.SessionEntity };
 
-export const DownloadFilesLayout: FC<Props> = ({ session }) => {
+export const DownloadFilesLayout: FC<Props> = ({ session, searchPanel }) => {
   return (
     <Card>
       <CardHeader className='gap-3'>
@@ -35,45 +28,7 @@ export const DownloadFilesLayout: FC<Props> = ({ session }) => {
       </CardHeader>
       <CardContent className='space-y-5'>
         <div className='grid gap-3 md:grid-cols-2 xl:grid-cols-5'>
-          <div className='relative xl:col-span-2'>
-            <Search className='text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2' />
-            <Input className='pl-9' placeholder='Поиск по названию файла' />
-          </div>
-          <Select>
-            <SelectTrigger className='w-full'>
-              <SelectValue placeholder='Тип файла' />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value='all-types'>Все типы</SelectItem>
-              <SelectItem value='pdf'>PDF</SelectItem>
-              <SelectItem value='docx'>DOCX</SelectItem>
-              <SelectItem value='png'>PNG</SelectItem>
-            </SelectContent>
-          </Select>
-          <Select>
-            <SelectTrigger className='w-full'>
-              <SelectValue placeholder='Автор' />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value='all-authors'>Все авторы</SelectItem>
-              <SelectItem value='ivan'>Иван Петров</SelectItem>
-              <SelectItem value='maria'>Мария Смирнова</SelectItem>
-              <SelectItem value={String(session.id ?? 'current-user')}>
-                Текущий пользователь
-              </SelectItem>
-            </SelectContent>
-          </Select>
-          <Select>
-            <SelectTrigger className='w-full'>
-              <SelectValue placeholder='Дата' />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value='all-dates'>Все даты</SelectItem>
-              <SelectItem value='today'>Сегодня</SelectItem>
-              <SelectItem value='week'>Последние 7 дней</SelectItem>
-              <SelectItem value='month'>Последние 30 дней</SelectItem>
-            </SelectContent>
-          </Select>
+          {searchPanel}
         </div>
 
         <div className='overflow-x-auto rounded-lg border'>
