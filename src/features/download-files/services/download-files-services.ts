@@ -1,7 +1,14 @@
-import { ContentFile } from '../domain';
-import { fileRepository, fileStorage } from '@/entities/file/server';
+import { Prisma } from 'generated/prisma/client';
+
+import {
+  FileDomain,
+  fileRepository,
+  fileStorage
+} from '@/entities/file/server';
+
 import { Either, left, right } from '@/shared/lib/either';
-import { Prisma, File } from 'generated/prisma/client';
+
+import { ContentFile } from '../domain';
 
 const getContentFilesBySearchParams = async (
   data: Prisma.FileFindManyArgs
@@ -27,4 +34,19 @@ const getContentFilesBySearchParams = async (
   return right(contentFiles);
 };
 
-export const downloadFilesService = { getContentFilesBySearchParams };
+const getAuthorsByFiles = async (): Promise<
+  Either<string, FileDomain.FilesUserEntity[]>
+> => {
+  const users = await fileRepository.getAuthorsByFiles();
+
+  if (!users) {
+    return left('Ошибка получения пользователей');
+  }
+
+  return right(users);
+};
+
+export const downloadFilesService = {
+  getContentFilesBySearchParams,
+  getAuthorsByFiles
+};

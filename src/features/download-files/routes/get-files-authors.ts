@@ -5,12 +5,10 @@ import { sessionService } from '@/entities/user/server';
 
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
-import { searchParamsUtils } from '../lib/search-params-utils';
 import { downloadFilesService } from '../services/download-files-services';
 
-export async function getFiles(req: NextRequest): Promise<Response> {
+export async function getUsersByFiles(req: NextRequest): Promise<Response> {
   try {
-    const searchParams = req.nextUrl.searchParams;
     const cookies = req.cookies.get('session')?.value;
 
     if (!cookies) {
@@ -23,22 +21,20 @@ export async function getFiles(req: NextRequest): Promise<Response> {
       return handleError({ body: 'Ошибка верификации' });
     }
 
-    if (!roleUtils.userHasPermissionOn(session.role, 'downloadFile')) {
-      return handleError({ body: 'У вас нет полномочий на cкачивание файлов' });
+    if (!roleUtils.userHasPermissionOn(session.role, 'getUsersByFiles')) {
+      return handleError({
+        body: 'У вас нет полномочий к списку пользователей загрузивших файлы'
+      });
     }
 
-    const serviceParams =
-      searchParamsUtils.getParamsBySearchParams(searchParams);
-
-    const result =
-      await downloadFilesService.getContentFilesBySearchParams(serviceParams);
+    const result = await downloadFilesService.getAuthorsByFiles();
 
     if (result.type === 'left') {
-      return handleError({ error: 'Ошибка при получение файлов' });
+      return handleError({ error: 'Ошибка при получение пользователей' });
     }
 
     return handleSuccess({
-      body: { files: result.value }
+      body: { authors: result.value }
     });
   } catch (error) {
     return handleError({ error });

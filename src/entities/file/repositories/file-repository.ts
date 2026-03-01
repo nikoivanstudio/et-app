@@ -1,9 +1,9 @@
+import { dbClient } from '@/shared/lib/db';
+
 import { File, Prisma } from '../../../../generated/prisma/client';
 import { BatchPayload } from '../../../../generated/prisma/internal/prismaNamespace';
 import { FileSelect } from '../../../../generated/prisma/models/File';
-import { CreateFileDTO, UpdateFileDTO } from '../domain';
-
-import { dbClient } from '@/shared/lib/db';
+import { CreateFileDTO, FilesUserEntity, UpdateFileDTO } from '../domain';
 
 const getFile = (id: number, select?: FileSelect) =>
   dbClient.file.findUnique({ where: { id }, select });
@@ -11,6 +11,24 @@ const getFile = (id: number, select?: FileSelect) =>
 const getFiles = <T extends Prisma.FileFindManyArgs>(
   args?: Prisma.SelectSubset<T, Prisma.FileFindManyArgs>
 ): Promise<Prisma.FileGetPayload<T>[]> => dbClient.file.findMany(args);
+
+const getAuthorsByFiles = (): Promise<FilesUserEntity[]> =>
+  dbClient.user.findMany({
+    where: {
+      files: {
+        some: {}
+      }
+    },
+    select: {
+      id: true,
+      login: true,
+      firstName: true,
+      lastName: true
+    },
+    orderBy: {
+      login: 'asc'
+    }
+  });
 
 const createFile = (file: CreateFileDTO): Promise<File> =>
   dbClient.file.create({ data: file });
@@ -32,6 +50,7 @@ const deleteFile = (id: number): Promise<File> =>
 export const fileRepository = {
   getFile,
   getFiles,
+  getAuthorsByFiles,
   createFile,
   createFiles,
   updateFile,

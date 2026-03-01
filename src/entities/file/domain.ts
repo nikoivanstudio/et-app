@@ -74,3 +74,10 @@ export type PresignedFileInfo = PreProcessFileInfo & {
   filename: string;
   url: string;
 };
+
+export type FilesUserEntity = {
+  id: number;
+  login: string;
+  firstName: string | null;
+  lastName?: string | null;
+};
