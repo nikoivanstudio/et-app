@@ -20,7 +20,7 @@ const uploadToFileStorage = async (filesDto: FileDto[]) => {
   const unUploaded = results.filter(res => res.status !== 200);
 
   if (unUploaded.length) {
-    throw new Error('РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ С„Р°Р№Р»РѕРІ!');
+    throw new Error('Ошибка при загрузке файлов!');
   }
 };
 

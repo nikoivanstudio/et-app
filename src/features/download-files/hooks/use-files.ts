@@ -12,6 +12,8 @@ export const useFiles = (params: FilesSearchParams) => {
 
   return {
     files: query.data?.files ?? [],
+    pagesCount: query.data?.pagesCount ?? 0,
+    summary: query.data?.summary ?? { totalFiles: 0, totalSpace: 0 },
     isLoading: query.isLoading,
     isError: query.isError,
     error: query.error,

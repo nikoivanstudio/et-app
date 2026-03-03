@@ -8,12 +8,22 @@ import {
 
 import { Either, left, right } from '@/shared/lib/either';
 
-import { ContentFile } from '../domain';
+import { ContentFile, GetFilesResponse } from '../domain';
+
+const getPagesCount = async (where?: Prisma.FileWhereInput) => {
+  const count = await fileRepository.getFilesCount(where);
+
+  return Math.ceil(count / 10);
+};
 
 const getContentFilesBySearchParams = async (
   data: Prisma.FileFindManyArgs
-): Promise<Either<string, ContentFile[]>> => {
-  const files = await fileRepository.getFiles(data);
+): Promise<Either<string, GetFilesResponse>> => {
+  const [files, pagesCount, summary] = await Promise.all([
+    fileRepository.getFiles(data),
+    getPagesCount(data.where),
+    fileRepository.getFilesSummary()
+  ]);
 
   if (!files) {
     return left('Error in getFiles');
@@ -31,7 +41,11 @@ const getContentFilesBySearchParams = async (
     })
   );
 
-  return right(contentFiles);
+  return right({
+    files: contentFiles as ContentFile[],
+    pagesCount,
+    summary
+  });
 };
 
 const getAuthorsByFiles = async (): Promise<

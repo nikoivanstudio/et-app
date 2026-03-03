@@ -2,14 +2,17 @@
 
 import { FC, PropsWithChildren } from 'react';
 
-import { DashboardLayout } from '@/views/dashboard/ui/dashboard-layout';
-import { SessionDomain } from '@/entities/user/server';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
-import { cn } from '@/shared/lib/css';
-import { DashboardTours } from '@/widgets/tours';
+import { FilesLibraryDashboard } from '@/widgets/files-library/containers/files-library-dashboard';
 import { DashboardPosts } from '@/widgets/posts';
+import { DashboardTours } from '@/widgets/tours';
 import { DashboardUsers } from '@/widgets/users';
-import { FilesLibraryDashboard } from '@/widgets/files-library';
+
+import { SessionDomain } from '@/entities/user/server';
+
+import { cn } from '@/shared/lib/css';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
+
+import { DashboardLayout } from '@/views/dashboard/ui/dashboard-layout';
 
 export const DashboardSuperAdmin: FC<
   PropsWithChildren<{ session: SessionDomain.SessionEntity }>

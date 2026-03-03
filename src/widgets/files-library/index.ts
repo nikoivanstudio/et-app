@@ -1,1 +1,1 @@
-export { FilesLibraryDashboard } from '@/widgets/files-library/containers/files-library-dashboard';
+export { FilesList } from '@/features/download-files/containers/files-list';

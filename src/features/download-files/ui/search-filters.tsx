@@ -1,17 +1,23 @@
 'use client';
 
+import { FC } from 'react';
+
 import {
+  Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from '@radix-ui/react-select';
-import { FC } from 'react';
-import { Select } from 'react-day-picker';
+} from '@/shared/ui/select';
 
-export const SearchFilters: FC = () => {
+type Props = {
+  value?: string;
+  onSelect(value: string): void;
+};
+
+export const SearchFilters: FC<Props> = ({ value, onSelect }) => {
   return (
-    <Select>
+    <Select value={value} onValueChange={onSelect}>
       <SelectTrigger className='w-full'>
         <SelectValue placeholder='Дата' />
       </SelectTrigger>

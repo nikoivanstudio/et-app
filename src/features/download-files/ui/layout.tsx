@@ -18,6 +18,7 @@ import { FileListItem } from '../domain';
 
 type Props = {
   searchPanel: ReactNode;
+  pagination?: ReactNode;
   files: FileListItem[];
   isLoading?: boolean;
   errorMessage?: string;
@@ -25,6 +26,7 @@ type Props = {
 
 export const DownloadFilesLayout: FC<Props> = ({
   searchPanel,
+  pagination,
   files,
   isLoading,
   errorMessage
@@ -32,9 +34,9 @@ export const DownloadFilesLayout: FC<Props> = ({
   return (
     <Card>
       <CardHeader className='gap-3'>
-        <CardTitle>Р¤Р°Р№Р»С‹</CardTitle>
+        <CardTitle>Файлы</CardTitle>
         <CardDescription>
-          РСЃРїРѕР»СЊР·СѓР№С‚Рµ С„РёР»СЊС‚СЂС‹, С‡С‚РѕР±С‹ Р±С‹СЃС‚СЂРѕ РЅР°Р№С‚Рё РЅСѓР¶РЅС‹Рµ РјР°С‚РµСЂРёР°Р»С‹.
+          Используйте фильтры, чтобы быстро найти нужные материалы.
         </CardDescription>
       </CardHeader>
       <CardContent className='space-y-5'>
@@ -45,18 +47,18 @@ export const DownloadFilesLayout: FC<Props> = ({
         <div className='overflow-x-auto rounded-lg border'>
           <div className='min-w-[760px]'>
             <div className='text-muted-foreground grid grid-cols-[1.6fr_0.6fr_1fr_0.8fr_0.6fr_auto] items-center gap-4 px-4 py-3 text-xs uppercase tracking-wide'>
-              <span>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</span>
-              <span>РўРёРї</span>
-              <span>РђРІС‚РѕСЂ</span>
-              <span>Р”Р°С‚Р°</span>
-              <span>Р Р°Р·РјРµСЂ</span>
-              <span className='text-right'>Р”РµР№СЃС‚РІРёСЏ</span>
+              <span>Наименование</span>
+              <span>Тип</span>
+              <span>Автор</span>
+              <span>Дата</span>
+              <span>Размер</span>
+              <span className='text-right'>Действия</span>
             </div>
             <Separator />
 
             {isLoading ? (
               <div className='px-4 py-6 text-sm text-muted-foreground'>
-                Р—Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ...
+                Загрузка файлов...
               </div>
             ) : errorMessage ? (
               <div className='px-4 py-6 text-sm text-destructive'>
@@ -64,7 +66,7 @@ export const DownloadFilesLayout: FC<Props> = ({
               </div>
             ) : files.length === 0 ? (
               <div className='px-4 py-6 text-sm text-muted-foreground'>
-                Р¤Р°Р№Р»С‹ РЅРµ РЅР°Р№РґРµРЅС‹
+                Файлы не найдены
               </div>
             ) : (
               files.map((file, index) => (
@@ -78,7 +80,7 @@ export const DownloadFilesLayout: FC<Props> = ({
                     <div className='flex justify-end'>
                       <Button
                         asChild
-                        aria-label={`РЎРєР°С‡Р°С‚СЊ С„Р°Р№Р» ${file.name}`}
+                        aria-label={`Скачать файл ${file.name}`}
                         size='icon'
                         variant='ghost'
                       >
@@ -94,6 +96,7 @@ export const DownloadFilesLayout: FC<Props> = ({
             )}
           </div>
         </div>
+        {pagination}
       </CardContent>
     </Card>
   );

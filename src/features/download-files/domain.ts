@@ -6,12 +6,19 @@ export type ContentFile = File & {
   url: string;
 };
 
+export type FilesSummary = {
+  totalFiles: number;
+  totalSpace: number;
+};
+
 export type GetFileAuthorsResponse = {
   authors: FilesUserEntity[];
 };
 
 export type GetFilesResponse = {
   files: ContentFile[];
+  pagesCount: number;
+  summary: FilesSummary;
 };
 
 export type SearchState = {

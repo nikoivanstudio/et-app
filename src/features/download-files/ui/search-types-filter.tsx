@@ -1,13 +1,14 @@
 'use client';
 
+import { FC } from 'react';
+
 import {
+  Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue
-} from '@radix-ui/react-select';
-import { ChangeEvent, FC } from 'react';
-import { Select } from 'react-day-picker';
+} from '@/shared/ui/select';
 
 import { searchFilterTypes } from '../constants/filters-constants';
 
@@ -17,22 +18,14 @@ type Props = {
 };
 
 export const SearchTypesFilter: FC<Props> = ({ value, onSelect }) => {
-  const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.target;
-
-    console.log({ value });
-
-    onSelect(value);
-  };
-
   return (
-    <Select value={value} onSelect={handleSelect}>
+    <Select value={value} onValueChange={onSelect}>
       <SelectTrigger className='w-full'>
         <SelectValue placeholder='Тип файла' />
       </SelectTrigger>
       <SelectContent>
-        {searchFilterTypes.map(({ title, value }, idx) => (
-          <SelectItem value={value} key={idx}>
+        {searchFilterTypes.map(({ title, value }) => (
+          <SelectItem value={value} key={value || 'all'}>
             {title}
           </SelectItem>
         ))}

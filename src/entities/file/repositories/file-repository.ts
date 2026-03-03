@@ -12,6 +12,26 @@ const getFiles = <T extends Prisma.FileFindManyArgs>(
   args?: Prisma.SelectSubset<T, Prisma.FileFindManyArgs>
 ): Promise<Prisma.FileGetPayload<T>[]> => dbClient.file.findMany(args);
 
+const getFilesCount = (where?: Prisma.FileWhereInput): Promise<number> =>
+  dbClient.file.count({ where });
+
+const getFilesSummary = async (where?: Prisma.FileWhereInput) => {
+  const result = await dbClient.file.aggregate({
+    where,
+    _count: {
+      _all: true
+    },
+    _sum: {
+      size: true
+    }
+  });
+
+  return {
+    totalFiles: result._count._all,
+    totalSpace: result._sum.size ?? 0
+  };
+};
+
 const getAuthorsByFiles = (): Promise<FilesUserEntity[]> =>
   dbClient.user.findMany({
     where: {
@@ -50,6 +70,8 @@ const deleteFile = (id: number): Promise<File> =>
 export const fileRepository = {
   getFile,
   getFiles,
+  getFilesCount,
+  getFilesSummary,
   getAuthorsByFiles,
   createFile,
   createFiles,

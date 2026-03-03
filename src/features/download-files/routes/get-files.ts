@@ -24,7 +24,7 @@ export async function getFiles(req: NextRequest): Promise<Response> {
     }
 
     if (!roleUtils.userHasPermissionOn(session.role, 'downloadFile')) {
-      return handleError({ body: 'У вас нет полномочий на cкачивание файлов' });
+      return handleError({ body: 'У вас нет полномочий на скачивание файлов' });
     }
 
     const serviceParams =
@@ -34,11 +34,11 @@ export async function getFiles(req: NextRequest): Promise<Response> {
       await downloadFilesService.getContentFilesBySearchParams(serviceParams);
 
     if (result.type === 'left') {
-      return handleError({ error: 'Ошибка при получение файлов' });
+      return handleError({ error: 'Ошибка при получении файлов' });
     }
 
     return handleSuccess({
-      body: { files: result.value }
+      body: result.value
     });
   } catch (error) {
     return handleError({ error });

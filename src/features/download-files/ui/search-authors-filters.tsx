@@ -2,8 +2,6 @@
 
 import { FC } from 'react';
 
-import type { FilesUserEntity } from '@/entities/file/domain';
-
 import {
   Select,
   SelectContent,
@@ -13,14 +11,12 @@ import {
 } from '@/shared/ui/select';
 
 import { useFileAuthors } from '../hooks/use-file-authors';
+import { downloadFilesUtils } from '../lib/utils';
 
 type Props = {
   value?: string;
   onSelect(value: string): void;
 };
-
-const getAuthorName = ({ login, firstName, lastName }: FilesUserEntity) =>
-  [firstName, lastName].filter(Boolean).join(' ') || login;
 
 export const SearchAuthorsFilters: FC<Props> = ({ value, onSelect }) => {
   const { authors, isLoading, isError } = useFileAuthors();
@@ -50,7 +46,7 @@ export const SearchAuthorsFilters: FC<Props> = ({ value, onSelect }) => {
           !isError &&
           authors.map(author => (
             <SelectItem value={String(author.id)} key={author.id}>
-              {getAuthorName(author)}
+              {downloadFilesUtils.getAuthorName(author)}
             </SelectItem>
           ))}
       </SelectContent>
