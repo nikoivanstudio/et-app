@@ -26,6 +26,7 @@ import { ErrorInfo } from './error';
 import { PreviewFilesList } from './preview-files-list';
 import { UploadFileDialogContent } from './upload-file-dialog-content';
 import { UploadInput } from './upload-input';
+import { errors } from 'jose';
 
 const cnUploadFile = cn('UploadFile');
 
@@ -41,9 +42,9 @@ export const UploadFile: FC<Props> = ({ session }) => {
       userId: session.id,
       onSuccess: e => {
         setErrors(e);
-        console.log({ e });
+        setOpen(false);
+
         toast.success(e);
-        // setOpen(false);
       },
       onError: e => toast.error(e.message)
     });
@@ -72,8 +73,7 @@ export const UploadFile: FC<Props> = ({ session }) => {
             header={
               <>
                 <UploadInput onChange={onChangeFiles} />
-                <ErrorInfo />
-                {!!errors && JSON.stringify(errors)}
+                {!!errors && <ErrorInfo errors={errors} />}
               </>
             }
             list={

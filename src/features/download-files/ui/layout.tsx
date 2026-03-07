@@ -15,6 +15,7 @@ import {
 import { Separator } from '@/shared/ui/separator';
 
 import { FileListItem } from '../domain';
+import { FileItem } from './file-item';
 
 type Props = {
   searchPanel: ReactNode;
@@ -64,34 +65,18 @@ export const DownloadFilesLayout: FC<Props> = ({
               <div className='px-4 py-6 text-sm text-destructive'>
                 {errorMessage}
               </div>
-            ) : files.length === 0 ? (
+            ) : !files.length ? (
               <div className='px-4 py-6 text-sm text-muted-foreground'>
                 Файлы не найдены
               </div>
             ) : (
               files.map((file, index) => (
-                <div key={file.id}>
-                  <div className='grid grid-cols-[1.6fr_0.6fr_1fr_0.8fr_0.6fr_auto] items-center gap-4 px-4 py-3 text-sm'>
-                    <span className='font-medium'>{file.name}</span>
-                    <Badge variant='outline'>{file.type}</Badge>
-                    <span>{file.author}</span>
-                    <span>{file.date}</span>
-                    <span>{file.size}</span>
-                    <div className='flex justify-end'>
-                      <Button
-                        asChild
-                        aria-label={`Скачать файл ${file.name}`}
-                        size='icon'
-                        variant='ghost'
-                      >
-                        <a href={file.url} target='_blank' rel='noreferrer'>
-                          <Download className='size-4' />
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                  {index < files.length - 1 ? <Separator /> : null}
-                </div>
+                <FileItem
+                  file={file}
+                  filesLength={files.length}
+                  index={index}
+                  key={file.id}
+                />
               ))
             )}
           </div>
