@@ -10,7 +10,7 @@ import {
 
 const authorsBaseKey = 'file-authors';
 const authorsUrl = 'files/users';
-const filesBaseKey = 'download-files';
+const filesBaseKey = 'files';
 const filesUrl = 'files/download';
 
 const getFileAuthors = ({ signal }: { signal: AbortSignal }) =>

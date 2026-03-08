@@ -10,10 +10,16 @@ import { FileListItem } from '../domain';
 import { Badge } from '@/shared/ui/badge';
 import { Button } from '@/shared/ui/button';
 import { Download } from 'lucide-react';
+import { id } from 'date-fns/locale';
 
-type Props = { file: FileListItem; filesLength: number; index: number };
+type Props = {
+  file: FileListItem;
+  filesLength: number;
+  index: number;
+  actions: FC<{ id: number }>[];
+};
 
-export const FileItem: FC<Props> = ({ file, filesLength, index }) => (
+export const FileItem: FC<Props> = ({ file, filesLength, index, actions }) => (
   <div key={file.id}>
     <div className='grid grid-cols-[1.6fr_0.6fr_1fr_0.8fr_0.6fr_auto] items-center gap-4 px-4 py-3 text-sm'>
       <span className='font-medium'>{file.name}</span>
@@ -32,7 +38,9 @@ export const FileItem: FC<Props> = ({ file, filesLength, index }) => (
             <Download className='size-4' />
           </a>
         </Button>
-        <DeleteFile id={file.id} />
+        {actions.map(Action => (
+          <Action id={file.id} key={file.id} />
+        ))}
       </div>
     </div>
     {index < filesLength - 1 ? <Separator /> : null}

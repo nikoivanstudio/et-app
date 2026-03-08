@@ -8,7 +8,7 @@ const deleteFile = async (id: number): Promise<Either<string, File>> => {
   const result = await fileRepository.deleteFile(id);
 
   if (!result) {
-    return left('Не удалось удалить файл');
+    return left('РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРµ С„Р°Р№Р»Р°');
   }
 
   const storageResult = await fileStorage.deleteFileFromStorage({
@@ -17,7 +17,7 @@ const deleteFile = async (id: number): Promise<Either<string, File>> => {
   });
 
   if (storageResult.type === 'left') {
-    return left('Файл удален из базы, но не удален из хранилища');
+    return left('РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРµ С„Р°Р№Р»Р°');
   }
 
   return right(result);

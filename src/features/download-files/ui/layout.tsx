@@ -16,11 +16,13 @@ import { Separator } from '@/shared/ui/separator';
 
 import { FileListItem } from '../domain';
 import { FileItem } from './file-item';
+import { DeleteFile } from '@/features/delete-files';
 
 type Props = {
   searchPanel: ReactNode;
   pagination?: ReactNode;
   files: FileListItem[];
+  actions: FC<{ id: number }>[];
   isLoading?: boolean;
   errorMessage?: string;
 };
@@ -29,6 +31,7 @@ export const DownloadFilesLayout: FC<Props> = ({
   searchPanel,
   pagination,
   files,
+  actions,
   isLoading,
   errorMessage
 }) => {
@@ -76,6 +79,7 @@ export const DownloadFilesLayout: FC<Props> = ({
                   filesLength={files.length}
                   index={index}
                   key={file.id}
+                  actions={actions}
                 />
               ))
             )}

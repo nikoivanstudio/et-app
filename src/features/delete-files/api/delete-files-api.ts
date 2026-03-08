@@ -1,14 +1,11 @@
 import { apiClient } from '@/shared/api/api-client';
 
-const baseKey = 'delete-file';
+const baseKey = 'files';
 const baseUrl = 'files/delete';
 
 const deleteFile = (id: number) =>
   apiClient.del({
-    url: baseUrl,
-    queryParams: {
-      id: String(id)
-    }
+    url: `${baseUrl}/${id}`
   });
 
 export const deleteFilesApi = {

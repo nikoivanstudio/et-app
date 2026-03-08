@@ -7,34 +7,38 @@ import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 import { deleteFilesService } from '../services/delete-files-service';
 
-export async function deleteFile(req: NextRequest): Promise<Response> {
+export async function deleteFile(req: NextRequest, id?: string): Promise<Response> {
   try {
-    const id = req.nextUrl.searchParams.get('id');
-
     if (!id) {
-      return handleError({ error: new Error('Отсутствует идентификатор файла') });
-    }
-
-    const cookies = req.cookies.get('session')?.value;
-
-    if (!cookies) {
-      return handleError({ error: new Error('Ошибка верификации') });
-    }
-
-    const { session } = await sessionService.verifySession(cookies);
-
-    if (!session) {
-      return handleError({ error: new Error('Ошибка верификации') });
-    }
-
-    if (!roleUtils.userHasPermissionOn(session.role, 'deleteFile')) {
-      return handleError({ error: new Error('У вас нет полномочий на удаление файлов') });
+      return handleError({
+        error: new Error('РћС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СѓРґР°Р»СЏРµРјРѕР№ Р·Р°РїРёСЃРё')
+      });
     }
 
     const fileId = Number(id);
 
     if (Number.isNaN(fileId)) {
-      return handleError({ error: new Error('Некорректный идентификатор файла') });
+      return handleError({
+        error: new Error('РћС€РёР±РєР° РІР°Р»РёРґР°С†РёРё')
+      });
+    }
+
+    const sessionCookie = req.cookies.get('session')?.value;
+
+    if (!sessionCookie) {
+      return handleError({ error: new Error('РћС€РёР±РєР° СЃРµСЃСЃРёРё') });
+    }
+
+    const { session } = await sessionService.verifySession(sessionCookie);
+
+    if (!session) {
+      return handleError({ error: new Error('РћС€РёР±РєР° СЃРµСЃСЃРёРё') });
+    }
+
+    if (!roleUtils.userHasPermissionOn(session.role, 'deleteFile')) {
+      return handleError({
+        error: new Error('Р’С‹ РЅРµ РёРјРµРµС‚Рµ РїРѕР»РЅРѕРјРѕС‡РёР№ РЅР° СѓРґР°Р»РµРЅРёРµ СЌС‚РѕРіРѕ С„Р°Р№Р»Р°')
+      });
     }
 
     const result = await deleteFilesService.deleteFile(fileId);

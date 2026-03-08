@@ -11,15 +11,17 @@ import { DownloadFilesLayout } from '../ui/layout';
 
 type Props = {
   session: SessionDomain.SessionEntity;
+  actions: FC<{ id: number }>[];
 };
 
-export const FilesList: FC<Props> = ({ session }) => {
+export const FilesList: FC<Props> = ({ session, actions }) => {
   const { files, isLoading, errorMessage, searchPanel, pagination } =
     useFilesList();
 
   return (
     <DownloadFilesLayout
       files={files}
+      actions={actions}
       isLoading={isLoading}
       errorMessage={errorMessage}
       searchPanel={searchPanel}
