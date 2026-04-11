@@ -1,6 +1,6 @@
 services:
   main-db:
-    image: postgres
+    image: postgres:18
     ports:
       - 5432:5432
     environment:
@@ -8,7 +8,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=postgres
     volumes:
-      - main-db:/var/lib/postgresql/data
+      - main-db:/var/lib/postgresql
   minio:
     image: 'minio/minio:RELEASE.2022-10-29T06-21-33Z'
     command: server /data --console-address ":9001"
@@ -29,4 +29,3 @@ services:
 volumes:
   main-db:
   storage:
-
