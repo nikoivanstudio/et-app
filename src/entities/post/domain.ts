@@ -22,6 +22,8 @@ export type PostCardEntity = {
   duration: number | null;
   metaPrice: string | null;
   metaDuration: string | null;
+  createdAt: Date;
+  updatedAt: Date | null;
 };
 
 export type PostStatus = 'legacy' | 'fresh' | 'unknown';
