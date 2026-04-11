@@ -5,5 +5,5 @@ export const s3Client = new Minio.Client({
   port: process.env.S3_PORT ? Number(process.env.S3_PORT) : undefined,
   accessKey: process.env.S3_ACCESS_KEY,
   secretKey: process.env.S3_SECRET_KEY,
-  useSSL: process.env.S3_USE_SSL === 'true'
+  useSSL: process.env.S3_USE_SSL === 'true' || true
 });
