@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   experimental: {
     useCache: true,
-    cpus: 1,
+    cpus: 4,
     workerThreads: false
   },
   images: {
