@@ -9,6 +9,10 @@ const getPresignedUrlsDto = async (
   const { presignedUrlsDto } =
     await fileApi.getPresignedUrlsDto(shortFilesDtos);
 
+  if (!Array.isArray(presignedUrlsDto) || !presignedUrlsDto.length) {
+    throw new Error('Presigned URL не были получены');
+  }
+
   return presignedUrlsDto;
 };
 

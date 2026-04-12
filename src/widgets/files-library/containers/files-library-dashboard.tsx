@@ -3,9 +3,11 @@
 import { FC } from 'react';
 
 import { FilesLibraryLayout } from '@/widgets/files-library/ui/layout';
+
+import { DeleteFile } from '@/features/delete-files';
 import { FilesList } from '@/features/download-files';
 import { UploadFile } from '@/features/upload-file';
-import { DeleteFile } from '@/features/delete-files';
+
 import { SessionDomain } from '@/entities/user/server';
 
 import { FilesLibraryHeader } from '../ui/header';

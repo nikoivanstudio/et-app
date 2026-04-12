@@ -56,8 +56,10 @@ const filterValidFileItems = (fileItems: UploadFilePreviewItem[]) =>
 const getFilesDto = (
   validFiles: UploadFilePreviewItem[],
   presignedUrlsDto: ShortUrlDto[]
-): FileDto[] =>
-  presignedUrlsDto.map(dto => {
+): FileDto[] => {
+  console.log({ presignedUrlsDto });
+
+  return presignedUrlsDto.map(dto => {
     const currentItem = validFiles.find(
       item =>
         dto.originalFileName === item.file.name && dto.size === item.file.size
@@ -69,6 +71,7 @@ const getFilesDto = (
 
     return { ...dto, ...currentItem };
   });
+};
 
 const getFullFilesDto = (filesDto: FileDto[], userId: number) =>
   filesDto.map(dto => ({

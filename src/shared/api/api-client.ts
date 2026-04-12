@@ -30,7 +30,19 @@ const request = async <T>({
     }
   );
 
-  return withoutParse ? (response as T) : await response.json();
+  if (withoutParse) {
+    return response as T;
+  }
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      typeof data === 'string' ? data : 'Ошибка обработки запроса.'
+    );
+  }
+
+  return data;
 };
 
 const get = <T>(params: RequestParams): Promise<T> =>

@@ -12,11 +12,15 @@ export function handleSuccess({ body, status, statusText }: HandlerData) {
   });
 }
 
-export function handleError({ status, statusText, error }: HandlerData) {
+export function handleError({ body, status, statusText, error }: HandlerData) {
   let errorMessage = 'Ошибка обработки запроса.';
 
-  if (error instanceof Error) {
+  if (typeof body === 'string') {
+    errorMessage = body;
+  } else if (error instanceof Error) {
     errorMessage += ` ${error.message}`;
+  } else if (typeof error === 'string') {
+    errorMessage = error;
   }
   console.error(error);
 

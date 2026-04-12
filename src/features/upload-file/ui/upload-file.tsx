@@ -26,7 +26,6 @@ import { ErrorInfo } from './error';
 import { PreviewFilesList } from './preview-files-list';
 import { UploadFileDialogContent } from './upload-file-dialog-content';
 import { UploadInput } from './upload-input';
-import { errors } from 'jose';
 
 const cnUploadFile = cn('UploadFile');
 
@@ -52,11 +51,9 @@ export const UploadFile: FC<Props> = ({ session }) => {
   return (
     <div className={cnUploadFile(null, ['text-end'])}>
       <Dialog open={isOpen} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button className='shrink-0'>
-            <Upload className='size-4' />
-            Загрузить файлы
-          </Button>
+        <DialogTrigger className='shrink-0'>
+          <Upload className='size-4' />
+          Загрузить файлы
         </DialogTrigger>
 
         <DialogContent className='max-w-3xl'>
