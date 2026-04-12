@@ -49,7 +49,7 @@ export type ActivityEntity = {
   status: string;
   authorId: number;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt?: Date;
   startTime: Date;
   finishTime: Date;
   places: number;
@@ -78,7 +78,7 @@ export function activityToActivityEntity(activity: Activity): ActivityEntity {
   const discount = activity.discount || undefined;
   const { createdAt, updatedAt, startTime, finishTime, ...rest } = activity;
   const validCreatedAt = dateUtils.prepareDate(createdAt);
-  const validUpdatedAt = dateUtils.prepareDate(updatedAt);
+  const validUpdatedAt = updatedAt? dateUtils.prepareDate(updatedAt): undefined;
   const validStartTime = dateUtils.prepareDate(startTime);
   const validFinishTime = dateUtils.prepareDate(finishTime);
 

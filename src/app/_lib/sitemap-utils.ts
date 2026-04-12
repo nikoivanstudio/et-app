@@ -11,7 +11,7 @@ const getSitemapItem = (
     | undefined
 ) => ({
   url,
-  lastModified: new Date(),
+  lastModified: new Date(2026, 1, 1),
   changeFrequency: changeFrequency || ('weekly' as const),
   priority: 0.7
 });

@@ -6,6 +6,8 @@ import { OtpError, otpRepositories } from '@/entities/otp/server';
 import { otpUtils } from '../lib/otp-utils';
 import { Either, left, right } from '@/shared/lib/either';
 
+const isDevMode = process.env.NODE_ENV === 'development';
+
 const createOtpRecord = (data: OtpCreateData): Promise<Otp> =>
   otpRepositories.createOtp({ ...data, code: otpUtils.generateOtpCode() });
 
@@ -37,18 +39,17 @@ const verifyOtp = async (
   const otp = await otpRepositories.getOtpByCode(code);
 
   if (!otp) {
-    return null;
+    throw new OtpError('Такой код подтверждения не найден!');
   }
 
   const otpCheckResult = await otpService.checkOtp(otp.code);
 
   if (otpCheckResult.type === 'left') {
-    return null;
+    throw new OtpError(otpCheckResult.error);
   }
 
   if (!otpCheckResult.value.success) {
-    return null;
-    // throw new OtpError('Данный код уже просрочен, попробуйте снова!');
+    throw new OtpError('Данный код уже просрочен, попробуйте снова!');
   }
 
   return otp;

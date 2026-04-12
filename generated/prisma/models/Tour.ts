@@ -298,7 +298,7 @@ export type TourGroupByOutputType = {
   _max: TourMaxAggregateOutputType | null
 }
 
-type GetTourGroupByPayload<T extends TourGroupByArgs> = Prisma.PrismaPromise<
+export type GetTourGroupByPayload<T extends TourGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<TourGroupByOutputType, T['by']> &
       {
@@ -2325,6 +2325,11 @@ export type TourFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Skip the first `n` Tours.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Tours.
+   */
   distinct?: Prisma.TourScalarFieldEnum | Prisma.TourScalarFieldEnum[]
 }
 
