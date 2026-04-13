@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { VseTuryFirst } from '@/views/legacy/server';
 
 export const dynamic = 'force-static';

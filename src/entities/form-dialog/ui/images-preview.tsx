@@ -1,8 +1,8 @@
 'use client';
 
-import { FC } from 'react';
-import Image from 'next/image';
 import { cn } from '@bem-react/classname';
+import Image from 'next/image';
+import { FC } from 'react';
 import z from 'zod';
 
 type Props = {

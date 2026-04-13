@@ -1,14 +1,15 @@
 import { NextRequest } from 'next/server';
+
 import {
   ALLOWED_ORIGINS,
   RATE_LIMIT_MAX,
   RATE_LIMIT_WINDOW_MS
 } from '@/shared/lib/security/constants';
+import { checkRateLimitInMemory } from '@/shared/lib/security/rate-limit-memory';
 import {
   SecurityLimitException,
   SecurityOriginException
 } from '@/shared/lib/security/security-exception';
-import { checkRateLimitInMemory } from '@/shared/lib/security/rate-limit-memory';
 
 export const verifyLimit = (
   req: NextRequest

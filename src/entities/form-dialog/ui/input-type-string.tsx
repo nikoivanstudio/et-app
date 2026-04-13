@@ -1,7 +1,8 @@
 import { ChangeEvent } from 'react';
 
-import { Input } from '@/shared/ui/input';
 import { InputProps } from '@/entities/form-dialog/domain';
+
+import { Input } from '@/shared/ui/input';
 import { Textarea } from '@/shared/ui/textarea';
 
 export const InputTypeString = <

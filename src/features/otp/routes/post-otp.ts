@@ -1,10 +1,11 @@
 import { NextRequest } from 'next/server';
 
+import { otpCreateSchema } from '@/features/otp/model/schemas';
+
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 import { emailNotifications } from '@/shared/services/email-notifications';
 import { RegistrationEmail } from '@/shared/ui/registration-email';
 
-import { otpCreateSchema } from '@/features/otp/model/schemas';
 import { otpService } from '@/kernel/server';
 
 const errorText = 'Ошибка при отправке кода подтверждения на электронную почту';

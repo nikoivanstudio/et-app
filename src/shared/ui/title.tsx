@@ -1,6 +1,7 @@
-import { FC, PropsWithChildren } from 'react';
-import styles from '@/shared/assets/styles.module.scss';
 import { cn } from '@bem-react/classname';
+import { FC, PropsWithChildren } from 'react';
+
+import styles from '@/shared/assets/styles.module.scss';
 
 type TitleProps = {
   type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';

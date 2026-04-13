@@ -1,7 +1,10 @@
-import { apiClient } from '@/shared/api/api-client';
-import { GetPostsResponse } from '@/features/post/domain';
 import { queryOptions } from '@tanstack/react-query';
+
+import { GetPostsResponse } from '@/features/post/domain';
+
 import { PostCreate, PostUpdate } from '@/entities/post';
+
+import { apiClient } from '@/shared/api/api-client';
 import { GetApiData } from '@/shared/model/types';
 
 const jsonFlagKey = 'by_json';

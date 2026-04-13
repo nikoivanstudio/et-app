@@ -1,15 +1,18 @@
 'use server';
 
-import { FC } from 'react';
 import { cn as cnBem } from '@bem-react/classname';
+import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
+
 import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
-import { TextContent } from '@/shared/ui/text-content';
-import { cn } from '@/shared/lib/css';
 
 import styles from '@/shared/assets/styles.module.scss';
+import { cn } from '@/shared/lib/css';
+import { TextContent } from '@/shared/ui/text-content';
+
 import { PageHeadPost } from '@/views/post/ui/page-head-post';
+
 import { ServiceViewProps } from '../domain';
 
 const cnPageService = cnBem('PageService');

@@ -1,17 +1,21 @@
-import { tourRepositories } from '@/entities/tour/repositories/tour';
+import { DefaultArgs } from '@prisma/client/runtime/client';
 
-import { Either, left, right } from '@/shared/lib/either';
-import { TourEntity, tourToTourEntity } from '@/entities/tour/domain';
+import { draftTourToTourCardEntity } from '@/widgets/tours/domain';
+
 import {
   CreateTourData,
   GetToursResponse,
   TourCardEntity
 } from '@/features/tour/domain';
+
 import { PhotoDomain } from '@/entities/photo';
-import { draftTourToTourCardEntity } from '@/widgets/tours/domain';
-import { dbQueryUtils } from '@/shared/lib/db-client-utils';
+import { TourEntity, tourToTourEntity } from '@/entities/tour/domain';
+import { tourRepositories } from '@/entities/tour/repositories/tour';
 import { Role } from '@/entities/user/domain';
-import { DefaultArgs } from '@prisma/client/runtime/client';
+
+import { dbQueryUtils } from '@/shared/lib/db-client-utils';
+import { Either, left, right } from '@/shared/lib/either';
+
 import { Prisma, Tour } from '../../../../generated/prisma/client';
 import TourSelect = Prisma.TourSelect;
 

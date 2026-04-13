@@ -2,9 +2,10 @@
 
 import { FC } from 'react';
 
-import { TourMain } from '@/views/tour/ui/tour-main';
-import { tourServices } from '@/kernel/tour/services/tour-services';
 import { ServerTourProps } from '@/shared/model/types';
+
+import { tourServices } from '@/kernel/tour/services/tour-services';
+import { TourMain } from '@/views/tour/ui/tour-main';
 
 export const TourView: FC<ServerTourProps> = async ({ params }) => {
   const { slug } = await params;

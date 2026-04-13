@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "db:migrate:dev": "npx prisma migrate dev",
     "db:reset": "npx prisma migrate reset",
     "prettier": "prettier -w .",

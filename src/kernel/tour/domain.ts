@@ -1,8 +1,10 @@
-import { TourWR } from '@/kernel/tour/model/types';
-import { ReviewDomain } from '@/entities/review';
 import { ActivityDomain } from '@/entities/activity/server';
 import { GeoPointDomain } from '@/entities/geo-point';
 import { isGeoPointEntity } from '@/entities/geo-point/lib/typeguadrs';
+import { ReviewDomain } from '@/entities/review';
+
+import { TourWR } from '@/kernel/tour/model/types';
+
 import { Photo } from '../../../generated/prisma/client';
 
 export type TourKernel = {

@@ -1,5 +1,6 @@
-import { Alert, AlertDescription } from '@/shared/ui/alert';
 import React from 'react';
+
+import { Alert, AlertDescription } from '@/shared/ui/alert';
 
 export function ErrorMessage({ error }: { error?: string }) {
   if (error) {

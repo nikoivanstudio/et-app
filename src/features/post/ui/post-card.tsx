@@ -1,8 +1,18 @@
 'use client';
 
-import { FC } from 'react';
+import { BadgeRussianRuble, HeartIcon } from 'lucide-react';
 import Image from 'next/image';
+import { FC } from 'react';
 
+import { DeletePost } from '@/features/post/ui/delete-post';
+import { FeaturePost } from '@/features/post/ui/feature-post';
+
+import { FormDialogDomain } from '@/entities/form-dialog';
+import { PostDomain } from '@/entities/post/server';
+import { SessionDomain } from '@/entities/user/server';
+
+import mockImage from '@/shared/assets/images/backgrounds/bg-1.jpg';
+import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/button';
 import {
   Card,
@@ -12,15 +22,6 @@ import {
   CardHeader,
   CardTitle
 } from '@/shared/ui/card';
-import { BadgeRussianRuble, HeartIcon } from 'lucide-react';
-import { cn } from '@/shared/lib/css';
-import { PostDomain } from '@/entities/post/server';
-
-import mockImage from '@/shared/assets/images/backgrounds/bg-1.jpg';
-import { FeaturePost } from '@/features/post/ui/feature-post';
-import { FormDialogDomain } from '@/entities/form-dialog';
-import { DeletePost } from '@/features/post/ui/delete-post';
-import { SessionDomain } from '@/entities/user/server';
 
 export const PostCard: FC<
   PostDomain.PostEntity & { session: SessionDomain.SessionEntity }

@@ -1,5 +1,6 @@
-import { FC } from 'react';
 import Image, { ImageProps } from 'next/image';
+import { FC } from 'react';
+
 import imgUrl from '../assets/images/logo.png';
 
 export const LogoIcon: FC<Partial<ImageProps>> = props => (

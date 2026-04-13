@@ -1,8 +1,8 @@
 'use client';
 
-import { FC, PropsWithChildren, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { FC, PropsWithChildren, useEffect } from 'react';
 
 import { Button } from '@/shared/ui/button';
 

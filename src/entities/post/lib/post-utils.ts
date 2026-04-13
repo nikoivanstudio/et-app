@@ -1,4 +1,5 @@
 import { PostStatus } from '@/entities/post/domain';
+
 import { Prisma } from '../../../../generated/prisma/client';
 import PostWhereInput = Prisma.PostWhereInput;
 

@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 import { InputProps } from '@/entities/form-dialog/domain';
+import { mergeOptions } from '@/entities/form-dialog/lib/multi-select-utils';
+
 import {
   MultiSelector,
   MultiSelectorContent,
@@ -7,8 +11,6 @@ import {
   MultiSelectorList,
   MultiSelectorTrigger
 } from '@/shared/ui/multi-selector';
-import { useState } from 'react';
-import { mergeOptions } from '@/entities/form-dialog/lib/multi-select-utils';
 
 export const MultiSelect = <
   T extends Record<string, unknown> = Record<string, string>

@@ -1,9 +1,11 @@
-import { InputProps } from '@/entities/form-dialog/domain';
-import { Input } from '@/shared/ui/input';
-import { ChangeEvent, useState } from 'react';
-import { Button } from '@/shared/ui/button';
 import { CircleX } from 'lucide-react';
+import { ChangeEvent, useState } from 'react';
+
+import { InputProps } from '@/entities/form-dialog/domain';
 import { ImagesPreview } from '@/entities/form-dialog/ui/images-preview';
+
+import { Button } from '@/shared/ui/button';
+import { Input } from '@/shared/ui/input';
 
 export const InputTypeFile = <
   T extends Record<string, unknown> = Record<string, string>

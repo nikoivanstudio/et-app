@@ -1,12 +1,16 @@
 'use server';
 
-import { SignUpFormState } from '../domain';
-import { formDataSchema } from '../model/schemas';
-import { authErrorsUtils } from '../lib/auth-errors-utils';
-import { otpService } from '@/kernel/otp/server';
-import { createUser, sessionService } from '@/entities/user/server';
 import { redirect } from 'next/navigation';
+
+import { createUser, sessionService } from '@/entities/user/server';
+
 import { turnstileService } from '@/shared/services/turnstile-service';
+
+import { otpService } from '@/kernel/otp/server';
+
+import { SignUpFormState } from '../domain';
+import { authErrorsUtils } from '../lib/auth-errors-utils';
+import { formDataSchema } from '../model/schemas';
 
 const isDevMode = process.env.NODE_ENV === 'development';
 

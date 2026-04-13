@@ -1,11 +1,13 @@
 'use client';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
+
+import { SessionDomain } from '@/entities/user/server';
 
 import { useUserList } from '../hooks/use-user-list';
+
 import { UserFeature } from './user-feature';
-import { SessionDomain } from '@/entities/user/server';
 
 const cnUserFeatureList = cn('UserFeatureList');
 

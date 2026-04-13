@@ -1,9 +1,10 @@
 'use client';
 
 import { FC, useEffect, useState } from 'react';
-import { FilledHeartIcon } from '@/shared/ui/filled-heart-icon';
-import { BlankHeartIcon } from '@/shared/ui/blank-heart-icon';
 import { v4 } from 'uuid';
+
+import { BlankHeartIcon } from '@/shared/ui/blank-heart-icon';
+import { FilledHeartIcon } from '@/shared/ui/filled-heart-icon';
 
 type FavouriteLabelIconProps = {
   isFavourite: boolean;

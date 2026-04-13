@@ -1,8 +1,9 @@
 import { UserEntity, UserEntityUpdate } from '@/entities/user/domain';
-import { dbClient } from '@/shared/lib/db';
 
+import { dbClient } from '@/shared/lib/db';
 import { objectUtils } from '@/shared/lib/object-utils';
 import { WithoutNull } from '@/shared/model/types';
+
 import { Prisma, User } from '../../../../generated/prisma/client';
 
 const getUsersCount = (where?: Prisma.UserWhereInput) =>

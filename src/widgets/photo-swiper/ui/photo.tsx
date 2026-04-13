@@ -1,7 +1,9 @@
-import { FC } from 'react';
 import Image from 'next/image';
-import { cn } from '@/shared/lib/css';
+import { FC } from 'react';
+
 import { PhotoEntity } from '@/widgets/photo-swiper/domain';
+
+import { cn } from '@/shared/lib/css';
 import { PropsWithClassNames } from '@/shared/model/types';
 
 export const Photo: FC<PhotoEntity & PropsWithClassNames> = ({

@@ -1,8 +1,8 @@
 'use client';
 
+import { Trash2 } from 'lucide-react';
 import { FC } from 'react';
 import { toast } from 'sonner';
-import { Trash2 } from 'lucide-react';
 
 import { ConfirmDialog } from '@/entities/confirm-dialog';
 

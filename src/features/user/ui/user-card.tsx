@@ -1,7 +1,13 @@
 'use client';
 
+import { Loader2, Mail, Phone, Star, Trash2, User } from 'lucide-react';
 import { FC, useTransition } from 'react';
 
+import { ConfirmDialog } from '@/entities/confirm-dialog';
+
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
+import { Badge } from '@/shared/ui/badge';
+import { Button } from '@/shared/ui/button';
 import {
   Card,
   CardContent,
@@ -9,12 +15,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/shared/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/shared/ui/avatar';
-import { Button } from '@/shared/ui/button';
-import { Badge } from '@/shared/ui/badge';
 import { Separator } from '@/shared/ui/separator';
-import { Loader2, Mail, Phone, Star, Trash2, User } from 'lucide-react';
-import { ConfirmDialog } from '@/entities/confirm-dialog';
 
 type Props = {
   onDelete(id: number): void;
@@ -96,29 +97,31 @@ export const UserCard: FC<Props> = ({ user, onDelete }) => {
       </CardContent>
 
       <CardFooter className='pt-2'>
-        <ConfirmDialog
-          triggger={
-            <Button
-              variant='destructive'
-              className='w-full'
-              onClick={handleDelete}
-              disabled={isPending}
-            >
-              {isPending ? (
-                <>
-                  <Loader2 className='mr-2 h-4 w-4 animate-spin' />
-                  Удаление...
-                </>
-              ) : (
-                <>
-                  <Trash2 className='mr-2 h-4 w-4' />
-                  Удалить пользователя
-                </>
-              )}
-            </Button>
-          }
-          onSubmit={handleDelete}
-        />
+        <div>
+          <ConfirmDialog
+            triggger={
+              <Button
+                variant='destructive'
+                className='w-full'
+                onClick={handleDelete}
+                disabled={isPending}
+              >
+                {isPending ? (
+                  <>
+                    <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+                    Удаление...
+                  </>
+                ) : (
+                  <>
+                    <Trash2 className='mr-2 h-4 w-4' />
+                    Удалить пользователя
+                  </>
+                )}
+              </Button>
+            }
+            onSubmit={handleDelete}
+          />
+        </div>
       </CardFooter>
     </Card>
   );

@@ -1,16 +1,16 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-import { startRateLimitCleanup } from '@/shared/lib/security/rate-limit-memory';
 import {
   PROTECTED_API_PREFIX,
   RATE_LIMIT_WINDOW_MS
 } from '@/shared/lib/security/constants';
-import { securityUtils } from '@/shared/lib/security/response-utils';
+import { startRateLimitCleanup } from '@/shared/lib/security/rate-limit-memory';
 import {
   verifyLimit,
   verifyOrigin
 } from '@/shared/lib/security/request-verifications';
+import { securityUtils } from '@/shared/lib/security/response-utils';
 
 startRateLimitCleanup({
   intervalMs: 5 * RATE_LIMIT_WINDOW_MS,

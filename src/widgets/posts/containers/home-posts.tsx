@@ -1,12 +1,14 @@
 'use server';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
 
-import { Layout } from '../ui/layout';
-import { postsServices } from '../services/posts-services';
 import { ServerPostCardList } from '@/widgets/posts/ui/server-post-card-list';
+
 import { Title } from '@/shared/ui/title';
+
+import { postsServices } from '../services/posts-services';
+import { Layout } from '../ui/layout';
 
 const cnHomePosts = cn('HomePosts');
 

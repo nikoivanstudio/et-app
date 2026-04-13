@@ -1,7 +1,9 @@
-import { GetApiData } from '@/shared/model/types';
-import { apiClient } from '@/shared/api/api-client';
 import { queryOptions } from '@tanstack/react-query';
+
 import { GetUserResponse } from '@/features/user/domain';
+
+import { apiClient } from '@/shared/api/api-client';
+import { GetApiData } from '@/shared/model/types';
 
 const baseUrl = 'dashboard/users';
 const baseKey = 'users';

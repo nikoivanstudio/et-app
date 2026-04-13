@@ -1,7 +1,7 @@
 'use server';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
 
 import styles from '@/shared/assets/styles.module.scss';
 

@@ -7,13 +7,13 @@ import {
   FormRowProps,
   Value
 } from '@/entities/form-dialog/domain';
-import { InputTypeString } from '@/entities/form-dialog/ui/input-type-string';
-import { InputTypeNumber } from '@/entities/form-dialog/ui/input-type-number';
 import { Checkbox } from '@/entities/form-dialog/ui/checkbox';
-import { InputTypeFile } from '@/entities/form-dialog/ui/input-type-file';
 import { DatePicker } from '@/entities/form-dialog/ui/date-picker';
-import { Select } from '@/entities/form-dialog/ui/select';
+import { InputTypeFile } from '@/entities/form-dialog/ui/input-type-file';
+import { InputTypeNumber } from '@/entities/form-dialog/ui/input-type-number';
+import { InputTypeString } from '@/entities/form-dialog/ui/input-type-string';
 import { MultiSelect } from '@/entities/form-dialog/ui/multi-select';
+import { Select } from '@/entities/form-dialog/ui/select';
 
 export const cnFormRow = cn('FormRow');
 

@@ -4,9 +4,10 @@ import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/server';
 
-import { Header } from './header';
 import mainPhoto from '../assets/images/aQKuFKfMLbA.jpg';
+
 import { Content } from './content';
+import { Header } from './header';
 
 export const JeepTourKrym: FC = async () => (
   <AppMain

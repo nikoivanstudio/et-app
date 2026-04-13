@@ -1,15 +1,18 @@
 'use client';
 
-import { Badge } from '@/shared/ui/badge';
-import { Button } from '@/shared/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
 import { cn } from '@bem-react/classname';
 import { Trash2 } from 'lucide-react';
 import { FC } from 'react';
+
+import { Badge } from '@/shared/ui/badge';
+import { Button } from '@/shared/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
+
 import { fileKindIcon, fileKindLabel } from '../constants/labels';
 import { UploadFilePreviewItem } from '../domain';
 import { fileUtils } from '../lib/file-utils';
 import { validateFile } from '../model/validation/validation';
+
 import { PreviewContent } from './content-preview';
 import { PreviewValidationInfo } from './preview-validation-info';
 

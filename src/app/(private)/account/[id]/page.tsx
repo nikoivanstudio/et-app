@@ -1,10 +1,11 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import { FC } from 'react';
 
-import { ProfileView } from '@/views/profile';
 import { getCurrentUser } from '@/entities/user/services/get-current-user';
-import { redirect } from 'next/navigation';
+
+import { ProfileView } from '@/views/profile';
 
 const Page: FC = async () => {
   const user = await getCurrentUser();

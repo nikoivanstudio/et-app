@@ -1,6 +1,7 @@
-import { FC, ReactNode } from 'react';
-import { cn } from '@/shared/lib/css';
 import Image from 'next/image';
+import { FC, ReactNode } from 'react';
+
+import { cn } from '@/shared/lib/css';
 
 import styles from '../assets/styles.module.scss';
 

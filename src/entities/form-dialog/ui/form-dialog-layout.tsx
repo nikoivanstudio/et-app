@@ -1,7 +1,12 @@
 'use client';
 
-import { ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
+import { ReactNode } from 'react';
+
+import { FormProps } from '@/entities/form-dialog/domain';
+import { Form } from '@/entities/form-dialog/ui/form';
+
+import { Button } from '@/shared/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -10,9 +15,6 @@ import {
   DialogTitle,
   DialogTrigger
 } from '@/shared/ui/dialog';
-import { Button } from '@/shared/ui/button';
-import { Form } from '@/entities/form-dialog/ui/form';
-import { FormProps } from '@/entities/form-dialog/domain';
 
 type FormDialogProps = {
   isOpen?: boolean;

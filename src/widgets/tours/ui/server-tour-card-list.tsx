@@ -4,6 +4,7 @@ import { FC } from 'react';
 
 import { TourCardEntity } from '@/features/tour';
 import { ServerTourCard } from '@/features/tour/server';
+
 import { PropsWithClassNames } from '@/shared/model/types';
 
 type Props = { tours: TourCardEntity[] } & PropsWithClassNames;

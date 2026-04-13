@@ -1,12 +1,15 @@
 'use client';
 
-import { FC } from 'react';
 import { BadgeRussianRuble, HeartIcon, UserPen, XCircle } from 'lucide-react';
+import { FC } from 'react';
 
 import { deleteActivity } from '@/features/activity/api/activity-api';
+
 import { ActivityDomain } from '@/entities/activity/server';
 import { ConfirmDialog } from '@/entities/confirm-dialog';
+
 import { cn } from '@/shared/lib/css';
+import { dateUtils } from '@/shared/lib/date-utils';
 import { Button } from '@/shared/ui/button';
 import {
   Card,
@@ -16,7 +19,6 @@ import {
   CardHeader,
   CardTitle
 } from '@/shared/ui/card';
-import { dateUtils } from '@/shared/lib/date-utils';
 
 export const ActivityCard: FC<ActivityDomain.ActivityEntity> = props => {
   const {

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { FormDialogDomain } from '@/entities/form-dialog';
 import { createActivitySchema } from '@/entities/activity/server';
+import { FormDialogDomain } from '@/entities/form-dialog';
 
 import { activityApi } from '../api/activity-api';
 

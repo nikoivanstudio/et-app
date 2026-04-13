@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { SessionEntity } from '@/entities/user/domain';
+
 import { getSessionRequest } from '@/entities/user/api/session-requests';
+import { SessionEntity } from '@/entities/user/domain';
 
 export function useUserSession() {
   const [session, setSession] = useState<SessionEntity | null>(null);

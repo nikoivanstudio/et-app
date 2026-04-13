@@ -1,4 +1,5 @@
 import { PhotoEntity } from '@/entities/photo/domain';
+
 import {
   isNumber,
   isObject,

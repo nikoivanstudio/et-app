@@ -1,10 +1,10 @@
-import { ReactNode, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { ReactNode, useState } from 'react';
 
-import { Spinner } from '@/shared/ui/spinner';
-import { SimplePagination } from '@/shared/ui/simple-pagination';
 import { cn } from '@/shared/lib/css';
 import { SearchInput } from '@/shared/ui/search-input';
+import { SimplePagination } from '@/shared/ui/simple-pagination';
+import { Spinner } from '@/shared/ui/spinner';
 
 import { activityApi } from '../api/activity-api';
 import { GetActivityResponse } from '../domain';

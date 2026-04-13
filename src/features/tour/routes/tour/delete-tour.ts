@@ -1,8 +1,10 @@
 import { NextRequest } from 'next/server';
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
-import { sessionService } from '@/entities/user/services/session';
+
 import { tourRepositories } from '@/entities/tour/server';
 import { UserDomain } from '@/entities/user';
+import { sessionService } from '@/entities/user/services/session';
+
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 export async function deleteTour(req: NextRequest): Promise<Response> {
   try {

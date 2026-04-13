@@ -1,10 +1,9 @@
 'use server';
 
-import { sessionService, verifyUserPassword } from '@/entities/user/server';
-
 import { redirect } from 'next/navigation';
-
 import { z } from 'zod';
+
+import { sessionService, verifyUserPassword } from '@/entities/user/server';
 
 export type SignInFormState = {
   formData?: FormData;

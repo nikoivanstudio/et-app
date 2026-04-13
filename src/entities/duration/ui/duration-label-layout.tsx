@@ -1,10 +1,11 @@
 import { cn as cnBem } from '@bem-react/classname';
 import { FC } from 'react';
-import { DurationLabelProps } from '@/entities/duration/model/types';
 
 import styles from '@/entities/duration/assets/styles.module.scss';
-import { ClockIcon } from '@/shared/ui/clock-icon';
+import { DurationLabelProps } from '@/entities/duration/model/types';
+
 import { BlackClockIcon } from '@/shared/ui/black-clock-icon';
+import { ClockIcon } from '@/shared/ui/clock-icon';
 
 const cnDurationLabel = cnBem('DurationLabel');
 

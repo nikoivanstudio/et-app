@@ -1,10 +1,11 @@
 import { NextRequest } from 'next/server';
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
-import { postServices } from '@/features/post/services/post-services';
 import { GetPostsResponse } from '@/features/post/domain';
 import { searchParamsUtils } from '@/features/post/lib/search-params-utils';
+import { postServices } from '@/features/post/services/post-services';
+
 import { Either } from '@/shared/lib/either';
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 export async function getPosts(req: NextRequest): Promise<Response> {
   try {

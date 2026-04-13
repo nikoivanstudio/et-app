@@ -1,6 +1,8 @@
-import { InputProps } from '@/entities/form-dialog/domain';
-import { Input } from '@/shared/ui/input';
 import { ChangeEvent } from 'react';
+
+import { InputProps } from '@/entities/form-dialog/domain';
+
+import { Input } from '@/shared/ui/input';
 
 export const InputTypeNumber = <
   T extends Record<string, unknown> = Record<string, string>

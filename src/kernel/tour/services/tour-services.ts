@@ -1,8 +1,9 @@
 import { Either, left, right } from '@/shared/lib/either';
-import { tourRepository } from '@/kernel/tour/repositories/tour';
-import { TourKernel, tourToKernelTour } from '@/kernel/tour/domain';
 import { PageMetaData } from '@/shared/model/types';
+
+import { TourKernel, tourToKernelTour } from '@/kernel/tour/domain';
 import { TourWR } from '@/kernel/tour/model/types';
+import { tourRepository } from '@/kernel/tour/repositories/tour';
 
 async function getTourById(id: number): Promise<Either<string, TourKernel>> {
   const tour = await tourRepository.getTour({ where: { id } });

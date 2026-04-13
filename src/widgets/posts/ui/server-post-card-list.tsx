@@ -1,8 +1,9 @@
 'use server';
 
-import { PostDomain, ServerPostCard } from '@/entities/post/server';
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
+
+import { PostDomain, ServerPostCard } from '@/entities/post/server';
 
 type Props = {
   list: PostDomain.PostCardEntity[];

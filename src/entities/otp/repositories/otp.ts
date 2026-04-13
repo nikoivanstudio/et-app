@@ -1,4 +1,5 @@
 import { dbClient } from '@/shared/lib/db';
+
 import { Otp } from '../../../../generated/prisma/client';
 
 type OtpCreateData = {

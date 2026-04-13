@@ -1,14 +1,15 @@
 'use client';
 
-import { toast } from 'sonner';
 import React, { FC, useId, useState } from 'react';
+import { toast } from 'sonner';
 
+import { otpApi } from '@/entities/otp/api/otp-api';
+import { emailSchema, telSchema } from '@/entities/otp/model/schemas';
 import { TelField } from '@/entities/otp/ui/tel-field';
+
+import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
-import { otpApi } from '@/entities/otp/api/otp-api';
-import { cn } from '@/shared/lib/css';
-import { emailSchema, telSchema } from '@/entities/otp/model/schemas';
 
 type Props = {
   email: string;

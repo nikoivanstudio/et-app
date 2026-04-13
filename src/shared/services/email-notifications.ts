@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { resend } from '@/shared/lib/resend';
 
 type NoteMailConfig = {

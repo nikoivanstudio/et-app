@@ -1,6 +1,7 @@
 'use server';
 
 import { FC } from 'react';
+
 import { ServiceView } from '@/views/legacy/server';
 
 const service = {

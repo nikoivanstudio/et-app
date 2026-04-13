@@ -2,11 +2,14 @@
 
 import { FC, PropsWithChildren } from 'react';
 
-import { DashboardLayout } from '@/views/dashboard/ui/dashboard-layout';
-import { DashboardTours } from '@/widgets/tours';
-import { SessionEntity } from '@/entities/user/domain';
-import { cn } from '@/shared/lib/css';
 import { DashboardActivities } from '@/widgets/activities';
+import { DashboardTours } from '@/widgets/tours';
+
+import { SessionEntity } from '@/entities/user/domain';
+
+import { cn } from '@/shared/lib/css';
+
+import { DashboardLayout } from '@/views/dashboard/ui/dashboard-layout';
 
 export const DashboardGuide: FC<
   PropsWithChildren<{ session: SessionEntity }>

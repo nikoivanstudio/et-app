@@ -1,7 +1,8 @@
-import { FC } from 'react';
-import { Button } from '@/shared/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@bem-react/classname';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { FC } from 'react';
+
+import { Button } from '@/shared/ui/button';
 
 type Props = {
   currentCount: number;

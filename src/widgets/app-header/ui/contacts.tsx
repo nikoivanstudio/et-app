@@ -2,6 +2,7 @@
 
 import { cn } from '@bem-react/classname';
 import { FC } from 'react';
+
 import { ContactIcon } from '@/shared/ui/contact-icon';
 
 const cnContacts = cn('Contacts');

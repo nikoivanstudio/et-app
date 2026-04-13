@@ -1,12 +1,14 @@
 'use client';
 
-import { FC, useState } from 'react';
 import { cn } from '@bem-react/classname';
-import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
-import { createPostsFormModel } from '@/features/post/model/create-posts-model';
-import z from 'zod';
-import { postApi } from '@/features/post/api/post-api';
+import { FC, useState } from 'react';
 import { toast } from 'sonner';
+import z from 'zod';
+
+import { postApi } from '@/features/post/api/post-api';
+import { createPostsFormModel } from '@/features/post/model/create-posts-model';
+
+import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
 
 const cnMigrationPosts = cn('MigrationPosts');
 

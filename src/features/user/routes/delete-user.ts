@@ -1,9 +1,10 @@
 import { NextRequest } from 'next/server';
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
-import { Either } from '@/shared/lib/either';
 import { roleUtils } from '@/entities/user';
 import { sessionService } from '@/entities/user/server';
+
+import { Either } from '@/shared/lib/either';
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 import { User } from '../../../../generated/prisma/client';
 import { userServices } from '../services/user-service';

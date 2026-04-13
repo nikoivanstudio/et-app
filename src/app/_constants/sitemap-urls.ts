@@ -1,7 +1,9 @@
-import { tourService } from '@/features/tour/server';
-import { postServices } from '@/features/post/server';
-import { sitemapUtils } from '@/app/_lib/sitemap-utils';
 import { MetadataRoute } from 'next/dist/lib/metadata/types/metadata-interface';
+
+import { sitemapUtils } from '@/app/_lib/sitemap-utils';
+
+import { postServices } from '@/features/post/server';
+import { tourService } from '@/features/tour/server';
 
 export const baseUrl = 'https://energy-tur.ru';
 

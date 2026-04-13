@@ -1,17 +1,18 @@
 'use client';
 
-import { FC, useState } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, useState } from 'react';
+import { toast } from 'sonner';
+
+import { useCreateTour } from '@/features/tour/hooks/use-create-tour';
 
 import { FormDialog } from '@/entities/form-dialog';
+
+import { createTourSchemas } from '../lib/schemas/create-tour-schemas';
 import {
   createTour as createTourModel,
   initialCreateTourFormData
 } from '../model/create-tour';
-import { createTourSchemas } from '../lib/schemas/create-tour-schemas';
-
-import { useCreateTour } from '@/features/tour/hooks/use-create-tour';
-import { toast } from 'sonner';
 
 const cnCreateTourForm = cn('CreateTourForm');
 

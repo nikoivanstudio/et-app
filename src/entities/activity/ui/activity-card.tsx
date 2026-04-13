@@ -1,15 +1,16 @@
 import { FC } from 'react';
+
 import { ActivityCardEntity } from '@/entities/activity/domain';
 import { ActivityCardLayout } from '@/entities/activity/ui/activity-card-layout';
 import { CardDates } from '@/entities/activity/ui/card-dates';
-import { CardTitle } from '@/entities/activity/ui/card-title';
 import { CardDescription } from '@/entities/activity/ui/card-description';
 import { CardPlaces } from '@/entities/activity/ui/card-places';
+import { CardPrice } from '@/entities/activity/ui/card-price';
+import { CardTitle } from '@/entities/activity/ui/card-title';
 
 import { cn } from '@/shared/lib/css';
 
 import styles from '../assets/styles.module.scss';
-import { CardPrice } from '@/entities/activity/ui/card-price';
 
 export const ActivityCard: FC<ActivityCardEntity> = async ({
   id,

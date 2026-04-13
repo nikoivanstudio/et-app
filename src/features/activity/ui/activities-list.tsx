@@ -2,8 +2,9 @@
 
 import { cn } from '@bem-react/classname';
 
-import { ActivityFeature } from '../containers/activity-feature';
 import { useActivityList } from '@/features/activity/hooks/use-activity-list';
+
+import { ActivityFeature } from '../containers/activity-feature';
 
 const cnActivitiesList = cn('ActivitiesList');
 

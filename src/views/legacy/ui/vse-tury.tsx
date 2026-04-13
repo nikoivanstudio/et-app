@@ -4,10 +4,12 @@ import { FC, PropsWithChildren } from 'react';
 
 import { AppMain } from '@/widgets/app-main/server';
 
-import { Header } from './header';
-import mainPhoto from '../assets/images/ekskursii.jpg';
-import { LegacyTourCard } from '@/shared/ui/legacy-tour-card';
 import { LegacyTourCardData } from '@/shared/model/types';
+import { LegacyTourCard } from '@/shared/ui/legacy-tour-card';
+
+import mainPhoto from '../assets/images/ekskursii.jpg';
+
+import { Header } from './header';
 
 export const VseTury: FC<
   PropsWithChildren<{ tours: LegacyTourCardData[] }>

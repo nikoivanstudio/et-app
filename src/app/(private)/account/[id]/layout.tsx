@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from 'react';
+
 import { AccountHeader } from '@/widgets/app-header/server';
 
 const AccountLayout: FC<{ children: ReactNode }> = ({

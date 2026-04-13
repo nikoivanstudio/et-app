@@ -3,12 +3,14 @@
 import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/server';
+import { postsServices } from '@/widgets/posts/services/posts-services';
 import { ServerPostCardList } from '@/widgets/posts/ui/server-post-card-list';
+
 import { PageHeadLayout } from '@/entities/page-head/server';
 import { PageTitle } from '@/entities/page-title/server';
 
 import { cn } from '@/shared/lib/css';
-import { postsServices } from '@/widgets/posts/services/posts-services';
+
 import { Pagination } from '@/views/posts/ui/pagination';
 
 type Props = {

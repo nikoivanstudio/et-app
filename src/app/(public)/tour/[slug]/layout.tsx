@@ -1,9 +1,10 @@
+import type { Metadata } from 'next';
 import { FC, PropsWithChildren } from 'react';
 
-import type { Metadata } from 'next';
-import { tourServices } from '@/kernel/tour/server';
 import { getMetadataByEither } from '@/shared/lib/metadata-utils';
 import { ServerTourProps } from '@/shared/model/types';
+
+import { tourServices } from '@/kernel/tour/server';
 import { TourViewLayout } from '@/views/tour/server';
 
 export async function generateMetadata({

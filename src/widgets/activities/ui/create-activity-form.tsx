@@ -1,15 +1,17 @@
 'use client';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
+
 import {
   createActivityFormModel,
   initialCreateActivityFormData
 } from '@/widgets/activities/model/create-activity';
 
-import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
 import { createActivity } from '@/features/activity/api/activity-api';
+
 import { createActivitySchema } from '@/entities/activity/server';
+import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
 
 const cnCreateActivityForm = cn('CreateActivityForm');
 

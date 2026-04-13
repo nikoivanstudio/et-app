@@ -1,11 +1,13 @@
 'use server';
 
+import type { Metadata } from 'next';
 import { FC, PropsWithChildren } from 'react';
 
-import type { Metadata } from 'next';
+import { postServices } from '@/features/post/services/post-services';
+
 import { getMetadataByEither } from '@/shared/lib/metadata-utils';
 import { ServerPostProps } from '@/shared/model/types';
-import { postServices } from '@/features/post/services/post-services';
+
 import { PostViewLayout } from '@/views/post/server';
 
 export async function generateMetadata({

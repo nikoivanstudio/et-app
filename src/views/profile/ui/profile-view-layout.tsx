@@ -1,12 +1,16 @@
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
-import { ProfileAvatar } from '@/views/profile/ui/profile-avatar';
 import Link from 'next/link';
-import { permissionsServices } from '@/features/dashboard';
-import { Button } from '@/shared/ui/button';
-import { sessionService } from '@/entities/user/server';
 import { redirect } from 'next/navigation';
+import { FC } from 'react';
+
+import { permissionsServices } from '@/features/dashboard';
+
+import { sessionService } from '@/entities/user/server';
+
+import { Button } from '@/shared/ui/button';
+
 import { routes } from '@/kernel/routes';
+import { ProfileAvatar } from '@/views/profile/ui/profile-avatar';
 
 const cnProfileView = cn('ProfileView');
 

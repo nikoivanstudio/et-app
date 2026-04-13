@@ -1,9 +1,10 @@
+import { Turnstile } from 'next-turnstile';
 import React, { ChangeEvent, FC, useId, useState } from 'react';
+
+import { Otp } from '@/entities/otp';
 
 import { Input } from '@/shared/ui/input';
 import { Label } from '@/shared/ui/label';
-import { Otp } from '@/entities/otp';
-import { Turnstile } from 'next-turnstile';
 
 const CLODFLARE_KEY = process.env.NEXT_PUBLIC_CF_SITE_KEY || '';
 

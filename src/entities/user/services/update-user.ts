@@ -1,7 +1,9 @@
-import { Either, left, Right, right } from '@/shared/lib/either';
-import { userRepository } from '../repositories/user';
 import { UserEntity, UserEntityUpdate } from '@/entities/user/domain';
+
+import { Either, left, Right, right } from '@/shared/lib/either';
 import { WithoutNull } from '@/shared/model/types';
+
+import { userRepository } from '../repositories/user';
 
 export const updateUser = async (
   user: UserEntityUpdate

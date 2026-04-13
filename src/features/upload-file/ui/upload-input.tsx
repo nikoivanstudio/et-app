@@ -1,7 +1,8 @@
 'use client';
 
-import { Input } from '@/shared/ui/input';
 import { ChangeEvent, FC } from 'react';
+
+import { Input } from '@/shared/ui/input';
 
 type Props = {
   onChange(e: ChangeEvent<HTMLInputElement>): void;

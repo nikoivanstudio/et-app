@@ -1,6 +1,7 @@
+import { Readable } from 'node:stream';
+
 import { Either, left, right } from '@/shared/lib/either';
 import { s3Client } from '@/shared/lib/s3';
-import { Readable } from 'node:stream';
 
 type PresignedData = {
   bucketName: string;

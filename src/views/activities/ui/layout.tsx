@@ -2,13 +2,15 @@
 
 import { FC } from 'react';
 
+import { UpcomingActivities } from '@/widgets/activities/server';
+import { AppHeader } from '@/widgets/app-header/containers/app-header';
 import { AppMain } from '@/widgets/app-main/server';
 import { PopularTours } from '@/widgets/tours/server';
-import { UpcomingActivities } from '@/widgets/activities/server';
+
 import { PageHeadLayout } from '@/entities/page-head/server';
 import { PageTitle } from '@/entities/page-title/server';
+
 import { LinkButton } from '@/shared/ui/link-button';
-import { AppHeader } from '@/widgets/app-header/containers/app-header';
 
 export const ActivitiesView: FC = async () => (
   <>

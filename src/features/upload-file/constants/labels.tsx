@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
-import { UploadFileKind } from '../domain';
 import { FileImage, FileText, Film } from 'lucide-react';
+import { ReactNode } from 'react';
+
+import { UploadFileKind } from '../domain';
 
 export const fileKindLabel: Record<UploadFileKind, string> = {
   image: 'Картинка',

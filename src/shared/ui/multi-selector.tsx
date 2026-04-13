@@ -1,13 +1,5 @@
 'use client';
 
-import { Badge } from '@/shared/ui/badge';
-import {
-  Command,
-  CommandEmpty,
-  CommandItem,
-  CommandList
-} from '@/shared/ui/command';
-import { cn } from '@/shared/lib/css';
 import { Command as CommandPrimitive } from 'cmdk';
 import { Check, X as RemoveIcon } from 'lucide-react';
 import React, {
@@ -18,6 +10,15 @@ import React, {
   useContext,
   useState
 } from 'react';
+
+import { cn } from '@/shared/lib/css';
+import { Badge } from '@/shared/ui/badge';
+import {
+  Command,
+  CommandEmpty,
+  CommandItem,
+  CommandList
+} from '@/shared/ui/command';
 
 type MultiSelectorProps = {
   values: string[];
@@ -292,9 +293,8 @@ MultiSelectorItem.displayName = 'MultiSelectorItem';
 
 export {
   MultiSelector,
-  MultiSelectorTrigger,
-  MultiSelectorInput,
   MultiSelectorContent,
+  MultiSelectorInput,
+  MultiSelectorItem,
   MultiSelectorList,
-  MultiSelectorItem
-};
+  MultiSelectorTrigger};

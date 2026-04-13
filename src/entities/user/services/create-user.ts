@@ -1,8 +1,11 @@
-import { left, right } from '@/shared/lib/either';
-import { userRepository } from '../repositories/user';
-import { passwordService } from './password';
 import { Role } from '@/entities/user/domain';
+
+import { left, right } from '@/shared/lib/either';
+
 import { Prisma } from '../../../../generated/prisma/client';
+import { userRepository } from '../repositories/user';
+
+import { passwordService } from './password';
 import UserWhereUniqueInput = Prisma.UserWhereUniqueInput;
 
 type CreateUserData = {

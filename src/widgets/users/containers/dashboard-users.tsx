@@ -4,9 +4,11 @@ import { cn } from '@bem-react/classname';
 import { FC } from 'react';
 
 import { UserFeatureList } from '@/features/user/';
+
 import { SessionDomain } from '@/entities/user/server';
-import { WidgetLayout } from '@/shared/ui/widget-layout';
+
 import { Spinner } from '@/shared/ui/spinner';
+import { WidgetLayout } from '@/shared/ui/widget-layout';
 
 const cnDashboardUsers = cn('DashboardUsers');
 

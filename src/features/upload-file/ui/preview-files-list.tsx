@@ -2,7 +2,9 @@
 
 import { cn } from '@bem-react/classname';
 import { FC } from 'react';
+
 import { UploadFilePreviewItem } from '../domain';
+
 import { UploadFilePreviewCard } from './upload-file-preview-card';
 
 type Props = {

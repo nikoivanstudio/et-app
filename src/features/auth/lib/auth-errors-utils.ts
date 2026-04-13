@@ -1,4 +1,5 @@
 import { SafeParseError } from 'zod';
+
 import { SignUpFormStateErrors } from '@/features/auth/domain';
 
 const parseErrors = (

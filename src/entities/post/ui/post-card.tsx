@@ -1,20 +1,18 @@
 import { cn } from '@bem-react/classname';
 import { FC } from 'react';
 
+import { ServerDurationLabel } from '@/entities/duration/server';
 import { FavouriteLabel } from '@/entities/favourite';
+import { PostCardEntity } from '@/entities/post/domain';
 import { ServerRatingLabel } from '@/entities/rating/server';
 
-import { ServerDurationLabel } from '@/entities/duration/server';
-
+import reserveImage from '@/shared/assets/images/backgrounds/bg-1.jpg';
 import { ArrowLinkIcon } from '@/shared/ui/arrow-link-icon';
 import { BadgePrice } from '@/shared/ui/badge-price';
-import { CardLayout } from '@/shared/ui/card-layout';
-import { PostCardEntity } from '@/entities/post/domain';
-import { LinkButton } from '@/shared/ui/link-button';
-import { CardHeader } from '@/shared/ui/card-header';
 import { CardFooter } from '@/shared/ui/card-footer';
-
-import reserveImage from '@/shared/assets/images/backgrounds/bg-1.jpg';
+import { CardHeader } from '@/shared/ui/card-header';
+import { CardLayout } from '@/shared/ui/card-layout';
+import { LinkButton } from '@/shared/ui/link-button';
 
 const cnPostCard = cn('TourCard');
 

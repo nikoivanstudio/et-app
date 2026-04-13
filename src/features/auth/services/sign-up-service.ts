@@ -1,5 +1,6 @@
-import { TurnstileError } from '@/shared/model/turnstile-error';
 import { SignUpFormState } from '@/features/auth/domain';
+
+import { TurnstileError } from '@/shared/model/turnstile-error';
 
 const handleErrors = (e: unknown, formData?: FormData): SignUpFormState => {
   if (e instanceof TurnstileError) {

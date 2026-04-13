@@ -1,10 +1,11 @@
-import { cn } from '@/shared/lib/css';
 import {
   LoaderCircleIcon,
   LoaderIcon,
   LoaderPinwheelIcon,
   type LucideProps
 } from 'lucide-react';
+
+import { cn } from '@/shared/lib/css';
 
 type SpinnerVariantProps = Omit<SpinnerProps, 'variant'>;
 

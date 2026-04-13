@@ -1,8 +1,8 @@
 'use server';
 
-import { FC } from 'react';
-import Link from 'next/link';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+import { FC } from 'react';
 
 import { cn } from '@/shared/lib/css';
 

@@ -1,8 +1,8 @@
 'use server';
 
 import { cn as cnBem } from '@bem-react/classname';
-import { FC, ReactNode } from 'react';
 import Link from 'next/link';
+import { FC, ReactNode } from 'react';
 
 const cnActivityCard = cnBem('ActivityCard');
 

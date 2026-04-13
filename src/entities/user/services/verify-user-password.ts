@@ -1,7 +1,9 @@
 import { left, right } from '@/shared/lib/either';
-import { userRepository } from '../repositories/user';
-import { passwordService } from './password';
+
 import { Prisma } from '../../../../generated/prisma/client';
+import { userRepository } from '../repositories/user';
+
+import { passwordService } from './password';
 
 export async function verifyUserPassword({
   login,

@@ -1,11 +1,11 @@
+import './globals.css';
+
 import type { Metadata } from 'next';
 import { Caladea, Oswald, Poiret_One } from 'next/font/google';
-
-import { AppProvider } from '@/shared/lib/providers/app-provider';
-import { cn } from '@/shared/lib/css';
-
-import './globals.css';
 import { Toaster } from 'sonner';
+
+import { cn } from '@/shared/lib/css';
+import { AppProvider } from '@/shared/lib/providers/app-provider';
 
 const oswald = Oswald({
   weight: ['400'],

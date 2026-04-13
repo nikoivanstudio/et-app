@@ -1,4 +1,5 @@
 import { photoTypeguards } from '@/entities/photo';
+
 import { getFileBySource } from '@/shared/lib/file-utils';
 
 const getFileByPhotoEntity = (

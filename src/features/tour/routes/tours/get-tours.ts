@@ -1,10 +1,13 @@
 import { NextRequest } from 'next/server';
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
-import { tourService } from '@/features/tour/server';
-import { sessionService } from '@/entities/user/services/session';
-import { Either } from '@/shared/lib/either';
-import { tourSearchParamsUtils } from '@/features/tour/lib/tour-search-params-utils';
+
 import { GetToursResponse } from '@/features/tour/domain';
+import { tourSearchParamsUtils } from '@/features/tour/lib/tour-search-params-utils';
+import { tourService } from '@/features/tour/server';
+
+import { sessionService } from '@/entities/user/services/session';
+
+import { Either } from '@/shared/lib/either';
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 export async function getTours(req: NextRequest): Promise<Response> {
   try {

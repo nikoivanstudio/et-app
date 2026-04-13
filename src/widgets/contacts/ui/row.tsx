@@ -1,8 +1,9 @@
-import { FC, PropsWithChildren } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, PropsWithChildren } from 'react';
+
+import { PropsWithClassNames } from '@/shared/model/types';
 
 import styles from '../assets/styles.module.scss';
-import { PropsWithClassNames } from '@/shared/model/types';
 
 const cnRow = cn('Row');
 

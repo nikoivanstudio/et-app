@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+
 import {
   ALLOWED_ORIGINS,
   RATE_LIMIT_MAX

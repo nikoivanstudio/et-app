@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import { cn as cnBem } from '@bem-react/classname';
+import { FC } from 'react';
 
 import styles from '../assets/styles.module.scss';
 

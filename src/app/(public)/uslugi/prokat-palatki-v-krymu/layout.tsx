@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
-import { AppHeader } from '@/widgets/app-header/server';
-import { ContactsWidget } from '@/widgets/contacts/server';
+
 
 export const metadata: Metadata = {
   title: 'Прокат палатки в Крыму',

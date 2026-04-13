@@ -1,10 +1,13 @@
 import 'server-only';
 
 import { OtpCreateData } from '@/features/otp/domain';
-import { Otp } from '../../../../generated/prisma/client';
+
 import { OtpError, otpRepositories } from '@/entities/otp/server';
-import { otpUtils } from '../lib/otp-utils';
+
 import { Either, left, right } from '@/shared/lib/either';
+
+import { Otp } from '../../../../generated/prisma/client';
+import { otpUtils } from '../lib/otp-utils';
 
 const isDevMode = process.env.NODE_ENV === 'development';
 

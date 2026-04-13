@@ -1,9 +1,10 @@
 'use client';
 
-import { FC } from 'react';
-import { useTourList } from '@/features/tour/hooks/use-tour-list';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
+
 import { TourCard } from '@/features/tour';
+import { useTourList } from '@/features/tour/hooks/use-tour-list';
 
 const cnTourFeatureList = cn('TourFeatureList');
 

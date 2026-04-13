@@ -1,6 +1,9 @@
-import { fileStorage } from '@/entities/file/server';
-import { PUBLIC_BUCKET_NAME } from '@/shared/constants/file-storage-constants';
 import { v4 } from 'uuid';
+
+import { fileStorage } from '@/entities/file/server';
+
+import { PUBLIC_BUCKET_NAME } from '@/shared/constants/file-storage-constants';
+
 import { ShortFileDto } from '../domain';
 
 const publicBucketName = PUBLIC_BUCKET_NAME;

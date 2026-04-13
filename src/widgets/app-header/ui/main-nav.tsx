@@ -1,8 +1,9 @@
 'use server';
 
-import { FC } from 'react';
-import Link from 'next/link';
 import { cn } from '@bem-react/classname';
+import Link from 'next/link';
+import { FC } from 'react';
+
 import { sessionService } from '@/entities/user/services/session';
 
 const cnMainNav = cn('MainNav');

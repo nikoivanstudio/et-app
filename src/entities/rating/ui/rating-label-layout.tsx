@@ -1,10 +1,10 @@
-import { FC, PropsWithChildren } from 'react';
 import { cn as cnBem } from '@bem-react/classname';
-
-import { RatingLayoutProps } from '@/entities/rating/model/types';
-import { Star } from '@/shared/ui/star';
+import { FC, PropsWithChildren } from 'react';
 
 import styles from '@/entities/rating/assets/styles.module.scss';
+import { RatingLayoutProps } from '@/entities/rating/model/types';
+
+import { Star } from '@/shared/ui/star';
 
 const cnRatingLabel = cnBem('RatingLabel');
 

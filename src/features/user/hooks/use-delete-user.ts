@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+
 import { userApi } from '@/features/user/api/user-api';
 
 type HookConfig<E> = {

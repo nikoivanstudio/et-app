@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { Heading, Html, Section, Text } from '@react-email/components';
+import * as React from 'react';
 
 type Props = {
   code: string;

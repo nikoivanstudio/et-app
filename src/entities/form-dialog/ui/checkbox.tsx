@@ -1,4 +1,5 @@
 import { InputProps } from '@/entities/form-dialog/domain';
+
 import { Checkbox as CheckboxUI } from '@/shared/ui/checkbox';
 
 export const Checkbox = <

@@ -1,8 +1,9 @@
 import { z } from 'zod';
 
-import { UserEntity } from '@/entities/user/domain';
 import { dateUtils } from '@/entities/activity/lib/date-utils';
 import { createActivitySchema } from '@/entities/activity/server';
+import { UserEntity } from '@/entities/user/domain';
+
 import { Activity, Tour } from '../../../generated/prisma/client';
 
 export type CreateActivityData = z.infer<typeof createActivitySchema>;

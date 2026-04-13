@@ -1,8 +1,10 @@
 import { NextRequest } from 'next/server';
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+
 import { applicationFormSchema } from '@/features/application-form/model/schema';
-import { CallbackEmail } from '@/shared/ui/callback-email';
+
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 import { emailNotifications } from '@/shared/services/email-notifications';
+import { CallbackEmail } from '@/shared/ui/callback-email';
 
 export async function postCallbackRequest(req: NextRequest): Promise<Response> {
   try {

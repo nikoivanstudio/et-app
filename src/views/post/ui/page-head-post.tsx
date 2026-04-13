@@ -1,11 +1,13 @@
 'use server';
 
-import { FC } from 'react';
-import Image from 'next/image';
 import { cn } from '@bem-react/classname';
+import Image from 'next/image';
+import { FC } from 'react';
+
 import { PageHeadLayout } from '@/entities/page-head/ui/page-head-layout';
-import { Title } from '@/shared/ui/title';
+
 import src from '@/shared/assets/images/backgrounds/bg-1.jpg';
+import { Title } from '@/shared/ui/title';
 
 import styles from '../assets/styles.module.scss';
 

@@ -1,5 +1,6 @@
-import { TourDomain } from '@/entities/tour/server';
 import { PhotoEntity } from '@/widgets/tours/domain';
+
+import { TourDomain } from '@/entities/tour/server';
 
 export type TourCardEntity = {
   id: number;

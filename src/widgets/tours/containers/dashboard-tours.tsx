@@ -1,11 +1,13 @@
 'use client';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
 import { PlusCircle } from 'lucide-react';
+import { FC } from 'react';
 
 import { ClientLayout } from '@/widgets/tours/ui/client-layout';
+
 import TourFeature, { TourFeatureList } from '@/features/tour';
+
 import { SessionDomain } from '@/entities/user/server';
 
 const cnDashboardTours = cn('DashboardTours');

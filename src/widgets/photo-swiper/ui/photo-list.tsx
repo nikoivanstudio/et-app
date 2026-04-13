@@ -1,10 +1,12 @@
 'use server';
 
-import { FC } from 'react';
-import { PhotoEntity } from '@/widgets/photo-swiper/domain';
-import { PropsWithClassNames } from '@/shared/model/types';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
+
+import { PhotoEntity } from '@/widgets/photo-swiper/domain';
 import { Photo } from '@/widgets/photo-swiper/ui/photo';
+
+import { PropsWithClassNames } from '@/shared/model/types';
 
 type PhotoListProps = {
   photos: PhotoEntity[];

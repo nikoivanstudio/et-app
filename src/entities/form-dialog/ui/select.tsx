@@ -1,4 +1,6 @@
 import { InputProps } from '@/entities/form-dialog/domain';
+
+import { cn } from '@/shared/lib/css';
 import {
   Select as SelectUI,
   SelectContent,
@@ -6,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/shared/ui/select';
-import { cn } from '@/shared/lib/css';
 
 export const Select = <
   T extends Record<string, unknown> = Record<string, string>

@@ -1,5 +1,7 @@
-import { postServices } from '@/features/post/server';
 import { FC } from 'react';
+
+import { postServices } from '@/features/post/server';
+
 import { PostView } from '@/views/post/server';
 
 export const dynamic = 'force-static';

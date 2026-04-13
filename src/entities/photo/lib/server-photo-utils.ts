@@ -1,5 +1,6 @@
-import { saveFileWithPath } from '@/shared/lib/server-files-utils';
 import { PhotoEntity } from '@/entities/photo/domain';
+
+import { saveFileWithPath } from '@/shared/lib/server-files-utils';
 
 const savePhoto = (photo: File): Promise<string | null> => {
   return saveFileWithPath(photo, 'images');

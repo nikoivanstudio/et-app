@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server';
 
 import { sessionService } from '@/entities/user/services/session';
+
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 export async function getSession(req: NextRequest): Promise<Response> {

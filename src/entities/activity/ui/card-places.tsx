@@ -1,8 +1,8 @@
 'use server';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
 import { pluralize } from 'numeralize-ru';
+import { FC } from 'react';
 
 const cnCardPlaces = cn('CardPlaces');
 

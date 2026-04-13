@@ -1,12 +1,13 @@
+import { ChevronDownIcon } from 'lucide-react';
 import { ChangeEvent, useState } from 'react';
 
-import { Input } from '@/shared/ui/input';
 import { InputProps } from '@/entities/form-dialog/domain';
-import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
-import { Calendar } from '@/shared/ui/calendar';
-import { Button } from '@/shared/ui/button';
-import { ChevronDownIcon } from 'lucide-react';
+
 import { dateUtils } from '@/shared/lib/date-utils';
+import { Button } from '@/shared/ui/button';
+import { Calendar } from '@/shared/ui/calendar';
+import { Input } from '@/shared/ui/input';
+import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
 
 export const DatePicker = <
   T extends Record<string, unknown> = Record<string, string>

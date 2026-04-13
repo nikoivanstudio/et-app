@@ -1,4 +1,5 @@
 import { dbClient } from '@/shared/lib/db';
+
 import { Prisma } from '../../../../generated/prisma/client';
 
 type Params = {

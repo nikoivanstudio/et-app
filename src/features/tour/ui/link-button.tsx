@@ -1,6 +1,6 @@
 import { cn } from '@bem-react/classname';
-import { FC, PropsWithChildren } from 'react';
 import Link from 'next/link';
+import { FC, PropsWithChildren } from 'react';
 
 const cnLinkButton = cn('LinkButton');
 

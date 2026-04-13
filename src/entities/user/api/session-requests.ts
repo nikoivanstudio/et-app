@@ -1,4 +1,5 @@
 import { SessionEntity } from '@/entities/user/domain';
+
 import { urlUtils } from '@/shared/lib/url-utils';
 
 export async function getSessionRequest(): Promise<{

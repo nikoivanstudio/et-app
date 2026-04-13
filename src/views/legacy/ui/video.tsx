@@ -1,6 +1,7 @@
 'use server';
 
 import { FC } from 'react';
+
 import { cn } from '@/shared/lib/css';
 
 const videoId = 'L-fT3LfelLY';

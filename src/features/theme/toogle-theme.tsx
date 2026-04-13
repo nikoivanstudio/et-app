@@ -1,15 +1,16 @@
 'use client';
 
-import { FC } from 'react';
+import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { FC } from 'react';
+
+import { Button } from '@/shared/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/shared/ui/dropdown-menu';
-import { Button } from '@/shared/ui/button';
-import { Moon, Sun } from 'lucide-react';
 
 export const ToggleTheme: FC = () => {
   const { setTheme } = useTheme();

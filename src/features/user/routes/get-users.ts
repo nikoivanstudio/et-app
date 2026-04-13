@@ -1,11 +1,15 @@
 import { NextRequest } from 'next/server';
+
+import { userServices } from '@/features/user/server';
+
+import { roleUtils } from '@/entities/user';
+import { sessionService } from '@/entities/user/server';
+
 import { Either } from '@/shared/lib/either';
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
-import { sessionService } from '@/entities/user/server';
-import { roleUtils } from '@/entities/user';
-import { userServices } from '@/features/user/server';
-import { searchParamsUtils } from '../lib/search-params-utils';
+
 import { GetUserResponse } from '../domain';
+import { searchParamsUtils } from '../lib/search-params-utils';
 
 export async function getUsers(req: NextRequest): Promise<Response> {
   try {

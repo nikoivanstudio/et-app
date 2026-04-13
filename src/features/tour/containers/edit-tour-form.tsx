@@ -1,16 +1,17 @@
 'use client';
 
-import { FC, useState } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, useState } from 'react';
 import { toast } from 'sonner';
 
-import { FormDialog } from '@/entities/form-dialog';
-import { TourDomain } from '@/entities/tour/server';
-import { FormDialogDomain } from '@/entities/form-dialog/index';
-import { createTour as createTourModel } from '../model/create-tour';
-import { createTourSchemas } from '../lib/schemas/create-tour-schemas';
-
 import { useCreateTour } from '@/features/tour/hooks/use-create-tour';
+
+import { FormDialog } from '@/entities/form-dialog';
+import { FormDialogDomain } from '@/entities/form-dialog/index';
+import { TourDomain } from '@/entities/tour/server';
+
+import { createTourSchemas } from '../lib/schemas/create-tour-schemas';
+import { createTour as createTourModel } from '../model/create-tour';
 
 type Props = {
   data: TourDomain.TourEntity;

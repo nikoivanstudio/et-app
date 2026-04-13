@@ -1,8 +1,8 @@
-import React, { FC, ReactNode } from 'react';
 import { redirect } from 'next/navigation';
+import React, { FC, ReactNode } from 'react';
 
-import { sessionService } from '@/entities/user/services/session';
 import { roleUtils } from '@/entities/user';
+import { sessionService } from '@/entities/user/services/session';
 
 const DashboardView: FC<{ children: ReactNode }> = async ({
   children

@@ -1,10 +1,12 @@
 'use server';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
 
 import { ServerLayout } from '@/widgets/tours/ui/server-layout';
+
 import { tourService } from '@/features/tour/server';
+
 import { Title } from '@/shared/ui/title';
 
 import styles from '../assets/styles.module.scss';

@@ -1,7 +1,8 @@
 'use server';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
+
 import { Skeleton } from '@/shared/ui/skeleton';
 
 const cnLoadingView = cn('LoadingView');

@@ -1,8 +1,6 @@
 'use client';
 
-import { FC, Fragment } from 'react';
-
-import { UploadFile } from '@/features/upload-file';
+import { FC } from 'react';
 
 import type { SessionDomain } from '@/entities/user/server';
 

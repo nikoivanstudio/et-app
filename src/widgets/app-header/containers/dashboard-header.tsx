@@ -1,5 +1,6 @@
 
 import type { FC } from 'react';
+
 import { Layout } from '@/widgets/app-header/ui/layout';
 import { Logo } from '@/widgets/app-header/ui/logo';
 import { MainNav } from '@/widgets/app-header/ui/main-nav';

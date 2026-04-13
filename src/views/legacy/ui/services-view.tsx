@@ -2,12 +2,15 @@
 
 import { FC } from 'react';
 
+import { AppHeader } from '@/widgets/app-header/containers/app-header';
 import { AppMain } from '@/widgets/app-main/server';
+
 import { PageHeadLayout } from '@/entities/page-head/server';
 import { PageTitle } from '@/entities/page-title/server';
-import { AppHeader } from '@/widgets/app-header/containers/app-header';
-import { services } from '@/views/legacy/constants/services';
+
 import { LegacyTourCard } from '@/shared/ui/legacy-tour-card';
+
+import { services } from '@/views/legacy/constants/services';
 
 export const ServicesView: FC = async () => (
   <>

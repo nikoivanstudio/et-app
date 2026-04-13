@@ -1,11 +1,13 @@
 import { NextRequest } from 'next/server';
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+
+import { postServices } from '@/features/post/services/post-services';
+
+import { roleUtils } from '@/entities/user';
+import { sessionService } from '@/entities/user/server';
 
 import { Either } from '@/shared/lib/either';
-import { postServices } from '@/features/post/services/post-services';
-import { roleUtils } from '@/entities/user';
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
-import { sessionService } from '@/entities/user/server';
 import { Post } from '../../../../generated/prisma/client';
 
 export async function deletePost(req: NextRequest): Promise<Response> {

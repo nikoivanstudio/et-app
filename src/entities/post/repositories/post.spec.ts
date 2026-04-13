@@ -1,4 +1,5 @@
 import { jest } from '@jest/globals';
+
 import { postRepositories } from './post';
 
 const mockPost = {

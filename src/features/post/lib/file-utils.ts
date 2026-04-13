@@ -1,4 +1,5 @@
 import 'server-only';
+
 import { Post } from '../../../../generated/prisma/client';
 
 const getPostsFileJSONStream = (posts: Post[]): ReadableStream => {

@@ -1,9 +1,10 @@
 'use client';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
-import { UserCard } from '@/features/user/ui/user-card';
+import { FC } from 'react';
+
 import { useDeleteUser } from '@/features/user/hooks/use-delete-user';
+import { UserCard } from '@/features/user/ui/user-card';
 
 const cnUserFeature = cn('UserFeature');
 

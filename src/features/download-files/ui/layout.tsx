@@ -1,10 +1,7 @@
 'use client';
 
-import { Download } from 'lucide-react';
 import { FC, ReactNode } from 'react';
 
-import { Badge } from '@/shared/ui/badge';
-import { Button } from '@/shared/ui/button';
 import {
   Card,
   CardContent,
@@ -15,8 +12,8 @@ import {
 import { Separator } from '@/shared/ui/separator';
 
 import { FileListItem } from '../domain';
+
 import { FileItem } from './file-item';
-import { DeleteFile } from '@/features/delete-files';
 
 type Props = {
   searchPanel: ReactNode;

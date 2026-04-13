@@ -1,5 +1,7 @@
 import { userRepository } from '@/entities/user/server';
+
 import { Either, left, right } from '@/shared/lib/either';
+
 import { Prisma, User } from '../../../../generated/prisma/client';
 import { GetUserResponse } from '../domain';
 

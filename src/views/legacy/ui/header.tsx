@@ -1,14 +1,17 @@
 'use server';
 
-import { FC } from 'react';
-import Image, { StaticImageData } from 'next/image';
 import { cn } from '@bem-react/classname';
+import Image, { StaticImageData } from 'next/image';
+import { FC } from 'react';
+
 import { PageHeadLayout } from '@/entities/page-head/ui/page-head-layout';
-import { Title } from '@/shared/ui/title';
+
 import src from '@/shared/assets/images/backgrounds/bg-1.jpg';
+import { Title } from '@/shared/ui/title';
+
+import { PriceBanner } from '@/views/legacy/ui/price-banner';
 
 import styles from '../assets/styles.module.scss';
-import { PriceBanner } from '@/views/legacy/ui/price-banner';
 
 type Props = {
   title: string;

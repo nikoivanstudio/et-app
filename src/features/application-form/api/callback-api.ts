@@ -2,6 +2,7 @@ import {
   ApplicationData,
   CallbackData
 } from '@/features/application-form/domain';
+
 import { Either, left, right } from '@/shared/lib/either';
 import { urlUtils } from '@/shared/lib/url-utils';
 

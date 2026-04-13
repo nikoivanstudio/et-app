@@ -1,6 +1,7 @@
 'use server';
 
 import { Metadata } from 'next';
+
 import { Either } from '@/shared/lib/either';
 import { PageMetaData } from '@/shared/model/types';
 

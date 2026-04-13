@@ -9,6 +9,7 @@ export const permissions: Record<string, Set<string>> = {
   dashboard: new Set([Role.GUIDE, Role.ADMIN, Role.SUPER_ADMIN]),
   getAllUsers: superAdmin,
   deleteUser: superAdmin,
+  updateUser: superAdmin,
   createTour: guides,
   updateTour: guides,
   createActivity: guides,

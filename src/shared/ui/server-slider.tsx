@@ -1,6 +1,7 @@
 'use server';
 
 import { FC, ReactNode } from 'react';
+
 import { SliderControls } from '@/shared/ui/slider-controls';
 
 type Props = {

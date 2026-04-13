@@ -1,12 +1,13 @@
-import { FormDialogDomain } from '@/entities/form-dialog';
 import { CreateTourData } from '@/features/tour/domain';
 import {
   createTourSchema,
   PatchTourData,
   preparedPatchTourSchema
 } from '@/features/tour/lib/schemas/create-tour-schemas';
-import { TourEntity } from '@/entities/tour/domain';
+
+import { FormDialogDomain } from '@/entities/form-dialog';
 import { clientPhotoUtils } from '@/entities/photo/lib/client-photo-utils';
+import { TourEntity } from '@/entities/tour/domain';
 
 const prepareDataToCreate = (
   data: FormDialogDomain.FormData

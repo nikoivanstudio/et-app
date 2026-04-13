@@ -1,5 +1,6 @@
-import { applicationFormSchema } from '@/features/application-form/model/schema';
 import z from 'zod';
+
+import { applicationFormSchema } from '@/features/application-form/model/schema';
 
 export type ApplicationData = {
   entityName: string;

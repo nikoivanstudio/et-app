@@ -1,10 +1,11 @@
 'use client';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
 
-import { PostCard } from '@/features/post/ui/post-card';
 import { usePostList } from '@/features/post/hooks/use-post-list';
+import { PostCard } from '@/features/post/ui/post-card';
+
 import { SessionDomain } from '@/entities/user/server';
 
 const cnPostFeatureList = cn('PostFeatureList');

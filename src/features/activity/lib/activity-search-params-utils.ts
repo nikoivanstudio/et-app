@@ -1,6 +1,7 @@
+import { activitySearchUtils } from '@/features/activity/lib/activity-search-utils';
+
 import { dbQueryUtils, PageParams } from '@/shared/lib/db-client-utils';
 
-import { activitySearchUtils } from '@/features/activity/lib/activity-search-utils';
 import { Prisma } from '../../../../generated/prisma/client';
 
 type ParamsFns = {

@@ -3,8 +3,10 @@
 import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
+
 import { PageHeadLayout } from '@/entities/page-head/ui/page-head-layout';
 import { PageTitle } from '@/entities/page-title/ui/page-title';
+
 import { YandexMap } from '@/views/contacts/ui/yandex-map';
 
 export const ContactsView: FC = async () => (

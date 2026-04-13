@@ -1,20 +1,19 @@
+import { cn } from '@bem-react/classname';
 import { FC } from 'react';
 
-import { Title } from '@/shared/ui/title';
-
-import { cn } from '@bem-react/classname';
 import { ContactsLayoutProps } from '@/widgets/contacts/domain';
 import { Row } from '@/widgets/contacts/ui/row';
+import { SocialItem } from '@/widgets/contacts/ui/social-item';
+
+import { formatNumber } from '@/shared/lib/string-utils';
 import { GeoPointIcon } from '@/shared/ui/GeoPointIcon';
 import { MailIcon } from '@/shared/ui/mailIcon';
 import { PhoneIcon } from '@/shared/ui/PhoneIcon';
-
-import { formatNumber } from '@/shared/lib/string-utils';
-import { SocialItem } from '@/widgets/contacts/ui/social-item';
-import { TelegrammIcon } from '@/shared/ui/telegramm-icon';
-import { WhatsAppIcon } from '@/shared/ui/whats-app-icon';
-import { VkIcon } from '@/shared/ui/vk-icon';
 import { RutubeIcon } from '@/shared/ui/rutube-icon';
+import { TelegrammIcon } from '@/shared/ui/telegramm-icon';
+import { Title } from '@/shared/ui/title';
+import { VkIcon } from '@/shared/ui/vk-icon';
+import { WhatsAppIcon } from '@/shared/ui/whats-app-icon';
 
 import styles from '../assets/styles.module.scss';
 

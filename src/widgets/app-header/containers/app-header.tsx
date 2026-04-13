@@ -2,12 +2,14 @@
 
 import { FC } from 'react';
 
+import { Contacts } from '@/widgets/app-header/ui/contacts';
 import { Layout } from '@/widgets/app-header/ui/layout';
 import { Logo } from '@/widgets/app-header/ui/logo';
 import { MainNav } from '@/widgets/app-header/ui/main-nav';
 import { Profile } from '@/widgets/app-header/ui/profile';
+
 import { ToggleTheme } from '@/features/theme/toogle-theme';
-import { Contacts } from '@/widgets/app-header/ui/contacts';
+
 import { sessionService } from '@/entities/user/server';
 
 type AppHeaderProps = {

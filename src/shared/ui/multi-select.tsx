@@ -1,5 +1,8 @@
+import { Check, ChevronsUpDown, X } from 'lucide-react';
 import { useState } from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
+
+import { Badge } from '@/shared/ui/badge';
+import { Button } from '@/shared/ui/button';
 import {
   Command,
   CommandEmpty,
@@ -7,9 +10,7 @@ import {
   CommandItem,
   CommandList
 } from '@/shared/ui/command';
-import { Button } from '@/shared/ui/button';
-import { Badge } from '@/shared/ui/badge';
-import { Check, ChevronsUpDown, X } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
 
 interface Option {
   value: string;

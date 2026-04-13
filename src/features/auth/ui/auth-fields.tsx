@@ -1,8 +1,9 @@
 'use client';
 
 import { FC, useId } from 'react';
-import { Label } from '@/shared/ui/label';
+
 import { Input } from '@/shared/ui/input';
+import { Label } from '@/shared/ui/label';
 
 export const AuthFields: FC = () => {
   const loginId = useId();

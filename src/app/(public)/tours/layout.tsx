@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { PropsWithChildren } from 'react';
+
 import { AppHeader } from '@/widgets/app-header/containers/app-header';
 import { ContactsWidget } from '@/widgets/contacts/containers/contacts-widget';
 

@@ -1,9 +1,11 @@
 import { NextRequest } from 'next/server';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
-import { sessionService } from '@/entities/user/server';
-import { roleUtils } from '@/entities/user';
 import { activityServices } from '@/features/activity/services/activity-services';
+
+import { roleUtils } from '@/entities/user';
+import { sessionService } from '@/entities/user/server';
+
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 export async function postActivity(req: NextRequest): Promise<Response> {
   try {

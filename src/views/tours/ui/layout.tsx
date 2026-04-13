@@ -4,6 +4,7 @@ import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/server';
 import { AllTours } from '@/widgets/tours/server';
+
 import { PageHeadLayout } from '@/entities/page-head/server';
 import { PageTitle } from '@/entities/page-title/server';
 

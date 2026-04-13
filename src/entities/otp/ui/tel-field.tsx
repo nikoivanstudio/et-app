@@ -1,8 +1,9 @@
 'use client';
 
 import React, { ChangeEvent, FC, useId } from 'react';
-import { Label } from '@/shared/ui/label';
+
 import { Input } from '@/shared/ui/input';
+import { Label } from '@/shared/ui/label';
 
 type Props = {
   onChangePhone?: (value: string) => void;

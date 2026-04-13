@@ -1,5 +1,6 @@
 import { cn } from '@bem-react/classname';
 import { FC } from 'react';
+
 import { ActivityDate } from '@/widgets/activities/domain';
 import { getMonthesTitle } from '@/widgets/activities/lib/dates-helpers';
 

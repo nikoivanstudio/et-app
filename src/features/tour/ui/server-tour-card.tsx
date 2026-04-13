@@ -5,16 +5,17 @@ import { FC } from 'react';
 
 import { TourCardEntity } from '@/features/tour';
 
+import { ServerDurationLabel } from '@/entities/duration/server';
 import { FavouriteLabel } from '@/entities/favourite';
 import { ServerRatingLabel } from '@/entities/rating/server';
 
-import { ServerDurationLabel } from '@/entities/duration/server';
-import { LinkButton } from './link-button';
 import { ArrowLinkIcon } from '@/shared/ui/arrow-link-icon';
 import { BadgePrice } from '@/shared/ui/badge-price';
-import { CardLayout } from '@/shared/ui/card-layout';
-import { CardHeader } from '@/shared/ui/card-header';
 import { CardFooter } from '@/shared/ui/card-footer';
+import { CardHeader } from '@/shared/ui/card-header';
+import { CardLayout } from '@/shared/ui/card-layout';
+
+import { LinkButton } from './link-button';
 
 const cnTourCard = cn('TourCard');
 

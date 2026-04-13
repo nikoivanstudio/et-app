@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   Card,
   CardContent,
@@ -6,8 +8,6 @@ import {
   CardHeader,
   CardTitle
 } from '@/shared/ui/card';
-
-import React from 'react';
 
 export function AuthFormLayout({
   actions,

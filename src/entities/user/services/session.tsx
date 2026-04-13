@@ -1,9 +1,12 @@
 import 'server-only';
+
 import { jwtVerify, SignJWT } from 'jose';
-import { SessionEntity, UserEntity, userToSession } from '../domain';
-import { left, right } from '@/shared/lib/either';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+
+import { left, right } from '@/shared/lib/either';
+
+import { SessionEntity, UserEntity, userToSession } from '../domain';
 
 const isProd = process.env.NODE_ENV === 'production';
 const secretKey = process.env.SESSION_SECRET;

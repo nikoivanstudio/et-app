@@ -1,7 +1,8 @@
 'use client';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
+
 import { UserDomain } from '@/entities/user';
 
 import { ClientLayout } from '../ui/client-layout';

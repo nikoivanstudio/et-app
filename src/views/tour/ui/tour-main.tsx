@@ -1,19 +1,21 @@
 'use server';
 
-import { FC } from 'react';
 import { cn as cnBem } from '@bem-react/classname';
+import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
 import { TourPhotoSwiper } from '@/widgets/photo-swiper/server';
-import { TourKernel } from '@/kernel/tour/domain';
-import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
+
 import { ServerDurationLabel } from '@/entities/duration/server';
+import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
 import { PageHeadTour } from '@/entities/page-head/server';
-import { BadgePrice } from '@/shared/ui/badge-price';
-import { TextContent } from '@/shared/ui/text-content';
-import { cn } from '@/shared/lib/css';
 
 import styles from '@/shared/assets/styles.module.scss';
+import { cn } from '@/shared/lib/css';
+import { BadgePrice } from '@/shared/ui/badge-price';
+import { TextContent } from '@/shared/ui/text-content';
+
+import { TourKernel } from '@/kernel/tour/domain';
 
 const cnPageTour = cnBem('PageTour');
 

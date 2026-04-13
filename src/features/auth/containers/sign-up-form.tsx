@@ -2,16 +2,17 @@
 
 import React, { FC } from 'react';
 
-import { AuthFormLayout } from '../ui/auth-form-layout';
-import { AuthFields } from '../ui/fields';
-import { SubmitButton } from '../ui/submit-button';
-import { ErrorMessage } from '../ui/submit-button copy';
-import { signUpAction } from '../actions/sign-up';
-import { SignUpFormState } from '../domain';
-import { BottomLink } from '../ui/ilnk';
+import { useActionState } from '@/shared/lib/react';
 
 import { routes } from '@/kernel/routes';
-import { useActionState } from '@/shared/lib/react';
+
+import { signUpAction } from '../actions/sign-up';
+import { SignUpFormState } from '../domain';
+import { AuthFormLayout } from '../ui/auth-form-layout';
+import { AuthFields } from '../ui/fields';
+import { BottomLink } from '../ui/ilnk';
+import { SubmitButton } from '../ui/submit-button';
+import { ErrorMessage } from '../ui/submit-button copy';
 
 export const SignUpForm: FC = () => {
   const [formState, action, isPending] = useActionState(

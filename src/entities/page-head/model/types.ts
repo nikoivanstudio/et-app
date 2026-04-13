@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 import { PropsWithClassNames } from '@/shared/model/types';
 
 enum Pages {

@@ -1,8 +1,10 @@
-import { objectUtils } from '@/shared/lib/object-utils';
-import { WithoutNull } from '@/shared/model/types';
+import { Prisma } from 'generated/prisma/client';
+
 import { placeEntitySchema } from '@/entities/tour/lib/validation-schemas';
 import { tourTypeguards } from '@/entities/tour/model/typeguards';
-import { Prisma } from 'generated/prisma/client';
+
+import { objectUtils } from '@/shared/lib/object-utils';
+import { WithoutNull } from '@/shared/model/types';
 
 export type TourStatus = 'new' | 'default';
 

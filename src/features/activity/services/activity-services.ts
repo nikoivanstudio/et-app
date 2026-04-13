@@ -1,4 +1,3 @@
-import { Prisma } from '../../../../generated/prisma/client';
 import {
   ActivityDomain,
   ActivityEntity,
@@ -6,6 +5,8 @@ import {
 } from '@/entities/activity/server';
 
 import { Either, left, right } from '@/shared/lib/either';
+
+import { Prisma } from '../../../../generated/prisma/client';
 
 const createActivity = async (
   data: ActivityDomain.CreateActivityData & { authorId: number }

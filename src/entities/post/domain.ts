@@ -1,7 +1,9 @@
-import { objectUtils } from '@/shared/lib/object-utils';
 import { postUtils } from '@/entities/post/lib/post-utils';
-import { WithoutNull } from '@/shared/model/types';
 import { postCreateSchema } from '@/entities/post/model/schemas';
+
+import { objectUtils } from '@/shared/lib/object-utils';
+import { WithoutNull } from '@/shared/model/types';
+
 import { Prisma, User } from '../../../generated/prisma/client';
 
 type UserEntity = {

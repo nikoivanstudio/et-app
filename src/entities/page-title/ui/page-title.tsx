@@ -1,9 +1,9 @@
 'use server';
 
-import { FC } from 'react';
-import { cn } from '@bem-react/classname';
-
 import '../assets/styles.scss';
+
+import { cn } from '@bem-react/classname';
+import { FC } from 'react';
 
 const cnPageTitle = cn('PageTitle');
 

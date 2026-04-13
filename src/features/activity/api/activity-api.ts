@@ -1,10 +1,13 @@
-import { ActivityDomain } from '@/entities/activity/server';
-import { Either, left, right } from '@/shared/lib/either';
-import { apiClient } from '@/shared/api/api-client';
 import { queryOptions } from '@tanstack/react-query';
-import { GetApiData } from '@/shared/model/types';
-import { GetActivityResponse } from '../domain';
 import { Activity } from 'generated/prisma/client';
+
+import { ActivityDomain } from '@/entities/activity/server';
+
+import { apiClient } from '@/shared/api/api-client';
+import { Either, left, right } from '@/shared/lib/either';
+import { GetApiData } from '@/shared/model/types';
+
+import { GetActivityResponse } from '../domain';
 
 const createErrorMessage = 'Ошибка создания мероприятия';
 const deleteErrorMessage = 'Ошибка удаления мероприятия';

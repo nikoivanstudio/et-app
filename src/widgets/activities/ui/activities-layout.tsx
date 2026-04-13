@@ -1,5 +1,6 @@
-import { FC, ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, ReactNode } from 'react';
+
 import { Title } from '@/shared/ui/title';
 
 const cnActivities = cn('Activities');

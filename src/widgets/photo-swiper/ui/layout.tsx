@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import { PhotoList } from '@/widgets/photo-swiper/ui/photo-list';
+
 import { LayoutProps } from '@/widgets/photo-swiper/domain';
-import { cn } from '@/shared/lib/css';
+import { PhotoList } from '@/widgets/photo-swiper/ui/photo-list';
 
 import styles from '@/shared/assets/styles.module.scss';
+import { cn } from '@/shared/lib/css';
 
 export const PhotoSwiperLayout: FC<LayoutProps> = ({ photos }) => (
   <div className={cn('p-3', 'w-full')}>

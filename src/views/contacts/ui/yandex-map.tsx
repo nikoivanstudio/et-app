@@ -1,7 +1,7 @@
 'use client';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
 
 const cnContacts = cn('Contacts');
 

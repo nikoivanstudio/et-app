@@ -1,7 +1,7 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
 import { cn } from '@bem-react/classname';
+import { FormEvent, useState } from 'react';
 
 import {
   FormCheckTypes,
@@ -12,6 +12,7 @@ import {
   ZErrors
 } from '@/entities/form-dialog/domain';
 import { FormRow } from '@/entities/form-dialog/ui/form-row';
+
 import { Button } from '@/shared/ui/button';
 
 const cnForm = cn('Form');

@@ -1,15 +1,16 @@
 'use server';
 
-import { FC } from 'react';
 import { cn as cnBem } from '@bem-react/classname';
+import Link from 'next/link';
+import { FC } from 'react';
 
 import styles from '@/shared/assets/styles.module.scss';
-import { TextContent } from '@/shared/ui/text-content';
 import { cn } from '@/shared/lib/css';
-import { Video } from '@/views/legacy/ui/video';
-import { Slider } from '@/views/legacy/ui/slider';
+import { TextContent } from '@/shared/ui/text-content';
+
 import { longTours, shortTours } from '@/views/legacy/constants/tours';
-import Link from 'next/link';
+import { Slider } from '@/views/legacy/ui/slider';
+import { Video } from '@/views/legacy/ui/video';
 
 const cnJeepTourKrym = cnBem('JeepTourKrym');
 

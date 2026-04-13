@@ -1,7 +1,10 @@
 'use server';
 
-import { FC, ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, ReactNode } from 'react';
+
+import { BurgerIcon } from '@/shared/ui/burger-icon';
+import { Button } from '@/shared/ui/button';
 import {
   Sheet,
   SheetContent,
@@ -9,8 +12,6 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/shared/ui/sheet';
-import { Button } from '@/shared/ui/button';
-import { BurgerIcon } from '@/shared/ui/burger-icon';
 
 const cnAppHeader = cn('AppHeader');
 

@@ -1,13 +1,14 @@
 import { NextRequest } from 'next/server';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
-import { roleUtils } from '@/entities/user';
 import { prepareDataUtils } from '@/features/tour/lib/prepare-data-utils';
-
 import { tourService } from '@/features/tour/services/tour-service';
-import { sessionUtils } from '@/entities/user/lib/session-utils';
-import { serverPhotoUtils } from '@/entities/photo/server';
+
 import { PhotoEntity } from '@/entities/photo/domain';
+import { serverPhotoUtils } from '@/entities/photo/server';
+import { roleUtils } from '@/entities/user';
+import { sessionUtils } from '@/entities/user/lib/session-utils';
+
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 export async function postTour(req: NextRequest): Promise<Response> {
   try {

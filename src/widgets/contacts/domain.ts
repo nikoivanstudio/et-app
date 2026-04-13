@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+
 import { PropsWithClassNames } from '@/shared/model/types';
 
 export type ContactsData = {

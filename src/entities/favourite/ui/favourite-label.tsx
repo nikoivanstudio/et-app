@@ -1,16 +1,17 @@
 'use client';
 
-import { FC, useEffect, useState } from 'react';
 import { cn } from '@bem-react/classname';
-import { isTourFavourite } from '@/entities/favourite/lib/helpers';
+import { FC, useEffect, useState } from 'react';
 
+import { isTourFavourite } from '@/entities/favourite/lib/helpers';
 import {
   addTourToFavourites,
   getFavouriteTours,
   removeFromFavourite
 } from '@/entities/favourite/services/client-service';
-import { PropsWithClassNames } from '@/shared/model/types';
 import { FavouriteLabelIcon } from '@/entities/favourite/ui/favourite-label-icon';
+
+import { PropsWithClassNames } from '@/shared/model/types';
 
 import styles from '../assets/styles.module.scss';
 

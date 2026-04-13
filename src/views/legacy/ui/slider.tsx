@@ -2,9 +2,9 @@
 
 import { FC, ReactNode } from 'react';
 
-import { ServerSlider } from '@/shared/ui/server-slider';
 import { LegacyTourCardData } from '@/shared/model/types';
 import { LegacyTourCard } from '@/shared/ui/legacy-tour-card';
+import { ServerSlider } from '@/shared/ui/server-slider';
 
 type Props = { tours: LegacyTourCardData[]; title: ReactNode };
 

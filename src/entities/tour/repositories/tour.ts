@@ -1,7 +1,11 @@
-import { dbClient } from '@/shared/lib/db';
-import { CreateTourData } from '@/features/tour/domain';
-import { PhotoDomain } from '@/entities/photo';
 import { Prisma, Tour } from 'generated/prisma/client';
+
+import { CreateTourData } from '@/features/tour/domain';
+
+import { PhotoDomain } from '@/entities/photo';
+
+import { dbClient } from '@/shared/lib/db';
+
 import { TourOmit } from '../../../../generated/prisma/models/Tour';
 import TourSelect = Prisma.TourSelect;
 

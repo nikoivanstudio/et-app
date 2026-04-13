@@ -1,16 +1,13 @@
 'use client';
 
 import { Separator } from '@radix-ui/react-select';
-
+import { Download } from 'lucide-react';
 import { FC } from 'react';
 
-import { DeleteFile } from '@/features/delete-files';
-
-import { FileListItem } from '../domain';
 import { Badge } from '@/shared/ui/badge';
 import { Button } from '@/shared/ui/button';
-import { Download } from 'lucide-react';
-import { id } from 'date-fns/locale';
+
+import { FileListItem } from '../domain';
 
 type Props = {
   file: FileListItem;

@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { FC } from 'react';
+
 import { UploadFileKind } from '../domain';
 
 type Props = {

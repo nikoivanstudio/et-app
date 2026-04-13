@@ -1,6 +1,8 @@
 import { FC } from 'react';
-import { ProfileLayout } from '@/views/profile/ui/profile-view-layout';
+
 import { UserDomain } from '@/entities/user';
+
+import { ProfileLayout } from '@/views/profile/ui/profile-view-layout';
 
 type ProfileViewProps = {
   user: UserDomain.UserEntity;

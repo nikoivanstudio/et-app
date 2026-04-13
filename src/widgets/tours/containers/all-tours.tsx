@@ -1,11 +1,12 @@
 'use server';
 
-import { FC } from 'react';
-import { ServerLayout } from '../ui/server-layout';
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
 
-import { ServerTourCardList } from '../ui/server-tour-card-list';
 import { tourService } from '@/features/tour/server';
+
+import { ServerLayout } from '../ui/server-layout';
+import { ServerTourCardList } from '../ui/server-tour-card-list';
 
 const cnAllTours = cn('AllTours');
 

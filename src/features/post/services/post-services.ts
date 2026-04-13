@@ -1,9 +1,12 @@
-import { GetPostsResponse } from '@/features/post/domain';
-import { PostDomain, postRepositories } from '@/entities/post/server';
-import { Either, left, right } from '@/shared/lib/either';
-import { PostUpdate } from '@/entities/post';
-import { PageMetaData } from '@/shared/model/types';
 import { Post, Prisma } from 'generated/prisma/client';
+
+import { GetPostsResponse } from '@/features/post/domain';
+
+import { PostUpdate } from '@/entities/post';
+import { PostDomain, postRepositories } from '@/entities/post/server';
+
+import { Either, left, right } from '@/shared/lib/either';
+import { PageMetaData } from '@/shared/model/types';
 
 const getPagesCount = async (where?: Prisma.PostWhereInput) => {
   const count = await postRepositories.getPostsCount(where);

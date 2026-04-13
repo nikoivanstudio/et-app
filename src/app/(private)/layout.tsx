@@ -1,10 +1,12 @@
-import { FC, PropsWithChildren } from 'react';
 import { redirect } from 'next/navigation';
+import { FC, PropsWithChildren } from 'react';
+
+import { sessionService } from '@/entities/user/services/session';
+
+import { cn } from '@/shared/lib/css';
+import { Button } from '@/shared/ui/button';
 
 import { routes } from '@/kernel/routes';
-import { sessionService } from '@/entities/user/services/session';
-import { Button } from '@/shared/ui/button';
-import { cn } from '@/shared/lib/css';
 
 const PrivateLayout: FC<PropsWithChildren> = async ({ children }) => {
   const { session } = await sessionService.verifySessionWithRedirect();

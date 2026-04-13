@@ -1,14 +1,15 @@
 'use client';
 
-import { FC, ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, ReactNode } from 'react';
+
+import { sendCallbackRequest } from '@/features/application-form/api/callback-api';
+import { initialFormData } from '@/features/application-form/constants/initial-form-data';
+import { ApplicationData } from '@/features/application-form/domain';
+import { applicationFormModel } from '@/features/application-form/model/form-model';
+import { applicationFormSchema } from '@/features/application-form/model/schema';
 
 import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
-import { initialFormData } from '@/features/application-form/constants/initial-form-data';
-import { applicationFormModel } from '@/features/application-form/model/form-model';
-import { ApplicationData } from '@/features/application-form/domain';
-import { applicationFormSchema } from '@/features/application-form/model/schema';
-import { sendCallbackRequest } from '@/features/application-form/api/callback-api';
 
 type Props = {
   triggerButton?: ReactNode;

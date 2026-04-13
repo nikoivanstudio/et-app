@@ -1,8 +1,9 @@
 'use client';
 
-import { ChangeEvent, FC, useRef, useState } from 'react';
-import { Input } from '@/shared/ui/input';
 import { cn } from '@bem-react/classname';
+import { ChangeEvent, FC, useRef, useState } from 'react';
+
+import { Input } from '@/shared/ui/input';
 
 type Props = {
   onSearch(value: string): Promise<void> | void;

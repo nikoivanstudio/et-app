@@ -1,4 +1,5 @@
 import { PostWhereInput } from '../../../../generated/prisma/models';
+
 import { postUtils } from './post-utils';
 
 describe('postUtils', () => {

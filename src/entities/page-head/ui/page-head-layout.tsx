@@ -1,11 +1,11 @@
 'use server';
 
-import { FC } from 'react';
+import '../styles/styles.scss';
+
 import { cn } from '@bem-react/classname';
+import { FC } from 'react';
 
 import { PageHeadProps } from '@/entities/page-head/model/types';
-
-import '../styles/styles.scss';
 
 const cnPageHead = cn('PageHead');
 

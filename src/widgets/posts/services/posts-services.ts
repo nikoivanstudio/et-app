@@ -1,8 +1,10 @@
 import { PostDomain, postRepositories } from '@/entities/post/server';
-import { postCardFields } from '../constants/request-constants';
-import { Prisma } from '../../../../generated/prisma/client';
-import { Either, left, right } from '@/shared/lib/either';
+
 import { dbQueryUtils } from '@/shared/lib/db-client-utils';
+import { Either, left, right } from '@/shared/lib/either';
+
+import { Prisma } from '../../../../generated/prisma/client';
+import { postCardFields } from '../constants/request-constants';
 
 type PaginatedPostCardsResponse = {
   list: PostDomain.PostCardEntity[];

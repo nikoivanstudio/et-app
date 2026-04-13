@@ -1,6 +1,8 @@
-import { dbClient } from '@/shared/lib/db';
-import { PostEntity, WithUser } from '@/entities/post/domain';
 import { Post, Prisma } from 'generated/prisma/client';
+
+import { PostEntity, WithUser } from '@/entities/post/domain';
+
+import { dbClient } from '@/shared/lib/db';
 import PostWhereInput = Prisma.PostWhereInput;
 
 const getPostsCount = (where?: Prisma.PostWhereInput) =>

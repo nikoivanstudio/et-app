@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import Image, { StaticImageData } from 'next/image';
+import { FC } from 'react';
 
 import styles from '@/shared/assets/styles.module.scss';
 import { cn } from '@/shared/lib/css';

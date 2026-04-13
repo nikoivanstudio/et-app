@@ -1,9 +1,10 @@
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
 import Image from 'next/image';
+import { FC } from 'react';
+
+import { PropsWithClassNames } from '@/shared/model/types';
 
 import mockAvaSrc from '@/views/profile/assets/images/mockAvatar.jpg';
-import { PropsWithClassNames } from '@/shared/model/types';
 
 type Props = {
   avatarPhoto?: string;

@@ -1,12 +1,17 @@
 'use client';
 
-import { FC } from 'react';
-import Image from 'next/image';
 import { BadgeRussianRuble, HeartIcon, UserPen, XCircle } from 'lucide-react';
+import Image from 'next/image';
+import { FC } from 'react';
+import { toast } from 'sonner';
 
+import TourFeature from '@/features/tour';
 import { useDeleteTour } from '@/features/tour/hooks/use-delete-tour';
-import { TourDomain } from '@/entities/tour/server';
+
 import { ConfirmDialog } from '@/entities/confirm-dialog';
+import { TourDomain } from '@/entities/tour/server';
+
+import { cn } from '@/shared/lib/css';
 import { Button } from '@/shared/ui/button';
 import {
   Card,
@@ -16,9 +21,6 @@ import {
   CardHeader,
   CardTitle
 } from '@/shared/ui/card';
-import { cn } from '@/shared/lib/css';
-import { toast } from 'sonner';
-import TourFeature from '@/features/tour';
 
 export const TourCard: FC<TourDomain.TourEntity> = props => {
   const { id, title, mainPhoto, content, rating, price } = props;

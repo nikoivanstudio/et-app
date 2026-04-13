@@ -1,11 +1,13 @@
-import { FC, PropsWithChildren, ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
-import { GeoPointIcon } from '@/shared/ui/GeoPointIcon';
+import { FC, PropsWithChildren, ReactNode } from 'react';
+
+import { GeoPointEntity } from '@/entities/geo-point/domain';
+import { getYandexGeoLink } from '@/entities/geo-point/lib/geo-point-utils';
 
 import { DEFAULT_YANDEX_GEO_LINK } from '@/shared/constants/geo-constants';
-import { GeoPointEntity } from '@/entities/geo-point/domain';
+import { GeoPointIcon } from '@/shared/ui/GeoPointIcon';
+
 import styles from '../assets/styles.module.scss';
-import { getYandexGeoLink } from '@/entities/geo-point/lib/geo-point-utils';
 
 export type GeoPointProps = {
   geoPoint?: GeoPointEntity;

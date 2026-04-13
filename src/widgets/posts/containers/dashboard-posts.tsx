@@ -2,12 +2,17 @@
 
 import { cn } from '@bem-react/classname';
 import { FC } from 'react';
-import { Layout } from '../ui/layout';
-import { Spinner } from '@/shared/ui/spinner';
+
+import { MigrationPosts } from '@/widgets/posts/ui/posts-migration';
+
 import { ExportPosts, PostFeatureList } from '@/features/post';
 import { FeaturePost } from '@/features/post/ui/feature-post';
-import { MigrationPosts } from '@/widgets/posts/ui/posts-migration';
+
 import { SessionDomain } from '@/entities/user/server';
+
+import { Spinner } from '@/shared/ui/spinner';
+
+import { Layout } from '../ui/layout';
 
 const cnDashboardPosts = cn('DashboardPosts');
 

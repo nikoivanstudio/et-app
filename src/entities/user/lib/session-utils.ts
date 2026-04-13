@@ -1,5 +1,5 @@
-import { sessionService } from '@/entities/user/services/session';
 import { SessionEntity } from '@/entities/user/domain';
+import { sessionService } from '@/entities/user/services/session';
 
 const getSession = async (cookies?: string): Promise<SessionEntity> => {
   if (!cookies) {

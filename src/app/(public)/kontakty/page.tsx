@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { ContactsView } from '@/views/contacts/server';
 
 export const dynamic = 'force-static';

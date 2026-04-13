@@ -1,5 +1,5 @@
-import { DraftCreateTourData } from '@/features/tour/domain';
 import { createTourSchemas } from '@/features/tour';
+import { DraftCreateTourData } from '@/features/tour/domain';
 
 export const isCreateTourData = (
   value: unknown

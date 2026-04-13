@@ -1,8 +1,8 @@
-import { FC } from 'react';
 import Link from 'next/link';
+import { FC } from 'react';
 
-import { VseTury } from '../ui/vse-tury';
 import { firstPage } from '../constants/tours';
+import { VseTury } from '../ui/vse-tury';
 
 export const VseTuryFirst: FC = () => (
   <VseTury tours={firstPage}>

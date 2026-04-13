@@ -2,11 +2,13 @@
 
 import { cn } from '@bem-react/classname';
 import { FC } from 'react';
-import { ActivitiesLayout } from '@/widgets/activities/ui/activities-layout';
+
 import { getActivitiesDates } from '@/widgets/activities/lib/dates-helpers';
 import { getUpcomingActivities } from '@/widgets/activities/services/get-upcoming-activities';
-import { ActivityCard } from '@/entities/activity/server';
+import { ActivitiesLayout } from '@/widgets/activities/ui/activities-layout';
 import { Months } from '@/widgets/activities/ui/months';
+
+import { ActivityCard } from '@/entities/activity/server';
 
 import styles from '../assets/styles.module.scss';
 

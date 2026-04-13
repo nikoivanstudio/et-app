@@ -1,9 +1,12 @@
 import { NextRequest } from 'next/server';
+
+import { GetToursResponse } from '@/features/tour/domain';
 import { tourService } from '@/features/tour/services/tour-service';
+
 import { sessionService } from '@/entities/user/server';
+
 import { Either } from '@/shared/lib/either';
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
-import { GetToursResponse } from '@/features/tour/domain';
 
 export async function getUserTours(req: NextRequest): Promise<Response> {
   try {

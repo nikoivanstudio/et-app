@@ -1,5 +1,5 @@
+import { Heading, Html, Section, Text } from '@react-email/components';
 import * as React from 'react';
-import { Html, Heading, Section, Text } from '@react-email/components';
 
 export function CallbackEmail({
   name,

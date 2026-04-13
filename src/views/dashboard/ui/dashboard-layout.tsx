@@ -1,6 +1,8 @@
-import { FC, PropsWithChildren } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, PropsWithChildren } from 'react';
+
 import { DashboardHeader } from '@/widgets/app-header/server';
+
 import { PropsWithClassNames } from '@/shared/model/types';
 
 const cnDashboardView = cn('DashboardView');

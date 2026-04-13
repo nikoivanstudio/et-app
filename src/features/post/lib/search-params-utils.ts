@@ -1,6 +1,7 @@
+import { postUtils } from '@/entities/post/lib/post-utils';
+
 import { dbQueryUtils, PageParams } from '@/shared/lib/db-client-utils';
 
-import { postUtils } from '@/entities/post/lib/post-utils';
 import { Prisma } from '../../../../generated/prisma/client';
 
 type ParamsFns = {

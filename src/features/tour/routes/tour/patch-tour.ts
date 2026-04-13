@@ -1,16 +1,17 @@
 import { NextRequest } from 'next/server';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
-import { roleUtils } from '@/entities/user';
-import { prepareDataUtils } from '@/features/tour/lib/prepare-data-utils';
-
-import { tourService } from '@/features/tour/services/tour-service';
-import { sessionUtils } from '@/entities/user/lib/session-utils';
-import { serverPhotoUtils } from '@/entities/photo/server';
-import { patchTourSchema } from '@/features/tour/lib/schemas/create-tour-schemas';
-import { Role } from '@/entities/user/domain';
 import { CreateTourData } from '@/features/tour/domain';
+import { prepareDataUtils } from '@/features/tour/lib/prepare-data-utils';
+import { patchTourSchema } from '@/features/tour/lib/schemas/create-tour-schemas';
+import { tourService } from '@/features/tour/services/tour-service';
+
 import { PhotoDomain } from '@/entities/photo';
+import { serverPhotoUtils } from '@/entities/photo/server';
+import { roleUtils } from '@/entities/user';
+import { Role } from '@/entities/user/domain';
+import { sessionUtils } from '@/entities/user/lib/session-utils';
+
+import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 export async function patchTour(req: NextRequest): Promise<Response> {
   try {

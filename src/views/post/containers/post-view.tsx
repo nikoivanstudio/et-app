@@ -1,10 +1,12 @@
 'use server';
 
 import { FC } from 'react';
-import { PostMain } from '@/views/post/ui/post-main';
+
+import { PostDomain } from '@/entities/post/server';
 
 import { Either } from '@/shared/lib/either';
-import { PostDomain } from '@/entities/post/server';
+
+import { PostMain } from '@/views/post/ui/post-main';
 
 type Props = {
   either: Either<string, PostDomain.PostEntity>;

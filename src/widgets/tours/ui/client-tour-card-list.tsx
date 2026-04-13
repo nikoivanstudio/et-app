@@ -1,9 +1,11 @@
 'use client';
 
-import { FC } from 'react';
 import { cn } from '@bem-react/classname';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { FC } from 'react';
+
 import { getTourCards } from '@/widgets/tours/api/tour-cards';
+
 import { TourCardEntity } from '@/features/tour';
 
 const cnClientTourCardList = cn('ClientTourCardList');

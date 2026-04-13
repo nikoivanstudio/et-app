@@ -1,7 +1,7 @@
 'use server';
 
-import { FC, ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
+import { FC, ReactNode } from 'react';
 
 type LayoutProps = {
   mainHead: ReactNode;

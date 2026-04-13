@@ -1,7 +1,7 @@
 'use client';
 
-import Script from 'next/script';
 import { usePathname } from 'next/navigation';
+import Script from 'next/script';
 import { FC, useEffect, useRef } from 'react';
 
 const isDev = process.env.NODE_ENV === 'development';

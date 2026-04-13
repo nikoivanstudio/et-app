@@ -1,18 +1,20 @@
 'use server';
 
-import { FC } from 'react';
 import { cn as cnBem } from '@bem-react/classname';
+import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
+
+import { ServerDurationLabel } from '@/entities/duration/ui/server-duration-label';
 import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
-import { TextContent } from '@/shared/ui/text-content';
-import { cn } from '@/shared/lib/css';
+import { PostDomain } from '@/entities/post/server';
 
 import styles from '@/shared/assets/styles.module.scss';
-import { PostDomain } from '@/entities/post/server';
-import { PageHeadPost } from '@/views/post/ui/page-head-post';
+import { cn } from '@/shared/lib/css';
 import { BadgePrice } from '@/shared/ui/badge-price';
-import { ServerDurationLabel } from '@/entities/duration/ui/server-duration-label';
+import { TextContent } from '@/shared/ui/text-content';
+
+import { PageHeadPost } from '@/views/post/ui/page-head-post';
 
 const cnPagePost = cnBem('PagePost');
 

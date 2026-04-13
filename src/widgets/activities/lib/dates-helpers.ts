@@ -1,5 +1,6 @@
-import { ActivityEntity } from '@/entities/activity/domain';
 import { ActivityDate } from '@/widgets/activities/domain';
+
+import { ActivityEntity } from '@/entities/activity/domain';
 
 export function getActivitiesDates(
   activities: ActivityEntity[]
