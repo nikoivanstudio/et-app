@@ -1,0 +1,28 @@
+model Tour {
+  id              Int        @id @default(autoincrement())
+  title           String     @db.VarChar(180)
+  description     String
+  mainPhotoId     Int        @map("main_photo_id")
+  price           Int
+  duration        Int
+  content         String     @map("content")
+  slug            String     @unique
+  categories      String[]
+  authorId        Int        @map("author_id")
+  author          User       @relation(fields: [authorId], references: [id])
+  reviews         Review[]
+  activities      Activity[]
+  orders          Order[]
+  photos          Photo[]
+  status          String?
+  metaTitle       String?    @map("meta_title")
+  metaDescription String?    @map("meta_description")
+  metaKeywords    String[]   @map("meta_keywords")
+  createdAt       DateTime   @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt       DateTime?  @updatedAt @map("updated_at") @db.Timestamp()
+  rating          Float?
+  descriptionText String?    @map("description_text")
+  startPlace      Json?      @map("start_place")
+
+  @@map("tour")
+}

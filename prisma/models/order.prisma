@@ -1,0 +1,17 @@
+model Order {
+  id          Int          @id @default(autoincrement())
+  userId      Int          @map("user_id")
+  user        User         @relation(fields: [userId], references: [id])
+  amount      Int
+  status      String       @db.VarChar(80)
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt   DateTime?    @updatedAt @map("updated_at") @db.Timestamp()
+  places      Int?
+  tourId      Int?         @map("tour_id")
+  tour        Tour?        @relation(fields: [tourId], references: [id])
+  activityId  Int?         @map("activity_id")
+  activity    Activity?    @relation(fields: [activityId], references: [id])
+  transaction Transaction?
+
+  @@map("order")
+}

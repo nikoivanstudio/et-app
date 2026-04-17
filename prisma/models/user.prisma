@@ -1,0 +1,25 @@
+model User {
+  id            Int           @id @default(autoincrement())
+  login         String        @unique
+  passwordHash  String        @map("password_hash")
+  salt          String        @db.VarChar(800)
+  role          String        @db.VarChar(80)
+  phone         String?       @db.VarChar(80)
+  firstName     String?       @map("first_name")
+  lastName      String?       @map("last_name")
+  createdAt     DateTime      @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt     DateTime?     @updatedAt @map("updated_at") @db.Timestamp()
+  avatarPhotoId Int?          @map("avatar_photo_id")
+  email         String?
+  rating        Float?
+  posts         Post[]
+  tours         Tour[]
+  reviews       Review[]
+  activities    Activity[]
+  transactions  Transaction[]
+  orders        Order[]
+  photos        Photo[]
+  files         File[]
+
+  @@map("user")
+}

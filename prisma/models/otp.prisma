@@ -1,0 +1,9 @@
+model Otp {
+  id        Int      @id @default(autoincrement())
+  email     String   @db.VarChar(256)
+  tel       String   @db.VarChar(80)
+  createdAt DateTime @default(now()) @map("created_at")
+  code      String   @db.VarChar(12)
+
+  @@map("otp")
+}

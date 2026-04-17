@@ -5,5 +5,7 @@
     "source.organizeImports": "never"
   },
   "typescript.suggest.autoImports": true,
-  "javascript.suggest.autoImports": true
+  "javascript.suggest.autoImports": true,
+  "WillLuke.nextjs.addTypesOnSave": true,
+  "WillLuke.nextjs.hasPrompted": true
 }

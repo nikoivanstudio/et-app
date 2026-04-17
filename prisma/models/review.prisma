@@ -1,0 +1,14 @@
+model Review {
+  id            Int       @id @default(autoincrement())
+  content       String
+  estimation    Json
+  estimateValue Int       @map("estimate_value")
+  authorId      Int       @map("author_id")
+  tourId        Int       @map("tour_id")
+  user          User      @relation(fields: [authorId], references: [id])
+  tour          Tour      @relation(fields: [tourId], references: [id])
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt     DateTime? @updatedAt @map("updated_at") @db.Timestamp()
+
+  @@map("review")
+}

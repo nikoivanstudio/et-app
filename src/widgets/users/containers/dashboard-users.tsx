@@ -3,6 +3,7 @@
 import { cn } from '@bem-react/classname';
 import { FC } from 'react';
 
+import { EditUserFeature } from '@/features/edit-user';
 import { UserFeatureList } from '@/features/user/';
 
 import { SessionDomain } from '@/entities/user/server';
@@ -27,7 +28,14 @@ export const DashboardUsers: FC<{ session: SessionDomain.SessionEntity }> = ({
       <WidgetLayout
         className={cnDashboardUsers()}
         title={null}
-        list={<UserFeatureList session={session} />}
+        list={
+          <UserFeatureList
+            session={session}
+            renderEditAction={({ user }) =>
+              session.role === 'SUPER_ADMIN' ? <EditUserFeature user={user} /> : null
+            }
+          />
+        }
         actions={<div>Создать пользователя</div>}
       />
     </>

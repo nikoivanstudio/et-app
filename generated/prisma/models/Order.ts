@@ -492,45 +492,45 @@ export type OrderScalarRelationFilter = {
   isNot?: Prisma.OrderWhereInput
 }
 
-export type OrderCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput> | Prisma.OrderCreateWithoutUserInput[] | Prisma.OrderUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutUserInput | Prisma.OrderCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.OrderCreateManyUserInputEnvelope
+export type OrderCreateNestedManyWithoutActivityInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput> | Prisma.OrderCreateWithoutActivityInput[] | Prisma.OrderUncheckedCreateWithoutActivityInput[]
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutActivityInput | Prisma.OrderCreateOrConnectWithoutActivityInput[]
+  createMany?: Prisma.OrderCreateManyActivityInputEnvelope
   connect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
 }
 
-export type OrderUncheckedCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput> | Prisma.OrderCreateWithoutUserInput[] | Prisma.OrderUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutUserInput | Prisma.OrderCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.OrderCreateManyUserInputEnvelope
+export type OrderUncheckedCreateNestedManyWithoutActivityInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput> | Prisma.OrderCreateWithoutActivityInput[] | Prisma.OrderUncheckedCreateWithoutActivityInput[]
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutActivityInput | Prisma.OrderCreateOrConnectWithoutActivityInput[]
+  createMany?: Prisma.OrderCreateManyActivityInputEnvelope
   connect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
 }
 
-export type OrderUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput> | Prisma.OrderCreateWithoutUserInput[] | Prisma.OrderUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutUserInput | Prisma.OrderCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.OrderUpsertWithWhereUniqueWithoutUserInput | Prisma.OrderUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.OrderCreateManyUserInputEnvelope
+export type OrderUpdateManyWithoutActivityNestedInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput> | Prisma.OrderCreateWithoutActivityInput[] | Prisma.OrderUncheckedCreateWithoutActivityInput[]
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutActivityInput | Prisma.OrderCreateOrConnectWithoutActivityInput[]
+  upsert?: Prisma.OrderUpsertWithWhereUniqueWithoutActivityInput | Prisma.OrderUpsertWithWhereUniqueWithoutActivityInput[]
+  createMany?: Prisma.OrderCreateManyActivityInputEnvelope
   set?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   disconnect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   delete?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   connect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
-  update?: Prisma.OrderUpdateWithWhereUniqueWithoutUserInput | Prisma.OrderUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.OrderUpdateManyWithWhereWithoutUserInput | Prisma.OrderUpdateManyWithWhereWithoutUserInput[]
+  update?: Prisma.OrderUpdateWithWhereUniqueWithoutActivityInput | Prisma.OrderUpdateWithWhereUniqueWithoutActivityInput[]
+  updateMany?: Prisma.OrderUpdateManyWithWhereWithoutActivityInput | Prisma.OrderUpdateManyWithWhereWithoutActivityInput[]
   deleteMany?: Prisma.OrderScalarWhereInput | Prisma.OrderScalarWhereInput[]
 }
 
-export type OrderUncheckedUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput> | Prisma.OrderCreateWithoutUserInput[] | Prisma.OrderUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutUserInput | Prisma.OrderCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.OrderUpsertWithWhereUniqueWithoutUserInput | Prisma.OrderUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.OrderCreateManyUserInputEnvelope
+export type OrderUncheckedUpdateManyWithoutActivityNestedInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput> | Prisma.OrderCreateWithoutActivityInput[] | Prisma.OrderUncheckedCreateWithoutActivityInput[]
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutActivityInput | Prisma.OrderCreateOrConnectWithoutActivityInput[]
+  upsert?: Prisma.OrderUpsertWithWhereUniqueWithoutActivityInput | Prisma.OrderUpsertWithWhereUniqueWithoutActivityInput[]
+  createMany?: Prisma.OrderCreateManyActivityInputEnvelope
   set?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   disconnect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   delete?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   connect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
-  update?: Prisma.OrderUpdateWithWhereUniqueWithoutUserInput | Prisma.OrderUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.OrderUpdateManyWithWhereWithoutUserInput | Prisma.OrderUpdateManyWithWhereWithoutUserInput[]
+  update?: Prisma.OrderUpdateWithWhereUniqueWithoutActivityInput | Prisma.OrderUpdateWithWhereUniqueWithoutActivityInput[]
+  updateMany?: Prisma.OrderUpdateManyWithWhereWithoutActivityInput | Prisma.OrderUpdateManyWithWhereWithoutActivityInput[]
   deleteMany?: Prisma.OrderScalarWhereInput | Prisma.OrderScalarWhereInput[]
 }
 
@@ -590,95 +590,95 @@ export type OrderUpdateOneRequiredWithoutTransactionNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutTransactionInput, Prisma.OrderUpdateWithoutTransactionInput>, Prisma.OrderUncheckedUpdateWithoutTransactionInput>
 }
 
-export type OrderCreateNestedManyWithoutActivityInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput> | Prisma.OrderCreateWithoutActivityInput[] | Prisma.OrderUncheckedCreateWithoutActivityInput[]
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutActivityInput | Prisma.OrderCreateOrConnectWithoutActivityInput[]
-  createMany?: Prisma.OrderCreateManyActivityInputEnvelope
+export type OrderCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput> | Prisma.OrderCreateWithoutUserInput[] | Prisma.OrderUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutUserInput | Prisma.OrderCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.OrderCreateManyUserInputEnvelope
   connect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
 }
 
-export type OrderUncheckedCreateNestedManyWithoutActivityInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput> | Prisma.OrderCreateWithoutActivityInput[] | Prisma.OrderUncheckedCreateWithoutActivityInput[]
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutActivityInput | Prisma.OrderCreateOrConnectWithoutActivityInput[]
-  createMany?: Prisma.OrderCreateManyActivityInputEnvelope
+export type OrderUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput> | Prisma.OrderCreateWithoutUserInput[] | Prisma.OrderUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutUserInput | Prisma.OrderCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.OrderCreateManyUserInputEnvelope
   connect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
 }
 
-export type OrderUpdateManyWithoutActivityNestedInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput> | Prisma.OrderCreateWithoutActivityInput[] | Prisma.OrderUncheckedCreateWithoutActivityInput[]
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutActivityInput | Prisma.OrderCreateOrConnectWithoutActivityInput[]
-  upsert?: Prisma.OrderUpsertWithWhereUniqueWithoutActivityInput | Prisma.OrderUpsertWithWhereUniqueWithoutActivityInput[]
-  createMany?: Prisma.OrderCreateManyActivityInputEnvelope
+export type OrderUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput> | Prisma.OrderCreateWithoutUserInput[] | Prisma.OrderUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutUserInput | Prisma.OrderCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.OrderUpsertWithWhereUniqueWithoutUserInput | Prisma.OrderUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.OrderCreateManyUserInputEnvelope
   set?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   disconnect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   delete?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   connect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
-  update?: Prisma.OrderUpdateWithWhereUniqueWithoutActivityInput | Prisma.OrderUpdateWithWhereUniqueWithoutActivityInput[]
-  updateMany?: Prisma.OrderUpdateManyWithWhereWithoutActivityInput | Prisma.OrderUpdateManyWithWhereWithoutActivityInput[]
+  update?: Prisma.OrderUpdateWithWhereUniqueWithoutUserInput | Prisma.OrderUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.OrderUpdateManyWithWhereWithoutUserInput | Prisma.OrderUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.OrderScalarWhereInput | Prisma.OrderScalarWhereInput[]
 }
 
-export type OrderUncheckedUpdateManyWithoutActivityNestedInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput> | Prisma.OrderCreateWithoutActivityInput[] | Prisma.OrderUncheckedCreateWithoutActivityInput[]
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutActivityInput | Prisma.OrderCreateOrConnectWithoutActivityInput[]
-  upsert?: Prisma.OrderUpsertWithWhereUniqueWithoutActivityInput | Prisma.OrderUpsertWithWhereUniqueWithoutActivityInput[]
-  createMany?: Prisma.OrderCreateManyActivityInputEnvelope
+export type OrderUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput> | Prisma.OrderCreateWithoutUserInput[] | Prisma.OrderUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutUserInput | Prisma.OrderCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.OrderUpsertWithWhereUniqueWithoutUserInput | Prisma.OrderUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.OrderCreateManyUserInputEnvelope
   set?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   disconnect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   delete?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
   connect?: Prisma.OrderWhereUniqueInput | Prisma.OrderWhereUniqueInput[]
-  update?: Prisma.OrderUpdateWithWhereUniqueWithoutActivityInput | Prisma.OrderUpdateWithWhereUniqueWithoutActivityInput[]
-  updateMany?: Prisma.OrderUpdateManyWithWhereWithoutActivityInput | Prisma.OrderUpdateManyWithWhereWithoutActivityInput[]
+  update?: Prisma.OrderUpdateWithWhereUniqueWithoutUserInput | Prisma.OrderUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.OrderUpdateManyWithWhereWithoutUserInput | Prisma.OrderUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.OrderScalarWhereInput | Prisma.OrderScalarWhereInput[]
 }
 
-export type OrderCreateWithoutUserInput = {
+export type OrderCreateWithoutActivityInput = {
   amount: number
   status: string
   createdAt?: Date | string
   updatedAt?: Date | string | null
   places?: number | null
+  user: Prisma.UserCreateNestedOneWithoutOrdersInput
   tour?: Prisma.TourCreateNestedOneWithoutOrdersInput
-  activity?: Prisma.ActivityCreateNestedOneWithoutOrdersInput
   transaction?: Prisma.TransactionCreateNestedOneWithoutOrderInput
 }
 
-export type OrderUncheckedCreateWithoutUserInput = {
+export type OrderUncheckedCreateWithoutActivityInput = {
   id?: number
+  userId: number
   amount: number
   status: string
   createdAt?: Date | string
   updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
-  activityId?: number | null
   transaction?: Prisma.TransactionUncheckedCreateNestedOneWithoutOrderInput
 }
 
-export type OrderCreateOrConnectWithoutUserInput = {
+export type OrderCreateOrConnectWithoutActivityInput = {
   where: Prisma.OrderWhereUniqueInput
-  create: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput>
+  create: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput>
 }
 
-export type OrderCreateManyUserInputEnvelope = {
-  data: Prisma.OrderCreateManyUserInput | Prisma.OrderCreateManyUserInput[]
+export type OrderCreateManyActivityInputEnvelope = {
+  data: Prisma.OrderCreateManyActivityInput | Prisma.OrderCreateManyActivityInput[]
   skipDuplicates?: boolean
 }
 
-export type OrderUpsertWithWhereUniqueWithoutUserInput = {
+export type OrderUpsertWithWhereUniqueWithoutActivityInput = {
   where: Prisma.OrderWhereUniqueInput
-  update: Prisma.XOR<Prisma.OrderUpdateWithoutUserInput, Prisma.OrderUncheckedUpdateWithoutUserInput>
-  create: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput>
+  update: Prisma.XOR<Prisma.OrderUpdateWithoutActivityInput, Prisma.OrderUncheckedUpdateWithoutActivityInput>
+  create: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput>
 }
 
-export type OrderUpdateWithWhereUniqueWithoutUserInput = {
+export type OrderUpdateWithWhereUniqueWithoutActivityInput = {
   where: Prisma.OrderWhereUniqueInput
-  data: Prisma.XOR<Prisma.OrderUpdateWithoutUserInput, Prisma.OrderUncheckedUpdateWithoutUserInput>
+  data: Prisma.XOR<Prisma.OrderUpdateWithoutActivityInput, Prisma.OrderUncheckedUpdateWithoutActivityInput>
 }
 
-export type OrderUpdateManyWithWhereWithoutUserInput = {
+export type OrderUpdateManyWithWhereWithoutActivityInput = {
   where: Prisma.OrderScalarWhereInput
-  data: Prisma.XOR<Prisma.OrderUpdateManyMutationInput, Prisma.OrderUncheckedUpdateManyWithoutUserInput>
+  data: Prisma.XOR<Prisma.OrderUpdateManyMutationInput, Prisma.OrderUncheckedUpdateManyWithoutActivityInput>
 }
 
 export type OrderScalarWhereInput = {
@@ -807,56 +807,18 @@ export type OrderUncheckedUpdateWithoutTransactionInput = {
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
-export type OrderCreateWithoutActivityInput = {
+export type OrderCreateWithoutUserInput = {
   amount: number
   status: string
   createdAt?: Date | string
   updatedAt?: Date | string | null
   places?: number | null
-  user: Prisma.UserCreateNestedOneWithoutOrdersInput
   tour?: Prisma.TourCreateNestedOneWithoutOrdersInput
+  activity?: Prisma.ActivityCreateNestedOneWithoutOrdersInput
   transaction?: Prisma.TransactionCreateNestedOneWithoutOrderInput
 }
 
-export type OrderUncheckedCreateWithoutActivityInput = {
-  id?: number
-  userId: number
-  amount: number
-  status: string
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  places?: number | null
-  tourId?: number | null
-  transaction?: Prisma.TransactionUncheckedCreateNestedOneWithoutOrderInput
-}
-
-export type OrderCreateOrConnectWithoutActivityInput = {
-  where: Prisma.OrderWhereUniqueInput
-  create: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput>
-}
-
-export type OrderCreateManyActivityInputEnvelope = {
-  data: Prisma.OrderCreateManyActivityInput | Prisma.OrderCreateManyActivityInput[]
-  skipDuplicates?: boolean
-}
-
-export type OrderUpsertWithWhereUniqueWithoutActivityInput = {
-  where: Prisma.OrderWhereUniqueInput
-  update: Prisma.XOR<Prisma.OrderUpdateWithoutActivityInput, Prisma.OrderUncheckedUpdateWithoutActivityInput>
-  create: Prisma.XOR<Prisma.OrderCreateWithoutActivityInput, Prisma.OrderUncheckedCreateWithoutActivityInput>
-}
-
-export type OrderUpdateWithWhereUniqueWithoutActivityInput = {
-  where: Prisma.OrderWhereUniqueInput
-  data: Prisma.XOR<Prisma.OrderUpdateWithoutActivityInput, Prisma.OrderUncheckedUpdateWithoutActivityInput>
-}
-
-export type OrderUpdateManyWithWhereWithoutActivityInput = {
-  where: Prisma.OrderScalarWhereInput
-  data: Prisma.XOR<Prisma.OrderUpdateManyMutationInput, Prisma.OrderUncheckedUpdateManyWithoutActivityInput>
-}
-
-export type OrderCreateManyUserInput = {
+export type OrderUncheckedCreateWithoutUserInput = {
   id?: number
   amount: number
   status: string
@@ -865,40 +827,78 @@ export type OrderCreateManyUserInput = {
   places?: number | null
   tourId?: number | null
   activityId?: number | null
+  transaction?: Prisma.TransactionUncheckedCreateNestedOneWithoutOrderInput
 }
 
-export type OrderUpdateWithoutUserInput = {
+export type OrderCreateOrConnectWithoutUserInput = {
+  where: Prisma.OrderWhereUniqueInput
+  create: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput>
+}
+
+export type OrderCreateManyUserInputEnvelope = {
+  data: Prisma.OrderCreateManyUserInput | Prisma.OrderCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type OrderUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.OrderWhereUniqueInput
+  update: Prisma.XOR<Prisma.OrderUpdateWithoutUserInput, Prisma.OrderUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.OrderCreateWithoutUserInput, Prisma.OrderUncheckedCreateWithoutUserInput>
+}
+
+export type OrderUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.OrderWhereUniqueInput
+  data: Prisma.XOR<Prisma.OrderUpdateWithoutUserInput, Prisma.OrderUncheckedUpdateWithoutUserInput>
+}
+
+export type OrderUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.OrderScalarWhereInput
+  data: Prisma.XOR<Prisma.OrderUpdateManyMutationInput, Prisma.OrderUncheckedUpdateManyWithoutUserInput>
+}
+
+export type OrderCreateManyActivityInput = {
+  id?: number
+  userId: number
+  amount: number
+  status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  places?: number | null
+  tourId?: number | null
+}
+
+export type OrderUpdateWithoutActivityInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
   tour?: Prisma.TourUpdateOneWithoutOrdersNestedInput
-  activity?: Prisma.ActivityUpdateOneWithoutOrdersNestedInput
   transaction?: Prisma.TransactionUpdateOneWithoutOrderNestedInput
 }
 
-export type OrderUncheckedUpdateWithoutUserInput = {
+export type OrderUncheckedUpdateWithoutActivityInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transaction?: Prisma.TransactionUncheckedUpdateOneWithoutOrderNestedInput
 }
 
-export type OrderUncheckedUpdateManyWithoutUserInput = {
+export type OrderUncheckedUpdateManyWithoutActivityInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type OrderCreateManyTourInput = {
@@ -946,49 +946,49 @@ export type OrderUncheckedUpdateManyWithoutTourInput = {
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
-export type OrderCreateManyActivityInput = {
+export type OrderCreateManyUserInput = {
   id?: number
-  userId: number
   amount: number
   status: string
   createdAt?: Date | string
   updatedAt?: Date | string | null
   places?: number | null
   tourId?: number | null
+  activityId?: number | null
 }
 
-export type OrderUpdateWithoutActivityInput = {
+export type OrderUpdateWithoutUserInput = {
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  user?: Prisma.UserUpdateOneRequiredWithoutOrdersNestedInput
   tour?: Prisma.TourUpdateOneWithoutOrdersNestedInput
+  activity?: Prisma.ActivityUpdateOneWithoutOrdersNestedInput
   transaction?: Prisma.TransactionUpdateOneWithoutOrderNestedInput
 }
 
-export type OrderUncheckedUpdateWithoutActivityInput = {
+export type OrderUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   transaction?: Prisma.TransactionUncheckedUpdateOneWithoutOrderNestedInput
 }
 
-export type OrderUncheckedUpdateManyWithoutActivityInput = {
+export type OrderUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  userId?: Prisma.IntFieldUpdateOperationsInput | number
   amount?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   places?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 

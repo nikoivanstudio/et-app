@@ -1,7 +1,7 @@
 'use client';
 
 import { Loader2, Mail, Phone, Star, Trash2, User } from 'lucide-react';
-import { FC, useTransition } from 'react';
+import { FC, ReactNode, useTransition } from 'react';
 
 import { ConfirmDialog } from '@/entities/confirm-dialog';
 
@@ -19,6 +19,7 @@ import { Separator } from '@/shared/ui/separator';
 
 type Props = {
   onDelete(id: number): void;
+  editAction?: ReactNode;
   user: Omit<
     {
       id: number;
@@ -37,7 +38,7 @@ type Props = {
   >;
 };
 
-export const UserCard: FC<Props> = ({ user, onDelete }) => {
+export const UserCard: FC<Props> = ({ user, onDelete, editAction }) => {
   const [isPending] = useTransition();
 
   const handleDelete = async () => {
@@ -96,7 +97,8 @@ export const UserCard: FC<Props> = ({ user, onDelete }) => {
         </div>
       </CardContent>
 
-      <CardFooter className='pt-2'>
+      <CardFooter className='pt-2 flex gap-2'>
+        {editAction}
         <div>
           <ConfirmDialog
             triggger={
@@ -112,10 +114,7 @@ export const UserCard: FC<Props> = ({ user, onDelete }) => {
                     Удаление...
                   </>
                 ) : (
-                  <>
-                    <Trash2 className='mr-2 h-4 w-4' />
-                    Удалить пользователя
-                  </>
+                  <Trash2 className='mr-2 h-4 w-4' />
                 )}
               </Button>
             }

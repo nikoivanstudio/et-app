@@ -1,0 +1,10 @@
+model Transaction {
+  id       Int   @id @default(autoincrement())
+  authorId Int   @map("author_id")
+  author   User  @relation(fields: [authorId], references: [id])
+  amount   Int
+  orderId  Int   @unique
+  order    Order @relation(fields: [orderId], references: [id])
+
+  @@map("transaction")
+}

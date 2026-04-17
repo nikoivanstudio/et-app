@@ -21,6 +21,11 @@ export const ProfileLayout: FC<{ id: number; role: string }> = ({
   const dashboardLabel =
     role === 'SUPER_ADMIN' ? 'Открыть панель управления' : 'Мои предложения';
 
+  console.log({
+    role,
+    hasPermissions: permissionsServices.userHasPermissionsToDashboard(role)
+  });
+
   return (
     <main className={cnProfileView(null, ['px-4', 'pt-[15vh]'])}>
       <h1 className='text-center'>Профиль</h1>
@@ -34,6 +39,7 @@ export const ProfileLayout: FC<{ id: number; role: string }> = ({
           </Button>
         </div>
       )}
+
       {/*<div className='mt-4'>*/}
       {/*  <form*/}
       {/*    className='text-center'*/}

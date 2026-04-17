@@ -10,9 +10,9 @@ export const updateUser = async (
 ): Promise<Either<string, WithoutNull<UserEntity>>> => {
   const updatedUser = await userRepository.updateUser(user);
 
-  if (updatedUser) {
+  if (!updatedUser) {
     return left('Ошибка обновления данных пользователя');
   }
 
-  return right(user) as Right<WithoutNull<UserEntity>>;
+  return right(updatedUser) as Right<WithoutNull<UserEntity>>;
 };

@@ -8,14 +8,14 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/User'
-export type * from './models/Otp'
-export type * from './models/Post'
-export type * from './models/Review'
-export type * from './models/Photo'
-export type * from './models/Tour'
-export type * from './models/Order'
-export type * from './models/Transaction'
 export type * from './models/Activity'
 export type * from './models/File'
+export type * from './models/Order'
+export type * from './models/Otp'
+export type * from './models/Photo'
+export type * from './models/Post'
+export type * from './models/Review'
+export type * from './models/Tour'
+export type * from './models/Transaction'
+export type * from './models/User'
 export type * from './commonInputTypes'

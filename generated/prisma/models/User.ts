@@ -530,6 +530,11 @@ export type UserUncheckedUpdateManyInput = {
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
+export type UserScalarRelationFilter = {
+  is?: Prisma.UserWhereInput
+  isNot?: Prisma.UserWhereInput
+}
+
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   login?: Prisma.SortOrder
@@ -590,49 +595,60 @@ export type UserSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
 }
 
-export type UserScalarRelationFilter = {
-  is?: Prisma.UserWhereInput
-  isNot?: Prisma.UserWhereInput
+export type UserCreateNestedOneWithoutActivitiesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutActivitiesInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type UserUpdateOneRequiredWithoutActivitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutActivitiesInput
+  upsert?: Prisma.UserUpsertWithoutActivitiesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutActivitiesInput, Prisma.UserUpdateWithoutActivitiesInput>, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
+export type UserCreateNestedOneWithoutFilesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFilesInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type UserUpdateOneRequiredWithoutFilesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFilesInput
+  upsert?: Prisma.UserUpsertWithoutFilesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFilesInput, Prisma.UserUpdateWithoutFilesInput>, Prisma.UserUncheckedUpdateWithoutFilesInput>
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
+export type UserCreateNestedOneWithoutOrdersInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOrdersInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOrdersInput
+  upsert?: Prisma.UserUpsertWithoutOrdersInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOrdersInput, Prisma.UserUpdateWithoutOrdersInput>, Prisma.UserUncheckedUpdateWithoutOrdersInput>
 }
 
-export type NullableFloatFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type UserCreateNestedOneWithoutPhotosInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhotosInput
+  connect?: Prisma.UserWhereUniqueInput
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type UserUpdateOneRequiredWithoutPhotosNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhotosInput
+  upsert?: Prisma.UserUpsertWithoutPhotosInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPhotosInput, Prisma.UserUpdateWithoutPhotosInput>, Prisma.UserUncheckedUpdateWithoutPhotosInput>
 }
 
 export type UserCreateNestedOneWithoutPostsInput = {
@@ -663,20 +679,6 @@ export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReviewsInput, Prisma.UserUpdateWithoutReviewsInput>, Prisma.UserUncheckedUpdateWithoutReviewsInput>
 }
 
-export type UserCreateNestedOneWithoutPhotosInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhotosInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutPhotosNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhotosInput
-  upsert?: Prisma.UserUpsertWithoutPhotosInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPhotosInput, Prisma.UserUpdateWithoutPhotosInput>, Prisma.UserUncheckedUpdateWithoutPhotosInput>
-}
-
 export type UserCreateNestedOneWithoutToursInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutToursInput, Prisma.UserUncheckedCreateWithoutToursInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutToursInput
@@ -689,20 +691,6 @@ export type UserUpdateOneRequiredWithoutToursNestedInput = {
   upsert?: Prisma.UserUpsertWithoutToursInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutToursInput, Prisma.UserUpdateWithoutToursInput>, Prisma.UserUncheckedUpdateWithoutToursInput>
-}
-
-export type UserCreateNestedOneWithoutOrdersInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOrdersInput
-  connect?: Prisma.UserWhereUniqueInput
-}
-
-export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutOrdersInput
-  upsert?: Prisma.UserUpsertWithoutOrdersInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOrdersInput, Prisma.UserUpdateWithoutOrdersInput>, Prisma.UserUncheckedUpdateWithoutOrdersInput>
 }
 
 export type UserCreateNestedOneWithoutTransactionsInput = {
@@ -719,32 +707,428 @@ export type UserUpdateOneRequiredWithoutTransactionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutTransactionsInput, Prisma.UserUpdateWithoutTransactionsInput>, Prisma.UserUncheckedUpdateWithoutTransactionsInput>
 }
 
-export type UserCreateNestedOneWithoutActivitiesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutActivitiesInput
-  connect?: Prisma.UserWhereUniqueInput
+export type UserCreateWithoutActivitiesInput = {
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
+  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
 }
 
-export type UserUpdateOneRequiredWithoutActivitiesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutActivitiesInput
-  upsert?: Prisma.UserUpsertWithoutActivitiesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutActivitiesInput, Prisma.UserUpdateWithoutActivitiesInput>, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
+export type UserUncheckedCreateWithoutActivitiesInput = {
+  id?: number
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
 }
 
-export type UserCreateNestedOneWithoutFilesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFilesInput
-  connect?: Prisma.UserWhereUniqueInput
+export type UserCreateOrConnectWithoutActivitiesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
 }
 
-export type UserUpdateOneRequiredWithoutFilesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutFilesInput
-  upsert?: Prisma.UserUpsertWithoutFilesInput
-  connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutFilesInput, Prisma.UserUpdateWithoutFilesInput>, Prisma.UserUncheckedUpdateWithoutFilesInput>
+export type UserUpsertWithoutActivitiesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutActivitiesInput, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutActivitiesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutActivitiesInput, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
+}
+
+export type UserUpdateWithoutActivitiesInput = {
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutActivitiesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutFilesInput = {
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutFilesInput = {
+  id?: number
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutFilesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
+}
+
+export type UserUpsertWithoutFilesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutFilesInput, Prisma.UserUncheckedUpdateWithoutFilesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutFilesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutFilesInput, Prisma.UserUncheckedUpdateWithoutFilesInput>
+}
+
+export type UserUpdateWithoutFilesInput = {
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutFilesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutOrdersInput = {
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
+  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
+  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutOrdersInput = {
+  id?: number
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
+  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutOrdersInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
+}
+
+export type UserUpsertWithoutOrdersInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutOrdersInput, Prisma.UserUncheckedUpdateWithoutOrdersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutOrdersInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutOrdersInput, Prisma.UserUncheckedUpdateWithoutOrdersInput>
+}
+
+export type UserUpdateWithoutOrdersInput = {
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutOrdersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutPhotosInput = {
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutPhotosInput = {
+  id?: number
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutPhotosInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
+}
+
+export type UserUpsertWithoutPhotosInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPhotosInput, Prisma.UserUncheckedUpdateWithoutPhotosInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPhotosInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPhotosInput, Prisma.UserUncheckedUpdateWithoutPhotosInput>
+}
+
+export type UserUpdateWithoutPhotosInput = {
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPhotosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -959,112 +1343,6 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
-export type UserCreateWithoutPhotosInput = {
-  login: string
-  passwordHash: string
-  salt: string
-  role: string
-  phone?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  avatarPhotoId?: number | null
-  email?: string | null
-  rating?: number | null
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
-  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
-  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
-  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
-  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
-  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
-}
-
-export type UserUncheckedCreateWithoutPhotosInput = {
-  id?: number
-  login: string
-  passwordHash: string
-  salt: string
-  role: string
-  phone?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  avatarPhotoId?: number | null
-  email?: string | null
-  rating?: number | null
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
-  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
-  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
-  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
-  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
-}
-
-export type UserCreateOrConnectWithoutPhotosInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
-}
-
-export type UserUpsertWithoutPhotosInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutPhotosInput, Prisma.UserUncheckedUpdateWithoutPhotosInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutPhotosInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutPhotosInput, Prisma.UserUncheckedUpdateWithoutPhotosInput>
-}
-
-export type UserUpdateWithoutPhotosInput = {
-  login?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  salt?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
-  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
-  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
-  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
-  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
-}
-
-export type UserUncheckedUpdateWithoutPhotosInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  login?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  salt?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
-  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
-  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
-  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
-  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
-}
-
 export type UserCreateWithoutToursInput = {
   login: string
   passwordHash: string
@@ -1167,112 +1445,6 @@ export type UserUncheckedUpdateWithoutToursInput = {
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
-  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
-}
-
-export type UserCreateWithoutOrdersInput = {
-  login: string
-  passwordHash: string
-  salt: string
-  role: string
-  phone?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  avatarPhotoId?: number | null
-  email?: string | null
-  rating?: number | null
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
-  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
-  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
-  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
-  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
-  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
-}
-
-export type UserUncheckedCreateWithoutOrdersInput = {
-  id?: number
-  login: string
-  passwordHash: string
-  salt: string
-  role: string
-  phone?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  avatarPhotoId?: number | null
-  email?: string | null
-  rating?: number | null
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
-  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
-  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
-  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
-  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
-  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
-}
-
-export type UserCreateOrConnectWithoutOrdersInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
-}
-
-export type UserUpsertWithoutOrdersInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutOrdersInput, Prisma.UserUncheckedUpdateWithoutOrdersInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutOrdersInput, Prisma.UserUncheckedCreateWithoutOrdersInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutOrdersInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutOrdersInput, Prisma.UserUncheckedUpdateWithoutOrdersInput>
-}
-
-export type UserUpdateWithoutOrdersInput = {
-  login?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  salt?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
-  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
-  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
-  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
-  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
-  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
-}
-
-export type UserUncheckedUpdateWithoutOrdersInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  login?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  salt?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
-  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
-  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
-  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
 }
@@ -1381,218 +1553,6 @@ export type UserUncheckedUpdateWithoutTransactionsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
-}
-
-export type UserCreateWithoutActivitiesInput = {
-  login: string
-  passwordHash: string
-  salt: string
-  role: string
-  phone?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  avatarPhotoId?: number | null
-  email?: string | null
-  rating?: number | null
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
-  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
-  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
-  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
-  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
-  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
-}
-
-export type UserUncheckedCreateWithoutActivitiesInput = {
-  id?: number
-  login: string
-  passwordHash: string
-  salt: string
-  role: string
-  phone?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  avatarPhotoId?: number | null
-  email?: string | null
-  rating?: number | null
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
-  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
-  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
-  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
-  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
-}
-
-export type UserCreateOrConnectWithoutActivitiesInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
-}
-
-export type UserUpsertWithoutActivitiesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutActivitiesInput, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutActivitiesInput, Prisma.UserUncheckedCreateWithoutActivitiesInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutActivitiesInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutActivitiesInput, Prisma.UserUncheckedUpdateWithoutActivitiesInput>
-}
-
-export type UserUpdateWithoutActivitiesInput = {
-  login?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  salt?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
-  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
-  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
-  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
-  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
-}
-
-export type UserUncheckedUpdateWithoutActivitiesInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  login?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  salt?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
-  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
-  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
-  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
-  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
-}
-
-export type UserCreateWithoutFilesInput = {
-  login: string
-  passwordHash: string
-  salt: string
-  role: string
-  phone?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  avatarPhotoId?: number | null
-  email?: string | null
-  rating?: number | null
-  posts?: Prisma.PostCreateNestedManyWithoutUserInput
-  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
-  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
-  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
-  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
-  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
-  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
-}
-
-export type UserUncheckedCreateWithoutFilesInput = {
-  id?: number
-  login: string
-  passwordHash: string
-  salt: string
-  role: string
-  phone?: string | null
-  firstName?: string | null
-  lastName?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  avatarPhotoId?: number | null
-  email?: string | null
-  rating?: number | null
-  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
-  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
-  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
-  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
-  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
-  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
-}
-
-export type UserCreateOrConnectWithoutFilesInput = {
-  where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
-}
-
-export type UserUpsertWithoutFilesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutFilesInput, Prisma.UserUncheckedUpdateWithoutFilesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutFilesInput, Prisma.UserUncheckedCreateWithoutFilesInput>
-  where?: Prisma.UserWhereInput
-}
-
-export type UserUpdateToOneWithWhereWithoutFilesInput = {
-  where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutFilesInput, Prisma.UserUncheckedUpdateWithoutFilesInput>
-}
-
-export type UserUpdateWithoutFilesInput = {
-  login?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  salt?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
-  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
-  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
-  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
-  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
-  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
-}
-
-export type UserUncheckedUpdateWithoutFilesInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  login?: Prisma.StringFieldUpdateOperationsInput | string
-  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
-  salt?: Prisma.StringFieldUpdateOperationsInput | string
-  role?: Prisma.StringFieldUpdateOperationsInput | string
-  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
-  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
-  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
-  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
-  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
-  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
 }
 
 

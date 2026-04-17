@@ -1,0 +1,15 @@
+model Photo {
+  id         Int       @id @default(autoincrement())
+  title      String
+  keywords   String[]
+  source     String
+  fileName   String    @map("file_name")
+  authorId   Int       @map("author_id")
+  user       User      @relation(fields: [authorId], references: [id])
+  tourId     Int?      @map("tour_id")
+  tour       Tour?     @relation(fields: [tourId], references: [id])
+  activityId Int?      @map("activity_id")
+  activity   Activity? @relation(fields: [activityId], references: [id])
+
+  @@map("photo")
+}

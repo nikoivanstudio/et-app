@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@bem-react/classname';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 import { useDeleteUser } from '@/features/user/hooks/use-delete-user';
 import { UserCard } from '@/features/user/ui/user-card';
@@ -9,6 +9,7 @@ import { UserCard } from '@/features/user/ui/user-card';
 const cnUserFeature = cn('UserFeature');
 
 export const UserFeature: FC<{
+  editAction?: ReactNode;
   user: Omit<
     {
       id: number;
@@ -25,12 +26,12 @@ export const UserFeature: FC<{
     },
     'passwordHash' | 'salt'
   >;
-}> = ({ user }) => {
+}> = ({ user, editAction }) => {
   const onDelete = useDeleteUser({ id: user.id });
 
   return (
     <div className={cnUserFeature(null, ['w-full'])}>
-      <UserCard user={user} onDelete={onDelete} />
+      <UserCard user={user} onDelete={onDelete} editAction={editAction} />
     </div>
   );
 };

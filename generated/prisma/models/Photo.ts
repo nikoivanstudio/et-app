@@ -440,45 +440,45 @@ export type PhotoSumOrderByAggregateInput = {
   activityId?: Prisma.SortOrder
 }
 
-export type PhotoCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput> | Prisma.PhotoCreateWithoutUserInput[] | Prisma.PhotoUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutUserInput | Prisma.PhotoCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.PhotoCreateManyUserInputEnvelope
+export type PhotoCreateNestedManyWithoutActivityInput = {
+  create?: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput> | Prisma.PhotoCreateWithoutActivityInput[] | Prisma.PhotoUncheckedCreateWithoutActivityInput[]
+  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutActivityInput | Prisma.PhotoCreateOrConnectWithoutActivityInput[]
+  createMany?: Prisma.PhotoCreateManyActivityInputEnvelope
   connect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
 }
 
-export type PhotoUncheckedCreateNestedManyWithoutUserInput = {
-  create?: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput> | Prisma.PhotoCreateWithoutUserInput[] | Prisma.PhotoUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutUserInput | Prisma.PhotoCreateOrConnectWithoutUserInput[]
-  createMany?: Prisma.PhotoCreateManyUserInputEnvelope
+export type PhotoUncheckedCreateNestedManyWithoutActivityInput = {
+  create?: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput> | Prisma.PhotoCreateWithoutActivityInput[] | Prisma.PhotoUncheckedCreateWithoutActivityInput[]
+  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutActivityInput | Prisma.PhotoCreateOrConnectWithoutActivityInput[]
+  createMany?: Prisma.PhotoCreateManyActivityInputEnvelope
   connect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
 }
 
-export type PhotoUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput> | Prisma.PhotoCreateWithoutUserInput[] | Prisma.PhotoUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutUserInput | Prisma.PhotoCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.PhotoUpsertWithWhereUniqueWithoutUserInput | Prisma.PhotoUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.PhotoCreateManyUserInputEnvelope
+export type PhotoUpdateManyWithoutActivityNestedInput = {
+  create?: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput> | Prisma.PhotoCreateWithoutActivityInput[] | Prisma.PhotoUncheckedCreateWithoutActivityInput[]
+  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutActivityInput | Prisma.PhotoCreateOrConnectWithoutActivityInput[]
+  upsert?: Prisma.PhotoUpsertWithWhereUniqueWithoutActivityInput | Prisma.PhotoUpsertWithWhereUniqueWithoutActivityInput[]
+  createMany?: Prisma.PhotoCreateManyActivityInputEnvelope
   set?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   disconnect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   delete?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   connect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
-  update?: Prisma.PhotoUpdateWithWhereUniqueWithoutUserInput | Prisma.PhotoUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.PhotoUpdateManyWithWhereWithoutUserInput | Prisma.PhotoUpdateManyWithWhereWithoutUserInput[]
+  update?: Prisma.PhotoUpdateWithWhereUniqueWithoutActivityInput | Prisma.PhotoUpdateWithWhereUniqueWithoutActivityInput[]
+  updateMany?: Prisma.PhotoUpdateManyWithWhereWithoutActivityInput | Prisma.PhotoUpdateManyWithWhereWithoutActivityInput[]
   deleteMany?: Prisma.PhotoScalarWhereInput | Prisma.PhotoScalarWhereInput[]
 }
 
-export type PhotoUncheckedUpdateManyWithoutUserNestedInput = {
-  create?: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput> | Prisma.PhotoCreateWithoutUserInput[] | Prisma.PhotoUncheckedCreateWithoutUserInput[]
-  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutUserInput | Prisma.PhotoCreateOrConnectWithoutUserInput[]
-  upsert?: Prisma.PhotoUpsertWithWhereUniqueWithoutUserInput | Prisma.PhotoUpsertWithWhereUniqueWithoutUserInput[]
-  createMany?: Prisma.PhotoCreateManyUserInputEnvelope
+export type PhotoUncheckedUpdateManyWithoutActivityNestedInput = {
+  create?: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput> | Prisma.PhotoCreateWithoutActivityInput[] | Prisma.PhotoUncheckedCreateWithoutActivityInput[]
+  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutActivityInput | Prisma.PhotoCreateOrConnectWithoutActivityInput[]
+  upsert?: Prisma.PhotoUpsertWithWhereUniqueWithoutActivityInput | Prisma.PhotoUpsertWithWhereUniqueWithoutActivityInput[]
+  createMany?: Prisma.PhotoCreateManyActivityInputEnvelope
   set?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   disconnect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   delete?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   connect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
-  update?: Prisma.PhotoUpdateWithWhereUniqueWithoutUserInput | Prisma.PhotoUpdateWithWhereUniqueWithoutUserInput[]
-  updateMany?: Prisma.PhotoUpdateManyWithWhereWithoutUserInput | Prisma.PhotoUpdateManyWithWhereWithoutUserInput[]
+  update?: Prisma.PhotoUpdateWithWhereUniqueWithoutActivityInput | Prisma.PhotoUpdateWithWhereUniqueWithoutActivityInput[]
+  updateMany?: Prisma.PhotoUpdateManyWithWhereWithoutActivityInput | Prisma.PhotoUpdateManyWithWhereWithoutActivityInput[]
   deleteMany?: Prisma.PhotoScalarWhereInput | Prisma.PhotoScalarWhereInput[]
 }
 
@@ -533,91 +533,91 @@ export type PhotoUncheckedUpdateManyWithoutTourNestedInput = {
   deleteMany?: Prisma.PhotoScalarWhereInput | Prisma.PhotoScalarWhereInput[]
 }
 
-export type PhotoCreateNestedManyWithoutActivityInput = {
-  create?: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput> | Prisma.PhotoCreateWithoutActivityInput[] | Prisma.PhotoUncheckedCreateWithoutActivityInput[]
-  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutActivityInput | Prisma.PhotoCreateOrConnectWithoutActivityInput[]
-  createMany?: Prisma.PhotoCreateManyActivityInputEnvelope
+export type PhotoCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput> | Prisma.PhotoCreateWithoutUserInput[] | Prisma.PhotoUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutUserInput | Prisma.PhotoCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.PhotoCreateManyUserInputEnvelope
   connect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
 }
 
-export type PhotoUncheckedCreateNestedManyWithoutActivityInput = {
-  create?: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput> | Prisma.PhotoCreateWithoutActivityInput[] | Prisma.PhotoUncheckedCreateWithoutActivityInput[]
-  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutActivityInput | Prisma.PhotoCreateOrConnectWithoutActivityInput[]
-  createMany?: Prisma.PhotoCreateManyActivityInputEnvelope
+export type PhotoUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput> | Prisma.PhotoCreateWithoutUserInput[] | Prisma.PhotoUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutUserInput | Prisma.PhotoCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.PhotoCreateManyUserInputEnvelope
   connect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
 }
 
-export type PhotoUpdateManyWithoutActivityNestedInput = {
-  create?: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput> | Prisma.PhotoCreateWithoutActivityInput[] | Prisma.PhotoUncheckedCreateWithoutActivityInput[]
-  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutActivityInput | Prisma.PhotoCreateOrConnectWithoutActivityInput[]
-  upsert?: Prisma.PhotoUpsertWithWhereUniqueWithoutActivityInput | Prisma.PhotoUpsertWithWhereUniqueWithoutActivityInput[]
-  createMany?: Prisma.PhotoCreateManyActivityInputEnvelope
+export type PhotoUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput> | Prisma.PhotoCreateWithoutUserInput[] | Prisma.PhotoUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutUserInput | Prisma.PhotoCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.PhotoUpsertWithWhereUniqueWithoutUserInput | Prisma.PhotoUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.PhotoCreateManyUserInputEnvelope
   set?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   disconnect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   delete?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   connect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
-  update?: Prisma.PhotoUpdateWithWhereUniqueWithoutActivityInput | Prisma.PhotoUpdateWithWhereUniqueWithoutActivityInput[]
-  updateMany?: Prisma.PhotoUpdateManyWithWhereWithoutActivityInput | Prisma.PhotoUpdateManyWithWhereWithoutActivityInput[]
+  update?: Prisma.PhotoUpdateWithWhereUniqueWithoutUserInput | Prisma.PhotoUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.PhotoUpdateManyWithWhereWithoutUserInput | Prisma.PhotoUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.PhotoScalarWhereInput | Prisma.PhotoScalarWhereInput[]
 }
 
-export type PhotoUncheckedUpdateManyWithoutActivityNestedInput = {
-  create?: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput> | Prisma.PhotoCreateWithoutActivityInput[] | Prisma.PhotoUncheckedCreateWithoutActivityInput[]
-  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutActivityInput | Prisma.PhotoCreateOrConnectWithoutActivityInput[]
-  upsert?: Prisma.PhotoUpsertWithWhereUniqueWithoutActivityInput | Prisma.PhotoUpsertWithWhereUniqueWithoutActivityInput[]
-  createMany?: Prisma.PhotoCreateManyActivityInputEnvelope
+export type PhotoUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput> | Prisma.PhotoCreateWithoutUserInput[] | Prisma.PhotoUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.PhotoCreateOrConnectWithoutUserInput | Prisma.PhotoCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.PhotoUpsertWithWhereUniqueWithoutUserInput | Prisma.PhotoUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.PhotoCreateManyUserInputEnvelope
   set?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   disconnect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   delete?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
   connect?: Prisma.PhotoWhereUniqueInput | Prisma.PhotoWhereUniqueInput[]
-  update?: Prisma.PhotoUpdateWithWhereUniqueWithoutActivityInput | Prisma.PhotoUpdateWithWhereUniqueWithoutActivityInput[]
-  updateMany?: Prisma.PhotoUpdateManyWithWhereWithoutActivityInput | Prisma.PhotoUpdateManyWithWhereWithoutActivityInput[]
+  update?: Prisma.PhotoUpdateWithWhereUniqueWithoutUserInput | Prisma.PhotoUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.PhotoUpdateManyWithWhereWithoutUserInput | Prisma.PhotoUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.PhotoScalarWhereInput | Prisma.PhotoScalarWhereInput[]
 }
 
-export type PhotoCreateWithoutUserInput = {
+export type PhotoCreateWithoutActivityInput = {
   title: string
   keywords?: Prisma.PhotoCreatekeywordsInput | string[]
   source: string
   fileName: string
+  user: Prisma.UserCreateNestedOneWithoutPhotosInput
   tour?: Prisma.TourCreateNestedOneWithoutPhotosInput
-  activity?: Prisma.ActivityCreateNestedOneWithoutPhotosInput
 }
 
-export type PhotoUncheckedCreateWithoutUserInput = {
+export type PhotoUncheckedCreateWithoutActivityInput = {
   id?: number
   title: string
   keywords?: Prisma.PhotoCreatekeywordsInput | string[]
   source: string
   fileName: string
+  authorId: number
   tourId?: number | null
-  activityId?: number | null
 }
 
-export type PhotoCreateOrConnectWithoutUserInput = {
+export type PhotoCreateOrConnectWithoutActivityInput = {
   where: Prisma.PhotoWhereUniqueInput
-  create: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput>
+  create: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput>
 }
 
-export type PhotoCreateManyUserInputEnvelope = {
-  data: Prisma.PhotoCreateManyUserInput | Prisma.PhotoCreateManyUserInput[]
+export type PhotoCreateManyActivityInputEnvelope = {
+  data: Prisma.PhotoCreateManyActivityInput | Prisma.PhotoCreateManyActivityInput[]
   skipDuplicates?: boolean
 }
 
-export type PhotoUpsertWithWhereUniqueWithoutUserInput = {
+export type PhotoUpsertWithWhereUniqueWithoutActivityInput = {
   where: Prisma.PhotoWhereUniqueInput
-  update: Prisma.XOR<Prisma.PhotoUpdateWithoutUserInput, Prisma.PhotoUncheckedUpdateWithoutUserInput>
-  create: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput>
+  update: Prisma.XOR<Prisma.PhotoUpdateWithoutActivityInput, Prisma.PhotoUncheckedUpdateWithoutActivityInput>
+  create: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput>
 }
 
-export type PhotoUpdateWithWhereUniqueWithoutUserInput = {
+export type PhotoUpdateWithWhereUniqueWithoutActivityInput = {
   where: Prisma.PhotoWhereUniqueInput
-  data: Prisma.XOR<Prisma.PhotoUpdateWithoutUserInput, Prisma.PhotoUncheckedUpdateWithoutUserInput>
+  data: Prisma.XOR<Prisma.PhotoUpdateWithoutActivityInput, Prisma.PhotoUncheckedUpdateWithoutActivityInput>
 }
 
-export type PhotoUpdateManyWithWhereWithoutUserInput = {
+export type PhotoUpdateManyWithWhereWithoutActivityInput = {
   where: Prisma.PhotoScalarWhereInput
-  data: Prisma.XOR<Prisma.PhotoUpdateManyMutationInput, Prisma.PhotoUncheckedUpdateManyWithoutUserInput>
+  data: Prisma.XOR<Prisma.PhotoUpdateManyMutationInput, Prisma.PhotoUncheckedUpdateManyWithoutActivityInput>
 }
 
 export type PhotoScalarWhereInput = {
@@ -679,52 +679,16 @@ export type PhotoUpdateManyWithWhereWithoutTourInput = {
   data: Prisma.XOR<Prisma.PhotoUpdateManyMutationInput, Prisma.PhotoUncheckedUpdateManyWithoutTourInput>
 }
 
-export type PhotoCreateWithoutActivityInput = {
+export type PhotoCreateWithoutUserInput = {
   title: string
   keywords?: Prisma.PhotoCreatekeywordsInput | string[]
   source: string
   fileName: string
-  user: Prisma.UserCreateNestedOneWithoutPhotosInput
   tour?: Prisma.TourCreateNestedOneWithoutPhotosInput
+  activity?: Prisma.ActivityCreateNestedOneWithoutPhotosInput
 }
 
-export type PhotoUncheckedCreateWithoutActivityInput = {
-  id?: number
-  title: string
-  keywords?: Prisma.PhotoCreatekeywordsInput | string[]
-  source: string
-  fileName: string
-  authorId: number
-  tourId?: number | null
-}
-
-export type PhotoCreateOrConnectWithoutActivityInput = {
-  where: Prisma.PhotoWhereUniqueInput
-  create: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput>
-}
-
-export type PhotoCreateManyActivityInputEnvelope = {
-  data: Prisma.PhotoCreateManyActivityInput | Prisma.PhotoCreateManyActivityInput[]
-  skipDuplicates?: boolean
-}
-
-export type PhotoUpsertWithWhereUniqueWithoutActivityInput = {
-  where: Prisma.PhotoWhereUniqueInput
-  update: Prisma.XOR<Prisma.PhotoUpdateWithoutActivityInput, Prisma.PhotoUncheckedUpdateWithoutActivityInput>
-  create: Prisma.XOR<Prisma.PhotoCreateWithoutActivityInput, Prisma.PhotoUncheckedCreateWithoutActivityInput>
-}
-
-export type PhotoUpdateWithWhereUniqueWithoutActivityInput = {
-  where: Prisma.PhotoWhereUniqueInput
-  data: Prisma.XOR<Prisma.PhotoUpdateWithoutActivityInput, Prisma.PhotoUncheckedUpdateWithoutActivityInput>
-}
-
-export type PhotoUpdateManyWithWhereWithoutActivityInput = {
-  where: Prisma.PhotoScalarWhereInput
-  data: Prisma.XOR<Prisma.PhotoUpdateManyMutationInput, Prisma.PhotoUncheckedUpdateManyWithoutActivityInput>
-}
-
-export type PhotoCreateManyUserInput = {
+export type PhotoUncheckedCreateWithoutUserInput = {
   id?: number
   title: string
   keywords?: Prisma.PhotoCreatekeywordsInput | string[]
@@ -734,33 +698,69 @@ export type PhotoCreateManyUserInput = {
   activityId?: number | null
 }
 
-export type PhotoUpdateWithoutUserInput = {
+export type PhotoCreateOrConnectWithoutUserInput = {
+  where: Prisma.PhotoWhereUniqueInput
+  create: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput>
+}
+
+export type PhotoCreateManyUserInputEnvelope = {
+  data: Prisma.PhotoCreateManyUserInput | Prisma.PhotoCreateManyUserInput[]
+  skipDuplicates?: boolean
+}
+
+export type PhotoUpsertWithWhereUniqueWithoutUserInput = {
+  where: Prisma.PhotoWhereUniqueInput
+  update: Prisma.XOR<Prisma.PhotoUpdateWithoutUserInput, Prisma.PhotoUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.PhotoCreateWithoutUserInput, Prisma.PhotoUncheckedCreateWithoutUserInput>
+}
+
+export type PhotoUpdateWithWhereUniqueWithoutUserInput = {
+  where: Prisma.PhotoWhereUniqueInput
+  data: Prisma.XOR<Prisma.PhotoUpdateWithoutUserInput, Prisma.PhotoUncheckedUpdateWithoutUserInput>
+}
+
+export type PhotoUpdateManyWithWhereWithoutUserInput = {
+  where: Prisma.PhotoScalarWhereInput
+  data: Prisma.XOR<Prisma.PhotoUpdateManyMutationInput, Prisma.PhotoUncheckedUpdateManyWithoutUserInput>
+}
+
+export type PhotoCreateManyActivityInput = {
+  id?: number
+  title: string
+  keywords?: Prisma.PhotoCreatekeywordsInput | string[]
+  source: string
+  fileName: string
+  authorId: number
+  tourId?: number | null
+}
+
+export type PhotoUpdateWithoutActivityInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   keywords?: Prisma.PhotoUpdatekeywordsInput | string[]
   source?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPhotosNestedInput
   tour?: Prisma.TourUpdateOneWithoutPhotosNestedInput
-  activity?: Prisma.ActivityUpdateOneWithoutPhotosNestedInput
 }
 
-export type PhotoUncheckedUpdateWithoutUserInput = {
+export type PhotoUncheckedUpdateWithoutActivityInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   keywords?: Prisma.PhotoUpdatekeywordsInput | string[]
   source?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  authorId?: Prisma.IntFieldUpdateOperationsInput | number
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
-export type PhotoUncheckedUpdateManyWithoutUserInput = {
+export type PhotoUncheckedUpdateManyWithoutActivityInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   keywords?: Prisma.PhotoUpdatekeywordsInput | string[]
   source?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
+  authorId?: Prisma.IntFieldUpdateOperationsInput | number
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type PhotoCreateManyTourInput = {
@@ -802,43 +802,43 @@ export type PhotoUncheckedUpdateManyWithoutTourInput = {
   activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
-export type PhotoCreateManyActivityInput = {
+export type PhotoCreateManyUserInput = {
   id?: number
   title: string
   keywords?: Prisma.PhotoCreatekeywordsInput | string[]
   source: string
   fileName: string
-  authorId: number
   tourId?: number | null
+  activityId?: number | null
 }
 
-export type PhotoUpdateWithoutActivityInput = {
+export type PhotoUpdateWithoutUserInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   keywords?: Prisma.PhotoUpdatekeywordsInput | string[]
   source?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  user?: Prisma.UserUpdateOneRequiredWithoutPhotosNestedInput
   tour?: Prisma.TourUpdateOneWithoutPhotosNestedInput
+  activity?: Prisma.ActivityUpdateOneWithoutPhotosNestedInput
 }
 
-export type PhotoUncheckedUpdateWithoutActivityInput = {
+export type PhotoUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   keywords?: Prisma.PhotoUpdatekeywordsInput | string[]
   source?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  authorId?: Prisma.IntFieldUpdateOperationsInput | number
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
-export type PhotoUncheckedUpdateManyWithoutActivityInput = {
+export type PhotoUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   keywords?: Prisma.PhotoUpdatekeywordsInput | string[]
   source?: Prisma.StringFieldUpdateOperationsInput | string
   fileName?: Prisma.StringFieldUpdateOperationsInput | string
-  authorId?: Prisma.IntFieldUpdateOperationsInput | number
   tourId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  activityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 

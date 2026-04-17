@@ -595,26 +595,19 @@ export type ActivityUncheckedUpdateManyInput = {
   discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
-export type ActivityListRelationFilter = {
-  every?: Prisma.ActivityWhereInput
-  some?: Prisma.ActivityWhereInput
-  none?: Prisma.ActivityWhereInput
-}
-
-export type ActivityOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
-export type ActivityNullableScalarRelationFilter = {
-  is?: Prisma.ActivityWhereInput | null
-  isNot?: Prisma.ActivityWhereInput | null
-}
-
 export type IntNullableListFilter<$PrismaModel = never> = {
   equals?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
   has?: number | Prisma.IntFieldRefInput<$PrismaModel> | null
   hasEvery?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>
   hasSome?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
   isEmpty?: boolean
 }
 
@@ -697,46 +690,90 @@ export type ActivitySumOrderByAggregateInput = {
   discount?: Prisma.SortOrder
 }
 
-export type ActivityCreateNestedManyWithoutAuthorInput = {
-  create?: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput> | Prisma.ActivityCreateWithoutAuthorInput[] | Prisma.ActivityUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutAuthorInput | Prisma.ActivityCreateOrConnectWithoutAuthorInput[]
-  createMany?: Prisma.ActivityCreateManyAuthorInputEnvelope
-  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+export type ActivityNullableScalarRelationFilter = {
+  is?: Prisma.ActivityWhereInput | null
+  isNot?: Prisma.ActivityWhereInput | null
 }
 
-export type ActivityUncheckedCreateNestedManyWithoutAuthorInput = {
-  create?: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput> | Prisma.ActivityCreateWithoutAuthorInput[] | Prisma.ActivityUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutAuthorInput | Prisma.ActivityCreateOrConnectWithoutAuthorInput[]
-  createMany?: Prisma.ActivityCreateManyAuthorInputEnvelope
-  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+export type ActivityListRelationFilter = {
+  every?: Prisma.ActivityWhereInput
+  some?: Prisma.ActivityWhereInput
+  none?: Prisma.ActivityWhereInput
 }
 
-export type ActivityUpdateManyWithoutAuthorNestedInput = {
-  create?: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput> | Prisma.ActivityCreateWithoutAuthorInput[] | Prisma.ActivityUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutAuthorInput | Prisma.ActivityCreateOrConnectWithoutAuthorInput[]
-  upsert?: Prisma.ActivityUpsertWithWhereUniqueWithoutAuthorInput | Prisma.ActivityUpsertWithWhereUniqueWithoutAuthorInput[]
-  createMany?: Prisma.ActivityCreateManyAuthorInputEnvelope
-  set?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
-  disconnect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
-  delete?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
-  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
-  update?: Prisma.ActivityUpdateWithWhereUniqueWithoutAuthorInput | Prisma.ActivityUpdateWithWhereUniqueWithoutAuthorInput[]
-  updateMany?: Prisma.ActivityUpdateManyWithWhereWithoutAuthorInput | Prisma.ActivityUpdateManyWithWhereWithoutAuthorInput[]
-  deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
+export type ActivityOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
-export type ActivityUncheckedUpdateManyWithoutAuthorNestedInput = {
-  create?: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput> | Prisma.ActivityCreateWithoutAuthorInput[] | Prisma.ActivityUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutAuthorInput | Prisma.ActivityCreateOrConnectWithoutAuthorInput[]
-  upsert?: Prisma.ActivityUpsertWithWhereUniqueWithoutAuthorInput | Prisma.ActivityUpsertWithWhereUniqueWithoutAuthorInput[]
-  createMany?: Prisma.ActivityCreateManyAuthorInputEnvelope
-  set?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
-  disconnect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
-  delete?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
-  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
-  update?: Prisma.ActivityUpdateWithWhereUniqueWithoutAuthorInput | Prisma.ActivityUpdateWithWhereUniqueWithoutAuthorInput[]
-  updateMany?: Prisma.ActivityUpdateManyWithWhereWithoutAuthorInput | Prisma.ActivityUpdateManyWithWhereWithoutAuthorInput[]
-  deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
+export type ActivityCreateparticipantsInput = {
+  set: number[]
+}
+
+export type ActivityCreatetagsInput = {
+  set: string[]
+}
+
+export type ActivityCreatecategoriesInput = {
+  set: string[]
+}
+
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type ActivityUpdateparticipantsInput = {
+  set?: number[]
+  push?: number | number[]
+}
+
+export type ActivityUpdatetagsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ActivityUpdatecategoriesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type ActivityCreateNestedOneWithoutOrdersInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutOrdersInput, Prisma.ActivityUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutOrdersInput
+  connect?: Prisma.ActivityWhereUniqueInput
+}
+
+export type ActivityUpdateOneWithoutOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutOrdersInput, Prisma.ActivityUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutOrdersInput
+  upsert?: Prisma.ActivityUpsertWithoutOrdersInput
+  disconnect?: Prisma.ActivityWhereInput | boolean
+  delete?: Prisma.ActivityWhereInput | boolean
+  connect?: Prisma.ActivityWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ActivityUpdateToOneWithWhereWithoutOrdersInput, Prisma.ActivityUpdateWithoutOrdersInput>, Prisma.ActivityUncheckedUpdateWithoutOrdersInput>
 }
 
 export type ActivityCreateNestedOneWithoutPhotosInput = {
@@ -797,50 +834,49 @@ export type ActivityUncheckedUpdateManyWithoutTourNestedInput = {
   deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
 }
 
-export type ActivityCreateNestedOneWithoutOrdersInput = {
-  create?: Prisma.XOR<Prisma.ActivityCreateWithoutOrdersInput, Prisma.ActivityUncheckedCreateWithoutOrdersInput>
-  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutOrdersInput
-  connect?: Prisma.ActivityWhereUniqueInput
+export type ActivityCreateNestedManyWithoutAuthorInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput> | Prisma.ActivityCreateWithoutAuthorInput[] | Prisma.ActivityUncheckedCreateWithoutAuthorInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutAuthorInput | Prisma.ActivityCreateOrConnectWithoutAuthorInput[]
+  createMany?: Prisma.ActivityCreateManyAuthorInputEnvelope
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
 }
 
-export type ActivityUpdateOneWithoutOrdersNestedInput = {
-  create?: Prisma.XOR<Prisma.ActivityCreateWithoutOrdersInput, Prisma.ActivityUncheckedCreateWithoutOrdersInput>
-  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutOrdersInput
-  upsert?: Prisma.ActivityUpsertWithoutOrdersInput
-  disconnect?: Prisma.ActivityWhereInput | boolean
-  delete?: Prisma.ActivityWhereInput | boolean
-  connect?: Prisma.ActivityWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ActivityUpdateToOneWithWhereWithoutOrdersInput, Prisma.ActivityUpdateWithoutOrdersInput>, Prisma.ActivityUncheckedUpdateWithoutOrdersInput>
+export type ActivityUncheckedCreateNestedManyWithoutAuthorInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput> | Prisma.ActivityCreateWithoutAuthorInput[] | Prisma.ActivityUncheckedCreateWithoutAuthorInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutAuthorInput | Prisma.ActivityCreateOrConnectWithoutAuthorInput[]
+  createMany?: Prisma.ActivityCreateManyAuthorInputEnvelope
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
 }
 
-export type ActivityCreateparticipantsInput = {
-  set: number[]
+export type ActivityUpdateManyWithoutAuthorNestedInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput> | Prisma.ActivityCreateWithoutAuthorInput[] | Prisma.ActivityUncheckedCreateWithoutAuthorInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutAuthorInput | Prisma.ActivityCreateOrConnectWithoutAuthorInput[]
+  upsert?: Prisma.ActivityUpsertWithWhereUniqueWithoutAuthorInput | Prisma.ActivityUpsertWithWhereUniqueWithoutAuthorInput[]
+  createMany?: Prisma.ActivityCreateManyAuthorInputEnvelope
+  set?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  disconnect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  delete?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  update?: Prisma.ActivityUpdateWithWhereUniqueWithoutAuthorInput | Prisma.ActivityUpdateWithWhereUniqueWithoutAuthorInput[]
+  updateMany?: Prisma.ActivityUpdateManyWithWhereWithoutAuthorInput | Prisma.ActivityUpdateManyWithWhereWithoutAuthorInput[]
+  deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
 }
 
-export type ActivityCreatetagsInput = {
-  set: string[]
+export type ActivityUncheckedUpdateManyWithoutAuthorNestedInput = {
+  create?: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput> | Prisma.ActivityCreateWithoutAuthorInput[] | Prisma.ActivityUncheckedCreateWithoutAuthorInput[]
+  connectOrCreate?: Prisma.ActivityCreateOrConnectWithoutAuthorInput | Prisma.ActivityCreateOrConnectWithoutAuthorInput[]
+  upsert?: Prisma.ActivityUpsertWithWhereUniqueWithoutAuthorInput | Prisma.ActivityUpsertWithWhereUniqueWithoutAuthorInput[]
+  createMany?: Prisma.ActivityCreateManyAuthorInputEnvelope
+  set?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  disconnect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  delete?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  connect?: Prisma.ActivityWhereUniqueInput | Prisma.ActivityWhereUniqueInput[]
+  update?: Prisma.ActivityUpdateWithWhereUniqueWithoutAuthorInput | Prisma.ActivityUpdateWithWhereUniqueWithoutAuthorInput[]
+  updateMany?: Prisma.ActivityUpdateManyWithWhereWithoutAuthorInput | Prisma.ActivityUpdateManyWithWhereWithoutAuthorInput[]
+  deleteMany?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
 }
 
-export type ActivityCreatecategoriesInput = {
-  set: string[]
-}
-
-export type ActivityUpdateparticipantsInput = {
-  set?: number[]
-  push?: number | number[]
-}
-
-export type ActivityUpdatetagsInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type ActivityUpdatecategoriesInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type ActivityCreateWithoutAuthorInput = {
+export type ActivityCreateWithoutOrdersInput = {
   title: string
   description: string
   status: string
@@ -856,16 +892,17 @@ export type ActivityCreateWithoutAuthorInput = {
   tags?: Prisma.ActivityCreatetagsInput | string[]
   categories?: Prisma.ActivityCreatecategoriesInput | string[]
   discount?: number | null
+  author: Prisma.UserCreateNestedOneWithoutActivitiesInput
   tour: Prisma.TourCreateNestedOneWithoutActivitiesInput
-  orders?: Prisma.OrderCreateNestedManyWithoutActivityInput
   photos?: Prisma.PhotoCreateNestedManyWithoutActivityInput
 }
 
-export type ActivityUncheckedCreateWithoutAuthorInput = {
+export type ActivityUncheckedCreateWithoutOrdersInput = {
   id?: number
   title: string
   description: string
   status: string
+  authorId: number
   createdAt?: Date | string
   updatedAt?: Date | string | null
   startTime: Date | string
@@ -879,58 +916,66 @@ export type ActivityUncheckedCreateWithoutAuthorInput = {
   tags?: Prisma.ActivityCreatetagsInput | string[]
   categories?: Prisma.ActivityCreatecategoriesInput | string[]
   discount?: number | null
-  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutActivityInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutActivityInput
 }
 
-export type ActivityCreateOrConnectWithoutAuthorInput = {
+export type ActivityCreateOrConnectWithoutOrdersInput = {
   where: Prisma.ActivityWhereUniqueInput
-  create: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutOrdersInput, Prisma.ActivityUncheckedCreateWithoutOrdersInput>
 }
 
-export type ActivityCreateManyAuthorInputEnvelope = {
-  data: Prisma.ActivityCreateManyAuthorInput | Prisma.ActivityCreateManyAuthorInput[]
-  skipDuplicates?: boolean
+export type ActivityUpsertWithoutOrdersInput = {
+  update: Prisma.XOR<Prisma.ActivityUpdateWithoutOrdersInput, Prisma.ActivityUncheckedUpdateWithoutOrdersInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutOrdersInput, Prisma.ActivityUncheckedCreateWithoutOrdersInput>
+  where?: Prisma.ActivityWhereInput
 }
 
-export type ActivityUpsertWithWhereUniqueWithoutAuthorInput = {
-  where: Prisma.ActivityWhereUniqueInput
-  update: Prisma.XOR<Prisma.ActivityUpdateWithoutAuthorInput, Prisma.ActivityUncheckedUpdateWithoutAuthorInput>
-  create: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput>
+export type ActivityUpdateToOneWithWhereWithoutOrdersInput = {
+  where?: Prisma.ActivityWhereInput
+  data: Prisma.XOR<Prisma.ActivityUpdateWithoutOrdersInput, Prisma.ActivityUncheckedUpdateWithoutOrdersInput>
 }
 
-export type ActivityUpdateWithWhereUniqueWithoutAuthorInput = {
-  where: Prisma.ActivityWhereUniqueInput
-  data: Prisma.XOR<Prisma.ActivityUpdateWithoutAuthorInput, Prisma.ActivityUncheckedUpdateWithoutAuthorInput>
+export type ActivityUpdateWithoutOrdersInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  places?: Prisma.IntFieldUpdateOperationsInput | number
+  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
+  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ActivityUpdatetagsInput | string[]
+  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
+  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  author?: Prisma.UserUpdateOneRequiredWithoutActivitiesNestedInput
+  tour?: Prisma.TourUpdateOneRequiredWithoutActivitiesNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutActivityNestedInput
 }
 
-export type ActivityUpdateManyWithWhereWithoutAuthorInput = {
-  where: Prisma.ActivityScalarWhereInput
-  data: Prisma.XOR<Prisma.ActivityUpdateManyMutationInput, Prisma.ActivityUncheckedUpdateManyWithoutAuthorInput>
-}
-
-export type ActivityScalarWhereInput = {
-  AND?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
-  OR?: Prisma.ActivityScalarWhereInput[]
-  NOT?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
-  id?: Prisma.IntFilter<"Activity"> | number
-  title?: Prisma.StringFilter<"Activity"> | string
-  description?: Prisma.StringFilter<"Activity"> | string
-  status?: Prisma.StringFilter<"Activity"> | string
-  authorId?: Prisma.IntFilter<"Activity"> | number
-  createdAt?: Prisma.DateTimeFilter<"Activity"> | Date | string
-  updatedAt?: Prisma.DateTimeNullableFilter<"Activity"> | Date | string | null
-  startTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
-  finishTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
-  places?: Prisma.IntFilter<"Activity"> | number
-  participants?: Prisma.IntNullableListFilter<"Activity">
-  groupPrice?: Prisma.IntFilter<"Activity"> | number
-  personPrice?: Prisma.IntFilter<"Activity"> | number
-  type?: Prisma.StringFilter<"Activity"> | string
-  tourId?: Prisma.IntFilter<"Activity"> | number
-  tags?: Prisma.StringNullableListFilter<"Activity">
-  categories?: Prisma.StringNullableListFilter<"Activity">
-  discount?: Prisma.IntNullableFilter<"Activity"> | number | null
+export type ActivityUncheckedUpdateWithoutOrdersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  places?: Prisma.IntFieldUpdateOperationsInput | number
+  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
+  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  tourId?: Prisma.IntFieldUpdateOperationsInput | number
+  tags?: Prisma.ActivityUpdatetagsInput | string[]
+  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
+  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutActivityNestedInput
 }
 
 export type ActivityCreateWithoutPhotosInput = {
@@ -1104,7 +1149,31 @@ export type ActivityUpdateManyWithWhereWithoutTourInput = {
   data: Prisma.XOR<Prisma.ActivityUpdateManyMutationInput, Prisma.ActivityUncheckedUpdateManyWithoutTourInput>
 }
 
-export type ActivityCreateWithoutOrdersInput = {
+export type ActivityScalarWhereInput = {
+  AND?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
+  OR?: Prisma.ActivityScalarWhereInput[]
+  NOT?: Prisma.ActivityScalarWhereInput | Prisma.ActivityScalarWhereInput[]
+  id?: Prisma.IntFilter<"Activity"> | number
+  title?: Prisma.StringFilter<"Activity"> | string
+  description?: Prisma.StringFilter<"Activity"> | string
+  status?: Prisma.StringFilter<"Activity"> | string
+  authorId?: Prisma.IntFilter<"Activity"> | number
+  createdAt?: Prisma.DateTimeFilter<"Activity"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Activity"> | Date | string | null
+  startTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
+  finishTime?: Prisma.DateTimeFilter<"Activity"> | Date | string
+  places?: Prisma.IntFilter<"Activity"> | number
+  participants?: Prisma.IntNullableListFilter<"Activity">
+  groupPrice?: Prisma.IntFilter<"Activity"> | number
+  personPrice?: Prisma.IntFilter<"Activity"> | number
+  type?: Prisma.StringFilter<"Activity"> | string
+  tourId?: Prisma.IntFilter<"Activity"> | number
+  tags?: Prisma.StringNullableListFilter<"Activity">
+  categories?: Prisma.StringNullableListFilter<"Activity">
+  discount?: Prisma.IntNullableFilter<"Activity"> | number | null
+}
+
+export type ActivityCreateWithoutAuthorInput = {
   title: string
   description: string
   status: string
@@ -1120,17 +1189,16 @@ export type ActivityCreateWithoutOrdersInput = {
   tags?: Prisma.ActivityCreatetagsInput | string[]
   categories?: Prisma.ActivityCreatecategoriesInput | string[]
   discount?: number | null
-  author: Prisma.UserCreateNestedOneWithoutActivitiesInput
   tour: Prisma.TourCreateNestedOneWithoutActivitiesInput
+  orders?: Prisma.OrderCreateNestedManyWithoutActivityInput
   photos?: Prisma.PhotoCreateNestedManyWithoutActivityInput
 }
 
-export type ActivityUncheckedCreateWithoutOrdersInput = {
+export type ActivityUncheckedCreateWithoutAuthorInput = {
   id?: number
   title: string
   description: string
   status: string
-  authorId: number
   createdAt?: Date | string
   updatedAt?: Date | string | null
   startTime: Date | string
@@ -1144,149 +1212,34 @@ export type ActivityUncheckedCreateWithoutOrdersInput = {
   tags?: Prisma.ActivityCreatetagsInput | string[]
   categories?: Prisma.ActivityCreatecategoriesInput | string[]
   discount?: number | null
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutActivityInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutActivityInput
 }
 
-export type ActivityCreateOrConnectWithoutOrdersInput = {
+export type ActivityCreateOrConnectWithoutAuthorInput = {
   where: Prisma.ActivityWhereUniqueInput
-  create: Prisma.XOR<Prisma.ActivityCreateWithoutOrdersInput, Prisma.ActivityUncheckedCreateWithoutOrdersInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput>
 }
 
-export type ActivityUpsertWithoutOrdersInput = {
-  update: Prisma.XOR<Prisma.ActivityUpdateWithoutOrdersInput, Prisma.ActivityUncheckedUpdateWithoutOrdersInput>
-  create: Prisma.XOR<Prisma.ActivityCreateWithoutOrdersInput, Prisma.ActivityUncheckedCreateWithoutOrdersInput>
-  where?: Prisma.ActivityWhereInput
+export type ActivityCreateManyAuthorInputEnvelope = {
+  data: Prisma.ActivityCreateManyAuthorInput | Prisma.ActivityCreateManyAuthorInput[]
+  skipDuplicates?: boolean
 }
 
-export type ActivityUpdateToOneWithWhereWithoutOrdersInput = {
-  where?: Prisma.ActivityWhereInput
-  data: Prisma.XOR<Prisma.ActivityUpdateWithoutOrdersInput, Prisma.ActivityUncheckedUpdateWithoutOrdersInput>
+export type ActivityUpsertWithWhereUniqueWithoutAuthorInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  update: Prisma.XOR<Prisma.ActivityUpdateWithoutAuthorInput, Prisma.ActivityUncheckedUpdateWithoutAuthorInput>
+  create: Prisma.XOR<Prisma.ActivityCreateWithoutAuthorInput, Prisma.ActivityUncheckedCreateWithoutAuthorInput>
 }
 
-export type ActivityUpdateWithoutOrdersInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  places?: Prisma.IntFieldUpdateOperationsInput | number
-  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
-  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.ActivityUpdatetagsInput | string[]
-  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
-  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  author?: Prisma.UserUpdateOneRequiredWithoutActivitiesNestedInput
-  tour?: Prisma.TourUpdateOneRequiredWithoutActivitiesNestedInput
-  photos?: Prisma.PhotoUpdateManyWithoutActivityNestedInput
+export type ActivityUpdateWithWhereUniqueWithoutAuthorInput = {
+  where: Prisma.ActivityWhereUniqueInput
+  data: Prisma.XOR<Prisma.ActivityUpdateWithoutAuthorInput, Prisma.ActivityUncheckedUpdateWithoutAuthorInput>
 }
 
-export type ActivityUncheckedUpdateWithoutOrdersInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  authorId?: Prisma.IntFieldUpdateOperationsInput | number
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  places?: Prisma.IntFieldUpdateOperationsInput | number
-  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
-  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  tourId?: Prisma.IntFieldUpdateOperationsInput | number
-  tags?: Prisma.ActivityUpdatetagsInput | string[]
-  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
-  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  photos?: Prisma.PhotoUncheckedUpdateManyWithoutActivityNestedInput
-}
-
-export type ActivityCreateManyAuthorInput = {
-  id?: number
-  title: string
-  description: string
-  status: string
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  startTime: Date | string
-  finishTime: Date | string
-  places: number
-  participants?: Prisma.ActivityCreateparticipantsInput | number[]
-  groupPrice: number
-  personPrice: number
-  type: string
-  tourId: number
-  tags?: Prisma.ActivityCreatetagsInput | string[]
-  categories?: Prisma.ActivityCreatecategoriesInput | string[]
-  discount?: number | null
-}
-
-export type ActivityUpdateWithoutAuthorInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  places?: Prisma.IntFieldUpdateOperationsInput | number
-  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
-  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  tags?: Prisma.ActivityUpdatetagsInput | string[]
-  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
-  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  tour?: Prisma.TourUpdateOneRequiredWithoutActivitiesNestedInput
-  orders?: Prisma.OrderUpdateManyWithoutActivityNestedInput
-  photos?: Prisma.PhotoUpdateManyWithoutActivityNestedInput
-}
-
-export type ActivityUncheckedUpdateWithoutAuthorInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  places?: Prisma.IntFieldUpdateOperationsInput | number
-  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
-  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  tourId?: Prisma.IntFieldUpdateOperationsInput | number
-  tags?: Prisma.ActivityUpdatetagsInput | string[]
-  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
-  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  orders?: Prisma.OrderUncheckedUpdateManyWithoutActivityNestedInput
-  photos?: Prisma.PhotoUncheckedUpdateManyWithoutActivityNestedInput
-}
-
-export type ActivityUncheckedUpdateManyWithoutAuthorInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  places?: Prisma.IntFieldUpdateOperationsInput | number
-  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
-  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.StringFieldUpdateOperationsInput | string
-  tourId?: Prisma.IntFieldUpdateOperationsInput | number
-  tags?: Prisma.ActivityUpdatetagsInput | string[]
-  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
-  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+export type ActivityUpdateManyWithWhereWithoutAuthorInput = {
+  where: Prisma.ActivityScalarWhereInput
+  data: Prisma.XOR<Prisma.ActivityUpdateManyMutationInput, Prisma.ActivityUncheckedUpdateManyWithoutAuthorInput>
 }
 
 export type ActivityCreateManyTourInput = {
@@ -1367,6 +1320,89 @@ export type ActivityUncheckedUpdateManyWithoutTourInput = {
   groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
   personPrice?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ActivityUpdatetagsInput | string[]
+  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
+  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+}
+
+export type ActivityCreateManyAuthorInput = {
+  id?: number
+  title: string
+  description: string
+  status: string
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  startTime: Date | string
+  finishTime: Date | string
+  places: number
+  participants?: Prisma.ActivityCreateparticipantsInput | number[]
+  groupPrice: number
+  personPrice: number
+  type: string
+  tourId: number
+  tags?: Prisma.ActivityCreatetagsInput | string[]
+  categories?: Prisma.ActivityCreatecategoriesInput | string[]
+  discount?: number | null
+}
+
+export type ActivityUpdateWithoutAuthorInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  places?: Prisma.IntFieldUpdateOperationsInput | number
+  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
+  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  tags?: Prisma.ActivityUpdatetagsInput | string[]
+  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
+  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tour?: Prisma.TourUpdateOneRequiredWithoutActivitiesNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutActivityNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutActivityNestedInput
+}
+
+export type ActivityUncheckedUpdateWithoutAuthorInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  places?: Prisma.IntFieldUpdateOperationsInput | number
+  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
+  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  tourId?: Prisma.IntFieldUpdateOperationsInput | number
+  tags?: Prisma.ActivityUpdatetagsInput | string[]
+  categories?: Prisma.ActivityUpdatecategoriesInput | string[]
+  discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutActivityNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutActivityNestedInput
+}
+
+export type ActivityUncheckedUpdateManyWithoutAuthorInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  finishTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  places?: Prisma.IntFieldUpdateOperationsInput | number
+  participants?: Prisma.ActivityUpdateparticipantsInput | number[]
+  groupPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  personPrice?: Prisma.IntFieldUpdateOperationsInput | number
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  tourId?: Prisma.IntFieldUpdateOperationsInput | number
   tags?: Prisma.ActivityUpdatetagsInput | string[]
   categories?: Prisma.ActivityUpdatecategoriesInput | string[]
   discount?: Prisma.NullableIntFieldUpdateOperationsInput | number | null

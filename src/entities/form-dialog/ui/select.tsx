@@ -14,7 +14,7 @@ export const Select = <
 >(
   props: InputProps<T> & { placeHolder?: string; options: string[] }
 ) => {
-  const { name, type, options, onChange, placeHolder } = props;
+  const { name, type, options, onChange, placeHolder, value } = props;
 
   const onSelectChange = (value: string) => {
     if (type !== 'select') return;
@@ -23,7 +23,10 @@ export const Select = <
   };
 
   return (
-    <SelectUI onValueChange={onSelectChange}>
+    <SelectUI
+      onValueChange={onSelectChange}
+      value={typeof value === 'string' ? value : undefined}
+    >
       <SelectTrigger className={cn('w-full')}>
         <SelectValue placeholder={placeHolder || 'Выберите значение'} />
       </SelectTrigger>

@@ -400,16 +400,6 @@ export type FileUncheckedUpdateManyInput = {
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type FileListRelationFilter = {
-  every?: Prisma.FileWhereInput
-  some?: Prisma.FileWhereInput
-  none?: Prisma.FileWhereInput
-}
-
-export type FileOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
 export type FileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bucket?: Prisma.SortOrder
@@ -456,6 +446,16 @@ export type FileSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   size?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+}
+
+export type FileListRelationFilter = {
+  every?: Prisma.FileWhereInput
+  some?: Prisma.FileWhereInput
+  none?: Prisma.FileWhereInput
+}
+
+export type FileOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type FileCreateNestedManyWithoutAuthorInput = {

@@ -51,16 +51,16 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  User: 'User',
+  Activity: 'Activity',
+  File: 'File',
+  Order: 'Order',
   Otp: 'Otp',
+  Photo: 'Photo',
   Post: 'Post',
   Review: 'Review',
-  Photo: 'Photo',
   Tour: 'Tour',
-  Order: 'Order',
   Transaction: 'Transaction',
-  Activity: 'Activity',
-  File: 'File'
+  User: 'User'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -79,23 +79,58 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const UserScalarFieldEnum = {
+export const ActivityScalarFieldEnum = {
   id: 'id',
-  login: 'login',
-  passwordHash: 'passwordHash',
-  salt: 'salt',
-  role: 'role',
-  phone: 'phone',
-  firstName: 'firstName',
-  lastName: 'lastName',
+  title: 'title',
+  description: 'description',
+  status: 'status',
+  authorId: 'authorId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  avatarPhotoId: 'avatarPhotoId',
-  email: 'email',
-  rating: 'rating'
+  startTime: 'startTime',
+  finishTime: 'finishTime',
+  places: 'places',
+  participants: 'participants',
+  groupPrice: 'groupPrice',
+  personPrice: 'personPrice',
+  type: 'type',
+  tourId: 'tourId',
+  tags: 'tags',
+  categories: 'categories',
+  discount: 'discount'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typeof ActivityScalarFieldEnum]
+
+
+export const FileScalarFieldEnum = {
+  id: 'id',
+  bucket: 'bucket',
+  filename: 'filename',
+  originalName: 'originalName',
+  type: 'type',
+  createdAt: 'createdAt',
+  size: 'size',
+  authorId: 'authorId',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+
+
+export const OrderScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  amount: 'amount',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  places: 'places',
+  tourId: 'tourId',
+  activityId: 'activityId'
+} as const
+
+export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
 export const OtpScalarFieldEnum = {
@@ -107,6 +142,20 @@ export const OtpScalarFieldEnum = {
 } as const
 
 export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
+
+
+export const PhotoScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  keywords: 'keywords',
+  source: 'source',
+  fileName: 'fileName',
+  authorId: 'authorId',
+  tourId: 'tourId',
+  activityId: 'activityId'
+} as const
+
+export type PhotoScalarFieldEnum = (typeof PhotoScalarFieldEnum)[keyof typeof PhotoScalarFieldEnum]
 
 
 export const PostScalarFieldEnum = {
@@ -152,20 +201,6 @@ export const ReviewScalarFieldEnum = {
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
-export const PhotoScalarFieldEnum = {
-  id: 'id',
-  title: 'title',
-  keywords: 'keywords',
-  source: 'source',
-  fileName: 'fileName',
-  authorId: 'authorId',
-  tourId: 'tourId',
-  activityId: 'activityId'
-} as const
-
-export type PhotoScalarFieldEnum = (typeof PhotoScalarFieldEnum)[keyof typeof PhotoScalarFieldEnum]
-
-
 export const TourScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -191,21 +226,6 @@ export const TourScalarFieldEnum = {
 export type TourScalarFieldEnum = (typeof TourScalarFieldEnum)[keyof typeof TourScalarFieldEnum]
 
 
-export const OrderScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  amount: 'amount',
-  status: 'status',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  places: 'places',
-  tourId: 'tourId',
-  activityId: 'activityId'
-} as const
-
-export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
-
-
 export const TransactionScalarFieldEnum = {
   id: 'id',
   authorId: 'authorId',
@@ -216,43 +236,23 @@ export const TransactionScalarFieldEnum = {
 export type TransactionScalarFieldEnum = (typeof TransactionScalarFieldEnum)[keyof typeof TransactionScalarFieldEnum]
 
 
-export const ActivityScalarFieldEnum = {
+export const UserScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  description: 'description',
-  status: 'status',
-  authorId: 'authorId',
+  login: 'login',
+  passwordHash: 'passwordHash',
+  salt: 'salt',
+  role: 'role',
+  phone: 'phone',
+  firstName: 'firstName',
+  lastName: 'lastName',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  startTime: 'startTime',
-  finishTime: 'finishTime',
-  places: 'places',
-  participants: 'participants',
-  groupPrice: 'groupPrice',
-  personPrice: 'personPrice',
-  type: 'type',
-  tourId: 'tourId',
-  tags: 'tags',
-  categories: 'categories',
-  discount: 'discount'
+  avatarPhotoId: 'avatarPhotoId',
+  email: 'email',
+  rating: 'rating'
 } as const
 
-export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typeof ActivityScalarFieldEnum]
-
-
-export const FileScalarFieldEnum = {
-  id: 'id',
-  bucket: 'bucket',
-  filename: 'filename',
-  originalName: 'originalName',
-  type: 'type',
-  createdAt: 'createdAt',
-  size: 'size',
-  authorId: 'authorId',
-  updatedAt: 'updatedAt'
-} as const
-
-export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
 export const SortOrder = {

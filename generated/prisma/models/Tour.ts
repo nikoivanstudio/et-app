@@ -618,16 +618,6 @@ export type TourUncheckedUpdateManyInput = {
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
-export type TourListRelationFilter = {
-  every?: Prisma.TourWhereInput
-  some?: Prisma.TourWhereInput
-  none?: Prisma.TourWhereInput
-}
-
-export type TourOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
 export type TourScalarRelationFilter = {
   is?: Prisma.TourWhereInput
   isNot?: Prisma.TourWhereInput
@@ -716,6 +706,102 @@ export type TourSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
 }
 
+export type TourListRelationFilter = {
+  every?: Prisma.TourWhereInput
+  some?: Prisma.TourWhereInput
+  none?: Prisma.TourWhereInput
+}
+
+export type TourOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type TourCreateNestedOneWithoutActivitiesInput = {
+  create?: Prisma.XOR<Prisma.TourCreateWithoutActivitiesInput, Prisma.TourUncheckedCreateWithoutActivitiesInput>
+  connectOrCreate?: Prisma.TourCreateOrConnectWithoutActivitiesInput
+  connect?: Prisma.TourWhereUniqueInput
+}
+
+export type TourUpdateOneRequiredWithoutActivitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.TourCreateWithoutActivitiesInput, Prisma.TourUncheckedCreateWithoutActivitiesInput>
+  connectOrCreate?: Prisma.TourCreateOrConnectWithoutActivitiesInput
+  upsert?: Prisma.TourUpsertWithoutActivitiesInput
+  connect?: Prisma.TourWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TourUpdateToOneWithWhereWithoutActivitiesInput, Prisma.TourUpdateWithoutActivitiesInput>, Prisma.TourUncheckedUpdateWithoutActivitiesInput>
+}
+
+export type TourCreateNestedOneWithoutOrdersInput = {
+  create?: Prisma.XOR<Prisma.TourCreateWithoutOrdersInput, Prisma.TourUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.TourCreateOrConnectWithoutOrdersInput
+  connect?: Prisma.TourWhereUniqueInput
+}
+
+export type TourUpdateOneWithoutOrdersNestedInput = {
+  create?: Prisma.XOR<Prisma.TourCreateWithoutOrdersInput, Prisma.TourUncheckedCreateWithoutOrdersInput>
+  connectOrCreate?: Prisma.TourCreateOrConnectWithoutOrdersInput
+  upsert?: Prisma.TourUpsertWithoutOrdersInput
+  disconnect?: Prisma.TourWhereInput | boolean
+  delete?: Prisma.TourWhereInput | boolean
+  connect?: Prisma.TourWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TourUpdateToOneWithWhereWithoutOrdersInput, Prisma.TourUpdateWithoutOrdersInput>, Prisma.TourUncheckedUpdateWithoutOrdersInput>
+}
+
+export type TourCreateNestedOneWithoutPhotosInput = {
+  create?: Prisma.XOR<Prisma.TourCreateWithoutPhotosInput, Prisma.TourUncheckedCreateWithoutPhotosInput>
+  connectOrCreate?: Prisma.TourCreateOrConnectWithoutPhotosInput
+  connect?: Prisma.TourWhereUniqueInput
+}
+
+export type TourUpdateOneWithoutPhotosNestedInput = {
+  create?: Prisma.XOR<Prisma.TourCreateWithoutPhotosInput, Prisma.TourUncheckedCreateWithoutPhotosInput>
+  connectOrCreate?: Prisma.TourCreateOrConnectWithoutPhotosInput
+  upsert?: Prisma.TourUpsertWithoutPhotosInput
+  disconnect?: Prisma.TourWhereInput | boolean
+  delete?: Prisma.TourWhereInput | boolean
+  connect?: Prisma.TourWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TourUpdateToOneWithWhereWithoutPhotosInput, Prisma.TourUpdateWithoutPhotosInput>, Prisma.TourUncheckedUpdateWithoutPhotosInput>
+}
+
+export type TourCreateNestedOneWithoutReviewsInput = {
+  create?: Prisma.XOR<Prisma.TourCreateWithoutReviewsInput, Prisma.TourUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.TourCreateOrConnectWithoutReviewsInput
+  connect?: Prisma.TourWhereUniqueInput
+}
+
+export type TourUpdateOneRequiredWithoutReviewsNestedInput = {
+  create?: Prisma.XOR<Prisma.TourCreateWithoutReviewsInput, Prisma.TourUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.TourCreateOrConnectWithoutReviewsInput
+  upsert?: Prisma.TourUpsertWithoutReviewsInput
+  connect?: Prisma.TourWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TourUpdateToOneWithWhereWithoutReviewsInput, Prisma.TourUpdateWithoutReviewsInput>, Prisma.TourUncheckedUpdateWithoutReviewsInput>
+}
+
+export type TourCreatecategoriesInput = {
+  set: string[]
+}
+
+export type TourCreatemetaKeywordsInput = {
+  set: string[]
+}
+
+export type TourUpdatecategoriesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type TourUpdatemetaKeywordsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type NullableFloatFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type TourCreateNestedManyWithoutAuthorInput = {
   create?: Prisma.XOR<Prisma.TourCreateWithoutAuthorInput, Prisma.TourUncheckedCreateWithoutAuthorInput> | Prisma.TourCreateWithoutAuthorInput[] | Prisma.TourUncheckedCreateWithoutAuthorInput[]
   connectOrCreate?: Prisma.TourCreateOrConnectWithoutAuthorInput | Prisma.TourCreateOrConnectWithoutAuthorInput[]
@@ -758,185 +844,7 @@ export type TourUncheckedUpdateManyWithoutAuthorNestedInput = {
   deleteMany?: Prisma.TourScalarWhereInput | Prisma.TourScalarWhereInput[]
 }
 
-export type TourCreateNestedOneWithoutReviewsInput = {
-  create?: Prisma.XOR<Prisma.TourCreateWithoutReviewsInput, Prisma.TourUncheckedCreateWithoutReviewsInput>
-  connectOrCreate?: Prisma.TourCreateOrConnectWithoutReviewsInput
-  connect?: Prisma.TourWhereUniqueInput
-}
-
-export type TourUpdateOneRequiredWithoutReviewsNestedInput = {
-  create?: Prisma.XOR<Prisma.TourCreateWithoutReviewsInput, Prisma.TourUncheckedCreateWithoutReviewsInput>
-  connectOrCreate?: Prisma.TourCreateOrConnectWithoutReviewsInput
-  upsert?: Prisma.TourUpsertWithoutReviewsInput
-  connect?: Prisma.TourWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TourUpdateToOneWithWhereWithoutReviewsInput, Prisma.TourUpdateWithoutReviewsInput>, Prisma.TourUncheckedUpdateWithoutReviewsInput>
-}
-
-export type TourCreateNestedOneWithoutPhotosInput = {
-  create?: Prisma.XOR<Prisma.TourCreateWithoutPhotosInput, Prisma.TourUncheckedCreateWithoutPhotosInput>
-  connectOrCreate?: Prisma.TourCreateOrConnectWithoutPhotosInput
-  connect?: Prisma.TourWhereUniqueInput
-}
-
-export type TourUpdateOneWithoutPhotosNestedInput = {
-  create?: Prisma.XOR<Prisma.TourCreateWithoutPhotosInput, Prisma.TourUncheckedCreateWithoutPhotosInput>
-  connectOrCreate?: Prisma.TourCreateOrConnectWithoutPhotosInput
-  upsert?: Prisma.TourUpsertWithoutPhotosInput
-  disconnect?: Prisma.TourWhereInput | boolean
-  delete?: Prisma.TourWhereInput | boolean
-  connect?: Prisma.TourWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TourUpdateToOneWithWhereWithoutPhotosInput, Prisma.TourUpdateWithoutPhotosInput>, Prisma.TourUncheckedUpdateWithoutPhotosInput>
-}
-
-export type TourCreatecategoriesInput = {
-  set: string[]
-}
-
-export type TourCreatemetaKeywordsInput = {
-  set: string[]
-}
-
-export type TourUpdatecategoriesInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type TourUpdatemetaKeywordsInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type TourCreateNestedOneWithoutOrdersInput = {
-  create?: Prisma.XOR<Prisma.TourCreateWithoutOrdersInput, Prisma.TourUncheckedCreateWithoutOrdersInput>
-  connectOrCreate?: Prisma.TourCreateOrConnectWithoutOrdersInput
-  connect?: Prisma.TourWhereUniqueInput
-}
-
-export type TourUpdateOneWithoutOrdersNestedInput = {
-  create?: Prisma.XOR<Prisma.TourCreateWithoutOrdersInput, Prisma.TourUncheckedCreateWithoutOrdersInput>
-  connectOrCreate?: Prisma.TourCreateOrConnectWithoutOrdersInput
-  upsert?: Prisma.TourUpsertWithoutOrdersInput
-  disconnect?: Prisma.TourWhereInput | boolean
-  delete?: Prisma.TourWhereInput | boolean
-  connect?: Prisma.TourWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TourUpdateToOneWithWhereWithoutOrdersInput, Prisma.TourUpdateWithoutOrdersInput>, Prisma.TourUncheckedUpdateWithoutOrdersInput>
-}
-
-export type TourCreateNestedOneWithoutActivitiesInput = {
-  create?: Prisma.XOR<Prisma.TourCreateWithoutActivitiesInput, Prisma.TourUncheckedCreateWithoutActivitiesInput>
-  connectOrCreate?: Prisma.TourCreateOrConnectWithoutActivitiesInput
-  connect?: Prisma.TourWhereUniqueInput
-}
-
-export type TourUpdateOneRequiredWithoutActivitiesNestedInput = {
-  create?: Prisma.XOR<Prisma.TourCreateWithoutActivitiesInput, Prisma.TourUncheckedCreateWithoutActivitiesInput>
-  connectOrCreate?: Prisma.TourCreateOrConnectWithoutActivitiesInput
-  upsert?: Prisma.TourUpsertWithoutActivitiesInput
-  connect?: Prisma.TourWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TourUpdateToOneWithWhereWithoutActivitiesInput, Prisma.TourUpdateWithoutActivitiesInput>, Prisma.TourUncheckedUpdateWithoutActivitiesInput>
-}
-
-export type TourCreateWithoutAuthorInput = {
-  title: string
-  description: string
-  mainPhotoId: number
-  price: number
-  duration: number
-  content: string
-  slug: string
-  categories?: Prisma.TourCreatecategoriesInput | string[]
-  status?: string | null
-  metaTitle?: string | null
-  metaDescription?: string | null
-  metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  rating?: number | null
-  descriptionText?: string | null
-  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
-  activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
-  orders?: Prisma.OrderCreateNestedManyWithoutTourInput
-  photos?: Prisma.PhotoCreateNestedManyWithoutTourInput
-}
-
-export type TourUncheckedCreateWithoutAuthorInput = {
-  id?: number
-  title: string
-  description: string
-  mainPhotoId: number
-  price: number
-  duration: number
-  content: string
-  slug: string
-  categories?: Prisma.TourCreatecategoriesInput | string[]
-  status?: string | null
-  metaTitle?: string | null
-  metaDescription?: string | null
-  metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  rating?: number | null
-  descriptionText?: string | null
-  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
-  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
-  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
-  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutTourInput
-}
-
-export type TourCreateOrConnectWithoutAuthorInput = {
-  where: Prisma.TourWhereUniqueInput
-  create: Prisma.XOR<Prisma.TourCreateWithoutAuthorInput, Prisma.TourUncheckedCreateWithoutAuthorInput>
-}
-
-export type TourCreateManyAuthorInputEnvelope = {
-  data: Prisma.TourCreateManyAuthorInput | Prisma.TourCreateManyAuthorInput[]
-  skipDuplicates?: boolean
-}
-
-export type TourUpsertWithWhereUniqueWithoutAuthorInput = {
-  where: Prisma.TourWhereUniqueInput
-  update: Prisma.XOR<Prisma.TourUpdateWithoutAuthorInput, Prisma.TourUncheckedUpdateWithoutAuthorInput>
-  create: Prisma.XOR<Prisma.TourCreateWithoutAuthorInput, Prisma.TourUncheckedCreateWithoutAuthorInput>
-}
-
-export type TourUpdateWithWhereUniqueWithoutAuthorInput = {
-  where: Prisma.TourWhereUniqueInput
-  data: Prisma.XOR<Prisma.TourUpdateWithoutAuthorInput, Prisma.TourUncheckedUpdateWithoutAuthorInput>
-}
-
-export type TourUpdateManyWithWhereWithoutAuthorInput = {
-  where: Prisma.TourScalarWhereInput
-  data: Prisma.XOR<Prisma.TourUpdateManyMutationInput, Prisma.TourUncheckedUpdateManyWithoutAuthorInput>
-}
-
-export type TourScalarWhereInput = {
-  AND?: Prisma.TourScalarWhereInput | Prisma.TourScalarWhereInput[]
-  OR?: Prisma.TourScalarWhereInput[]
-  NOT?: Prisma.TourScalarWhereInput | Prisma.TourScalarWhereInput[]
-  id?: Prisma.IntFilter<"Tour"> | number
-  title?: Prisma.StringFilter<"Tour"> | string
-  description?: Prisma.StringFilter<"Tour"> | string
-  mainPhotoId?: Prisma.IntFilter<"Tour"> | number
-  price?: Prisma.IntFilter<"Tour"> | number
-  duration?: Prisma.IntFilter<"Tour"> | number
-  content?: Prisma.StringFilter<"Tour"> | string
-  slug?: Prisma.StringFilter<"Tour"> | string
-  categories?: Prisma.StringNullableListFilter<"Tour">
-  authorId?: Prisma.IntFilter<"Tour"> | number
-  status?: Prisma.StringNullableFilter<"Tour"> | string | null
-  metaTitle?: Prisma.StringNullableFilter<"Tour"> | string | null
-  metaDescription?: Prisma.StringNullableFilter<"Tour"> | string | null
-  metaKeywords?: Prisma.StringNullableListFilter<"Tour">
-  createdAt?: Prisma.DateTimeFilter<"Tour"> | Date | string
-  updatedAt?: Prisma.DateTimeNullableFilter<"Tour"> | Date | string | null
-  rating?: Prisma.FloatNullableFilter<"Tour"> | number | null
-  descriptionText?: Prisma.StringNullableFilter<"Tour"> | string | null
-  startPlace?: Prisma.JsonNullableFilter<"Tour">
-}
-
-export type TourCreateWithoutReviewsInput = {
+export type TourCreateWithoutActivitiesInput = {
   title: string
   description: string
   mainPhotoId: number
@@ -955,12 +863,12 @@ export type TourCreateWithoutReviewsInput = {
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   author: Prisma.UserCreateNestedOneWithoutToursInput
-  activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderCreateNestedManyWithoutTourInput
   photos?: Prisma.PhotoCreateNestedManyWithoutTourInput
 }
 
-export type TourUncheckedCreateWithoutReviewsInput = {
+export type TourUncheckedCreateWithoutActivitiesInput = {
   id?: number
   title: string
   description: string
@@ -980,28 +888,28 @@ export type TourUncheckedCreateWithoutReviewsInput = {
   rating?: number | null
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutTourInput
 }
 
-export type TourCreateOrConnectWithoutReviewsInput = {
+export type TourCreateOrConnectWithoutActivitiesInput = {
   where: Prisma.TourWhereUniqueInput
-  create: Prisma.XOR<Prisma.TourCreateWithoutReviewsInput, Prisma.TourUncheckedCreateWithoutReviewsInput>
+  create: Prisma.XOR<Prisma.TourCreateWithoutActivitiesInput, Prisma.TourUncheckedCreateWithoutActivitiesInput>
 }
 
-export type TourUpsertWithoutReviewsInput = {
-  update: Prisma.XOR<Prisma.TourUpdateWithoutReviewsInput, Prisma.TourUncheckedUpdateWithoutReviewsInput>
-  create: Prisma.XOR<Prisma.TourCreateWithoutReviewsInput, Prisma.TourUncheckedCreateWithoutReviewsInput>
+export type TourUpsertWithoutActivitiesInput = {
+  update: Prisma.XOR<Prisma.TourUpdateWithoutActivitiesInput, Prisma.TourUncheckedUpdateWithoutActivitiesInput>
+  create: Prisma.XOR<Prisma.TourCreateWithoutActivitiesInput, Prisma.TourUncheckedCreateWithoutActivitiesInput>
   where?: Prisma.TourWhereInput
 }
 
-export type TourUpdateToOneWithWhereWithoutReviewsInput = {
+export type TourUpdateToOneWithWhereWithoutActivitiesInput = {
   where?: Prisma.TourWhereInput
-  data: Prisma.XOR<Prisma.TourUpdateWithoutReviewsInput, Prisma.TourUncheckedUpdateWithoutReviewsInput>
+  data: Prisma.XOR<Prisma.TourUpdateWithoutActivitiesInput, Prisma.TourUncheckedUpdateWithoutActivitiesInput>
 }
 
-export type TourUpdateWithoutReviewsInput = {
+export type TourUpdateWithoutActivitiesInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1020,12 +928,12 @@ export type TourUpdateWithoutReviewsInput = {
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
-  activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUpdateManyWithoutTourNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutTourNestedInput
 }
 
-export type TourUncheckedUpdateWithoutReviewsInput = {
+export type TourUncheckedUpdateWithoutActivitiesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1045,8 +953,122 @@ export type TourUncheckedUpdateWithoutReviewsInput = {
   rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutTourNestedInput
+}
+
+export type TourCreateWithoutOrdersInput = {
+  title: string
+  description: string
+  mainPhotoId: number
+  price: number
+  duration: number
+  content: string
+  slug: string
+  categories?: Prisma.TourCreatecategoriesInput | string[]
+  status?: string | null
+  metaTitle?: string | null
+  metaDescription?: string | null
+  metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  rating?: number | null
+  descriptionText?: string | null
+  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  author: Prisma.UserCreateNestedOneWithoutToursInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
+  photos?: Prisma.PhotoCreateNestedManyWithoutTourInput
+}
+
+export type TourUncheckedCreateWithoutOrdersInput = {
+  id?: number
+  title: string
+  description: string
+  mainPhotoId: number
+  price: number
+  duration: number
+  content: string
+  slug: string
+  categories?: Prisma.TourCreatecategoriesInput | string[]
+  authorId: number
+  status?: string | null
+  metaTitle?: string | null
+  metaDescription?: string | null
+  metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  rating?: number | null
+  descriptionText?: string | null
+  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
+  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutTourInput
+}
+
+export type TourCreateOrConnectWithoutOrdersInput = {
+  where: Prisma.TourWhereUniqueInput
+  create: Prisma.XOR<Prisma.TourCreateWithoutOrdersInput, Prisma.TourUncheckedCreateWithoutOrdersInput>
+}
+
+export type TourUpsertWithoutOrdersInput = {
+  update: Prisma.XOR<Prisma.TourUpdateWithoutOrdersInput, Prisma.TourUncheckedUpdateWithoutOrdersInput>
+  create: Prisma.XOR<Prisma.TourCreateWithoutOrdersInput, Prisma.TourUncheckedCreateWithoutOrdersInput>
+  where?: Prisma.TourWhereInput
+}
+
+export type TourUpdateToOneWithWhereWithoutOrdersInput = {
+  where?: Prisma.TourWhereInput
+  data: Prisma.XOR<Prisma.TourUpdateWithoutOrdersInput, Prisma.TourUncheckedUpdateWithoutOrdersInput>
+}
+
+export type TourUpdateWithoutOrdersInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  duration?: Prisma.IntFieldUpdateOperationsInput | number
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  categories?: Prisma.TourUpdatecategoriesInput | string[]
+  status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutTourNestedInput
+}
+
+export type TourUncheckedUpdateWithoutOrdersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  duration?: Prisma.IntFieldUpdateOperationsInput | number
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  categories?: Prisma.TourUpdatecategoriesInput | string[]
+  authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutTourNestedInput
 }
 
@@ -1164,7 +1186,7 @@ export type TourUncheckedUpdateWithoutPhotosInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
 }
 
-export type TourCreateWithoutOrdersInput = {
+export type TourCreateWithoutReviewsInput = {
   title: string
   description: string
   mainPhotoId: number
@@ -1183,12 +1205,12 @@ export type TourCreateWithoutOrdersInput = {
   descriptionText?: string | null
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   author: Prisma.UserCreateNestedOneWithoutToursInput
-  reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
+  orders?: Prisma.OrderCreateNestedManyWithoutTourInput
   photos?: Prisma.PhotoCreateNestedManyWithoutTourInput
 }
 
-export type TourUncheckedCreateWithoutOrdersInput = {
+export type TourUncheckedCreateWithoutReviewsInput = {
   id?: number
   title: string
   description: string
@@ -1199,6 +1221,119 @@ export type TourUncheckedCreateWithoutOrdersInput = {
   slug: string
   categories?: Prisma.TourCreatecategoriesInput | string[]
   authorId: number
+  status?: string | null
+  metaTitle?: string | null
+  metaDescription?: string | null
+  metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  rating?: number | null
+  descriptionText?: string | null
+  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
+  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutTourInput
+}
+
+export type TourCreateOrConnectWithoutReviewsInput = {
+  where: Prisma.TourWhereUniqueInput
+  create: Prisma.XOR<Prisma.TourCreateWithoutReviewsInput, Prisma.TourUncheckedCreateWithoutReviewsInput>
+}
+
+export type TourUpsertWithoutReviewsInput = {
+  update: Prisma.XOR<Prisma.TourUpdateWithoutReviewsInput, Prisma.TourUncheckedUpdateWithoutReviewsInput>
+  create: Prisma.XOR<Prisma.TourCreateWithoutReviewsInput, Prisma.TourUncheckedCreateWithoutReviewsInput>
+  where?: Prisma.TourWhereInput
+}
+
+export type TourUpdateToOneWithWhereWithoutReviewsInput = {
+  where?: Prisma.TourWhereInput
+  data: Prisma.XOR<Prisma.TourUpdateWithoutReviewsInput, Prisma.TourUncheckedUpdateWithoutReviewsInput>
+}
+
+export type TourUpdateWithoutReviewsInput = {
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  duration?: Prisma.IntFieldUpdateOperationsInput | number
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  categories?: Prisma.TourUpdatecategoriesInput | string[]
+  status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutTourNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutTourNestedInput
+}
+
+export type TourUncheckedUpdateWithoutReviewsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.IntFieldUpdateOperationsInput | number
+  duration?: Prisma.IntFieldUpdateOperationsInput | number
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  categories?: Prisma.TourUpdatecategoriesInput | string[]
+  authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutTourNestedInput
+}
+
+export type TourCreateWithoutAuthorInput = {
+  title: string
+  description: string
+  mainPhotoId: number
+  price: number
+  duration: number
+  content: string
+  slug: string
+  categories?: Prisma.TourCreatecategoriesInput | string[]
+  status?: string | null
+  metaTitle?: string | null
+  metaDescription?: string | null
+  metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  rating?: number | null
+  descriptionText?: string | null
+  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
+  orders?: Prisma.OrderCreateNestedManyWithoutTourInput
+  photos?: Prisma.PhotoCreateNestedManyWithoutTourInput
+}
+
+export type TourUncheckedCreateWithoutAuthorInput = {
+  id?: number
+  title: string
+  description: string
+  mainPhotoId: number
+  price: number
+  duration: number
+  content: string
+  slug: string
+  categories?: Prisma.TourCreatecategoriesInput | string[]
   status?: string | null
   metaTitle?: string | null
   metaDescription?: string | null
@@ -1210,186 +1345,59 @@ export type TourUncheckedCreateWithoutOrdersInput = {
   startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
-  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutTourInput
-}
-
-export type TourCreateOrConnectWithoutOrdersInput = {
-  where: Prisma.TourWhereUniqueInput
-  create: Prisma.XOR<Prisma.TourCreateWithoutOrdersInput, Prisma.TourUncheckedCreateWithoutOrdersInput>
-}
-
-export type TourUpsertWithoutOrdersInput = {
-  update: Prisma.XOR<Prisma.TourUpdateWithoutOrdersInput, Prisma.TourUncheckedUpdateWithoutOrdersInput>
-  create: Prisma.XOR<Prisma.TourCreateWithoutOrdersInput, Prisma.TourUncheckedCreateWithoutOrdersInput>
-  where?: Prisma.TourWhereInput
-}
-
-export type TourUpdateToOneWithWhereWithoutOrdersInput = {
-  where?: Prisma.TourWhereInput
-  data: Prisma.XOR<Prisma.TourUpdateWithoutOrdersInput, Prisma.TourUncheckedUpdateWithoutOrdersInput>
-}
-
-export type TourUpdateWithoutOrdersInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.IntFieldUpdateOperationsInput | number
-  duration?: Prisma.IntFieldUpdateOperationsInput | number
-  content?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  categories?: Prisma.TourUpdatecategoriesInput | string[]
-  status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
-  reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
-  activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
-  photos?: Prisma.PhotoUpdateManyWithoutTourNestedInput
-}
-
-export type TourUncheckedUpdateWithoutOrdersInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.IntFieldUpdateOperationsInput | number
-  duration?: Prisma.IntFieldUpdateOperationsInput | number
-  content?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  categories?: Prisma.TourUpdatecategoriesInput | string[]
-  authorId?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
-  activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
-  photos?: Prisma.PhotoUncheckedUpdateManyWithoutTourNestedInput
-}
-
-export type TourCreateWithoutActivitiesInput = {
-  title: string
-  description: string
-  mainPhotoId: number
-  price: number
-  duration: number
-  content: string
-  slug: string
-  categories?: Prisma.TourCreatecategoriesInput | string[]
-  status?: string | null
-  metaTitle?: string | null
-  metaDescription?: string | null
-  metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  rating?: number | null
-  descriptionText?: string | null
-  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  author: Prisma.UserCreateNestedOneWithoutToursInput
-  reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
-  orders?: Prisma.OrderCreateNestedManyWithoutTourInput
-  photos?: Prisma.PhotoCreateNestedManyWithoutTourInput
-}
-
-export type TourUncheckedCreateWithoutActivitiesInput = {
-  id?: number
-  title: string
-  description: string
-  mainPhotoId: number
-  price: number
-  duration: number
-  content: string
-  slug: string
-  categories?: Prisma.TourCreatecategoriesInput | string[]
-  authorId: number
-  status?: string | null
-  metaTitle?: string | null
-  metaDescription?: string | null
-  metaKeywords?: Prisma.TourCreatemetaKeywordsInput | string[]
-  createdAt?: Date | string
-  updatedAt?: Date | string | null
-  rating?: number | null
-  descriptionText?: string | null
-  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutTourInput
 }
 
-export type TourCreateOrConnectWithoutActivitiesInput = {
+export type TourCreateOrConnectWithoutAuthorInput = {
   where: Prisma.TourWhereUniqueInput
-  create: Prisma.XOR<Prisma.TourCreateWithoutActivitiesInput, Prisma.TourUncheckedCreateWithoutActivitiesInput>
+  create: Prisma.XOR<Prisma.TourCreateWithoutAuthorInput, Prisma.TourUncheckedCreateWithoutAuthorInput>
 }
 
-export type TourUpsertWithoutActivitiesInput = {
-  update: Prisma.XOR<Prisma.TourUpdateWithoutActivitiesInput, Prisma.TourUncheckedUpdateWithoutActivitiesInput>
-  create: Prisma.XOR<Prisma.TourCreateWithoutActivitiesInput, Prisma.TourUncheckedCreateWithoutActivitiesInput>
-  where?: Prisma.TourWhereInput
+export type TourCreateManyAuthorInputEnvelope = {
+  data: Prisma.TourCreateManyAuthorInput | Prisma.TourCreateManyAuthorInput[]
+  skipDuplicates?: boolean
 }
 
-export type TourUpdateToOneWithWhereWithoutActivitiesInput = {
-  where?: Prisma.TourWhereInput
-  data: Prisma.XOR<Prisma.TourUpdateWithoutActivitiesInput, Prisma.TourUncheckedUpdateWithoutActivitiesInput>
+export type TourUpsertWithWhereUniqueWithoutAuthorInput = {
+  where: Prisma.TourWhereUniqueInput
+  update: Prisma.XOR<Prisma.TourUpdateWithoutAuthorInput, Prisma.TourUncheckedUpdateWithoutAuthorInput>
+  create: Prisma.XOR<Prisma.TourCreateWithoutAuthorInput, Prisma.TourUncheckedCreateWithoutAuthorInput>
 }
 
-export type TourUpdateWithoutActivitiesInput = {
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.IntFieldUpdateOperationsInput | number
-  duration?: Prisma.IntFieldUpdateOperationsInput | number
-  content?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  categories?: Prisma.TourUpdatecategoriesInput | string[]
-  status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
-  reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
-  orders?: Prisma.OrderUpdateManyWithoutTourNestedInput
-  photos?: Prisma.PhotoUpdateManyWithoutTourNestedInput
+export type TourUpdateWithWhereUniqueWithoutAuthorInput = {
+  where: Prisma.TourWhereUniqueInput
+  data: Prisma.XOR<Prisma.TourUpdateWithoutAuthorInput, Prisma.TourUncheckedUpdateWithoutAuthorInput>
 }
 
-export type TourUncheckedUpdateWithoutActivitiesInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
-  price?: Prisma.IntFieldUpdateOperationsInput | number
-  duration?: Prisma.IntFieldUpdateOperationsInput | number
-  content?: Prisma.StringFieldUpdateOperationsInput | string
-  slug?: Prisma.StringFieldUpdateOperationsInput | string
-  categories?: Prisma.TourUpdatecategoriesInput | string[]
-  authorId?: Prisma.IntFieldUpdateOperationsInput | number
-  status?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaDescription?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  metaKeywords?: Prisma.TourUpdatemetaKeywordsInput | string[]
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  descriptionText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  startPlace?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
-  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
-  orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
-  photos?: Prisma.PhotoUncheckedUpdateManyWithoutTourNestedInput
+export type TourUpdateManyWithWhereWithoutAuthorInput = {
+  where: Prisma.TourScalarWhereInput
+  data: Prisma.XOR<Prisma.TourUpdateManyMutationInput, Prisma.TourUncheckedUpdateManyWithoutAuthorInput>
+}
+
+export type TourScalarWhereInput = {
+  AND?: Prisma.TourScalarWhereInput | Prisma.TourScalarWhereInput[]
+  OR?: Prisma.TourScalarWhereInput[]
+  NOT?: Prisma.TourScalarWhereInput | Prisma.TourScalarWhereInput[]
+  id?: Prisma.IntFilter<"Tour"> | number
+  title?: Prisma.StringFilter<"Tour"> | string
+  description?: Prisma.StringFilter<"Tour"> | string
+  mainPhotoId?: Prisma.IntFilter<"Tour"> | number
+  price?: Prisma.IntFilter<"Tour"> | number
+  duration?: Prisma.IntFilter<"Tour"> | number
+  content?: Prisma.StringFilter<"Tour"> | string
+  slug?: Prisma.StringFilter<"Tour"> | string
+  categories?: Prisma.StringNullableListFilter<"Tour">
+  authorId?: Prisma.IntFilter<"Tour"> | number
+  status?: Prisma.StringNullableFilter<"Tour"> | string | null
+  metaTitle?: Prisma.StringNullableFilter<"Tour"> | string | null
+  metaDescription?: Prisma.StringNullableFilter<"Tour"> | string | null
+  metaKeywords?: Prisma.StringNullableListFilter<"Tour">
+  createdAt?: Prisma.DateTimeFilter<"Tour"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"Tour"> | Date | string | null
+  rating?: Prisma.FloatNullableFilter<"Tour"> | number | null
+  descriptionText?: Prisma.StringNullableFilter<"Tour"> | string | null
+  startPlace?: Prisma.JsonNullableFilter<"Tour">
 }
 
 export type TourCreateManyAuthorInput = {

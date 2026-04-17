@@ -1,0 +1,14 @@
+model File {
+  id           Int       @id @default(autoincrement())
+  bucket       String
+  filename     String    @unique
+  originalName String    @map("original_name")
+  type         String    @db.VarChar(20)
+  createdAt    DateTime  @default(now()) @map("created_at")
+  size         Int
+  authorId     Int       @map("author_id")
+  author       User      @relation(fields: [authorId], references: [id])
+  updatedAt    DateTime? @map("updated_at")
+
+  @@map("file")
+}

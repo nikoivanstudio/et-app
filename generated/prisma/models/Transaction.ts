@@ -311,16 +311,6 @@ export type TransactionUncheckedUpdateManyInput = {
   orderId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type TransactionListRelationFilter = {
-  every?: Prisma.TransactionWhereInput
-  some?: Prisma.TransactionWhereInput
-  none?: Prisma.TransactionWhereInput
-}
-
-export type TransactionOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
 export type TransactionNullableScalarRelationFilter = {
   is?: Prisma.TransactionWhereInput | null
   isNot?: Prisma.TransactionWhereInput | null
@@ -359,6 +349,48 @@ export type TransactionSumOrderByAggregateInput = {
   authorId?: Prisma.SortOrder
   amount?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
+}
+
+export type TransactionListRelationFilter = {
+  every?: Prisma.TransactionWhereInput
+  some?: Prisma.TransactionWhereInput
+  none?: Prisma.TransactionWhereInput
+}
+
+export type TransactionOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type TransactionCreateNestedOneWithoutOrderInput = {
+  create?: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
+  connectOrCreate?: Prisma.TransactionCreateOrConnectWithoutOrderInput
+  connect?: Prisma.TransactionWhereUniqueInput
+}
+
+export type TransactionUncheckedCreateNestedOneWithoutOrderInput = {
+  create?: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
+  connectOrCreate?: Prisma.TransactionCreateOrConnectWithoutOrderInput
+  connect?: Prisma.TransactionWhereUniqueInput
+}
+
+export type TransactionUpdateOneWithoutOrderNestedInput = {
+  create?: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
+  connectOrCreate?: Prisma.TransactionCreateOrConnectWithoutOrderInput
+  upsert?: Prisma.TransactionUpsertWithoutOrderInput
+  disconnect?: Prisma.TransactionWhereInput | boolean
+  delete?: Prisma.TransactionWhereInput | boolean
+  connect?: Prisma.TransactionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionUpdateToOneWithWhereWithoutOrderInput, Prisma.TransactionUpdateWithoutOrderInput>, Prisma.TransactionUncheckedUpdateWithoutOrderInput>
+}
+
+export type TransactionUncheckedUpdateOneWithoutOrderNestedInput = {
+  create?: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
+  connectOrCreate?: Prisma.TransactionCreateOrConnectWithoutOrderInput
+  upsert?: Prisma.TransactionUpsertWithoutOrderInput
+  disconnect?: Prisma.TransactionWhereInput | boolean
+  delete?: Prisma.TransactionWhereInput | boolean
+  connect?: Prisma.TransactionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionUpdateToOneWithWhereWithoutOrderInput, Prisma.TransactionUpdateWithoutOrderInput>, Prisma.TransactionUncheckedUpdateWithoutOrderInput>
 }
 
 export type TransactionCreateNestedManyWithoutAuthorInput = {
@@ -403,36 +435,42 @@ export type TransactionUncheckedUpdateManyWithoutAuthorNestedInput = {
   deleteMany?: Prisma.TransactionScalarWhereInput | Prisma.TransactionScalarWhereInput[]
 }
 
-export type TransactionCreateNestedOneWithoutOrderInput = {
-  create?: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
-  connectOrCreate?: Prisma.TransactionCreateOrConnectWithoutOrderInput
-  connect?: Prisma.TransactionWhereUniqueInput
+export type TransactionCreateWithoutOrderInput = {
+  amount: number
+  author: Prisma.UserCreateNestedOneWithoutTransactionsInput
 }
 
-export type TransactionUncheckedCreateNestedOneWithoutOrderInput = {
-  create?: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
-  connectOrCreate?: Prisma.TransactionCreateOrConnectWithoutOrderInput
-  connect?: Prisma.TransactionWhereUniqueInput
+export type TransactionUncheckedCreateWithoutOrderInput = {
+  id?: number
+  authorId: number
+  amount: number
 }
 
-export type TransactionUpdateOneWithoutOrderNestedInput = {
-  create?: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
-  connectOrCreate?: Prisma.TransactionCreateOrConnectWithoutOrderInput
-  upsert?: Prisma.TransactionUpsertWithoutOrderInput
-  disconnect?: Prisma.TransactionWhereInput | boolean
-  delete?: Prisma.TransactionWhereInput | boolean
-  connect?: Prisma.TransactionWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionUpdateToOneWithWhereWithoutOrderInput, Prisma.TransactionUpdateWithoutOrderInput>, Prisma.TransactionUncheckedUpdateWithoutOrderInput>
+export type TransactionCreateOrConnectWithoutOrderInput = {
+  where: Prisma.TransactionWhereUniqueInput
+  create: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
 }
 
-export type TransactionUncheckedUpdateOneWithoutOrderNestedInput = {
-  create?: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
-  connectOrCreate?: Prisma.TransactionCreateOrConnectWithoutOrderInput
-  upsert?: Prisma.TransactionUpsertWithoutOrderInput
-  disconnect?: Prisma.TransactionWhereInput | boolean
-  delete?: Prisma.TransactionWhereInput | boolean
-  connect?: Prisma.TransactionWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.TransactionUpdateToOneWithWhereWithoutOrderInput, Prisma.TransactionUpdateWithoutOrderInput>, Prisma.TransactionUncheckedUpdateWithoutOrderInput>
+export type TransactionUpsertWithoutOrderInput = {
+  update: Prisma.XOR<Prisma.TransactionUpdateWithoutOrderInput, Prisma.TransactionUncheckedUpdateWithoutOrderInput>
+  create: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
+  where?: Prisma.TransactionWhereInput
+}
+
+export type TransactionUpdateToOneWithWhereWithoutOrderInput = {
+  where?: Prisma.TransactionWhereInput
+  data: Prisma.XOR<Prisma.TransactionUpdateWithoutOrderInput, Prisma.TransactionUncheckedUpdateWithoutOrderInput>
+}
+
+export type TransactionUpdateWithoutOrderInput = {
+  amount?: Prisma.IntFieldUpdateOperationsInput | number
+  author?: Prisma.UserUpdateOneRequiredWithoutTransactionsNestedInput
+}
+
+export type TransactionUncheckedUpdateWithoutOrderInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  amount?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type TransactionCreateWithoutAuthorInput = {
@@ -480,44 +518,6 @@ export type TransactionScalarWhereInput = {
   authorId?: Prisma.IntFilter<"Transaction"> | number
   amount?: Prisma.IntFilter<"Transaction"> | number
   orderId?: Prisma.IntFilter<"Transaction"> | number
-}
-
-export type TransactionCreateWithoutOrderInput = {
-  amount: number
-  author: Prisma.UserCreateNestedOneWithoutTransactionsInput
-}
-
-export type TransactionUncheckedCreateWithoutOrderInput = {
-  id?: number
-  authorId: number
-  amount: number
-}
-
-export type TransactionCreateOrConnectWithoutOrderInput = {
-  where: Prisma.TransactionWhereUniqueInput
-  create: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
-}
-
-export type TransactionUpsertWithoutOrderInput = {
-  update: Prisma.XOR<Prisma.TransactionUpdateWithoutOrderInput, Prisma.TransactionUncheckedUpdateWithoutOrderInput>
-  create: Prisma.XOR<Prisma.TransactionCreateWithoutOrderInput, Prisma.TransactionUncheckedCreateWithoutOrderInput>
-  where?: Prisma.TransactionWhereInput
-}
-
-export type TransactionUpdateToOneWithWhereWithoutOrderInput = {
-  where?: Prisma.TransactionWhereInput
-  data: Prisma.XOR<Prisma.TransactionUpdateWithoutOrderInput, Prisma.TransactionUncheckedUpdateWithoutOrderInput>
-}
-
-export type TransactionUpdateWithoutOrderInput = {
-  amount?: Prisma.IntFieldUpdateOperationsInput | number
-  author?: Prisma.UserUpdateOneRequiredWithoutTransactionsNestedInput
-}
-
-export type TransactionUncheckedUpdateWithoutOrderInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  authorId?: Prisma.IntFieldUpdateOperationsInput | number
-  amount?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type TransactionCreateManyAuthorInput = {

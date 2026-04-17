@@ -662,24 +662,6 @@ export type PostUncheckedUpdateManyInput = {
   metaPrice?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type PostListRelationFilter = {
-  every?: Prisma.PostWhereInput
-  some?: Prisma.PostWhereInput
-  none?: Prisma.PostWhereInput
-}
-
-export type PostOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
-}
-
 export type PostCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
@@ -768,6 +750,47 @@ export type PostSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
 }
 
+export type PostListRelationFilter = {
+  every?: Prisma.PostWhereInput
+  some?: Prisma.PostWhereInput
+  none?: Prisma.PostWhereInput
+}
+
+export type PostOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type PostCreateimagesInput = {
+  set: string[]
+}
+
+export type PostCreatemetaKeywordsInput = {
+  set: string[]
+}
+
+export type PostCreatecategoriesInput = {
+  set: string[]
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type PostUpdateimagesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type PostUpdatemetaKeywordsInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type PostUpdatecategoriesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 export type PostCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.PostCreateWithoutUserInput, Prisma.PostUncheckedCreateWithoutUserInput> | Prisma.PostCreateWithoutUserInput[] | Prisma.PostUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.PostCreateOrConnectWithoutUserInput | Prisma.PostCreateOrConnectWithoutUserInput[]
@@ -808,33 +831,6 @@ export type PostUncheckedUpdateManyWithoutUserNestedInput = {
   update?: Prisma.PostUpdateWithWhereUniqueWithoutUserInput | Prisma.PostUpdateWithWhereUniqueWithoutUserInput[]
   updateMany?: Prisma.PostUpdateManyWithWhereWithoutUserInput | Prisma.PostUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.PostScalarWhereInput | Prisma.PostScalarWhereInput[]
-}
-
-export type PostCreateimagesInput = {
-  set: string[]
-}
-
-export type PostCreatemetaKeywordsInput = {
-  set: string[]
-}
-
-export type PostCreatecategoriesInput = {
-  set: string[]
-}
-
-export type PostUpdateimagesInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type PostUpdatemetaKeywordsInput = {
-  set?: string[]
-  push?: string | string[]
-}
-
-export type PostUpdatecategoriesInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type PostCreateWithoutUserInput = {

@@ -1,0 +1,26 @@
+model Activity {
+  id           Int       @id @default(autoincrement())
+  title        String    @db.VarChar(180)
+  description  String
+  status       String    @db.VarChar(80)
+  authorId     Int       @map("author_id")
+  author       User      @relation(fields: [authorId], references: [id])
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt    DateTime? @updatedAt @map("updated_at") @db.Timestamp()
+  startTime    DateTime  @map("start_time")
+  finishTime   DateTime  @map("finish_time")
+  places       Int
+  participants Int[]
+  groupPrice   Int       @map("group_price")
+  personPrice  Int       @map("person_price")
+  type         String    @db.VarChar(80)
+  tourId       Int       @map("tour_id")
+  tour         Tour      @relation(fields: [tourId], references: [id])
+  orders       Order[]
+  tags         String[]
+  categories   String[]
+  discount     Int?
+  photos       Photo[]
+
+  @@map("activity")
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@bem-react/classname';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 import { SessionDomain } from '@/entities/user/server';
 
@@ -12,8 +12,26 @@ import { UserFeature } from './user-feature';
 const cnUserFeatureList = cn('UserFeatureList');
 
 export const UserFeatureList: FC<{
+  renderEditAction?: (props: {
+    user: Omit<
+      {
+        id: number;
+        login: string;
+        passwordHash: string;
+        salt: string;
+        role: string;
+        phone: string | null;
+        firstName: string | null;
+        lastName: string | null;
+        avatarPhotoId: number | null;
+        email: string | null;
+        rating: number | null;
+      },
+      'passwordHash' | 'salt'
+    >;
+  }) => ReactNode;
   session: SessionDomain.SessionEntity;
-}> = () => {
+}> = ({ renderEditAction }) => {
   const { data, isFetching, pagination, tools, cursor } = useUserList();
 
   return (
@@ -36,7 +54,10 @@ export const UserFeatureList: FC<{
                 ])}
                 key={user.id}
               >
-                <UserFeature user={user} />
+                <UserFeature
+                  user={user}
+                  editAction={renderEditAction?.({ user })}
+                />
               </li>
             ))}
           </ul>
