@@ -2,7 +2,6 @@ import { NextRequest } from 'next/server';
 
 import { CreateTourData } from '@/features/tour/domain';
 import { prepareDataUtils } from '@/features/tour/lib/prepare-data-utils';
-import { patchTourSchema } from '@/features/tour/lib/schemas/create-tour-schemas';
 import { tourService } from '@/features/tour/services/tour-service';
 
 import { PhotoDomain } from '@/entities/photo';
@@ -27,17 +26,15 @@ export async function patchTour(req: NextRequest): Promise<Response> {
 
     const formData = await req.formData?.();
     const data = prepareDataUtils.getEditTourData(formData);
-    const dataEntity = patchTourSchema.safeParse(data);
 
-    if (!data || !dataEntity.success) {
+    if (!data) {
       return handleError({
         body: 'Невозможно обновить запись. Данные не валидны'
       });
     }
 
     const hasPermissionOnEdit =
-      session.role === Role.SUPER_ADMIN ||
-      session.id === dataEntity.data?.authorId;
+      session.role === Role.SUPER_ADMIN || session.id === data.authorId;
 
     if (!hasPermissionOnEdit) {
       return handleError({
@@ -45,23 +42,38 @@ export async function patchTour(req: NextRequest): Promise<Response> {
       });
     }
 
-    const { title, authorId, mainPhoto, photos, ...rest } = dataEntity.data;
+    const { title, authorId, mainPhoto, photos, id, ...rest } = data;
+
+    if (typeof authorId !== 'number' || typeof id !== 'number') {
+      return handleError({
+        body: 'Невозможно обновить запись. Данные не валидны'
+      });
+    }
+
+    const mainPhotoFile =
+      Array.isArray(mainPhoto) && mainPhoto[0] instanceof File
+        ? mainPhoto[0]
+        : undefined;
+
+    const uploadedPhotos = Array.isArray(photos)
+      ? (photos as unknown[]).filter((photo): photo is File => photo instanceof File)
+      : [];
 
     const mainPhotoEntity =
-      'mainPhoto' in dataEntity.data && mainPhoto?.length
+      mainPhotoFile
         ? await serverPhotoUtils.getPhotoEntity({
             title,
             keywords: [],
             authorId: session.id,
-            file: mainPhoto[0]
+            file: mainPhotoFile
           })
         : undefined;
 
     const photosEntities =
-      'photos' in dataEntity.data && photos?.length
+      uploadedPhotos.length
         ? await Promise.all(
-            photos
-              ?.map(
+            uploadedPhotos
+              .map(
                 async file =>
                   await serverPhotoUtils.getPhotoEntity({
                     file,
@@ -81,6 +93,7 @@ export async function patchTour(req: NextRequest): Promise<Response> {
       mainPhoto?: Omit<PhotoDomain.PhotoEntity, 'id'>;
       photos?: Omit<PhotoDomain.PhotoEntity, 'id'>[];
     } = {
+      id,
       authorId,
       ...rest
     };

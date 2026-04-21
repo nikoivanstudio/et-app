@@ -45,7 +45,7 @@ export const TourFeature: FC<Props> = ({
   triggerBtn,
   ...props
 }) => {
-  const [isOpen, setOpen] = useState<boolean>();
+  const [isOpen, setOpen] = useState(false);
   const [initialData, setInitialData] = useState<FormDialogDomain.FormData>(
     initialCreateTourFormData
   );
@@ -58,8 +58,7 @@ export const TourFeature: FC<Props> = ({
 
   const isCreateType = type === 'create';
   const schema = isCreateType ? createTourSchemas : editTourSchema;
-  const dialogTitle =
-    title || isCreateType ? 'Создать тур' : 'Редактировать тур';
+  const dialogTitle = title || (isCreateType ? 'Создать тур' : 'Редактировать тур');
 
   const onOpenChange = (value: boolean) => setOpen(value);
   const onClose = () => setOpen(false);
@@ -88,7 +87,7 @@ export const TourFeature: FC<Props> = ({
 
       setInitialData(initialData);
     })();
-  }, []);
+  }, [data, type]);
 
   return (
     <div className={cnTourFeature(null, ['text-end'])}>

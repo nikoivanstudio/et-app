@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@bem-react/classname';
-import { ReactNode } from 'react';
+import { isValidElement, ReactNode } from 'react';
 
 import { FormProps } from '@/entities/form-dialog/domain';
 import { Form } from '@/entities/form-dialog/ui/form';
@@ -38,13 +38,18 @@ export const FormDialog = (props: FormDialogProps) => {
   } = props;
 
   const type = formProps.type ? formProps.type : 'put';
+  const resolvedTrigger = isValidElement(triggerButton) ? (
+    triggerButton
+  ) : (
+    <Button className={cnFormDialog('Trigger')} variant='ghost'>
+      {triggerButton || 'Открыть диалог'}
+    </Button>
+  );
 
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange} modal>
       <DialogTrigger asChild className={cnFormDialog('Trigger')}>
-        <Button className={cnFormDialog('Trigger')} variant='ghost'>
-          {triggerButton || 'Открыть диалог'}
-        </Button>
+        {resolvedTrigger}
       </DialogTrigger>
       <DialogContent className='h-full overflow-y-auto'>
         <DialogHeader>

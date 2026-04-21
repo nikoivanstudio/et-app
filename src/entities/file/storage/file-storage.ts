@@ -38,6 +38,28 @@ const createPresignedUrlToDownload = ({
 }: PresignedData): Promise<string> =>
   s3Client.presignedGetObject(bucketName, filename, expiry);
 
+const uploadFileToStorage = async ({
+  bucketName,
+  filename,
+  file
+}: Omit<PresignedData, 'expiry'> & { file: File }): Promise<
+  Either<string, true>
+> => {
+  try {
+    const buffer = Buffer.from(await file.arrayBuffer());
+
+    await s3Client.putObject(bucketName, filename, buffer, buffer.byteLength, {
+      'Content-Type': file.type || 'application/octet-stream'
+    });
+  } catch (e) {
+    console.error(e);
+
+    return left('Error in time of upload file');
+  }
+
+  return right(true);
+};
+
 const deleteFileFromStorage = async ({
   bucketName,
   filename
@@ -57,5 +79,6 @@ export const fileStorage = {
   getFileFromStorage,
   createPresignedUrlToUpload,
   createPresignedUrlToDownload,
+  uploadFileToStorage,
   deleteFileFromStorage
 };

@@ -1,4 +1,5 @@
-import { FileDomain } from '@/entities/file/server';
+import * as FileDomain from '@/entities/file/domain';
+import { fileUtils as entityFileUtils } from '@/entities/file/lib/file-utils';
 
 import {
   FileDto,
@@ -10,12 +11,8 @@ import {
 } from '../domain';
 import { validateFile } from '../model/validation/validation';
 
-const getFileKind = (file: File): UploadFileKind => {
-  if (file.type.startsWith('image/')) return 'image';
-  if (file.type.startsWith('video/')) return 'video';
-
-  return 'document';
-};
+const getFileKind = (file: File): UploadFileKind =>
+  entityFileUtils.getFileKind(file);
 
 const formatFileSize = (size: number): string => {
   if (size < 1024) return `${size} B`;
@@ -77,7 +74,7 @@ const getFullFilesDto = (filesDto: FileDto[], userId: number) =>
   filesDto.map(dto => ({
     ...dto,
     authorId: userId,
-    type: fileUtils.getFileKind(dto.file)
+    type: entityFileUtils.getFileKind(dto.file)
   }));
 
 export const fileUtils = {

@@ -85,11 +85,39 @@ const updateTour = (
     photos?: Omit<PhotoDomain.PhotoEntity, 'id'>[];
   }
 ): Promise<Tour> =>
-  dbClient.tour.update({
-    where: {
-      id: tour.id
-    },
-    data: { ...(tour as Partial<Tour>), startPlace: tour.startPlace }
+  dbClient.$transaction(async prisma => {
+    const { id, mainPhoto, photos, ...rest } = tour;
+    let mainPhotoId: number | undefined;
+
+    if (mainPhoto) {
+      const createdMainPhoto = await prisma.photo.create({ data: mainPhoto });
+
+      mainPhotoId = createdMainPhoto.id;
+    }
+
+    if (photos?.length) {
+      await Promise.all(
+        photos.map(photo =>
+          prisma.photo.create({
+            data: {
+              ...photo,
+              tourId: id
+            }
+          })
+        )
+      );
+    }
+
+    return prisma.tour.update({
+      where: {
+        id
+      },
+      data: {
+        ...rest,
+        startPlace: rest.startPlace,
+        ...(mainPhotoId ? { mainPhotoId } : {})
+      }
+    });
   });
 
 const deleteTour = async (id: number): Promise<Tour | null> =>

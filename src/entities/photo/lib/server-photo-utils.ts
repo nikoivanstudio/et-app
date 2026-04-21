@@ -1,13 +1,10 @@
 import { PhotoEntity } from '@/entities/photo/domain';
-
-import { saveFileWithPath } from '@/shared/lib/server-files-utils';
-
-const savePhoto = (photo: File): Promise<string | null> => {
-  return saveFileWithPath(photo, 'images');
-};
+import { fileUtils } from '@/entities/file/lib/file-utils';
+import { fileServiceServer } from '@/entities/file/services/file-service-server';
 
 export const getPhotoEntity = async ({
   file,
+  authorId,
   title,
   ...rest
 }: {
@@ -16,16 +13,19 @@ export const getPhotoEntity = async ({
   keywords: string[];
   title?: string;
 }): Promise<Omit<PhotoEntity, 'id'> | null> => {
-  const source = await savePhoto(file);
+  const result = await fileServiceServer.saveUploadedFile({ file, authorId });
 
-  if (!source) {
+  if (result.type === 'left') {
     return null;
   }
+
+  const source = fileUtils.getFileSource(result.value.filename);
 
   return {
     title: title || file.name,
     source,
-    fileName: file.name,
+    fileName: result.value.filename,
+    authorId,
     ...rest
   };
 };

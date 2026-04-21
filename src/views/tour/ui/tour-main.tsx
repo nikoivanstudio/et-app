@@ -4,9 +4,9 @@ import { cn as cnBem } from '@bem-react/classname';
 import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
-import { TourPhotoSwiper } from '@/widgets/photo-swiper/server';
 
 import { ServerDurationLabel } from '@/entities/duration/server';
+import { ServerFileGallery } from '@/entities/file-gallery/server';
 import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
 import { PageHeadTour } from '@/entities/page-head/server';
 
@@ -73,7 +73,14 @@ export const TourMain: FC<TourKernel> = async props => {
             </div>
           </section>
           <section className={cnPageTour('PhotoBlock', ['mt-1'])}>
-            <TourPhotoSwiper photos={photos} />
+            <ServerFileGallery
+              files={photos.map(photo => ({
+                id: photo.id,
+                filename: photo.fileName,
+                originalName: photo.title
+              }))}
+              title={`Фотографии тура ${title}`}
+            />
           </section>
           <section className={cnPageTour('Content', ['mt-8', 'pb-14'])}>
             <div>

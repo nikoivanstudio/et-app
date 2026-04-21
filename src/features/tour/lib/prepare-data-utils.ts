@@ -1,8 +1,8 @@
 import { CreateTourData } from '@/features/tour/domain';
 import {
   createTourSchema,
+  patchTourSchema,
   PatchTourData,
-  preparedPatchTourSchema
 } from '@/features/tour/lib/schemas/create-tour-schemas';
 
 import { FormDialogDomain } from '@/entities/form-dialog';
@@ -93,13 +93,34 @@ const prepareNumberValues = (
   return value;
 };
 
+const getPhotosFromFormData = (data: Record<string, string | File>): File[] => {
+  const filesLengthValue = data.filesLength;
+  const filesLength =
+    typeof filesLengthValue === 'string' ? Number(filesLengthValue) : 0;
+
+  if (!Number.isInteger(filesLength) || filesLength <= 0) {
+    return [];
+  }
+
+  return Array.from({ length: filesLength }, (_, idx) => data[`file_${idx + 1}`])
+    .filter((file): file is File => file instanceof File);
+};
+
 const getEditTourData = (formData: FormData): PatchTourData | null => {
   const data: Record<string, string | File> = Object.fromEntries(
     formData.entries()
   );
+  const photos = getPhotosFromFormData(data);
+
+  if (photos.length) {
+    data.photos = photos.at(-1) as File;
+  }
 
   const preparedData = prepareNumberValues(data);
-  const result = preparedPatchTourSchema.safeParse(preparedData);
+  const result = patchTourSchema.safeParse({
+    ...preparedData,
+    photos: photos.length ? photos : preparedData.photos
+  });
 
   return result.success ? result.data : null;
 };
@@ -108,9 +129,17 @@ const getTourData = (formData: FormData): CreateTourData | null => {
   const data: Record<string, string | File> = Object.fromEntries(
     formData.entries()
   );
+  const photos = getPhotosFromFormData(data);
+
+  if (photos.length) {
+    data.photos = photos.at(-1) as File;
+  }
 
   const preparedData = prepareNumberValues(data);
-  const result = createTourSchema.safeParse(preparedData);
+  const result = createTourSchema.safeParse({
+    ...preparedData,
+    photos: photos.length ? photos : preparedData.photos
+  });
 
   return result.success ? result.data : null;
 };

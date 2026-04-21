@@ -1,5 +1,24 @@
 import { z } from 'zod';
 
+const supportedImageExtensions = new Set([
+  'jpg',
+  'jpeg',
+  'png',
+  'webp',
+  'gif',
+  'heic',
+  'heif'
+]);
+
+const isImageFile = (file: File) => {
+  const extension = file.name.split('.').at(-1)?.toLowerCase();
+
+  return (
+    file.type.startsWith('image/') ||
+    (!!extension && supportedImageExtensions.has(extension))
+  );
+};
+
 const photoSchema = z.object({
   id: z.number(),
   title: z.string(),
@@ -11,13 +30,9 @@ const photoSchemaWithoutId = photoSchema.extend({ id: z.never() });
 
 const fileImageSchema = z
   .instanceof(File)
-  .refine(
-    file =>
-      ['application/photo', 'image/png', 'image/jpeg', 'image/webp'].includes(
-        file.type
-      ),
-    { message: 'Неподдерживаемый формат фото' }
-  );
+  .refine(file => isImageFile(file), {
+    message: 'Неподдерживаемый формат фото'
+  });
 
 const baseTourSchema = {
   title: z
@@ -79,4 +94,4 @@ export const preparedPatchTourSchema = patchTourSchema
   })
   .partial();
 
-export type PatchTourData = z.infer<typeof preparedPatchTourSchema>;
+export type PatchTourData = z.infer<typeof patchTourSchema>;
