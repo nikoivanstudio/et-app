@@ -3,7 +3,9 @@
 import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
+import { CONTACTS } from '@/widgets/contacts/constants/contacts';
 
+import { ServerContacts } from '@/entities/contacts/server';
 import { PageHeadLayout } from '@/entities/page-head/ui/page-head-layout';
 import { PageTitle } from '@/entities/page-title/ui/page-title';
 
@@ -16,7 +18,7 @@ export const ContactsView: FC = async () => (
         <PageHeadLayout
           className='pt-[35vh] px-4'
           title={<PageTitle topTitle={{ text: 'Контакты' }} />}
-          content={null}
+          content={<ServerContacts {...CONTACTS} color='white' size={18} />}
           page='tours'
         />
       }

@@ -1,18 +1,8 @@
 import { PropsWithChildren } from 'react';
 
-import { PropsWithClassNames } from '@/shared/model/types';
+import { ContactsProps } from '@/entities/contacts';
 
-export type ContactsData = {
-  address: string;
-  geoPoint: string;
-  email: string;
-  phones: string[];
-  telegram: string;
-  whatsapp: string;
-  vk: string;
-  ruTube?: string;
-  youTube?: string;
-};
+import { PropsWithClassNames } from '@/shared/model/types';
 
 enum Types {
   SERVER = 'server',
@@ -22,5 +12,5 @@ enum Types {
 type ContactsLayoutTypes<T extends Types[keyof Types] = string> = T;
 
 export type ContactsLayoutProps = PropsWithChildren<
-  ContactsData & PropsWithClassNames & { type: ContactsLayoutTypes }
+  ContactsProps & PropsWithClassNames & { type: ContactsLayoutTypes }
 >;

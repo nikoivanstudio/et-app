@@ -8,7 +8,7 @@ const cnContacts = cn('Contacts');
 export const YandexMap: FC = () => (
   <div
     className={cnContacts(null, [
-      'max-h-full',
+      'max-h-9/12',
       'max-w-full',
       'object-cover',
       'rounded-xs'
