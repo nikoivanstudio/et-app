@@ -4,7 +4,9 @@ import { postServices } from '@/features/post/server';
 
 import { PostView } from '@/views/post/server';
 
-export const dynamic = 'force-static';
+// ISR: страница перегенерируется раз в сутки (скользящее окно 24h от
+// последней регенерации, не привязано к конкретному времени суток).
+export const revalidate = 86400;
 
 export async function generateStaticParams() {
   const posts = await postServices.getPostsSlugs();
