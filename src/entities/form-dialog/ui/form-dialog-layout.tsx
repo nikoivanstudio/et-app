@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@bem-react/classname';
-import { isValidElement, ReactNode } from 'react';
+import { isValidElement, ReactElement, ReactNode } from 'react';
 
 import { FormProps } from '@/entities/form-dialog/domain';
 import { Form } from '@/entities/form-dialog/ui/form';
@@ -27,6 +27,10 @@ type FormDialogProps = {
 
 const cnFormDialog = cn('FormDialog');
 
+const isNativeInteractiveElement = (element: ReactElement) =>
+  typeof element.type === 'string' &&
+  ['button', 'a'].includes(element.type);
+
 export const FormDialog = (props: FormDialogProps) => {
   const {
     isOpen,
@@ -39,9 +43,24 @@ export const FormDialog = (props: FormDialogProps) => {
 
   const type = formProps.type ? formProps.type : 'put';
   const resolvedTrigger = isValidElement(triggerButton) ? (
-    triggerButton
+    isNativeInteractiveElement(triggerButton) ? (
+      triggerButton
+    ) : (
+      <Button
+        className={cnFormDialog('Trigger')}
+        variant='ghost'
+        size='sm'
+        type='button'
+      >
+        {triggerButton}
+      </Button>
+    )
   ) : (
-    <Button className={cnFormDialog('Trigger')} variant='ghost'>
+    <Button
+      className={cnFormDialog('Trigger')}
+      variant='ghost'
+      type='button'
+    >
       {triggerButton || 'Открыть диалог'}
     </Button>
   );

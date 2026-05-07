@@ -13,7 +13,7 @@ import { FeatureTriggerIcon } from '@/features/post/ui/feature-trigger-icon';
 
 import { FormDialog, FormDialogDomain } from '@/entities/form-dialog';
 import { FormCheckTypes, Value } from '@/entities/form-dialog/domain';
-import { postEditSchema } from '@/entities/post';
+import { postPatchSchema } from '@/entities/post';
 import { postCreateSchema } from '@/entities/post/model/schemas';
 import { SessionDomain } from '@/entities/user/server';
 
@@ -27,10 +27,19 @@ const cnFeaturePost = cn('FeaturePost');
 
 export const FeaturePost: FC<Props> = ({ type, initialData, session }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
-  const onEdit = useEditPost();
+  const { user: _user, session: _session, ...editInitialData } =
+    (initialData ?? {}) as FormDialogDomain.FormData & {
+      user?: Value<FormCheckTypes<Record<string, unknown>>>;
+      session?: Value<FormCheckTypes<Record<string, unknown>>>;
+    };
+  const editPostId =
+    type === 'edit' && typeof initialData?.id === 'number'
+      ? initialData.id
+      : undefined;
+  const onEdit = useEditPost(editPostId);
   const onCreate = useCreatePost();
   const title = getTitleByType(type);
-  const schema = type === 'edit' ? postEditSchema : postCreateSchema;
+  const schema = type === 'edit' ? postPatchSchema : postCreateSchema;
   const startData = initialData || postUtils.getInitialPostData();
 
   const onOpenChange = (value: boolean) => setOpen(value);
@@ -53,15 +62,20 @@ export const FeaturePost: FC<Props> = ({ type, initialData, session }) => {
         title={title}
         triggerButton={<FeatureTriggerIcon type={type} />}
         formDataModel={createPostModel}
-        initialData={{
-          ...startData,
-          postAuthorId: session.id,
-          user: session as unknown as Value<
-            FormCheckTypes<Record<string, unknown>>
-          >
-        }}
+        initialData={
+          type === 'edit'
+            ? editInitialData
+            : {
+                ...startData,
+                postAuthorId: session.id,
+                user: session as unknown as Value<
+                  FormCheckTypes<Record<string, unknown>>
+                >
+              }
+        }
         onSubmit={onSubmit}
         schema={schema}
+        type={type === 'edit' ? 'patch' : 'put'}
       />
     </div>
   );

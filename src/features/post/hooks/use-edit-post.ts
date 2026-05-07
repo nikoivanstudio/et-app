@@ -4,13 +4,13 @@ import { toast } from 'sonner';
 import { postApi } from '@/features/post/api/post-api';
 
 import { FormDialogDomain } from '@/entities/form-dialog';
-import { postEditSchema, PostUpdate } from '@/entities/post';
+import { postPatchSchema, PostPatch } from '@/entities/post';
 
 const errorMessage = 'Исходные данные не верны, действие невозможно';
 
-export const useEditPost = () => {
+export const useEditPost = (id?: number) => {
   const queryClient = useQueryClient();
-  const mutation = useMutation<string, Error, PostUpdate>({
+  const mutation = useMutation<string, Error, PostPatch>({
     mutationFn: postApi.editPost,
     onSuccess: message => {
       queryClient.invalidateQueries({ queryKey: [postApi.baseKey] });
@@ -20,7 +20,10 @@ export const useEditPost = () => {
   });
 
   return async (data: FormDialogDomain.FormData) => {
-    const result = postEditSchema.safeParse(data);
+    const result = postPatchSchema.safeParse({
+      ...data,
+      id
+    });
 
     if (!result.success) {
       throw new Error(errorMessage);

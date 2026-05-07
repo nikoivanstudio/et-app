@@ -2,7 +2,7 @@ import { Post, Prisma } from 'generated/prisma/client';
 
 import { GetPostsResponse } from '@/features/post/domain';
 
-import { PostUpdate } from '@/entities/post';
+import { PostPatch } from '@/entities/post';
 import { PostDomain, postRepositories } from '@/entities/post/server';
 
 import { Either, left, right } from '@/shared/lib/either';
@@ -106,8 +106,8 @@ const createPosts = async (
   return right(createResult);
 };
 
-const updatePost = async (post: PostUpdate): Promise<Either<string, Post>> => {
-  const result = await postRepositories.updatePost(post as Post);
+const updatePost = async (post: PostPatch): Promise<Either<string, Post>> => {
+  const result = await postRepositories.updatePost(post);
 
   if (!result) {
     return left<string>('Не удалось обновить пост.');

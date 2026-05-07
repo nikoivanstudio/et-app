@@ -1,5 +1,7 @@
 import z, { number } from 'zod';
 
+const dateSchema = z.coerce.date();
+
 const UserRefSchema = z.object({
   id: z.number().int().positive(),
   login: z.string(),
@@ -26,8 +28,8 @@ export const postBaseSchema = z.object({
   metaDescription: z.string().max(512).optional().nullable(),
   link: z.string().max(512).url().optional().nullable(),
   pubDate: z.string().max(128).optional().nullable(),
-  createdAt: z.date(),
-  updatedAt: z.date().optional().nullable(),
+  createdAt: dateSchema,
+  updatedAt: dateSchema.optional().nullable(),
   price: z.number().optional().nullable(),
   duration: z.number().optional().nullable(),
   rating: z.number().optional().nullable(),
@@ -52,5 +54,13 @@ export const postUpdateSchema = postBaseSchema
   })
   .strict();
 
+export const postPatchSchema = postBaseSchema
+  .partial()
+  .extend({
+    id: number()
+  })
+  .strict();
+
 export type PostCreate = z.infer<typeof postCreateSchema>;
 export type PostUpdate = z.infer<typeof postEditSchema>;
+export type PostPatch = z.infer<typeof postPatchSchema>;

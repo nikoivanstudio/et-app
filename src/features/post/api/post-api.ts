@@ -2,7 +2,7 @@ import { queryOptions } from '@tanstack/react-query';
 
 import { GetPostsResponse } from '@/features/post/domain';
 
-import { PostCreate, PostUpdate } from '@/entities/post';
+import { PostCreate, PostPatch } from '@/entities/post';
 
 import { apiClient } from '@/shared/api/api-client';
 import { GetApiData } from '@/shared/model/types';
@@ -27,7 +27,7 @@ const createPostsByFile = async <T>(formData: FormData): Promise<T> =>
 const createPost = <T>(post: PostCreate) =>
   apiClient.post<T>({ url: baseUrl, body: JSON.stringify(post) });
 
-const editPost = <T>(post: PostUpdate) =>
+const editPost = <T>(post: PostPatch) =>
   apiClient.patch<T>({ url: baseUrl, body: JSON.stringify(post) });
 
 const deletePost = (id: number) =>

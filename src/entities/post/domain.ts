@@ -1,5 +1,5 @@
 import { postUtils } from '@/entities/post/lib/post-utils';
-import { postCreateSchema } from '@/entities/post/model/schemas';
+import { PostPatch, postCreateSchema } from '@/entities/post/model/schemas';
 
 import { objectUtils } from '@/shared/lib/object-utils';
 import { WithoutNull } from '@/shared/model/types';
@@ -109,3 +109,5 @@ export const postToPostEntity = (post: unknown): PostEntity => {
     user
   } as WithoutNull<PostEntity>;
 };
+
+export type { PostPatch };

@@ -1,6 +1,6 @@
 import { Post, Prisma } from 'generated/prisma/client';
 
-import { PostEntity, WithUser } from '@/entities/post/domain';
+import { PostPatch, PostEntity, WithUser } from '@/entities/post/domain';
 
 import { dbClient } from '@/shared/lib/db';
 import PostWhereInput = Prisma.PostWhereInput;
@@ -58,8 +58,11 @@ const createManyPosts = (
 ): Prisma.PrismaPromise<Prisma.BatchPayload> =>
   dbClient.post.createMany({ data: posts, skipDuplicates: true });
 
-const updatePost = (post: Post): Promise<Post> =>
-  dbClient.post.update({ where: { id: post.id }, data: post });
+const updatePost = (post: PostPatch): Promise<Post> => {
+  const { id, ...data } = post;
+
+  return dbClient.post.update({ where: { id }, data });
+};
 
 const deletePost = (id: number): Promise<Post> =>
   dbClient.post.delete({

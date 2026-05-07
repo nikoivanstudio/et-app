@@ -27,6 +27,7 @@ export const PostCard: FC<
   PostDomain.PostEntity & { session: SessionDomain.SessionEntity }
 > = props => {
   const { id, title, image, content, rating, price, session } = props;
+  const { session: _session, ...postInitialData } = props;
 
   return (
     <Card className='max-w-md'>
@@ -59,7 +60,7 @@ export const PostCard: FC<
         <FeaturePost
           session={session}
           type='edit'
-          initialData={props as unknown as FormDialogDomain.FormData}
+          initialData={postInitialData as unknown as FormDialogDomain.FormData}
         />
         <DeletePost id={id} />
       </CardFooter>

@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 
 import { postServices } from '@/features/post/services/post-services';
 
-import { postEditSchema } from '@/entities/post';
+import { postPatchSchema } from '@/entities/post';
 import { roleUtils } from '@/entities/user';
 import { sessionService } from '@/entities/user/server';
 
@@ -29,7 +29,7 @@ export async function patchPosts(req: NextRequest): Promise<Response> {
     }
 
     const data = await req.json();
-    const result = postEditSchema.safeParse(data);
+    const result = postPatchSchema.safeParse(data);
 
     if (!result.success) {
       return handleError({

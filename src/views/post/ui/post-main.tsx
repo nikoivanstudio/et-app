@@ -5,16 +5,15 @@ import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
 
-import { ServerDurationLabel } from '@/entities/duration/ui/server-duration-label';
 import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
 import { PostDomain } from '@/entities/post/server';
 
 import styles from '@/shared/assets/styles.module.scss';
 import { cn } from '@/shared/lib/css';
-import { BadgePrice } from '@/shared/ui/badge-price';
 import { TextContent } from '@/shared/ui/text-content';
 
 import { PageHeadPost } from '@/views/post/ui/page-head-post';
+import { PostStats } from '@/views/post/ui/post-stats';
 
 const cnPagePost = cnBem('PagePost');
 
@@ -49,36 +48,14 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
               </span>
               <MockReviewsAvatars rating={4.9} />
             </div>
-            <div
-              className={cnPagePost('TourProperties', [
-                'flex',
-                !!metaPrice || !!metaDuration
-                  ? 'flex-col items-start'
-                  : 'items-center',
-                'gap-6',
-                'p-1',
-                'mt-3'
-              ])}
-            >
-              {!!metaPrice && (
-                <BadgePrice
-                  className={cnPagePost('TourPrice')}
-                  price={metaPrice}
-                  variant='black-white'
-                />
-              )}
-              {!!metaDuration && (
-                <ServerDurationLabel
-                  duration={metaDuration}
-                  variant='black-white'
-                />
-              )}
-            </div>
+            <PostStats
+              className={cn('mt-4', 'mx-2')}
+              price={metaPrice}
+              duration={metaDuration}
+            />
           </section>
-          <section className={cnPagePost('Content', ['mt-1', 'pb-14'])}>
-            <div>
-              <TextContent content={content as TrustedHTML} />
-            </div>
+          <section className={cnPagePost('Content', ['mt-4', 'pb-14'])}>
+            <TextContent content={content as TrustedHTML} unstyled />
           </section>
         </div>
       }
