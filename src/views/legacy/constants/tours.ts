@@ -11,7 +11,7 @@ export const longTours: LegacyTourCardData[] = [
   {
     title: 'Экскурсия в пещерные города Крыма на внедорожнике',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/mangup-ava.jpg',
-    duration: '6-7 часов',
+    duration: '6 часов',
     price: 'от 15 000 руб',
     href: '/drevnij-belbek'
   },
