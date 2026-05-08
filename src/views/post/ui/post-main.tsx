@@ -18,7 +18,8 @@ import { PostStats } from '@/views/post/ui/post-stats';
 const cnPagePost = cnBem('PagePost');
 
 export const PostMain: FC<PostDomain.PostEntity> = async props => {
-  const { id, title, image, content, metaDuration, metaPrice } = props;
+  const { id, title, image, content, metaDuration, metaPrice, price, duration } =
+    props;
 
   return (
     <AppMain
@@ -50,7 +51,9 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
             </div>
             <PostStats
               className={cn('mt-4', 'mx-2')}
+              priceValue={price}
               price={metaPrice}
+              durationValue={duration}
               duration={metaDuration}
             />
           </section>

@@ -93,7 +93,9 @@ const PeopleIcon: FC = () => (
 );
 
 type Props = {
+  priceValue?: number | null;
   price?: string | null;
+  durationValue?: number | null;
   duration?: string | null;
   className?: string;
 };
@@ -116,10 +118,31 @@ const stripTagsAndPrefix = (
 
 const PRICE_PREFIX = /^\s*стоимость\s*[:\-—–]?\s*/i;
 const DURATION_PREFIX = /^\s*продолжительность\s*[:\-—–]?\s*/i;
+const PRICE_VEHICLE_SUFFIX = /\s*\/\s*машин(?:а|у|ы|е)?\s*$/i;
 
-export const PostStats: FC<Props> = async ({ price, duration, className }) => {
-  const priceText = stripTagsAndPrefix(price, PRICE_PREFIX);
+const formatPrice = (priceValue?: number | null, price?: string | null) => {
+  if (typeof priceValue === 'number' && Number.isFinite(priceValue)) {
+    return `от ${new Intl.NumberFormat('ru-RU').format(priceValue)} ₽`;
+  }
+
+  const fallbackPrice = stripTagsAndPrefix(price, PRICE_PREFIX);
+
+  return fallbackPrice?.replace(PRICE_VEHICLE_SUFFIX, '').trim() ?? null;
+};
+
+export const PostStats: FC<Props> = async ({
+  priceValue,
+  price,
+  durationValue,
+  duration,
+  className
+}) => {
+  const priceText = formatPrice(priceValue, price);
   const durationText = stripTagsAndPrefix(duration, DURATION_PREFIX);
+  const durationValueText =
+    typeof durationValue === 'number' && Number.isFinite(durationValue)
+      ? `${(durationValue / 3600).toFixed(0)} часа`
+      : null;
 
   return (
     <div
@@ -136,7 +159,9 @@ export const PostStats: FC<Props> = async ({ price, duration, className }) => {
 
       <div className={cnPostStats('Card', [STAT_CARD_CLASSES])}>
         <ClockGoldIcon />
-        <div className={STAT_VALUE_CLASSES}>{durationText ?? '—'}</div>
+        <div className={STAT_VALUE_CLASSES}>
+          {durationValueText ?? durationText ?? '—'}
+        </div>
         <div className={STAT_LABEL_CLASSES}>экскурсия</div>
       </div>
 
