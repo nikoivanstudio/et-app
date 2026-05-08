@@ -100,7 +100,7 @@ export const shortTours: LegacyTourCardData[] = [
     title: 'Экскурсия в пещерный город Крыма Мангуп Кале на джипе',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/peseherniy-gorod-mangup-kale.jpg',
     duration: '3 часа',
-    price: 'от 7500 руб',
+    price: 'от 7000 руб',
     href: '/mangup-kale'
   },
   {
