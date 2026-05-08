@@ -5,42 +5,42 @@ export const longTours: LegacyTourCardData[] = [
     title: 'Джип-тур экскурсия "Сердцем Крыма"',
     img: 'https://energy-tur.ru/wp-content/uploads/2022/05/ozero_tankovoe.jpg',
     duration: '4 часа',
-    price: 'от 9000 руб',
+    price: 'от 10 500 руб',
     href: '/dzhip-tur-ekskursiya-serdtsem-kryma'
   },
   {
     title: 'Экскурсия в пещерные города Крыма на внедорожнике',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/mangup-ava.jpg',
     duration: '6-7 часов',
-    price: 'от 12 500 руб',
+    price: 'от 15 000 руб',
     href: '/drevnij-belbek'
   },
   {
     title: 'Экскурсия к Марсианскому Озеру, Сфинксам и Крепости',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/07/bahchisaray-sfinksi-ava.jpg',
     duration: '5 часов',
-    price: 'от 9500 руб',
+    price: 'от 11 000 руб',
     href: '/sfinksy-krepost-i-marsianskoe-ozero'
   },
   {
     title: 'Индивидуальная экскурсия — Тур «Безлимитный»',
     img: 'https://energy-tur.ru/wp-content/uploads/2021/04/individualnie-ekskursii-po-krymu.jpg',
     duration: '10 часов',
-    price: 'от 20 000 руб',
+    price: 'от 24 000 руб',
     href: '/individualnaya-ekskursiya-po-krymu-tur-bezlimitnyj'
   },
   {
     title: 'Легенды Мангуп-Кале (расширенная экскурсия)',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/Legendy_Mangup_Kale_not_active.png',
     duration: '4–5 часов',
-    price: 'от 8500 руб',
+    price: 'от 10 000 руб',
     href: '/legendy-mangup-kale'
   },
   {
     title: 'Путешествие по качинской долине',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/Kacha_not_active.png',
     duration: '5 часов',
-    price: 'от 10 500 руб',
+    price: 'от 11 000 руб',
     href: '/puteshestvie-po-kachinskoj-doline'
   },
   {
@@ -48,14 +48,14 @@ export const longTours: LegacyTourCardData[] = [
       'Обзорная экскурсия по Бахчисараю в Крыму с хорошей ценой и отзывами',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/07/bahchisaraiskie-sfinksi_ava.jpg',
     duration: '4 часа',
-    price: 'от 9000 руб',
+    price: 'от 11 000 руб',
     href: '/tri-religii'
   },
   {
     title: 'Экскурсия и тур по горам Крыма. Это выше Ай-Петри и Демерджи',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/card3.png',
     duration: '5 часов',
-    price: 'от 12 500 руб',
+    price: 'от 18 000 руб',
     href: '/dzhip-tur-po-vershinam-kryma'
   }
 ];
@@ -65,7 +65,7 @@ export const shortTours: LegacyTourCardData[] = [
     title: 'Экскурсия в пещерный город Чуфут Кале',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/Chufut-Kale-ava.jpg',
     duration: '3 часа',
-    price: 'от 7000 руб',
+    price: 'от 8000 руб',
     href: '/chufut-kale-2'
   },
   {
@@ -79,14 +79,14 @@ export const shortTours: LegacyTourCardData[] = [
     title: 'Экскурсия в пещерный город Эски Кермен на машине',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/07/eski-kermen-ava.jpg',
     duration: '3 часа',
-    price: 'от 7000 руб',
+    price: 'от 6000 руб',
     href: '/eski-kermen-2'
   },
   {
     title: 'Экскурсия в Бельбекский Каньон Крыма и Сюйреньскую крепость',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/syujrenskaya-krepost-ava.jpg',
     duration: '3 часа',
-    price: 'от 6000 руб',
+    price: 'от 12000 руб',
     href: '/belbekskij-kanon-i-syujrenskaya-krepost'
   },
   {
@@ -100,14 +100,14 @@ export const shortTours: LegacyTourCardData[] = [
     title: 'Экскурсия в пещерный город Крыма Мангуп Кале на джипе',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/peseherniy-gorod-mangup-kale.jpg',
     duration: '3 часа',
-    price: 'от 7000 руб',
+    price: 'от 7500 руб',
     href: '/mangup-kale'
   },
   {
     title: 'Джип тур на Тепе-Кермен',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/kartin-1.jpg',
     duration: '3 часа',
-    price: 'от 7000 руб',
+    price: 'от 7500 руб',
     href: '/tepe-kermen-2'
   }
 ];
