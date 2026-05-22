@@ -8,17 +8,20 @@ model Tour {
   content         String     @map("content")
   slug            String     @unique
   categories      String[]
+  metaKeywords    String[]   @map("meta_keywords")
+  tags            String[]
+  tourRoute       Json[]     @map("tour_route")
   authorId        Int        @map("author_id")
+  createdAt       DateTime   @default(now()) @map("created_at") @db.Timestamp()
   author          User       @relation(fields: [authorId], references: [id])
   reviews         Review[]
   activities      Activity[]
   orders          Order[]
   photos          Photo[]
+  about           String?   @db.VarChar(512)
   status          String?
   metaTitle       String?    @map("meta_title")
   metaDescription String?    @map("meta_description")
-  metaKeywords    String[]   @map("meta_keywords")
-  createdAt       DateTime   @default(now()) @map("created_at") @db.Timestamp()
   updatedAt       DateTime?  @updatedAt @map("updated_at") @db.Timestamp()
   rating          Float?
   descriptionText String?    @map("description_text")
