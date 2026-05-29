@@ -33,7 +33,7 @@ export const longTours: LegacyTourCardData[] = [
     title: 'Легенды Мангуп-Кале (расширенная экскурсия)',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/Legendy_Mangup_Kale_not_active.png',
     duration: '4–5 часов',
-    price: 'от 10 000 руб',
+    price: 'от 10 500 руб',
     href: '/legendy-mangup-kale'
   },
   {
@@ -79,7 +79,7 @@ export const shortTours: LegacyTourCardData[] = [
     title: 'Экскурсия в пещерный город Эски Кермен на машине',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/07/eski-kermen-ava.jpg',
     duration: '3 часа',
-    price: 'от 6000 руб',
+    price: 'от 6500 руб',
     href: '/eski-kermen-2'
   },
   {
@@ -93,14 +93,14 @@ export const shortTours: LegacyTourCardData[] = [
     title: 'Экскурсия на джипе в Качи Кальон и Скит Святой Анастасии',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/skit-ava.jpg',
     duration: '3 часа',
-    price: 'от 7000 руб',
+    price: 'от 7500 руб',
     href: '/kachi-kalon-i-skit-svyatoj-anastasii'
   },
   {
     title: 'Экскурсия в пещерный город Крыма Мангуп Кале на джипе',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/peseherniy-gorod-mangup-kale.jpg',
     duration: '3 часа',
-    price: 'от 7000 руб',
+    price: 'от 7500 руб',
     href: '/mangup-kale'
   },
   {
@@ -139,7 +139,7 @@ export const secondPage: LegacyTourCardData[] = [
     title: 'Три крепости',
     img: 'https://energy-tur.ru/wp-content/uploads/2018/06/mangup_1.jpg',
     duration: '6-7 часов',
-    price: 'от 12 500 руб'
+    price: 'от 15 000 руб'
   },
   { ...longTours[5], title: 'Путешествие по Качинской долине' },
   {
