@@ -134,7 +134,13 @@ export const firstPage: LegacyTourCardData[] = [
 ];
 
 export const secondPage: LegacyTourCardData[] = [
-  { ...longTours[1], title: 'Три крепости' },
+  {
+    ...longTours[1],
+    title: 'Три крепости',
+    img: 'https://energy-tur.ru/wp-content/uploads/2018/06/mangup_1.jpg',
+    duration: '6-7 часов',
+    price: 'от 12 500 руб'
+  },
   { ...longTours[5], title: 'Путешествие по Качинской долине' },
   {
     ...longTours[6],
