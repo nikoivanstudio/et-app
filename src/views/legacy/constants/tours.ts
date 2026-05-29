@@ -134,7 +134,7 @@ export const firstPage: LegacyTourCardData[] = [
 ];
 
 export const secondPage: LegacyTourCardData[] = [
-  { ...longTours[0], title: 'Три крепости' },
+  { ...longTours[1], title: 'Три крепости' },
   { ...longTours[5], title: 'Путешествие по Качинской долине' },
   {
     ...longTours[6],
