@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Тестирование в et-app — отчёт и внедрение Gherkin + Playwright</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" id="theme" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css" />
+
+    <style>
+      :root {
+        --accent: #2f6df6;
+        --accent-2: #18a058;
+        --warn: #e0820b;
+        --danger: #d23b3b;
+        --ink: #1c2433;
+        --muted: #6b7686;
+      }
+      .reveal {
+        font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 30px;
+        color: var(--ink);
+      }
+      .reveal h1, .reveal h2, .reveal h3 {
+        font-weight: 700;
+        text-transform: none;
+        letter-spacing: -0.5px;
+        color: var(--ink);
+      }
+      .reveal h1 { font-size: 2.0em; }
+      .reveal h2 { font-size: 1.35em; color: var(--accent); }
+      .reveal h3 { font-size: 1.05em; }
+      .reveal section { text-align: left; }
+      .reveal .center { text-align: center; }
+      .reveal ul { display: block; }
+      .reveal li { margin: 0.25em 0; }
+      .reveal small { color: var(--muted); }
+
+      .tag {
+        display: inline-block;
+        padding: 0.12em 0.55em;
+        border-radius: 999px;
+        font-size: 0.5em;
+        font-weight: 600;
+        vertical-align: middle;
+        margin-left: 0.4em;
+      }
+      .tag.blue { background: #e7eefe; color: var(--accent); }
+      .tag.green { background: #e3f6ec; color: var(--accent-2); }
+      .tag.warn { background: #fdf0db; color: var(--warn); }
+      .tag.red  { background: #fbe5e5; color: var(--danger); }
+      .tag.gray { background: #eceef2; color: var(--muted); }
+
+      .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9em; }
+      .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.7em; }
+      .card {
+        background: #f7f9fc;
+        border: 1px solid #e4e9f1;
+        border-radius: 14px;
+        padding: 0.7em 0.9em;
+        font-size: 0.82em;
+      }
+      .card h3 { margin: 0 0 0.3em 0; color: var(--accent); font-size: 0.95em; }
+      .card.good { border-left: 5px solid var(--accent-2); }
+      .card.bad  { border-left: 5px solid var(--danger); }
+      .card.warn { border-left: 5px solid var(--warn); }
+      .card.acc  { border-left: 5px solid var(--accent); }
+
+      .reveal table { font-size: 0.62em; }
+      .reveal table th { background: #f0f4fb; color: var(--ink); }
+      .reveal pre { width: 100%; font-size: 0.5em; box-shadow: none; border: 1px solid #e4e9f1; border-radius: 10px; }
+      .reveal pre code { padding: 1em; max-height: 460px; }
+
+      .kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7em; }
+      .kpi .num { font-size: 2.4em; font-weight: 800; color: var(--accent); line-height: 1; }
+      .kpi .lbl { font-size: 0.62em; color: var(--muted); }
+      .kpi .card { text-align: center; }
+
+      .pyramid { text-align: center; line-height: 1.25; font-weight: 600; }
+      .pyramid div { margin: 6px auto; border-radius: 8px; padding: 0.45em 0; color: #fff; }
+      .lvl-e2e  { width: 42%; background: var(--danger); }
+      .lvl-int  { width: 64%; background: var(--warn); }
+      .lvl-unit { width: 88%; background: var(--accent-2); }
+
+      .footer {
+        position: absolute; bottom: 14px; left: 26px;
+        font-size: 0.5em; color: var(--muted);
+      }
+      .reveal .slides section .fragment.highlight { color: var(--accent); }
+      .legend { font-size: 0.7em; color: var(--muted); margin-top: 0.5em; }
+      .verdict { font-size: 0.9em; padding: 0.6em 0.9em; border-radius: 12px; background: #eef4ff; border: 1px solid #d6e2fe; }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- 1. Титул -->
+        <section data-background-gradient="linear-gradient(135deg, #f6f9ff 0%, #eef3fb 100%)">
+          <h1>Тестирование в <span style="color: var(--accent)">et-app</span></h1>
+          <h3 style="color: var(--muted); font-weight: 500;">
+            Текущее состояние · Уровни тестирования · Внедрение Gherkin + Playwright
+          </h3>
+          <p class="center" style="margin-top: 1.2em;">
+            <span class="tag blue">Jest</span>
+            <span class="tag blue">Testing Library</span>
+            <span class="tag blue">Playwright</span>
+            <span class="tag gray">Next.js · FSD · Prisma</span>
+          </p>
+          <p class="center"><small>Внутренний отчёт для команды · 2026</small></p>
+        </section>
+
+        <!-- 2. Повестка -->
+        <section>
+          <h2>О чём поговорим</h2>
+          <ol>
+            <li>Какой стек тестирования уже есть</li>
+            <li>Уровни тестирования в проекте и что они дают</li>
+            <li>Сильные стороны и пробелы текущего покрытия</li>
+            <li>Gherkin + Playwright: насколько применимо к нам</li>
+            <li>Оценка трудозатрат и рекомендация</li>
+          </ol>
+          <p class="legend">Цель: единое понимание, куда движемся с автотестами.</p>
+        </section>
+
+        <!-- 3. Стек -->
+        <section>
+          <h2>Стек тестирования сегодня</h2>
+          <div class="grid3">
+            <div class="card acc">
+              <h3>Unit / модульные</h3>
+              <b>Jest</b> + ts-node<br />
+              v8 coverage<br />
+              <small>npm run test</small>
+            </div>
+            <div class="card acc">
+              <h3>Компонентные</h3>
+              <b>Testing Library</b><br />
+              jest-dom · jsdom<br />
+              <small>npm run test:components</small>
+            </div>
+            <div class="card acc">
+              <h3>E2E</h3>
+              <b>Playwright</b> 1.52<br />
+              Chromium · Firefox · WebKit<br />
+              <small>уже установлен ✅</small>
+            </div>
+          </div>
+          <p class="legend">
+            Инфраструктура для всех трёх уровней <b>уже заведена</b> в репозитории — это важная отправная точка.
+          </p>
+        </section>
+
+        <!-- 4. Цифры -->
+        <section>
+          <h2>Покрытие в цифрах</h2>
+          <div class="kpi">
+            <div class="card"><div class="num">6</div><div class="lbl">Unit-наборов</div></div>
+            <div class="card"><div class="num">1</div><div class="lbl">Компонентный набор</div></div>
+            <div class="card"><div class="num">1</div><div class="lbl">Реальный E2E</div></div>
+            <div class="card"><div class="num">3</div><div class="lbl">Браузера в E2E</div></div>
+          </div>
+          <p class="legend" style="margin-top: 1em;">
+            Юнит-уровень развит лучше всего; E2E пока представлен одним рабочим сценарием + boilerplate-примерами Playwright.
+          </p>
+        </section>
+
+        <!-- 5. Пирамида -->
+        <section>
+          <h2>Пирамида тестирования проекта</h2>
+          <div class="pyramid">
+            <div class="lvl-e2e">E2E — Playwright · мало</div>
+            <div class="lvl-int">Компонентные / интеграционные · точечно</div>
+            <div class="lvl-unit">Unit — Jest · основной объём</div>
+          </div>
+          <p class="legend">
+            Форма «здоровая»: широкое быстрое основание из юнит-тестов, узкая вершина из медленных E2E.
+            Слой E2E — главная зона роста.
+          </p>
+        </section>
+
+        <!-- 6. Уровень 1: Unit -->
+        <section>
+          <section>
+            <h2>Уровень 1 — Unit <span class="tag green">сильный</span></h2>
+            <p>Чистая бизнес-логика и слой данных, изолированно и быстро.</p>
+            <table>
+              <thead><tr><th>Файл</th><th>Что проверяет</th></tr></thead>
+              <tbody>
+                <tr><td>post-utils</td><td>валидация статусов, построение поискового <code>where</code> (OR по 5 полям)</td></tr>
+                <tr><td>user-role-utils</td><td>права доступа / RBAC (SUPER_ADMIN, ADMIN)</td></tr>
+                <tr><td>search-file-utils</td><td>фильтры файлов: имя, автор, диапазон дат</td></tr>
+                <tr><td>search-params-utils</td><td>пагинация + сборка фильтров в <code>where.AND</code></td></tr>
+                <tr><td>schemas (Zod)</td><td>валидация payload'ов (patch-схема постов)</td></tr>
+                <tr><td>post repository</td><td>слой доступа к данным с <b>замоканным Prisma</b></td></tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h3>Пример: репозиторий с замоканной БД</h3>
+            <pre><code data-trim data-noescape class="language-typescript">
+jest.mock('@/shared/lib/db', () => ({
+  dbClient: { post: mockPost }
+}));
+
+test('getPosts ensures include.user is set', async () => {
+  mockPost.findMany.mockResolvedValue([{ id: 1 }]);
+  await postRepositories.getPosts({ where: { published: true } });
+
+  const calledWith = mockPost.findMany.mock.calls[0][0];
+  expect(calledWith.where).toEqual({ published: true });
+  expect(calledWith.include).toMatchObject({ user: true });
+});
+            </code></pre>
+            <p class="legend">Тест проверяет контракт с Prisma без реального обращения к БД — быстро и детерминированно.</p>
+          </section>
+        </section>
+
+        <!-- 7. Уровень 2: Компонентные -->
+        <section>
+          <h2>Уровень 2 — Компонентные <span class="tag warn">точечно</span></h2>
+          <div class="grid2">
+            <div>
+              <p>Рендер React-компонента в jsdom и проверка поведения через <b>роли доступности</b>, как видит пользователь.</p>
+              <ul>
+                <li><code>form-dialog-layout.test.tsx</code></li>
+                <li>иконка-триггер оборачивается в кликабельный <code>button</code></li>
+                <li>проверка через <code>getByRole('button')</code></li>
+              </ul>
+            </div>
+            <pre><code data-trim class="language-tsx">
+render(
+  &lt;FormDialog
+    {...baseProps}
+    triggerButton={&lt;Pencil data-testid="edit-icon" /&gt;}
+  /&gt;
+);
+
+const trigger = screen.getByRole('button');
+expect(trigger).toContainElement(
+  screen.getByTestId('edit-icon')
+);
+            </code></pre>
+          </div>
+          <p class="legend">Сильная практика: тест ориентирован на доступность (a11y), а не на детали реализации.</p>
+        </section>
+
+        <!-- 8. Уровень 3: E2E -->
+        <section>
+          <h2>Уровень 3 — E2E (Playwright) <span class="tag red">зона роста</span></h2>
+          <div class="grid2">
+            <div class="card good">
+              <h3>Что хорошо</h3>
+              <ul style="font-size:0.9em">
+                <li>Playwright настроен на 3 браузера</li>
+                <li>Есть trace на ретраях, HTML-репорт</li>
+                <li>Есть <code>baseURL</code> через env</li>
+              </ul>
+            </div>
+            <div class="card bad">
+              <h3>Что мешает</h3>
+              <ul style="font-size:0.9em">
+                <li>1 реальный тест (<code>home.spec</code>) — записанный, хрупкий (кнопка «Hellow», aria-snapshot)</li>
+                <li>2 файла — boilerplate (playwright.dev)</li>
+                <li><code>webServer</code> закомментирован</li>
+                <li>E2E <b>не запускается в CI</b></li>
+              </ul>
+            </div>
+          </div>
+          <p class="legend">Вывод: фундамент есть, но осмысленного E2E-покрытия бизнес-сценариев пока нет — идеальный момент заходить с BDD «с чистого листа».</p>
+        </section>
+
+        <!-- 9. CI -->
+        <section>
+          <h2>Что проверяется в CI</h2>
+          <pre><code data-trim class="language-yaml">
+# .github/workflows/on-check.yml — на каждый push
+- run: npm ci
+- run: npm run lint
+- run: npm run test     # только unit (*.test.ts)
+          </code></pre>
+          <div class="grid2">
+            <div class="card good"><h3>В CI есть</h3>lint · unit-тесты</div>
+            <div class="card bad"><h3>В CI нет</h3>компонентные (.test.tsx) · E2E · coverage-гейт</div>
+          </div>
+          <p class="legend">Быстрая обратная связь на каждый push — хорошая база, которую стоит расширить.</p>
+        </section>
+
+        <!-- 10. Плюсы -->
+        <section>
+          <h2>Сильные стороны текущего подхода</h2>
+          <div class="grid2">
+            <div class="card good"><h3>Многоуровневость</h3>Покрыты все 3 уровня пирамиды — есть на чём строить.</div>
+            <div class="card good"><h3>Быстрая обратная связь</h3>Юнит-тесты мгновенные, гоняются в CI на каждый push.</div>
+            <div class="card good"><h3>Изоляция</h3>БД мокается → тесты детерминированы, не зависят от окружения.</div>
+            <div class="card good"><h3>Тесты «как пользователь»</h3>Testing Library + Playwright опираются на роли/a11y, а не на разметку.</div>
+            <div class="card good"><h3>Кросс-браузерность</h3>Playwright из коробки: Chromium, Firefox, WebKit.</div>
+            <div class="card good"><h3>Структура FSD</h3>Тесты лежат рядом с кодом фичи → легко поддерживать.</div>
+          </div>
+        </section>
+
+        <!-- 11. Пробелы -->
+        <section>
+          <h2>Пробелы (зоны роста)</h2>
+          <ul>
+            <li><b>E2E-сценарии бизнеса</b> не покрыты: заявка на тур, OTP-логин, публикация поста, загрузка файлов</li>
+            <li>Компонентные тесты и E2E <b>не входят в CI</b></li>
+            <li>Нет порога покрытия (coverage gate) и отчёта о покрытии в пайплайне</li>
+            <li>Единственный E2E хрупкий (записан рекордером, содержит отладочные артефакты)</li>
+            <li>Нет общих паттернов для E2E: Page Objects, фикстуры авторизации, сид данных</li>
+          </ul>
+          <p class="legend">Именно сюда логично направить внедрение Gherkin + Playwright.</p>
+        </section>
+
+        <!-- 12. Раздел Gherkin -->
+        <section data-background-gradient="linear-gradient(135deg,#eef3fb,#f6f9ff)">
+          <h1 style="font-size:1.7em">Gherkin + Playwright</h1>
+          <h3 style="color: var(--muted)">Насколько применимо · что даёт · сколько стоит</h3>
+        </section>
+
+        <!-- 13. Что такое -->
+        <section>
+          <h2>Что такое Gherkin / BDD</h2>
+          <div class="grid2">
+            <div>
+              <p>Сценарии на «человеческом» языке <b>Given / When / Then</b>, понятные не только разработчикам.</p>
+              <p>Каждый шаг привязан к коду (<i>step definition</i>), который под капотом дёргает Playwright.</p>
+              <ul style="font-size:0.85em">
+                <li>Единый язык бизнеса и разработки</li>
+                <li>Спецификация = живой тест</li>
+              </ul>
+            </div>
+            <pre><code data-trim class="language-gherkin">
+Функция: Заявка на тур
+
+  Сценарий: Посетитель отправляет заявку
+    Дано открыта страница тура "Гора Ай-Петри"
+    Когда я заполняю имя и телефон
+    И нажимаю "Отправить заявку"
+    Тогда я вижу подтверждение
+    И заявка появляется в дашборде гида
+            </code></pre>
+          </div>
+        </section>
+
+        <!-- 14. Применимо ли -->
+        <section>
+          <h2>Применимо ли к et-app?</h2>
+          <div class="verdict">
+            <b>Да — технически легко, ценность зависит от процесса.</b>
+            Playwright уже стоит; E2E-слой почти пустой → внедряем без миграции легаси.
+          </div>
+          <div class="grid2" style="margin-top:0.7em">
+            <div class="card good">
+              <h3>За</h3>
+              <ul style="font-size:0.85em">
+                <li>Чёткие бизнес-сценарии: заявка на тур, OTP-логин, CMS-посты, файлы, права ролей</li>
+                <li>Документация = тесты (онбординг, ТЗ)</li>
+                <li>Старт с нуля → нет затрат на переписывание</li>
+              </ul>
+            </div>
+            <div class="card warn">
+              <h3>Осторожно</h3>
+              <ul style="font-size:0.85em">
+                <li>BDD окупается, если сценарии реально читают не-разработчики</li>
+                <li>Лишний слой абстракции (шаги) для маленькой команды</li>
+                <li>Дисциплина: переиспользуемые шаги, иначе хаос</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 15. Инструмент -->
+        <section>
+          <h2>Чем связать Gherkin и Playwright</h2>
+          <table>
+            <thead><tr><th></th><th>playwright-bdd ⭐</th><th>@cucumber/cucumber</th></tr></thead>
+            <tbody>
+              <tr><td>Раннер</td><td>нативный Playwright Test</td><td>отдельный раннер Cucumber</td></tr>
+              <tr><td>Параллельность / трейсы / репорты</td><td>из коробки PW</td><td>нужно настраивать</td></tr>
+              <tr><td>Фикстуры PW</td><td>да</td><td>ограниченно</td></tr>
+              <tr><td>Зрелость</td><td>активная, под PW</td><td>классика BDD</td></tr>
+            </tbody>
+          </table>
+          <p class="legend">
+            Рекомендация: <b>playwright-bdd</b> — сохраняем всю мощь Playwright (параллель, trace viewer, HTML-репорт) и получаем Gherkin сверху.
+          </p>
+        </section>
+
+        <!-- 16. До/После -->
+        <section>
+          <h3>Было: записанный E2E</h3>
+          <pre><code data-trim class="language-typescript">
+test('test of Home page', async ({ page }) => {
+  await page.goto('http://localhost:3000/');
+  await page.getByRole('button', { name: 'Hellow' }).click();
+  await page.getByText('nikolaenko_i').click();
+  await expect(page.locator('html')).toMatchAriaSnapshot(`...`);
+});
+          </code></pre>
+          <h3>Стало: feature + переиспользуемые шаги</h3>
+          <pre><code data-trim class="language-typescript">
+// steps/home.steps.ts
+Given('открыта главная страница', async ({ page }) =>
+  page.goto('/'));
+Then('виден переключатель темы', async ({ page }) =>
+  expect(page.getByRole('button', { name: 'Переключатель темы' }))
+    .toBeVisible());
+          </code></pre>
+        </section>
+
+        <!-- 17. Трудозатраты -->
+        <section>
+          <h2>Оценка трудозатрат</h2>
+          <table>
+            <thead><tr><th>Этап</th><th>Содержание</th><th>Срок</th></tr></thead>
+            <tbody>
+              <tr><td>1. Setup</td><td>playwright-bdd, структура папок, webServer, сид тестовой БД</td><td>0.5–1 день</td></tr>
+              <tr><td>2. Паттерны</td><td>Page Objects, фикстура авторизации (storageState), общие шаги</td><td>1–2 дня</td></tr>
+              <tr><td>3. Ключевые сценарии</td><td>5–6 потоков: заявка на тур, OTP-логин, посты, файлы, права</td><td>3–5 дней</td></tr>
+              <tr><td>4. CI</td><td>отдельный job: запуск приложения + E2E + артефакты</td><td>~1 день</td></tr>
+            </tbody>
+          </table>
+          <div class="grid2" style="margin-top:0.6em">
+            <div class="card acc"><h3>Технический запуск BDD</h3><b>~2–3 дня</b> — Gherkin «бегает», есть демо-сценарий</div>
+            <div class="card acc"><h3>Рабочее покрытие ядра</h3><b>~1.5–2 недели</b> — основные пути под автотестами + CI</div>
+          </div>
+        </section>
+
+        <!-- 18. Рекомендация -->
+        <section>
+          <h2>Рекомендация</h2>
+          <ol>
+            <li><b>Внедрять стоит</b> — низкий порог входа (Playwright уже есть), E2E-слой пустой.</li>
+            <li>Инструмент — <b>playwright-bdd</b>.</li>
+            <li>Начать с <b>PoC за 2–3 дня</b>: 1 сценарий «заявка на тур» end-to-end + шаблон шагов.</li>
+            <li>Параллельно — <b>добавить E2E и компонентные тесты в CI</b> отдельным job.</li>
+            <li>Решение о масштабировании BDD принять <b>после PoC</b>: реально ли сценарии читают бизнес/QA.</li>
+          </ol>
+          <p class="legend">Если читателей-нетехнарей нет — можно остаться на «чистом» Playwright; ценность Gherkin тогда ниже, а накладные расходы те же.</p>
+        </section>
+
+        <!-- 19. Финал -->
+        <section data-background-gradient="linear-gradient(135deg,#f6f9ff,#eef3fb)">
+          <h1 style="font-size:1.6em">Итого</h1>
+          <ul>
+            <li>Тесты есть на всех 3 уровнях; сильный юнит-слой, слабый E2E</li>
+            <li>Gherkin + Playwright применимы — и заходить удобно сейчас</li>
+            <li>PoC: ~2–3 дня · рабочее покрытие ядра: ~1.5–2 недели</li>
+          </ul>
+          <p class="center" style="margin-top:1em"><b>Вопросы?</b></p>
+          <p class="footer">et-app · отчёт по тестированию</p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+        transition: 'slide',
+        plugins: [RevealHighlight, RevealNotes]
+      });
+    </script>
+  </body>
+</html>

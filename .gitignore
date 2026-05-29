@@ -50,6 +50,8 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+# playwright-bdd (генерируемые из .feature тесты)
+/.features-gen/
 
 # Author
 delolopment-plan.md

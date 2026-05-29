@@ -141,7 +141,7 @@ export const secondPage: LegacyTourCardData[] = [
     title: `Обзорная экскурсия на джипе. "Бахчисарай - Город трех религий"`
   },
   {
-    ...longTours[6],
+    ...longTours[7],
     title: `Джип тур - "По вершинам Крыма"`
   },
   {

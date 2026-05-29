@@ -13,7 +13,9 @@
     "test": "jest --testMatch='**/*.test.ts'",
     "test:components": "jest --testMatch='**/*.test.tsx'",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:bdd": "bddgen --config playwright.bdd.config.ts && playwright test --config playwright.bdd.config.ts",
+    "test:bdd:ui": "bddgen --config playwright.bdd.config.ts && playwright test --config playwright.bdd.config.ts --ui"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -92,6 +94,7 @@
     "eslint-plugin-unused-imports": "^4.4.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "playwright-bdd": "^8.5.1",
     "prettier": "^3.5.3",
     "prisma": "^7.7.0",
     "react-phone-number-input": "^3.4.14",
