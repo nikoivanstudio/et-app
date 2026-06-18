@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import { tourContentSchema } from '@/entities/tour/model/content';
+
 const supportedImageExtensions = new Set([
   'jpg',
   'jpeg',
@@ -40,7 +42,7 @@ const baseTourSchema = {
     .min(10, 'Название тура не может быть менее 10 символов')
     .max(180, 'Название тура не может быть более 180 символов'),
   description: z.string(),
-  content: z.string(),
+  content: tourContentSchema,
   slug: z.string().min(5),
   price: z.number().min(1000, 'Стоимость тура не может быть менее 1000 рублей'),
   duration: z

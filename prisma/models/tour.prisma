@@ -5,7 +5,7 @@ model Tour {
   mainPhotoId     Int        @map("main_photo_id")
   price           Int
   duration        Int
-  content         String     @map("content")
+  content         Json       @map("content")
   slug            String     @unique
   categories      String[]
   metaKeywords    String[]   @map("meta_keywords")

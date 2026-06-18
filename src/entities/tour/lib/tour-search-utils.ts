@@ -18,7 +18,6 @@ const getSearchParamsUtils = (
       OR: [
         { title: { contains: searchQuery, mode: 'insensitive' } },
         { description: { contains: searchQuery, mode: 'insensitive' } },
-        { content: { contains: searchQuery, mode: 'insensitive' } },
         { metaTitle: { contains: searchQuery, mode: 'insensitive' } },
         { metaDescription: { contains: searchQuery, mode: 'insensitive' } }
       ]

@@ -5,17 +5,15 @@ import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
 
-import { ServerDurationLabel } from '@/entities/duration/server';
-import { ServerFileGallery } from '@/entities/file-gallery/server';
 import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
-import { PageHeadTour } from '@/entities/page-head/server';
 
 import styles from '@/shared/assets/styles.module.scss';
 import { cn } from '@/shared/lib/css';
-import { BadgePrice } from '@/shared/ui/badge-price';
-import { TextContent } from '@/shared/ui/text-content';
 
 import { TourKernel } from '@/kernel/tour/domain';
+import { PageHeadPost } from '@/views/post/ui/page-head-post';
+import { PostStats } from '@/views/post/ui/post-stats';
+import { TourContentView } from '@/views/tour/ui/tour-content';
 
 const cnPageTour = cnBem('PageTour');
 
@@ -25,7 +23,7 @@ export const TourMain: FC<TourKernel> = async props => {
 
   return (
     <AppMain
-      mainHead={<PageHeadTour {...{ id, title, mainPhoto }} />}
+      mainHead={<PageHeadPost {...{ id, title, mainPhoto }} />}
       mainContent={
         <div
           className={cnPageTour('Content', [
@@ -47,45 +45,24 @@ export const TourMain: FC<TourKernel> = async props => {
                   'p-2'
                 )}
               >
-                Описание тура
+                Информация
               </span>
-              <MockReviewsAvatars rating={rating} />
+              <MockReviewsAvatars rating={rating || 4.9} />
             </div>
-            <div
-              className={cnPageTour('TourProperties', [
-                'flex',
-                'items-center',
-                'gap-6',
-                'p-1',
-                'mt-3'
-              ])}
-            >
-              <BadgePrice
-                className={cnPageTour('TourPrice')}
-                price={price}
-                variant='black-white'
-              />
-              <ServerDurationLabel
-                duration={duration}
-                variant='black-white'
-                color='black'
-              />
-            </div>
-          </section>
-          <section className={cnPageTour('PhotoBlock', ['mt-1'])}>
-            <ServerFileGallery
-              files={photos.map(photo => ({
-                id: photo.id,
-                filename: photo.fileName,
-                originalName: photo.title
-              }))}
-              title={`Фотографии тура ${title}`}
+            <PostStats
+              className={cn('mt-4', 'mx-2')}
+              priceValue={price}
+              durationValue={duration}
             />
           </section>
-          <section className={cnPageTour('Content', ['mt-8', 'pb-14'])}>
-            <div>
-              <TextContent content={content as TrustedHTML} />
-            </div>
+          <section className={cnPageTour('Content', ['mt-4', 'pb-14'])}>
+            <TourContentView
+              content={content}
+              photos={photos.map(photo => ({
+                source: photo.source,
+                title: photo.title
+              }))}
+            />
           </section>
         </div>
       }

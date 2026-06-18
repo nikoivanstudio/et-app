@@ -1,4 +1,5 @@
 import { FormDialogDomain } from '@/entities/form-dialog';
+import { emptyTourContent } from '@/entities/tour/model/content';
 
 export const createTour: FormDialogDomain.FormDataModelItem[] = [
   {
@@ -20,8 +21,8 @@ export const createTour: FormDialogDomain.FormDataModelItem[] = [
     required: true
   },
   {
-    type: 'string',
-    label: 'Контент',
+    type: 'blocks',
+    label: 'Контент тура',
     name: 'content',
     required: true
   },
@@ -71,7 +72,7 @@ export const initialCreateTourFormData = {
   title: '',
   description: '',
   mainPhoto: undefined,
-  content: '',
+  content: emptyTourContent,
   price: '',
   slug: '',
   duration: '',

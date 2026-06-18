@@ -52,6 +52,7 @@ const createTour = async (
     const {
       mainPhoto: mainPhotoEntity,
       photos: photosEntities,
+      content,
       ...rest
     } = data;
     const mainPhoto = await prisma.photo.create({ data: mainPhotoEntity });
@@ -63,6 +64,7 @@ const createTour = async (
     return prisma.tour.create({
       data: {
         ...rest,
+        content: content as Prisma.InputJsonValue,
         mainPhotoId: mainPhoto.id,
         photos: {
           create: photosEntities,
@@ -86,7 +88,7 @@ const updateTour = (
   }
 ): Promise<Tour> =>
   dbClient.$transaction(async prisma => {
-    const { id, mainPhoto, photos, ...rest } = tour;
+    const { id, mainPhoto, photos, content, ...rest } = tour;
     let mainPhotoId: number | undefined;
 
     if (mainPhoto) {
@@ -115,6 +117,7 @@ const updateTour = (
       data: {
         ...rest,
         startPlace: rest.startPlace,
+        ...(content ? { content: content as Prisma.InputJsonValue } : {}),
         ...(mainPhotoId ? { mainPhotoId } : {})
       }
     });

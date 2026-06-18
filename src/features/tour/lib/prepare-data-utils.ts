@@ -1,8 +1,8 @@
 import { CreateTourData } from '@/features/tour/domain';
 import {
   createTourSchema,
-  patchTourSchema,
   PatchTourData,
+  patchTourSchema,
 } from '@/features/tour/lib/schemas/create-tour-schemas';
 
 import { FormDialogDomain } from '@/entities/form-dialog';
@@ -85,6 +85,14 @@ const prepareNumberValues = (
   if ('categories' in value && typeof value.categories === 'string') {
     try {
       value.categories = JSON.parse(value.categories);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  if ('content' in value && typeof value.content === 'string') {
+    try {
+      value.content = JSON.parse(value.content);
     } catch (e) {
       console.error(e);
     }

@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { z } from 'zod';
 
+import { TourContent } from '@/entities/tour/model/content';
+
 enum DialogTypes {
   CREATE = 'create',
   EDIT = 'edit',
@@ -31,6 +33,7 @@ export type FormCheckTypes<
   boolean: boolean;
   stringArray: string[];
   files: File[];
+  blocks: TourContent;
   custom: T;
 };
 
@@ -41,6 +44,7 @@ export type Value<T extends Record<string, unknown> = Record<string, string>> =
   | string
   | string[]
   | File[]
+  | TourContent
   | T;
 
 export type FormRowProps<

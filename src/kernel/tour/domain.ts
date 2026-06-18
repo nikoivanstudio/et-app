@@ -2,6 +2,7 @@ import { ActivityDomain } from '@/entities/activity/server';
 import { GeoPointDomain } from '@/entities/geo-point';
 import { isGeoPointEntity } from '@/entities/geo-point/lib/typeguadrs';
 import { ReviewDomain } from '@/entities/review';
+import { toTourContent,TourContent } from '@/entities/tour/model/content';
 
 import { TourWR } from '@/kernel/tour/model/types';
 
@@ -22,13 +23,20 @@ export type TourKernel = {
   activities: ActivityDomain.ActivityEntity[];
   rating: number;
   descriptionText?: string;
-  content?: string;
+  content: TourContent;
   startPlace?: GeoPointDomain.GeoPointEntity;
 };
 
 export function tourToKernelTour(tour: TourWR): TourKernel {
-  const { mainPhotoId, photos, rating, descriptionText, startPlace, ...rest } =
-    tour;
+  const {
+    mainPhotoId,
+    photos,
+    rating,
+    descriptionText,
+    startPlace,
+    content,
+    ...rest
+  } = tour;
 
   const reviews = tour.reviews.length
     ? tour.reviews.map(ReviewDomain.reviewToReviewEntity)
@@ -45,6 +53,7 @@ export function tourToKernelTour(tour: TourWR): TourKernel {
 
   return {
     ...rest,
+    content: toTourContent(content),
     rating: rating || 0,
     descriptionText: descriptionText || undefined,
     startPlace:

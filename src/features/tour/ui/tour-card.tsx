@@ -47,7 +47,7 @@ export const TourCard: FC<TourDomain.TourEntity> = props => {
           width={400}
           height={400}
         />
-        <p>{content.slice(0, 250)} ...</p>
+        <p>{content.lead.slice(0, 250)} ...</p>
       </CardContent>
       <CardFooter className='flex justify-end items-center gap-1'>
         <Button variant='ghost' size='sm'>

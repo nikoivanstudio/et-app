@@ -1324,12 +1324,15 @@ export const TourScalarFieldEnum = {
   content: 'content',
   slug: 'slug',
   categories: 'categories',
+  metaKeywords: 'metaKeywords',
+  tags: 'tags',
+  tourRoute: 'tourRoute',
   authorId: 'authorId',
+  createdAt: 'createdAt',
+  about: 'about',
   status: 'status',
   metaTitle: 'metaTitle',
   metaDescription: 'metaDescription',
-  metaKeywords: 'metaKeywords',
-  createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   rating: 'rating',
   descriptionText: 'descriptionText',
@@ -1475,6 +1478,13 @@ export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'J
  * Reference to a field of type 'QueryMode'
  */
 export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+/**
+ * Reference to a field of type 'Json[]'
+ */
+export type ListJsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json[]'>
     
 
 

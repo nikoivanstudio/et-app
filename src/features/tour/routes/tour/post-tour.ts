@@ -21,6 +21,12 @@ export async function postTour(req: NextRequest): Promise<Response> {
     }
 
     const formData = await req.formData?.();
+
+    // authorId не приходит из формы — проставляем автора из сессии до валидации.
+    if (formData) {
+      formData.set('authorId', String(session.id));
+    }
+
     const data = prepareDataUtils.getTourData(formData);
 
     if (!data) {

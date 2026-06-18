@@ -56,3 +56,8 @@ node_modules/
 # Author
 delolopment-plan.md
 wp-base.json
+
+# Claude Code / agent
+.claude/
+# temp dir from local scripting (dev server log, scratch files)
+.tmp-tri/

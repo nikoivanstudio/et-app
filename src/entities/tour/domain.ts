@@ -1,6 +1,9 @@
 import { Prisma } from 'generated/prisma/client';
 
 import { placeEntitySchema } from '@/entities/tour/lib/validation-schemas';
+import {
+  toTourContent,
+  TourContent} from '@/entities/tour/model/content';
 import { tourTypeguards } from '@/entities/tour/model/typeguards';
 
 import { objectUtils } from '@/shared/lib/object-utils';
@@ -26,7 +29,7 @@ export type TourEntity = {
   title: string;
   description: string;
   mainPhoto: PhotoEntity;
-  content: string;
+  content: TourContent;
   price: number;
   duration: number;
   categories: string[];
@@ -44,7 +47,7 @@ export function tourToTourEntity(
     };
   }>
 ): WithoutNull<TourEntity> {
-  const { mainPhotoId, photos, startPlace, ...rest } = tour;
+  const { mainPhotoId, photos, startPlace, content, ...rest } = tour;
 
   if (
     !Array.isArray(photos) ||
@@ -64,6 +67,7 @@ export function tourToTourEntity(
 
   return {
     ...tourEntity,
+    content: toTourContent(content),
     startPlace: checkedStartPlace.success ? checkedStartPlace.data : undefined,
     mainPhoto,
     photos

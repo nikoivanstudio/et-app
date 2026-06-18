@@ -9,6 +9,7 @@ import {
 } from '@/entities/form-dialog/domain';
 import { Checkbox } from '@/entities/form-dialog/ui/checkbox';
 import { DatePicker } from '@/entities/form-dialog/ui/date-picker';
+import { InputTypeBlocks } from '@/entities/form-dialog/ui/input-type-blocks';
 import { InputTypeFile } from '@/entities/form-dialog/ui/input-type-file';
 import { InputTypeNumber } from '@/entities/form-dialog/ui/input-type-number';
 import { InputTypeString } from '@/entities/form-dialog/ui/input-type-string';
@@ -89,6 +90,14 @@ export const FormRow = <
           value={value}
           type={type}
           options={options}
+        />
+      )}
+      {type === 'blocks' && (
+        <InputTypeBlocks
+          name={name}
+          onChange={onChange}
+          value={value}
+          type={type}
         />
       )}
     </div>

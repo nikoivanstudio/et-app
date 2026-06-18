@@ -1,5 +1,6 @@
 import { PhotoEntity } from '@/widgets/tours/domain';
 
+import { TourContent } from '@/entities/tour/model/content';
 import { TourDomain } from '@/entities/tour/server';
 
 export type TourCardEntity = {
@@ -16,7 +17,7 @@ export type DraftCreateTourData = {
   title: string;
   description: string;
   mainPhoto: File[];
-  content: string;
+  content: TourContent;
   price: number;
   slug: string;
   duration: number;
