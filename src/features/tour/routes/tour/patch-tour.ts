@@ -6,6 +6,7 @@ import { tourService } from '@/features/tour/services/tour-service';
 
 import { PhotoDomain } from '@/entities/photo';
 import { serverPhotoUtils } from '@/entities/photo/server';
+import { TourStatus } from '@/entities/tour/domain';
 import { roleUtils } from '@/entities/user';
 import { Role } from '@/entities/user/domain';
 import { sessionUtils } from '@/entities/user/lib/session-utils';
@@ -18,7 +19,11 @@ export async function patchTour(req: NextRequest): Promise<Response> {
       req.cookies.get('session')?.value
     );
 
-    if (!roleUtils.userHasPermissionOn(session?.role, 'updateTour')) {
+    const canUpdate = roleUtils.userHasPermissionOn(session?.role, 'updateTour');
+    // Модераторы (reviewTour) могут редактировать любой тур, в т.ч. чужой.
+    const canReview = roleUtils.userHasPermissionOn(session?.role, 'reviewTour');
+
+    if (!canUpdate && !canReview) {
       return handleError({
         body: 'У вас нет полномочий на редактирование туров'
       });
@@ -34,7 +39,9 @@ export async function patchTour(req: NextRequest): Promise<Response> {
     }
 
     const hasPermissionOnEdit =
-      session.role === Role.SUPER_ADMIN || session.id === data.authorId;
+      session.role === Role.SUPER_ADMIN ||
+      session.id === data.authorId ||
+      canReview;
 
     if (!hasPermissionOnEdit) {
       return handleError({
@@ -43,6 +50,17 @@ export async function patchTour(req: NextRequest): Promise<Response> {
     }
 
     const { title, authorId, mainPhoto, photos, id, ...rest } = data;
+
+    // Теги может назначать только администратор (assignTourTags) —
+    // у остальных значение из формы игнорируем.
+    if (!roleUtils.userHasPermissionOn(session.role, 'assignTourTags')) {
+      delete (rest as Record<string, unknown>).tags;
+    }
+
+    // Правка гидом (не модератором) возвращает тур на повторную модерацию.
+    if (!canReview) {
+      (rest as Record<string, unknown>).status = TourStatus.PENDING;
+    }
 
     if (typeof authorId !== 'number' || typeof id !== 'number') {
       return handleError({

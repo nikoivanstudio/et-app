@@ -83,6 +83,8 @@ export type FormProps<
   onCancel?: () => void;
   title?: ReactNode;
   description?: ReactNode;
+  // Необязательный живой предпросмотр: получает текущее состояние формы.
+  preview?: (data: FormData<T>) => ReactNode;
 };
 
 export type InputProps<

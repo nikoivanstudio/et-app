@@ -27,10 +27,12 @@ export const Form = <
   type,
   schema,
   title,
-  description
+  description,
+  preview
 }: FormProps<T>) => {
   const [userFormData, setUserFormData] = useState<Partial<FormData<T>>>({});
   const [showErrors, setShowErrors] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   const formData: FormData<T> = {
     ...(initialData as FormData<T>),
@@ -97,7 +99,20 @@ export const Form = <
 
         return <FormRow {...props} key={idx} />;
       })}
+      {!!preview && showPreview && (
+        <div className={cnForm('Preview', ['my-4'])}>{preview(formData)}</div>
+      )}
       <div className={cnForm('Actions', ['flex', 'justify-end', 'gap-5'])}>
+        {!!preview && (
+          <Button
+            type='button'
+            variant='outline'
+            className='mr-auto'
+            onClick={() => setShowPreview(prev => !prev)}
+          >
+            {showPreview ? 'Скрыть предпросмотр' : 'Предпросмотр'}
+          </Button>
+        )}
         <Button
           variant='outline'
           onClick={handleReset}

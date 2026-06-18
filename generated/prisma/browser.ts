@@ -38,6 +38,11 @@ export type Order = Prisma.OrderModel
  */
 export type Otp = Prisma.OtpModel
 /**
+ * Model PartnerApplication
+ * 
+ */
+export type PartnerApplication = Prisma.PartnerApplicationModel
+/**
  * Model Photo
  * 
  */

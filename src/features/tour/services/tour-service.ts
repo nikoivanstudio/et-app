@@ -9,7 +9,11 @@ import {
 } from '@/features/tour/domain';
 
 import { PhotoDomain } from '@/entities/photo';
-import { TourEntity, tourToTourEntity } from '@/entities/tour/domain';
+import {
+  PUBLIC_TOUR_STATUS,
+  TourEntity,
+  tourToTourEntity
+} from '@/entities/tour/domain';
 import { tourRepositories } from '@/entities/tour/repositories/tour';
 import { Role } from '@/entities/user/domain';
 
@@ -50,6 +54,7 @@ const getTour = (id: number, select?: TourSelect) =>
 const getPopularTourCards = async (): Promise<TourCardEntity[]> => {
   const draftPopularTours = await tourRepositories.getTours({
     where: {
+      status: PUBLIC_TOUR_STATUS,
       categories: {
         has: 'popular'
       }
@@ -68,19 +73,21 @@ const getTourCards = async (
     Prisma.TourInclude | undefined
   >(params);
 
-  const draftTourCards = dbQueryParams
-    ? await tourRepositories.getTours({
-        ...dbQueryParams,
-        select: tourCardsSelect
-      })
-    : await tourRepositories.getTours({
-        select: tourCardsSelect
-      });
+  // Публично показываем только одобренные туры.
+  const draftTourCards = await tourRepositories.getTours({
+    ...(dbQueryParams ?? {}),
+    where: { status: PUBLIC_TOUR_STATUS },
+    select: tourCardsSelect
+  });
 
   return draftTourCards.map(draftTourToTourCardEntity);
 };
 
-const getToursIds = () => tourRepositories.getTours({ select: { id: true } });
+const getToursIds = () =>
+  tourRepositories.getTours({
+    where: { status: PUBLIC_TOUR_STATUS },
+    select: { id: true }
+  });
 
 export const getTours = async (
   params?: Prisma.TourFindManyArgs & { page?: number }

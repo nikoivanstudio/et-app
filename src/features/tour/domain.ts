@@ -47,3 +47,22 @@ export type GetToursResponse = {
   pagesCount: number;
   tours: TourDomain.TourEntity[];
 };
+
+export type ModerationTourAuthor = {
+  id: number;
+  login: string;
+  firstName: string | null;
+  lastName: string | null;
+  email: string | null;
+  phone: string | null;
+};
+
+// Тур в очереди модерации: полная сущность (для предпросмотра) + автор и дата.
+export type ModerationTour = TourDomain.TourEntity & {
+  createdAt: string | Date;
+  author: ModerationTourAuthor;
+};
+
+export type GetPendingToursResponse = {
+  tours: ModerationTour[];
+};

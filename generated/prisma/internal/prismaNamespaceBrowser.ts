@@ -55,6 +55,7 @@ export const ModelName = {
   File: 'File',
   Order: 'Order',
   Otp: 'Otp',
+  PartnerApplication: 'PartnerApplication',
   Photo: 'Photo',
   Post: 'Post',
   Review: 'Review',
@@ -144,6 +145,19 @@ export const OtpScalarFieldEnum = {
 export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
 
 
+export const PartnerApplicationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  status: 'status',
+  comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerApplicationScalarFieldEnum = (typeof PartnerApplicationScalarFieldEnum)[keyof typeof PartnerApplicationScalarFieldEnum]
+
+
 export const PhotoScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -218,6 +232,7 @@ export const TourScalarFieldEnum = {
   createdAt: 'createdAt',
   about: 'about',
   status: 'status',
+  rejectionComment: 'rejectionComment',
   metaTitle: 'metaTitle',
   metaDescription: 'metaDescription',
   updatedAt: 'updatedAt',

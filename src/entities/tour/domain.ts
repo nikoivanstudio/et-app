@@ -9,7 +9,22 @@ import { tourTypeguards } from '@/entities/tour/model/typeguards';
 import { objectUtils } from '@/shared/lib/object-utils';
 import { WithoutNull } from '@/shared/model/types';
 
-export type TourStatus = 'new' | 'default';
+// Жизненный цикл тура: гид отправляет на модерацию (PENDING), администратор
+// одобряет (APPROVED — тур виден публично) или отклоняет (REJECTED).
+export enum TourStatus {
+  PENDING = 'PENDING',
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED'
+}
+
+export const TOUR_STATUS_LABELS: Record<string, string> = {
+  [TourStatus.PENDING]: 'На модерации',
+  [TourStatus.APPROVED]: 'Опубликован',
+  [TourStatus.REJECTED]: 'Отклонён'
+};
+
+// Публично видны только одобренные туры.
+export const PUBLIC_TOUR_STATUS = TourStatus.APPROVED;
 
 type PhotoEntity = {
   title: string;
@@ -38,6 +53,9 @@ export type TourEntity = {
   descriptionText?: string;
   startPlace?: PlaceEntity;
   authorId: number;
+  status?: string;
+  tags?: string[];
+  rejectionComment?: string;
 };
 
 export function tourToTourEntity(

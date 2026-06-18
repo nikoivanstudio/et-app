@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { FC } from 'react';
 
+import { ChangePasswordForm } from '@/features/change-password';
 import { permissionsServices } from '@/features/dashboard';
 
+import { PartnerApplicationDomain } from '@/entities/partner-application';
+import { Role } from '@/entities/user/domain';
 import { sessionService } from '@/entities/user/server';
 
 import { Button } from '@/shared/ui/button';
@@ -14,17 +17,18 @@ import { ProfileAvatar } from '@/views/profile/ui/profile-avatar';
 
 const cnProfileView = cn('ProfileView');
 
-export const ProfileLayout: FC<{ id: number; role: string }> = ({
-  id,
-  role
-}) => {
+export const ProfileLayout: FC<{
+  id: number;
+  role: string;
+  applicationStatus?: string | null;
+}> = ({ id, role, applicationStatus = null }) => {
   const dashboardLabel =
     role === 'SUPER_ADMIN' ? 'Открыть панель управления' : 'Мои предложения';
 
-  console.log({
-    role,
-    hasPermissions: permissionsServices.userHasPermissionsToDashboard(role)
-  });
+  const isUser = role === Role.USER;
+  const isPendingApplication =
+    applicationStatus ===
+    PartnerApplicationDomain.PartnerApplicationStatus.PENDING;
 
   return (
     <main className={cnProfileView(null, ['px-4', 'pt-[15vh]'])}>
@@ -37,6 +41,28 @@ export const ProfileLayout: FC<{ id: number; role: string }> = ({
           <Button variant='outline'>
             <Link href={`/dashboard/${id}`}>{dashboardLabel}</Link>
           </Button>
+        </div>
+      )}
+
+      {isUser && (
+        <div className='text-center mt-4'>
+          {isPendingApplication ? (
+            <p className='text-sm text-muted-foreground'>
+              Ваша заявка на партнёрство на рассмотрении
+            </p>
+          ) : (
+            <>
+              {applicationStatus ===
+                PartnerApplicationDomain.PartnerApplicationStatus.REJECTED && (
+                <p className='mb-2 text-sm text-destructive'>
+                  Предыдущая заявка отклонена. Вы можете подать новую.
+                </p>
+              )}
+              <Button variant='outline'>
+                <Link href={routes.becomePartner()}>Стать партнером</Link>
+              </Button>
+            </>
+          )}
         </div>
       )}
 
@@ -53,6 +79,10 @@ export const ProfileLayout: FC<{ id: number; role: string }> = ({
       {/*    </Button>*/}
       {/*  </form>*/}
       {/*</div>*/}
+      <div className='mt-8'>
+        <ChangePasswordForm />
+      </div>
+
       <div className='mt-4'>
         <form
           className='text-center'

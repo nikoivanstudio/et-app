@@ -1,5 +1,3 @@
-'use server';
-
 import { FC } from 'react';
 
 import { TourContent } from '@/entities/tour/model/content';
@@ -14,7 +12,9 @@ type TourContentViewProps = {
   photos?: TourGalleryPhoto[];
 };
 
-export const TourContentView: FC<TourContentViewProps> = async ({
+// Обычный (не серверный) компонент: используется и в серверном рендере
+// публичной страницы тура, и в клиентском предпросмотре в реальном времени.
+export const TourContentView: FC<TourContentViewProps> = ({
   content,
   photos = []
 }) => {

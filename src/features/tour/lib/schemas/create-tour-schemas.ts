@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+import { TourStatus } from '@/entities/tour/domain';
 import { tourContentSchema } from '@/entities/tour/model/content';
 
 const supportedImageExtensions = new Set([
@@ -59,7 +60,9 @@ const baseTourSchema = {
   photos: z.array(fileImageSchema).optional(),
   descriptionText: z.string().optional(),
   startPlace: z.string().optional(),
-  status: z.string().optional()
+  status: z.string().optional(),
+  // Теги назначает только администратор (право assignTourTags).
+  tags: z.array(z.string()).optional()
 };
 
 export const createTourSchemas = z.object({
@@ -97,3 +100,12 @@ export const preparedPatchTourSchema = patchTourSchema
   .partial();
 
 export type PatchTourData = z.infer<typeof patchTourSchema>;
+
+// Решение модератора по туру: одобрить или отклонить (с комментарием).
+export const reviewTourSchema = z.object({
+  id: z.number(),
+  status: z.enum([TourStatus.APPROVED, TourStatus.REJECTED]),
+  comment: z.string().optional()
+});
+
+export type ReviewTourPayload = z.infer<typeof reviewTourSchema>;

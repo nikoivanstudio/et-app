@@ -388,6 +388,7 @@ export const ModelName = {
   File: 'File',
   Order: 'Order',
   Otp: 'Otp',
+  PartnerApplication: 'PartnerApplication',
   Photo: 'Photo',
   Post: 'Post',
   Review: 'Review',
@@ -409,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "activity" | "file" | "order" | "otp" | "photo" | "post" | "review" | "tour" | "transaction" | "user"
+    modelProps: "activity" | "file" | "order" | "otp" | "partnerApplication" | "photo" | "post" | "review" | "tour" | "transaction" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -706,6 +707,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.OtpCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.OtpCountAggregateOutputType> | number
+        }
+      }
+    }
+    PartnerApplication: {
+      payload: Prisma.$PartnerApplicationPayload<ExtArgs>
+      fields: Prisma.PartnerApplicationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PartnerApplicationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PartnerApplicationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>
+        }
+        findFirst: {
+          args: Prisma.PartnerApplicationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PartnerApplicationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>
+        }
+        findMany: {
+          args: Prisma.PartnerApplicationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>[]
+        }
+        create: {
+          args: Prisma.PartnerApplicationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>
+        }
+        createMany: {
+          args: Prisma.PartnerApplicationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PartnerApplicationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>[]
+        }
+        delete: {
+          args: Prisma.PartnerApplicationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>
+        }
+        update: {
+          args: Prisma.PartnerApplicationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>
+        }
+        deleteMany: {
+          args: Prisma.PartnerApplicationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PartnerApplicationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PartnerApplicationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>[]
+        }
+        upsert: {
+          args: Prisma.PartnerApplicationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PartnerApplicationPayload>
+        }
+        aggregate: {
+          args: Prisma.PartnerApplicationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePartnerApplication>
+        }
+        groupBy: {
+          args: Prisma.PartnerApplicationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerApplicationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PartnerApplicationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PartnerApplicationCountAggregateOutputType> | number
         }
       }
     }
@@ -1257,6 +1332,19 @@ export const OtpScalarFieldEnum = {
 export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
 
 
+export const PartnerApplicationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  status: 'status',
+  comment: 'comment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PartnerApplicationScalarFieldEnum = (typeof PartnerApplicationScalarFieldEnum)[keyof typeof PartnerApplicationScalarFieldEnum]
+
+
 export const PhotoScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -1331,6 +1419,7 @@ export const TourScalarFieldEnum = {
   createdAt: 'createdAt',
   about: 'about',
   status: 'status',
+  rejectionComment: 'rejectionComment',
   metaTitle: 'metaTitle',
   metaDescription: 'metaDescription',
   updatedAt: 'updatedAt',
@@ -1600,6 +1689,7 @@ export type GlobalOmitConfig = {
   file?: Prisma.FileOmit
   order?: Prisma.OrderOmit
   otp?: Prisma.OtpOmit
+  partnerApplication?: Prisma.PartnerApplicationOmit
   photo?: Prisma.PhotoOmit
   post?: Prisma.PostOmit
   review?: Prisma.ReviewOmit

@@ -68,6 +68,31 @@ export const createTour: FormDialogDomain.FormDataModelItem[] = [
   }
 ];
 
+// Поле тегов добавляется в форму редактирования только для администратора
+// (право assignTourTags) — гид теги не назначает.
+export const tourTagsModelItem: FormDialogDomain.FormDataModelItem = {
+  type: 'stringArray',
+  label: 'Теги (назначает администратор)',
+  name: 'tags',
+  options: [
+    'Хит',
+    'Новинка',
+    'Семейный',
+    'Экстрим',
+    'Природа',
+    'Город',
+    'Гастрономический',
+    'Историческое',
+    'Активный отдых'
+  ]
+};
+
+// Модель формы для администратора-модератора: все поля тура + теги.
+export const editTourWithTagsModel: FormDialogDomain.FormDataModelItem[] = [
+  ...createTour,
+  tourTagsModelItem
+];
+
 export const initialCreateTourFormData = {
   title: '',
   description: '',
@@ -78,6 +103,7 @@ export const initialCreateTourFormData = {
   duration: '',
   status: 'new',
   categories: [],
+  tags: [],
   photos: undefined,
   descriptionText: '',
   startPlace: ''

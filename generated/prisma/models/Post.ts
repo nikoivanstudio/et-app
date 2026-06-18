@@ -772,10 +772,6 @@ export type PostCreatecategoriesInput = {
   set: string[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type PostUpdateimagesInput = {
   set?: string[]
   push?: string | string[]

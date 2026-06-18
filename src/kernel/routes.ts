@@ -1,4 +1,5 @@
 export const routes = {
   signIn: () => `/sign-in`,
-  signUp: () => `/sign-up`
+  signUp: () => `/sign-up`,
+  becomePartner: () => `/become-partner`
 };

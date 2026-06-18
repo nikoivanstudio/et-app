@@ -20,6 +20,7 @@ model Tour {
   photos          Photo[]
   about           String?   @db.VarChar(512)
   status          String?
+  rejectionComment String?   @map("rejection_comment")
   metaTitle       String?    @map("meta_title")
   metaDescription String?    @map("meta_description")
   updatedAt       DateTime?  @updatedAt @map("updated_at") @db.Timestamp()

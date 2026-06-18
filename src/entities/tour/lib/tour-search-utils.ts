@@ -4,7 +4,9 @@ import { Prisma } from '../../../../generated/prisma/client';
 import TourWhereInput = Prisma.TourWhereInput;
 
 const getValidStatus = (value: string | null): TourStatus =>
-  value === 'new' ? 'new' : 'default';
+  value && value in TourStatus
+    ? (value as TourStatus)
+    : TourStatus.APPROVED;
 
 const getSearchParamsUtils = (
   searchQuery: string | null

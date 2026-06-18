@@ -130,11 +130,30 @@ const deleteTour = async (id: number): Promise<Tour | null> =>
     }
   });
 
+// Туры в указанном статусе вместе с автором — для очереди модерации.
+const getToursByStatus = (status: string) =>
+  dbClient.tour.findMany({
+    where: { status },
+    include: {
+      photos: true,
+      author: { omit: { passwordHash: true, salt: true } }
+    },
+    orderBy: { createdAt: 'desc' }
+  });
+
+// Решение модератора: смена статуса (+ комментарий при отклонении).
+const moderateTour = (
+  id: number,
+  data: { status: string; rejectionComment?: string | null }
+): Promise<Tour> => dbClient.tour.update({ where: { id }, data });
+
 export const tourRepositories = {
   getToursCount,
   getTour,
   getTours,
   createTour,
   updateTour,
-  deleteTour
+  deleteTour,
+  getToursByStatus,
+  moderateTour
 };

@@ -21,5 +21,9 @@ export const permissions: Record<string, Set<string>> = {
   uploadFile: adminsAndGuides,
   downloadFile: adminsAndGuides,
   deleteFile: adminsAndGuides,
-  getUsersByFiles: admins
+  getUsersByFiles: admins,
+  getPartnerApplications: superAdmin,
+  reviewPartnerApplication: superAdmin,
+  reviewTour: admins,
+  assignTourTags: admins
 };

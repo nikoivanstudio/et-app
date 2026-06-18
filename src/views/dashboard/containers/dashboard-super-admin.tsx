@@ -2,8 +2,10 @@
 
 import { FC, PropsWithChildren } from 'react';
 
+import { DashboardApplications } from '@/widgets/applications';
 import { FilesLibraryDashboard } from '@/widgets/files-library/containers/files-library-dashboard';
 import { DashboardPosts } from '@/widgets/posts';
+import { DashboardTourModeration } from '@/widgets/tour-moderation';
 import { DashboardTours } from '@/widgets/tours';
 import { DashboardUsers } from '@/widgets/users';
 
@@ -34,18 +36,26 @@ export const DashboardSuperAdmin: FC<
         )}
       >
         <TabsTrigger value='tours'>Туры компании</TabsTrigger>
+        <TabsTrigger value='moderation'>Модерация туров</TabsTrigger>
         <TabsTrigger value='posts'>Посты/Легаси туры</TabsTrigger>
         <TabsTrigger value='users'>Пользователи</TabsTrigger>
+        <TabsTrigger value='applications'>Заявки</TabsTrigger>
         <TabsTrigger value='files'>Библиотека файлов</TabsTrigger>
       </TabsList>
       <TabsContent value='tours'>
         <DashboardTours session={session} />
+      </TabsContent>
+      <TabsContent value='moderation'>
+        <DashboardTourModeration />
       </TabsContent>
       <TabsContent value='posts'>
         <DashboardPosts session={session} />
       </TabsContent>
       <TabsContent value='users'>
         <DashboardUsers session={session} />
+      </TabsContent>
+      <TabsContent value='applications'>
+        <DashboardApplications />
       </TabsContent>
       <TabsContent value='files'>
         <FilesLibraryDashboard session={session} />

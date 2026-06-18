@@ -3,6 +3,7 @@ import { UserId } from '@/kernel/ids';
 export enum Role {
   USER = 'USER',
   GUIDE = 'GUIDE',
+  SELLER = 'SELLER',
   ADMIN = 'ADMIN',
   CONTRIBUTOR = 'CONTRIBUTOR',
   SUPER_ADMIN = 'SUPER_ADMIN'

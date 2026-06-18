@@ -20,6 +20,7 @@ model User {
   orders        Order[]
   photos        Photo[]
   files         File[]
+  partnerApplications PartnerApplication[]
 
   @@map("user")
 }

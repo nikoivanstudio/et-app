@@ -90,6 +90,14 @@ const prepareNumberValues = (
     }
   }
 
+  if ('tags' in value && typeof value.tags === 'string') {
+    try {
+      value.tags = JSON.parse(value.tags);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   if ('content' in value && typeof value.content === 'string') {
     try {
       value.content = JSON.parse(value.content);

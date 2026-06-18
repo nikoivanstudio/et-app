@@ -5,6 +5,7 @@ import { tourService } from '@/features/tour/services/tour-service';
 
 import { PhotoEntity } from '@/entities/photo/domain';
 import { serverPhotoUtils } from '@/entities/photo/server';
+import { TourStatus } from '@/entities/tour/domain';
 import { roleUtils } from '@/entities/user';
 import { sessionUtils } from '@/entities/user/lib/session-utils';
 
@@ -37,6 +38,16 @@ export async function postTour(req: NextRequest): Promise<Response> {
 
     const { title, mainPhoto, photos, ...rest } = data;
 
+    // Гид отправляет тур на модерацию (PENDING). Администратор/супер-админ
+    // создаёт туры компании напрямую опубликованными (APPROVED).
+    // Теги на создании не принимаем — их назначает только администратор.
+    const status = roleUtils.userHasPermissionOn(session.role, 'reviewTour')
+      ? TourStatus.APPROVED
+      : TourStatus.PENDING;
+
+    // Теги на создании не доверяем клиенту — назначает только администратор.
+    delete (rest as Record<string, unknown>).tags;
+
     const mainPhotoEntity = await serverPhotoUtils.getPhotoEntity({
       title,
       keywords: [],
@@ -68,6 +79,7 @@ export async function postTour(req: NextRequest): Promise<Response> {
     const tour = await tourService.createTour({
       authorId: session.id,
       ...rest,
+      status,
       title,
       mainPhoto: mainPhotoEntity,
       photos: photosEntities

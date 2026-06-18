@@ -1,3 +1,5 @@
+import { PUBLIC_TOUR_STATUS } from '@/entities/tour/domain';
+
 import { Either, left, right } from '@/shared/lib/either';
 import { PageMetaData } from '@/shared/model/types';
 
@@ -21,7 +23,7 @@ async function getTourBySlug(
   slug: string
 ): Promise<Either<string, TourKernel>> {
   const tour = await tourRepository.getTour({
-    where: { slug },
+    where: { slug, status: PUBLIC_TOUR_STATUS },
     include: {
       reviews: true,
       photos: true,
@@ -47,7 +49,7 @@ async function getTourMetaData(
       metaDescription: true;
       metaKeywords: true;
     };
-  }>({ where: { slug } });
+  }>({ where: { slug, status: PUBLIC_TOUR_STATUS } });
 
   if (!tour) {
     return left('Тур с указанным слоганом не найден');

@@ -1,0 +1,12 @@
+model PartnerApplication {
+  id        Int       @id @default(autoincrement())
+  userId    Int       @map("user_id")
+  type      String    @db.VarChar(40)
+  status    String    @default("PENDING") @db.VarChar(40)
+  comment   String?
+  user      User      @relation(fields: [userId], references: [id])
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt DateTime? @updatedAt @map("updated_at") @db.Timestamp()
+
+  @@map("partner_application")
+}

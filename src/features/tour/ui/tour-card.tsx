@@ -9,9 +9,16 @@ import TourFeature from '@/features/tour';
 import { useDeleteTour } from '@/features/tour/hooks/use-delete-tour';
 
 import { ConfirmDialog } from '@/entities/confirm-dialog';
-import { TourDomain } from '@/entities/tour/server';
+// Берём значения (enum/лейблы) из client-safe domain, а НЕ из server-барреля,
+// иначе в клиентский бандл утянется Prisma (tourRepositories → dbClient).
+import {
+  TOUR_STATUS_LABELS,
+  TourEntity,
+  TourStatus
+} from '@/entities/tour/domain';
 
 import { cn } from '@/shared/lib/css';
+import { Badge } from '@/shared/ui/badge';
 import { Button } from '@/shared/ui/button';
 import {
   Card,
@@ -22,13 +29,21 @@ import {
   CardTitle
 } from '@/shared/ui/card';
 
-export const TourCard: FC<TourDomain.TourEntity> = props => {
-  const { id, title, mainPhoto, content, rating, price } = props;
+export const TourCard: FC<TourEntity> = props => {
+  const { id, title, mainPhoto, content, rating, price, status } = props;
   const onDelete = useDeleteTour({
     id,
     onSuccess: () => toast.success('Тур успешно удален'),
     onError: () => toast.error('Ошибка. Не удалось удалить тур')
   });
+
+  const isRejected = status === TourStatus.REJECTED;
+  const statusVariant =
+    status === TourStatus.APPROVED
+      ? 'default'
+      : isRejected
+        ? 'destructive'
+        : 'secondary';
 
   return (
     <Card className='max-w-md'>
@@ -39,6 +54,11 @@ export const TourCard: FC<TourDomain.TourEntity> = props => {
           </CardTitle>
           <CardDescription>{title}</CardDescription>
         </div>
+        {!!status && (
+          <Badge variant={statusVariant}>
+            {TOUR_STATUS_LABELS[status] ?? status}
+          </Badge>
+        )}
       </CardHeader>
       <CardContent className='space-y-6 text-sm'>
         <Image
@@ -48,6 +68,11 @@ export const TourCard: FC<TourDomain.TourEntity> = props => {
           height={400}
         />
         <p>{content.lead.slice(0, 250)} ...</p>
+        {isRejected && !!props.rejectionComment && (
+          <p className='rounded-md bg-destructive/10 p-2 text-destructive'>
+            Причина отклонения: {props.rejectionComment}
+          </p>
+        )}
       </CardContent>
       <CardFooter className='flex justify-end items-center gap-1'>
         <Button variant='ghost' size='sm'>

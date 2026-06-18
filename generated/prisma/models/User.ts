@@ -296,6 +296,7 @@ export type UserWhereInput = {
   orders?: Prisma.OrderListRelationFilter
   photos?: Prisma.PhotoListRelationFilter
   files?: Prisma.FileListRelationFilter
+  partnerApplications?: Prisma.PartnerApplicationListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -320,6 +321,7 @@ export type UserOrderByWithRelationInput = {
   orders?: Prisma.OrderOrderByRelationAggregateInput
   photos?: Prisma.PhotoOrderByRelationAggregateInput
   files?: Prisma.FileOrderByRelationAggregateInput
+  partnerApplications?: Prisma.PartnerApplicationOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -347,6 +349,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   orders?: Prisma.OrderListRelationFilter
   photos?: Prisma.PhotoListRelationFilter
   files?: Prisma.FileListRelationFilter
+  partnerApplications?: Prisma.PartnerApplicationListRelationFilter
 }, "id" | "login">
 
 export type UserOrderByWithAggregationInput = {
@@ -410,6 +413,7 @@ export type UserCreateInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -434,6 +438,7 @@ export type UserUncheckedCreateInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -457,6 +462,7 @@ export type UserUpdateInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -481,6 +487,7 @@ export type UserUncheckedUpdateInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -637,6 +644,20 @@ export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutOrdersInput, Prisma.UserUpdateWithoutOrdersInput>, Prisma.UserUncheckedUpdateWithoutOrdersInput>
 }
 
+export type UserCreateNestedOneWithoutPartnerApplicationsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPartnerApplicationsInput, Prisma.UserUncheckedCreateWithoutPartnerApplicationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPartnerApplicationsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutPartnerApplicationsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPartnerApplicationsInput, Prisma.UserUncheckedCreateWithoutPartnerApplicationsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPartnerApplicationsInput
+  upsert?: Prisma.UserUpsertWithoutPartnerApplicationsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPartnerApplicationsInput, Prisma.UserUpdateWithoutPartnerApplicationsInput>, Prisma.UserUncheckedUpdateWithoutPartnerApplicationsInput>
+}
+
 export type UserCreateNestedOneWithoutPhotosInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutPhotosInput, Prisma.UserUncheckedCreateWithoutPhotosInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutPhotosInput
@@ -727,6 +748,7 @@ export type UserCreateWithoutActivitiesInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutActivitiesInput = {
@@ -750,6 +772,7 @@ export type UserUncheckedCreateWithoutActivitiesInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutActivitiesInput = {
@@ -788,6 +811,7 @@ export type UserUpdateWithoutActivitiesInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActivitiesInput = {
@@ -811,6 +835,7 @@ export type UserUncheckedUpdateWithoutActivitiesInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutFilesInput = {
@@ -833,6 +858,7 @@ export type UserCreateWithoutFilesInput = {
   transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutFilesInput = {
@@ -856,6 +882,7 @@ export type UserUncheckedCreateWithoutFilesInput = {
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutFilesInput = {
@@ -894,6 +921,7 @@ export type UserUpdateWithoutFilesInput = {
   transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFilesInput = {
@@ -917,6 +945,7 @@ export type UserUncheckedUpdateWithoutFilesInput = {
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOrdersInput = {
@@ -939,6 +968,7 @@ export type UserCreateWithoutOrdersInput = {
   transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrdersInput = {
@@ -962,6 +992,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrdersInput = {
@@ -1000,6 +1031,7 @@ export type UserUpdateWithoutOrdersInput = {
   transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrdersInput = {
@@ -1021,6 +1053,117 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPartnerApplicationsInput = {
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
+  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutPartnerApplicationsInput = {
+  id?: number
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutPartnerApplicationsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPartnerApplicationsInput, Prisma.UserUncheckedCreateWithoutPartnerApplicationsInput>
+}
+
+export type UserUpsertWithoutPartnerApplicationsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPartnerApplicationsInput, Prisma.UserUncheckedUpdateWithoutPartnerApplicationsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPartnerApplicationsInput, Prisma.UserUncheckedCreateWithoutPartnerApplicationsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPartnerApplicationsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPartnerApplicationsInput, Prisma.UserUncheckedUpdateWithoutPartnerApplicationsInput>
+}
+
+export type UserUpdateWithoutPartnerApplicationsInput = {
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPartnerApplicationsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
 }
@@ -1045,6 +1188,7 @@ export type UserCreateWithoutPhotosInput = {
   transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPhotosInput = {
@@ -1068,6 +1212,7 @@ export type UserUncheckedCreateWithoutPhotosInput = {
   transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPhotosInput = {
@@ -1106,6 +1251,7 @@ export type UserUpdateWithoutPhotosInput = {
   transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPhotosInput = {
@@ -1129,6 +1275,7 @@ export type UserUncheckedUpdateWithoutPhotosInput = {
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPostsInput = {
@@ -1151,6 +1298,7 @@ export type UserCreateWithoutPostsInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPostsInput = {
@@ -1174,6 +1322,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPostsInput = {
@@ -1212,6 +1361,7 @@ export type UserUpdateWithoutPostsInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPostsInput = {
@@ -1235,6 +1385,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewsInput = {
@@ -1257,6 +1408,7 @@ export type UserCreateWithoutReviewsInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
@@ -1280,6 +1432,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -1318,6 +1471,7 @@ export type UserUpdateWithoutReviewsInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -1341,6 +1495,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutToursInput = {
@@ -1363,6 +1518,7 @@ export type UserCreateWithoutToursInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutToursInput = {
@@ -1386,6 +1542,7 @@ export type UserUncheckedCreateWithoutToursInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutToursInput = {
@@ -1424,6 +1581,7 @@ export type UserUpdateWithoutToursInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutToursInput = {
@@ -1447,6 +1605,7 @@ export type UserUncheckedUpdateWithoutToursInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutTransactionsInput = {
@@ -1469,6 +1628,7 @@ export type UserCreateWithoutTransactionsInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutTransactionsInput = {
@@ -1492,6 +1652,7 @@ export type UserUncheckedCreateWithoutTransactionsInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutTransactionsInput = {
@@ -1530,6 +1691,7 @@ export type UserUpdateWithoutTransactionsInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTransactionsInput = {
@@ -1553,6 +1715,7 @@ export type UserUncheckedUpdateWithoutTransactionsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1569,6 +1732,7 @@ export type UserCountOutputType = {
   orders: number
   photos: number
   files: number
+  partnerApplications: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1580,6 +1744,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   orders?: boolean | UserCountOutputTypeCountOrdersArgs
   photos?: boolean | UserCountOutputTypeCountPhotosArgs
   files?: boolean | UserCountOutputTypeCountFilesArgs
+  partnerApplications?: boolean | UserCountOutputTypeCountPartnerApplicationsArgs
 }
 
 /**
@@ -1648,6 +1813,13 @@ export type UserCountOutputTypeCountFilesArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.FileWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPartnerApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PartnerApplicationWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1671,6 +1843,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   orders?: boolean | Prisma.User$ordersArgs<ExtArgs>
   photos?: boolean | Prisma.User$photosArgs<ExtArgs>
   files?: boolean | Prisma.User$filesArgs<ExtArgs>
+  partnerApplications?: boolean | Prisma.User$partnerApplicationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1732,6 +1905,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   orders?: boolean | Prisma.User$ordersArgs<ExtArgs>
   photos?: boolean | Prisma.User$photosArgs<ExtArgs>
   files?: boolean | Prisma.User$filesArgs<ExtArgs>
+  partnerApplications?: boolean | Prisma.User$partnerApplicationsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1748,6 +1922,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     orders: Prisma.$OrderPayload<ExtArgs>[]
     photos: Prisma.$PhotoPayload<ExtArgs>[]
     files: Prisma.$FilePayload<ExtArgs>[]
+    partnerApplications: Prisma.$PartnerApplicationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -2165,6 +2340,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   orders<T extends Prisma.User$ordersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ordersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   photos<T extends Prisma.User$photosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$photosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   files<T extends Prisma.User$filesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$filesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  partnerApplications<T extends Prisma.User$partnerApplicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$partnerApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PartnerApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2789,6 +2965,30 @@ export type User$filesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.FileScalarFieldEnum | Prisma.FileScalarFieldEnum[]
+}
+
+/**
+ * User.partnerApplications
+ */
+export type User$partnerApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PartnerApplication
+   */
+  select?: Prisma.PartnerApplicationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PartnerApplication
+   */
+  omit?: Prisma.PartnerApplicationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PartnerApplicationInclude<ExtArgs> | null
+  where?: Prisma.PartnerApplicationWhereInput
+  orderBy?: Prisma.PartnerApplicationOrderByWithRelationInput | Prisma.PartnerApplicationOrderByWithRelationInput[]
+  cursor?: Prisma.PartnerApplicationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PartnerApplicationScalarFieldEnum | Prisma.PartnerApplicationScalarFieldEnum[]
 }
 
 /**
