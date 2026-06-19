@@ -25,5 +25,8 @@ export const permissions: Record<string, Set<string>> = {
   getPartnerApplications: superAdmin,
   reviewPartnerApplication: superAdmin,
   reviewTour: admins,
-  assignTourTags: admins
+  assignTourTags: admins,
+  getMyBookings: adminsAndGuides,
+  manageBooking: adminsAndGuides,
+  getAllBookings: admins
 };

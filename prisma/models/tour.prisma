@@ -17,6 +17,7 @@ model Tour {
   reviews         Review[]
   activities      Activity[]
   orders          Order[]
+  bookings        Booking[]
   photos          Photo[]
   about           String?   @db.VarChar(512)
   status          String?

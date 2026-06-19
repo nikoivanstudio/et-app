@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Activity: 'Activity',
+  Booking: 'Booking',
   File: 'File',
   Order: 'Order',
   Otp: 'Otp',
@@ -102,6 +103,31 @@ export const ActivityScalarFieldEnum = {
 } as const
 
 export type ActivityScalarFieldEnum = (typeof ActivityScalarFieldEnum)[keyof typeof ActivityScalarFieldEnum]
+
+
+export const BookingScalarFieldEnum = {
+  id: 'id',
+  tourId: 'tourId',
+  guideId: 'guideId',
+  clientUserId: 'clientUserId',
+  guestName: 'guestName',
+  guestPhone: 'guestPhone',
+  guestEmail: 'guestEmail',
+  desiredDate: 'desiredDate',
+  peopleCount: 'peopleCount',
+  comment: 'comment',
+  status: 'status',
+  accessToken: 'accessToken',
+  cancelReason: 'cancelReason',
+  guideNote: 'guideNote',
+  statusHistory: 'statusHistory',
+  phoneVerified: 'phoneVerified',
+  processedAt: 'processedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
 
 
 export const FileScalarFieldEnum = {
@@ -267,7 +293,14 @@ export const UserScalarFieldEnum = {
   updatedAt: 'updatedAt',
   avatarPhotoId: 'avatarPhotoId',
   email: 'email',
-  rating: 'rating'
+  rating: 'rating',
+  slug: 'slug',
+  headline: 'headline',
+  bio: 'bio',
+  coverPhotoId: 'coverPhotoId',
+  languages: 'languages',
+  specializations: 'specializations',
+  experienceSince: 'experienceSince'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]

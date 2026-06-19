@@ -12,6 +12,13 @@ model User {
   avatarPhotoId Int?          @map("avatar_photo_id")
   email         String?
   rating        Float?
+  slug            String?   @unique
+  headline        String?   @db.VarChar(160)
+  bio             String?   @db.VarChar(2000)
+  coverPhotoId    Int?      @map("cover_photo_id")
+  languages       String[]  @default([])
+  specializations String[]  @default([])
+  experienceSince Int?      @map("experience_since")
   posts         Post[]
   tours         Tour[]
   reviews       Review[]
@@ -21,6 +28,8 @@ model User {
   photos        Photo[]
   files         File[]
   partnerApplications PartnerApplication[]
+  guideBookings  Booking[] @relation("GuideBookings")
+  clientBookings Booking[] @relation("ClientBookings")
 
   @@map("user")
 }

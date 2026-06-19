@@ -47,6 +47,11 @@ export { Prisma }
  */
 export type Activity = Prisma.ActivityModel
 /**
+ * Model Booking
+ * 
+ */
+export type Booking = Prisma.BookingModel
+/**
  * Model File
  * 
  */

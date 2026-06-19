@@ -408,10 +408,6 @@ export type PartnerApplicationOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type PartnerApplicationCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.PartnerApplicationCreateWithoutUserInput, Prisma.PartnerApplicationUncheckedCreateWithoutUserInput> | Prisma.PartnerApplicationCreateWithoutUserInput[] | Prisma.PartnerApplicationUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.PartnerApplicationCreateOrConnectWithoutUserInput | Prisma.PartnerApplicationCreateOrConnectWithoutUserInput[]

@@ -3,6 +3,7 @@
 import { FC, PropsWithChildren } from 'react';
 
 import { DashboardApplications } from '@/widgets/applications';
+import { DashboardAllBookings } from '@/widgets/bookings';
 import { FilesLibraryDashboard } from '@/widgets/files-library/containers/files-library-dashboard';
 import { DashboardPosts } from '@/widgets/posts';
 import { DashboardTourModeration } from '@/widgets/tour-moderation';
@@ -40,6 +41,7 @@ export const DashboardSuperAdmin: FC<
         <TabsTrigger value='posts'>Посты/Легаси туры</TabsTrigger>
         <TabsTrigger value='users'>Пользователи</TabsTrigger>
         <TabsTrigger value='applications'>Заявки</TabsTrigger>
+        <TabsTrigger value='bookings'>Брони туров</TabsTrigger>
         <TabsTrigger value='files'>Библиотека файлов</TabsTrigger>
       </TabsList>
       <TabsContent value='tours'>
@@ -56,6 +58,9 @@ export const DashboardSuperAdmin: FC<
       </TabsContent>
       <TabsContent value='applications'>
         <DashboardApplications />
+      </TabsContent>
+      <TabsContent value='bookings'>
+        <DashboardAllBookings />
       </TabsContent>
       <TabsContent value='files'>
         <FilesLibraryDashboard session={session} />

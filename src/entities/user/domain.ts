@@ -25,6 +25,13 @@ export type UserEntity = {
   avatarPhotoId?: number;
   email?: string;
   rating?: number;
+  slug?: string;
+  headline?: string;
+  bio?: string;
+  coverPhotoId?: number;
+  languages?: string[];
+  specializations?: string[];
+  experienceSince?: number;
 };
 
 export type UserEntityUpdate = Partial<UserEntity> & { id: number };

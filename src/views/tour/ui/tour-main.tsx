@@ -5,11 +5,15 @@ import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
 
+import { BookingButton } from '@/features/booking';
+
+import { GuideCard } from '@/entities/guide';
 import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
 
 import styles from '@/shared/assets/styles.module.scss';
 import { cn } from '@/shared/lib/css';
 
+import { guideServices } from '@/kernel/guide/server';
 import { TourKernel } from '@/kernel/tour/domain';
 import { PageHeadPost } from '@/views/post/ui/page-head-post';
 import { PostStats } from '@/views/post/ui/post-stats';
@@ -18,8 +22,20 @@ import { TourContentView } from '@/views/tour/ui/tour-content';
 const cnPageTour = cnBem('PageTour');
 
 export const TourMain: FC<TourKernel> = async props => {
-  const { id, title, mainPhoto, rating, price, duration, photos, content } =
-    props;
+  const {
+    id,
+    title,
+    mainPhoto,
+    rating,
+    price,
+    duration,
+    photos,
+    content,
+    authorId
+  } = props;
+
+  const guideEither = await guideServices.getGuideSummary(authorId);
+  const guide = guideEither.type === 'right' ? guideEither.value : null;
 
   return (
     <AppMain
@@ -54,6 +70,20 @@ export const TourMain: FC<TourKernel> = async props => {
               priceValue={price}
               durationValue={duration}
             />
+            {!!guide && (
+              <GuideCard guide={guide} className={cn('mt-3', 'mx-2')} />
+            )}
+            <div className={cn('mt-3', 'mx-2')}>
+              <BookingButton
+                tourId={id}
+                priceLabel={
+                  price
+                    ? `от ${new Intl.NumberFormat('ru-RU').format(price)} ₽`
+                    : undefined
+                }
+                className={cn('w-full')}
+              />
+            </div>
           </section>
           <section className={cnPageTour('Content', ['mt-4', 'pb-14'])}>
             <TourContentView
