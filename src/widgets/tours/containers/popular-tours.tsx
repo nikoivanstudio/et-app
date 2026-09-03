@@ -19,7 +19,10 @@ export const PopularTours: FC = async () => {
 
   return (
     <ServerLayout
-      className={cnPopularTours(null, ['text-center p-4', styles.PopularTours])}
+      className={cnPopularTours(null, [
+        'mx-auto max-w-[1120px] px-4 text-center',
+        styles.PopularTours
+      ])}
       title={
         <Title type='h2' className={cnPopularTours('Title')}>
           Популярные туры
@@ -27,7 +30,7 @@ export const PopularTours: FC = async () => {
       }
       list={
         <ServerTourCardList
-          className='mt-[10%] flex flex-col gap-10'
+          className='mt-12 flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3'
           tours={tours}
         />
       }

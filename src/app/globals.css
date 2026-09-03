@@ -41,6 +41,34 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Energy Tour v2 — см. docs/design/canvas (артборд Foundations) */
+  --font-poiret: var(--font-poire-one), serif;
+  --font-oswald: var(--oswald), sans-serif;
+  --font-caladea: var(--caladea), serif;
+
+  --color-cta: var(--cta);
+  --color-cta-press: var(--cta-press);
+  --color-on-cta: var(--on-cta);
+  --color-gold-photo: var(--gold-photo);
+  --color-gold-head: var(--gold-head);
+  --color-gold-ink: var(--gold-ink);
+  --color-gold-plate: var(--gold-plate);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-rule: var(--rule);
+  --color-page: var(--page);
+  --color-free-ink: var(--free-ink);
+  --color-free-bg: var(--free-bg);
+  --color-alert-ink: var(--alert-ink);
+  --color-alert-bg: var(--alert-bg);
+  --radius-control: var(--r-control);
+  --radius-block: var(--r-block);
+  --radius-card: var(--r-card);
+  --radius-pill: var(--r-pill);
 }
 
 :root {
@@ -77,8 +105,80 @@
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
   /*  app colors*/
+  /* --orange оставлен для обратной совместимости; для текста поверх фото
+     он не годится (1.35:1 на небе) — используйте --gold-photo. */
   --orange: #d19331;
-  --light-green: #81d178;
+
+  /* ── Energy Tour design tokens v2 ──────────────────────────────────────
+     Значения выверены по контрасту, замеры — в docs/design/canvas/README.md.
+     Порог WCAG AA: 4.5:1 обычный текст, 3:1 крупный (24px+).            */
+
+  /* действие: одна кнопка на весь продукт, 5.96:1 */
+  --cta: #b8915a;
+  --cta-press: #a8814b;
+  --on-cta: #1f1a12;
+
+  /* золото по роли */
+  --gold-photo: #e8b055; /* только поверх скрима, 6.40:1 */
+  --gold-head: #8b6f3d; /* заголовки на светлом, 4.38:1 */
+  --gold-ink: #7d6234; /* ссылки и мелкий текст на креме, 5.35:1 */
+  --gold-plate: #b8915a; /* плашки под тёмную тушь */
+
+  /* тушь и бумага */
+  --ink: #1f1a12;
+  --ink-muted: #6b5f47; /* 5.86:1 на креме */
+  --ink-faint: #7f6f52; /* 4.57:1 на креме */
+  --cream: #fbf7ee;
+  --cream-deep: #f4ecdd;
+  --rule: #e2d5b7;
+  --page: #f7f6f3;
+
+  /* зелёный и красный — только статус, не действие */
+  --free-ink: #4a6626;
+  --free-bg: #edf3e2;
+  --alert-ink: #9e3a25;
+  --alert-bg: #f9e6e2;
+
+  /* скримы вместо маски 16% и -webkit-text-stroke */
+  --scrim-hero: linear-gradient(
+    180deg,
+    rgba(20, 14, 6, 0.84) 0%,
+    rgba(20, 14, 6, 0.7) 32%,
+    rgba(20, 14, 6, 0.36) 58%,
+    rgba(20, 14, 6, 0.78) 100%
+  );
+  /* Плотность нижней части подобрана по замерам на реальных фото: на светлых
+     кадрах белый заголовок и «Подробнее» уходили до 2.3:1 в худших участках. */
+  --scrim-card: linear-gradient(
+    180deg,
+    rgba(20, 14, 6, 0.3) 0%,
+    rgba(20, 14, 6, 0) 26%,
+    rgba(20, 14, 6, 0.68) 56%,
+    rgba(20, 14, 6, 0.96) 100%
+  );
+  --scrim-band: linear-gradient(
+    180deg,
+    rgba(20, 14, 6, 0.62),
+    rgba(20, 14, 6, 0.82)
+  );
+  --scrim-hero-side: linear-gradient(
+    90deg,
+    rgba(20, 14, 6, 0.82) 0%,
+    rgba(20, 14, 6, 0.45) 46%,
+    rgba(20, 14, 6, 0.18) 100%
+  );
+
+  /* радиусы: четыре, не девять */
+  --r-control: 10px;
+  --r-block: 16px;
+  --r-card: 24px;
+  --r-pill: 999px;
+
+  /* интервалы + единственное наложение контента на шапку */
+  --sp-s: 48px;
+  --sp-m: 80px;
+  --sp-l: 120px;
+  --overlap: 32px;
 }
 
 .dark {
@@ -116,7 +216,7 @@
 }
 
 .et-app {
-  background-color: #e6e6e6;
+  background-color: var(--page);
 }
 
 h3 {
@@ -144,7 +244,7 @@ h3 {
 }
 
 .oswald_text {
-  font-family: Oswald, Sans;
+  font-family: var(--oswald), sans-serif;
 }
 
 /* ========================================================================
@@ -162,12 +262,12 @@ h3 {
   box-sizing: border-box;
 }
 .et-post a {
-  color: #8b6f3d;
+  color: var(--gold-ink);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .et-post a:hover {
-  color: #1f1a12;
+  color: var(--ink);
 }
 
 /* секционный заголовок с золотой полоской */
@@ -185,7 +285,7 @@ h3 {
   display: block;
   width: 4px;
   height: 22px;
-  background: #b8915a;
+  background: var(--gold-plate);
   border-radius: 2px;
   flex: 0 0 4px;
 }
@@ -207,12 +307,15 @@ h3 {
   list-style: none;
 }
 .et-post .et-tag {
-  background: #fbf7ee;
-  border: 1px solid #e2d5b7;
-  border-radius: 999px;
-  padding: 6px 12px;
-  font-size: 12px;
-  color: #1f1a12;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  background: var(--cream-deep);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-pill);
+  padding: 0 16px;
+  font-size: 13px;
+  color: var(--ink-muted);
 }
 
 /* таймлайн маршрута */
@@ -245,8 +348,8 @@ h3 {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #b8915a;
-  color: #fbf7ee;
+  background: var(--gold-plate);
+  color: var(--cream);
   font-size: 13px;
   font-weight: 600;
   display: flex;
@@ -274,36 +377,38 @@ h3 {
 }
 .et-post .et-route .et-coord {
   font-size: 12px;
-  color: #8a7a5c;
+  color: var(--ink-faint);
   margin-top: 4px;
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 }
 
 /* блок цены */
 .et-post .et-price {
-  background: #b8915a;
-  border-radius: 14px;
+  background: var(--cta);
+  border-radius: var(--r-block);
   padding: 20px 16px;
   text-align: center;
   margin: 0 0 10px;
 }
 .et-post .et-price-label {
   font-size: 11px;
-  color: #fbf7ee;
+  color: var(--on-cta);
   letter-spacing: 0.1em;
-  opacity: 0.9;
+  /* было 0.75 — на золотой подложке давало 3.9:1 при норме 4.5:1 */
+  opacity: 0.85;
 }
 .et-post .et-price-value {
   font-size: 30px;
   font-weight: 600;
-  color: #fbf7ee;
+  color: var(--on-cta);
   margin: 4px 0 6px;
   line-height: 1;
 }
 .et-post .et-price-note {
   font-size: 12px;
-  color: #fbf7ee;
-  opacity: 0.9;
+  color: var(--on-cta);
+  /* было 0.8 — 4.3:1 при норме 4.5:1 */
+  opacity: 0.85;
 }
 .et-post .et-vk {
   display: flex;
@@ -311,7 +416,8 @@ h3 {
   justify-content: space-between;
   background: #fbf7ee;
   border: 1px solid #e2d5b7;
-  border-radius: 10px;
+  border-radius: var(--r-control);
+  min-height: 48px;
   padding: 12px 14px;
   font-size: 13px;
   color: #1f1a12;
@@ -329,7 +435,7 @@ h3 {
 .et-post .et-tickets {
   background: #fbf7ee;
   border: 1px solid #e2d5b7;
-  border-radius: 14px;
+  border-radius: var(--r-block);
   overflow: hidden;
 }
 .et-post .et-ticket {
@@ -347,7 +453,7 @@ h3 {
   color: #1f1a12;
 }
 .et-post .et-ticket .et-thint {
-  color: #8a7a5c;
+  color: var(--ink-faint);
   font-size: 12px;
 }
 .et-post .et-ticket .et-tprice {
@@ -356,7 +462,7 @@ h3 {
 }
 .et-post .et-ticket .et-tfree {
   font-weight: 600;
-  color: #5c7a2e;
+  color: var(--free-ink);
 }
 .et-post .et-tickets-note {
   font-size: 12px;
@@ -373,9 +479,9 @@ h3 {
   gap: 10px;
 }
 .et-post .et-info {
-  background: #fbf7ee;
-  border: 1px solid #e2d5b7;
-  border-radius: 12px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-block);
   padding: 14px;
 }
 .et-post .et-info-label {
@@ -395,7 +501,7 @@ h3 {
 .et-post .et-awaits {
   background: #fbf7ee;
   border: 1px solid #e2d5b7;
-  border-radius: 14px;
+  border-radius: var(--r-block);
   padding: 18px 18px 16px;
 }
 .et-post .et-awaits p {
@@ -413,7 +519,7 @@ h3 {
 }
 .et-post .et-awaits-title {
   font-size: 11px;
-  color: #8a7a5c;
+  color: var(--ink-faint);
   letter-spacing: 0.08em;
   margin: 0 0 8px;
   text-transform: uppercase;
@@ -438,7 +544,7 @@ h3 {
   top: 8px;
   width: 6px;
   height: 6px;
-  background: #b8915a;
+  background: var(--gold-plate);
   border-radius: 50%;
 }
 .et-post .et-awaits ul li:last-child {
@@ -455,10 +561,13 @@ h3 {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   display: block;
   cursor: zoom-in;
   transition: transform 0.2s;
+  /* В галерее лежат оригиналы с wp-content по 0,5 МБ: пока грузятся, вместо
+     белой дыры видна кремовая плитка. */
+  background: var(--cream-deep);
 }
 .et-post .et-gallery img:hover {
   transform: scale(1.02);
@@ -470,7 +579,7 @@ h3 {
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: var(--r-block);
   margin: 0 0 24px;
 }
 .et-post .et-video iframe {
@@ -490,7 +599,7 @@ h3 {
   color: #f5efe3;
   text-align: center;
   padding: 16px;
-  border-radius: 14px;
+  border-radius: var(--r-block);
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;

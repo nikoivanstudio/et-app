@@ -10,7 +10,6 @@ import { BookingButton } from '@/features/booking';
 import { GuideCard } from '@/entities/guide';
 import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
 
-import styles from '@/shared/assets/styles.module.scss';
 import { cn } from '@/shared/lib/css';
 
 import { guideServices } from '@/kernel/guide/server';
@@ -44,21 +43,25 @@ export const TourMain: FC<TourKernel> = async props => {
         <div
           className={cnPageTour('Content', [
             'bg-white',
-            'rounded-4xl',
+            'rounded-t-[32px]',
             'p-2',
-            'mt-[-3vh]',
+            '-mt-8',
             'relative',
-            'z-3'
+            'z-3',
+            'mx-auto',
+            'max-w-[820px]'
           ])}
         >
           <section className={cnPageTour('DescriptionBlock')}>
             <div className='flex justify-between pr-5'>
               <span
                 className={cn(
-                  styles.poiret_text_black,
-                  'text-2xl',
+                  'font-poiret',
                   'block',
-                  'p-2'
+                  'p-2',
+                  'text-[26px]',
+                  'tracking-wide',
+                  'text-gold-head'
                 )}
               >
                 Информация

@@ -25,7 +25,8 @@ export const ActivityCard: FC<ActivityCardEntity> = async ({
     titleNode={<CardTitle title={title} />}
     descriptionNode={
       <CardDescription>
-        <CardPlaces freePlaces={freePlaces} />/<CardPrice price={price} />
+        <CardPlaces freePlaces={freePlaces} />
+        <CardPrice price={price} />
       </CardDescription>
     }
     className={cn(styles.ActivityCard)}

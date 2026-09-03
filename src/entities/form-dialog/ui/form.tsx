@@ -2,6 +2,7 @@
 
 import { cn } from '@bem-react/classname';
 import { FormEvent, useState } from 'react';
+import { treeifyError } from 'zod';
 
 import {
   FormCheckTypes,
@@ -9,7 +10,8 @@ import {
   FormProps,
   FormRowProps,
   Value,
-  ZErrors
+  ZErrors,
+  ZErrorTree
 } from '@/entities/form-dialog/domain';
 import { FormRow } from '@/entities/form-dialog/ui/form-row';
 
@@ -28,7 +30,8 @@ export const Form = <
   schema,
   title,
   description,
-  preview
+  preview,
+  captcha
 }: FormProps<T>) => {
   const [userFormData, setUserFormData] = useState<Partial<FormData<T>>>({});
   const [showErrors, setShowErrors] = useState(false);
@@ -49,14 +52,14 @@ export const Form = <
     if (onCancel) onCancel();
   };
 
-  const validate = () => {
+  const validate = (): ZErrorTree | undefined => {
     const result = schema.safeParse(formData);
 
     if (result.success) {
       return undefined;
     }
 
-    return result.error.format();
+    return treeifyError(result.error);
   };
 
   const onChange = (value: Record<string, Value<FormCheckTypes<T>>>) => {
@@ -74,7 +77,16 @@ export const Form = <
       return;
     }
 
-    onSubmit(type === 'patch' ? userFormData : formData);
+    // Виджет Turnstile добавляет в форму скрытое поле с токеном (MED-8).
+    // Состояние формы контролируемое, поэтому читаем токен из DOM.
+    const captchaField = e.currentTarget.elements.namedItem(
+      'cf-turnstile-response'
+    ) as HTMLInputElement | null;
+
+    onSubmit(
+      type === 'patch' ? userFormData : formData,
+      captchaField?.value || undefined
+    );
   };
 
   const errors = showErrors ? validate() : undefined;
@@ -94,7 +106,9 @@ export const Form = <
           ...row,
           onChange,
           value: formData[row.name],
-          error: (errors?.[row.name as never] as ZErrors)?._errors.join(', ')
+          error: (
+            errors?.properties?.[row.name as never] as ZErrors
+          )?.errors.join(', ')
         } as FormRowProps<FormCheckTypes<T>>;
 
         return <FormRow {...props} key={idx} />;
@@ -102,6 +116,7 @@ export const Form = <
       {!!preview && showPreview && (
         <div className={cnForm('Preview', ['my-4'])}>{preview(formData)}</div>
       )}
+      {!!captcha && <div className={cnForm('Captcha', ['my-4'])}>{captcha}</div>}
       <div className={cnForm('Actions', ['flex', 'justify-end', 'gap-5'])}>
         {!!preview && (
           <Button

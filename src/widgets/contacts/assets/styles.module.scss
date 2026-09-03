@@ -1,16 +1,24 @@
 .ContactsWidget {
   position: relative;
   z-index: 3;
-  min-height: 500px;
-  margin-top: -70px;
-  padding-top: 140px;
-  padding-bottom: 140px;
-  background-position: top center;
+  /* Было: margin-top -70px, padding 140px и min-height 500px — из-за этого
+     перед «Контактами» висело ≈200px пустого фото. Стало --sp-m сверху и снизу. */
+  padding-top: var(--sp-m);
+  padding-bottom: var(--sp-m);
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url('../assets/images/bg-contacts-widget-xs.png');
 
-  &_Header {
-    margin-top: -75px;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--scrim-band);
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
   }
 }

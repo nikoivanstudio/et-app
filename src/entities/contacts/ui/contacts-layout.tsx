@@ -42,7 +42,7 @@ export const ContactsLayout: FC<ContactsProps> = ({
   color,
   size = DEFAULT_ROW_SIZE
 }) => {
-  const iconColor = color ?? '#040404';
+  const iconColor = color ?? '#e8b055';
   const socialSize = getScaledSize(DEFAULT_SOCIAL_SIZE, size);
   const socialListStyle = {
     gap: `${Math.round((20 * size) / DEFAULT_ROW_SIZE)}px`
@@ -95,8 +95,14 @@ export const ContactsLayout: FC<ContactsProps> = ({
             href={telegram}
             icon={
               <TelegrammIcon
-                width={getSocialScaledSize(DEFAULT_TELEGRAM_ICON.width, socialSize)}
-                height={getSocialScaledSize(DEFAULT_TELEGRAM_ICON.height, socialSize)}
+                width={getSocialScaledSize(
+                  DEFAULT_TELEGRAM_ICON.width,
+                  socialSize
+                )}
+                height={getSocialScaledSize(
+                  DEFAULT_TELEGRAM_ICON.height,
+                  socialSize
+                )}
               />
             }
           />
@@ -109,7 +115,10 @@ export const ContactsLayout: FC<ContactsProps> = ({
             icon={
               <MaxIcon
                 width={getSocialScaledSize(DEFAULT_MAX_ICON.width, socialSize)}
-                height={getSocialScaledSize(DEFAULT_MAX_ICON.height, socialSize)}
+                height={getSocialScaledSize(
+                  DEFAULT_MAX_ICON.height,
+                  socialSize
+                )}
               />
             }
           />
@@ -149,8 +158,14 @@ export const ContactsLayout: FC<ContactsProps> = ({
               href={ruTube}
               icon={
                 <RutubeIcon
-                  width={getSocialScaledSize(DEFAULT_RUTUBE_ICON.width, socialSize)}
-                  height={getSocialScaledSize(DEFAULT_RUTUBE_ICON.height, socialSize)}
+                  width={getSocialScaledSize(
+                    DEFAULT_RUTUBE_ICON.width,
+                    socialSize
+                  )}
+                  height={getSocialScaledSize(
+                    DEFAULT_RUTUBE_ICON.height,
+                    socialSize
+                  )}
                 />
               }
             />

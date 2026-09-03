@@ -64,8 +64,8 @@ export const BookingButton: FC<Props> = ({ tourId, priceLabel, className }) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger
         className={[
-          'flex items-center justify-center gap-2 rounded-2xl bg-[#B8915A] px-5 py-3.5',
-          'font-[Oswald,sans-serif] tracking-wide text-[#FBF7EE] transition-transform hover:-translate-y-0.5',
+          'flex min-h-12 items-center justify-center gap-2 rounded-pill bg-cta px-6',
+          'font-oswald text-base font-medium tracking-wide text-on-cta transition-colors hover:bg-cta-press',
           className
         ]
           .filter(Boolean)
@@ -75,37 +75,37 @@ export const BookingButton: FC<Props> = ({ tourId, priceLabel, className }) => {
         Забронировать
       </DialogTrigger>
 
-      <DialogContent className='max-w-md border-[#E2D5B7] bg-white'>
+      <DialogContent className='max-w-md border-[var(--rule)] bg-white'>
         {result ? (
-          <div className='py-2 text-center font-[Caladea,serif]'>
-            <div className='mx-auto grid size-16 place-items-center rounded-full border border-[#5C7A2E]/30 bg-[#5C7A2E]/10 text-3xl text-[#5C7A2E]'>
+          <div className='py-2 text-center font-caladea'>
+            <div className='mx-auto grid size-16 place-items-center rounded-full border border-free-ink/30 bg-free-bg text-3xl text-free-ink'>
               <Check className='size-8' />
             </div>
-            <h3 className='mt-3 font-[Century_Gothic,Questrial,sans-serif] text-[22px] tracking-wide text-[#1F1A12]'>
+            <h3 className='mt-3 font-poiret text-[22px] tracking-wide text-[var(--ink)]'>
               Заявка отправлена!
             </h3>
-            <p className='mt-2 text-[13.5px] text-[#6B5F47]'>
-              Гид <b className='text-[#1F1A12]'>{result.guideName}</b> получил
-              вашу заявку и скоро свяжется с вами.
+            <p className='mt-2 text-[13.5px] text-[var(--ink-muted)]'>
+              Гид <b className='text-[var(--ink)]'>{result.guideName}</b>{' '}
+              получил вашу заявку и скоро свяжется с вами.
             </p>
 
             <button
               type='button'
               onClick={onCopy}
-              className='mt-4 flex w-full items-center gap-2 rounded-xl border border-dashed border-[#B8915A] bg-[#FBF7EE] px-3 py-2.5 text-left font-[Oswald,sans-serif] text-[12.5px] text-[#8B6F3D]'
+              className='mt-4 flex w-full items-center gap-2 rounded-block border border-dashed border-[var(--cta)] bg-[var(--cream)] px-3 py-2.5 text-left font-oswald text-[12.5px] text-[var(--gold-head)]'
             >
               🔗 <span className='flex-1 truncate'>{bookingPath}</span>
               <Copy className='size-4 shrink-0' />
             </button>
 
-            <p className='mt-3 text-left text-[12px] text-[#6B5F47]'>
+            <p className='mt-3 text-left text-[12px] text-[var(--ink-muted)]'>
               По этой ссылке вы сможете отслеживать статус заявки. Мы сохранили
               её на этом устройстве.
             </p>
 
             <Link
               href={bookingPath}
-              className='mt-4 block w-full rounded-2xl bg-[#B8915A] px-4 py-3 font-[Oswald,sans-serif] tracking-wide text-[#FBF7EE]'
+              className='mt-4 block w-full min-h-12 rounded-pill bg-cta px-4 font-oswald text-base font-medium tracking-wide text-on-cta hover:bg-cta-press'
             >
               Перейти к заявке
             </Link>
@@ -113,7 +113,7 @@ export const BookingButton: FC<Props> = ({ tourId, priceLabel, className }) => {
         ) : (
           <>
             <DialogHeader>
-              <DialogTitle className='font-[Century_Gothic,Questrial,sans-serif] text-[21px] font-normal tracking-wide text-[#1F1A12]'>
+              <DialogTitle className='font-poiret text-[21px] font-normal tracking-wide text-[var(--ink)]'>
                 Заявка на тур
               </DialogTitle>
             </DialogHeader>

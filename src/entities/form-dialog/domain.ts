@@ -17,11 +17,19 @@ export type Settings = {
   dialogType: DialogType<DialogTypes>;
 };
 
+// Узел дерева ошибок из `z.treeifyError()`: у каждого поля свой список ошибок.
 export type ZErrors =
   | {
-      _errors: string[];
+      errors: string[];
     }
   | undefined;
+
+// Схема формы описана как `z.Schema` (по `unknown`), поэтому zod выводит для
+// дерева только корневой `errors`. Здесь уточняем, что у него есть и поля.
+export type ZErrorTree = {
+  errors: string[];
+  properties?: Record<string, ZErrors>;
+};
 
 export type FormCheckTypes<
   T extends Record<string, unknown> = Record<string, string>
@@ -38,14 +46,7 @@ export type FormCheckTypes<
 };
 
 export type Value<T extends Record<string, unknown> = Record<string, string>> =
-  | undefined
-  | boolean
-  | number
-  | string
-  | string[]
-  | File[]
-  | TourContent
-  | T;
+  undefined | boolean | number | string | string[] | File[] | TourContent | T;
 
 export type FormRowProps<
   T extends Record<string, unknown> = Record<string, string>
@@ -77,7 +78,8 @@ export type FormProps<
 > = {
   initialData: FormData<T>;
   formDataModel: FormDataModelItem<T>[];
-  onSubmit: (data: FormData<T>) => void;
+  // Второй аргумент — токен капчи, если форма её показывает (MED-8)
+  onSubmit: (data: FormData<T>, captchaToken?: string) => void;
   schema: z.Schema;
   type: 'put' | 'patch';
   onCancel?: () => void;
@@ -85,6 +87,9 @@ export type FormProps<
   description?: ReactNode;
   // Необязательный живой предпросмотр: получает текущее состояние формы.
   preview?: (data: FormData<T>) => ReactNode;
+  // Необязательный слот для виджета капчи (MED-8). Формы, которым она
+  // не нужна, просто не передают этот проп.
+  captcha?: ReactNode;
 };
 
 export type InputProps<

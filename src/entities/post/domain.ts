@@ -1,5 +1,7 @@
+import { treeifyError } from 'zod';
+
 import { postUtils } from '@/entities/post/lib/post-utils';
-import { PostPatch, postCreateSchema } from '@/entities/post/model/schemas';
+import { postCreateSchema,PostPatch } from '@/entities/post/model/schemas';
 
 import { objectUtils } from '@/shared/lib/object-utils';
 import { WithoutNull } from '@/shared/model/types';
@@ -95,7 +97,7 @@ export const postToPostEntity = (post: unknown): PostEntity => {
   const result = postCreateSchema.safeParse(post);
 
   if (!result.success) {
-    console.error(result.error.format());
+    console.error(treeifyError(result.error));
 
     throw new Error('Ошибка в типах данных');
   }

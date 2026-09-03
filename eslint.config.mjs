@@ -1,17 +1,8 @@
-import { FlatCompat } from '@eslint/eslintrc';
 import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
 import nextTypescript from 'eslint-config-next/typescript';
+import prettierConfig from 'eslint-config-prettier/flat';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname
-});
 
 const serverActionsPlugin = {
   rules: {
@@ -30,7 +21,7 @@ const serverActionsPlugin = {
         }
       },
       create(context) {
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
 
         function hasUseServerDirective(node) {
           if (!node.body || node.body.type !== 'BlockStatement') return false;
@@ -85,17 +76,26 @@ const serverActionsPlugin = {
 };
 
 const eslintConfig = [
-  ...nextCoreWebVitals,
-  ...nextTypescript,
-  ...compat.extends('prettier'),
+  // Must stay a lone `ignores` object: combined with any other key it would
+  // scope the patterns to this config entry instead of ignoring them globally.
   {
     ignores: [
       'node_modules/**',
       '.next/**',
       'out/**',
       'build/**',
+      'coverage/**',
+      'generated/**',
+      '.features-gen/**',
+      'playwright-report/**',
+      'test-results/**',
       'next-env.d.ts'
-    ],
+    ]
+  },
+  ...nextCoreWebVitals,
+  ...nextTypescript,
+  prettierConfig,
+  {
     plugins: {
       'server-actions': serverActionsPlugin,
       'simple-import-sort': simpleImportSort,

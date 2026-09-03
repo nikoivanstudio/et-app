@@ -8,10 +8,16 @@ import { urlUtils } from '@/shared/lib/url-utils';
 
 export const sendCallbackRequest = async (
   data: CallbackData,
-  appData?: ApplicationData
+  appData?: ApplicationData,
+  captchaToken?: string
 ): Promise<Either<string, string>> => {
   const url = `${urlUtils.getApiUrl()}/callback`;
-  const body = !!appData ? { ...data, ...appData } : { ...data };
+  const body = {
+    ...data,
+    ...(appData || {}),
+    // MED-8: токен капчи проверяется на сервере
+    'cf-turnstile-response': captchaToken
+  };
 
   try {
     const response = await fetch(url, {

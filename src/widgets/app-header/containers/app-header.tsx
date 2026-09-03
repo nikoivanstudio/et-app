@@ -3,6 +3,7 @@
 import { FC } from 'react';
 
 import { Contacts } from '@/widgets/app-header/ui/contacts';
+import { DesktopNav } from '@/widgets/app-header/ui/desktop-nav';
 import { Layout } from '@/widgets/app-header/ui/layout';
 import { Logo } from '@/widgets/app-header/ui/logo';
 import { MainNav } from '@/widgets/app-header/ui/main-nav';
@@ -23,6 +24,7 @@ export const AppHeader: FC<AppHeaderProps> = async ({ variant }) => {
   return (
     <Layout
       nav={<MainNav />}
+      desktopNav={<DesktopNav />}
       logo={<Logo />}
       profile={isProfile && !!session && <Profile />}
       actions={<ToggleTheme />}

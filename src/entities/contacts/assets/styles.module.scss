@@ -1,15 +1,16 @@
 .Row {
   font-size: 17px;
-  color: #040404;
+  color: #ffffff;
   font-family: var(--font-poire-one), serif;
-  -webkit-text-stroke: 1px #040404;
+  /* Обводка убрана: контраст держит --scrim-band под блоком. */
 }
 
 .SocialItem {
-  width: 50px;
-  height: 50px;
-  background-color: #ffffff33;
-  box-shadow: 0 4px 4px 0 #00000040;
+  /* Тап-таргет 44px вместо 50px произвольной плашки на стекле 20%. */
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--r-pill);
+  background-color: rgba(255, 255, 255, 0.14);
   display: flex;
   justify-content: center;
   align-items: center;

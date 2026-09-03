@@ -10,9 +10,9 @@ type BottomLinkProps = {
 };
 
 export const BottomLink: FC<BottomLinkProps> = ({ linkText, text, url }) => (
-  <p className='text-sm text-primary/50'>
+  <p className='text-sm text-ink-muted'>
     {text}{' '}
-    <Link className='font-medium text-primary hover:underline' href={url}>
+    <Link className='font-semibold text-gold-ink hover:underline' href={url}>
       {linkText}
     </Link>
   </p>

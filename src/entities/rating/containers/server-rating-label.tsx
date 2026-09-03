@@ -8,9 +8,13 @@ import { RatingLabelLayout } from '@/entities/rating/ui/rating-label-layout';
 
 const cnRatingLabel = cn('RatingLabel');
 
-export const ServerRatingLabel: FC<RatingLayoutProps> = async ({ rating }) => (
+export const ServerRatingLabel: FC<RatingLayoutProps> = async ({
+  rating,
+  variant
+}) => (
   <RatingLabelLayout
     rating={rating}
+    variant={variant}
     className={cnRatingLabel({ type: 'server' })}
   />
 );

@@ -8,6 +8,7 @@ import { PhotoDomain } from '@/entities/photo';
 import { serverPhotoUtils } from '@/entities/photo/server';
 import { TourStatus } from '@/entities/tour/domain';
 import { roleUtils } from '@/entities/user';
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { Role } from '@/entities/user/domain';
 import { sessionUtils } from '@/entities/user/lib/session-utils';
 
@@ -16,7 +17,7 @@ import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 export async function patchTour(req: NextRequest): Promise<Response> {
   try {
     const session = await sessionUtils.getSession(
-      req.cookies.get('session')?.value
+      req.cookies.get(SESSION_COOKIE_NAME)?.value
     );
 
     const canUpdate = roleUtils.userHasPermissionOn(session?.role, 'updateTour');

@@ -2,7 +2,9 @@ import { NextRequest } from 'next/server';
 
 import { otpCreateSchema } from '@/features/otp/model/schemas';
 
+import { serverEnv } from '@/shared/config/env';
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { consumeEmailQuota } from '@/shared/lib/security/email-throttle';
 import { emailNotifications } from '@/shared/services/email-notifications';
 import { RegistrationEmail } from '@/shared/ui/registration-email';
 
@@ -19,9 +21,28 @@ export async function postOtp(req: NextRequest): Promise<Response> {
       throw new Error('Ошибка валидации полученных данных');
     }
 
+    /**
+     * MED-8: лимит на конкретный адрес получателя. Ограничение по IP
+     * в middleware не мешает засыпать письмами один и тот же ящик
+     * из разных сетей.
+     */
+    const quota = consumeEmailQuota('otp', bodyResult.data.email);
+
+    if (!quota.allowed) {
+      return handleError({
+        body: `Слишком много запросов кода на этот адрес. Повторите через ${quota.retryAfterMinutes} мин.`,
+        status: 429
+      });
+    }
+
+    // CRIT-2: просроченные записи не должны накапливаться в таблице
+    await otpService.deleteExpiredOtps();
+
     const otp = await otpService.createOtpRecord(bodyResult.data);
 
-    if (process.env.NODE_ENV !== 'production') {
+    // MED-6: код печатается только при явно выставленном OTP_DEBUG_LOG=true
+    // и никогда в production
+    if (serverEnv.isOtpDebugLogEnabled) {
       console.log({ otp });
     }
 
@@ -54,11 +75,6 @@ export async function postOtp(req: NextRequest): Promise<Response> {
   } catch (e) {
     console.error(e);
 
-    return handleError({
-      body: {
-        success: false,
-        content: errorText
-      }
-    });
+    return handleError({ body: errorText });
   }
 }

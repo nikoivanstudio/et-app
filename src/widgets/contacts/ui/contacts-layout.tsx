@@ -20,8 +20,10 @@ export const ContactsLayout: FC<ContactsLayoutProps> = ({
   <div
     className={cnContactsWidget({ type }, [styles.ContactsWidget, className])}
   >
-    <div className={cnContactsWidget('Header', [styles.ContactsWidget_Header])}>
-      <Title type='h2'>Контакты</Title>
+    <div className={cnContactsWidget('Header', [])}>
+      <Title type='h2' onPhoto>
+        Контакты
+      </Title>
     </div>
     <div className='flex flex-col justify-center items-center mt-6'>
       <ServerContacts {...contactsProps} />

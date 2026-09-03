@@ -38,16 +38,20 @@ export type UserEntityUpdate = Partial<UserEntity> & { id: number };
 
 export type SessionEntity = Omit<UserEntity, 'passwordHash' | 'salt'> & {
   expiredAt: string;
+  /** Идентификатор записи сессии в БД: позволяет отозвать токен (HIGH-2). */
+  sid: string;
 };
 
 export const userToSession = (
   user: UserEntity,
-  expiredAt: string
+  expiredAt: string,
+  sid: string
 ): SessionEntity => {
   const { passwordHash: _, salt: _s, ...userSession } = user;
 
   return {
     ...userSession,
-    expiredAt
+    expiredAt,
+    sid
   };
 };

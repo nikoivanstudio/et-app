@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    body { margin: 0; background: #e6e6e6; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    a { color: #8b6f3d; text-decoration: underline; text-underline-offset: 2px; } a:hover { color: #1f1a12; }
+    .et-post { max-width: 720px; margin: 0 auto; color: #1f1a12; line-height: 1.55; }
+    .et-post * { box-sizing: border-box; }
+    .et-h { display: flex; align-items: center; gap: 10px; margin: 28px 0 14px; font-size: 20px; font-weight: 600; color: #1f1a12; }
+    .et-h::before { content: ''; display: block; width: 4px; height: 22px; background: #b8915a; border-radius: 2px; flex: 0 0 4px; }
+    .et-lead { font-size: 15px; line-height: 1.65; margin: 0 0 14px; color: #1f1a12; font-weight: 400; }
+    .et-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+    .et-tag { background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 999px; padding: 6px 12px; font-size: 12px; color: #1f1a12; }
+    .et-route { position: relative; padding: 4px 0 4px 32px; margin: 0; list-style: none; }
+    .et-route::before { content: ''; position: absolute; left: 12px; top: 14px; bottom: 14px; width: 2px; background: #d8cdb6; }
+    .et-route li { position: relative; padding: 0 0 16px; }
+    .et-route li:last-child { padding-bottom: 0; }
+    .et-route li .et-num { position: absolute; left: -32px; top: 0; width: 26px; height: 26px; border-radius: 50%; background: #b8915a; color: #fbf7ee; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; border: 2px solid #ffffff; }
+    .et-route li.last .et-num { background: #fbf7ee; color: #6b5f47; box-shadow: 0 0 0 1px #d8cdb6 inset; }
+    .et-route .et-title { font-size: 14px; font-weight: 600; color: #1f1a12; line-height: 1.35; margin: 0 0 2px; }
+    .et-route .et-sub { font-size: 13px; color: #6b5f47; margin: 0; line-height: 1.5; }
+    .et-route .et-coord { font-size: 12px; color: #8a7a5c; margin-top: 4px; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+    .et-price { background: #b8915a; border-radius: 14px; padding: 20px 16px; text-align: center; margin: 0 0 10px; }
+    .et-price-label { font-size: 11px; color: #fbf7ee; letter-spacing: 0.1em; opacity: 0.9; }
+    .et-price-value { font-size: 30px; font-weight: 600; color: #fbf7ee; margin: 4px 0 6px; line-height: 1; }
+    .et-price-note { font-size: 12px; color: #fbf7ee; opacity: 0.9; }
+    .et-vk { display: flex; align-items: center; justify-content: space-between; background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #1f1a12; text-decoration: none; }
+    .et-vk .et-arrow { color: #8b6f3d; }
+    .et-tickets { background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 14px; overflow: hidden; }
+    .et-ticket { display: flex; justify-content: space-between; align-items: center; padding: 13px 16px; font-size: 14px; border-bottom: 1px solid #e2d5b7; }
+    .et-ticket:last-child { border-bottom: none; }
+    .et-ticket .et-thint { color: #8a7a5c; font-size: 12px; }
+    .et-ticket .et-tprice { font-weight: 600; color: #1f1a12; }
+    .et-ticket .et-tfree { font-weight: 600; color: #5c7a2e; }
+    .et-tickets-note { font-size: 12px; color: #6b5f47; margin: 8px 4px 0; line-height: 1.5; font-style: italic; }
+    .et-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .et-info { background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 12px; padding: 14px; }
+    .et-info-label { font-size: 11px; color: #6b5f47; margin: 6px 0 4px; letter-spacing: 0.02em; }
+    .et-info-value { font-size: 14px; font-weight: 600; color: #1f1a12; line-height: 1.4; }
+    .et-awaits { background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 14px; padding: 18px 18px 16px; }
+    .et-awaits p { margin: 0 0 12px; font-size: 14px; line-height: 1.7; color: #1f1a12; }
+    .et-awaits-divider { border-top: 1px solid #e2d5b7; padding-top: 12px; }
+    .et-awaits-title { font-size: 11px; color: #8a7a5c; letter-spacing: 0.08em; margin: 0 0 8px; text-transform: uppercase; }
+    .et-awaits ul { list-style: none; padding: 0; margin: 0; }
+    .et-awaits ul li { position: relative; padding-left: 16px; font-size: 13px; line-height: 1.55; color: #1f1a12; margin-bottom: 6px; }
+    .et-awaits ul li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: #b8915a; border-radius: 50%; }
+    .et-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+    .et-gallery img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; display: block; }
+    .et-stat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; border: 1px solid #e2d5b7; background: #fbf7ee; padding: 16px 8px; text-align: center; }
+  </style>
+</helmet>
+
+<div style="width: 390px; position: relative; overflow: hidden; background: #e6e6e6;">
+
+  <!-- PageHeadPost · PageHead_type_tour 75vh -->
+  <section style="position: relative; height: 633px;">
+    <img src="./tourhead.jpg" alt="Пещерный город Эски-Кермен" style="position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+    <div style="position: absolute; inset: 0; z-index: 2; background: #0000003a;"></div>
+
+    <div style="position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 48px;">
+      <svg width="30" height="20" viewBox="0 0 30 24" fill="none">
+        <path d="M32 12L2 12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M32 2L17 2" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M17 22L2 22" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <img src="./logo.png" alt="Energy Tour" style="width: 51px; height: 57px; object-fit: contain; margin-right: 16px;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+    </div>
+
+    <div style="position: absolute; inset: 0; z-index: 3; display: flex; align-items: flex-end; padding-bottom: 84px;">
+      <h1 style="position: relative; z-index: 2; margin: 0; padding: 88px 16px 0; text-align: left; font-family: 'Poiret One', serif; font-weight: 400; font-size: 35px; line-height: 1.15; letter-spacing: 0.05em; color: #fff; -webkit-text-stroke: 2px #ffffff; text-shadow: 0 4px 4px #00000026;">Пещерный город Эски-Кермен. Джип-экскурсия</h1>
+    </div>
+  </section>
+
+  <!-- Контент · bg-white rounded-4xl p-2 mt-[-3vh] -->
+  <div style="position: relative; z-index: 3; margin-top: -25px; background: #ffffff; border-radius: 32px; padding: 8px;">
+
+    <section>
+      <div style="display: flex; justify-content: space-between; padding-right: 20px;">
+        <span style="display: block; padding: 8px; font-family: 'Poiret One', serif; font-size: 24px; letter-spacing: 3px; color: #040404; -webkit-text-stroke: 1px #040404;">Информация</span>
+        <div style="position: relative; margin-top: -30px; font-family: Oswald, sans-serif;">
+          <div style="background: #fff; border-radius: 999px; display: flex; justify-content: center; align-items: center; gap: 2px; padding: 4px 0; margin: 0 auto; width: 64px;">
+            <svg width="13" height="13" viewBox="0 0 15 14" fill="none"><path d="M8.73 4.71C8.85 5.11 9.19 5.39 9.6 5.46L9.77 5.47H13.74L10.53 7.8C10.19 8.05 10.03 8.46 10.09 8.86L10.13 9.03L11.35 12.81L8.15 10.47L7.99 10.38C7.68 10.23 7.32 10.23 7.0 10.38L6.85 10.47L3.64 12.81L4.87 9.03C5.0 8.64 4.89 8.21 4.6 7.92L4.47 7.8L1.26 5.47H5.23C5.65 5.47 6.02 5.24 6.21 4.88L6.27 4.71L7.5 0.94L8.73 4.71Z" fill="#000" stroke="#000" stroke-width="1.2"/></svg>
+            <span style="color: #000; font-size: 14px;">4.9/5</span>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <img src="./ava1.jpg" alt="" style="position: relative; z-index: 1; width: 33px; height: 33px; border-radius: 999px; object-fit: cover; box-shadow: 0 2px 2px 0 #00000026;">
+            <img src="./ava2.jpg" alt="" style="position: relative; z-index: 2; margin-left: -7px; width: 33px; height: 33px; border-radius: 999px; object-fit: cover; box-shadow: 0 2px 2px 0 #00000026;">
+            <img src="./ava3.jpg" alt="" style="position: relative; z-index: 3; margin-left: -7px; width: 33px; height: 33px; border-radius: 999px; object-fit: cover; box-shadow: 0 2px 2px 0 #00000026;">
+          </div>
+        </div>
+      </div>
+
+      <!-- PostStats · grid-cols-3 gap-2 mt-4 mx-2 -->
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 16px 8px 0;">
+        <div class="et-stat">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/><circle cx="17" cy="15" r="1.5" fill="#8b6f3d"/></svg>
+          <div style="font-size: 16px; font-weight: 600; line-height: 1.2; color: #1f1a12;">от 7 000 ₽</div>
+          <div style="font-size: 11px; line-height: 1.2; color: #6b5f47; letter-spacing: 0.02em;">за машину</div>
+        </div>
+        <div class="et-stat">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div style="font-size: 16px; font-weight: 600; line-height: 1.2; color: #1f1a12;">7 часа</div>
+          <div style="font-size: 11px; line-height: 1.2; color: #6b5f47;">экскурсия</div>
+        </div>
+        <div class="et-stat">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5"/><path d="M15 19c0-2 2-4 4-4s2 1 2 3"/></svg>
+          <div style="font-size: 16px; font-weight: 600; line-height: 1.2; color: #1f1a12;">до 6 чел.</div>
+          <div style="font-size: 11px; line-height: 1.2; color: #6b5f47;">в машине</div>
+        </div>
+      </div>
+
+      <!-- GuideCard · mt-3 mx-2 -->
+      <div style="display: flex; align-items: center; gap: 14px; border-radius: 18px; border: 1px solid #e2d5b7; background: #fbf7ee; padding: 14px; margin: 12px 8px 0;">
+        <span style="position: relative; display: inline-block; width: 58px; height: 58px; flex: 0 0 58px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; overflow: hidden; border-radius: 999px; box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #b8915a; background: linear-gradient(135deg, #caa66a, #7d6234); color: #fff; font-weight: 600; font-size: 21px;">ИН</span>
+          <span style="position: absolute; bottom: -2px; right: -2px; display: grid; place-items: center; border-radius: 999px; background: #b8915a; color: #fff; width: 20px; height: 20px; font-size: 12px; box-shadow: 0 0 0 2px #fbf7ee;">✓</span>
+        </span>
+        <span style="min-width: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: #8b6f3d;">Ваш гид</span>
+          <span style="font-size: 18px; line-height: 1.15; color: #1f1a12;">Иван Николаенко</span>
+          <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px;">
+            <span style="display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; border: 1px solid #e2d5b7; background: #fff; padding: 2px 10px;">
+              <svg width="13" height="13" viewBox="0 0 15 14" fill="none"><path d="M8.73 4.71C8.85 5.11 9.19 5.39 9.6 5.46L9.77 5.47H13.74L10.53 7.8C10.19 8.05 10.03 8.46 10.09 8.86L10.13 9.03L11.35 12.81L8.15 10.47L7.99 10.38C7.68 10.23 7.32 10.23 7.0 10.38L6.85 10.47L3.64 12.81L4.87 9.03C5.0 8.64 4.89 8.21 4.6 7.92L4.47 7.8L1.26 5.47H5.23C5.65 5.47 6.02 5.24 6.21 4.88L6.27 4.71L7.5 0.94L8.73 4.71Z" fill="#1f1a12" stroke="#1f1a12" stroke-width="1.2"/></svg>
+              <span style="font-size: 14px; color: #1f1a12;">4.9</span>
+            </span>
+            <span style="color: #e2d5b7;">·</span>
+            <span style="font-size: 12px; color: #6b5f47;">37 отзывов</span>
+          </span>
+        </span>
+        <span style="flex: 0 0 auto; padding-left: 4px; font-size: 24px; line-height: 1; color: #b8915a;">›</span>
+      </div>
+
+      <!-- BookingButton · mt-3 mx-2 w-full -->
+      <div style="margin: 12px 8px 0;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; background: #b8915a; padding: 14px 20px; font-family: Oswald, sans-serif; letter-spacing: 0.025em; color: #fbf7ee;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbf7ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/><path d="M12 18s-3-2-3-4a1.8 1.8 0 0 1 3-1 1.8 1.8 0 0 1 3 1c0 2-3 4-3 4z"/></svg>
+          Забронировать
+        </div>
+      </div>
+    </section>
+
+    <!-- TourContentView · .et-post · mt-4 pb-14 -->
+    <section style="margin-top: 16px; padding-bottom: 56px;">
+      <div class="et-post">
+
+        <h2 class="et-h">О туре</h2>
+        <p class="et-lead">Пещерный город Эски-Кермен — самый зрелищный из «мёртвых городов» Крыма: вырубленные в скале улицы, осадный колодец и базилика VI века. Подъезжаем на джипах по грунтовке, дальше — пешая часть по плато с обзором на Мангуп.</p>
+        <ul class="et-tags">
+          <li class="et-tag">джип-тур</li>
+          <li class="et-tag">Бахчисарай</li>
+          <li class="et-tag">пещерный город</li>
+          <li class="et-tag">для детей</li>
+          <li class="et-tag">7 часов</li>
+        </ul>
+
+        <h2 class="et-h">Маршрут</h2>
+        <ol class="et-route">
+          <li>
+            <span class="et-num">1</span>
+            <p class="et-title">Выезд из Бахчисарая</p>
+            <p class="et-sub">Забираем от вашего жилья, разбираем маршрут за кофе</p>
+            <p class="et-coord">44.7486, 33.8608</p>
+          </li>
+          <li>
+            <span class="et-num">2</span>
+            <p class="et-title">Осадный колодец</p>
+            <p class="et-sub">Спуск по 90 ступеням в скале <a href="#">(wiki)</a></p>
+            <p class="et-coord">44.6087, 33.7392</p>
+          </li>
+          <li>
+            <span class="et-num">3</span>
+            <p class="et-title">Базилика и главная улица</p>
+            <p class="et-sub">Плато города, виды на Мангуп-Кале и долину</p>
+            <p class="et-coord">44.6103, 33.7411</p>
+          </li>
+          <li class="last">
+            <span class="et-num">4</span>
+            <p class="et-title">Возвращение</p>
+            <p class="et-sub">Обратная дорога с остановкой на видовой точке</p>
+          </li>
+        </ol>
+
+        <h2 class="et-h">Стоимость</h2>
+        <div class="et-price">
+          <div class="et-price-label">СТОИМОСТЬ ЗА МАШИНУ</div>
+          <div class="et-price-value">7 000 ₽</div>
+          <div class="et-price-note">до 6 человек · входные билеты оплачиваются отдельно</div>
+        </div>
+        <a class="et-vk" href="#">
+          <span>Скидки подписчикам ВКонтакте</span>
+          <span class="et-arrow">→</span>
+        </a>
+
+        <h2 class="et-h">Билеты</h2>
+        <div class="et-tickets">
+          <div class="et-ticket">
+            <span>Взрослый<span class="et-thint"> · вход на плато</span></span>
+            <span class="et-tprice">300 ₽</span>
+          </div>
+          <div class="et-ticket">
+            <span>Школьники<span class="et-thint"> · от 7 лет</span></span>
+            <span class="et-tprice">150 ₽</span>
+          </div>
+          <div class="et-ticket">
+            <span>Дети до 7 лет</span>
+            <span class="et-tfree">бесплатно</span>
+          </div>
+          <div class="et-ticket">
+            <span>Осадный колодец</span>
+            <span class="et-tprice">200 ₽</span>
+          </div>
+        </div>
+        <p class="et-tickets-note">Билеты покупаются на месте, наличными или картой. Цены museum-tariff 2026 года.</p>
+
+        <h2 class="et-h">Полезно знать</h2>
+        <div class="et-info-grid">
+          <div class="et-info">
+            <div class="et-info-label">Старт</div>
+            <div class="et-info-value">09:00, Бахчисарай</div>
+          </div>
+          <div class="et-info">
+            <div class="et-info-label">Длительность</div>
+            <div class="et-info-value">7 часов</div>
+          </div>
+          <div class="et-info">
+            <div class="et-info-label">Пешая часть</div>
+            <div class="et-info-value">около 4 км</div>
+          </div>
+          <div class="et-info">
+            <div class="et-info-label">Что взять</div>
+            <div class="et-info-value">Кроссовки, вода, головной убор</div>
+          </div>
+        </div>
+
+        <h2 class="et-h">Что вас ждёт</h2>
+        <div class="et-awaits">
+          <p>Начинаем рано, чтобы пройти плато до жары. Джипы поднимают вас к самому входу, поэтому основные силы уходят на прогулку по городу, а не на подход к нему.</p>
+          <p>По пути разбираем, как жили в вырубленных в скале домах, зачем городу был нужен осадный колодец и почему город опустел в XIV веке.</p>
+          <div class="et-awaits-divider">
+            <p class="et-awaits-title">Отдельно отметим</p>
+            <ul>
+              <li>Обзорная точка над долиной — лучшее место для фото</li>
+              <li>Базилика VI века с остатками фресок</li>
+              <li>Спуск в осадный колодец (по желанию)</li>
+              <li>Остановка у виноградников на обратной дороге</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="et-h">Фото с тура</h2>
+        <div class="et-gallery">
+          <img src="./card1.jpg" alt="Развалины храма">
+          <img src="./card2.jpg" alt="Судилище">
+          <img src="./card3.jpg" alt="Одна из пещер">
+          <img src="./card4.jpg" alt="Главная улица">
+          <img src="./tourhead.jpg" alt="Видовая точка">
+          <img src="./services.jpg" alt="Окна пещер">
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

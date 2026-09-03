@@ -1,6 +1,6 @@
 import { Post, Prisma } from 'generated/prisma/client';
 
-import { PostPatch, PostEntity, WithUser } from '@/entities/post/domain';
+import { PostEntity, PostPatch, WithUser } from '@/entities/post/domain';
 
 import { dbClient } from '@/shared/lib/db';
 import PostWhereInput = Prisma.PostWhereInput;

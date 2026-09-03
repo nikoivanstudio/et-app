@@ -2,60 +2,59 @@ import 'server-only';
 
 import { OtpCreateData } from '@/features/otp/domain';
 
-import { OtpError, otpRepositories } from '@/entities/otp/server';
+import { otpRepositories } from '@/entities/otp/server';
 
 import { Either, left, right } from '@/shared/lib/either';
 
 import { Otp } from '../../../../generated/prisma/client';
 import { otpUtils } from '../lib/otp-utils';
 
-const isDevMode = process.env.NODE_ENV === 'development';
-
 const createOtpRecord = (data: OtpCreateData): Promise<Otp> =>
   otpRepositories.createOtp({ ...data, code: otpUtils.generateOtpCode() });
 
-const checkOtp = async (
-  code: string
-): Promise<Either<string, { success: boolean }>> => {
-  const otp = await otpRepositories.getOtpByCode(code);
+export type OtpVerifyError =
+  | 'otp-not-found'
+  | 'otp-expired'
+  | 'otp-attempts-exceeded';
 
-  if (!otp) {
-    return left('Такой код не существует');
-  }
-
-  const { createdAt } = otp;
-
-  const expired = otpUtils.isOtpExpired(createdAt);
-
-  return right({ success: !expired });
-};
-
+/**
+ * Проверка кода подтверждения (CRIT-2).
+ *
+ * Ключевое отличие от прежней версии: код ищется по паре адрес + код, поэтому
+ * угаданный код больше не даёт регистрацию на чужой адрес. Дополнительно
+ * ведётся счётчик неудачных попыток по последней заявке для этого адреса,
+ * что закрывает перебор даже при неограниченном числе запросов.
+ */
 const verifyOtp = async (
+  email: string,
   code: string
-): Promise<{
-  id: number;
-  email: string;
-  tel: string;
-  createdAt: Date;
-  code: string;
-} | null> => {
-  const otp = await otpRepositories.getOtpByCode(code);
+): Promise<Either<OtpVerifyError, Otp>> => {
+  const latest = await otpRepositories.getLatestOtpByEmail(email);
+
+  if (!latest) {
+    return left('otp-not-found');
+  }
+
+  if (otpUtils.isAttemptsExceeded(latest.attempts)) {
+    return left('otp-attempts-exceeded');
+  }
+
+  const otp = await otpRepositories.getOtpByEmailAndCode(email, code);
 
   if (!otp) {
-    throw new OtpError('Такой код подтверждения не найден!');
+    // Неверный код расходует попытку — иначе перебор ничем не ограничен
+    await otpRepositories.incrementAttempts(latest.id);
+
+    return left('otp-not-found');
   }
 
-  const otpCheckResult = await otpService.checkOtp(otp.code);
+  if (otpUtils.isOtpExpired(otp.createdAt)) {
+    await otpRepositories.deleteOtpById(otp.id);
 
-  if (otpCheckResult.type === 'left') {
-    throw new OtpError(otpCheckResult.error);
+    return left('otp-expired');
   }
 
-  if (!otpCheckResult.value.success) {
-    throw new OtpError('Данный код уже просрочен, попробуйте снова!');
-  }
-
-  return otp;
+  return right(otp);
 };
 
 const deleteOtp = async (id: number): Promise<Either<string, Otp>> => {
@@ -68,9 +67,15 @@ const deleteOtp = async (id: number): Promise<Either<string, Otp>> => {
   return right(deletedOtp);
 };
 
+/** Уборка просроченных записей, чтобы они не накапливались в базе. */
+const deleteExpiredOtps = () =>
+  otpRepositories.deleteExpiredOtps(
+    new Date(Date.now() - otpUtils.EXPIRED_TIME * 1000)
+  );
+
 export const otpService = {
   createOtpRecord,
-  checkOtp,
   verifyOtp,
-  deleteOtp
+  deleteOtp,
+  deleteExpiredOtps
 };

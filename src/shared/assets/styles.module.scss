@@ -1,43 +1,53 @@
-.LinkButton {
-  background-color: var(--light-green);
-}
+/* Energy Tour v2. Токены — в src/app/globals.css, макеты — docs/design/canvas. */
 
 .BadgePrice {
   font-size: 17px;
-  box-shadow: 0 4px 4px 0 #00000040;
   font-family: var(--oswald), serif;
   letter-spacing: 1px;
 
+  /* Плашка поверх фото: было #ffffff1a (белый по ней 2.77:1),
+     стало плотная тёмная подложка — белый по ней ~9:1. */
   &_type_clearBlur {
-    background-color: #ffffff1a;
+    background-color: rgba(20, 14, 6, 0.55);
+    box-shadow: 0 4px 12px 0 #00000040;
   }
 
   &_type_blackWhite {
     background-color: #fff;
-    color: #000;
+    color: var(--ink);
+  }
+
+  /* Строка факта в карточке: не плашка, а текст на скриме. */
+  &_type_fact {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0;
   }
 }
 
 .Title {
-  color: var(--orange);
+  color: var(--gold-head);
   font-family: var(--font-poire-one), serif;
-  -webkit-text-stroke: 2px var(--orange);
 
   &_type_h1 {
     color: #ffffff;
-    text-shadow: 0 4px 4px #00000026;
+  }
+
+  /* Заголовок секции поверх фото — светлое золото по скриму, 6.40:1. */
+  &_onPhoto {
+    color: var(--gold-photo);
   }
 }
 
 .poiret_text_white {
   font-family: var(--font-poire-one), serif;
-  -webkit-text-stroke: 1px #ffffff;
+  color: #ffffff;
   letter-spacing: 3px;
 }
 
 .poiret_text_black {
   font-family: var(--font-poire-one), serif;
-  -webkit-text-stroke: 1px #000000;
+  color: var(--ink);
   letter-spacing: 3px;
 }
 
@@ -56,20 +66,19 @@
 
 .CardTitle {
   font-family: var(--font-poire-one), serif;
-  -webkit-text-stroke: 2px #ffffffea;
-  font-size: 35px;
+  color: #ffffff;
+  font-size: 27px;
   font-weight: 400;
-  letter-spacing: 1px;
-  line-height: 1.35;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
 }
 
-.CardMask {
+/* Градиентный скрим вместо плоской маски 20%: прозрачный сверху, плотный
+   снизу — заголовок и цена читаются на любом кадре, а не только на удачном. */
+.CardScrim {
   position: absolute;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.2);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: 30px;
+  inset: 0;
+  border-radius: var(--r-card);
+  background: var(--scrim-card);
 }

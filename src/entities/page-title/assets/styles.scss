@@ -1,21 +1,22 @@
+/* Заголовок страницы поверх фото. Обводка -webkit-text-stroke убрана:
+   она добавляла буквам массы, но контраст не поднимала (1.35:1 на небе).
+   Читаемость теперь держит --scrim-hero в PageHead. */
 .PageTitle {
-  text-shadow: 0 4px 4px #00000026;
   font-family: var(--font-poire-one), serif;
 
   &-TopTitle {
-    color: var(--orange);
-    font-size: 45px;
+    color: var(--gold-photo); /* 5.31:1 по скриму, было 1.35:1 */
+    font-size: 40px;
     text-align: right;
-    -webkit-text-stroke: 4px var(--orange);
-    letter-spacing: 5px;
+    letter-spacing: 4px;
+    line-height: 1;
   }
 
   &-MiddleTitle {
-    color: #ffffffea;
-    font-size: 35px;
+    color: #ffffff; /* 9.28:1, было 2.04:1 */
+    font-size: 28px;
     text-align: right;
-    -webkit-text-stroke: 2px #ffffffea;
-    letter-spacing: 2px;
-    line-height: 1.3;
+    letter-spacing: 1px;
+    line-height: 1.25;
   }
 }

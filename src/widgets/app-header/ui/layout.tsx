@@ -16,6 +16,7 @@ const cnAppHeader = cn('AppHeader');
 type LayoutProps = {
   logo?: ReactNode;
   nav?: ReactNode;
+  desktopNav?: ReactNode;
   actions?: ReactNode;
   profile?: ReactNode;
   rightNode?: ReactNode;
@@ -25,6 +26,7 @@ type LayoutProps = {
 export const Layout: FC<LayoutProps> = ({
   logo,
   nav,
+  desktopNav,
   rightNode,
   isStatic
 }) => {
@@ -34,17 +36,20 @@ export const Layout: FC<LayoutProps> = ({
         !isStatic ? 'absolute top-0 w-full z-10' : ''
       ])}
     >
-      <div className='flex justify-between items-center px-5 pt-4 pb-12'>
-        <div>
+      <div className='mx-auto flex max-w-[1120px] items-center justify-between px-4 pt-3.5 pb-3.5 md:px-6'>
+        {/* Бургер только до md: на десктопе меню разворачивается в строку. */}
+        <div className='md:hidden'>
           <Sheet>
             <SheetTrigger
-              className={buttonVariants({ variant: 'ghost' })}
+              className={buttonVariants({
+                variant: 'ghost',
+                size: 'icon',
+                className: 'size-11'
+              })}
               aria-controls='burgerIcon'
+              aria-label='Открыть меню'
             >
-              <BurgerIcon
-                className='shrink-0 grow md:w-40 md:h-40'
-                id='burgerIcon'
-              />
+              <BurgerIcon className='shrink-0 grow' id='burgerIcon' />
             </SheetTrigger>
             <SheetContent side='left'>
               <SheetHeader className='border-b pb-5 mb-5'>
@@ -54,8 +59,16 @@ export const Layout: FC<LayoutProps> = ({
             </SheetContent>
           </Sheet>
         </div>
-        <div className='mr-4'>{logo}</div>
-        <div>{rightNode}</div>
+
+        <div>{logo}</div>
+
+        {!!desktopNav && (
+          <div className='hidden md:block md:grow md:pl-8'>{desktopNav}</div>
+        )}
+
+        <div className='flex size-11 items-center justify-center'>
+          {rightNode}
+        </div>
       </div>
     </header>
   );

@@ -1,6 +1,6 @@
-import { PhotoEntity } from '@/entities/photo/domain';
 import { fileUtils } from '@/entities/file/lib/file-utils';
 import { fileServiceServer } from '@/entities/file/services/file-service-server';
+import { PhotoEntity } from '@/entities/photo/domain';
 
 export const getPhotoEntity = async ({
   file,

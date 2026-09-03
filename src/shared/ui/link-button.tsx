@@ -9,6 +9,11 @@ type LinkButtonProps = PropsWithChildren<{
   className?: string;
 }>;
 
+/**
+ * Главная кнопка продукта. Тёмная тушь на золоте бренда — 5.96:1.
+ * До v2 здесь был bg-green-500 с белым текстом: 2.28:1, ниже порога даже
+ * для крупного текста, и зелёный не входил в палитру.
+ */
 export const LinkButton: FC<LinkButtonProps> = ({
   children,
   href,
@@ -16,7 +21,10 @@ export const LinkButton: FC<LinkButtonProps> = ({
 }) => (
   <Link
     className={cnLinkButton(null, [
-      '--font-poire-one text-xl p-4 bg-green-500 rounded-full tracking-widest',
+      'inline-flex items-center justify-center min-h-12 px-10',
+      'bg-cta hover:bg-cta-press text-on-cta',
+      'text-base font-semibold tracking-wide rounded-pill',
+      'transition-colors',
       className
     ])}
     href={href}

@@ -12,20 +12,43 @@ export function handleSuccess({ body, status, statusText }: HandlerData) {
   });
 }
 
+/**
+ * Обработка ошибок (MED-7).
+ *
+ * Было: к тексту ответа приклеивался `error.message`, то есть внутренние
+ * сообщения (в том числе от драйвера БД и клиента хранилища) уходили клиенту.
+ * Кроме того, любой отказ возвращался с кодом 400, включая отказы авторизации,
+ * из-за чего атаки было невозможно отличить от обычных ошибок в мониторинге.
+ *
+ * Стало: клиенту уходит либо явно заданное сообщение, либо обобщённый текст.
+ * Подробности пишутся только в журнал сервера.
+ */
 export function handleError({ body, status, statusText, error }: HandlerData) {
-  let errorMessage = 'Ошибка обработки запроса.';
+  const errorMessage =
+    typeof body === 'string' ? body : 'Ошибка обработки запроса.';
 
-  if (typeof body === 'string') {
-    errorMessage = body;
-  } else if (error instanceof Error) {
-    errorMessage += ` ${error.message}`;
-  } else if (typeof error === 'string') {
-    errorMessage = error;
+  if (error !== undefined) {
+    console.error(error);
   }
-  console.error(error);
 
-  return new Response(JSON.stringify(errorMessage || 'Неизвестная ошибка'), {
+  return new Response(JSON.stringify(errorMessage), {
     status: status || 400,
     statusText: statusText || 'Fail'
+  });
+}
+
+/** Не аутентифицирован: сессии нет, она истекла или отозвана. */
+export function handleUnauthorized(message = 'Ошибка верификации') {
+  return new Response(JSON.stringify(message), {
+    status: 401,
+    statusText: 'Unauthorized'
+  });
+}
+
+/** Аутентифицирован, но прав на действие нет. */
+export function handleForbidden(message = 'Недостаточно прав') {
+  return new Response(JSON.stringify(message), {
+    status: 403,
+    statusText: 'Forbidden'
   });
 }

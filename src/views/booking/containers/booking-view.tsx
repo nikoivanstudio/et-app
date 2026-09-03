@@ -13,19 +13,19 @@ type Props = {
 
 const STATUS_STYLE: Record<string, string> = {
   [BookingDomain.BookingStatus.NEW]:
-    'bg-[#FBF7EE] text-[#8B6F3D] border-[#B8915A]',
+    'bg-[var(--cream)] text-[var(--gold-head)] border-[var(--cta)]',
   [BookingDomain.BookingStatus.CONTACTED]:
     'bg-[#eaf2fb] text-[#3b6ea5] border-[#9cc0e6]',
   [BookingDomain.BookingStatus.CONFIRMED]:
-    'bg-[#eef4e6] text-[#5C7A2E] border-[#a7c178]',
+    'bg-[#eef4e6] text-[var(--free-ink)] border-[#a7c178]',
   [BookingDomain.BookingStatus.COMPLETED]:
-    'bg-[#f0ede6] text-[#6B5F47] border-[#cabfa3]',
+    'bg-[#f0ede6] text-[var(--ink-muted)] border-[#cabfa3]',
   [BookingDomain.BookingStatus.CANCELLED]:
-    'bg-[#fbecea] text-[#b4452f] border-[#e0a99c]',
+    'bg-[#fbecea] text-[var(--alert-ink)] border-[#e0a99c]',
   [BookingDomain.BookingStatus.EXPIRED]:
-    'bg-[#f0ede6] text-[#6B5F47] border-[#cabfa3]',
+    'bg-[#f0ede6] text-[var(--ink-muted)] border-[#cabfa3]',
   [BookingDomain.BookingStatus.SPAM]:
-    'bg-[#fbecea] text-[#b4452f] border-[#e0a99c]'
+    'bg-[#fbecea] text-[var(--alert-ink)] border-[#e0a99c]'
 };
 
 const STATUS_HINT: Record<string, string> = {
@@ -56,11 +56,11 @@ const Row: FC<{ label: string; value?: string | null }> = ({
   value
 }) =>
   value ? (
-    <div className='flex items-center justify-between border-b border-[#E2D5B7] py-2.5 last:border-0'>
-      <span className='font-[Oswald,sans-serif] text-[12px] tracking-wide text-[#6B5F47]'>
+    <div className='flex items-center justify-between border-b border-[var(--rule)] py-2.5 last:border-0'>
+      <span className='font-oswald text-[12px] tracking-wide text-[var(--ink-muted)]'>
         {label}
       </span>
-      <span className='text-[14px] font-medium text-[#1F1A12]'>{value}</span>
+      <span className='text-[14px] font-medium text-[var(--ink)]'>{value}</span>
     </div>
   ) : null;
 
@@ -70,7 +70,7 @@ export const BookingView: FC<Props> = async ({ params }) => {
 
   if (either.type === 'left') {
     return (
-      <div className='mx-auto max-w-md px-4 py-24 text-center font-[Caladea,serif] text-[#6B5F47]'>
+      <div className='mx-auto max-w-md px-4 py-24 text-center font-caladea text-[var(--ink-muted)]'>
         Заявка не найдена. Проверьте ссылку.
       </div>
     );
@@ -80,25 +80,25 @@ export const BookingView: FC<Props> = async ({ params }) => {
   const status = booking.status;
 
   return (
-    <div className='mx-auto max-w-md px-4 pb-12 pt-24 font-[Caladea,serif]'>
+    <div className='mx-auto max-w-md px-4 pb-12 pt-24 font-caladea'>
       <span
         className={cn(
-          'inline-block rounded-full border px-3 py-1 font-[Oswald,sans-serif] text-[12px] tracking-wide',
+          'inline-block rounded-full border px-3 py-1 font-oswald text-[12px] tracking-wide',
           STATUS_STYLE[status]
         )}
       >
         {BookingDomain.BOOKING_STATUS_LABELS[status] ?? status}
       </span>
 
-      <h1 className='mt-3 font-[Century_Gothic,Questrial,sans-serif] text-[26px] leading-tight tracking-wide text-[#1F1A12]'>
+      <h1 className='mt-3 font-poiret text-[26px] leading-tight tracking-wide text-[var(--ink)]'>
         Заявка на тур
       </h1>
-      <p className='mt-2 text-[14px] text-[#6B5F47]'>{STATUS_HINT[status]}</p>
+      <p className='mt-2 text-[14px] text-[var(--ink-muted)]'>{STATUS_HINT[status]}</p>
 
-      <div className='mt-5 rounded-3xl border border-[#E2D5B7] bg-white p-5'>
+      <div className='mt-5 rounded-3xl border border-[var(--rule)] bg-white p-5'>
         <Link
           href={`/tour/${booking.tour.slug}`}
-          className='font-[Century_Gothic,Questrial,sans-serif] text-[18px] tracking-wide text-[#1F1A12] underline-offset-2 hover:underline'
+          className='font-poiret text-[18px] tracking-wide text-[var(--ink)] underline-offset-2 hover:underline'
         >
           {booking.tour.title}
         </Link>
@@ -119,7 +119,7 @@ export const BookingView: FC<Props> = async ({ params }) => {
       {booking.guide && (
         <Link
           href={`/guide/${booking.guide.slug}`}
-          className='mt-4 block rounded-2xl border border-[#E2D5B7] bg-[#FBF7EE] px-4 py-3 text-center font-[Oswald,sans-serif] text-[14px] tracking-wide text-[#8B6F3D]'
+          className='mt-4 block rounded-block border border-[var(--rule)] bg-[var(--cream)] px-4 py-3 text-center font-oswald text-[14px] tracking-wide text-[var(--gold-head)]'
         >
           Профиль гида · {booking.guide.displayName}
         </Link>

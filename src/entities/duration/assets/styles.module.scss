@@ -1,13 +1,13 @@
 .DurationLabel {
   font-family: var(--oswald), serif;
   letter-spacing: 1px;
-  box-shadow: 0 4px 4px 0 #00000040;
 
   &_type_clearBlur {
-    background-color: #ffffff1a;
+    background-color: rgba(20, 14, 6, 0.55);
+    box-shadow: 0 4px 12px 0 #00000040;
   }
   &_type_blackWhite {
     background-color: #fff;
-    color: #000;
+    color: var(--ink);
   }
 }

@@ -8,7 +8,7 @@ export const editUserSchema = z.object({
   id: z.number(),
   login: z.string().min(1, 'Логин обязателен'),
   phone: z.string().min(1, 'Телефон обязателен'),
-  role: z.nativeEnum(Role),
+  role: z.enum(Role),
   firstName: optionalString,
   lastName: optionalString,
   email: optionalString,

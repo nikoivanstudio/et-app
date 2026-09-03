@@ -1,0 +1,41 @@
+# HIGH-5: без этого файла COPY . . переносил в образ секреты и лишние данные
+
+# секреты — главная причина появления этого файла
+.env
+.env.*
+*.pem
+
+# служебное
+.git
+.gitignore
+.github
+.gitlab-ci.yml
+node_modules
+.next
+out
+build
+coverage
+.swc
+*.tsbuildinfo
+
+# тесты и отчёты
+tests
+tests-examples
+test-results
+playwright-report
+.features-gen
+playwright.config.ts
+playwright.bdd.config.ts
+jest.config.ts
+jest.setup.ts
+
+# локальное окружение разработчика
+.idea
+.vscode
+.claude
+.DS_Store
+.tmp-tri
+docs
+plan.zip
+migration.json
+tasks.md

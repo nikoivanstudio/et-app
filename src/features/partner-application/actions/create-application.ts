@@ -1,5 +1,7 @@
 'use server';
 
+import { treeifyError } from 'zod';
+
 import { Role } from '@/entities/user/domain';
 import { getCurrentUser } from '@/entities/user/server';
 
@@ -23,13 +25,13 @@ export const createApplicationAction = async (
   const result = createApplicationSchema.safeParse(data);
 
   if (!result.success) {
-    const formatedErrors = result.error.format();
+    const errorTree = treeifyError(result.error);
 
     return {
       errors: {
-        type: formatedErrors.type?._errors.join(', '),
-        agreement: formatedErrors.agreement?._errors.join(', '),
-        _errors: formatedErrors._errors.join(', ') || undefined
+        type: errorTree.properties?.type?.errors.join(', '),
+        agreement: errorTree.properties?.agreement?.errors.join(', '),
+        _errors: errorTree.errors.join(', ') || undefined
       }
     };
   }

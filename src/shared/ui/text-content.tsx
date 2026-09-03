@@ -4,6 +4,7 @@ import { cn } from '@bem-react/classname';
 import { FC } from 'react';
 
 import styles from '@/shared/assets/styles.module.scss';
+import { sanitizeArticleHtml } from '@/shared/lib/sanitize';
 
 const cnTextContent = cn('TextContent');
 
@@ -35,6 +36,8 @@ export const TextContent: FC<TextContentProps> = async ({
             bold ? styles.caladea_text_bold : styles.text_caladea
           ]
     )}
-    dangerouslySetInnerHTML={{ __html: content }}
+    // MED-3: контент из БД (в том числе перенесённый из WordPress) очищается
+    // по allowlist: script, iframe, style и любые обработчики on* удаляются
+    dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(String(content)) }}
   ></div>
 );

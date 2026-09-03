@@ -30,12 +30,19 @@ export const FavouriteLabelIcon: FC<FavouriteLabelIconProps> = ({
   }, []);
 
   return (
-    <span className='hover: cursor-pointer' onClick={onChange}>
+    // Была <span onClick> — с клавиатуры недоступна и без имени для скринридера.
+    <button
+      type='button'
+      className='flex items-center justify-center w-11 h-11 cursor-pointer'
+      aria-pressed={isFavourite}
+      aria-label={isFavourite ? 'Убрать из избранного' : 'В избранное'}
+      onClick={onChange}
+    >
       {isFavourite && !!id && !!secondId ? (
         <FilledHeartIcon id={id} />
       ) : (
         <>{!!secondId && <BlankHeartIcon id={secondId} />}</>
       )}
-    </span>
+    </button>
   );
 };

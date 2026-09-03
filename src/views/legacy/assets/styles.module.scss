@@ -5,9 +5,29 @@
   }
 
   &__Title {
-    font-size: 35px;
+    font-size: 33px;
     color: #fff;
-    -webkit-text-stroke: 2px #ffffff;
-    line-height: 1.15;
+    /* Обводка убрана — как на остальных заголовках поверх фото. */
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+  }
+
+  &__Scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(20, 14, 6, 0.62) 0%,
+      rgba(20, 14, 6, 0.22) 42%,
+      rgba(20, 14, 6, 0.82) 100%
+    );
+  }
+
+  /* Шапка списка: ровная плотность, чтобы золотой заголовок не сел на
+     светлое небо (замер давал 2.97:1 в худшем участке). */
+  &__ScrimBand {
+    background: linear-gradient(
+      180deg,
+      rgba(20, 14, 6, 0.66),
+      rgba(20, 14, 6, 0.86)
+    );
   }
 }

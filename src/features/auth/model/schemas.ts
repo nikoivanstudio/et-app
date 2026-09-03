@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const emailSchema = z.string().email();
+export const emailSchema = z.email();
 
 export const formDataSchema = z.object({
   login: emailSchema,

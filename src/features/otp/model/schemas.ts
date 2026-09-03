@@ -1,7 +1,7 @@
 import z from 'zod';
 
 export const otpCreateSchema = z.object({
-  email: z.string().email(),
+  email: z.email(),
   tel: z
     .string()
     .regex(

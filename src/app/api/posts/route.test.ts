@@ -9,6 +9,7 @@ import { postUtils } from '@/features/post/lib/post-utils';
 import { postServices } from '@/features/post/services/post-services';
 
 import { roleUtils } from '@/entities/user';
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { sessionService } from '@/entities/user/server';
 
 import { left, right } from '@/shared/lib/either';
@@ -50,7 +51,9 @@ const makeRequest = (init: FakeRequestInit = {}): NextRequest => {
     nextUrl: { searchParams: url.searchParams },
     cookies: {
       get: (name: string) =>
-        name === 'session' && init.session ? { value: init.session } : undefined
+        name === SESSION_COOKIE_NAME && init.session
+          ? { value: init.session }
+          : undefined
     },
     json: async () => init.json,
     formData: async () => new FormData()
@@ -91,21 +94,21 @@ describe('API /api/posts', () => {
   });
 
   describe('POST', () => {
-    it('возвращает 400, если нет cookie сессии', async () => {
+    it('возвращает 401, если нет cookie сессии', async () => {
       const res = await POST(makeRequest({ json: {} }));
 
-      expect(res.status).toBe(400);
+      expect(res.status).toBe(401);
       expect(await readBody(res)).toBe('Ошибка верификации');
       expect(mockVerifySession).not.toHaveBeenCalled();
     });
 
-    it('возвращает 400, если у роли нет права createPosts', async () => {
+    it('возвращает 403, если у роли нет права createPosts', async () => {
       mockVerifySession.mockResolvedValue({ session: { id: 1, role: 'GUIDE' } });
       mockUserHasPermissionOn.mockReturnValue(false);
 
       const res = await POST(makeRequest({ session: 'token', json: {} }));
 
-      expect(res.status).toBe(400);
+      expect(res.status).toBe(403);
       expect(await readBody(res)).toBe('У вас нет полномочий на создание постов');
       expect(mockUserHasPermissionOn).toHaveBeenCalledWith('GUIDE', 'createPosts');
     });

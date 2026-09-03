@@ -4,6 +4,8 @@ model Otp {
   tel       String   @db.VarChar(80)
   createdAt DateTime @default(now()) @map("created_at")
   code      String   @db.VarChar(12)
+  attempts  Int      @default(0)
 
+  @@index([email])
   @@map("otp")
 }

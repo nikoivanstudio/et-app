@@ -3,8 +3,8 @@ import { z } from 'zod';
 import { PartnerApplicationDomain } from '@/entities/partner-application';
 
 export const createApplicationSchema = z.object({
-  type: z.nativeEnum(PartnerApplicationDomain.PartnerApplicationType, {
-    errorMap: () => ({ message: 'Выберите тип партнёрства' })
+  type: z.enum(PartnerApplicationDomain.PartnerApplicationType, {
+    error: () => 'Выберите тип партнёрства'
   }),
   agreement: z
     .union([z.literal('on'), z.literal('true'), z.boolean()])

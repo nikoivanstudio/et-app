@@ -3,10 +3,11 @@ import { NextRequest } from 'next/server';
 import { userServices } from '@/features/user/server';
 
 import { roleUtils } from '@/entities/user';
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { sessionService } from '@/entities/user/server';
 
 import { Either } from '@/shared/lib/either';
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { handleError, handleForbidden, handleSuccess, handleUnauthorized } from '@/shared/lib/response-utils';
 
 import { GetUserResponse } from '../domain';
 import { searchParamsUtils } from '../lib/search-params-utils';
@@ -16,22 +17,20 @@ export async function getUsers(req: NextRequest): Promise<Response> {
     const searchParams = req.nextUrl.searchParams;
     const params = searchParamsUtils.getParamsBySearchParams(searchParams);
 
-    const cookies = req.cookies.get('session')?.value;
+    const cookies = req.cookies.get(SESSION_COOKIE_NAME)?.value;
 
     if (!cookies) {
-      return handleError({ body: 'Ошибка верификации' });
+      return handleUnauthorized();
     }
 
     const { session } = await sessionService.verifySession(cookies);
 
     if (!session) {
-      return handleError({ body: 'Ошибка верификации' });
+      return handleUnauthorized();
     }
 
     if (!roleUtils.userHasPermissionOn(session.role, 'getAllUsers')) {
-      return handleError({
-        body: 'У вас нет полномочий на просмотр всех пользователей'
-      });
+      return handleForbidden('У вас нет полномочий на просмотр всех пользователей');
     }
 
     const eitherResult: Either<string, GetUserResponse> =

@@ -1,8 +1,9 @@
 .CardTitle {
   font-family: var(--font-poire-one), serif;
-  -webkit-text-stroke: 2px #ffffffea;
-  font-size: 35px;
+  /* Обводка убрана — читаемость держит --scrim-card. */
+  color: #ffffff;
+  font-size: 27px;
   font-weight: 400;
-  letter-spacing: 1px;
-  line-height: 1.35;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
 }

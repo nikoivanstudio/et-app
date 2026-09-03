@@ -26,11 +26,12 @@ export const PageHeadTour: FC<Props> = async ({ title, mainPhoto }) => (
     content={
       <div
         className={cnPageTour(null, [
-          'h-[75vh]',
+          'h-full',
           'bg-white',
           'relative',
-          'pt-[40vh]',
-          'pb-28'
+          'flex',
+          'items-end',
+          'pb-14'
         ])}
       >
         <Image
@@ -51,14 +52,14 @@ export const PageHeadTour: FC<Props> = async ({ title, mainPhoto }) => (
           height={500}
         />
         <div
-          className={cnPageTour('Filter', [
+          className={cnPageTour('Scrim', [
             'absolute',
             'z-2',
             'top-0',
             'right-0',
             'bottom-0',
             'left-0',
-            'bg-[#0000003a]'
+            styles.PageTour__Scrim
           ])}
         ></div>
 

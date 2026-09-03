@@ -4,23 +4,18 @@ import { cn } from '@bem-react/classname';
 import Link from 'next/link';
 import { FC } from 'react';
 
+import { NAV_LINKS } from '@/widgets/app-header/model/links';
+
 import { sessionService } from '@/entities/user/services/session';
 
 const cnMainNav = cn('MainNav');
-const links = [
-  { href: '/tours', title: 'Экскурсии' },
-  { href: '/dzhip-tur-krym', title: 'Джип туры' },
-  { href: '/uslugi', title: 'Услуги' },
-  { href: '/posts', title: 'Интересное' },
-  { href: '/kontakty', title: 'Контакты' }
-];
 
 export const MainNav: FC = async () => {
   const { session } = await sessionService.verifySession();
   const linksToRender = !!session?.id
-    ? [...links, { href: `/account/${session.id}`, title: 'Профиль' }]
+    ? [...NAV_LINKS, { href: `/account/${session.id}`, title: 'Профиль' }]
     : [
-        ...links,
+        ...NAV_LINKS,
         {
           href: '/sign-in',
           title: 'Войти'
@@ -30,14 +25,14 @@ export const MainNav: FC = async () => {
   return (
     <nav
       className={cnMainNav(null, [
-        'flex items-start gap-6 text-sm font-medium flex-col md:text-2xl lg:text-3xl'
+        'flex flex-col items-start gap-2 font-oswald'
       ])}
     >
       {linksToRender.map(({ href, title }) => (
         <Link
           className={cnMainNav('Link', [
-            'px-4',
-            'transition-colors hover:text-foreground/80 text-foreground/60'
+            'flex min-h-11 items-center px-4 text-base',
+            'text-ink-muted transition-colors hover:text-ink'
           ])}
           href={href}
           key={href}

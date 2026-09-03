@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #09090b; color: #fafafa; }
+    a { color: #e4e4e7; } a:hover { color: #ffffff; }
+    th { font-weight: 400; }
+  </style>
+</helmet>
+
+<!-- GuideDashboardShellTemplate · lg:grid-cols-[280px_minmax(0,1fr)] · dark -->
+<div style="width: 1440px; min-height: 940px; display: grid; grid-template-columns: 280px minmax(0, 1fr); background: #09090b; color: #fafafa; box-sizing: border-box;">
+
+  <!-- aside -->
+  <aside style="border-right: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.3); padding: 24px 20px; box-sizing: border-box;">
+    <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); padding: 16px; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);">
+      <p style="margin: 0; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.24em; color: #a1a1aa;">Guide Dashboard</p>
+      <h2 style="margin: 12px 0 0; font-size: 20px; font-weight: 600;">Tornado / Shadcn dark</h2>
+      <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: #a1a1aa;">Статический набор шаблонов для ручной интеграции логики.</p>
+    </div>
+
+    <nav style="margin-top: 24px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid rgba(228,228,231,0.4); background: rgba(228,228,231,0.12); color: #fafafa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fafafa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+            <span>Заказы</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            <span>CRM</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+            <span>Туры</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+            <span>Отзывы</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+            <span>Профиль</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5.5-5.5 2 2-5.5z"/></svg>
+            <span>Создание/редактирование тура</span>
+          </div>
+    </nav>
+
+    <div style="margin-top: 32px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.5); padding: 16px;">
+      <p style="margin: 0; font-size: 14px; font-weight: 500;">Спортивный клуб &quot;Экстрим-спорт&quot;</p>
+      <p style="margin: 4px 0 0; font-size: 12px; color: #a1a1aa;">Иван Николаенко</p>
+      <div style="margin-top: 16px; display: flex; align-items: center; justify-content: center; width: 100%; height: 36px; box-sizing: border-box; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 14px; font-weight: 500; color: #fafafa;">Посмотреть публичную страницу</div>
+    </div>
+  </aside>
+
+  <!-- main -->
+  <main style="display: flex; min-width: 0; flex-direction: column;">
+    <header style="border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(9,9,11,0.8); padding: 20px 32px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+        <div>
+          <h1 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em;">Заказы</h1>
+          <p style="margin: 8px 0 0; max-width: 768px; font-size: 14px; color: #a1a1aa;">Текущие туры в табличном виде, по аналогии с исходным CRM-экраном.</p>
+        </div>
+        <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); padding: 12px 16px; flex: 0 0 auto;">
+          <p style="margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #a1a1aa;">Общая выручка</p>
+          <p style="margin: 4px 0 0; font-size: 20px; font-weight: 600;">1 094 087 ₽</p>
+        </div>
+      </div>
+    </header>
+
+    <div style="flex: 1 1 auto; padding: 24px 32px; display: flex; flex-direction: column; gap: 24px;">
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+          <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); display: flex; flex-direction: column;">
+            <div style="padding: 24px 24px 12px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; line-height: 1; color: #fafafa;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e4e4e7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/><path d="M12 14v4"/></svg>
+                Активные заезды
+              </div>
+            </div>
+            <div style="padding: 0 24px 24px;">
+              <p style="margin: 0; font-size: 30px; font-weight: 600; color: #fafafa;">204</p>
+            </div>
+          </div>
+          <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); display: flex; flex-direction: column;">
+            <div style="padding: 24px 24px 12px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; line-height: 1; color: #fafafa;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>
+                Подтверждено
+              </div>
+            </div>
+            <div style="padding: 0 24px 24px;">
+              <p style="margin: 0; font-size: 30px; font-weight: 600; color: #fafafa;">173</p>
+            </div>
+          </div>
+          <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); display: flex; flex-direction: column;">
+            <div style="padding: 24px 24px 12px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; line-height: 1; color: #fafafa;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5A2.5 2.5 0 0 0 12 8c-1.4 0-2.5.9-2.5 2s1.1 2 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2a2.5 2.5 0 0 1-2.5-1.5"/><path d="M12 6v12"/></svg>
+                На месте к оплате
+              </div>
+            </div>
+            <div style="padding: 0 24px 24px;">
+              <p style="margin: 0; font-size: 30px; font-weight: 600; color: #fafafa;">86 425 ₽</p>
+            </div>
+          </div>
+      </div>
+
+      <div style="border-radius: 24px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); overflow: hidden;">
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 24px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 12px; background: #e4e4e7; color: #18181b; font-size: 14px; font-weight: 500;">Текущие</span>
+                  <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 12px; color: #a1a1aa; font-size: 14px; font-weight: 500;">Сертификаты</span>
+                  <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 12px; color: #a1a1aa; font-size: 14px; font-weight: 500;">Успешные</span>
+                  <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 12px; color: #a1a1aa; font-size: 14px; font-weight: 500;">Отмененные</span>
+                  <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 12px; color: #a1a1aa; font-size: 14px; font-weight: 500;">Архив</span>
+            </div>
+            <div style="display: flex; gap: 12px;">
+              <div style="position: relative; min-width: 256px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" style="position: absolute; top: 50%; left: 12px; transform: translateY(-50%);"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+                <div style="display: flex; align-items: center; height: 36px; box-sizing: border-box; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; background: rgba(255,255,255,0.03); padding: 4px 12px 4px 36px; font-size: 14px; color: #a1a1aa;">Поиск по заказам</div>
+              </div>
+              <div style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 14px; font-weight: 500;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fafafa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg>
+                Фильтры
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table style="min-width: 1100px; width: 100%; border-collapse: collapse; font-size: 14px;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em; color: #a1a1aa;">
+                <th style="padding: 16px 24px;">Детали</th>
+                <th style="padding: 16px;">Статус</th>
+                <th style="padding: 16px;">Тур</th>
+                <th style="padding: 16px;">Старт</th>
+                <th style="padding: 16px;">Время</th>
+                <th style="padding: 16px;">Чел.</th>
+                <th style="padding: 16px;">Длит-сть</th>
+                <th style="padding: 16px;">ФИО</th>
+                <th style="padding: 16px;">Телефон</th>
+                <th style="padding: 16px; text-align: right;">Наш доход</th>
+                <th style="padding: 16px 24px; text-align: right;">На месте</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 16px 24px; vertical-align: top;">
+                    <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 8px; background: #e4e4e7; color: #18181b; font-size: 14px; font-weight: 500;">Детали</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <span style="display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(16,185,129,0.3); background: rgba(16,185,129,0.15); color: #6ee7b7;">7844</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <div style="width: 192px; display: flex; flex-direction: column; gap: 4px;">
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Пещерный город Эски-Кермен</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">ID заказа 7844</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">14.09.25</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">10:00</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">5</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">7 часов</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">Дмитрий</td>
+                  <td style="padding: 16px; vertical-align: top; color: #a1a1aa;">+7 927 872 48 85</td>
+                  <td style="padding: 16px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">11 050 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">11 050 ₽</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 16px 24px; vertical-align: top;">
+                    <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 8px; background: #e4e4e7; color: #18181b; font-size: 14px; font-weight: 500;">Детали</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <span style="display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(245,158,11,0.3); background: rgba(245,158,11,0.15); color: #fcd34d;">7664</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <div style="width: 192px; display: flex; flex-direction: column; gap: 4px;">
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Джип-тур Марсианское озеро</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">ID заказа 7664</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">01.08.25</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">11:00</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">6</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">5 часов</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">Петр</td>
+                  <td style="padding: 16px; vertical-align: top; color: #a1a1aa;">+7 905 862 20 09</td>
+                  <td style="padding: 16px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">8 500 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">8 500 ₽</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 16px 24px; vertical-align: top;">
+                    <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 8px; background: #e4e4e7; color: #18181b; font-size: 14px; font-weight: 500;">Детали</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <span style="display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(16,185,129,0.3); background: rgba(16,185,129,0.15); color: #6ee7b7;">7370</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <div style="width: 192px; display: flex; flex-direction: column; gap: 4px;">
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Фиолент и крепость Чембало</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">ID заказа 7370</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">16.07.25</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">09:30</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">4</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">6 часов</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">Елизавета</td>
+                  <td style="padding: 16px; vertical-align: top; color: #a1a1aa;">+7 985 114 43 25</td>
+                  <td style="padding: 16px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">8 925 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">8 925 ₽</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 16px 24px; vertical-align: top;">
+                    <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 8px; background: #e4e4e7; color: #18181b; font-size: 14px; font-weight: 500;">Детали</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <span style="display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(14,165,233,0.3); background: rgba(14,165,233,0.15); color: #7dd3fc;">7018</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <div style="width: 192px; display: flex; flex-direction: column; gap: 4px;">
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Ай-Петри зимой из Севастополя</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">ID заказа 7018</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">22.06.25</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">10:00</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">4</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">6 часов</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">Артем</td>
+                  <td style="padding: 16px; vertical-align: top; color: #a1a1aa;">+7 981 544 09 98</td>
+                  <td style="padding: 16px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">12 750 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">12 750 ₽</td>
+                </tr>
+                <tr style="">
+                  <td style="padding: 16px 24px; vertical-align: top;">
+                    <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 8px; background: #e4e4e7; color: #18181b; font-size: 14px; font-weight: 500;">Детали</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <span style="display: inline-flex; border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(16,185,129,0.3); background: rgba(16,185,129,0.15); color: #6ee7b7;">7045</span>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top;">
+                    <div style="width: 192px; display: flex; flex-direction: column; gap: 4px;">
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Три крепости на джипах</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">ID заказа 7045</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">09.06.25</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">11:00</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">9</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">5 часов</td>
+                  <td style="padding: 16px; vertical-align: top; color: #fafafa;">Константин</td>
+                  <td style="padding: 16px; vertical-align: top; color: #a1a1aa;">+7 949 363 10 34</td>
+                  <td style="padding: 16px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">17 000 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: top; text-align: right; font-weight: 500; color: #fafafa;">17 000 ₽</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 12px; color: #a1a1aa;">
+        <span style="display: inline-flex; align-items: center; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); padding: 2px 8px; font-weight: 500; color: #fafafa;">Текущие туры</span>
+        <span>Шаблон повторяет структуру исходной таблицы и вкладок.</span>
+      </div>
+
+    </div>
+  </main>
+</div>
+</x-dc>
+</body>
+</html>

@@ -29,7 +29,7 @@ export const PageHeadPost: FC<Props> = async ({ title, mainPhoto }) => {
       content={
         <div
           className={cnPagePost(null, [
-            'h-[75vh]',
+            'h-full',
             'bg-white',
             'relative',
             'flex',
@@ -55,31 +55,41 @@ export const PageHeadPost: FC<Props> = async ({ title, mainPhoto }) => {
             height={500}
           />
           <div
-            className={cnPagePost('Filter', [
+            className={cnPagePost('Scrim', [
               'absolute',
               'z-2',
               'top-0',
               'right-0',
               'bottom-0',
               'left-0',
-              'bg-[#0000003a]'
+              styles.PagePost__Scrim
             ])}
           ></div>
 
-          <Title
-            className={cnPagePost('Title', [
-              'z-2',
+          {/* Заголовок держим в той же колонке, что и контент, — на десктопе
+              он прижимался к левому краю окна. */}
+          <div
+            className={cnPagePost('TitleWrap', [
               'relative',
-              'px-4',
+              'z-2',
               'mt-auto',
-              'pt-22',
-              'text-left',
-              styles.PagePost__Title
+              'w-full',
+              'mx-auto',
+              'max-w-[720px]',
+              'px-4',
+              'md:px-6'
             ])}
-            type='h1'
           >
-            {title}
-          </Title>
+            <Title
+              className={cnPagePost('Title', [
+                'text-left',
+                styles.PagePost__Title
+              ])}
+              type='h1'
+            >
+              {title}
+            </Title>
+          </div>
         </div>
       }
     />

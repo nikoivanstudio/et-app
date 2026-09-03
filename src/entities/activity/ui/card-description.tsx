@@ -9,9 +9,9 @@ export const CardDescription: FC<PropsWithChildren> = async ({ children }) => (
   <div
     className={cnCardDescription(null, [
       'flex',
+      'shrink-0',
       'items-center',
-      'px-1',
-      'gap-0.5'
+      'gap-2'
     ])}
   >
     {children}

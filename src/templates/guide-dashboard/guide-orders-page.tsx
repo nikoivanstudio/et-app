@@ -11,8 +11,14 @@ import { GuideDashboardShellTemplate } from './guide-dashboard-shell';
 
 const statusTone = {
   confirmed: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
-  pending: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+  pending: 'bg-[var(--gold-photo)]/15 text-[var(--gold-photo)] border-[var(--gold-photo)]/30',
   paid: 'bg-sky-500/15 text-sky-300 border-sky-500/30'
+} as const;
+
+const statusLabel = {
+  confirmed: 'Подтверждён',
+  pending: 'Ожидает',
+  paid: 'Новый'
 } as const;
 
 export function GuideOrdersPageTemplate() {
@@ -20,10 +26,10 @@ export function GuideOrdersPageTemplate() {
     <GuideDashboardShellTemplate
       activeItem='orders'
       title='Заказы'
-      subtitle='Текущие туры в табличном виде, по аналогии с исходным CRM-экраном.'
+      subtitle='Текущие туры. Шесть колонок вместо одиннадцати — таблица влезает в экран без горизонтальной прокрутки.'
       actions={
         <div className='flex items-center gap-3'>
-          <Card className='gap-0 rounded-2xl border-border/60 bg-card/70 px-4 py-3'>
+          <Card className='gap-0 rounded-block border-border/60 bg-card/70 px-4 py-3'>
             <p className='text-[11px] uppercase tracking-[0.2em] text-muted-foreground'>
               Общая выручка
             </p>
@@ -34,7 +40,7 @@ export function GuideOrdersPageTemplate() {
     >
       <div className='space-y-6'>
         <div className='grid gap-4 md:grid-cols-3'>
-          <Card className='rounded-2xl border-border/60 bg-card/70'>
+          <Card className='rounded-block border-border/60 bg-card/70'>
             <CardHeader className='pb-3'>
               <CardTitle className='flex items-center gap-2 text-base'>
                 <CalendarClock className='size-4 text-primary' />
@@ -45,7 +51,7 @@ export function GuideOrdersPageTemplate() {
               <p className='text-3xl font-semibold'>204</p>
             </CardContent>
           </Card>
-          <Card className='rounded-2xl border-border/60 bg-card/70'>
+          <Card className='rounded-block border-border/60 bg-card/70'>
             <CardHeader className='pb-3'>
               <CardTitle className='flex items-center gap-2 text-base'>
                 <CheckCircle2 className='size-4 text-emerald-400' />
@@ -56,10 +62,10 @@ export function GuideOrdersPageTemplate() {
               <p className='text-3xl font-semibold'>173</p>
             </CardContent>
           </Card>
-          <Card className='rounded-2xl border-border/60 bg-card/70'>
+          <Card className='rounded-block border-border/60 bg-card/70'>
             <CardHeader className='pb-3'>
               <CardTitle className='flex items-center gap-2 text-base'>
-                <CircleDollarSign className='size-4 text-amber-400' />
+                <CircleDollarSign className='size-4 text-[var(--gold-photo)]' />
                 На месте к оплате
               </CardTitle>
             </CardHeader>
@@ -69,7 +75,7 @@ export function GuideOrdersPageTemplate() {
           </Card>
         </div>
 
-        <Card className='rounded-3xl border-border/60 bg-card/70 py-0'>
+        <Card className='rounded-card border-border/60 bg-card/70 py-0'>
           <CardHeader className='gap-4 border-b border-border/60 py-5'>
             <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
               <div className='flex flex-wrap gap-2'>
@@ -77,7 +83,7 @@ export function GuideOrdersPageTemplate() {
                   <Button
                     key={tab}
                     variant={index === 0 ? 'default' : 'ghost'}
-                    className={cn('rounded-xl', index !== 0 && 'text-muted-foreground')}
+                    className={cn('rounded-control', index !== 0 && 'text-muted-foreground')}
                   >
                     {tab}
                   </Button>
@@ -88,7 +94,7 @@ export function GuideOrdersPageTemplate() {
                   <Search className='pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground' />
                   <Input className='pl-9' placeholder='Поиск по заказам' />
                 </div>
-                <Button variant='outline' className='rounded-xl'>
+                <Button variant='outline' className='rounded-control'>
                   <Filter className='size-4' />
                   Фильтры
                 </Button>
@@ -97,54 +103,63 @@ export function GuideOrdersPageTemplate() {
           </CardHeader>
 
           <CardContent className='overflow-x-auto px-0'>
-            <table className='min-w-[1100px] text-sm'>
+            <table className='w-full text-sm'>
               <thead className='border-b border-border/60 text-left text-xs uppercase tracking-[0.16em] text-muted-foreground'>
                 <tr>
-                  <th className='px-6 py-4'>Детали</th>
-                  <th className='px-4 py-4'>Статус</th>
-                  <th className='px-4 py-4'>Тур</th>
-                  <th className='px-4 py-4'>Старт</th>
-                  <th className='px-4 py-4'>Время</th>
-                  <th className='px-4 py-4'>Чел.</th>
-                  <th className='px-4 py-4'>Длит-сть</th>
-                  <th className='px-4 py-4'>ФИО</th>
-                  <th className='px-4 py-4'>Телефон</th>
+                  <th className='px-6 py-4'>Тур и статус</th>
+                  <th className='px-4 py-4'>Выезд</th>
+                  <th className='px-4 py-4 text-center'>Чел.</th>
+                  <th className='px-4 py-4'>Клиент</th>
                   <th className='px-4 py-4 text-right'>Наш доход</th>
-                  <th className='px-6 py-4 text-right'>На месте</th>
+                  <th className='px-6 py-4' />
                 </tr>
               </thead>
               <tbody>
                 {orders.map((order) => (
                   <tr key={order.id} className='border-b border-border/50 last:border-b-0'>
-                    <td className='px-6 py-4 align-top'>
-                      <Button size='sm' className='rounded-lg'>
-                        Детали
-                      </Button>
-                    </td>
-                    <td className='px-4 py-4 align-top'>
-                      <span
-                        className={cn(
-                          'inline-flex rounded-full border px-2.5 py-1 text-xs font-medium',
-                          statusTone[order.status]
-                        )}
-                      >
-                        {order.id}
-                      </span>
-                    </td>
-                    <td className='px-4 py-4 align-top'>
-                      <div className='w-48 space-y-1'>
+                    <td className='px-6 py-4'>
+                      <div className='space-y-1.5'>
+                        <span
+                          className={cn(
+                            'inline-flex rounded-full border px-2.5 py-0.5 text-xs font-medium',
+                            statusTone[order.status]
+                          )}
+                        >
+                          {statusLabel[order.status]}
+                        </span>
                         <p className='font-medium'>{order.tour}</p>
-                        <p className='text-xs text-muted-foreground'>ID заказа {order.id}</p>
+                        <p className='text-xs text-muted-foreground'>
+                          Заказ № {order.id}
+                        </p>
                       </div>
                     </td>
-                    <td className='px-4 py-4 align-top'>{order.date}</td>
-                    <td className='px-4 py-4 align-top'>{order.time}</td>
-                    <td className='px-4 py-4 align-top'>{order.guests}</td>
-                    <td className='px-4 py-4 align-top'>{order.duration}</td>
-                    <td className='px-4 py-4 align-top'>{order.client}</td>
-                    <td className='px-4 py-4 align-top text-muted-foreground'>{order.phone}</td>
-                    <td className='px-4 py-4 text-right align-top font-medium'>{order.income}</td>
-                    <td className='px-6 py-4 text-right align-top font-medium'>{order.payout}</td>
+                    <td className='px-4 py-4 whitespace-nowrap'>
+                      <p>
+                        {order.date} · {order.time}
+                      </p>
+                      <p className='mt-0.5 text-xs text-muted-foreground'>
+                        {order.duration}
+                      </p>
+                    </td>
+                    <td className='px-4 py-4 text-center'>{order.guests}</td>
+                    <td className='px-4 py-4 whitespace-nowrap'>
+                      <p>{order.client}</p>
+                      <p className='mt-0.5 text-xs text-muted-foreground'>
+                        {order.phone}
+                      </p>
+                    </td>
+                    <td className='px-4 py-4 text-right font-medium whitespace-nowrap'>
+                      {order.income}
+                    </td>
+                    <td className='px-6 py-4 text-right'>
+                      <Button
+                        size='sm'
+                        variant='outline'
+                        className='rounded-control whitespace-nowrap'
+                      >
+                        Детали →
+                      </Button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -154,7 +169,11 @@ export function GuideOrdersPageTemplate() {
 
         <div className='flex items-center gap-3 text-xs text-muted-foreground'>
           <Badge variant='outline'>Текущие туры</Badge>
-          <span>Шаблон повторяет структуру исходной таблицы и вкладок.</span>
+          <span>
+            Статус, тур и номер собраны в одну ячейку, дата со временем и
+            длительностью — в другую, ФИО с телефоном — в третью. «На месте к
+            оплате» вынесено в сводную карточку сверху.
+          </span>
         </div>
       </div>
     </GuideDashboardShellTemplate>

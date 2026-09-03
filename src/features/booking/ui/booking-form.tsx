@@ -16,9 +16,10 @@ type Props = {
   onSuccess: (result: CreateBookingResult) => void;
 };
 
-const labelCls = 'block font-[Oswald,sans-serif] text-xs tracking-wide text-[#6B5F47] mb-1.5';
+const labelCls =
+  'mb-1.5 block font-oswald text-xs uppercase tracking-wide text-ink-muted';
 const inputCls =
-  'w-full rounded-xl border border-[#E2D5B7] bg-[#FBF7EE] px-3 py-3 text-sm text-[#1F1A12] outline-none placeholder:text-[#a99a80] focus:border-[#B8915A]';
+  'w-full min-h-12 rounded-control border border-rule bg-[#fffdf8] px-3.5 py-3 text-sm text-ink outline-none placeholder:text-ink-faint focus:border-[1.5px] focus:border-cta';
 
 export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
   const [name, setName] = useState('');
@@ -69,14 +70,14 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
   const message = localError || error?.message;
 
   return (
-    <form onSubmit={onSubmit} className='font-[Caladea,serif]'>
-      <p className='text-[12.5px] text-[#6B5F47]'>
+    <form onSubmit={onSubmit} className='font-caladea'>
+      <p className='text-[12.5px] text-ink-muted'>
         Гид свяжется с вами и подтвердит детали. Предоплата не требуется.
       </p>
 
       <div className='mt-4'>
         <label className={labelCls} htmlFor='bk-name'>
-          Ваше имя <span className='text-[#b4452f]'>*</span>
+          Ваше имя <span className='text-alert-ink'>*</span>
         </label>
         <input
           id='bk-name'
@@ -90,7 +91,7 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
 
       <div className='mt-3'>
         <label className={labelCls} htmlFor='bk-phone'>
-          Телефон <span className='text-[#b4452f]'>*</span>
+          Телефон <span className='text-alert-ink'>*</span>
         </label>
         <input
           id='bk-phone'
@@ -118,23 +119,23 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
         </div>
         <div>
           <label className={labelCls}>Гостей</label>
-          <div className='flex items-center justify-between rounded-xl border border-[#E2D5B7] bg-[#FBF7EE] px-2 py-[7px]'>
+          <div className='flex min-h-12 items-center justify-between rounded-control border border-rule bg-[#fffdf8] px-1.5'>
             <button
               type='button'
               aria-label='Меньше гостей'
               onClick={() => setPeopleCount(v => Math.max(1, v - 1))}
-              className='grid h-8 w-8 place-items-center rounded-lg border border-[#E2D5B7] bg-white text-[#8B6F3D]'
+              className='grid h-11 w-11 place-items-center rounded-control border border-rule bg-white text-gold-head'
             >
               <Minus className='size-4' />
             </button>
-            <b className='font-[Oswald,sans-serif] text-base text-[#1F1A12]'>
+            <b className='font-oswald text-base text-ink'>
               {peopleCount}
             </b>
             <button
               type='button'
               aria-label='Больше гостей'
               onClick={() => setPeopleCount(v => Math.min(100, v + 1))}
-              className='grid h-8 w-8 place-items-center rounded-lg border border-[#E2D5B7] bg-white text-[#8B6F3D]'
+              className='grid h-11 w-11 place-items-center rounded-control border border-rule bg-white text-gold-head'
             >
               <Plus className='size-4' />
             </button>
@@ -144,7 +145,7 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
 
       <div className='mt-3'>
         <label className={labelCls} htmlFor='bk-email'>
-          Email <span className='text-[#9b8e72]'>(для входа и истории)</span>
+          Email <span className='text-ink-faint'>(для входа и истории)</span>
         </label>
         <input
           id='bk-email'
@@ -181,18 +182,18 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
         onChange={e => setCompany(e.target.value)}
       />
 
-      <label className='mt-3.5 flex items-start gap-2.5 text-[12px] leading-snug text-[#6B5F47]'>
+      <label className='mt-3.5 flex items-start gap-2.5 text-[12px] leading-snug text-ink-muted'>
         <input
           type='checkbox'
           checked={agreement}
           onChange={e => setAgreement(e.target.checked)}
-          className='mt-0.5 size-4 accent-[#B8915A]'
+          className='mt-0.5 size-4 accent-cta'
         />
         <span>Согласен на обработку данных и условия платформы</span>
       </label>
 
       {!!message && (
-        <p className='mt-3 rounded-lg bg-[#b4452f]/10 px-3 py-2 text-[13px] text-[#b4452f]'>
+        <p className='mt-3 rounded-control bg-alert-bg px-3 py-2 text-[13px] text-alert-ink'>
           {message}
         </p>
       )}
@@ -200,11 +201,11 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
       <button
         type='submit'
         disabled={isPending}
-        className='mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-[#B8915A] px-4 py-3.5 font-[Oswald,sans-serif] tracking-wide text-[#FBF7EE] disabled:opacity-60'
+        className='mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-pill bg-cta px-4 font-oswald text-base font-medium tracking-wide text-on-cta hover:bg-cta-press disabled:opacity-60'
       >
         {isPending ? 'Отправляем…' : 'Отправить заявку'}
         {!!priceLabel && !isPending && (
-          <span className='opacity-80'>· {priceLabel}</span>
+          <span className='opacity-70'>· {priceLabel}</span>
         )}
       </button>
     </form>

@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --cta-press: #a8814b; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-ink: #4a6626; --free-bg: #edf3e2; --alert-ink: #9e3a25; --alert-bg: #f9e6e2;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.78) 0%, rgba(20,14,6,.34) 46%, rgba(20,14,6,.72) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 38%, rgba(20,14,6,.82) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.55), rgba(20,14,6,.8));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+      --sp-s: 48px; --sp-m: 80px; --sp-l: 120px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .fd { padding: 40px 44px 56px; }
+    h1.fd-t { margin: 0; font-family: 'Poiret One', serif; font-size: 44px; letter-spacing: 3px; color: var(--gold-head); text-transform: uppercase; }
+    .fd-lead { margin: 10px 0 0; max-width: 84ch; font-size: 14.5px; line-height: 1.6; color: var(--ink-muted); }
+    .fd-k { margin: 40px 0 14px; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--ink-faint); }
+    .fd-c { background: #fff; border: 1px solid var(--rule); border-radius: var(--r-block); padding: 20px 22px; }
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .fd-h { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+    .fd-note { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-muted); }
+    .sw { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+    .sw > div > div:first-child { height: 62px; border-radius: 12px; border: 1px solid #0000000f; }
+    .sw b { display: block; margin-top: 7px; font-size: 12px; font-weight: 600; }
+    .sw span { display: block; font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--ink-faint); }
+    .ok { color: #4a6626; font-family: 'Oswald', sans-serif; font-size: 11.5px; }
+    .no { color: #9e3a25; font-family: 'Oswald', sans-serif; font-size: 11.5px; }
+    code { font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; color: var(--gold-ink); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 40px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-size: 16px; font-weight: 600; letter-spacing: .04em; border: 0; }
+    .btn-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: var(--r-pill); background: transparent; border: 1.5px solid var(--cta); color: var(--gold-ink); font-size: 15px; font-weight: 600; }
+    .btn-photo { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 34px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-size: 16px; font-weight: 600; box-shadow: 0 6px 20px #00000059; }
+    .field { height: 48px; border: 1px solid var(--rule); border-radius: var(--r-control); background: #fffdf8; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: var(--ink-faint); }
+    .lab { font-size: 12px; font-family: 'Oswald', sans-serif; letter-spacing: .8px; color: var(--ink-muted); margin-bottom: 6px; }
+    .stat { display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: .6px; white-space: nowrap; flex: 0 0 auto; }
+    .demo { position: relative; height: 168px; border-radius: var(--r-block); overflow: hidden; background-size: cover; background-position: center; }
+    .rad { height: 54px; background: var(--cream-deep); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; font-family: 'Oswald'; font-size: 12px; color: var(--ink-muted); }
+    table.sp { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.sp td { padding: 9px 10px; border-bottom: 1px solid #efe8d8; vertical-align: middle; }
+    table.sp tr:last-child td { border-bottom: 0; }
+    .bar { height: 12px; border-radius: 4px; background: var(--gold-plate); }
+  </style>
+</helmet>
+
+<div class="fd">
+  <h1 class="fd-t">Energy Tour — Foundations v2</h1>
+  <p class="fd-lead">Применённая версия. Одна главная кнопка, золото разведено по роли, текст поверх фото живёт на скриме, зелёный работает только как статус. Каждое значение подписано измеренным контрастом — порог AA: 4.5:1 для обычного текста, 3:1 для крупного. Токены отсюда переносятся в <code>globals.css</code> первыми.</p>
+
+  <div class="fd-k">Действие — одна кнопка на весь продукт</div>
+  <div class="g3">
+    <div class="fd-c">
+      <p class="fd-h">Основная</p>
+      <div style="padding: 16px 0 10px;"><span class="btn">Все туры</span></div>
+      <p class="fd-note"><code>--cta #B8915A</code> + <code>--on-cta #1F1A12</code> · <span class="ok">5.96:1</span><br>Высота 48px, радиус <code>--r-pill</code>. Ей же теперь рисуется «Забронировать».</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Поверх фото</p>
+      <div style="padding: 16px 0 10px;"><span class="btn-photo">Все туры</span></div>
+      <p class="fd-note">Та же плашка плюс тень <code>0 6px 20px #00000059</code>, чтобы не растворялась в кадре. Цвета не меняются.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Второстепенная</p>
+      <div style="padding: 16px 0 10px;"><span class="btn-ghost">Все направления</span></div>
+      <p class="fd-note">Контур <code>--cta</code>, текст <code>--gold-ink</code> · <span class="ok">5.35:1</span>. Больше двух уровней кнопок не вводим.</p>
+    </div>
+  </div>
+  <div class="fd-c" style="margin-top: 20px; display: flex; align-items: center; gap: 28px;">
+    <div style="flex: 0 0 auto;">
+      <p class="lab" style="margin-bottom: 10px;">БЫЛО</p>
+      <span style="display:inline-flex; align-items:center; min-height: 48px; padding: 0 34px; border-radius: 999px; background: #22c55e; color: #fff; font-size: 16px;">Все туры</span>
+      <p class="fd-note"><span class="no">2.28:1</span> · <code>green-500</code></p>
+    </div>
+    <div style="font-size: 24px; color: var(--ink-faint);">→</div>
+    <div style="flex: 0 0 auto;">
+      <p class="lab" style="margin-bottom: 10px;">СТАЛО</p>
+      <span class="btn">Все туры</span>
+      <p class="fd-note"><span class="ok">5.96:1</span> · золото бренда</p>
+    </div>
+    <p class="fd-note" style="flex: 1; margin: 0;">Зелёный убран из действий целиком. Токен <code>--light-green: #81d178</code> удаляется: он всё равно не применялся, потому что <code>@bem-react/classname</code> отдаёт глобальный класс <code>LinkButton</code>, а SCSS-модуль хеширует своё имя.</p>
+  </div>
+
+  <div class="fd-k">Золото — по роли, а не одним цветом</div>
+  <div class="fd-c">
+    <div class="sw">
+      <div><div style="background: #e8b055;"></div><b>--gold-photo</b><span>#E8B055</span><span class="ok">6.40:1 на скриме</span></div>
+      <div><div style="background: #8b6f3d;"></div><b>--gold-head</b><span>#8B6F3D</span><span class="ok">4.38:1 на светлом</span></div>
+      <div><div style="background: #7d6234;"></div><b>--gold-ink</b><span>#7D6234</span><span class="ok">5.35:1 на креме</span></div>
+      <div><div style="background: #b8915a;"></div><b>--gold-plate</b><span>#B8915A</span><span class="ok">под тушь 5.96:1</span></div>
+    </div>
+    <p class="fd-note">Прежний единственный <code>#d19331</code> давал 2.45:1 на светлом фоне и 1.35:1 на небе — им нельзя было писать нигде. Теперь у каждой роли свой тон: светлое золото только поверх скрима, тёмное — на бумаге, плашечное — под тёмную тушь.</p>
+  </div>
+
+  <div class="fd-k">Тушь, бумага, статусы</div>
+  <div class="g2">
+    <div class="fd-c">
+      <div class="sw" style="grid-template-columns: repeat(3, 1fr);">
+        <div><div style="background: #1f1a12;"></div><b>--ink</b><span>#1F1A12</span></div>
+        <div><div style="background: #6b5f47;"></div><b>--ink-muted</b><span>#6B5F47</span><span class="ok">5.86:1</span></div>
+        <div><div style="background: #7f6f52;"></div><b>--ink-faint</b><span>#7F6F52</span><span class="ok">4.57:1</span></div>
+        <div><div style="background: #fbf7ee;"></div><b>--cream</b><span>#FBF7EE</span></div>
+        <div><div style="background: #f4ecdd;"></div><b>--cream-deep</b><span>#F4ECDD</span></div>
+        <div><div style="background: #f7f6f3;"></div><b>--page</b><span>#F7F6F3</span></div>
+      </div>
+      <p class="fd-note">Прежний <code>ink-faint #8A7A5C</code> давал 3.91:1 — заменён на <code>#7F6F52</code>. Серый <code>#e6e6e6</code> из фона приложения заменён на тёплый <code>--page</code>: он держит один ряд с кремом и не выглядит «незакрашенным».</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Зелёный и красный — только статус</p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px;">
+        <span class="stat" style="background: var(--free-bg); color: var(--free-ink);">бесплатно</span>
+        <span class="stat" style="background: var(--free-bg); color: var(--free-ink);">6 мест</span>
+        <span class="stat" style="background: var(--alert-bg); color: var(--alert-ink);">2 места</span>
+        <span class="stat" style="background: var(--cream-deep); color: var(--ink-muted);">архив</span>
+      </div>
+      <p class="fd-note"><code>--free-ink #4A6626</code> на <code>#EDF3E2</code> · <span class="ok">5.75:1</span><br><code>--alert-ink #9E3A25</code> на <code>#F9E6E2</code> · <span class="ok">5.65:1</span><br>Раньше эти же роли рисовались насыщенными <code>#5C7A2E</code> и <code>#B4452F</code> прямо на фото — на кадре они не читались. Радиус у статуса 8px: он не кнопка, кликать его не надо.</p>
+    </div>
+  </div>
+
+  <div class="fd-k">Скримы — вместо маски 16% и обводки текста</div>
+  <div class="g3">
+    <div class="fd-c">
+      <p class="lab">--scrim-hero · шапки</p>
+      <div class="demo" style="background-image: url(./hero.jpg);">
+        <div style="position: absolute; inset: 0; background: var(--scrim-hero);"></div>
+        <div style="position: absolute; left: 16px; right: 16px; top: 20px; text-align: right; font-family: 'Poiret One', serif;">
+          <span style="display: block; text-transform: uppercase; font-size: 26px; letter-spacing: 3px; color: var(--gold-photo);">Джип туры</span>
+          <span style="display: block; margin-top: 10px; font-size: 19px; letter-spacing: 1px; color: #fff;">Экскурсии по Крыму</span>
+        </div>
+      </div>
+      <p class="fd-note">Золото <span class="ok">6.40:1</span>, белый <span class="ok">12.5:1</span>. <code>-webkit-text-stroke</code> убран везде — Poiret One снова тонкий, каким его и рисовали.</p>
+    </div>
+    <div class="fd-c">
+      <p class="lab">--scrim-card · карточки</p>
+      <div class="demo" style="background-image: url(./card1.jpg);">
+        <div style="position: absolute; inset: 0; background: var(--scrim-card);"></div>
+        <div style="position: absolute; left: 14px; right: 14px; bottom: 12px;">
+          <div style="font-family: 'Poiret One', serif; font-size: 21px; color: #fff; line-height: 1.25;">Пещерный город</div>
+          <div style="display: flex; gap: 8px; align-items: baseline; margin-top: 6px; font-family: 'Oswald'; color: #fff;"><b style="font-size: 15px;">от 7 000 ₽</b><span style="opacity:.85; font-size: 12px;">· 7 часов · ★ 4.9</span></div>
+        </div>
+      </div>
+      <p class="fd-note">Прозрачный сверху, плотный снизу: кадр видно, а факты читаются на любом фото, а не только на удачном.</p>
+    </div>
+    <div class="fd-c">
+      <p class="lab">--scrim-band · полосы и блоки</p>
+      <div class="demo" style="background-image: url(./activities.jpg);">
+        <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+        <div style="position: absolute; left: 14px; right: 14px; top: 18px;">
+          <div style="font-family: 'Poiret One', serif; font-size: 22px; color: var(--gold-photo); text-align: center;">Ближайшие туры</div>
+          <div style="margin-top: 12px; border-radius: 12px; background: rgba(20,14,6,.62); padding: 10px 12px; display: flex; align-items: center; gap: 10px; color: #fff;">
+            <b style="font-family: 'Oswald'; font-size: 17px;">12–14</b>
+            <span style="font-size: 12px; opacity: .9;">Марсианское озеро</span>
+            <span class="stat" style="margin-left: auto; background: var(--free-bg); color: var(--free-ink);">4 места</span>
+          </div>
+        </div>
+      </div>
+      <p class="fd-note">Ряды на фото получают собственную подложку <code>rgba(20,14,6,.62)</code> вместо стекла 10% — белый по ней 9:1 вместо 2.8:1.</p>
+    </div>
+  </div>
+
+  <div class="fd-k">Радиусы — четыре, не девять</div>
+  <div class="fd-c">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;">
+      <div><div class="rad" style="border-radius: var(--r-pill);">--r-pill 999</div><p class="fd-note">кнопки, чипы, аватары</p></div>
+      <div><div class="rad" style="border-radius: var(--r-card);">--r-card 24</div><p class="fd-note">карточки туров, фотоблоки</p></div>
+      <div><div class="rad" style="border-radius: var(--r-block);">--r-block 16</div><p class="fd-note">блоки контента, диалоги</p></div>
+      <div><div class="rad" style="border-radius: var(--r-control);">--r-control 10</div><p class="fd-note">поля, селекты, статусы 8</p></div>
+    </div>
+    <p class="fd-note">Было вперемешку: 32 на карточках, 30 на маске, 14 у диалога, 10 у полей, 6 у shadcn-инпутов, 12 в дашборде. Скругление верхнего края контентного блока остаётся 32px — это единственный «нестандартный» радиус, и он один на весь сайт.</p>
+  </div>
+
+  <div class="fd-k">Интервалы и единственное наложение</div>
+  <div class="g2">
+    <div class="fd-c">
+      <table class="sp">
+        <tr><td style="width: 90px;"><code>--sp-s</code></td><td style="width: 46px;">48</td><td><div class="bar" style="width: 48px;"></div></td><td>внутри блока, между карточками</td></tr>
+        <tr><td><code>--sp-m</code></td><td>80</td><td><div class="bar" style="width: 80px;"></div></td><td>между секциями</td></tr>
+        <tr><td><code>--sp-l</code></td><td>120</td><td><div class="bar" style="width: 120px;"></div></td><td>до и после блока с фоновым фото</td></tr>
+      </table>
+      <p class="fd-note">Убраны <code>mt-[-15vh]</code>, <code>-45px</code>, <code>-70px</code>, <code>-75px</code>, <code>mt-[8%]</code>, <code>mt-[25vh]</code>. Из-за них на главной висело ≈200px пустого фото перед «Контактами» и ≈100px пустоты в самом низу.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Наложение контента на шапку — один приём</p>
+      <div style="margin-top: 12px; border-radius: var(--r-block); overflow: hidden; border: 1px solid var(--rule);">
+        <div style="height: 96px; background: url(./tours.jpg) center/cover; position: relative;">
+          <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+        </div>
+        <div style="margin-top: -32px; position: relative; border-radius: 32px 32px 0 0; background: var(--page); height: 84px; padding: 16px;">
+          <div style="height: 52px; border-radius: var(--r-card); background: var(--cream-deep);"></div>
+        </div>
+      </div>
+      <p class="fd-note">Контент поднимается на <b>−32px</b> и закрывает фото скруглением 32px сверху. Так уже сделана страница тура — теперь так же главная и каталог. Ровно одно наложение на страницу, остальное — интервалы.</p>
+    </div>
+  </div>
+
+  <div class="fd-k">Типографика</div>
+  <div class="g3">
+    <div class="fd-c">
+      <p class="fd-h">Poiret One <code>--font-poire-one</code></p>
+      <div style="font-family: 'Poiret One', serif; color: var(--gold-head); font-size: 40px; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; line-height: 1;">Джип туры</div>
+      <p class="fd-note">H1 · 40px / ls 4px / без stroke</p>
+      <div style="font-family: 'Poiret One', serif; color: var(--ink); font-size: 28px; letter-spacing: 1px; margin-top: 14px;">Экскурсии по Крыму</div>
+      <p class="fd-note">H1 вторая строка · 28px, на фото белым</p>
+      <div style="font-family: 'Poiret One', serif; color: var(--gold-head); font-size: 26px; margin-top: 14px;">Популярные туры</div>
+      <p class="fd-note">H2 · 26px · <code>--gold-head</code> <span class="ok">4.38:1</span><br>Заголовок секции больше не лежит на фото — он на бумаге, над блоком.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Oswald <code>--oswald</code></p>
+      <div style="font-family: 'Oswald'; font-weight: 500; font-size: 22px; margin-top: 12px;">от 7 000 ₽</div>
+      <p class="fd-note">цена в карточке · 22px / 500</p>
+      <div style="font-family: 'Oswald'; font-size: 15px; margin-top: 12px; color: var(--ink-muted);">7 часов · до 6 чел.</div>
+      <p class="fd-note">факты · 15px / 400</p>
+      <div style="font-family: 'Oswald'; font-size: 12px; letter-spacing: 1.4px; margin-top: 12px; color: var(--ink-faint); text-transform: uppercase;">Ваш гид</div>
+      <p class="fd-note">лейбл · 12px / ls 1.4 / <code>--ink-faint</code><br>Заголовок карточки тура переехал с Poiret One 35px на Poiret One 27px: три строки превращались в четыре и упирались в фото.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Caladea + системный</p>
+      <div style="font-family: 'Caladea', serif; font-size: 14.5px; line-height: 1.65; margin-top: 12px;">Гид свяжется с вами и подтвердит детали. Предоплата не требуется.</div>
+      <p class="fd-note">тело формы и абзацы поста · 14.5px / 1.65</p>
+      <div style="font-family: 'Caladea', serif; font-weight: 700; font-size: 20px; margin-top: 14px; position: relative; padding-left: 12px;"><span style="position: absolute; left: 0; top: 4px; width: 4px; height: 20px; background: var(--gold-plate); border-radius: 2px;"></span>О туре</div>
+      <p class="fd-note"><code>.et-h</code> · 20px / 700 + золотая полоса 4×20<br>Этот приём с полосой распространяется на заголовки блоков на всех страницах, не только в посте.</p>
+    </div>
+  </div>
+
+  <div class="fd-k">Компоненты</div>
+  <div class="g3">
+    <div class="fd-c">
+      <p class="fd-h">Поля</p>
+      <div style="margin-top: 12px;"><div class="lab">ВАШЕ ИМЯ *</div><div class="field">Как к вам обращаться</div></div>
+      <div style="margin-top: 12px;"><div class="lab">ТЕЛЕФОН *</div><div class="field" style="border-color: var(--cta); border-width: 1.5px; color: var(--ink);">+7 978 788-07-53</div></div>
+      <p class="fd-note">Высота 48px (было 36–40), радиус <code>--r-control</code>, фокус — золотая рамка 1.5px. Один и тот же инпут в брони, во входе и в дашборде.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Чипы и тап-таргеты</p>
+      <div style="display: flex; gap: 10px; align-items: center; margin-top: 14px;">
+        <span style="display:inline-flex; align-items:center; height: 44px; padding: 0 16px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald'; font-size: 13px;">джип-тур</span>
+        <span style="display:inline-flex; align-items:center; justify-content:center; width: 44px; height: 44px; border-radius: var(--r-pill); background: rgba(20,14,6,.45); color: #fff;">♡</span>
+      </div>
+      <p class="fd-note">Минимум 44×44 у всего, во что тыкают. Было 22–38px: цена, рейтинг и длительность на карточке были кликабельного вида, но нужного размера не имели.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Дашборд · тёмный</p>
+      <div class="sw" style="grid-template-columns: repeat(3, 1fr);">
+        <div><div style="background: #0c0c0e;"></div><b>canvas</b><span>#0C0C0E</span></div>
+        <div><div style="background: #1b1b1f;"></div><b>card</b><span>#1B1B1F</span></div>
+        <div><div style="background: #e8b055;"></div><b>accent</b><span>#E8B055</span><span class="ok">8.81:1</span></div>
+      </div>
+      <p class="fd-note">Акцент дашборда сведён с <code>--gold-photo</code>: один и тот же тон светлого золота на тёмном — и в шапке сайта, и в кабинете. Радиусы и высоты полей взяты общие.</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

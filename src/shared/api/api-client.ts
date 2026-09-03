@@ -24,7 +24,10 @@ const request = async <T>({
       body,
       signal,
       headers: {
-        'X-API-KEY': process.env.NEXT_PUBLIC_X_API_KEY || '',
+        // CRIT-3: заголовок X-API-KEY убран. Он брался из NEXT_PUBLIC_X_API_KEY,
+        // то есть встраивался в клиентский бандл и был доступен любому,
+        // не создавая никакого барьера. Доступ подтверждается cookie сессии
+        // и проверкой Origin на сервере.
         ...headers
       }
     }

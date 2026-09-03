@@ -1,23 +1,23 @@
-import { SafeParseError } from 'zod';
+import { treeifyError, ZodSafeParseError } from 'zod';
 
 import { SignUpFormStateErrors } from '@/features/auth/domain';
 
 const parseErrors = (
-  result: SafeParseError<{
+  result: ZodSafeParseError<{
     login: string;
     password: string;
     tel: string;
     code: string;
   }>
 ): SignUpFormStateErrors => {
-  const formatedErrors = result.error.format();
+  const errorTree = treeifyError(result.error);
 
   return {
-    login: formatedErrors.login?._errors.join(', '),
-    password: formatedErrors.password?._errors.join(', '),
-    tel: formatedErrors.tel?._errors.join(', '),
-    code: formatedErrors.code?._errors.join(', '),
-    _errors: formatedErrors._errors.join(', ')
+    login: errorTree.properties?.login?.errors.join(', '),
+    password: errorTree.properties?.password?.errors.join(', '),
+    tel: errorTree.properties?.tel?.errors.join(', '),
+    code: errorTree.properties?.code?.errors.join(', '),
+    _errors: errorTree.errors.join(', ')
   };
 };
 

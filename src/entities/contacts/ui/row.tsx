@@ -20,13 +20,12 @@ export const Row: FC<RowProps> = ({ children, color, size = DEFAULT_SIZE }) => (
       'justify-center',
       'gap-2',
       'tracking-widest',
-      'mt-4',
+      'min-h-11',
       styles.Row
     ])}
     style={
       {
         color: color ?? undefined,
-        WebkitTextStrokeColor: color ?? undefined,
         fontSize: `${size}px`
       } satisfies CSSProperties
     }

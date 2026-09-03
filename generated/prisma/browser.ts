@@ -63,6 +63,11 @@ export type Post = Prisma.PostModel
  */
 export type Review = Prisma.ReviewModel
 /**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
  * Model Tour
  * 
  */

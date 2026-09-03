@@ -11,8 +11,8 @@ type CardDatesProps = {
 };
 
 export const CardDates: FC<CardDatesProps> = ({ startTime, finishTime }) => (
-  <div className={cnCardDates(null, ['text-xl', styles.CardDates])}>
-    {('0' + startTime.getDate()).slice(-2)}-
+  <div className={cnCardDates(null, ['text-[22px]', styles.CardDates])}>
+    {('0' + startTime.getDate()).slice(-2)}–
     {('0' + finishTime.getDate()).slice(-2)}
   </div>
 );

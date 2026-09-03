@@ -7,7 +7,7 @@ export const createBookingSchema = z.object({
   tourId: z.number().int().positive(),
   name: z.string().trim().min(2, 'Укажите имя').max(120),
   phone: z.string().regex(phoneRegex, 'Неверный формат телефона'),
-  email: z.string().email('Неверный email').optional().or(z.literal('')),
+  email: z.email('Неверный email').optional().or(z.literal('')),
   desiredDate: z.string().optional(),
   peopleCount: z.number().int().min(1).max(100).default(1),
   comment: z.string().max(1000).optional(),

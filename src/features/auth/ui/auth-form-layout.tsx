@@ -27,12 +27,14 @@ export function AuthFormLayout({
   action: (formData: FormData) => void;
 }) {
   return (
-    <Card className='w-full max-w-md mb-30'>
+    <Card className='w-full max-w-md gap-6 rounded-block border-rule bg-cream py-7'>
       <CardHeader>
-        <CardTitle className='text-2xl font-bold text-center'>
+        <CardTitle className='font-poiret text-center text-[32px] font-normal tracking-[2px] text-gold-head'>
           {title}
         </CardTitle>
-        <CardDescription className='text-center'>{description}</CardDescription>
+        <CardDescription className='text-center text-ink-muted'>
+          {description}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form action={action} className='space-y-4'>

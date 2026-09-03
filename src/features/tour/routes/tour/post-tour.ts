@@ -7,18 +7,19 @@ import { PhotoEntity } from '@/entities/photo/domain';
 import { serverPhotoUtils } from '@/entities/photo/server';
 import { TourStatus } from '@/entities/tour/domain';
 import { roleUtils } from '@/entities/user';
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { sessionUtils } from '@/entities/user/lib/session-utils';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { handleError, handleForbidden, handleSuccess } from '@/shared/lib/response-utils';
 
 export async function postTour(req: NextRequest): Promise<Response> {
   try {
     const session = await sessionUtils.getSession(
-      req.cookies.get('session')?.value
+      req.cookies.get(SESSION_COOKIE_NAME)?.value
     );
 
     if (!roleUtils.userHasPermissionOn(session?.role, 'createTour')) {
-      return handleError({ body: 'У вас нет полномочий на создание туров' });
+      return handleForbidden('У вас нет полномочий на создание туров');
     }
 
     const formData = await req.formData?.();

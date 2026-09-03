@@ -22,7 +22,8 @@ type FavouriteLabelProps = {
 };
 
 export const FavouriteLabel: FC<FavouriteLabelProps & PropsWithClassNames> = ({
-  id
+  id,
+  className
 }) => {
   const [isFavourite, setFavourite] = useState<boolean>(false);
 
@@ -48,7 +49,9 @@ export const FavouriteLabel: FC<FavouriteLabelProps & PropsWithClassNames> = ({
   return (
     <div
       className={cnFavouriteLabel(null, [
-        'backdrop-blur-xs p-2 rounded-full',
+        // Тап-таргет 44×44 вместо 38px, подложка плотнее стеклянной #ffffff1a.
+        'flex items-center justify-center w-11 h-11 rounded-pill backdrop-blur-xs',
+        className,
         styles.FavouriteLabel
       ])}
     >

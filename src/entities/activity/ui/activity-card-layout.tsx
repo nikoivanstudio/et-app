@@ -25,21 +25,20 @@ export const ActivityCardLayout: FC<LayoutProps> = async ({
     className={cnActivityCard(null, [
       'flex',
       'items-center',
-      'justify-between',
-      'gap-4.5',
-      'backdrop-blur-xs',
+      'gap-3',
       'px-3.5',
-      'py-1.5',
-      'mt-4',
+      'py-3',
       'rounded-xl',
+      'text-white',
       className
     ])}
     href={`activities?id=${id}`}
   >
     <div className={cnActivityCard('LeftWrap')}>{leftNode}</div>
-    <div className={cnActivityCard('RightWrap')}>
-      <div>{titleNode}</div>
-      <div>{descriptionNode}</div>
+    {/* Название сжимается и переносится, цена и статус — нет. */}
+    <div className={cnActivityCard('RightWrap', ['min-w-0 flex-1'])}>
+      {titleNode}
     </div>
+    <div className={cnActivityCard('Meta')}>{descriptionNode}</div>
   </Link>
 );

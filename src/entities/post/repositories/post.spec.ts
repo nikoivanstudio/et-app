@@ -2,14 +2,17 @@ import { jest } from '@jest/globals';
 
 import { postRepositories } from './post';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const mockFn = () => jest.fn<(...args: any[]) => any>();
+
 const mockPost = {
-  count: jest.fn(),
-  findFirst: jest.fn(),
-  findMany: jest.fn(),
-  create: jest.fn(),
-  createMany: jest.fn(),
-  update: jest.fn(),
-  delete: jest.fn()
+  count: mockFn(),
+  findFirst: mockFn(),
+  findMany: mockFn(),
+  create: mockFn(),
+  createMany: mockFn(),
+  update: mockFn(),
+  delete: mockFn()
 };
 
 jest.mock('@/shared/lib/db', () => ({
@@ -55,7 +58,7 @@ describe('postRepositories', () => {
       where: { published: true }
     } as any);
     expect(mockPost.findMany).toHaveBeenCalled();
-    const calledWith = (mockPost.findMany as jest.Mock).mock.calls[0][0];
+    const calledWith = mockPost.findMany.mock.calls[0][0];
     expect(calledWith.where).toEqual({ published: true });
     expect(calledWith.include).toMatchObject({ user: true });
     expect(res).toBe(payload);

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Caladea:wght@400;700&family=Questrial&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    a { color: #8b6f3d; } a:hover { color: #1f1a12; }
+    .bk-label { display: block; font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.025em; color: #6b5f47; margin-bottom: 6px; }
+    .bk-input { width: 100%; border-radius: 12px; border: 1px solid #e2d5b7; background: #fbf7ee; padding: 12px; font-size: 14px; color: #1f1a12; box-sizing: border-box; font-family: Caladea, serif; }
+    .bk-ph { color: #a99a80; }
+    .bk-step { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; border: 1px solid #e2d5b7; background: #fff; color: #8b6f3d; }
+  </style>
+</helmet>
+
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background-image: url(./tourhead.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5);"></div>
+
+  <!-- DialogContent · max-w-md · border-[#E2D5B7] bg-white -->
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 358px; box-sizing: border-box; background: #ffffff; border: 1px solid #e2d5b7; border-radius: 10px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
+      <h2 style="margin: 0; font-family: Questrial, 'Century Gothic', sans-serif; font-size: 21px; font-weight: 400; letter-spacing: 0.025em; color: #1f1a12;">Заявка на тур</h2>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </div>
+
+    <form style="font-family: Caladea, serif; display: flex; flex-direction: column;">
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.5; color: #6b5f47;">Гид свяжется с вами и подтвердит детали. Предоплата не требуется.</p>
+
+      <div style="margin-top: 16px;">
+        <span class="bk-label">Ваше имя <span style="color: #b4452f;">*</span></span>
+        <div class="bk-input"><span class="bk-ph">Как к вам обращаться</span></div>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <span class="bk-label">Телефон <span style="color: #b4452f;">*</span></span>
+        <div class="bk-input" style="border-color: #b8915a;">+7 978 788-07-53</div>
+      </div>
+
+      <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+        <div>
+          <span class="bk-label">Желаемая дата</span>
+          <div class="bk-input" style="display: flex; align-items: center; justify-content: space-between; gap: 6px;">
+            <span>12.09.2026</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+          </div>
+        </div>
+        <div>
+          <span class="bk-label">Гостей</span>
+          <div style="display: flex; align-items: center; justify-content: space-between; border-radius: 12px; border: 1px solid #e2d5b7; background: #fbf7ee; padding: 7px 8px;">
+            <span class="bk-step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg></span>
+            <b style="font-family: Oswald, sans-serif; font-size: 16px; font-weight: 400; color: #1f1a12;">4</b>
+            <span class="bk-step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <span class="bk-label">Email <span style="color: #9b8e72;">(для входа и истории)</span></span>
+        <div class="bk-input"><span class="bk-ph">по желанию</span></div>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <span class="bk-label">Комментарий</span>
+        <div class="bk-input" style="min-height: 64px;"><span class="bk-ph">пожелания, дети, трансфер…</span></div>
+      </div>
+
+      <label style="margin-top: 14px; display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.4; color: #6b5f47;">
+        <span style="margin-top: 2px; width: 16px; height: 16px; flex: 0 0 16px; border-radius: 4px; background: #b8915a; display: grid; place-items: center;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </span>
+        <span>Согласен на обработку данных и условия платформы</span>
+      </label>
+
+      <div style="margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; background: #b8915a; padding: 14px 16px; font-family: Oswald, sans-serif; letter-spacing: 0.025em; color: #fbf7ee;">
+        Отправить заявку <span style="opacity: 0.8;">· от 7 000 ₽</span>
+      </div>
+    </form>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

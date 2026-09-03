@@ -15,10 +15,12 @@ export const AllTours: FC = async () => {
 
   return (
     <ServerLayout
-      className={cnAllTours(null, ['text-center p-4'])}
+      className={cnAllTours(null, [
+        'mx-auto max-w-[1120px] px-4 pb-20 text-center'
+      ])}
       list={
         <ServerTourCardList
-          className='mt-[30%] flex flex-col gap-10'
+          className='flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3'
           tours={tours}
         />
       }

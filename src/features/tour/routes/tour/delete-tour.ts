@@ -2,17 +2,18 @@ import { NextRequest } from 'next/server';
 
 import { tourRepositories } from '@/entities/tour/server';
 import { UserDomain } from '@/entities/user';
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { sessionService } from '@/entities/user/services/session';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { handleError, handleSuccess, handleUnauthorized } from '@/shared/lib/response-utils';
 
 export async function deleteTour(req: NextRequest): Promise<Response> {
   try {
-    const cookies = req.cookies.get('session')?.value;
+    const cookies = req.cookies.get(SESSION_COOKIE_NAME)?.value;
     const tourId = req.nextUrl.searchParams.get('id');
 
     if (!cookies) {
-      return handleError({ body: 'Ошибка верификации. Cookies lost' });
+      return handleUnauthorized();
     }
 
     if (!tourId) {
@@ -22,7 +23,7 @@ export async function deleteTour(req: NextRequest): Promise<Response> {
     const { session } = await sessionService.verifySession(cookies);
 
     if (!session) {
-      return handleError({ body: 'Ошибка верификации' });
+      return handleUnauthorized();
     }
 
     const tour = await tourRepositories.getTour(Number(tourId));

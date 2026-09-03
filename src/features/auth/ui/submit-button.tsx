@@ -10,7 +10,12 @@ export function SubmitButton({
   isPending?: boolean;
 }) {
   return (
-    <Button disabled={isPending} type='submit' className='w-full'>
+    <Button
+      disabled={isPending}
+      type='submit'
+      /* Та же главная кнопка, что «Все туры» и «Забронировать»: 5.96:1. */
+      className='min-h-12 w-full rounded-pill bg-cta text-base font-semibold text-on-cta hover:bg-cta-press'
+    >
       {children}
     </Button>
   );

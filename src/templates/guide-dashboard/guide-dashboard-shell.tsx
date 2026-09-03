@@ -36,13 +36,13 @@ export function GuideDashboardShellTemplate({
     <div className='min-h-screen bg-background text-foreground'>
       <div className='grid min-h-screen lg:grid-cols-[280px_minmax(0,1fr)]'>
         <aside className='border-r border-border/60 bg-sidebar/30 px-4 py-6 lg:px-5'>
-          <div className='rounded-2xl border border-border/60 bg-card/70 p-4 shadow-sm'>
-            <p className='text-xs font-medium uppercase tracking-[0.24em] text-muted-foreground'>
-              Guide Dashboard
+          <div className='rounded-block border border-border/60 bg-card/70 p-4 shadow-sm'>
+            <p className='text-xs font-medium uppercase tracking-[0.24em] text-[var(--gold-photo)]/60'>
+              Кабинет гида
             </p>
-            <h2 className='mt-3 text-xl font-semibold'>Tornado / Shadcn dark</h2>
+            <h2 className='mt-3 text-xl font-semibold'>Energy Tour</h2>
             <p className='mt-2 text-sm text-muted-foreground'>
-              Статический набор шаблонов для ручной интеграции логики.
+              Заявки, туры и отзывы.
             </p>
           </div>
 
@@ -55,9 +55,9 @@ export function GuideDashboardShellTemplate({
                   key={item.id}
                   type='button'
                   className={cn(
-                    'flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left text-sm transition-colors',
+                    'flex min-h-11 w-full items-center gap-3 rounded-control border px-4 py-3 text-left text-sm transition-colors',
                     item.id === activeItem
-                      ? 'border-primary/40 bg-primary/12 text-foreground'
+                      ? 'border-[var(--gold-photo)]/35 bg-[var(--gold-photo)]/10 text-foreground'
                       : 'border-transparent bg-transparent text-muted-foreground hover:border-border/60 hover:bg-accent/40 hover:text-foreground'
                   )}
                 >
@@ -68,12 +68,15 @@ export function GuideDashboardShellTemplate({
             })}
           </nav>
 
-          <div className='mt-8 rounded-2xl border border-border/60 bg-card/50 p-4'>
+          <div className='mt-8 rounded-block border border-border/60 bg-card/50 p-4'>
             <p className='text-sm font-medium'>
               Спортивный клуб &quot;Экстрим-спорт&quot;
             </p>
             <p className='mt-1 text-xs text-muted-foreground'>Иван Николаенко</p>
-            <Button className='mt-4 w-full' variant='outline'>
+            <Button
+              className='mt-4 h-auto min-h-11 w-full rounded-control py-2.5 text-center leading-snug whitespace-normal'
+              variant='outline'
+            >
               Посмотреть публичную страницу
             </Button>
           </div>

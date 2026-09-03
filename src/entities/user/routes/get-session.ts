@@ -1,14 +1,15 @@
 import { NextRequest } from 'next/server';
 
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { sessionService } from '@/entities/user/services/session';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { handleError, handleSuccess, handleUnauthorized } from '@/shared/lib/response-utils';
 
 export async function getSession(req: NextRequest): Promise<Response> {
-  const cookies = req.cookies.get('session')?.value;
+  const cookies = req.cookies.get(SESSION_COOKIE_NAME)?.value;
 
   if (!cookies) {
-    return handleError({ body: 'Ошибка верификации' });
+    return handleUnauthorized();
   }
 
   try {

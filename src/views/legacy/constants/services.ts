@@ -17,7 +17,7 @@ export const services: LegacyServiceData[] = [
     img: 'https://energy-tur.ru/wp-content/uploads/2016/01/Lager-Energy-Tur.jpg',
     href: '/uslugi/arenda-mesta-v-kempinge-v-krymu',
     duration: 'от 1 дня',
-    price: 'от 200 руб'
+    price: 'от 200 ₽'
   },
   {
     id: 2,
@@ -75,7 +75,7 @@ Mitsubishi L200 – 4 места
     img: 'https://energy-tur.ru/wp-content/uploads/2016/01/9qIjSNgwcz8.jpg',
     href: '/uslugi/arenda-vnedorozhnika-s-voditelem-v-krymu',
     duration: 'от 2 часов',
-    price: 'от 2500 руб/час'
+    price: 'от 2 500 ₽/час'
   },
   {
     id: 3,
@@ -84,7 +84,7 @@ Mitsubishi L200 – 4 места
     img: '/images/ekskursii.jpg',
     href: '/uslugi/klassicheskie-ekskursii-po-krymu',
     duration: 'от 1 экскурсии',
-    price: 'от 2000 руб/экскурсия'
+    price: 'от 2 000 ₽/экскурсия'
   },
   {
     id: 4,
@@ -103,7 +103,7 @@ Mitsubishi L200 – 4 места
     img: '/images/kvadro.jpg',
     href: 'uslugi/prokat-kvadrotsiklov-v-krymu',
     duration: 'от 1 часа',
-    price: 'от 3000 руб/час'
+    price: 'от 3 000 ₽/час'
   },
   {
     id: 8,
@@ -175,7 +175,7 @@ Mitsubishi L200 – 4 места
     img: 'https://energy-tur.ru/wp-content/uploads/2016/01/karimat.jpg',
     href: '/uslugi/prokat-palatki-v-krymu',
     duration: 'от 1 дня',
-    price: 'от 400 руб/сутки'
+    price: 'от 400 ₽/сутки'
   },
   {
     id: 9,
@@ -226,7 +226,7 @@ Mitsubishi L200 – 4 места
     img: 'https://energy-tur.ru/wp-content/uploads/2016/01/3-23.jpg',
     href: '/uslugi/prokat-snegohoda-v-krymu',
     duration: 'от 10 минут',
-    price: 'от 2000 руб/тур'
+    price: 'от 2 000 ₽/тур'
   },
   {
     id: 5,
@@ -267,7 +267,7 @@ Mitsubishi L200 – 4 места
     img: 'https://energy-tur.ru/wp-content/uploads/2016/01/velosiped.jpg',
     href: '/uslugi/prokat-velosipedov-v-krymu',
     duration: 'от 1 часа',
-    price: 'от 500 руб/час'
+    price: 'от 500 ₽/час'
   },
   {
     id: 7,
@@ -276,6 +276,6 @@ Mitsubishi L200 – 4 места
     img: '/images/ekskursii.jpg',
     href: '/uslugi/prokat-zimnego-snaryazheniya-v-krymu',
     duration: 'от 1 дня',
-    price: 'от 800 руб/день'
+    price: 'от 800 ₽/день'
   }
 ];

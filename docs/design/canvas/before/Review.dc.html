@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #f7f6f3; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: #1f1a12; }
+    .rv { padding: 40px 44px 56px; }
+    .rv-title { margin: 0; font-family: 'Poiret One', serif; font-size: 44px; letter-spacing: 2px; color: #8b6f3d; }
+    .rv-sub { margin: 10px 0 0; max-width: 78ch; font-size: 14.5px; line-height: 1.6; color: #6b5f47; }
+    .rv-kicker { margin: 44px 0 14px; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #8a7a5c; }
+    .rv-card { background: #fff; border: 1px solid #e2d5b7; border-radius: 14px; padding: 20px 22px; }
+    .rv-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .rv-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    table.rv-t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    table.rv-t th { text-align: left; padding: 10px 12px; font-family: 'Oswald', sans-serif; font-weight: 400; font-size: 11.5px; letter-spacing: 1.4px; text-transform: uppercase; color: #8a7a5c; border-bottom: 1px solid #e2d5b7; }
+    table.rv-t td { padding: 12px; border-bottom: 1px solid #efe8d8; vertical-align: top; line-height: 1.5; }
+    table.rv-t tr:last-child td { border-bottom: 0; }
+    .sev { display: inline-block; padding: 3px 9px; border-radius: 999px; font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+    .sev-a { background: #b4452f; color: #fff; }
+    .sev-b { background: #d19331; color: #241c0d; }
+    .sev-c { background: #e2d5b7; color: #5b4d33; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #8b6f3d; }
+    .num { font-family: 'Oswald', sans-serif; font-size: 13px; white-space: nowrap; }
+    .bad { color: #b4452f; font-weight: 500; }
+    .good { color: #4a6626; font-weight: 500; }
+    .lbl { margin: 0 0 10px; font-family: 'Oswald', sans-serif; font-size: 11.5px; letter-spacing: 1.6px; text-transform: uppercase; color: #8a7a5c; }
+    .opt-h { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+    .opt-p { margin: 0; font-size: 13px; line-height: 1.55; color: #6b5f47; }
+    .pill { display: inline-flex; align-items: center; justify-content: center; padding: 15px 40px; border-radius: 999px; font-size: 16px; letter-spacing: 0.08em; }
+    .demo { position: relative; height: 210px; border-radius: 16px; overflow: hidden; background-size: cover; background-position: center; }
+    .demo-t { position: absolute; left: 0; right: 0; padding: 0 16px; text-align: right; font-family: 'Poiret One', serif; }
+    .mini { width: 176px; border: 1px solid #d8cdb5; border-radius: 12px; overflow: hidden; background: #e6e6e6; }
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 6px; background: #f2ece0; font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: .8px; color: #6b5f47; }
+  </style>
+</helmet>
+
+<div class="rv">
+  <h1 class="rv-title">Ревью дизайна · находки и варианты</h1>
+  <p class="rv-sub">Снято с артбордов этого канваса, то есть с текущего кода. Контраст измерен по реальным пикселям фото под текстом (медиана области, худший участок в скобках), высоты — по фактическому рендеру в Chrome при ширине 390. Порог WCAG AA: 4.5:1 для обычного текста, 3:1 для крупного (24px+ или 19px+ полужирный).</p>
+
+  <div class="rv-kicker">Что уже хорошо — не трогаем</div>
+  <div class="rv-grid3">
+    <div class="rv-card">
+      <p class="opt-h">Страница тура</p>
+      <p class="opt-p">Золото-крем язык <code>.et-post</code> — самая зрелая часть продукта. Таймлайн маршрута, блок стоимости, таблица билетов читаются с первого взгляда и держат иерархию. Это готовая база для всего сайта.</p>
+    </div>
+    <div class="rv-card">
+      <p class="opt-h">Форма заявки</p>
+      <p class="opt-p">Лейблы над полями, телефон предзаполнен, счётчик гостей, цена в кнопке отправки. Одна из немногих форм, где видно, что будет после нажатия.</p>
+    </div>
+    <div class="rv-card">
+      <p class="opt-h">Фотоматериал</p>
+      <p class="opt-p">Съёмка сильная и уникальная — это главный актив бренда. Все находки ниже про то, что поверх фото, а не про сами фото.</p>
+    </div>
+  </div>
+
+  <div class="rv-kicker">Находки — по убыванию важности</div>
+  <div class="rv-card" style="padding: 4px 10px;">
+    <table class="rv-t">
+      <thead>
+        <tr><th style="width: 92px;">Важность</th><th style="width: 300px;">Что не так</th><th style="width: 200px;">Замер</th><th>Где</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sev sev-a">блокер</span></td>
+          <td><b>Главная кнопка сайта нечитаема.</b> Белый текст на <code>green-500</code> даёт 2.28:1 — ниже порога даже для крупного текста. Плюс сам зелёный не входит в палитру бренда.</td>
+          <td class="num bad">2.28:1<br><span style="color:#6b5f47">нужно ≥ 4.5:1</span></td>
+          <td><code>shared/ui/link-button</code>, «Все туры», стрелки на карточках, чекбокс согласия</td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-a">блокер</span></td>
+          <td><b>H1 главной не читается на фото.</b> Золотой <code>#d19331</code> лежит на светлом небе, а маска всего <code>#0000002a</code> (16%). Обводка <code>-webkit-text-stroke: 4px</code> утолщает буквы, но контраст не поднимает.</td>
+          <td class="num bad">1.35:1 (1.25)<br>вторая строка 2.04:1</td>
+          <td><code>entities/page-title</code>, <code>page-head</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-a">блокер</span></td>
+          <td><b>Две разные главные кнопки.</b> На главной и карточках — зелёная, на туре и в брони — золотая <code>#B8915A</code>, у которой белый текст тоже не проходит. Пользователь не понимает, какое действие основное.</td>
+          <td class="num bad">золотая с белым<br>2.90:1</td>
+          <td><code>features/tour</code>, <code>features/booking</code> против <code>shared/ui/link-button</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-b">важно</span></td>
+          <td><b>Каталог начинается с экрана декора.</b> До первой карточки — 844px фото с золотым заголовком поверх сиреневого платья. На странице, куда ведёт главный CTA, товара не видно вообще.</td>
+          <td class="num bad">H1 3.09:1 (1.57)<br>первая карточка на y≈840</td>
+          <td><code>views/tours/ui/layout</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-b">важно</span></td>
+          <td><b>Пять плавающих элементов на карточке.</b> Цена, сердце, рейтинг, длительность и зелёная стрелка стоят по четырём углам поверх фото. Стрелка дублирует тап по самой карточке, чипы стеклянные и висят где придётся.</td>
+          <td class="num bad">чип цены 2.77:1<br>высоты чипов 22–38px</td>
+          <td><code>shared/ui/card-header</code>, <code>card-footer</code>, <code>badge-price</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-b">важно</span></td>
+          <td><b>Ноль десктопа.</b> В карточках и списках нет ни одного <code>md:</code>/<code>lg:</code>: <code>md:</code> встречается 18 раз на весь <code>src</code> и только увеличивает кегль и иконку бургера. Навигация — бургер на любой ширине.</td>
+          <td class="num">одна колонка 390px<br>на мониторе 1440</td>
+          <td><code>widgets/app-header</code>, все <code>views/*</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-b">важно</span></td>
+          <td><b>Таблица дашборда не влезает.</b> 11 колонок дают 1468px при вьюпорте 1440 — «Наш доход» и следующая колонка обрезаны. Кнопка «Посмотреть публичную страницу» в сайдбаре режет вторую строку текста.</td>
+          <td class="num bad">1468px / 1440px</td>
+          <td><code>templates/guide-dashboard/guide-orders-page</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-c">мелочь</span></td>
+          <td><b>Экран входа — из другого продукта.</b> Белая shadcn-карточка, чёрная кнопка, ни логотипа, ни золота. Первый экран для гида после письма.</td>
+          <td class="num">0 брендовых токенов</td>
+          <td><code>app/(auth)</code>, <code>features/auth</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-c">мелочь</span></td>
+          <td><b>Вертикальный ритм собран отрицательными отступами:</b> <code>-127px</code>, <code>-45px</code>, <code>-70px</code>, <code>-75px</code>, <code>mt-[8%]</code>, <code>mt-[25vh]</code>. Отсюда пустая полоса фото ≈200px перед «Контактами» и ≈100px пустоты в самом низу главной.</td>
+          <td class="num">≈300px пустоты<br>на главной</td>
+          <td><code>views/home/home</code>, <code>widgets/contacts</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-c">мелочь</span></td>
+          <td><b>Мёртвый токен и хрупкие подписи.</b> <code>--light-green: #81d178</code> не применяется никогда: <code>@bem-react/classname</code> отдаёт глобальный класс, SCSS-модуль хеширует свой. В креме <code>ink-faint</code> даёт 3.91:1, золотые ссылки — 4.42:1: обе чуть ниже порога.</td>
+          <td class="num bad">3.91:1 / 4.42:1</td>
+          <td><code>shared/assets/styles.module.scss</code>, <code>globals.css</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-c">мелочь</span></td>
+          <td><b>Декоративная фраза на сером.</b> «Открой для себя мир путешествий уже сегодня!» — золото на <code>#e6e6e6</code>. Если это текст, он нечитаем; если декор, он занимает место блока.</td>
+          <td class="num bad">2.12:1</td>
+          <td><code>widgets/posts</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rv-kicker">Вариант 1 · одна главная кнопка</div>
+  <div class="rv-grid3">
+    <div class="rv-card">
+      <p class="lbl">сейчас</p>
+      <div style="text-align: center; padding: 14px 0 18px;"><span class="pill" style="background: #22c55e; color: #fff;">Все туры</span></div>
+      <p class="opt-p"><span class="bad">2.28:1</span> · <code>green-500</code> вне палитры, рядом с золотым «Забронировать» читается как другое действие.</p>
+    </div>
+    <div class="rv-card" style="border-color: #b8915a; border-width: 2px;">
+      <p class="lbl">вариант A · рекомендую</p>
+      <div style="text-align: center; padding: 14px 0 18px;"><span class="pill" style="background: #b8915a; color: #1f1a12; font-weight: 600;">Все туры</span></div>
+      <p class="opt-p"><span class="good">5.96:1</span> · золото бренда, тёмная тушь вместо белого. Заодно чинит «Забронировать» на туре — там та же плашка, только текст меняем на <code>#1F1A12</code>.</p>
+    </div>
+    <div class="rv-card">
+      <p class="lbl">вариант B</p>
+      <div style="text-align: center; padding: 14px 0 18px;"><span class="pill" style="background: #8b6f3d; color: #fff;">Все туры</span></div>
+      <p class="opt-p"><span class="good">4.73:1</span> · тёмное золото с белым. Строже и «дороже», но на фото читается хуже, чем A: плашка сливается со скалой и землёй.</p>
+    </div>
+  </div>
+  <p class="rv-sub" style="margin-top: 14px;">Зелёный при этом не выбрасываем, а понижаем до статуса: <span class="tag" style="background:#e8f0dd; color:#3f5a1f;">бесплатно</span> <span class="tag" style="background:#f6e0dc; color:#8e2f1e;">2 места</span> — ровно как он уже используется в билетах и в списке ближайших туров. Мёртвый <code>--light-green</code> удаляем.</p>
+
+  <div class="rv-kicker">Вариант 2 · скрим вместо обводки</div>
+  <div class="rv-grid2">
+    <div class="rv-card">
+      <p class="lbl">сейчас · маска 16% + stroke 4px</p>
+      <div class="demo" style="background-image: url(./hero.jpg);">
+        <div style="position: absolute; inset: 0; background: #0000002a;"></div>
+        <div class="demo-t" style="top: 26px;">
+          <span style="display: block; text-transform: uppercase; font-size: 30px; line-height: 1; letter-spacing: 3px; color: #d19331; -webkit-text-stroke: 3px #d19331;">Джип туры</span>
+          <span style="display: block; margin-top: 14px; font-size: 22px; letter-spacing: 1px; color: #ffffffea; -webkit-text-stroke: 1.5px #ffffffea;">Экскурсии по Крыму</span>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;"><span class="bad">1.35:1</span> · обводка добавляет массы, но не отделяет буквы от неба. На светлых кадрах заголовок исчезает целиком.</p>
+    </div>
+    <div class="rv-card" style="border-color: #b8915a; border-width: 2px;">
+      <p class="lbl">вариант · градиентный скрим, без обводки</p>
+      <div class="demo" style="background-image: url(./hero.jpg);">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,14,6,.78) 0%, rgba(20,14,6,.34) 46%, rgba(20,14,6,.72) 100%);"></div>
+        <div class="demo-t" style="top: 26px;">
+          <span style="display: block; text-transform: uppercase; font-size: 30px; line-height: 1; letter-spacing: 3px; color: #e8b055;">Джип туры</span>
+          <span style="display: block; margin-top: 14px; font-size: 22px; letter-spacing: 1px; color: #fff;">Экскурсии по Крыму</span>
+        </div>
+        <div style="position: absolute; left: 16px; bottom: 16px;"><span style="display:inline-flex; padding: 10px 26px; border-radius: 999px; background: #b8915a; color: #1f1a12; font-size: 13px; font-weight: 600;">Все туры</span></div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;"><span class="good">4.71:1</span> золото и <span class="good">12.5:1</span> белый · Poiret One возвращает свою тонкую пластику, кадр остаётся видимым, а CTA переезжает на скрим внизу, где его точно найдут пальцем.</p>
+    </div>
+  </div>
+
+  <div class="rv-kicker">Вариант 3 · карточка тура</div>
+  <div class="rv-grid2">
+    <div class="rv-card">
+      <p class="lbl">сейчас · 5 плавающих элементов</p>
+      <div style="position: relative; height: 300px; border-radius: 24px; overflow: hidden; background: url(./card1.jpg) center/cover;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,.2);"></div>
+        <div style="position: absolute; inset: 0; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <span style="background:#ffffff1a; backdrop-filter: blur(2px); border-radius: 999px; padding: 7px 14px; color: #fff; font-family: 'Oswald'; font-size: 14px;">От 7000 ₽</span>
+            <span style="width: 38px; height: 38px; border-radius: 999px; background:#ffffff1a; display:flex; align-items:center; justify-content:center; color:#fff;">♡</span>
+          </div>
+          <div style="font-family: 'Poiret One', serif; font-size: 26px; color: #fff; -webkit-text-stroke: 1.5px #ffffffea; line-height: 1.3;">Пещерный город<br>Эски-Кермен</div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <span style="background:#ffffff1a; border-radius: 999px; padding: 5px 12px; color:#fff; font-size: 12px;">⏱ От 7 ч</span>
+            <span style="width: 44px; height: 44px; border-radius: 999px; background:#22c55e; display:flex; align-items:center; justify-content:center; color:#fff; font-size: 20px;">↗</span>
+          </div>
+          <div style="position: absolute; right: 14px; top: 62px;"><span style="background:#ffffff1a; border-radius: 999px; padding: 3px 10px; color:#fff; font-size: 11px;">★ 4.9/5</span></div>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;">Цена, сердце, рейтинг, время и стрелка в четырёх углах. Чипы 22–38px — ниже 44px, за них трудно попасть. Стрелка — второй тап-таргет для того же перехода.</p>
+    </div>
+    <div class="rv-card" style="border-color: #b8915a; border-width: 2px;">
+      <p class="lbl">вариант · скрим + одна строка факта</p>
+      <div style="position: relative; height: 300px; border-radius: 24px; overflow: hidden; background: url(./card1.jpg) center/cover;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 38%, rgba(20,14,6,.82) 100%);"></div>
+        <div style="position: absolute; right: 12px; top: 12px; width: 44px; height: 44px; border-radius: 999px; background: rgba(20,14,6,.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px;">♡</div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px;">
+          <div style="font-family: 'Poiret One', serif; font-size: 27px; line-height: 1.25; color: #fff; letter-spacing: .5px;">Пещерный город<br>Эски-Кермен</div>
+          <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 12px; font-family: 'Oswald', sans-serif; color: #fff;">
+            <span style="font-size: 19px; font-weight: 500;">от 7 000 ₽</span>
+            <span style="opacity: .55;">·</span><span style="font-size: 14px; opacity: .9;">7 часов</span>
+            <span style="opacity: .55;">·</span><span style="font-size: 14px; opacity: .9;">★ 4.9</span>
+            <span style="margin-left: auto; font-size: 13px; color: #e8b055;">Подробнее →</span>
+          </div>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;">Один факт-ряд на плотном скриме: цена крупная, длительность и рейтинг рядом. Тап-таргет — вся карточка, отдельная кнопка не нужна. Сердце укрупнено до 44px и уведено в единственный угол. Читается на любом кадре, а не только на удачном.</p>
+    </div>
+  </div>
+
+  <div class="rv-kicker">Вариант 4 · каталог: товар выше сгиба</div>
+  <div class="rv-grid2">
+    <div class="rv-card">
+      <p class="lbl">сейчас · шапка 844px</p>
+      <div style="display: flex; gap: 16px; align-items: flex-start;">
+        <div class="mini">
+          <div style="position: relative; height: 240px; background: url(./tours.jpg) center/cover;">
+            <div style="position: absolute; inset: 0; background: #0000002a;"></div>
+            <div style="position: absolute; top: 92px; right: 10px; font-family: 'Poiret One', serif; font-size: 17px; letter-spacing: 2px; color: #d19331; -webkit-text-stroke: 1.5px #d19331; text-transform: uppercase;">Все туры</div>
+          </div>
+          <div style="height: 60px; background: #e6e6e6; padding: 8px;"><div style="height: 44px; border-radius: 10px; background: url(./card1.jpg) center/cover;"></div></div>
+        </div>
+        <p class="opt-p" style="flex: 1;">Целый экран фото и заголовок, попавший на платье. Первая карточка начинается на <b>y ≈ 840</b> — один полный свайп до первого тура.</p>
+      </div>
+    </div>
+    <div class="rv-card" style="border-color: #b8915a; border-width: 2px;">
+      <p class="lbl">вариант · шапка 300px</p>
+      <div style="display: flex; gap: 16px; align-items: flex-start;">
+        <div class="mini">
+          <div style="position: relative; height: 86px; background: url(./tours.jpg) center/cover;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,14,6,.55), rgba(20,14,6,.8));"></div>
+            <div style="position: absolute; left: 12px; bottom: 10px; font-family: 'Poiret One', serif; font-size: 17px; letter-spacing: 2px; color: #e8b055; text-transform: uppercase;">Все туры</div>
+            <div style="position: absolute; left: 12px; bottom: 32px; font-family: 'Oswald'; font-size: 9px; letter-spacing: 1px; color: #ffffffcc;">14 ТУРОВ · КРЫМ</div>
+          </div>
+          <div style="background: #f2f0ec; padding: 8px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; gap: 6px;"><span class="tag" style="font-size:8px; padding:2px 6px;">джипы</span><span class="tag" style="font-size:8px; padding:2px 6px;">с детьми</span><span class="tag" style="font-size:8px; padding:2px 6px;">1 день</span></div>
+            <div style="height: 96px; border-radius: 10px; background: url(./card1.jpg) center/cover;"></div>
+            <div style="height: 96px; border-radius: 10px; background: url(./card2.jpg) center/cover;"></div>
+          </div>
+        </div>
+        <p class="opt-p" style="flex: 1;">Шапка сжата до 300px, в неё уезжает счётчик туров, под ней сразу фильтры-теги и <b>две карточки в первом экране</b>. Фото никуда не девается — оно работает на карточках, где и продаёт.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rv-kicker">Вариант 5 · вход и десктоп</div>
+  <div class="rv-grid2">
+    <div class="rv-card">
+      <p class="lbl">вход · сейчас / вариант</p>
+      <div style="display: flex; gap: 16px;">
+        <div style="flex: 1; background: #27272a; border-radius: 12px; padding: 22px 16px;">
+          <div style="background: #fff; border-radius: 10px; padding: 16px;">
+            <div style="text-align: center; font-size: 15px; font-weight: 700;">Вход</div>
+            <div style="text-align: center; font-size: 10.5px; color: #71717a; margin-top: 3px;">Доброе пожаловать!</div>
+            <div style="height: 26px; border: 1px solid #e4e4e7; border-radius: 6px; margin-top: 14px;"></div>
+            <div style="height: 26px; border: 1px solid #e4e4e7; border-radius: 6px; margin-top: 8px;"></div>
+            <div style="height: 28px; border-radius: 6px; background: #18181b; margin-top: 12px;"></div>
+          </div>
+        </div>
+        <div style="flex: 1; background: #1f1a12; border-radius: 12px; padding: 22px 16px;">
+          <div style="text-align: center;"><img src="./logo.png" alt="" style="width: 34px; height: 38px; object-fit: contain;"></div>
+          <div style="background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 12px; padding: 16px; margin-top: 12px;">
+            <div style="text-align: center; font-family: 'Poiret One', serif; font-size: 19px; color: #8b6f3d; letter-spacing: 1px;">Вход</div>
+            <div style="text-align: center; font-size: 10.5px; color: #6b5f47; margin-top: 3px;">Кабинет гида</div>
+            <div style="height: 26px; border: 1px solid #e2d5b7; border-radius: 8px; background: #fffdf8; margin-top: 14px;"></div>
+            <div style="height: 26px; border: 1px solid #e2d5b7; border-radius: 8px; background: #fffdf8; margin-top: 8px;"></div>
+            <div style="height: 28px; border-radius: 8px; background: #b8915a; margin-top: 12px; display: flex; align-items: center; justify-content: center; color: #1f1a12; font-size: 11px; font-weight: 600;">Войти</div>
+          </div>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;">Те же поля и та же логика, но логотип, крем и золотая кнопка. Полчаса работы, а гид перестаёт попадать «в чужой продукт». Ту же карточку переиспользуем на регистрации и восстановлении пароля.</p>
+    </div>
+    <div class="rv-card">
+      <p class="lbl">десктоп · минимальный каркас</p>
+      <div style="background: #f2f0ec; border: 1px solid #d8cdb5; border-radius: 12px; padding: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid #d8cdb5;">
+          <div style="width: 22px; height: 24px; background: #b8915a; border-radius: 4px;"></div>
+          <div style="display: flex; gap: 14px; font-size: 11px; color: #6b5f47;"><span>Туры</span><span>Направления</span><span>Отзывы</span><span>Контакты</span></div>
+          <div style="margin-left: auto; padding: 5px 12px; border-radius: 999px; background: #b8915a; color: #1f1a12; font-size: 10.5px; font-weight: 600;">Забронировать</div>
+        </div>
+        <div style="height: 92px; border-radius: 8px; margin-top: 10px; background: url(./hero.jpg) center/cover; position: relative;">
+          <div style="position: absolute; inset: 0; border-radius: 8px; background: linear-gradient(90deg, rgba(20,14,6,.72), rgba(20,14,6,.15));"></div>
+          <div style="position: absolute; left: 14px; top: 26px; font-family: 'Poiret One', serif; color: #e8b055; font-size: 18px; letter-spacing: 2px; text-transform: uppercase;">Джип туры</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;">
+          <div style="height: 74px; border-radius: 8px; background: url(./card1.jpg) center/cover;"></div>
+          <div style="height: 74px; border-radius: 8px; background: url(./card2.jpg) center/cover;"></div>
+          <div style="height: 74px; border-radius: 8px; background: url(./card3.jpg) center/cover;"></div>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;">Контейнер до 1120px, карточки в сетке <code>md:2</code> / <code>lg:3</code>, горизонтальное меню вместо бургера от <code>md:</code>, шапка во всю ширину с текстом в сетке. Мобильная вёрстка не меняется — только добавляются варианты. Начинать стоит с каталога и страницы тура: туда идёт поисковый трафик с компьютеров.</p>
+    </div>
+  </div>
+
+  <div class="rv-kicker">С чего начинать</div>
+  <div class="rv-card" style="padding: 4px 10px;">
+    <table class="rv-t">
+      <thead><tr><th style="width: 42px;">#</th><th style="width: 330px;">Шаг</th><th style="width: 110px;">Эффект</th><th style="width: 110px;">Объём</th><th>Что правим в коде потом</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Одна кнопка: золото + тёмная тушь, зелёный уходит в статусы, <code>--light-green</code> удаляем</td><td class="good">высокий</td><td>полдня</td><td><code>globals.css</code>, оба <code>LinkButton</code>, <code>styles.module.scss</code></td></tr>
+        <tr><td class="num">2</td><td>Скрим под текстом на фото вместо маски и обводки — шапки и карточки</td><td class="good">высокий</td><td>день</td><td><code>entities/page-head</code>, <code>page-title</code>, <code>shared/ui/card*</code></td></tr>
+        <tr><td class="num">3</td><td>Карточка: один факт-ряд, тап по всей карточке, сердце 44px</td><td class="good">высокий</td><td>день</td><td><code>shared/ui/card-header</code>, <code>card-footer</code>, <code>badge-price</code></td></tr>
+        <tr><td class="num">4</td><td>Каталог: шапка 300px, теги-фильтры, две карточки в первом экране</td><td class="good">высокий</td><td>день</td><td><code>views/tours/ui/layout</code></td></tr>
+        <tr><td class="num">5</td><td>Ритм: отрицательные отступы → три токена интервалов (48 / 80 / 120)</td><td>средний</td><td>день</td><td><code>views/home</code>, <code>widgets/*</code></td></tr>
+        <tr><td class="num">6</td><td>Вход, регистрация, восстановление — в брендовую карточку</td><td>средний</td><td>полдня</td><td><code>app/(auth)</code>, <code>features/auth</code></td></tr>
+        <tr><td class="num">7</td><td>Дашборд: приоритет колонок + ящик деталей, чинится обрезка</td><td>средний</td><td>день</td><td><code>templates/guide-dashboard</code></td></tr>
+        <tr><td class="num">8</td><td>Десктопные раскладки каталога и тура</td><td class="good">высокий</td><td>2–3 дня</td><td><code>widgets/app-header</code>, <code>views/tours</code>, <code>views/tour</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="rv-sub" style="margin-top: 30px;">Шаги 1–4 меняют язык сайта, но не ломают ни одной структуры: это цвет кнопки, слой скрима и перекладка чипов внутри уже существующих компонентов. Их можно нарисовать в этом канвасе отдельными артбордами «v2» и сверить рядом с текущими, прежде чем что-то трогать в коде.</p>
+</div>
+</x-dc>
+</body>
+</html>

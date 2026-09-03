@@ -15,33 +15,41 @@ export const HomeView: FC = async () => {
     <AppMain
       mainHead={
         <PageHeadLayout
-          className='pt-[15vh] px-4'
+          className='px-4'
           title={
-            <PageTitle
-              topTitle={{ text: 'Джип туры' }}
-              middleTitle={{ text: 'Экскурсии по Крыму' }}
-            />
+            <div className='pt-30'>
+              <PageTitle
+                topTitle={{ text: 'Джип туры' }}
+                middleTitle={{ text: 'Экскурсии по Крыму' }}
+              />
+            </div>
           }
           content={
-            <div className='mt-[25vh] text-center'>
+            /* Кнопка внизу шапки, на плотной части скрима: там её находят
+               пальцем, и она не висит посреди кадра. */
+            <div className='absolute inset-x-0 bottom-22 px-4 text-center'>
               <LinkButton
-                className='px-22 md:px-32 lg:px-42 md:text-2xl lg:text-3xl xl:text-4xl'
+                className='w-full shadow-[0_6px_20px_#00000059]'
                 href='/category/vse_tury'
               >
                 Все туры
               </LinkButton>
+              <p className='font-oswald mt-3.5 text-[13px] tracking-widest text-white/85'>
+                Джип-туры и экскурсии · выезд из Бахчисарая и Севастополя
+              </p>
             </div>
           }
         />
       }
       mainContent={
-        <>
-          <div className='mt-[-15vh]'>
-            <PopularTours />
-            <HomePosts />
-          </div>
+        /* Единственное наложение на странице: контент поднимается на 32px и
+           закрывает фото скруглением сверху — тот же приём, что на туре.
+           Было -15vh и стопка отрицательных отступов внутри виджетов. */
+        <div className='relative z-3 -mt-8 rounded-t-[32px] bg-page pt-12'>
+          <PopularTours />
+          <HomePosts />
           <UpcomingActivities />
-        </>
+        </div>
       }
       mainBottom={null}
     />

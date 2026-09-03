@@ -26,7 +26,7 @@ export const postBaseSchema = z.object({
   image: z.string().max(512).optional().nullable(),
   metaTitle: z.string().max(512).optional().nullable(),
   metaDescription: z.string().max(512).optional().nullable(),
-  link: z.string().max(512).url().optional().nullable(),
+  link: z.url().max(512).optional().nullable(),
   pubDate: z.string().max(128).optional().nullable(),
   createdAt: dateSchema,
   updatedAt: dateSchema.optional().nullable(),

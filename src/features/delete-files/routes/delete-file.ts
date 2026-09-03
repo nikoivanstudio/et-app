@@ -1,9 +1,10 @@
 import { NextRequest } from 'next/server';
 
 import { roleUtils } from '@/entities/user';
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { sessionService } from '@/entities/user/server';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { handleError, handleForbidden, handleSuccess, handleUnauthorized } from '@/shared/lib/response-utils';
 
 import { deleteFilesService } from '../services/delete-files-service';
 
@@ -23,22 +24,20 @@ export async function deleteFile(req: NextRequest, id?: string): Promise<Respons
       });
     }
 
-    const sessionCookie = req.cookies.get('session')?.value;
+    const sessionCookie = req.cookies.get(SESSION_COOKIE_NAME)?.value;
 
     if (!sessionCookie) {
-      return handleError({ error: new Error('Ошибка сессии') });
+      return handleUnauthorized();
     }
 
     const { session } = await sessionService.verifySession(sessionCookie);
 
     if (!session) {
-      return handleError({ error: new Error('Ошибка сессии') });
+      return handleUnauthorized();
     }
 
     if (!roleUtils.userHasPermissionOn(session.role, 'deleteFile')) {
-      return handleError({
-        error: new Error('Вы не имеете полномочий на удаление этого файла')
-      });
+      return handleForbidden('Вы не имеете полномочий на удаление этого файла');
     }
 
     const result = await deleteFilesService.deleteFile(fileId);

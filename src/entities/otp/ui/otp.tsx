@@ -43,21 +43,31 @@ export const Otp: FC<Props> = ({ email, formData, setHasOtp }) => {
   ) => {
     e.preventDefault();
 
-    const response = await otpApi.sendCode<{
-      success: boolean;
-      content: string;
-    }>({
-      email,
-      tel
-    });
+    try {
+      const response = await otpApi.sendCode<{
+        success: boolean;
+        content: string;
+      }>({
+        email,
+        tel
+      });
 
-    if (!response.success) {
-      return toast.error(response.content);
+      if (!response.success) {
+        return toast.error(response.content);
+      }
+
+      toast.success(response.content);
+
+      debounceTimeout();
+    } catch (error) {
+      // apiClient бросает исключение на любой ответ со статусом ошибки,
+      // в том числе на 429 при превышении лимита запросов кода
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : 'Не удалось отправить код подтверждения'
+      );
     }
-
-    toast.success(response.content);
-
-    debounceTimeout();
   };
 
   return (

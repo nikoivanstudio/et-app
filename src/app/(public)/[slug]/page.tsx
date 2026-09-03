@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { FC } from 'react';
 
 import { postServices } from '@/features/post/server';
@@ -21,6 +22,12 @@ const Page: FC<{
 }> = async ({ params }) => {
   const { slug } = await params;
   const either = await postServices.getPostBySlug(slug);
+
+  // Поста с таким slug нет — это 404, а не ошибка загрузки: раньше страница
+  // отдавала 200 и голую строку «Ошибка при загрузке страницы».
+  if (either.type === 'left') {
+    notFound();
+  }
 
   return <PostView either={either} />;
 };

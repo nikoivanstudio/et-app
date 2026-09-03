@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+
+    .card { position: relative; display: block; height: 320px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 24px; line-height: 1.22; letter-spacing: .4px; color: #fff;
+               display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 12px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 21px; font-weight: 500; white-space: nowrap; }
+    .card .dim { font-size: 14px; opacity: .9; white-space: nowrap; }
+    .card .sep { opacity: .5; }
+    .card .more { margin-left: auto; font-size: 13px; color: var(--gold-photo); white-space: nowrap; }
+
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 4px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .frow { display: flex; align-items: baseline; gap: 8px; padding: 13px 0; border-bottom: 1px solid var(--rule); }
+    .frow:last-child { border-bottom: 0; padding-bottom: 0; }
+    .fname { flex: 1 1 auto; min-width: 0; font-family: 'Caladea', serif; font-size: 14px; color: var(--ink); }
+    .fprice { flex: 0 0 auto; font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 500; color: var(--gold-ink); white-space: nowrap; }
+    .funit { flex: 0 0 auto; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
+
+    .chip { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13.5px; white-space: nowrap; }
+    .chip-on { background: var(--cta); color: var(--on-cta); }
+    .meta { display: flex; align-items: baseline; justify-content: space-between; font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--ink-faint); }
+    .page-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 44px; padding: 0 14px; border-radius: var(--r-pill); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; color: var(--ink-muted); text-decoration: none; }
+    .page-on { background: var(--cta); border-color: var(--cta); color: var(--on-cta); font-weight: 600; }
+  </style>
+</helmet>
+
+<!-- Шапка 300px: было 75vh фото с плоской маской 70% и стеклянной таблицей цен поверх -->
+<section style="position: relative; height: 300px; background-image: url(./tours.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg></div>
+  </div>
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 52px;">
+    <p style="margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #ffffffcc;">17 туров · Крым · выезд из Бахчисарая</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 38px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-photo); line-height: 1;">Все туры</h1>
+  </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: var(--page); padding: 24px 16px 0;">
+
+  <!-- Прайс переехал с фото на бумагу: было «₽ в час» серым по стеклу и обрезано справа -->
+  <div class="block">
+    <h2 class="block-h">Форматы и цены</h2>
+        <div class="frow">
+          <span class="fname">Заказ внедорожника</span>
+          <span class="fprice">от 2 000 ₽</span>
+          <span class="funit">в час</span>
+        </div>
+        <div class="frow">
+          <span class="fname">Джип-тур</span>
+          <span class="fprice">от 5 000 ₽</span>
+          <span class="funit">за тур</span>
+        </div>
+        <div class="frow">
+          <span class="fname">Экспедиционный джип-тур</span>
+          <span class="fprice">от 20 000 ₽</span>
+          <span class="funit">в день</span>
+        </div>
+    <p style="margin: 14px 0 0; font-family: 'Caladea', serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-muted);">Цена за машину до 6 человек. Точную стоимость гид подтверждает после заявки.</p>
+  </div>
+
+  <!-- Фильтры по длительности: в данных она уже есть, фильтра не было -->
+  <div style="display: flex; gap: 8px; overflow-x: auto; margin-top: 24px; padding-bottom: 4px;">
+    <span class="chip chip-on">Все</span>
+    <span class="chip">до 3 часов</span>
+    <span class="chip">4–5 часов</span>
+    <span class="chip">на весь день</span>
+    <span class="chip">экспедиции</span>
+  </div>
+
+  <div class="meta" style="margin-top: 20px;">
+    <span>Показано 12 из 17</span>
+    <span style="color: var(--gold-ink);">Сначала популярные ▾</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 16px;">
+      <a class="card" href="#" style="background-image: url(./card1.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Джип-тур экскурсия «Сердцем Крыма»</div>
+          <div class="facts">
+            <span class="price">от 10 500 ₽</span>
+            <span class="sep">·</span><span class="dim">4 часа</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./services.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Индивидуальная экскурсия — тур «Безлимитный»</div>
+          <div class="facts">
+            <span class="price">от 24 000 ₽</span>
+            <span class="sep">·</span><span class="dim">10 часов</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./tourhead.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Сафари-прогулки на внедорожниках по Крыму</div>
+          <div class="facts">
+            <span class="price">от 3 000 ₽</span>
+            <span class="sep">·</span><span class="dim">1 час</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card2.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Экскурсия в пещерный город Эски-Кермен</div>
+          <div class="facts">
+            <span class="price">от 6 500 ₽</span>
+            <span class="sep">·</span><span class="dim">3 часа</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card3.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Марсианское озеро, Сфинксы и крепость</div>
+          <div class="facts">
+            <span class="price">от 11 000 ₽</span>
+            <span class="sep">·</span><span class="dim">5 часов</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card4.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Бельбекский каньон и Сюйреньская крепость</div>
+          <div class="facts">
+            <span class="price">от 12 000 ₽</span>
+            <span class="sep">·</span><span class="dim">3 часа</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+  </div>
+
+  <p style="margin: 20px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">…и ещё 6 туров на этой странице</p>
+
+  <!-- Пагинация: было «1 2 Вперед» текстом zinc-600 без тап-таргета -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 32px;">
+    <span class="page-btn page-on">1</span>
+    <a class="page-btn" href="/category/vse_tury/page/2">2</a>
+    <a class="page-btn" href="/category/vse_tury/page/2" style="padding: 0 18px;">Вперёд →</a>
+  </div>
+
+  <div style="height: 64px;"></div>
+</div>
+</x-dc>
+</body>
+</html>

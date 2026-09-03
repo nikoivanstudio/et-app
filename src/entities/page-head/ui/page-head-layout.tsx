@@ -22,19 +22,20 @@ export const PageHeadLayout: FC<PageHeadProps> = async ({
       className
     ])}
   >
-    <div className={cnPageHead('ContentWrap', ['relative', 'z-3'])}>
+    <div className={cnPageHead('ContentWrap', ['relative', 'z-3', 'h-full'])}>
       {title}
       {content}
     </div>
+    {/* Скрим вместо плоской маски bg-[#0000002a]: плотный сверху и снизу,
+        прозрачный в середине — кадр видно, а текст читается. */}
     <div
-      className={cnPageHead('Filter', [
+      className={cnPageHead('Scrim', [
         'absolute',
         'z-2',
         'top-0',
         'right-0',
         'bottom-0',
-        'left-0',
-        'bg-[#0000002a]'
+        'left-0'
       ])}
     ></div>
   </section>

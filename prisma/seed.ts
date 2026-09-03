@@ -5,6 +5,8 @@ import { passwordService } from '@/entities/user/services/password';
 
 import { dbClient } from '@/shared/lib/db';
 
+import { seedPosts } from './seed-posts';
+
 type SeedUser = {
   login: string;
   password: string;
@@ -30,6 +32,8 @@ const seedUsers: SeedUser[] = [
 ];
 
 async function main() {
+  let authorId: number | null = null;
+
   for (const { login, password, role, ...profile } of seedUsers) {
     const { hash, salt } = await passwordService.hashPassword(password);
 
@@ -39,8 +43,18 @@ async function main() {
       create: { login, passwordHash: hash, salt, role, ...profile }
     });
 
+    if (role === Role.SUPER_ADMIN) {
+      authorId = user.id;
+    }
+
     console.log(`✓ user "${user.login}" (role=${user.role})`);
   }
+
+  if (authorId === null) {
+    throw new Error('Не найден автор для постов');
+  }
+
+  await seedPosts(authorId);
 }
 
 main()

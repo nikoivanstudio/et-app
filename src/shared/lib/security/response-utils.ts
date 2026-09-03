@@ -20,19 +20,23 @@ const getSecuredResponse = ({
 }): NextResponse => {
   const res = NextResponse.next();
 
-  const corsOrigin =
-    origin && ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  /**
+   * MED-4: раньше при неизвестном Origin подставлялся первый домен из списка
+   * вместе с `Allow-Credentials: true`. Теперь заголовки CORS выдаются только
+   * для действительно разрешённого источника, а в остальных случаях
+   * не выдаются вовсе — браузер тогда сам заблокирует кросс-доменное чтение.
+   */
+  if (origin && ALLOWED_ORIGINS.includes(origin)) {
+    res.headers.set('Access-Control-Allow-Origin', origin);
+    res.headers.set('Vary', 'Origin');
+    res.headers.set(
+      'Access-Control-Allow-Methods',
+      'GET, POST, PUT, PATCH, DELETE, OPTIONS'
+    );
+    res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+    res.headers.set('Access-Control-Allow-Credentials', 'true');
+  }
 
-  res.headers.set('Access-Control-Allow-Origin', corsOrigin);
-  res.headers.set(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, PATCH, DELETE, OPTIONS'
-  );
-  res.headers.set(
-    'Access-Control-Allow-Headers',
-    'Content-Type, Authorization, X-API-KEY'
-  );
-  res.headers.set('Access-Control-Allow-Credentials', 'true');
   res.headers.set('X-RateLimit-Limit', String(RATE_LIMIT_MAX));
   res.headers.set('X-RateLimit-Remaining', String(remaining));
   res.headers.set('X-RateLimit-Reset', resetAt.toISOString());
@@ -40,37 +44,28 @@ const getSecuredResponse = ({
   return res;
 };
 
+const jsonError = (
+  message: string,
+  status: number,
+  extraHeaders: Record<string, string> = {}
+): NextResponse =>
+  new NextResponse(JSON.stringify({ error: message }), {
+    status,
+    headers: { 'Content-Type': 'application/json', ...extraHeaders }
+  });
+
 const handleError = (error: unknown): NextResponse => {
   if (error instanceof SecurityOriginException) {
-    return new NextResponse(JSON.stringify({ error: error.message }), {
-      status: 403,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  } else if (error instanceof SecurityLimitException) {
-    return new NextResponse(
-      JSON.stringify({
-        error: error.message
-      }),
-      {
-        status: 429,
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    );
+    return jsonError(error.message, 403);
   }
 
-  return new NextResponse(
-    JSON.stringify({ error: 'Unknown error on server' }),
-    {
-      status: 403,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-  );
+  if (error instanceof SecurityLimitException) {
+    return jsonError(error.message, 429, { 'Retry-After': '60' });
+  }
+
+  console.error(error);
+
+  return jsonError('Unknown error on server', 500);
 };
 
 export const securityUtils = { getSecuredResponse, handleError };

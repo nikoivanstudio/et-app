@@ -3,28 +3,29 @@ import { NextRequest } from 'next/server';
 import { editUserSchema } from '@/features/edit-user/model/user-schema';
 
 import { roleUtils } from '@/entities/user';
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { sessionService, updateUser } from '@/entities/user/server';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { handleError, handleForbidden, handleSuccess, handleUnauthorized } from '@/shared/lib/response-utils';
 
 export async function patchUser(req: NextRequest): Promise<Response> {
   try {
     const queryId = req.nextUrl.searchParams.get('id');
 
-    const cookies = req.cookies.get('session')?.value;
+    const cookies = req.cookies.get(SESSION_COOKIE_NAME)?.value;
 
     if (!cookies) {
-      return handleError({ body: 'Ошибка верификации' });
+      return handleUnauthorized();
     }
 
     const { session } = await sessionService.verifySession(cookies);
 
     if (!session) {
-      return handleError({ body: 'Ошибка верификации' });
+      return handleUnauthorized();
     }
 
     if (!roleUtils.userHasPermissionOn(session.role, 'updateUser')) {
-      return handleError({ body: 'У вас нет полномочий на обновление пользователя' });
+      return handleForbidden('У вас нет полномочий на обновление пользователя');
     }
 
     const body = await req.json();

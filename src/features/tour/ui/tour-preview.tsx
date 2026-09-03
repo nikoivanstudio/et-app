@@ -25,7 +25,11 @@ const normalizeMainPhoto = (
 const toSignature = (inputs: (string | File | undefined)[]) =>
   inputs
     .map(input =>
-      !input ? '' : typeof input === 'string' ? input : `${input.name}:${input.size}`
+      !input
+        ? ''
+        : typeof input === 'string'
+          ? input
+          : `${input.name}:${input.size}`
     )
     .join('|');
 
@@ -54,6 +58,10 @@ const useResolvedSources = (
       return url;
     });
 
+    // Object URL — внешний ресурс: его нельзя создавать во время рендера,
+    // потому что он требует парного revoke в cleanup. Поэтому setState здесь
+    // неизбежен.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSources(resolved);
 
     return () => created.forEach(url => URL.revokeObjectURL(url));

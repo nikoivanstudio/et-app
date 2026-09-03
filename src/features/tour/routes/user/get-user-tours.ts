@@ -3,23 +3,24 @@ import { NextRequest } from 'next/server';
 import { GetToursResponse } from '@/features/tour/domain';
 import { tourService } from '@/features/tour/services/tour-service';
 
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { sessionService } from '@/entities/user/server';
 
 import { Either } from '@/shared/lib/either';
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import { handleError, handleSuccess, handleUnauthorized } from '@/shared/lib/response-utils';
 
 export async function getUserTours(req: NextRequest): Promise<Response> {
   try {
-    const cookies = req.cookies.get('session')?.value;
+    const cookies = req.cookies.get(SESSION_COOKIE_NAME)?.value;
 
     if (!cookies) {
-      return handleError({ body: 'Cookies not found' });
+      return handleUnauthorized();
     }
 
     const { session } = await sessionService.verifySession(cookies);
 
     if (!session) {
-      return handleError({ body: 'Session not found' });
+      return handleUnauthorized();
     }
 
     const { id, role } = session;

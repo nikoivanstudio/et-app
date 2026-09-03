@@ -1,5 +1,7 @@
 'use server';
 
+import { treeifyError } from 'zod';
+
 import {
   getCurrentUser,
   sessionService,
@@ -7,6 +9,11 @@ import {
   verifyUserPassword
 } from '@/entities/user/server';
 import { passwordService } from '@/entities/user/services/password';
+
+import {
+  authThrottleMessage,
+  consumeAuthAttempt
+} from '@/shared/lib/security/auth-throttle';
 
 import { changePasswordSchema } from '../model/schemas';
 
@@ -28,13 +35,15 @@ export const changePasswordAction = async (
   const result = changePasswordSchema.safeParse(data);
 
   if (!result.success) {
-    const formatedErrors = result.error.format();
+    const errorTree = treeifyError(result.error);
     return {
       errors: {
-        currentPassword: formatedErrors.currentPassword?._errors.join(', '),
-        newPassword: formatedErrors.newPassword?._errors.join(', '),
-        confirmPassword: formatedErrors.confirmPassword?._errors.join(', '),
-        _errors: formatedErrors._errors.join(', ') || undefined
+        currentPassword:
+          errorTree.properties?.currentPassword?.errors.join(', '),
+        newPassword: errorTree.properties?.newPassword?.errors.join(', '),
+        confirmPassword:
+          errorTree.properties?.confirmPassword?.errors.join(', '),
+        _errors: errorTree.errors.join(', ') || undefined
       }
     };
   }
@@ -43,6 +52,13 @@ export const changePasswordAction = async (
 
   if (!user) {
     return { errors: { _errors: 'Пользователь не авторизован' } };
+  }
+
+  // HIGH-1: подбор текущего пароля через эту форму тоже должен быть ограничен
+  const throttle = await consumeAuthAttempt('change-password', user.login);
+
+  if (!throttle.allowed) {
+    return { errors: { _errors: authThrottleMessage(throttle) } };
   }
 
   const verifyResult = await verifyUserPassword({
@@ -68,6 +84,12 @@ export const changePasswordAction = async (
     return { errors: { _errors: 'Не удалось обновить пароль' } };
   }
 
+  /**
+   * HIGH-2: смена пароля завершает ВСЕ сессии пользователя. Раньше обновлялась
+   * только cookie текущего браузера, а во всех остальных сессиях прежний токен
+   * продолжал работать — атакующий не вытеснялся сменой пароля.
+   */
+  await sessionService.revokeAllSessions(user.id);
   await sessionService.updateSession(updateResult.value);
 
   return { success: true };

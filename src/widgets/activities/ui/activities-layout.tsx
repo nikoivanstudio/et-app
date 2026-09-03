@@ -18,9 +18,9 @@ export const ActivitiesLayout: FC<ActivitiesLayoutProps> = ({
   footer,
   className
 }) => (
-  <section className={cnActivities(null, ['px-4', className])}>
-    <div className={cnActivities('Header', ['pt-22'])}>
-      <Title type='h2' className={cnActivities('Title')}>
+  <section className={cnActivities(null, ['px-4 py-20', className])}>
+    <div className={cnActivities('Header', [])}>
+      <Title type='h2' onPhoto className={cnActivities('Title')}>
         {title}
       </Title>
     </div>

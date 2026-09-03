@@ -1,0 +1,2273 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Energy Tour — макеты экранов</title>
+<style>
+  :root { color-scheme: light dark; --bg:#111114; --panel:#1b1b20; --line:#2c2c33; --ink:#f4f4f5; --dim:#a1a1aa; --accent:#e0a955; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.55 ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  header { padding:32px 28px 20px; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 8px; font-size:22px; font-weight:600; letter-spacing:-0.01em; }
+  header p { margin:0 0 6px; color:var(--dim); max-width:80ch; }
+  header a.link { color:var(--accent); }
+  nav { position:sticky; top:0; z-index:5; display:flex; flex-wrap:wrap; gap:6px; padding:12px 28px; background:color-mix(in oklab, var(--bg) 88%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav a { padding:5px 11px; border:1px solid var(--line); border-radius:999px; color:var(--ink); text-decoration:none; font-size:12.5px; white-space:nowrap; }
+  nav a:hover { border-color:var(--accent); color:var(--accent); }
+  main { display:flex; flex-wrap:wrap; align-items:flex-start; gap:40px; padding:32px 28px 80px; }
+  .board h2 { margin:0 0 10px; font-size:14px; font-weight:600; }
+  .board h2 span { color:var(--dim); font-weight:400; margin-left:6px; }
+  .frame { border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff; box-shadow:0 12px 32px #0006; max-width:100%; }
+  .frame iframe { display:block; width:100%; height:100%; border:0; }
+  footer { padding:0 28px 60px; color:var(--dim); }
+  footer code { color:var(--ink); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Energy Tour — макеты основных экранов</h1>
+  <p>Применённая версия v2. Снято с кода, затем правки дизайна из артборда «Ревью».<br>Прежнее состояние (то, что сейчас в коде) лежит в docs/design/canvas/before/ и в истории версий этой ссылки.</p><p>Мобильная вёрстка осталась основной, но десктоп больше не «одна колонка 390px»: см. артборд «Десктоп — каталог 1440».<br>Контент 1120px, сетка карточек 3 в ряд, горизонтальное меню вместо бургера от md:.</p><p>Визуальные языки сведены: одна кнопка (золото + тёмная тушь), один набор радиусов, одни поля 48px, акцент дашборда сведён с золотом на фото.<br>Зелёный остался только статусом. Обводка текста убрана везде — контраст держит скрим.</p><p>Ревью снято с этих же артбордов. Контраст измерен по пикселям фото под текстом в Chrome, не на глаз.<br>Варианты нарисованы рядом с текущим состоянием — выбираем, потом рисуем полноценные артборды v2 и только затем правим код.</p><p>Это отдельная страница от артборда «Все туры» слева: /category/vse_tury — статический каталог на 17 туров, куда ведёт главный CTA.<br>В проде она осталась вёрсткой старого сайта: серые блоки zinc-500, «ПОДРОБНЕЕ» в рамке, фото по 50vh, одна карточка в ряд, прайс стеклянной таблицей поверх фото.</p>
+  <p>Живой канвас: <a class="link" href="https://claude.ai/code/artifact/c57b4036-c2ba-40c2-975c-6f1448d11df7">claude.ai/code/artifact/c57b4036…</a></p>
+</header>
+<nav><a href="#Foundations">Foundations</a><a href="#Main">Главная</a><a href="#Catalog">Все туры</a><a href="#Tour">Страница тура</a><a href="#Booking">Заявка на тур</a><a href="#BookingDone">Заявка отправлена</a><a href="#SignIn">Вход</a><a href="#Dashboard">Дашборд гида</a><a href="#Review">Ревью и предложения</a><a href="#Desktop">Десктоп</a><a href="#Tours">Все туры</a><a href="#ToursDesktop">Все туры</a></nav>
+<main>
+  <section class="board" id="Foundations">
+    <h2>Foundations — токены и компоненты <span>1000×3400</span></h2>
+    <div class="frame" style="width:1000px;height:3400px">
+      <script type="text/html" data-board="Foundations"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --cta-press: #a8814b; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-ink: #4a6626; --free-bg: #edf3e2; --alert-ink: #9e3a25; --alert-bg: #f9e6e2;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.78) 0%, rgba(20,14,6,.34) 46%, rgba(20,14,6,.72) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 38%, rgba(20,14,6,.82) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.55), rgba(20,14,6,.8));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+      --sp-s: 48px; --sp-m: 80px; --sp-l: 120px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .fd { padding: 40px 44px 56px; }
+    h1.fd-t { margin: 0; font-family: 'Poiret One', serif; font-size: 44px; letter-spacing: 3px; color: var(--gold-head); text-transform: uppercase; }
+    .fd-lead { margin: 10px 0 0; max-width: 84ch; font-size: 14.5px; line-height: 1.6; color: var(--ink-muted); }
+    .fd-k { margin: 40px 0 14px; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: var(--ink-faint); }
+    .fd-c { background: #fff; border: 1px solid var(--rule); border-radius: var(--r-block); padding: 20px 22px; }
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .fd-h { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+    .fd-note { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--ink-muted); }
+    .sw { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 14px; }
+    .sw > div > div:first-child { height: 62px; border-radius: 12px; border: 1px solid #0000000f; }
+    .sw b { display: block; margin-top: 7px; font-size: 12px; font-weight: 600; }
+    .sw span { display: block; font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--ink-faint); }
+    .ok { color: #4a6626; font-family: 'Oswald', sans-serif; font-size: 11.5px; }
+    .no { color: #9e3a25; font-family: 'Oswald', sans-serif; font-size: 11.5px; }
+    code { font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; color: var(--gold-ink); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 40px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-size: 16px; font-weight: 600; letter-spacing: .04em; border: 0; }
+    .btn-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: var(--r-pill); background: transparent; border: 1.5px solid var(--cta); color: var(--gold-ink); font-size: 15px; font-weight: 600; }
+    .btn-photo { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 34px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-size: 16px; font-weight: 600; box-shadow: 0 6px 20px #00000059; }
+    .field { height: 48px; border: 1px solid var(--rule); border-radius: var(--r-control); background: #fffdf8; display: flex; align-items: center; padding: 0 14px; font-size: 14px; color: var(--ink-faint); }
+    .lab { font-size: 12px; font-family: 'Oswald', sans-serif; letter-spacing: .8px; color: var(--ink-muted); margin-bottom: 6px; }
+    .stat { display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: .6px; white-space: nowrap; flex: 0 0 auto; }
+    .demo { position: relative; height: 168px; border-radius: var(--r-block); overflow: hidden; background-size: cover; background-position: center; }
+    .rad { height: 54px; background: var(--cream-deep); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; font-family: 'Oswald'; font-size: 12px; color: var(--ink-muted); }
+    table.sp { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.sp td { padding: 9px 10px; border-bottom: 1px solid #efe8d8; vertical-align: middle; }
+    table.sp tr:last-child td { border-bottom: 0; }
+    .bar { height: 12px; border-radius: 4px; background: var(--gold-plate); }
+  </style>
+</helmet>
+
+<div class="fd">
+  <h1 class="fd-t">Energy Tour — Foundations v2</h1>
+  <p class="fd-lead">Применённая версия. Одна главная кнопка, золото разведено по роли, текст поверх фото живёт на скриме, зелёный работает только как статус. Каждое значение подписано измеренным контрастом — порог AA: 4.5:1 для обычного текста, 3:1 для крупного. Токены отсюда переносятся в <code>globals.css</code> первыми.</p>
+
+  <div class="fd-k">Действие — одна кнопка на весь продукт</div>
+  <div class="g3">
+    <div class="fd-c">
+      <p class="fd-h">Основная</p>
+      <div style="padding: 16px 0 10px;"><span class="btn">Все туры</span></div>
+      <p class="fd-note"><code>--cta #B8915A</code> + <code>--on-cta #1F1A12</code> · <span class="ok">5.96:1</span><br>Высота 48px, радиус <code>--r-pill</code>. Ей же теперь рисуется «Забронировать».</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Поверх фото</p>
+      <div style="padding: 16px 0 10px;"><span class="btn-photo">Все туры</span></div>
+      <p class="fd-note">Та же плашка плюс тень <code>0 6px 20px #00000059</code>, чтобы не растворялась в кадре. Цвета не меняются.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Второстепенная</p>
+      <div style="padding: 16px 0 10px;"><span class="btn-ghost">Все направления</span></div>
+      <p class="fd-note">Контур <code>--cta</code>, текст <code>--gold-ink</code> · <span class="ok">5.35:1</span>. Больше двух уровней кнопок не вводим.</p>
+    </div>
+  </div>
+  <div class="fd-c" style="margin-top: 20px; display: flex; align-items: center; gap: 28px;">
+    <div style="flex: 0 0 auto;">
+      <p class="lab" style="margin-bottom: 10px;">БЫЛО</p>
+      <span style="display:inline-flex; align-items:center; min-height: 48px; padding: 0 34px; border-radius: 999px; background: #22c55e; color: #fff; font-size: 16px;">Все туры</span>
+      <p class="fd-note"><span class="no">2.28:1</span> · <code>green-500</code></p>
+    </div>
+    <div style="font-size: 24px; color: var(--ink-faint);">→</div>
+    <div style="flex: 0 0 auto;">
+      <p class="lab" style="margin-bottom: 10px;">СТАЛО</p>
+      <span class="btn">Все туры</span>
+      <p class="fd-note"><span class="ok">5.96:1</span> · золото бренда</p>
+    </div>
+    <p class="fd-note" style="flex: 1; margin: 0;">Зелёный убран из действий целиком. Токен <code>--light-green: #81d178</code> удаляется: он всё равно не применялся, потому что <code>@bem-react/classname</code> отдаёт глобальный класс <code>LinkButton</code>, а SCSS-модуль хеширует своё имя.</p>
+  </div>
+
+  <div class="fd-k">Золото — по роли, а не одним цветом</div>
+  <div class="fd-c">
+    <div class="sw">
+      <div><div style="background: #e8b055;"></div><b>--gold-photo</b><span>#E8B055</span><span class="ok">6.40:1 на скриме</span></div>
+      <div><div style="background: #8b6f3d;"></div><b>--gold-head</b><span>#8B6F3D</span><span class="ok">4.38:1 на светлом</span></div>
+      <div><div style="background: #7d6234;"></div><b>--gold-ink</b><span>#7D6234</span><span class="ok">5.35:1 на креме</span></div>
+      <div><div style="background: #b8915a;"></div><b>--gold-plate</b><span>#B8915A</span><span class="ok">под тушь 5.96:1</span></div>
+    </div>
+    <p class="fd-note">Прежний единственный <code>#d19331</code> давал 2.45:1 на светлом фоне и 1.35:1 на небе — им нельзя было писать нигде. Теперь у каждой роли свой тон: светлое золото только поверх скрима, тёмное — на бумаге, плашечное — под тёмную тушь.</p>
+  </div>
+
+  <div class="fd-k">Тушь, бумага, статусы</div>
+  <div class="g2">
+    <div class="fd-c">
+      <div class="sw" style="grid-template-columns: repeat(3, 1fr);">
+        <div><div style="background: #1f1a12;"></div><b>--ink</b><span>#1F1A12</span></div>
+        <div><div style="background: #6b5f47;"></div><b>--ink-muted</b><span>#6B5F47</span><span class="ok">5.86:1</span></div>
+        <div><div style="background: #7f6f52;"></div><b>--ink-faint</b><span>#7F6F52</span><span class="ok">4.57:1</span></div>
+        <div><div style="background: #fbf7ee;"></div><b>--cream</b><span>#FBF7EE</span></div>
+        <div><div style="background: #f4ecdd;"></div><b>--cream-deep</b><span>#F4ECDD</span></div>
+        <div><div style="background: #f7f6f3;"></div><b>--page</b><span>#F7F6F3</span></div>
+      </div>
+      <p class="fd-note">Прежний <code>ink-faint #8A7A5C</code> давал 3.91:1 — заменён на <code>#7F6F52</code>. Серый <code>#e6e6e6</code> из фона приложения заменён на тёплый <code>--page</code>: он держит один ряд с кремом и не выглядит «незакрашенным».</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Зелёный и красный — только статус</p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0 4px;">
+        <span class="stat" style="background: var(--free-bg); color: var(--free-ink);">бесплатно</span>
+        <span class="stat" style="background: var(--free-bg); color: var(--free-ink);">6 мест</span>
+        <span class="stat" style="background: var(--alert-bg); color: var(--alert-ink);">2 места</span>
+        <span class="stat" style="background: var(--cream-deep); color: var(--ink-muted);">архив</span>
+      </div>
+      <p class="fd-note"><code>--free-ink #4A6626</code> на <code>#EDF3E2</code> · <span class="ok">5.75:1</span><br><code>--alert-ink #9E3A25</code> на <code>#F9E6E2</code> · <span class="ok">5.65:1</span><br>Раньше эти же роли рисовались насыщенными <code>#5C7A2E</code> и <code>#B4452F</code> прямо на фото — на кадре они не читались. Радиус у статуса 8px: он не кнопка, кликать его не надо.</p>
+    </div>
+  </div>
+
+  <div class="fd-k">Скримы — вместо маски 16% и обводки текста</div>
+  <div class="g3">
+    <div class="fd-c">
+      <p class="lab">--scrim-hero · шапки</p>
+      <div class="demo" style="background-image: url(./hero.jpg);">
+        <div style="position: absolute; inset: 0; background: var(--scrim-hero);"></div>
+        <div style="position: absolute; left: 16px; right: 16px; top: 20px; text-align: right; font-family: 'Poiret One', serif;">
+          <span style="display: block; text-transform: uppercase; font-size: 26px; letter-spacing: 3px; color: var(--gold-photo);">Джип туры</span>
+          <span style="display: block; margin-top: 10px; font-size: 19px; letter-spacing: 1px; color: #fff;">Экскурсии по Крыму</span>
+        </div>
+      </div>
+      <p class="fd-note">Золото <span class="ok">6.40:1</span>, белый <span class="ok">12.5:1</span>. <code>-webkit-text-stroke</code> убран везде — Poiret One снова тонкий, каким его и рисовали.</p>
+    </div>
+    <div class="fd-c">
+      <p class="lab">--scrim-card · карточки</p>
+      <div class="demo" style="background-image: url(./card1.jpg);">
+        <div style="position: absolute; inset: 0; background: var(--scrim-card);"></div>
+        <div style="position: absolute; left: 14px; right: 14px; bottom: 12px;">
+          <div style="font-family: 'Poiret One', serif; font-size: 21px; color: #fff; line-height: 1.25;">Пещерный город</div>
+          <div style="display: flex; gap: 8px; align-items: baseline; margin-top: 6px; font-family: 'Oswald'; color: #fff;"><b style="font-size: 15px;">от 7 000 ₽</b><span style="opacity:.85; font-size: 12px;">· 7 часов · ★ 4.9</span></div>
+        </div>
+      </div>
+      <p class="fd-note">Прозрачный сверху, плотный снизу: кадр видно, а факты читаются на любом фото, а не только на удачном.</p>
+    </div>
+    <div class="fd-c">
+      <p class="lab">--scrim-band · полосы и блоки</p>
+      <div class="demo" style="background-image: url(./activities.jpg);">
+        <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+        <div style="position: absolute; left: 14px; right: 14px; top: 18px;">
+          <div style="font-family: 'Poiret One', serif; font-size: 22px; color: var(--gold-photo); text-align: center;">Ближайшие туры</div>
+          <div style="margin-top: 12px; border-radius: 12px; background: rgba(20,14,6,.62); padding: 10px 12px; display: flex; align-items: center; gap: 10px; color: #fff;">
+            <b style="font-family: 'Oswald'; font-size: 17px;">12–14</b>
+            <span style="font-size: 12px; opacity: .9;">Марсианское озеро</span>
+            <span class="stat" style="margin-left: auto; background: var(--free-bg); color: var(--free-ink);">4 места</span>
+          </div>
+        </div>
+      </div>
+      <p class="fd-note">Ряды на фото получают собственную подложку <code>rgba(20,14,6,.62)</code> вместо стекла 10% — белый по ней 9:1 вместо 2.8:1.</p>
+    </div>
+  </div>
+
+  <div class="fd-k">Радиусы — четыре, не девять</div>
+  <div class="fd-c">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;">
+      <div><div class="rad" style="border-radius: var(--r-pill);">--r-pill 999</div><p class="fd-note">кнопки, чипы, аватары</p></div>
+      <div><div class="rad" style="border-radius: var(--r-card);">--r-card 24</div><p class="fd-note">карточки туров, фотоблоки</p></div>
+      <div><div class="rad" style="border-radius: var(--r-block);">--r-block 16</div><p class="fd-note">блоки контента, диалоги</p></div>
+      <div><div class="rad" style="border-radius: var(--r-control);">--r-control 10</div><p class="fd-note">поля, селекты, статусы 8</p></div>
+    </div>
+    <p class="fd-note">Было вперемешку: 32 на карточках, 30 на маске, 14 у диалога, 10 у полей, 6 у shadcn-инпутов, 12 в дашборде. Скругление верхнего края контентного блока остаётся 32px — это единственный «нестандартный» радиус, и он один на весь сайт.</p>
+  </div>
+
+  <div class="fd-k">Интервалы и единственное наложение</div>
+  <div class="g2">
+    <div class="fd-c">
+      <table class="sp">
+        <tr><td style="width: 90px;"><code>--sp-s</code></td><td style="width: 46px;">48</td><td><div class="bar" style="width: 48px;"></div></td><td>внутри блока, между карточками</td></tr>
+        <tr><td><code>--sp-m</code></td><td>80</td><td><div class="bar" style="width: 80px;"></div></td><td>между секциями</td></tr>
+        <tr><td><code>--sp-l</code></td><td>120</td><td><div class="bar" style="width: 120px;"></div></td><td>до и после блока с фоновым фото</td></tr>
+      </table>
+      <p class="fd-note">Убраны <code>mt-[-15vh]</code>, <code>-45px</code>, <code>-70px</code>, <code>-75px</code>, <code>mt-[8%]</code>, <code>mt-[25vh]</code>. Из-за них на главной висело ≈200px пустого фото перед «Контактами» и ≈100px пустоты в самом низу.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Наложение контента на шапку — один приём</p>
+      <div style="margin-top: 12px; border-radius: var(--r-block); overflow: hidden; border: 1px solid var(--rule);">
+        <div style="height: 96px; background: url(./tours.jpg) center/cover; position: relative;">
+          <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+        </div>
+        <div style="margin-top: -32px; position: relative; border-radius: 32px 32px 0 0; background: var(--page); height: 84px; padding: 16px;">
+          <div style="height: 52px; border-radius: var(--r-card); background: var(--cream-deep);"></div>
+        </div>
+      </div>
+      <p class="fd-note">Контент поднимается на <b>−32px</b> и закрывает фото скруглением 32px сверху. Так уже сделана страница тура — теперь так же главная и каталог. Ровно одно наложение на страницу, остальное — интервалы.</p>
+    </div>
+  </div>
+
+  <div class="fd-k">Типографика</div>
+  <div class="g3">
+    <div class="fd-c">
+      <p class="fd-h">Poiret One <code>--font-poire-one</code></p>
+      <div style="font-family: 'Poiret One', serif; color: var(--gold-head); font-size: 40px; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; line-height: 1;">Джип туры</div>
+      <p class="fd-note">H1 · 40px / ls 4px / без stroke</p>
+      <div style="font-family: 'Poiret One', serif; color: var(--ink); font-size: 28px; letter-spacing: 1px; margin-top: 14px;">Экскурсии по Крыму</div>
+      <p class="fd-note">H1 вторая строка · 28px, на фото белым</p>
+      <div style="font-family: 'Poiret One', serif; color: var(--gold-head); font-size: 26px; margin-top: 14px;">Популярные туры</div>
+      <p class="fd-note">H2 · 26px · <code>--gold-head</code> <span class="ok">4.38:1</span><br>Заголовок секции больше не лежит на фото — он на бумаге, над блоком.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Oswald <code>--oswald</code></p>
+      <div style="font-family: 'Oswald'; font-weight: 500; font-size: 22px; margin-top: 12px;">от 7 000 ₽</div>
+      <p class="fd-note">цена в карточке · 22px / 500</p>
+      <div style="font-family: 'Oswald'; font-size: 15px; margin-top: 12px; color: var(--ink-muted);">7 часов · до 6 чел.</div>
+      <p class="fd-note">факты · 15px / 400</p>
+      <div style="font-family: 'Oswald'; font-size: 12px; letter-spacing: 1.4px; margin-top: 12px; color: var(--ink-faint); text-transform: uppercase;">Ваш гид</div>
+      <p class="fd-note">лейбл · 12px / ls 1.4 / <code>--ink-faint</code><br>Заголовок карточки тура переехал с Poiret One 35px на Poiret One 27px: три строки превращались в четыре и упирались в фото.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Caladea + системный</p>
+      <div style="font-family: 'Caladea', serif; font-size: 14.5px; line-height: 1.65; margin-top: 12px;">Гид свяжется с вами и подтвердит детали. Предоплата не требуется.</div>
+      <p class="fd-note">тело формы и абзацы поста · 14.5px / 1.65</p>
+      <div style="font-family: 'Caladea', serif; font-weight: 700; font-size: 20px; margin-top: 14px; position: relative; padding-left: 12px;"><span style="position: absolute; left: 0; top: 4px; width: 4px; height: 20px; background: var(--gold-plate); border-radius: 2px;"></span>О туре</div>
+      <p class="fd-note"><code>.et-h</code> · 20px / 700 + золотая полоса 4×20<br>Этот приём с полосой распространяется на заголовки блоков на всех страницах, не только в посте.</p>
+    </div>
+  </div>
+
+  <div class="fd-k">Компоненты</div>
+  <div class="g3">
+    <div class="fd-c">
+      <p class="fd-h">Поля</p>
+      <div style="margin-top: 12px;"><div class="lab">ВАШЕ ИМЯ *</div><div class="field">Как к вам обращаться</div></div>
+      <div style="margin-top: 12px;"><div class="lab">ТЕЛЕФОН *</div><div class="field" style="border-color: var(--cta); border-width: 1.5px; color: var(--ink);">+7 978 788-07-53</div></div>
+      <p class="fd-note">Высота 48px (было 36–40), радиус <code>--r-control</code>, фокус — золотая рамка 1.5px. Один и тот же инпут в брони, во входе и в дашборде.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Чипы и тап-таргеты</p>
+      <div style="display: flex; gap: 10px; align-items: center; margin-top: 14px;">
+        <span style="display:inline-flex; align-items:center; height: 44px; padding: 0 16px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald'; font-size: 13px;">джип-тур</span>
+        <span style="display:inline-flex; align-items:center; justify-content:center; width: 44px; height: 44px; border-radius: var(--r-pill); background: rgba(20,14,6,.45); color: #fff;">♡</span>
+      </div>
+      <p class="fd-note">Минимум 44×44 у всего, во что тыкают. Было 22–38px: цена, рейтинг и длительность на карточке были кликабельного вида, но нужного размера не имели.</p>
+    </div>
+    <div class="fd-c">
+      <p class="fd-h">Дашборд · тёмный</p>
+      <div class="sw" style="grid-template-columns: repeat(3, 1fr);">
+        <div><div style="background: #0c0c0e;"></div><b>canvas</b><span>#0C0C0E</span></div>
+        <div><div style="background: #1b1b1f;"></div><b>card</b><span>#1B1B1F</span></div>
+        <div><div style="background: #e8b055;"></div><b>accent</b><span>#E8B055</span><span class="ok">8.81:1</span></div>
+      </div>
+      <p class="fd-note">Акцент дашборда сведён с <code>--gold-photo</code>: один и тот же тон светлого золота на тёмном — и в шапке сайта, и в кабинете. Радиусы и высоты полей взяты общие.</p>
+    </div>
+  </div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Main">
+    <h2>Главная <span>390×3760</span></h2>
+    <div class="frame" style="width:390px;height:3760px">
+      <script type="text/html" data-board="Main"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-ink: #4a6626; --free-bg: #edf3e2; --alert-ink: #9e3a25; --alert-bg: #f9e6e2;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 38%, rgba(20,14,6,.82) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .h1 { margin: 0; font-family: 'Poiret One', serif; font-weight: 400; text-align: right; }
+    .h1 .top { display: block; text-transform: uppercase; font-size: 40px; line-height: 1; letter-spacing: 4px; color: var(--gold-photo); }
+    .h1 .mid { display: block; margin-top: 18px; font-size: 28px; line-height: 1.25; letter-spacing: 1px; color: #fff; }
+    .h2 { margin: 0; text-align: center; font-family: 'Poiret One', serif; font-weight: 400; font-size: 26px; letter-spacing: 1px; color: var(--gold-head); }
+    .h2-photo { color: var(--gold-photo); }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 40px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-size: 16px; font-weight: 600; letter-spacing: .04em; text-decoration: none; }
+    .cta-photo { box-shadow: 0 6px 20px #00000059; }
+    .ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: var(--r-pill); border: 1.5px solid var(--cta); color: var(--gold-ink); font-size: 15px; font-weight: 600; text-decoration: none; }
+    .card { position: relative; display: block; height: 380px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .fav { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: var(--r-pill); background: rgba(20,14,6,.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 19px; }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 27px; line-height: 1.25; letter-spacing: .5px; color: #fff; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 12px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 22px; font-weight: 500; }
+    .card .dim { font-size: 14px; opacity: .9; }
+    .card .sep { opacity: .5; }
+    .card .more { margin-left: auto; font-size: 13.5px; color: var(--gold-photo); }
+    .stat { display: inline-flex; align-items: center; height: 26px; padding: 0 9px; border-radius: 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: .5px; white-space: nowrap; flex: 0 0 auto; }
+    .stat-free { background: var(--free-bg); color: var(--free-ink); }
+    .stat-alert { background: var(--alert-bg); color: var(--alert-ink); }
+    .row { display: flex; align-items: center; gap: 12px; border-radius: 12px; background: rgba(20,14,6,.62); padding: 12px 14px; min-height: 56px; }
+    .row .d { font-family: 'Oswald', sans-serif; font-size: 22px; color: #fff; flex: 0 0 62px; }
+    .row .n { flex: 1 1 auto; min-width: 0; font-size: 13.5px; color: #fff; }
+    .row .p { font-family: 'Oswald', sans-serif; font-size: 15px; color: #fff; white-space: nowrap; }
+    .lab { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink-faint); }
+    .et-h { position: relative; margin: 0; padding-left: 14px; font-family: 'Caladea', serif; font-weight: 700; font-size: 20px; color: var(--ink); }
+    .et-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 20px; background: var(--gold-plate); border-radius: 2px; }
+    .body-t { font-family: 'Caladea', serif; font-size: 14.5px; line-height: 1.65; color: var(--ink-muted); }
+    .social { width: 44px; height: 44px; border-radius: var(--r-pill); background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center; }
+  </style>
+</helmet>
+
+<!-- Шапка · hero 720px, scrim-hero вместо маски 16%, CTA внизу на скриме -->
+<section style="position: relative; height: 720px; background-image: url(./hero.jpg); background-size: cover; background-position: bottom center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-hero);"></div>
+    <div class="hdr">
+      <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+        <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      </svg></div>
+      <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+      <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg></div>
+    </div>
+    <div style="position: absolute; left: 0; right: 0; top: 120px; padding: 0 16px;">
+      <h1 class="h1">
+        <span class="top">Джип туры</span>
+        <span class="mid">Экскурсии по Крыму</span>
+      </h1>
+    </div>
+    <div style="position: absolute; left: 16px; right: 16px; bottom: 88px;">
+      <a class="cta cta-photo" href="/category/vse_tury">Все туры</a>
+      <p style="margin: 14px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1px; color: #ffffffd9;">14 маршрутов · выезд из Бахчисарая и Севастополя</p>
+    </div>
+</section>
+
+<!-- Контент · единственное наложение: -32px + скругление 32px -->
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: var(--page); padding: 48px 16px 0;">
+
+  <h2 class="h2">Популярные туры</h2>
+  <div style="display: flex; flex-direction: column; gap: 48px; margin-top: 48px;">
+      <a class="card" href="#" style="background-image: url(./card1.jpg);">
+        <div class="sc"></div>
+        <div class="fav" aria-label="В избранное">♡</div>
+        <div class="body">
+          <div class="t">Пещерный город Эски-Кермен</div>
+          <div class="facts">
+            <span class="price">от 7 000 ₽</span>
+            <span class="sep">·</span><span class="dim">7 часов</span>
+            <span class="sep">·</span><span class="dim">★ 4.9</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card2.jpg);">
+        <div class="sc"></div>
+        <div class="fav" aria-label="В избранное">♡</div>
+        <div class="body">
+          <div class="t">Марсианское озеро и Сфинксы</div>
+          <div class="facts">
+            <span class="price">от 6 500 ₽</span>
+            <span class="sep">·</span><span class="dim">5 часов</span>
+            <span class="sep">·</span><span class="dim">★ 4.8</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card3.jpg);">
+        <div class="sc"></div>
+        <div class="fav" aria-label="В избранное">♡</div>
+        <div class="body">
+          <div class="t">Сюйреньская крепость и Бахчисарай</div>
+          <div class="facts">
+            <span class="price">от 8 000 ₽</span>
+            <span class="sep">·</span><span class="dim">6 часов</span>
+            <span class="sep">·</span><span class="dim">★ 4.9</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+  </div>
+
+  <!-- Блок постов · было золото на сером 2.12:1, стало крем с тушью -->
+  <div style="margin-top: 80px; background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 24px 20px;">
+    <p class="lab">О путешествиях</p>
+    <h3 class="et-h" style="margin-top: 10px;">Открой для себя мир путешествий уже сегодня</h3>
+    <p class="body-t" style="margin: 12px 0 0;">Мы водим джипы по Крыму девять лет: плато, каньоны, пещерные города и дороги, куда не заезжают автобусы. Рассказываем, что смотреть в каждый сезон и как собраться в однодневный выезд.</p>
+    <div style="margin-top: 18px;"><a class="ghost" href="/posts">Читать статьи</a></div>
+  </div>
+
+  <div style="height: 120px;"></div>
+</div>
+
+<!-- Ближайшие туры · scrim-band + собственная подложка у рядов -->
+<section style="position: relative; background-image: url(./activities.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+  <div style="position: relative; z-index: 2; padding: 80px 16px;">
+    <h2 class="h2 h2-photo">Ближайшие туры</h2>
+    <p style="margin: 10px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 14px; letter-spacing: 1.6px; text-transform: uppercase; color: #fff;">Выбирай свои даты на сентябрь</p>
+    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 32px;">
+      <a class="row" href="#" style="text-decoration: none;">
+        <span class="d">12–14</span>
+        <span class="n">Марсианское озеро</span>
+        <span style="flex: 0 0 auto; display: flex; align-items: center; gap: 10px;"><span class="stat stat-free">4 места</span><span class="p">3 500 ₽</span></span>
+      </a>
+      <a class="row" href="#" style="text-decoration: none;">
+        <span class="d">18–19</span>
+        <span class="n">Эски-Кермен на джипах</span>
+        <span style="flex: 0 0 auto; display: flex; align-items: center; gap: 10px;"><span class="stat stat-alert">2 места</span><span class="p">4 200 ₽</span></span>
+      </a>
+      <a class="row" href="#" style="text-decoration: none;">
+        <span class="d">26–28</span>
+        <span class="n">Ай-Петри из Севастополя</span>
+        <span style="flex: 0 0 auto; display: flex; align-items: center; gap: 10px;"><span class="stat stat-free">6 мест</span><span class="p">3 900 ₽</span></span>
+      </a>
+    </div>
+    <div style="margin-top: 32px; text-align: center;"><a href="#" style="font-family: 'Oswald', sans-serif; font-size: 14px; letter-spacing: 1px; color: var(--gold-photo); text-decoration: none;">Все даты сентября →</a></div>
+  </div>
+</section>
+
+<!-- Контакты · было ≈200px пустого фото сверху, стало 80px -->
+<footer style="position: relative; background-image: url(./contacts.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+  <div style="position: relative; z-index: 2; padding: 80px 16px;">
+    <h2 class="h2 h2-photo">Контакты</h2>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 28px; font-family: 'Oswald', sans-serif; font-size: 15px; color: #fff;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8b055" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        Республика Крым, г. Бахчисарай
+      </div>
+      <a href="mailto:infoenergytur@gmail.com" style="display: flex; align-items: center; gap: 8px; min-height: 44px; color: #fff; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8b055" aria-hidden="true"><path d="M2 5h20v14H2z" opacity=".35"/><path d="M2 5l10 7 10-7v2l-10 7L2 7z"/></svg>
+        infoenergytur@gmail.com
+      </a>
+      <a href="tel:+79787880753" style="display: flex; align-items: center; gap: 8px; min-height: 44px; color: #fff; text-decoration: none; font-size: 19px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8b055" aria-hidden="true"><path d="M6.6 2h-3s-.5 0-.7.2c-.2.2 0 .7 0 .7s2.6 6 5.5 9c2.7 2.8 8.9 5.5 8.9 5.5s.5.2.7 0c.2-.2.2-.7.2-.7v-3s0-.4-.2-.6c-.2-.2-.4-.3-.4-.3s-1.4 0-2.7-.3c-.7-.2-1.3.7-1.3.7l-1 1a13 13 0 0 1-4.4-4.4l1-1s.9-.6.7-1.3C9.4 5.9 9.4 4.5 9.4 4.5s0-.2-.3-.4C8.9 3.9 8.5 4 8.5 4"/></svg>
+        +7 (978) 788-07-53
+      </a>
+      <a href="tel:+79780542072" style="display: flex; align-items: center; gap: 8px; min-height: 44px; color: #fff; text-decoration: none; font-size: 19px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#e8b055" aria-hidden="true"><path d="M6.6 2h-3s-.5 0-.7.2c-.2.2 0 .7 0 .7s2.6 6 5.5 9c2.7 2.8 8.9 5.5 8.9 5.5s.5.2.7 0c.2-.2.2-.7.2-.7v-3s0-.4-.2-.6c-.2-.2-.4-.3-.4-.3s-1.4 0-2.7-.3c-.7-.2-1.3.7-1.3.7l-1 1a13 13 0 0 1-4.4-4.4l1-1s.9-.6.7-1.3C9.4 5.9 9.4 4.5 9.4 4.5s0-.2-.3-.4C8.9 3.9 8.5 4 8.5 4"/></svg>
+        +7 (978) 054-20-72
+      </a>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 12px; margin-top: 32px;">
+      <a class="social" href="#" aria-label="Telegram"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M21 4L2.5 11.2l5 1.6L19 6.5l-9 8.3.3 5.2 2.7-3.4 4.2 3.1z"/></svg></a>
+      <a class="social" href="#" aria-label="Max"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M4 19V5h3l5 8 5-8h3v14h-3v-8l-5 8-5-8v8z"/></svg></a>
+      <a class="social" href="#" aria-label="ВКонтакте"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12.8 17s.3 0 .4-.2c.1-.1.1-.4.1-.4s0-1.6.7-1.8c.7-.2 1.7 1.6 2.7 2.3.7.5 1.3.4 1.3.4l2.6-.1s1.3-.1.7-1.2c-.1-.2-.4-.9-1.9-2.3-1.5-1.4-1.3-1.2.5-3.7 1.1-1.5 1.5-2.4 1.4-2.8-.1-.4-1-.3-1-.3l-2.9.1s-.2 0-.4.1c-.1.1-.2.3-.2.3s-.4 1-.9 1.9c-1.1 1.9-1.5 2-1.7 1.9-.4-.2-.3-1.1-.3-1.7 0-1.9.3-2.7-.6-2.9-.3-.1-.5-.1-1.2-.1-1.3 0-2.4 0-2.6.1-.2.1-.4.3-.4.5 0 .2.5.3.8.6.3.4.3 1.3.3 1.3s.2 2.5-.4 2.8c-.4.2-1-.2-2-1.9-.5-.9-.9-1.9-.9-1.9s-.1-.2-.2-.3c-.2-.1-.6-.2-.6-.2l-3.3 0s-.5 0-.7.2c-.2.2 0 .7 0 .7s2.6 6 5.5 9c2.7 2.8 5.7 2.6 5.7 2.6z"/></svg></a>
+      <a class="social" href="#" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.5l5 2.5-5 2.5z" fill="#1f1a12"/></svg></a>
+    </div>
+    <p style="margin: 40px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1px; color: #ffffffb3;">© 2026 Energy-Tour</p>
+  </div>
+</footer></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Catalog">
+    <h2>Все туры <span>390×2320</span></h2>
+    <div class="frame" style="width:390px;height:2320px">
+      <script type="text/html" data-board="Catalog"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-ink: #4a6626; --free-bg: #edf3e2; --alert-ink: #9e3a25; --alert-bg: #f9e6e2;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.78) 0%, rgba(20,14,6,.34) 46%, rgba(20,14,6,.72) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 38%, rgba(20,14,6,.82) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .h1 { margin: 0; font-family: 'Poiret One', serif; font-weight: 400; text-align: right; }
+    .h1 .top { display: block; text-transform: uppercase; font-size: 40px; line-height: 1; letter-spacing: 4px; color: var(--gold-photo); }
+    .h1 .mid { display: block; margin-top: 18px; font-size: 28px; line-height: 1.25; letter-spacing: 1px; color: #fff; }
+    .h2 { margin: 0; text-align: center; font-family: 'Poiret One', serif; font-weight: 400; font-size: 26px; letter-spacing: 1px; color: var(--gold-head); }
+    .h2-photo { color: var(--gold-photo); }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 40px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-size: 16px; font-weight: 600; letter-spacing: .04em; text-decoration: none; }
+    .cta-photo { box-shadow: 0 6px 20px #00000059; }
+    .ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: var(--r-pill); border: 1.5px solid var(--cta); color: var(--gold-ink); font-size: 15px; font-weight: 600; text-decoration: none; }
+    .card { position: relative; display: block; height: 380px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .fav { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: var(--r-pill); background: rgba(20,14,6,.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 19px; }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 27px; line-height: 1.25; letter-spacing: .5px; color: #fff; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 12px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 22px; font-weight: 500; }
+    .card .dim { font-size: 14px; opacity: .9; }
+    .card .sep { opacity: .5; }
+    .card .more { margin-left: auto; font-size: 13.5px; color: var(--gold-photo); }
+    .stat { display: inline-flex; align-items: center; height: 26px; padding: 0 9px; border-radius: 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: .5px; }
+    .stat-free { background: var(--free-bg); color: var(--free-ink); }
+    .stat-alert { background: var(--alert-bg); color: var(--alert-ink); }
+    .row { display: flex; align-items: center; gap: 12px; border-radius: 12px; background: rgba(20,14,6,.62); padding: 12px 14px; min-height: 56px; }
+    .row .d { font-family: 'Oswald', sans-serif; font-size: 22px; color: #fff; min-width: 62px; }
+    .row .n { font-size: 13.5px; color: #fff; }
+    .row .p { font-family: 'Oswald', sans-serif; font-size: 15px; color: #fff; }
+    .lab { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--ink-faint); }
+    .et-h { position: relative; margin: 0; padding-left: 14px; font-family: 'Caladea', serif; font-weight: 700; font-size: 20px; color: var(--ink); }
+    .et-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 20px; background: var(--gold-plate); border-radius: 2px; }
+    .body-t { font-family: 'Caladea', serif; font-size: 14.5px; line-height: 1.65; color: var(--ink-muted); }
+    .social { width: 44px; height: 44px; border-radius: var(--r-pill); background: rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center; }
+  </style>
+</helmet>
+
+<!-- Шапка каталога · было 844px декора, стало 300px с фактами -->
+<section style="position: relative; height: 300px; background-image: url(./tours.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+    <div class="hdr">
+      <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+        <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      </svg></div>
+      <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+      <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg></div>
+    </div>
+    <div style="position: absolute; left: 16px; right: 16px; bottom: 56px;">
+      <p style="margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #ffffffcc;">14 туров · Крым</p>
+      <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 38px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-photo);">Все туры</h1>
+    </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: var(--page); padding: 24px 16px 0;">
+
+  <!-- Фильтры-теги · тап-таргет 44px -->
+  <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;">
+    <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 13.5px; white-space: nowrap;">Все</span>
+    <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13.5px; white-space: nowrap;">Джип-туры</span>
+    <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13.5px; white-space: nowrap;">С детьми</span>
+    <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13.5px; white-space: nowrap;">1 день</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 48px; margin-top: 32px;">
+      <a class="card" href="#" style="background-image: url(./card1.jpg);">
+        <div class="sc"></div>
+        <div class="fav" aria-label="В избранное">♡</div>
+        <div class="body">
+          <div class="t">Пещерный город Эски-Кермен</div>
+          <div class="facts">
+            <span class="price">от 7 000 ₽</span>
+            <span class="sep">·</span><span class="dim">7 часов</span>
+            <span class="sep">·</span><span class="dim">★ 4.9</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card2.jpg);">
+        <div class="sc"></div>
+        <div class="fav" aria-label="В избранное">♡</div>
+        <div class="body">
+          <div class="t">Марсианское озеро и Сфинксы</div>
+          <div class="facts">
+            <span class="price">от 6 500 ₽</span>
+            <span class="sep">·</span><span class="dim">5 часов</span>
+            <span class="sep">·</span><span class="dim">★ 4.8</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card3.jpg);">
+        <div class="sc"></div>
+        <div class="fav" aria-label="В избранное">♡</div>
+        <div class="body">
+          <div class="t">Сюйреньская крепость и Бахчисарай</div>
+          <div class="facts">
+            <span class="price">от 8 000 ₽</span>
+            <span class="sep">·</span><span class="dim">6 часов</span>
+            <span class="sep">·</span><span class="dim">★ 4.9</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card4.jpg);">
+        <div class="sc"></div>
+        <div class="fav" aria-label="В избранное">♡</div>
+        <div class="body">
+          <div class="t">Ай-Петри зимой из Симферополя</div>
+          <div class="facts">
+            <span class="price">от 9 500 ₽</span>
+            <span class="sep">·</span><span class="dim">8 часов</span>
+            <span class="sep">·</span><span class="dim">★ 5.0</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+  </div>
+
+  <div style="margin-top: 48px; text-align: center;"><a class="ghost" href="/category/vse_tury/page/2">Показать ещё 10</a></div>
+  <div style="height: 80px;"></div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Tour">
+    <h2>Страница тура <span>390×3340</span></h2>
+    <div class="frame" style="width:390px;height:3340px">
+      <script type="text/html" data-board="Tour"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    body { margin: 0; background: #e6e6e6; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    a { color: #8b6f3d; text-decoration: underline; text-underline-offset: 2px; } a:hover { color: #1f1a12; }
+    .et-post { max-width: 720px; margin: 0 auto; color: #1f1a12; line-height: 1.55; }
+    .et-post * { box-sizing: border-box; }
+    .et-h { display: flex; align-items: center; gap: 10px; margin: 28px 0 14px; font-size: 20px; font-weight: 600; color: #1f1a12; }
+    .et-h::before { content: ''; display: block; width: 4px; height: 22px; background: #b8915a; border-radius: 2px; flex: 0 0 4px; }
+    .et-lead { font-size: 15px; line-height: 1.65; margin: 0 0 14px; color: #1f1a12; font-weight: 400; }
+    .et-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+    .et-tag { display: inline-flex; align-items: center; height: 44px; background: #f4ecdd; border: 1px solid #e2d5b7; border-radius: 999px; padding: 0 16px; font-family: 'Oswald', sans-serif; font-size: 13.5px; color: #6b5f47; }
+    .et-route { position: relative; padding: 4px 0 4px 32px; margin: 0; list-style: none; }
+    .et-route::before { content: ''; position: absolute; left: 12px; top: 14px; bottom: 14px; width: 2px; background: #d8cdb6; }
+    .et-route li { position: relative; padding: 0 0 16px; }
+    .et-route li:last-child { padding-bottom: 0; }
+    .et-route li .et-num { position: absolute; left: -32px; top: 0; width: 26px; height: 26px; border-radius: 50%; background: #b8915a; color: #fbf7ee; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; border: 2px solid #ffffff; }
+    .et-route li.last .et-num { background: #fbf7ee; color: #6b5f47; box-shadow: 0 0 0 1px #d8cdb6 inset; }
+    .et-route .et-title { font-size: 14px; font-weight: 600; color: #1f1a12; line-height: 1.35; margin: 0 0 2px; }
+    .et-route .et-sub { font-size: 13px; color: #6b5f47; margin: 0; line-height: 1.5; }
+    .et-route .et-coord { font-size: 12px; color: #7f6f52; margin-top: 4px; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+    .et-price { background: #b8915a; border-radius: 16px; padding: 20px 16px; text-align: center; margin: 0 0 10px; }
+    .et-price-label { font-size: 11px; color: #fbf7ee; letter-spacing: 0.1em; opacity: 0.9; }
+    .et-price-value { font-size: 30px; font-weight: 600; color: #fbf7ee; margin: 4px 0 6px; line-height: 1; }
+    .et-price-note { font-size: 12px; color: #fbf7ee; opacity: 0.9; }
+    .et-vk { display: flex; align-items: center; justify-content: space-between; min-height: 48px; background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #1f1a12; text-decoration: none; }
+    .et-vk .et-arrow { color: #8b6f3d; }
+    .et-tickets { background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 16px; overflow: hidden; }
+    .et-ticket { display: flex; justify-content: space-between; align-items: center; padding: 13px 16px; font-size: 14px; border-bottom: 1px solid #e2d5b7; }
+    .et-ticket:last-child { border-bottom: none; }
+    .et-ticket .et-thint { color: #7f6f52; font-size: 12px; }
+    .et-ticket .et-tprice { font-weight: 600; color: #1f1a12; }
+    .et-ticket .et-tfree { font-weight: 600; color: #5c7a2e; }
+    .et-tickets-note { font-size: 12px; color: #6b5f47; margin: 8px 4px 0; line-height: 1.5; font-style: italic; }
+    .et-info-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .et-info { background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 16px; padding: 14px; }
+    .et-info-label { font-size: 11px; color: #6b5f47; margin: 6px 0 4px; letter-spacing: 0.02em; }
+    .et-info-value { font-size: 14px; font-weight: 600; color: #1f1a12; line-height: 1.4; }
+    .et-awaits { background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 16px; padding: 18px 18px 16px; }
+    .et-awaits p { margin: 0 0 12px; font-size: 14px; line-height: 1.7; color: #1f1a12; }
+    .et-awaits-divider { border-top: 1px solid #e2d5b7; padding-top: 12px; }
+    .et-awaits-title { font-size: 11px; color: #7f6f52; letter-spacing: 0.08em; margin: 0 0 8px; text-transform: uppercase; }
+    .et-awaits ul { list-style: none; padding: 0; margin: 0; }
+    .et-awaits ul li { position: relative; padding-left: 16px; font-size: 13px; line-height: 1.55; color: #1f1a12; margin-bottom: 6px; }
+    .et-awaits ul li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: #b8915a; border-radius: 50%; }
+    .et-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+    .et-gallery img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 12px; display: block; }
+    .et-stat { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; border: 1px solid #e2d5b7; background: #fbf7ee; padding: 16px 8px; text-align: center; }
+  </style>
+</helmet>
+
+<div style="width: 390px; position: relative; overflow: hidden; background: #f7f6f3;">
+
+  <!-- PageHeadPost · PageHead_type_tour 75vh -->
+  <section style="position: relative; height: 500px;">
+    <img src="./tourhead.jpg" alt="Пещерный город Эски-Кермен" style="position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+    <div style="position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(20,14,6,.62) 0%, rgba(20,14,6,.22) 42%, rgba(20,14,6,.82) 100%);"></div>
+
+    <div style="position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px;">
+      <span style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+        <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      </svg></span>
+      <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+    </div>
+
+    <div style="position: absolute; inset: 0; z-index: 3; display: flex; align-items: flex-end; padding-bottom: 56px;">
+      <div style="position: relative; z-index: 2; padding: 0 16px;">
+        <p style="margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #ffffffcc;">Джип-экскурсия · Бахчисарай</p>
+        <h1 style="margin: 0; text-align: left; font-family: 'Poiret One', serif; font-weight: 400; font-size: 33px; line-height: 1.2; letter-spacing: 0.04em; color: #fff;">Пещерный город Эски-Кермен</h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контент · bg-white rounded-4xl p-2 mt-[-3vh] -->
+  <div style="position: relative; z-index: 3; margin-top: -32px; background: #ffffff; border-radius: 32px 32px 0 0; padding: 8px;">
+
+    <section>
+      <div style="display: flex; justify-content: space-between; padding-right: 20px;">
+        <span style="display: block; padding: 8px; font-family: 'Poiret One', serif; font-size: 26px; letter-spacing: 1px; color: #8b6f3d;">Информация</span>
+        <div style="position: relative; margin-top: -30px; font-family: Oswald, sans-serif;">
+          <div style="background: #fff; border-radius: 999px; display: flex; justify-content: center; align-items: center; gap: 2px; padding: 4px 0; margin: 0 auto; width: 64px;">
+            <svg width="13" height="13" viewBox="0 0 15 14" fill="none"><path d="M8.73 4.71C8.85 5.11 9.19 5.39 9.6 5.46L9.77 5.47H13.74L10.53 7.8C10.19 8.05 10.03 8.46 10.09 8.86L10.13 9.03L11.35 12.81L8.15 10.47L7.99 10.38C7.68 10.23 7.32 10.23 7.0 10.38L6.85 10.47L3.64 12.81L4.87 9.03C5.0 8.64 4.89 8.21 4.6 7.92L4.47 7.8L1.26 5.47H5.23C5.65 5.47 6.02 5.24 6.21 4.88L6.27 4.71L7.5 0.94L8.73 4.71Z" fill="#000" stroke="#000" stroke-width="1.2"/></svg>
+            <span style="color: #000; font-size: 14px;">4.9/5</span>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <img src="./ava1.jpg" alt="" style="position: relative; z-index: 1; width: 33px; height: 33px; border-radius: 999px; object-fit: cover; box-shadow: 0 2px 2px 0 #00000026;">
+            <img src="./ava2.jpg" alt="" style="position: relative; z-index: 2; margin-left: -7px; width: 33px; height: 33px; border-radius: 999px; object-fit: cover; box-shadow: 0 2px 2px 0 #00000026;">
+            <img src="./ava3.jpg" alt="" style="position: relative; z-index: 3; margin-left: -7px; width: 33px; height: 33px; border-radius: 999px; object-fit: cover; box-shadow: 0 2px 2px 0 #00000026;">
+          </div>
+        </div>
+      </div>
+
+      <!-- PostStats · grid-cols-3 gap-2 mt-4 mx-2 -->
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 16px 8px 0;">
+        <div class="et-stat">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/><circle cx="17" cy="15" r="1.5" fill="#8b6f3d"/></svg>
+          <div style="font-size: 16px; font-weight: 600; line-height: 1.2; color: #1f1a12;">от 7 000 ₽</div>
+          <div style="font-size: 11px; line-height: 1.2; color: #6b5f47; letter-spacing: 0.02em;">за машину</div>
+        </div>
+        <div class="et-stat">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div style="font-size: 16px; font-weight: 600; line-height: 1.2; color: #1f1a12;">7 часа</div>
+          <div style="font-size: 11px; line-height: 1.2; color: #6b5f47;">экскурсия</div>
+        </div>
+        <div class="et-stat">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5"/><path d="M15 19c0-2 2-4 4-4s2 1 2 3"/></svg>
+          <div style="font-size: 16px; font-weight: 600; line-height: 1.2; color: #1f1a12;">до 6 чел.</div>
+          <div style="font-size: 11px; line-height: 1.2; color: #6b5f47;">в машине</div>
+        </div>
+      </div>
+
+      <!-- GuideCard · mt-3 mx-2 -->
+      <div style="display: flex; align-items: center; gap: 14px; border-radius: 16px; border: 1px solid #e2d5b7; background: #fbf7ee; padding: 14px; margin: 12px 8px 0;">
+        <span style="position: relative; display: inline-block; width: 58px; height: 58px; flex: 0 0 58px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; overflow: hidden; border-radius: 999px; box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #b8915a; background: linear-gradient(135deg, #caa66a, #7d6234); color: #fff; font-weight: 600; font-size: 21px;">ИН</span>
+          <span style="position: absolute; bottom: -2px; right: -2px; display: grid; place-items: center; border-radius: 999px; background: #b8915a; color: #fff; width: 20px; height: 20px; font-size: 12px; box-shadow: 0 0 0 2px #fbf7ee;">✓</span>
+        </span>
+        <span style="min-width: 0; flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px;">
+          <span style="font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.18em; color: #8b6f3d;">Ваш гид</span>
+          <span style="font-size: 18px; line-height: 1.15; color: #1f1a12;">Иван Николаенко</span>
+          <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px;">
+            <span style="display: inline-flex; align-items: center; gap: 4px; border-radius: 999px; border: 1px solid #e2d5b7; background: #fff; padding: 2px 10px;">
+              <svg width="13" height="13" viewBox="0 0 15 14" fill="none"><path d="M8.73 4.71C8.85 5.11 9.19 5.39 9.6 5.46L9.77 5.47H13.74L10.53 7.8C10.19 8.05 10.03 8.46 10.09 8.86L10.13 9.03L11.35 12.81L8.15 10.47L7.99 10.38C7.68 10.23 7.32 10.23 7.0 10.38L6.85 10.47L3.64 12.81L4.87 9.03C5.0 8.64 4.89 8.21 4.6 7.92L4.47 7.8L1.26 5.47H5.23C5.65 5.47 6.02 5.24 6.21 4.88L6.27 4.71L7.5 0.94L8.73 4.71Z" fill="#1f1a12" stroke="#1f1a12" stroke-width="1.2"/></svg>
+              <span style="font-size: 14px; color: #1f1a12;">4.9</span>
+            </span>
+            <span style="color: #e2d5b7;">·</span>
+            <span style="font-size: 12px; color: #6b5f47;">37 отзывов</span>
+          </span>
+        </span>
+        <span style="flex: 0 0 auto; padding-left: 4px; font-size: 24px; line-height: 1; color: #b8915a;">›</span>
+      </div>
+
+      <!-- BookingButton · mt-3 mx-2 w-full -->
+      <div style="margin: 12px 8px 0;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: 999px; background: #b8915a; padding: 0 24px; font-family: Oswald, sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0.025em; color: #1f1a12;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbf7ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/><path d="M12 18s-3-2-3-4a1.8 1.8 0 0 1 3-1 1.8 1.8 0 0 1 3 1c0 2-3 4-3 4z"/></svg>
+          Забронировать
+        </div>
+      </div>
+    </section>
+
+    <!-- TourContentView · .et-post · mt-4 pb-14 -->
+    <section style="margin-top: 16px; padding-bottom: 56px;">
+      <div class="et-post">
+
+        <h2 class="et-h">О туре</h2>
+        <p class="et-lead">Пещерный город Эски-Кермен — самый зрелищный из «мёртвых городов» Крыма: вырубленные в скале улицы, осадный колодец и базилика VI века. Подъезжаем на джипах по грунтовке, дальше — пешая часть по плато с обзором на Мангуп.</p>
+        <ul class="et-tags">
+          <li class="et-tag">джип-тур</li>
+          <li class="et-tag">Бахчисарай</li>
+          <li class="et-tag">пещерный город</li>
+          <li class="et-tag">для детей</li>
+          <li class="et-tag">7 часов</li>
+        </ul>
+
+        <h2 class="et-h">Маршрут</h2>
+        <ol class="et-route">
+          <li>
+            <span class="et-num">1</span>
+            <p class="et-title">Выезд из Бахчисарая</p>
+            <p class="et-sub">Забираем от вашего жилья, разбираем маршрут за кофе</p>
+            <p class="et-coord">44.7486, 33.8608</p>
+          </li>
+          <li>
+            <span class="et-num">2</span>
+            <p class="et-title">Осадный колодец</p>
+            <p class="et-sub">Спуск по 90 ступеням в скале <a href="#">(wiki)</a></p>
+            <p class="et-coord">44.6087, 33.7392</p>
+          </li>
+          <li>
+            <span class="et-num">3</span>
+            <p class="et-title">Базилика и главная улица</p>
+            <p class="et-sub">Плато города, виды на Мангуп-Кале и долину</p>
+            <p class="et-coord">44.6103, 33.7411</p>
+          </li>
+          <li class="last">
+            <span class="et-num">4</span>
+            <p class="et-title">Возвращение</p>
+            <p class="et-sub">Обратная дорога с остановкой на видовой точке</p>
+          </li>
+        </ol>
+
+        <h2 class="et-h">Стоимость</h2>
+        <div class="et-price">
+          <div class="et-price-label">СТОИМОСТЬ ЗА МАШИНУ</div>
+          <div class="et-price-value">7 000 ₽</div>
+          <div class="et-price-note">до 6 человек · входные билеты оплачиваются отдельно</div>
+        </div>
+        <a class="et-vk" href="#">
+          <span>Скидки подписчикам ВКонтакте</span>
+          <span class="et-arrow">→</span>
+        </a>
+
+        <h2 class="et-h">Билеты</h2>
+        <div class="et-tickets">
+          <div class="et-ticket">
+            <span>Взрослый<span class="et-thint"> · вход на плато</span></span>
+            <span class="et-tprice">300 ₽</span>
+          </div>
+          <div class="et-ticket">
+            <span>Школьники<span class="et-thint"> · от 7 лет</span></span>
+            <span class="et-tprice">150 ₽</span>
+          </div>
+          <div class="et-ticket">
+            <span>Дети до 7 лет</span>
+            <span class="et-tfree">бесплатно</span>
+          </div>
+          <div class="et-ticket">
+            <span>Осадный колодец</span>
+            <span class="et-tprice">200 ₽</span>
+          </div>
+        </div>
+        <p class="et-tickets-note">Билеты покупаются на месте, наличными или картой. Цены музеев на 2026 год.</p>
+
+        <h2 class="et-h">Полезно знать</h2>
+        <div class="et-info-grid">
+          <div class="et-info">
+            <div class="et-info-label">Старт</div>
+            <div class="et-info-value">09:00, Бахчисарай</div>
+          </div>
+          <div class="et-info">
+            <div class="et-info-label">Длительность</div>
+            <div class="et-info-value">7 часов</div>
+          </div>
+          <div class="et-info">
+            <div class="et-info-label">Пешая часть</div>
+            <div class="et-info-value">около 4 км</div>
+          </div>
+          <div class="et-info">
+            <div class="et-info-label">Что взять</div>
+            <div class="et-info-value">Кроссовки, вода, головной убор</div>
+          </div>
+        </div>
+
+        <h2 class="et-h">Что вас ждёт</h2>
+        <div class="et-awaits">
+          <p>Начинаем рано, чтобы пройти плато до жары. Джипы поднимают вас к самому входу, поэтому основные силы уходят на прогулку по городу, а не на подход к нему.</p>
+          <p>По пути разбираем, как жили в вырубленных в скале домах, зачем городу был нужен осадный колодец и почему город опустел в XIV веке.</p>
+          <div class="et-awaits-divider">
+            <p class="et-awaits-title">Отдельно отметим</p>
+            <ul>
+              <li>Обзорная точка над долиной — лучшее место для фото</li>
+              <li>Базилика VI века с остатками фресок</li>
+              <li>Спуск в осадный колодец (по желанию)</li>
+              <li>Остановка у виноградников на обратной дороге</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="et-h">Фото с тура</h2>
+        <div class="et-gallery">
+          <img src="./card1.jpg" alt="Развалины храма">
+          <img src="./card2.jpg" alt="Судилище">
+          <img src="./card3.jpg" alt="Одна из пещер">
+          <img src="./card4.jpg" alt="Главная улица">
+          <img src="./tourhead.jpg" alt="Видовая точка">
+          <img src="./services.jpg" alt="Окна пещер">
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Booking">
+    <h2>Заявка на тур <span>390×900</span></h2>
+    <div class="frame" style="width:390px;height:900px">
+      <script type="text/html" data-board="Booking"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Caladea:wght@400;700&family=Questrial&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    a { color: #8b6f3d; } a:hover { color: #1f1a12; }
+    .bk-label { display: block; font-family: Oswald, sans-serif; font-size: 12px; letter-spacing: 0.025em; color: #6b5f47; margin-bottom: 6px; }
+    .bk-input { width: 100%; min-height: 48px; border-radius: 10px; border: 1px solid #e2d5b7; background: #fffdf8; padding: 12px 14px; font-size: 14.5px; color: #1f1a12; box-sizing: border-box; font-family: Caladea, serif; }
+    .bk-ph { color: #a99a80; }
+    .bk-step { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; border: 1px solid #e2d5b7; background: #fff; color: #8b6f3d; }
+  </style>
+</helmet>
+
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background-image: url(./tourhead.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5);"></div>
+
+  <!-- DialogContent · max-w-md · border-[#E2D5B7] bg-white -->
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 358px; box-sizing: border-box; background: #ffffff; border: 1px solid #e2d5b7; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;">
+      <h2 style="margin: 0; font-family: Questrial, 'Century Gothic', sans-serif; font-size: 21px; font-weight: 400; letter-spacing: 0.025em; color: #1f1a12;">Заявка на тур</h2>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </div>
+
+    <form style="font-family: Caladea, serif; display: flex; flex-direction: column;">
+      <p style="margin: 0; font-size: 12.5px; line-height: 1.5; color: #6b5f47;">Гид свяжется с вами и подтвердит детали. Предоплата не требуется.</p>
+
+      <div style="margin-top: 16px;">
+        <span class="bk-label">Ваше имя <span style="color: #b4452f;">*</span></span>
+        <div class="bk-input"><span class="bk-ph">Как к вам обращаться</span></div>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <span class="bk-label">Телефон <span style="color: #b4452f;">*</span></span>
+        <div class="bk-input" style="border-color: #b8915a;">+7 978 788-07-53</div>
+      </div>
+
+      <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+        <div>
+          <span class="bk-label">Желаемая дата</span>
+          <div class="bk-input" style="display: flex; align-items: center; justify-content: space-between; gap: 6px;">
+            <span>12.09.2026</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+          </div>
+        </div>
+        <div>
+          <span class="bk-label">Гостей</span>
+          <div style="display: flex; align-items: center; justify-content: space-between; border-radius: 10px; border: 1px solid #e2d5b7; background: #fffdf8; padding: 2px 6px;">
+            <span class="bk-step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg></span>
+            <b style="font-family: Oswald, sans-serif; font-size: 16px; font-weight: 400; color: #1f1a12;">4</b>
+            <span class="bk-step"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <span class="bk-label">Email <span style="color: #9b8e72;">(для входа и истории)</span></span>
+        <div class="bk-input"><span class="bk-ph">по желанию</span></div>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <span class="bk-label">Комментарий</span>
+        <div class="bk-input" style="min-height: 64px;"><span class="bk-ph">пожелания, дети, трансфер…</span></div>
+      </div>
+
+      <label style="margin-top: 14px; display: flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 1.4; color: #6b5f47;">
+        <span style="margin-top: 2px; width: 16px; height: 16px; flex: 0 0 16px; border-radius: 4px; background: #b8915a; display: grid; place-items: center;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </span>
+        <span>Согласен на обработку данных и условия платформы</span>
+      </label>
+
+      <div style="margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; border-radius: 999px; background: #b8915a; padding: 0 16px; font-family: Oswald, sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0.025em; color: #1f1a12;">
+        Отправить заявку <span style="opacity: 0.8;">· от 7 000 ₽</span>
+      </div>
+    </form>
+  </div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="BookingDone">
+    <h2>Заявка отправлена <span>390×900</span></h2>
+    <div class="frame" style="width:390px;height:900px">
+      <script type="text/html" data-board="BookingDone"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Caladea:wght@400;700&family=Questrial&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    a { color: #8b6f3d; } a:hover { color: #1f1a12; }
+  </style>
+</helmet>
+
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background-image: url(./tourhead.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5);"></div>
+
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 358px; box-sizing: border-box; background: #ffffff; border: 1px solid #e2d5b7; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); padding: 24px;">
+    <div style="padding: 8px 0; text-align: center; font-family: Caladea, serif;">
+      <div style="margin: 0 auto; display: grid; place-items: center; width: 64px; height: 64px; border-radius: 999px; border: 1px solid rgba(74,102,38,0.3); background: #edf3e2; color: #4a6626;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h3 style="margin: 12px 0 0; font-family: Questrial, 'Century Gothic', sans-serif; font-size: 22px; font-weight: 400; letter-spacing: 0.025em; color: #1f1a12;">Заявка отправлена!</h3>
+      <p style="margin: 8px 0 0; font-size: 13.5px; line-height: 1.5; color: #6b5f47;">Гид <b style="color: #1f1a12;">Иван Николаенко</b> получил вашу заявку и скоро свяжется с вами.</p>
+
+      <div style="margin-top: 16px; display: flex; align-items: center; gap: 8px; border-radius: 16px; border: 1px dashed #b8915a; background: #fbf7ee; padding: 10px 12px; text-align: left; font-family: Oswald, sans-serif; font-size: 12.5px; color: #8b6f3d;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.8"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.8-1.8"/></svg>
+        <span style="flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">/booking/7f3a9c21be04</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+      </div>
+
+      <p style="margin: 12px 0 0; text-align: left; font-size: 12px; line-height: 1.5; color: #6b5f47;">По этой ссылке вы сможете отслеживать статус заявки. Мы сохранили её на этом устройстве.</p>
+
+      <div style="margin-top: 16px; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 999px; background: #b8915a; padding: 0 16px; font-family: Oswald, sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0.025em; color: #1f1a12;">Перейти к заявке</div>
+    </div>
+  </div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="SignIn">
+    <h2>Вход <span>390×900</span></h2>
+    <div class="frame" style="width:390px;height:900px">
+      <script type="text/html" data-board="SignIn"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7;
+      --r-pill: 999px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .lab { display: block; margin-bottom: 6px; font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-muted); }
+    .field { height: 48px; border: 1px solid var(--rule); border-radius: var(--r-control); background: #fffdf8; display: flex; align-items: center; padding: 0 14px; font-size: 14.5px; color: var(--ink-faint); }
+    .field-focus { border: 1.5px solid var(--cta); color: var(--ink); }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-size: 16px; font-weight: 600; letter-spacing: .04em; text-decoration: none; }
+  </style>
+</helmet>
+
+<!-- Вход · был белый shadcn на zinc-800 без единого токена бренда -->
+<div style="min-height: 900px; padding: 0 16px; background: var(--ink); display: flex; flex-direction: column; justify-content: center;">
+
+  <div style="text-align: center; margin-bottom: 28px;">
+    <img src="./logo.png" alt="Energy Tour" style="width: 62px; height: 70px; object-fit: contain;">
+    <p style="margin: 12px 0 0; font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #e8b05599;">Energy Tour · Крым</p>
+  </div>
+
+  <div style="background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 28px 22px;">
+    <h1 style="margin: 0; text-align: center; font-family: 'Poiret One', serif; font-weight: 400; font-size: 32px; letter-spacing: 2px; color: var(--gold-head);">Вход</h1>
+    <p style="margin: 6px 0 0; text-align: center; font-family: 'Caladea', serif; font-size: 14px; color: var(--ink-muted);">Кабинет гида и история заявок</p>
+
+    <div style="margin-top: 26px;">
+      <span class="lab">E-mail</span>
+      <div class="field">Введите адрес электронной почты</div>
+    </div>
+    <div style="margin-top: 16px;">
+      <span class="lab">Пароль</span>
+      <div class="field field-focus">••••••••••</div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+      <a href="#" style="display: inline-flex; align-items: center; min-height: 44px; font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--gold-ink); text-decoration: none;">Забыли пароль?</a>
+    </div>
+
+    <a class="cta" href="#" style="margin-top: 8px;">Войти</a>
+
+    <p style="margin: 20px 0 0; text-align: center; font-family: 'Caladea', serif; font-size: 14px; color: var(--ink-muted);">
+      Ещё нет аккаунта? <a href="/sign-up" style="color: var(--gold-ink); font-weight: 700; text-decoration: none;">Регистрация</a>
+    </p>
+  </div>
+
+  <p style="margin: 24px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .8px; color: #ffffff8c;">Заявку можно оформить и без входа — аккаунт нужен гиду</p>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Dashboard">
+    <h2>Дашборд гида — Заказы <span>1440×1010</span></h2>
+    <div class="frame" style="width:1440px;height:1010px">
+      <script type="text/html" data-board="Dashboard"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; background: #09090b; color: #fafafa; }
+    a { color: #e4e4e7; } a:hover { color: #ffffff; }
+    th { font-weight: 400; }
+  </style>
+</helmet>
+
+<!-- GuideDashboardShellTemplate · lg:grid-cols-[280px_minmax(0,1fr)] · dark -->
+<div style="width: 1440px; min-height: 940px; display: grid; grid-template-columns: 280px minmax(0, 1fr); background: #09090b; color: #fafafa; box-sizing: border-box;">
+
+  <!-- aside -->
+  <aside style="border-right: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.3); padding: 24px 20px; box-sizing: border-box;">
+    <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); padding: 16px; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.4);">
+      <p style="margin: 0; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.24em; color: #e8b05599;">Кабинет гида</p>
+      <h2 style="margin: 12px 0 0; font-size: 20px; font-weight: 600;">Energy Tour</h2>
+      <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: #a1a1aa;">Кабинет гида: заявки, туры и отзывы.</p>
+    </div>
+
+    <nav style="margin-top: 24px; display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid rgba(228,228,231,0.4); background: rgba(228,228,231,0.12); color: #fafafa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fafafa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+            <span>Заказы</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            <span>CRM</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+            <span>Туры</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+            <span>Отзывы</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+            <span>Профиль</span>
+          </div>
+          <div style="display: flex; width: 100%; align-items: center; gap: 12px; border-radius: 12px; padding: 12px 16px; text-align: left; font-size: 14px; box-sizing: border-box; border: 1px solid transparent; background: transparent; color: #a1a1aa;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px;"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5.5-5.5 2 2-5.5z"/></svg>
+            <span>Создание/редактирование тура</span>
+          </div>
+    </nav>
+
+    <div style="margin-top: 32px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.5); padding: 16px;">
+      <p style="margin: 0; font-size: 14px; font-weight: 500;">Спортивный клуб &quot;Экстрим-спорт&quot;</p>
+      <p style="margin: 4px 0 0; font-size: 12px; color: #a1a1aa;">Иван Николаенко</p>
+      <div style="margin-top: 16px; display: flex; align-items: center; justify-content: center; text-align: center; width: 100%; min-height: 44px; padding: 10px 12px; box-sizing: border-box; border-radius: 10px; line-height: 1.3; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 14px; font-weight: 500; color: #fafafa;">Посмотреть публичную страницу</div>
+    </div>
+  </aside>
+
+  <!-- main -->
+  <main style="display: flex; min-width: 0; flex-direction: column;">
+    <header style="border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(9,9,11,0.8); padding: 20px 32px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+        <div>
+          <h1 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em;">Заказы</h1>
+          <p style="margin: 8px 0 0; max-width: 768px; font-size: 14px; color: #a1a1aa;">Текущие туры. Таблица влезает в 1440 без горизонтальной прокрутки.</p>
+        </div>
+        <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); padding: 12px 16px; flex: 0 0 auto;">
+          <p style="margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: #a1a1aa;">Общая выручка</p>
+          <p style="margin: 4px 0 0; font-size: 20px; font-weight: 600;">1 094 087 ₽</p>
+        </div>
+      </div>
+    </header>
+
+    <div style="flex: 1 1 auto; padding: 24px 32px; display: flex; flex-direction: column; gap: 24px;">
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+          <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); display: flex; flex-direction: column;">
+            <div style="padding: 24px 24px 12px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; line-height: 1; color: #fafafa;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e4e4e7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/><path d="M12 14v4"/></svg>
+                Активные заезды
+              </div>
+            </div>
+            <div style="padding: 0 24px 24px;">
+              <p style="margin: 0; font-size: 30px; font-weight: 600; color: #fafafa;">204</p>
+            </div>
+          </div>
+          <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); display: flex; flex-direction: column;">
+            <div style="padding: 24px 24px 12px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; line-height: 1; color: #fafafa;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>
+                Подтверждено
+              </div>
+            </div>
+            <div style="padding: 0 24px 24px;">
+              <p style="margin: 0; font-size: 30px; font-weight: 600; color: #fafafa;">173</p>
+            </div>
+          </div>
+          <div style="border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); display: flex; flex-direction: column;">
+            <div style="padding: 24px 24px 12px;">
+              <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; line-height: 1; color: #fafafa;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5A2.5 2.5 0 0 0 12 8c-1.4 0-2.5.9-2.5 2s1.1 2 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2a2.5 2.5 0 0 1-2.5-1.5"/><path d="M12 6v12"/></svg>
+                На месте к оплате
+              </div>
+            </div>
+            <div style="padding: 0 24px 24px;">
+              <p style="margin: 0; font-size: 30px; font-weight: 600; color: #fafafa;">86 425 ₽</p>
+            </div>
+          </div>
+      </div>
+
+      <div style="border-radius: 24px; border: 1px solid rgba(255,255,255,0.06); background: rgba(24,24,27,0.7); overflow: hidden;">
+        <div style="border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 24px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 10px; background: #e4e4e7; color: #18181b; font-size: 14px; font-weight: 500;">Текущие</span>
+                  <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 10px; color: #a1a1aa; font-size: 14px; font-weight: 500;">Сертификаты</span>
+                  <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 10px; color: #a1a1aa; font-size: 14px; font-weight: 500;">Успешные</span>
+                  <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 10px; color: #a1a1aa; font-size: 14px; font-weight: 500;">Отмененные</span>
+                  <span style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: 10px; color: #a1a1aa; font-size: 14px; font-weight: 500;">Архив</span>
+            </div>
+            <div style="display: flex; gap: 12px;">
+              <div style="position: relative; min-width: 256px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="1.8" stroke-linecap="round" style="position: absolute; top: 50%; left: 12px; transform: translateY(-50%);"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+                <div style="display: flex; align-items: center; height: 36px; box-sizing: border-box; border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; background: rgba(255,255,255,0.03); padding: 4px 12px 4px 36px; font-size: 14px; color: #a1a1aa;">Поиск по заказам</div>
+              </div>
+              <div style="display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 14px; font-weight: 500;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fafafa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg>
+                Фильтры
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px; table-layout: auto;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em; color: #a1a1aa;">
+                <th style="padding: 16px 24px;">Тур и статус</th>
+                <th style="padding: 16px;">Выезд</th>
+                <th style="padding: 16px; text-align: center;">Чел.</th>
+                <th style="padding: 16px;">Клиент</th>
+                <th style="padding: 16px; text-align: right;">Наш доход</th>
+                <th style="padding: 16px 24px; text-align: right;"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 16px 24px; vertical-align: middle;">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                      <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 24px; border-radius: 999px; padding: 0 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(110,231,183,0.28); background: rgba(110,231,183,0.12); color: #6ee7b7;">Подтверждён</span>
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Пещерный город Эски-Кермен</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">Заказ № 7844</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">14.09.25 · 10:00</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">7 часов</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; color: #fafafa; text-align: center;">5</td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">Дмитрий</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">+7 927 872 48 85</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; text-align: right; white-space: nowrap; font-weight: 500; color: #fafafa;">11 050 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: middle; text-align: right;">
+                    <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 13.5px; font-weight: 500; color: #fafafa; white-space: nowrap;">Детали →</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 16px 24px; vertical-align: middle;">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                      <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 24px; border-radius: 999px; padding: 0 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(232,176,85,0.32); background: rgba(232,176,85,0.14); color: #e8b055;">Ожидает</span>
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Джип-тур Марсианское озеро</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">Заказ № 7664</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">01.08.25 · 11:00</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">5 часов</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; color: #fafafa; text-align: center;">6</td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">Петр</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">+7 905 862 20 09</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; text-align: right; white-space: nowrap; font-weight: 500; color: #fafafa;">8 500 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: middle; text-align: right;">
+                    <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 13.5px; font-weight: 500; color: #fafafa; white-space: nowrap;">Детали →</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 16px 24px; vertical-align: middle;">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                      <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 24px; border-radius: 999px; padding: 0 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(110,231,183,0.28); background: rgba(110,231,183,0.12); color: #6ee7b7;">Подтверждён</span>
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Фиолент и крепость Чембало</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">Заказ № 7370</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">16.07.25 · 09:30</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">6 часов</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; color: #fafafa; text-align: center;">4</td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">Елизавета</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">+7 985 114 43 25</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; text-align: right; white-space: nowrap; font-weight: 500; color: #fafafa;">8 925 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: middle; text-align: right;">
+                    <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 13.5px; font-weight: 500; color: #fafafa; white-space: nowrap;">Детали →</span>
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                  <td style="padding: 16px 24px; vertical-align: middle;">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                      <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 24px; border-radius: 999px; padding: 0 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(147,197,253,0.28); background: rgba(147,197,253,0.12); color: #93c5fd;">Новый</span>
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Ай-Петри зимой из Севастополя</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">Заказ № 7018</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">22.06.25 · 10:00</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">6 часов</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; color: #fafafa; text-align: center;">4</td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">Артем</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">+7 981 544 09 98</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; text-align: right; white-space: nowrap; font-weight: 500; color: #fafafa;">12 750 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: middle; text-align: right;">
+                    <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 13.5px; font-weight: 500; color: #fafafa; white-space: nowrap;">Детали →</span>
+                  </td>
+                </tr>
+                <tr style="">
+                  <td style="padding: 16px 24px; vertical-align: middle;">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                      <span style="display: inline-flex; align-self: flex-start; align-items: center; height: 24px; border-radius: 999px; padding: 0 10px; font-size: 12px; font-weight: 500; border: 1px solid rgba(110,231,183,0.28); background: rgba(110,231,183,0.12); color: #6ee7b7;">Подтверждён</span>
+                      <p style="margin: 0; font-weight: 500; color: #fafafa;">Три крепости на джипах</p>
+                      <p style="margin: 0; font-size: 12px; color: #a1a1aa;">Заказ № 7045</p>
+                    </div>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">09.06.25 · 11:00</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">5 часов</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; color: #fafafa; text-align: center;">9</td>
+                  <td style="padding: 16px; vertical-align: middle; white-space: nowrap;">
+                    <p style="margin: 0; color: #fafafa;">Константин</p>
+                    <p style="margin: 2px 0 0; font-size: 12px; color: #a1a1aa;">+7 949 363 10 34</p>
+                  </td>
+                  <td style="padding: 16px; vertical-align: middle; text-align: right; white-space: nowrap; font-weight: 500; color: #fafafa;">17 000 ₽</td>
+                  <td style="padding: 16px 24px; vertical-align: middle; text-align: right;">
+                    <span style="display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); font-size: 13.5px; font-weight: 500; color: #fafafa; white-space: nowrap;">Детали →</span>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 12px; color: #a1a1aa;">
+        <span style="display: inline-flex; align-items: center; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); padding: 2px 8px; font-weight: 500; color: #fafafa;">Текущие туры</span>
+        <span>Колонок 6 вместо 11: статус, тур и номер заказа собраны в одну ячейку, дата со временем и длительностью — в другую, ФИО с телефоном — в третью. Остальное — в «Деталях».</span>
+      </div>
+
+    </div>
+  </main>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Review">
+    <h2>Ревью и предложения <span>1200×5300</span></h2>
+    <div class="frame" style="width:1200px;height:5300px">
+      <script type="text/html" data-board="Review"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #f7f6f3; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: #1f1a12; }
+    .rv { padding: 40px 44px 56px; }
+    .rv-title { margin: 0; font-family: 'Poiret One', serif; font-size: 44px; letter-spacing: 2px; color: #8b6f3d; }
+    .rv-sub { margin: 10px 0 0; max-width: 78ch; font-size: 14.5px; line-height: 1.6; color: #6b5f47; }
+    .rv-kicker { margin: 44px 0 14px; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 2.4px; text-transform: uppercase; color: #8a7a5c; }
+    .rv-card { background: #fff; border: 1px solid #e2d5b7; border-radius: 14px; padding: 20px 22px; }
+    .rv-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .rv-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    table.rv-t { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    table.rv-t th { text-align: left; padding: 10px 12px; font-family: 'Oswald', sans-serif; font-weight: 400; font-size: 11.5px; letter-spacing: 1.4px; text-transform: uppercase; color: #8a7a5c; border-bottom: 1px solid #e2d5b7; }
+    table.rv-t td { padding: 12px; border-bottom: 1px solid #efe8d8; vertical-align: top; line-height: 1.5; }
+    table.rv-t tr:last-child td { border-bottom: 0; }
+    .sev { display: inline-block; padding: 3px 9px; border-radius: 999px; font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+    .sev-a { background: #b4452f; color: #fff; }
+    .sev-b { background: #d19331; color: #241c0d; }
+    .sev-c { background: #e2d5b7; color: #5b4d33; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; color: #8b6f3d; }
+    .num { font-family: 'Oswald', sans-serif; font-size: 13px; white-space: nowrap; }
+    .bad { color: #b4452f; font-weight: 500; }
+    .good { color: #4a6626; font-weight: 500; }
+    .lbl { margin: 0 0 10px; font-family: 'Oswald', sans-serif; font-size: 11.5px; letter-spacing: 1.6px; text-transform: uppercase; color: #8a7a5c; }
+    .opt-h { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+    .opt-p { margin: 0; font-size: 13px; line-height: 1.55; color: #6b5f47; }
+    .pill { display: inline-flex; align-items: center; justify-content: center; padding: 15px 40px; border-radius: 999px; font-size: 16px; letter-spacing: 0.08em; }
+    .demo { position: relative; height: 210px; border-radius: 16px; overflow: hidden; background-size: cover; background-position: center; }
+    .demo-t { position: absolute; left: 0; right: 0; padding: 0 16px; text-align: right; font-family: 'Poiret One', serif; }
+    .mini { width: 176px; border: 1px solid #d8cdb5; border-radius: 12px; overflow: hidden; background: #e6e6e6; }
+    .tag { display: inline-block; padding: 2px 8px; border-radius: 6px; background: #f2ece0; font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: .8px; color: #6b5f47; }
+  </style>
+</helmet>
+
+<div class="rv">
+  <h1 class="rv-title">Ревью дизайна · находки и варианты</h1>
+  <div style="display: inline-flex; align-items: center; gap: 10px; margin-top: 14px; padding: 10px 16px; border-radius: 999px; background: #edf3e2; color: #3f5a1f; font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: .6px;">
+    <span style="width: 8px; height: 8px; border-radius: 999px; background: #4a6626;"></span>
+    ПРИМЕНЕНО В МАКЕТАХ · остальные артборды этого канваса уже показывают вариант «стало»
+  </div>
+  <p class="rv-sub">Снято с артбордов этого канваса, то есть с текущего кода. Контраст измерен по реальным пикселям фото под текстом (медиана области, худший участок в скобках), высоты — по фактическому рендеру в Chrome при ширине 390. Порог WCAG AA: 4.5:1 для обычного текста, 3:1 для крупного (24px+ или 19px+ полужирный).</p>
+
+  <div class="rv-kicker">Что уже хорошо — не трогаем</div>
+  <div class="rv-grid3">
+    <div class="rv-card">
+      <p class="opt-h">Страница тура</p>
+      <p class="opt-p">Золото-крем язык <code>.et-post</code> — самая зрелая часть продукта. Таймлайн маршрута, блок стоимости, таблица билетов читаются с первого взгляда и держат иерархию. Это готовая база для всего сайта.</p>
+    </div>
+    <div class="rv-card">
+      <p class="opt-h">Форма заявки</p>
+      <p class="opt-p">Лейблы над полями, телефон предзаполнен, счётчик гостей, цена в кнопке отправки. Одна из немногих форм, где видно, что будет после нажатия.</p>
+    </div>
+    <div class="rv-card">
+      <p class="opt-h">Фотоматериал</p>
+      <p class="opt-p">Съёмка сильная и уникальная — это главный актив бренда. Все находки ниже про то, что поверх фото, а не про сами фото.</p>
+    </div>
+  </div>
+
+  <div class="rv-kicker">Находки — по убыванию важности</div>
+  <div class="rv-card" style="padding: 4px 10px;">
+    <table class="rv-t">
+      <thead>
+        <tr><th style="width: 92px;">Важность</th><th style="width: 300px;">Что не так</th><th style="width: 200px;">Замер</th><th>Где</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="sev sev-a">блокер</span></td>
+          <td><b>Главная кнопка сайта нечитаема.</b> Белый текст на <code>green-500</code> даёт 2.28:1 — ниже порога даже для крупного текста. Плюс сам зелёный не входит в палитру бренда.</td>
+          <td class="num bad">2.28:1<br><span style="color:#6b5f47">нужно ≥ 4.5:1</span></td>
+          <td><code>shared/ui/link-button</code> и <code>features/tour/ui/link-button</code> — «Все туры» и стрелки на карточках. Это единственные два места с <code>bg-green-500</code>: статусные <code>bg-green-700</code>/<code>bg-red-800</code> в <code>entities/activity/ui/card-places</code> порог проходят, их менять не обязательно — они переведены на кремовые чипы только ради единообразия.</td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-a">блокер</span></td>
+          <td><b>H1 главной не читается на фото.</b> Золотой <code>#d19331</code> лежит на светлом небе, а маска всего <code>#0000002a</code> (16%). Обводка <code>-webkit-text-stroke: 4px</code> утолщает буквы, но контраст не поднимает.</td>
+          <td class="num bad">1.35:1 (1.25)<br>вторая строка 2.04:1</td>
+          <td><code>entities/page-title</code>, <code>page-head</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-a">блокер</span></td>
+          <td><b>Две разные главные кнопки.</b> На главной и карточках — зелёная, на туре и в брони — золотая <code>#B8915A</code>, у которой белый текст тоже не проходит. Пользователь не понимает, какое действие основное.</td>
+          <td class="num bad">золотая с белым<br>2.90:1</td>
+          <td><code>features/tour</code>, <code>features/booking</code> против <code>shared/ui/link-button</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-b">важно</span></td>
+          <td><b>Каталог начинается с экрана декора.</b> До первой карточки — 844px фото с золотым заголовком поверх сиреневого платья. На странице, куда ведёт главный CTA, товара не видно вообще.</td>
+          <td class="num bad">H1 3.09:1 (1.57)<br>первая карточка на y≈840</td>
+          <td><code>views/tours/ui/layout</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-b">важно</span></td>
+          <td><b>Пять плавающих элементов на карточке.</b> Цена, сердце, рейтинг, длительность и зелёная стрелка стоят по четырём углам поверх фото. Стрелка дублирует тап по самой карточке, чипы стеклянные и висят где придётся.</td>
+          <td class="num bad">чип цены 2.77:1<br>высоты чипов 22–38px</td>
+          <td><code>shared/ui/card-header</code>, <code>card-footer</code>, <code>badge-price</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-b">важно</span></td>
+          <td><b>Ноль десктопа.</b> В карточках и списках нет ни одного <code>md:</code>/<code>lg:</code>: <code>md:</code> встречается 18 раз на весь <code>src</code> и только увеличивает кегль и иконку бургера. Навигация — бургер на любой ширине.</td>
+          <td class="num">одна колонка 390px<br>на мониторе 1440</td>
+          <td><code>widgets/app-header</code>, все <code>views/*</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-b">важно</span></td>
+          <td><b>Таблица дашборда не влезает.</b> 11 колонок дают 1468px при вьюпорте 1440 — «Наш доход» и следующая колонка обрезаны. Кнопка «Посмотреть публичную страницу» в сайдбаре режет вторую строку текста.</td>
+          <td class="num bad">1468px / 1440px</td>
+          <td><code>templates/guide-dashboard/guide-orders-page</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-c">мелочь</span></td>
+          <td><b>Экран входа — из другого продукта.</b> Белая shadcn-карточка, чёрная кнопка, ни логотипа, ни золота. Первый экран для гида после письма.</td>
+          <td class="num">0 брендовых токенов</td>
+          <td><code>app/(auth)</code>, <code>features/auth</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-c">мелочь</span></td>
+          <td><b>Вертикальный ритм собран отрицательными отступами:</b> <code>-127px</code>, <code>-45px</code>, <code>-70px</code>, <code>-75px</code>, <code>mt-[8%]</code>, <code>mt-[25vh]</code>. Отсюда пустая полоса фото ≈200px перед «Контактами» и ≈100px пустоты в самом низу главной.</td>
+          <td class="num">≈300px пустоты<br>на главной</td>
+          <td><code>views/home/home</code>, <code>widgets/contacts</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-c">мелочь</span></td>
+          <td><b>Мёртвый токен и хрупкие подписи.</b> <code>--light-green: #81d178</code> не применяется никогда: <code>@bem-react/classname</code> отдаёт глобальный класс, SCSS-модуль хеширует свой. В креме <code>ink-faint</code> даёт 3.91:1, золотые ссылки — 4.42:1: обе чуть ниже порога.</td>
+          <td class="num bad">3.91:1 / 4.42:1</td>
+          <td><code>shared/assets/styles.module.scss</code>, <code>globals.css</code></td>
+        </tr>
+        <tr>
+          <td><span class="sev sev-c">мелочь</span></td>
+          <td><b>Декоративная фраза на сером.</b> «Открой для себя мир путешествий уже сегодня!» — золото на <code>#e6e6e6</code>. Если это текст, он нечитаем; если декор, он занимает место блока.</td>
+          <td class="num bad">2.12:1</td>
+          <td><code>widgets/posts</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rv-kicker">Вариант 1 · одна главная кнопка</div>
+  <div class="rv-grid3">
+    <div class="rv-card">
+      <p class="lbl">сейчас</p>
+      <div style="text-align: center; padding: 14px 0 18px;"><span class="pill" style="background: #22c55e; color: #fff;">Все туры</span></div>
+      <p class="opt-p"><span class="bad">2.28:1</span> · <code>green-500</code> вне палитры, рядом с золотым «Забронировать» читается как другое действие.</p>
+    </div>
+    <div class="rv-card" style="border-color: #b8915a; border-width: 2px;">
+      <p class="lbl">вариант A · рекомендую</p>
+      <div style="text-align: center; padding: 14px 0 18px;"><span class="pill" style="background: #b8915a; color: #1f1a12; font-weight: 600;">Все туры</span></div>
+      <p class="opt-p"><span class="good">5.96:1</span> · золото бренда, тёмная тушь вместо белого. Заодно чинит «Забронировать» на туре — там та же плашка, только текст меняем на <code>#1F1A12</code>.</p>
+    </div>
+    <div class="rv-card">
+      <p class="lbl">вариант B</p>
+      <div style="text-align: center; padding: 14px 0 18px;"><span class="pill" style="background: #8b6f3d; color: #fff;">Все туры</span></div>
+      <p class="opt-p"><span class="good">4.73:1</span> · тёмное золото с белым. Строже и «дороже», но на фото читается хуже, чем A: плашка сливается со скалой и землёй.</p>
+    </div>
+  </div>
+  <p class="rv-sub" style="margin-top: 14px;">Зелёный при этом не выбрасываем, а понижаем до статуса: <span class="tag" style="background:#e8f0dd; color:#3f5a1f;">бесплатно</span> <span class="tag" style="background:#f6e0dc; color:#8e2f1e;">2 места</span> — ровно как он уже используется в билетах и в списке ближайших туров. Мёртвый <code>--light-green</code> удаляем.</p>
+
+  <div class="rv-kicker">Вариант 2 · скрим вместо обводки</div>
+  <div class="rv-grid2">
+    <div class="rv-card">
+      <p class="lbl">сейчас · маска 16% + stroke 4px</p>
+      <div class="demo" style="background-image: url(./hero.jpg);">
+        <div style="position: absolute; inset: 0; background: #0000002a;"></div>
+        <div class="demo-t" style="top: 26px;">
+          <span style="display: block; text-transform: uppercase; font-size: 30px; line-height: 1; letter-spacing: 3px; color: #d19331; -webkit-text-stroke: 3px #d19331;">Джип туры</span>
+          <span style="display: block; margin-top: 14px; font-size: 22px; letter-spacing: 1px; color: #ffffffea; -webkit-text-stroke: 1.5px #ffffffea;">Экскурсии по Крыму</span>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;"><span class="bad">1.35:1</span> · обводка добавляет массы, но не отделяет буквы от неба. На светлых кадрах заголовок исчезает целиком.</p>
+    </div>
+    <div class="rv-card" style="border-color: #b8915a; border-width: 2px;">
+      <p class="lbl">вариант · градиентный скрим, без обводки</p>
+      <div class="demo" style="background-image: url(./hero.jpg);">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,14,6,.78) 0%, rgba(20,14,6,.34) 46%, rgba(20,14,6,.72) 100%);"></div>
+        <div class="demo-t" style="top: 26px;">
+          <span style="display: block; text-transform: uppercase; font-size: 30px; line-height: 1; letter-spacing: 3px; color: #e8b055;">Джип туры</span>
+          <span style="display: block; margin-top: 14px; font-size: 22px; letter-spacing: 1px; color: #fff;">Экскурсии по Крыму</span>
+        </div>
+        <div style="position: absolute; left: 16px; bottom: 16px;"><span style="display:inline-flex; padding: 10px 26px; border-radius: 999px; background: #b8915a; color: #1f1a12; font-size: 13px; font-weight: 600;">Все туры</span></div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;"><span class="good">4.71:1</span> золото и <span class="good">12.5:1</span> белый · Poiret One возвращает свою тонкую пластику, кадр остаётся видимым, а CTA переезжает на скрим внизу, где его точно найдут пальцем.</p>
+    </div>
+  </div>
+
+  <div class="rv-kicker">Вариант 3 · карточка тура</div>
+  <div class="rv-grid2">
+    <div class="rv-card">
+      <p class="lbl">сейчас · 5 плавающих элементов</p>
+      <div style="position: relative; height: 300px; border-radius: 24px; overflow: hidden; background: url(./card1.jpg) center/cover;">
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,.2);"></div>
+        <div style="position: absolute; inset: 0; padding: 14px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <span style="background:#ffffff1a; backdrop-filter: blur(2px); border-radius: 999px; padding: 7px 14px; color: #fff; font-family: 'Oswald'; font-size: 14px;">От 7000 ₽</span>
+            <span style="width: 38px; height: 38px; border-radius: 999px; background:#ffffff1a; display:flex; align-items:center; justify-content:center; color:#fff;">♡</span>
+          </div>
+          <div style="font-family: 'Poiret One', serif; font-size: 26px; color: #fff; -webkit-text-stroke: 1.5px #ffffffea; line-height: 1.3;">Пещерный город<br>Эски-Кермен</div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <span style="background:#ffffff1a; border-radius: 999px; padding: 5px 12px; color:#fff; font-size: 12px;">⏱ От 7 ч</span>
+            <span style="width: 44px; height: 44px; border-radius: 999px; background:#22c55e; display:flex; align-items:center; justify-content:center; color:#fff; font-size: 20px;">↗</span>
+          </div>
+          <div style="position: absolute; right: 14px; top: 62px;"><span style="background:#ffffff1a; border-radius: 999px; padding: 3px 10px; color:#fff; font-size: 11px;">★ 4.9/5</span></div>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;">Цена, сердце, рейтинг, время и стрелка в четырёх углах. Чипы 22–38px — ниже 44px, за них трудно попасть. Стрелка — второй тап-таргет для того же перехода.</p>
+    </div>
+    <div class="rv-card" style="border-color: #b8915a; border-width: 2px;">
+      <p class="lbl">вариант · скрим + одна строка факта</p>
+      <div style="position: relative; height: 300px; border-radius: 24px; overflow: hidden; background: url(./card1.jpg) center/cover;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 38%, rgba(20,14,6,.82) 100%);"></div>
+        <div style="position: absolute; right: 12px; top: 12px; width: 44px; height: 44px; border-radius: 999px; background: rgba(20,14,6,.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px;">♡</div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px;">
+          <div style="font-family: 'Poiret One', serif; font-size: 27px; line-height: 1.25; color: #fff; letter-spacing: .5px;">Пещерный город<br>Эски-Кермен</div>
+          <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 12px; font-family: 'Oswald', sans-serif; color: #fff;">
+            <span style="font-size: 19px; font-weight: 500;">от 7 000 ₽</span>
+            <span style="opacity: .55;">·</span><span style="font-size: 14px; opacity: .9;">7 часов</span>
+            <span style="opacity: .55;">·</span><span style="font-size: 14px; opacity: .9;">★ 4.9</span>
+            <span style="margin-left: auto; font-size: 13px; color: #e8b055;">Подробнее →</span>
+          </div>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;">Один факт-ряд на плотном скриме: цена крупная, длительность и рейтинг рядом. Тап-таргет — вся карточка, отдельная кнопка не нужна. Сердце укрупнено до 44px и уведено в единственный угол. Читается на любом кадре, а не только на удачном.</p>
+    </div>
+  </div>
+
+  <div class="rv-kicker">Вариант 4 · каталог: товар выше сгиба</div>
+  <div class="rv-grid2">
+    <div class="rv-card">
+      <p class="lbl">сейчас · шапка 844px</p>
+      <div style="display: flex; gap: 16px; align-items: flex-start;">
+        <div class="mini">
+          <div style="position: relative; height: 240px; background: url(./tours.jpg) center/cover;">
+            <div style="position: absolute; inset: 0; background: #0000002a;"></div>
+            <div style="position: absolute; top: 92px; right: 10px; font-family: 'Poiret One', serif; font-size: 17px; letter-spacing: 2px; color: #d19331; -webkit-text-stroke: 1.5px #d19331; text-transform: uppercase;">Все туры</div>
+          </div>
+          <div style="height: 60px; background: #e6e6e6; padding: 8px;"><div style="height: 44px; border-radius: 10px; background: url(./card1.jpg) center/cover;"></div></div>
+        </div>
+        <p class="opt-p" style="flex: 1;">Целый экран фото и заголовок, попавший на платье. Первая карточка начинается на <b>y ≈ 840</b> — один полный свайп до первого тура.</p>
+      </div>
+    </div>
+    <div class="rv-card" style="border-color: #b8915a; border-width: 2px;">
+      <p class="lbl">вариант · шапка 300px</p>
+      <div style="display: flex; gap: 16px; align-items: flex-start;">
+        <div class="mini">
+          <div style="position: relative; height: 86px; background: url(./tours.jpg) center/cover;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,14,6,.55), rgba(20,14,6,.8));"></div>
+            <div style="position: absolute; left: 12px; bottom: 10px; font-family: 'Poiret One', serif; font-size: 17px; letter-spacing: 2px; color: #e8b055; text-transform: uppercase;">Все туры</div>
+            <div style="position: absolute; left: 12px; bottom: 32px; font-family: 'Oswald'; font-size: 9px; letter-spacing: 1px; color: #ffffffcc;">14 ТУРОВ · КРЫМ</div>
+          </div>
+          <div style="background: #f2f0ec; padding: 8px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; gap: 6px;"><span class="tag" style="font-size:8px; padding:2px 6px;">джипы</span><span class="tag" style="font-size:8px; padding:2px 6px;">с детьми</span><span class="tag" style="font-size:8px; padding:2px 6px;">1 день</span></div>
+            <div style="height: 96px; border-radius: 10px; background: url(./card1.jpg) center/cover;"></div>
+            <div style="height: 96px; border-radius: 10px; background: url(./card2.jpg) center/cover;"></div>
+          </div>
+        </div>
+        <p class="opt-p" style="flex: 1;">Шапка сжата до 300px, в неё уезжает счётчик туров, под ней сразу фильтры-теги и <b>две карточки в первом экране</b>. Фото никуда не девается — оно работает на карточках, где и продаёт.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rv-kicker">Вариант 5 · вход и десктоп</div>
+  <div class="rv-grid2">
+    <div class="rv-card">
+      <p class="lbl">вход · сейчас / вариант</p>
+      <div style="display: flex; gap: 16px;">
+        <div style="flex: 1; background: #27272a; border-radius: 12px; padding: 22px 16px;">
+          <div style="background: #fff; border-radius: 10px; padding: 16px;">
+            <div style="text-align: center; font-size: 15px; font-weight: 700;">Вход</div>
+            <div style="text-align: center; font-size: 10.5px; color: #71717a; margin-top: 3px;">Доброе пожаловать!</div>
+            <div style="height: 26px; border: 1px solid #e4e4e7; border-radius: 6px; margin-top: 14px;"></div>
+            <div style="height: 26px; border: 1px solid #e4e4e7; border-radius: 6px; margin-top: 8px;"></div>
+            <div style="height: 28px; border-radius: 6px; background: #18181b; margin-top: 12px;"></div>
+          </div>
+        </div>
+        <div style="flex: 1; background: #1f1a12; border-radius: 12px; padding: 22px 16px;">
+          <div style="text-align: center;"><img src="./logo.png" alt="" style="width: 34px; height: 38px; object-fit: contain;"></div>
+          <div style="background: #fbf7ee; border: 1px solid #e2d5b7; border-radius: 12px; padding: 16px; margin-top: 12px;">
+            <div style="text-align: center; font-family: 'Poiret One', serif; font-size: 19px; color: #8b6f3d; letter-spacing: 1px;">Вход</div>
+            <div style="text-align: center; font-size: 10.5px; color: #6b5f47; margin-top: 3px;">Кабинет гида</div>
+            <div style="height: 26px; border: 1px solid #e2d5b7; border-radius: 8px; background: #fffdf8; margin-top: 14px;"></div>
+            <div style="height: 26px; border: 1px solid #e2d5b7; border-radius: 8px; background: #fffdf8; margin-top: 8px;"></div>
+            <div style="height: 28px; border-radius: 8px; background: #b8915a; margin-top: 12px; display: flex; align-items: center; justify-content: center; color: #1f1a12; font-size: 11px; font-weight: 600;">Войти</div>
+          </div>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;">Те же поля и та же логика, но логотип, крем и золотая кнопка. Полчаса работы, а гид перестаёт попадать «в чужой продукт». Ту же карточку переиспользуем на регистрации и восстановлении пароля.</p>
+    </div>
+    <div class="rv-card">
+      <p class="lbl">десктоп · минимальный каркас</p>
+      <div style="background: #f2f0ec; border: 1px solid #d8cdb5; border-radius: 12px; padding: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid #d8cdb5;">
+          <div style="width: 22px; height: 24px; background: #b8915a; border-radius: 4px;"></div>
+          <div style="display: flex; gap: 14px; font-size: 11px; color: #6b5f47;"><span>Туры</span><span>Направления</span><span>Отзывы</span><span>Контакты</span></div>
+          <div style="margin-left: auto; padding: 5px 12px; border-radius: 999px; background: #b8915a; color: #1f1a12; font-size: 10.5px; font-weight: 600;">Забронировать</div>
+        </div>
+        <div style="height: 92px; border-radius: 8px; margin-top: 10px; background: url(./hero.jpg) center/cover; position: relative;">
+          <div style="position: absolute; inset: 0; border-radius: 8px; background: linear-gradient(90deg, rgba(20,14,6,.72), rgba(20,14,6,.15));"></div>
+          <div style="position: absolute; left: 14px; top: 26px; font-family: 'Poiret One', serif; color: #e8b055; font-size: 18px; letter-spacing: 2px; text-transform: uppercase;">Джип туры</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;">
+          <div style="height: 74px; border-radius: 8px; background: url(./card1.jpg) center/cover;"></div>
+          <div style="height: 74px; border-radius: 8px; background: url(./card2.jpg) center/cover;"></div>
+          <div style="height: 74px; border-radius: 8px; background: url(./card3.jpg) center/cover;"></div>
+        </div>
+      </div>
+      <p class="opt-p" style="margin-top: 12px;">Контейнер до 1120px, карточки в сетке <code>md:2</code> / <code>lg:3</code>, горизонтальное меню вместо бургера от <code>md:</code>, шапка во всю ширину с текстом в сетке. Мобильная вёрстка не меняется — только добавляются варианты. Начинать стоит с каталога и страницы тура: туда идёт поисковый трафик с компьютеров.</p>
+    </div>
+  </div>
+
+  <div class="rv-kicker">С чего начинать</div>
+  <div class="rv-card" style="padding: 4px 10px;">
+    <table class="rv-t">
+      <thead><tr><th style="width: 42px;">#</th><th style="width: 330px;">Шаг</th><th style="width: 110px;">Эффект</th><th style="width: 110px;">Объём</th><th>Что правим в коде потом</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Одна кнопка: золото + тёмная тушь, зелёный уходит в статусы, <code>--light-green</code> удаляем</td><td class="good">высокий</td><td>полдня</td><td><code>globals.css</code>, оба <code>LinkButton</code>, <code>styles.module.scss</code></td></tr>
+        <tr><td class="num">2</td><td>Скрим под текстом на фото вместо маски и обводки — шапки и карточки</td><td class="good">высокий</td><td>день</td><td><code>entities/page-head</code>, <code>page-title</code>, <code>shared/ui/card*</code></td></tr>
+        <tr><td class="num">3</td><td>Карточка: один факт-ряд, тап по всей карточке, сердце 44px</td><td class="good">высокий</td><td>день</td><td><code>shared/ui/card-header</code>, <code>card-footer</code>, <code>badge-price</code></td></tr>
+        <tr><td class="num">4</td><td>Каталог: шапка 300px, теги-фильтры, две карточки в первом экране</td><td class="good">высокий</td><td>день</td><td><code>views/tours/ui/layout</code></td></tr>
+        <tr><td class="num">5</td><td>Ритм: отрицательные отступы → три токена интервалов (48 / 80 / 120)</td><td>средний</td><td>день</td><td><code>views/home</code>, <code>widgets/*</code></td></tr>
+        <tr><td class="num">6</td><td>Вход, регистрация, восстановление — в брендовую карточку</td><td>средний</td><td>полдня</td><td><code>app/(auth)</code>, <code>features/auth</code></td></tr>
+        <tr><td class="num">7</td><td>Дашборд: приоритет колонок + ящик деталей, чинится обрезка</td><td>средний</td><td>день</td><td><code>templates/guide-dashboard</code></td></tr>
+        <tr><td class="num">8</td><td>Десктопные раскладки каталога и тура</td><td class="good">высокий</td><td>2–3 дня</td><td><code>widgets/app-header</code>, <code>views/tours</code>, <code>views/tour</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="rv-sub" style="margin-top: 30px;">Шаги 1–4 меняют язык сайта, но не ломают ни одной структуры: это цвет кнопки, слой скрима и перекладка чипов внутри уже существующих компонентов. Их можно нарисовать в этом канвасе отдельными артбордами «v2» и сверить рядом с текущими, прежде чем что-то трогать в коде.</p>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Desktop">
+    <h2>Десктоп — каталог 1440 <span>1440×1940</span></h2>
+    <div class="frame" style="width:1440px;height:1940px">
+      <script type="text/html" data-board="Desktop"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --scrim-hero: linear-gradient(90deg, rgba(20,14,6,.82) 0%, rgba(20,14,6,.45) 46%, rgba(20,14,6,.18) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 38%, rgba(20,14,6,.82) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .nav a { color: var(--ink); text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 15px; letter-spacing: .3px; }
+    .nav a:hover { color: var(--gold-ink); }
+    .cta { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: .04em; text-decoration: none; }
+    .ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 26px; border-radius: var(--r-pill); border: 1.5px solid var(--cta); color: var(--gold-ink); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .chip { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 14px; }
+    .chip-on { background: var(--cta); color: var(--on-cta); }
+    .card { position: relative; display: block; height: 340px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .fav { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: var(--r-pill); background: rgba(20,14,6,.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 19px; }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 18px 16px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 25px; line-height: 1.25; color: #fff; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 10px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 20px; font-weight: 500; }
+    .card .dim { font-size: 13.5px; opacity: .9; }
+    .card .sep { opacity: .5; }
+    .card .more { margin-left: auto; font-size: 13px; color: var(--gold-photo); }
+    .h2 { margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 32px; letter-spacing: 1px; color: var(--gold-head); }
+    .lab { font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; color: var(--ink-faint); }
+  </style>
+</helmet>
+
+<!-- Десктоп 1440 · тот же язык, добавлены только раскладка и горизонтальное меню -->
+<div style="width: 1440px; background: var(--page);">
+
+  <!-- Шапка: меню вместо бургера от md:, контейнер 1120 -->
+  <header style="background: #fff; border-bottom: 1px solid var(--rule);">
+    <div class="wrap" style="display: flex; align-items: center; gap: 32px; height: 84px;">
+      <img src="./logo.png" alt="Energy Tour" style="width: 50px; height: 56px; object-fit: contain;">
+      <nav class="nav" style="display: flex; align-items: center; gap: 26px;">
+        <a href="/category/vse_tury">Все туры</a>
+        <a href="#">Направления</a>
+        <a href="/posts">Статьи</a>
+        <a href="#">Отзывы</a>
+        <a href="/kontakty">Контакты</a>
+      </nav>
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 16px;">
+        <a href="tel:+79787880753" style="font-family: 'Oswald', sans-serif; font-size: 17px; color: var(--ink); text-decoration: none;">+7 (978) 788-07-53</a>
+        <a class="cta" href="#">Забронировать</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Шапка страницы: фото во всю ширину, текст в сетке, скрим слева -->
+  <section style="position: relative; height: 420px; background: url(./tours.jpg) center/cover;">
+    <div style="position: absolute; inset: 0; background: var(--scrim-hero);"></div>
+    <div class="wrap" style="position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+      <p style="margin: 0 0 10px; font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #ffffffcc;">14 туров · Крым · выезд из Бахчисарая и Севастополя</p>
+      <h1 style="margin: 0; max-width: 620px; font-family: 'Poiret One', serif; font-weight: 400; font-size: 60px; line-height: 1.05; letter-spacing: 5px; text-transform: uppercase; color: var(--gold-photo);">Все туры</h1>
+      <p style="margin: 18px 0 0; max-width: 520px; font-family: 'Caladea', serif; font-size: 17px; line-height: 1.6; color: #ffffffe6;">Однодневные джип-выезды на плато, в каньоны и пещерные города. Забираем от жилья, маршрут собираем под погоду.</p>
+    </div>
+  </section>
+
+  <!-- Фильтры -->
+  <div style="background: #fff; border-bottom: 1px solid var(--rule);">
+    <div class="wrap" style="display: flex; align-items: center; gap: 10px; height: 84px;">
+      <span class="chip chip-on">Все</span>
+      <span class="chip">Джип-туры</span>
+      <span class="chip">С детьми</span>
+      <span class="chip">1 день</span>
+      <span class="chip">2–3 дня</span>
+      <span style="margin-left: auto; display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: var(--r-control); border: 1px solid var(--rule); background: #fff; font-family: 'Oswald', sans-serif; font-size: 14px; color: var(--ink-muted);">Сначала популярные ▾</span>
+    </div>
+  </div>
+
+  <!-- Сетка: lg:3 колонки, gap 24 -->
+  <div class="wrap" style="padding-top: 48px; padding-bottom: 48px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <a class="card" href="#" style="background-image: url(./card1.jpg);">
+          <div class="sc"></div>
+          <div class="fav" aria-label="В избранное">♡</div>
+          <div class="body">
+            <div class="t">Пещерный город Эски-Кермен</div>
+            <div class="facts">
+              <span class="price">от 7 000 ₽</span>
+              <span class="sep">·</span><span class="dim">7 часов</span>
+              <span class="sep">·</span><span class="dim">★ 4.9</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./card2.jpg);">
+          <div class="sc"></div>
+          <div class="fav" aria-label="В избранное">♡</div>
+          <div class="body">
+            <div class="t">Марсианское озеро и Сфинксы</div>
+            <div class="facts">
+              <span class="price">от 6 500 ₽</span>
+              <span class="sep">·</span><span class="dim">5 часов</span>
+              <span class="sep">·</span><span class="dim">★ 4.8</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./card3.jpg);">
+          <div class="sc"></div>
+          <div class="fav" aria-label="В избранное">♡</div>
+          <div class="body">
+            <div class="t">Сюйреньская крепость и Бахчисарай</div>
+            <div class="facts">
+              <span class="price">от 8 000 ₽</span>
+              <span class="sep">·</span><span class="dim">6 часов</span>
+              <span class="sep">·</span><span class="dim">★ 4.9</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./card4.jpg);">
+          <div class="sc"></div>
+          <div class="fav" aria-label="В избранное">♡</div>
+          <div class="body">
+            <div class="t">Ай-Петри зимой из Симферополя</div>
+            <div class="facts">
+              <span class="price">от 9 500 ₽</span>
+              <span class="sep">·</span><span class="dim">8 часов</span>
+              <span class="sep">·</span><span class="dim">★ 5.0</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./services.jpg);">
+          <div class="sc"></div>
+          <div class="fav" aria-label="В избранное">♡</div>
+          <div class="body">
+            <div class="t">Фиолент и крепость Чембало</div>
+            <div class="facts">
+              <span class="price">от 6 900 ₽</span>
+              <span class="sep">·</span><span class="dim">6 часов</span>
+              <span class="sep">·</span><span class="dim">★ 4.8</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./tours.jpg);">
+          <div class="sc"></div>
+          <div class="fav" aria-label="В избранное">♡</div>
+          <div class="body">
+            <div class="t">Три крепости на джипах</div>
+            <div class="facts">
+              <span class="price">от 9 900 ₽</span>
+              <span class="sep">·</span><span class="dim">9 часов</span>
+              <span class="sep">·</span><span class="dim">★ 5.0</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+    </div>
+    <div style="margin-top: 48px; text-align: center;"><a class="ghost" href="#">Показать ещё 8</a></div>
+  </div>
+
+  <!-- Подвал -->
+  <footer style="position: relative; background: url(./contacts.jpg) center/cover;">
+    <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+    <div class="wrap" style="position: relative; padding: 64px 24px; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 40px; color: #fff;">
+      <div>
+        <img src="./logo.png" alt="" style="width: 46px; height: 52px; object-fit: contain;">
+        <p style="margin: 14px 0 0; font-family: 'Caladea', serif; font-size: 15px; line-height: 1.6; color: #ffffffd9; max-width: 34ch;">Джип-туры и экскурсии по Крыму с 2017 года. Республика Крым, г. Бахчисарай.</p>
+      </div>
+      <div>
+        <p class="lab" style="color: #e8b05599;">Туры</p>
+        <div class="nav" style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+          <a href="#" style="color: #fff;">Все туры</a>
+          <a href="#" style="color: #fff;">Ближайшие даты</a>
+          <a href="#" style="color: #fff;">Статьи</a>
+          <a href="#" style="color: #fff;">Отзывы</a>
+        </div>
+      </div>
+      <div>
+        <p class="lab" style="color: #e8b05599;">Связь</p>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px; font-family: 'Oswald', sans-serif; font-size: 17px;">
+          <a href="tel:+79787880753" style="color: #fff; text-decoration: none;">+7 (978) 788-07-53</a>
+          <a href="tel:+79780542072" style="color: #fff; text-decoration: none;">+7 (978) 054-20-72</a>
+          <a href="mailto:infoenergytur@gmail.com" style="color: #fff; text-decoration: none; font-size: 15px;">infoenergytur@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="position: relative; padding: 0 24px 40px;">
+      <p style="margin: 0; font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1px; color: #ffffffb3;">© 2026 Energy-Tour</p>
+    </div>
+  </footer>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Tours">
+    <h2>Все туры — /category/vse_tury (новый вариант) <span>390×3000</span></h2>
+    <div class="frame" style="width:390px;height:3000px">
+      <script type="text/html" data-board="Tours"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+
+    .card { position: relative; display: block; height: 320px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 24px; line-height: 1.22; letter-spacing: .4px; color: #fff;
+               display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 12px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 21px; font-weight: 500; white-space: nowrap; }
+    .card .dim { font-size: 14px; opacity: .9; white-space: nowrap; }
+    .card .sep { opacity: .5; }
+    .card .more { margin-left: auto; font-size: 13px; color: var(--gold-photo); white-space: nowrap; }
+
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 4px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .frow { display: flex; align-items: baseline; gap: 8px; padding: 13px 0; border-bottom: 1px solid var(--rule); }
+    .frow:last-child { border-bottom: 0; padding-bottom: 0; }
+    .fname { flex: 1 1 auto; min-width: 0; font-family: 'Caladea', serif; font-size: 14px; color: var(--ink); }
+    .fprice { flex: 0 0 auto; font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 500; color: var(--gold-ink); white-space: nowrap; }
+    .funit { flex: 0 0 auto; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
+
+    .chip { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13.5px; white-space: nowrap; }
+    .chip-on { background: var(--cta); color: var(--on-cta); }
+    .meta { display: flex; align-items: baseline; justify-content: space-between; font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--ink-faint); }
+    .page-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 44px; padding: 0 14px; border-radius: var(--r-pill); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; color: var(--ink-muted); text-decoration: none; }
+    .page-on { background: var(--cta); border-color: var(--cta); color: var(--on-cta); font-weight: 600; }
+  </style>
+</helmet>
+
+<!-- Шапка 300px: было 75vh фото с плоской маской 70% и стеклянной таблицей цен поверх -->
+<section style="position: relative; height: 300px; background-image: url(./tours.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg></div>
+  </div>
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 52px;">
+    <p style="margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #ffffffcc;">17 туров · Крым · выезд из Бахчисарая</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 38px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-photo); line-height: 1;">Все туры</h1>
+  </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: var(--page); padding: 24px 16px 0;">
+
+  <!-- Прайс переехал с фото на бумагу: было «₽ в час» серым по стеклу и обрезано справа -->
+  <div class="block">
+    <h2 class="block-h">Форматы и цены</h2>
+        <div class="frow">
+          <span class="fname">Заказ внедорожника</span>
+          <span class="fprice">от 2 000 ₽</span>
+          <span class="funit">в час</span>
+        </div>
+        <div class="frow">
+          <span class="fname">Джип-тур</span>
+          <span class="fprice">от 5 000 ₽</span>
+          <span class="funit">за тур</span>
+        </div>
+        <div class="frow">
+          <span class="fname">Экспедиционный джип-тур</span>
+          <span class="fprice">от 20 000 ₽</span>
+          <span class="funit">в день</span>
+        </div>
+    <p style="margin: 14px 0 0; font-family: 'Caladea', serif; font-size: 12.5px; line-height: 1.5; color: var(--ink-muted);">Цена за машину до 6 человек. Точную стоимость гид подтверждает после заявки.</p>
+  </div>
+
+  <!-- Фильтры по длительности: в данных она уже есть, фильтра не было -->
+  <div style="display: flex; gap: 8px; overflow-x: auto; margin-top: 24px; padding-bottom: 4px;">
+    <span class="chip chip-on">Все</span>
+    <span class="chip">до 3 часов</span>
+    <span class="chip">4–5 часов</span>
+    <span class="chip">на весь день</span>
+    <span class="chip">экспедиции</span>
+  </div>
+
+  <div class="meta" style="margin-top: 20px;">
+    <span>Показано 12 из 17</span>
+    <span style="color: var(--gold-ink);">Сначала популярные ▾</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 16px;">
+      <a class="card" href="#" style="background-image: url(./card1.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Джип-тур экскурсия «Сердцем Крыма»</div>
+          <div class="facts">
+            <span class="price">от 10 500 ₽</span>
+            <span class="sep">·</span><span class="dim">4 часа</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./services.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Индивидуальная экскурсия — тур «Безлимитный»</div>
+          <div class="facts">
+            <span class="price">от 24 000 ₽</span>
+            <span class="sep">·</span><span class="dim">10 часов</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./tourhead.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Сафари-прогулки на внедорожниках по Крыму</div>
+          <div class="facts">
+            <span class="price">от 3 000 ₽</span>
+            <span class="sep">·</span><span class="dim">1 час</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card2.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Экскурсия в пещерный город Эски-Кермен</div>
+          <div class="facts">
+            <span class="price">от 6 500 ₽</span>
+            <span class="sep">·</span><span class="dim">3 часа</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card3.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Марсианское озеро, Сфинксы и крепость</div>
+          <div class="facts">
+            <span class="price">от 11 000 ₽</span>
+            <span class="sep">·</span><span class="dim">5 часов</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="#" style="background-image: url(./card4.jpg);">
+        <div class="sc"></div>
+        <div class="body">
+          <div class="t">Бельбекский каньон и Сюйреньская крепость</div>
+          <div class="facts">
+            <span class="price">от 12 000 ₽</span>
+            <span class="sep">·</span><span class="dim">3 часа</span>
+            <span class="more">Подробнее →</span>
+          </div>
+        </div>
+      </a>
+  </div>
+
+  <p style="margin: 20px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">…и ещё 6 туров на этой странице</p>
+
+  <!-- Пагинация: было «1 2 Вперед» текстом zinc-600 без тап-таргета -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 32px;">
+    <span class="page-btn page-on">1</span>
+    <a class="page-btn" href="/category/vse_tury/page/2">2</a>
+    <a class="page-btn" href="/category/vse_tury/page/2" style="padding: 0 18px;">Вперёд →</a>
+  </div>
+
+  <div style="height: 64px;"></div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="ToursDesktop">
+    <h2>Все туры — десктоп 1440 <span>1440×1900</span></h2>
+    <div class="frame" style="width:1440px;height:1900px">
+      <script type="text/html" data-board="ToursDesktop"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; } /* Tailwind preflight */
+    :root {
+      --cta: #b8915a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-side: linear-gradient(90deg, rgba(20,14,6,.82) 0%, rgba(20,14,6,.45) 46%, rgba(20,14,6,.18) 100%);
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .nav a { color: #fff; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 15px; }
+    .cta { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 26px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; }
+    .chip { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 14px; }
+    .chip-on { background: var(--cta); color: var(--on-cta); }
+
+    .card { position: relative; display: block; height: 330px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 23px; line-height: 1.22; color: #fff;
+               display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 10px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 20px; font-weight: 500; white-space: nowrap; }
+    .card .dim { font-size: 13.5px; opacity: .9; white-space: nowrap; }
+    .card .sep { opacity: .5; }
+    .card .more { margin-left: auto; font-size: 13px; color: var(--gold-photo); white-space: nowrap; }
+
+    .fcol { flex: 1 1 0; padding: 0 20px; border-right: 1px solid var(--rule); }
+    .fcol:first-child { padding-left: 0; }
+    .fcol:last-child { border-right: 0; padding-right: 0; }
+    .fname { margin: 0; font-family: 'Caladea', serif; font-size: 14px; color: var(--ink-muted); }
+    .fprice { margin: 6px 0 0; font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 500; color: var(--gold-ink); white-space: nowrap; }
+    .funit { font-size: 13px; color: var(--ink-faint); font-weight: 400; }
+    .page-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 44px; padding: 0 16px; border-radius: var(--r-pill); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; color: var(--ink-muted); text-decoration: none; }
+    .page-on { background: var(--cta); border-color: var(--cta); color: var(--on-cta); font-weight: 600; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: var(--page);">
+
+  <!-- Шапка страницы: фото во всю ширину, текст и прайс в сетке 1120 -->
+  <section style="position: relative; height: 420px; background: url(./tours.jpg) center/cover;">
+    <div style="position: absolute; inset: 0; background: var(--scrim-side);"></div>
+    <div class="wrap" style="position: relative; display: flex; align-items: center; height: 84px;">
+      <img src="./logo.png" alt="Energy Tour" style="width: 46px; height: 52px; object-fit: contain;">
+      <nav class="nav" style="display: flex; align-items: center; gap: 24px; margin-left: 28px;">
+        <a href="#">Экскурсии</a><a href="#">Джип туры</a><a href="#">Услуги</a><a href="#">Интересное</a><a href="#">Контакты</a>
+      </nav>
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 16px;">
+        <a href="tel:+79787880753" style="font-family: 'Oswald', sans-serif; font-size: 16px; color: #fff; text-decoration: none;">+7 (978) 788-07-53</a>
+        <a class="cta" href="#">Забронировать</a>
+      </div>
+    </div>
+    <div class="wrap" style="position: relative; padding-top: 76px;">
+      <p style="margin: 0 0 10px; font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #ffffffcc;">17 туров · Крым · выезд из Бахчисарая и Севастополя</p>
+      <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 58px; letter-spacing: 5px; text-transform: uppercase; color: var(--gold-photo); line-height: 1;">Все туры</h1>
+      <p style="margin: 16px 0 0; max-width: 520px; font-family: 'Caladea', serif; font-size: 16px; line-height: 1.6; color: #ffffffe6;">Однодневные выезды на плато, в каньоны и пещерные города. Забираем от жилья, маршрут собираем под погоду.</p>
+    </div>
+  </section>
+
+  <!-- Прайс: три колонки на бумаге вместо стеклянной таблицы поверх фото -->
+  <div class="wrap" style="padding-top: 32px;">
+    <div style="display: flex; align-items: stretch; background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 22px 24px;">
+        <div class="fcol">
+          <p class="fname">Заказ внедорожника</p>
+          <p class="fprice">от 2 000 ₽ <span class="funit">в час</span></p>
+        </div>
+        <div class="fcol">
+          <p class="fname">Джип-тур</p>
+          <p class="fprice">от 5 000 ₽ <span class="funit">за тур</span></p>
+        </div>
+        <div class="fcol">
+          <p class="fname">Экспедиционный джип-тур</p>
+          <p class="fprice">от 20 000 ₽ <span class="funit">в день</span></p>
+        </div>
+      <div class="fcol" style="flex: 0 0 260px; display: flex; align-items: center;">
+        <p style="margin: 0; font-family: 'Caladea', serif; font-size: 13px; line-height: 1.5; color: var(--ink-muted);">Цена за машину до 6 человек. Точную стоимость гид подтверждает после заявки.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Фильтры и сортировка -->
+  <div class="wrap" style="display: flex; align-items: center; gap: 10px; padding-top: 32px;">
+    <span class="chip chip-on">Все</span>
+    <span class="chip">до 3 часов</span>
+    <span class="chip">4–5 часов</span>
+    <span class="chip">на весь день</span>
+    <span class="chip">экспедиции</span>
+    <span style="margin-left: auto; display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border-radius: var(--r-control); border: 1px solid var(--rule); background: #fff; font-family: 'Oswald', sans-serif; font-size: 14px; color: var(--ink-muted);">Сначала популярные ▾</span>
+  </div>
+
+  <div class="wrap" style="display: flex; align-items: baseline; justify-content: space-between; padding-top: 20px; font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--ink-faint);">
+    <span>Показано 12 из 17</span>
+  </div>
+
+  <div class="wrap" style="padding-top: 16px; padding-bottom: 40px;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <a class="card" href="#" style="background-image: url(./card1.jpg);">
+          <div class="sc"></div>
+          <div class="body">
+            <div class="t">Джип-тур экскурсия «Сердцем Крыма»</div>
+            <div class="facts">
+              <span class="price">от 10 500 ₽</span>
+              <span class="sep">·</span><span class="dim">4 часа</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./services.jpg);">
+          <div class="sc"></div>
+          <div class="body">
+            <div class="t">Индивидуальная экскурсия — тур «Безлимитный»</div>
+            <div class="facts">
+              <span class="price">от 24 000 ₽</span>
+              <span class="sep">·</span><span class="dim">10 часов</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./tourhead.jpg);">
+          <div class="sc"></div>
+          <div class="body">
+            <div class="t">Сафари-прогулки на внедорожниках по Крыму</div>
+            <div class="facts">
+              <span class="price">от 3 000 ₽</span>
+              <span class="sep">·</span><span class="dim">1 час</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./card2.jpg);">
+          <div class="sc"></div>
+          <div class="body">
+            <div class="t">Экскурсия в пещерный город Эски-Кермен</div>
+            <div class="facts">
+              <span class="price">от 6 500 ₽</span>
+              <span class="sep">·</span><span class="dim">3 часа</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./card3.jpg);">
+          <div class="sc"></div>
+          <div class="body">
+            <div class="t">Марсианское озеро, Сфинксы и крепость</div>
+            <div class="facts">
+              <span class="price">от 11 000 ₽</span>
+              <span class="sep">·</span><span class="dim">5 часов</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+        <a class="card" href="#" style="background-image: url(./card4.jpg);">
+          <div class="sc"></div>
+          <div class="body">
+            <div class="t">Бельбекский каньон и Сюйреньская крепость</div>
+            <div class="facts">
+              <span class="price">от 12 000 ₽</span>
+              <span class="sep">·</span><span class="dim">3 часа</span>
+              <span class="more">Подробнее →</span>
+            </div>
+          </div>
+        </a>
+    </div>
+    <p style="margin: 20px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--ink-faint);">…и ещё 6 туров на этой странице</p>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 32px;">
+      <span class="page-btn page-on">1</span>
+      <a class="page-btn" href="#">2</a>
+      <a class="page-btn" href="#" style="padding: 0 20px;">Вперёд →</a>
+    </div>
+  </div>
+</div></body></html></script>
+    </div>
+  </section></main>
+<footer>
+  <p>Страница собрана из <code>*.dc.html</code> + <code>canvas.json</code> скриптом <code>build-index.mjs</code>. Правки вносим в артборды, потом <code>node build-index.mjs</code>.</p>
+  <p>Шрифты Poiret One и Oswald подтягиваются из Google Fonts — без интернета вёрстка та же, но начертания системные.</p>
+</footer>
+<script>
+  for (const tpl of document.querySelectorAll('script[type="text/html"]')) {
+    const f = document.createElement('iframe');
+    f.setAttribute('loading', 'lazy');
+    f.setAttribute('title', tpl.dataset.board);
+    f.srcdoc = tpl.textContent;
+    tpl.replaceWith(f);
+  }
+</script>
+</body>
+</html>

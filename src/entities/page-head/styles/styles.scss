@@ -1,23 +1,40 @@
 .PageHead {
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   background-position: bottom center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  &-Scrim {
+    background: var(--scrim-hero);
+  }
 
   &_type_home {
     background-image: url('../../../shared/assets/images/backgrounds/bg-home-head.jpg');
   }
 
   &_type_tour {
-    height: 75vh;
+    height: 58vh;
   }
 
   &_type_services {
     background-image: url('../../../shared/assets/images/backgrounds/bg-1.jpg');
   }
 
+  /* Каталог: было 100vh декора до первой карточки, стало компактная шапка —
+     под ней сразу фильтры и две карточки в первом экране. */
   &_type_tours {
+    height: 300px;
+
+    @media (width >= 48rem) {
+      height: 420px;
+    }
+
     background-image: url('../../../shared/assets/images/backgrounds/bg-5.jpg');
+    background-position: center;
+
+    .PageHead-Scrim {
+      background: var(--scrim-band);
+    }
   }
 }

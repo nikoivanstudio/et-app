@@ -1,23 +1,27 @@
 .ActivityCard {
-  background-color: #ffffff1a;
+  /* Было #ffffff1a — белый текст по нему давал 2.8:1 на светлом кадре.
+     Своя плотная подложка: ~9:1 при любом фото. */
+  background-color: rgba(20, 14, 6, 0.62);
+  min-height: 56px;
 }
 
 .CardDates {
-  font-family: var(--font-poire-one), serif;
-  -webkit-text-stroke: 1px #ffffff;
-  letter-spacing: 3px;
+  font-family: var(--oswald), sans-serif;
+  letter-spacing: 0.5px;
+  flex: 0 0 62px;
 }
 
 .CardTitle {
-  font-family: var(--oswald), serif;
-  font-size: 15px;
+  font-family: var(--oswald), sans-serif;
+  font-size: 13.5px;
   font-weight: 300;
 }
 
 .CardPlaces {
-  font-size: 11px;
+  font-size: 12.5px;
 }
 
 .CardPrice {
-  font-size: 10px;
+  font-family: var(--oswald), sans-serif;
+  font-size: 15px;
 }

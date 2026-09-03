@@ -5,6 +5,12 @@ import { z } from 'zod';
 
 import { sessionService, verifyUserPassword } from '@/entities/user/server';
 
+import {
+  authThrottleMessage,
+  consumeAuthAttempt
+} from '@/shared/lib/security/auth-throttle';
+import { turnstileService } from '@/shared/services/turnstile-service';
+
 export type SignInFormState = {
   formData?: FormData;
   errors?: {
@@ -28,6 +34,7 @@ export const signInAction = async (
 
   if (!result.success) {
     const formatedErrors = result.error.format();
+
     return {
       formData,
       errors: {
@@ -35,6 +42,30 @@ export const signInAction = async (
         password: formatedErrors.password?._errors.join(', '),
         _errors: formatedErrors._errors.join(', ')
       }
+    };
+  }
+
+  /**
+   * HIGH-1: ограничение попыток. Расходуется до проверки пароля, поэтому
+   * неудачные попытки учитываются независимо от результата.
+   */
+  const throttle = await consumeAuthAttempt('sign-in', result.data.login);
+
+  if (!throttle.allowed) {
+    return {
+      formData,
+      errors: { _errors: authThrottleMessage(throttle) }
+    };
+  }
+
+  /**
+   * HIGH-1: виджет Turnstile уже присутствовал на форме входа, но его токен
+   * никогда не проверялся — капча была декорацией.
+   */
+  if (!(await turnstileService.verifyHuman(data))) {
+    return {
+      formData,
+      errors: { _errors: 'Не удалось подтвердить, что вы человек.' }
     };
   }
 

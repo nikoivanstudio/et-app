@@ -21,7 +21,11 @@ export const HomePosts: FC = async () => {
 
   return (
     <Layout
-      className={cnHomePosts(null, ['p-4', 'relative', 'z-5'])}
+      className={cnHomePosts(null, [
+        'mx-auto max-w-[1120px] px-4 pt-20',
+        'relative',
+        'z-5'
+      ])}
       title={
         <Title type='h2' className={cnHomePosts('Title', ['relative', 'z-3'])}>
           Открой для себя мир путешествий уже сегодня!

@@ -1,27 +1,39 @@
 .UpcomingActivities {
   position: relative;
   z-index: 2;
-  margin-top: -45px;
   width: 100%;
-  min-height: 700px;
-  background-position: bottom center;
+  /* Было: margin-top -45px и min-height 700px — снизу оставалась пустая
+     полоса фото. Высоту теперь задаёт контент плюс интервалы в разметке. */
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url('../assets/images/bg-upcoming-activities-xs.jpg');
 
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--scrim-band);
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
   &_DescriptionText {
-    letter-spacing: 1.7px;
-    font-family: var(--font-poire-one), serif;
-    -webkit-text-stroke: 1px #ffffff;
+    /* Обводка убрана, читаемость держит скрим. */
+    font-family: var(--oswald), sans-serif;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #ffffff;
   }
 
   &_EmptyBadge {
     display: block;
-    height: 100%;
-    margin-top: 20vh;
+    margin-top: var(--sp-s);
     text-align: center;
-    vertical-align: center;
     font-family: var(--font-poire-one), serif;
-    -webkit-text-stroke: 1px #ffffff;
+    color: #ffffff;
   }
 }

@@ -353,6 +353,7 @@ export type UserWhereInput = {
   photos?: Prisma.PhotoListRelationFilter
   files?: Prisma.FileListRelationFilter
   partnerApplications?: Prisma.PartnerApplicationListRelationFilter
+  sessions?: Prisma.SessionListRelationFilter
   guideBookings?: Prisma.BookingListRelationFilter
   clientBookings?: Prisma.BookingListRelationFilter
 }
@@ -387,6 +388,7 @@ export type UserOrderByWithRelationInput = {
   photos?: Prisma.PhotoOrderByRelationAggregateInput
   files?: Prisma.FileOrderByRelationAggregateInput
   partnerApplications?: Prisma.PartnerApplicationOrderByRelationAggregateInput
+  sessions?: Prisma.SessionOrderByRelationAggregateInput
   guideBookings?: Prisma.BookingOrderByRelationAggregateInput
   clientBookings?: Prisma.BookingOrderByRelationAggregateInput
 }
@@ -424,6 +426,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   photos?: Prisma.PhotoListRelationFilter
   files?: Prisma.FileListRelationFilter
   partnerApplications?: Prisma.PartnerApplicationListRelationFilter
+  sessions?: Prisma.SessionListRelationFilter
   guideBookings?: Prisma.BookingListRelationFilter
   clientBookings?: Prisma.BookingListRelationFilter
 }, "id" | "login" | "slug">
@@ -511,6 +514,7 @@ export type UserCreateInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -545,6 +549,7 @@ export type UserUncheckedCreateInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -578,6 +583,7 @@ export type UserUpdateInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -612,6 +618,7 @@ export type UserUncheckedUpdateInput = {
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -903,6 +910,20 @@ export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReviewsInput, Prisma.UserUpdateWithoutReviewsInput>, Prisma.UserUncheckedUpdateWithoutReviewsInput>
 }
 
+export type UserCreateNestedOneWithoutSessionsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSessionsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput
+  upsert?: Prisma.UserUpsertWithoutSessionsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSessionsInput, Prisma.UserUpdateWithoutSessionsInput>, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+}
+
 export type UserCreateNestedOneWithoutToursInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutToursInput, Prisma.UserUncheckedCreateWithoutToursInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutToursInput
@@ -977,6 +998,7 @@ export type UserCreateWithoutActivitiesInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -1010,6 +1032,7 @@ export type UserUncheckedCreateWithoutActivitiesInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -1058,6 +1081,7 @@ export type UserUpdateWithoutActivitiesInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -1091,6 +1115,7 @@ export type UserUncheckedUpdateWithoutActivitiesInput = {
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -1124,6 +1149,7 @@ export type UserCreateWithoutGuideBookingsInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
 
@@ -1157,6 +1183,7 @@ export type UserUncheckedCreateWithoutGuideBookingsInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
 
@@ -1194,6 +1221,7 @@ export type UserCreateWithoutClientBookingsInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
 }
 
@@ -1227,6 +1255,7 @@ export type UserUncheckedCreateWithoutClientBookingsInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
 }
 
@@ -1275,6 +1304,7 @@ export type UserUpdateWithoutGuideBookingsInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
 
@@ -1308,6 +1338,7 @@ export type UserUncheckedUpdateWithoutGuideBookingsInput = {
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
 
@@ -1351,6 +1382,7 @@ export type UserUpdateWithoutClientBookingsInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
 }
 
@@ -1384,6 +1416,7 @@ export type UserUncheckedUpdateWithoutClientBookingsInput = {
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
 }
 
@@ -1415,6 +1448,7 @@ export type UserCreateWithoutFilesInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -1448,6 +1482,7 @@ export type UserUncheckedCreateWithoutFilesInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -1496,6 +1531,7 @@ export type UserUpdateWithoutFilesInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -1529,6 +1565,7 @@ export type UserUncheckedUpdateWithoutFilesInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -1561,6 +1598,7 @@ export type UserCreateWithoutOrdersInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -1594,6 +1632,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -1642,6 +1681,7 @@ export type UserUpdateWithoutOrdersInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -1675,6 +1715,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -1707,6 +1748,7 @@ export type UserCreateWithoutPartnerApplicationsInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -1740,6 +1782,7 @@ export type UserUncheckedCreateWithoutPartnerApplicationsInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -1788,6 +1831,7 @@ export type UserUpdateWithoutPartnerApplicationsInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -1821,6 +1865,7 @@ export type UserUncheckedUpdateWithoutPartnerApplicationsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -1853,6 +1898,7 @@ export type UserCreateWithoutPhotosInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -1886,6 +1932,7 @@ export type UserUncheckedCreateWithoutPhotosInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -1934,6 +1981,7 @@ export type UserUpdateWithoutPhotosInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -1967,6 +2015,7 @@ export type UserUncheckedUpdateWithoutPhotosInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -1999,6 +2048,7 @@ export type UserCreateWithoutPostsInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -2032,6 +2082,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -2080,6 +2131,7 @@ export type UserUpdateWithoutPostsInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -2113,6 +2165,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -2145,6 +2198,7 @@ export type UserCreateWithoutReviewsInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -2178,6 +2232,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -2226,6 +2281,7 @@ export type UserUpdateWithoutReviewsInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -2253,6 +2309,157 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
+  clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+}
+
+export type UserCreateWithoutSessionsInput = {
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  slug?: string | null
+  headline?: string | null
+  bio?: string | null
+  coverPhotoId?: number | null
+  languages?: Prisma.UserCreatelanguagesInput | string[]
+  specializations?: Prisma.UserCreatespecializationsInput | string[]
+  experienceSince?: number | null
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
+  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
+  clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+}
+
+export type UserUncheckedCreateWithoutSessionsInput = {
+  id?: number
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  slug?: string | null
+  headline?: string | null
+  bio?: string | null
+  coverPhotoId?: number | null
+  languages?: Prisma.UserCreatelanguagesInput | string[]
+  specializations?: Prisma.UserCreatespecializationsInput | string[]
+  experienceSince?: number | null
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
+  clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+}
+
+export type UserCreateOrConnectWithoutSessionsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+}
+
+export type UserUpsertWithoutSessionsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSessionsInput, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSessionsInput, Prisma.UserUncheckedCreateWithoutSessionsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSessionsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSessionsInput, Prisma.UserUncheckedUpdateWithoutSessionsInput>
+}
+
+export type UserUpdateWithoutSessionsInput = {
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  languages?: Prisma.UserUpdatelanguagesInput | string[]
+  specializations?: Prisma.UserUpdatespecializationsInput | string[]
+  experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
+  clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSessionsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  languages?: Prisma.UserUpdatelanguagesInput | string[]
+  specializations?: Prisma.UserUpdatespecializationsInput | string[]
+  experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
   transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
@@ -2291,6 +2498,7 @@ export type UserCreateWithoutToursInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -2324,6 +2532,7 @@ export type UserUncheckedCreateWithoutToursInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -2372,6 +2581,7 @@ export type UserUpdateWithoutToursInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -2405,6 +2615,7 @@ export type UserUncheckedUpdateWithoutToursInput = {
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -2437,6 +2648,7 @@ export type UserCreateWithoutTransactionsInput = {
   photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
   files?: Prisma.FileCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
 }
@@ -2470,6 +2682,7 @@ export type UserUncheckedCreateWithoutTransactionsInput = {
   photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
   files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
   clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
 }
@@ -2518,6 +2731,7 @@ export type UserUpdateWithoutTransactionsInput = {
   photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
 }
@@ -2551,6 +2765,7 @@ export type UserUncheckedUpdateWithoutTransactionsInput = {
   photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
   files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
   partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
 }
@@ -2570,6 +2785,7 @@ export type UserCountOutputType = {
   photos: number
   files: number
   partnerApplications: number
+  sessions: number
   guideBookings: number
   clientBookings: number
 }
@@ -2584,6 +2800,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   photos?: boolean | UserCountOutputTypeCountPhotosArgs
   files?: boolean | UserCountOutputTypeCountFilesArgs
   partnerApplications?: boolean | UserCountOutputTypeCountPartnerApplicationsArgs
+  sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   guideBookings?: boolean | UserCountOutputTypeCountGuideBookingsArgs
   clientBookings?: boolean | UserCountOutputTypeCountClientBookingsArgs
 }
@@ -2664,6 +2881,13 @@ export type UserCountOutputTypeCountPartnerApplicationsArgs<ExtArgs extends runt
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SessionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountGuideBookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.BookingWhereInput
 }
@@ -2706,6 +2930,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   photos?: boolean | Prisma.User$photosArgs<ExtArgs>
   files?: boolean | Prisma.User$filesArgs<ExtArgs>
   partnerApplications?: boolean | Prisma.User$partnerApplicationsArgs<ExtArgs>
+  sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   guideBookings?: boolean | Prisma.User$guideBookingsArgs<ExtArgs>
   clientBookings?: boolean | Prisma.User$clientBookingsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2791,6 +3016,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   photos?: boolean | Prisma.User$photosArgs<ExtArgs>
   files?: boolean | Prisma.User$filesArgs<ExtArgs>
   partnerApplications?: boolean | Prisma.User$partnerApplicationsArgs<ExtArgs>
+  sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   guideBookings?: boolean | Prisma.User$guideBookingsArgs<ExtArgs>
   clientBookings?: boolean | Prisma.User$clientBookingsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2810,6 +3036,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     photos: Prisma.$PhotoPayload<ExtArgs>[]
     files: Prisma.$FilePayload<ExtArgs>[]
     partnerApplications: Prisma.$PartnerApplicationPayload<ExtArgs>[]
+    sessions: Prisma.$SessionPayload<ExtArgs>[]
     guideBookings: Prisma.$BookingPayload<ExtArgs>[]
     clientBookings: Prisma.$BookingPayload<ExtArgs>[]
   }
@@ -3237,6 +3464,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   photos<T extends Prisma.User$photosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$photosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PhotoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   files<T extends Prisma.User$filesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$filesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   partnerApplications<T extends Prisma.User$partnerApplicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$partnerApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PartnerApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   guideBookings<T extends Prisma.User$guideBookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$guideBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   clientBookings<T extends Prisma.User$clientBookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$clientBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -3894,6 +4122,30 @@ export type User$partnerApplicationsArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.PartnerApplicationScalarFieldEnum | Prisma.PartnerApplicationScalarFieldEnum[]
+}
+
+/**
+ * User.sessions
+ */
+export type User$sessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Session
+   */
+  select?: Prisma.SessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Session
+   */
+  omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  where?: Prisma.SessionWhereInput
+  orderBy?: Prisma.SessionOrderByWithRelationInput | Prisma.SessionOrderByWithRelationInput[]
+  cursor?: Prisma.SessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[]
 }
 
 /**

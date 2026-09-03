@@ -11,9 +11,9 @@ export function BottomLink({
   url: string;
 }) {
   return (
-    <p className='text-sm text-primary/50'>
+    <p className='text-sm text-ink-muted'>
       {text}{' '}
-      <Link href={url} className='font-medium text-primary hover:underline'>
+      <Link href={url} className='font-semibold text-gold-ink hover:underline'>
         {linkText}
       </Link>
     </p>

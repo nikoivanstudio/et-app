@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { postApi } from '@/features/post/api/post-api';
 
 import { FormDialogDomain } from '@/entities/form-dialog';
-import { postPatchSchema, PostPatch } from '@/entities/post';
+import { PostPatch, postPatchSchema } from '@/entities/post';
 
 const errorMessage = 'Исходные данные не верны, действие невозможно';
 

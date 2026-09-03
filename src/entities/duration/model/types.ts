@@ -1,4 +1,4 @@
-type Variant = 'clear-blur' | 'black-white';
+type Variant = 'clear-blur' | 'black-white' | 'fact';
 
 export type DurationLabelProps = {
   duration: number | string;

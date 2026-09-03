@@ -60,6 +60,7 @@ export const ModelName = {
   Photo: 'Photo',
   Post: 'Post',
   Review: 'Review',
+  Session: 'Session',
   Tour: 'Tour',
   Transaction: 'Transaction',
   User: 'User'
@@ -165,7 +166,8 @@ export const OtpScalarFieldEnum = {
   email: 'email',
   tel: 'tel',
   createdAt: 'createdAt',
-  code: 'code'
+  code: 'code',
+  attempts: 'attempts'
 } as const
 
 export type OtpScalarFieldEnum = (typeof OtpScalarFieldEnum)[keyof typeof OtpScalarFieldEnum]
@@ -239,6 +241,17 @@ export const ReviewScalarFieldEnum = {
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const SessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt'
+} as const
+
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
 export const TourScalarFieldEnum = {
