@@ -1,52 +1,90 @@
-import { MetadataRoute } from 'next/dist/lib/metadata/types/metadata-interface';
+import type { SitemapEntry } from '@/app/_lib/sitemap-utils';
 
-import { sitemapUtils } from '@/app/_lib/sitemap-utils';
+/**
+ * Статические страницы сайта.
+ *
+ * Модуль обязан оставаться чистой константой: раньше здесь же выполнялись
+ * top-level `await` в БД, из-за чего список туров и постов вычислялся один
+ * раз за жизнь процесса и больше не обновлялся никогда. Всё, что приходит из
+ * БД, теперь собирается в `_lib/sitemap-service.ts` внутри функции роута.
+ *
+ * lastModified не указан осознанно — см. `getSitemapItem`. Как только у
+ * страницы появится настоящая дата правки, её можно добавить в запись.
+ */
+export const staticSitemapEntries: SitemapEntry[] = [
+  // Главной в sitemap не было вообще.
+  { path: '/', changeFrequency: 'weekly', priority: 1 },
 
-import { postServices } from '@/features/post/server';
-import { tourService } from '@/features/tour/server';
+  // Каталоги: обновляются вместе с турами и постами.
+  { path: '/tours', changeFrequency: 'daily', priority: 0.9 },
+  { path: '/activities', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/posts', changeFrequency: 'daily', priority: 0.8 },
+  { path: '/uslugi', changeFrequency: 'monthly', priority: 0.8 },
 
-export const baseUrl = 'https://energy-tur.ru';
+  { path: '/kontakty', changeFrequency: 'yearly', priority: 0.5 },
+  { path: '/otzyvy', changeFrequency: 'monthly', priority: 0.6 },
 
-export const staticUrls = [
-  `${baseUrl}/activities`,
-  `${baseUrl}/category/vse_tury`,
-  `${baseUrl}/dzhip-tur-krym`,
-  `${baseUrl}/dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami`,
-  `${baseUrl}/ekskursii_po_krymu`,
-  `${baseUrl}/kontakty`,
-  `${baseUrl}/otzyvy`,
-  `${baseUrl}/posts`,
-  `${baseUrl}/posts/2`,
-  `${baseUrl}/tours`,
-  `${baseUrl}/turisticheskie-priklyucheniya-v-krymu`,
-  `${baseUrl}/tury`,
-  `${baseUrl}/uslugi`,
-  `${baseUrl}/uslugi/arenda-mesta-v-kempinge-v-krymu`,
-  `${baseUrl}/uslugi/arenda-vnedorozhnika-s-voditelem-v-krymu`,
-  `${baseUrl}/uslugi/klassicheskie-ekskursii-po-krymu`,
-  `${baseUrl}/uslugi/prokat-kvadrotsiklov-v-krymu`,
-  `${baseUrl}/uslugi/prokat-palatki-v-krymu`,
-  `${baseUrl}/uslugi/prokat-snegohoda-v-krymu`,
-  `${baseUrl}/uslugi/prokat-velosipedov-v-krymu`,
-  `${baseUrl}/uslugi/prokat-zimnego-snaryazheniya-v-krymu`
-];
+  // Легаси-лендинги, перенесённые с WordPress: контент статичен.
+  { path: '/category/vse_tury', changeFrequency: 'monthly', priority: 0.6 },
+  {
+    // Вторая страница легаси-каталога: маршрут есть, а в sitemap не было.
+    path: '/category/vse_tury/page/2',
+    changeFrequency: 'monthly',
+    priority: 0.4
+  },
+  { path: '/dzhip-tur-krym', changeFrequency: 'monthly', priority: 0.6 },
+  {
+    path: '/dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami',
+    changeFrequency: 'monthly',
+    priority: 0.6
+  },
+  { path: '/ekskursii_po_krymu', changeFrequency: 'monthly', priority: 0.6 },
+  { path: '/tury', changeFrequency: 'monthly', priority: 0.6 },
+  {
+    path: '/turisticheskie-priklyucheniya-v-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.6
+  },
 
-const staticFileItems = staticUrls.map(url =>
-  sitemapUtils.getSitemapItem(url, 'monthly')
-);
-
-const tours = await tourService.getToursIds();
-const tourFileItems = tours.map(({ id }) =>
-  sitemapUtils.getSitemapItem(`${baseUrl}/tour/${id}`, 'weekly')
-);
-
-const posts = await postServices.getPostsSlugs();
-const postFileItems = posts.map(({ slug }) =>
-  sitemapUtils.getSitemapItem(`${baseUrl}/${slug}`, 'monthly')
-);
-
-export const sitemapFileArray: MetadataRoute.Sitemap = [
-  ...staticFileItems,
-  ...tourFileItems,
-  ...postFileItems
+  // Страницы услуг.
+  {
+    path: '/uslugi/arenda-mesta-v-kempinge-v-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.7
+  },
+  {
+    path: '/uslugi/arenda-vnedorozhnika-s-voditelem-v-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.7
+  },
+  {
+    path: '/uslugi/klassicheskie-ekskursii-po-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.7
+  },
+  {
+    path: '/uslugi/prokat-kvadrotsiklov-v-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.7
+  },
+  {
+    path: '/uslugi/prokat-palatki-v-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.7
+  },
+  {
+    path: '/uslugi/prokat-snegohoda-v-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.7
+  },
+  {
+    path: '/uslugi/prokat-velosipedov-v-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.7
+  },
+  {
+    path: '/uslugi/prokat-zimnego-snaryazheniya-v-krymu',
+    changeFrequency: 'monthly',
+    priority: 0.7
+  }
 ];

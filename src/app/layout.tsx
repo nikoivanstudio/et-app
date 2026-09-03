@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Caladea, Oswald, Poiret_One } from 'next/font/google';
 import { Toaster } from 'sonner';
 
+import { SITE_URL } from '@/shared/constants/site-constants';
 import { cn } from '@/shared/lib/css';
 import { AppProvider } from '@/shared/lib/providers/app-provider';
 
@@ -26,7 +27,7 @@ const caladea = Caladea({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://energy-tur.ru'),
+  metadataBase: new URL(SITE_URL),
 
   title: {
     default: 'Джип туры и индивидуальные экскурсии по Крыму — Energy Tour',
@@ -36,10 +37,17 @@ export const metadata: Metadata = {
   description:
     'Джип туры и индивидуальные экскурсии по Крыму в 2026 году. Бахчисарай, Ялта, Севастополь. Организация отдыха под ключ. Лучшие цены +7 (978) 788-07-53',
 
-  alternates: {
-    canonical: '/'
-  },
-
+  // Здесь НЕТ ни `alternates`, ни `openGraph`, и это осознанно.
+  //
+  // Метаданные в Next наследуются вниз по дереву сегментов, поэтому бывший
+  // тут `alternates.canonical: '/'` объявлял канонической копией главной
+  // каждую страницу сайта, а `openGraph` главной подставлял её og:title и
+  // og:url всем остальным. Оба поля задаются посегментно — через
+  // `buildPageMetadata` (src/shared/lib/seo/page-metadata.ts).
+  //
+  // Картинка для соцсетей приходит из файловой конвенции
+  // `src/app/opengraph-image.tsx` — прежний openGraph.images ссылался на
+  // /og.jpg, которого в public/ нет и никогда не было.
   robots: {
     index: true,
     follow: true,
@@ -48,24 +56,6 @@ export const metadata: Metadata = {
       follow: true,
       'max-image-preview': 'large'
     }
-  },
-
-  openGraph: {
-    type: 'website',
-    locale: 'ru_RU',
-    url: 'https://energy-tur.ru',
-    siteName: 'Energy Tour',
-    title: 'Джип туры и индивидуальные экскурсии по Крыму — Energy Tour',
-    description:
-      'Лучшие экскурсии и джип туры по Крыму. Индивидуальные маршруты. Бахчисарай, Ялта, Севастополь.',
-    images: [
-      {
-        url: '/og.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Energy Tour Крым'
-      }
-    ]
   }
 };
 

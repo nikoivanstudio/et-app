@@ -14,7 +14,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const either = await guideServices.getGuideMetaData(slug);
 
-  return await getMetadataByEither(either);
+  return await getMetadataByEither(either, `/guide/${slug}`);
 }
 
 const Layout: FC<PropsWithChildren> = async ({ children }) => (

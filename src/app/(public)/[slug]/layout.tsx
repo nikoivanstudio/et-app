@@ -19,7 +19,7 @@ export async function generateMetadata({
 
   const either = await postServices.getPostMetaDataBySlug(slug);
 
-  return await getMetadataByEither(either);
+  return await getMetadataByEither(either, `/${slug}`);
 }
 
 const Layout: FC<PropsWithChildren<ServerPostProps>> = async ({

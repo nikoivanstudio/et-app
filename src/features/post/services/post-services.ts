@@ -16,6 +16,13 @@ const getPagesCount = async (where?: Prisma.PostWhereInput) => {
 
 const getPostsSlugs = () => postRepositories.getPostsSlugs();
 
+const getPostRefs = () => postRepositories.getPostRefs();
+
+// Сколько всего страниц в /posts — чтобы sitemap перечислял их все, а не
+// только захардкоженную /posts/2. Размер страницы тот же, что у выдачи
+// (postsServices.getPaginatedPostCards), иначе адреса разъедутся.
+const getPostsPagesCount = () => getPagesCount();
+
 const getPosts = async (
   dbQueryParams?: Prisma.PostFindManyArgs & {
     select?: never;
@@ -128,6 +135,8 @@ const deletePost = async (id: number): Promise<Either<string, Post>> => {
 
 export const postServices = {
   getPostsSlugs,
+  getPostRefs,
+  getPostsPagesCount,
   getPosts,
   getAllPosts,
   getPostBySlug,

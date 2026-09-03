@@ -16,7 +16,7 @@ export async function generateMetadata({
 
   const either = await tourServices.getTourMetaData(slug);
 
-  return await getMetadataByEither(either);
+  return await getMetadataByEither(either, `/tour/${slug}`);
 }
 
 const Layout: FC<PropsWithChildren<ServerTourProps>> = async ({

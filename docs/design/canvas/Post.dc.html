@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .stat { flex: 1 1 0; min-width: 0; background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 12px 10px; text-align: center; }
+    .stat svg { display: block; margin: 0 auto 6px; }
+    .stat b { display: block; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; }
+    .stat span { display: block; margin-top: 2px; font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-faint); }
+    .tag { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--gold-ink); font-family: 'Oswald', sans-serif; font-size: 12px; }
+    .stop { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+    .stop:last-child { border-bottom: 0; }
+    .num { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 999px; background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+    .stop b { display: block; font-family: 'Caladea', serif; font-size: 15px; }
+    .stop p { margin: 3px 0 0; font-family: 'Caladea', serif; font-size: 13.5px; line-height: 1.5; color: var(--ink-muted); }
+    .price-plate { border-radius: var(--r-block); background: var(--cta); color: var(--on-cta); padding: 18px 16px; text-align: center; }
+    .price-plate .lbl { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; opacity: .85; }
+    .price-plate .val { font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 500; line-height: 1.15; margin-top: 2px; }
+    .price-plate .note { font-family: 'Oswald', sans-serif; font-size: 12px; opacity: .85; margin-top: 2px; }
+    .inc { display: flex; gap: 9px; padding: 9px 0; font-family: 'Caladea', serif; font-size: 14.5px; }
+    .inc svg { flex: 0 0 auto; margin-top: 3px; }
+    .free { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: var(--r-pill); background: var(--free-bg); color: var(--free-ink); font-family: 'Oswald', sans-serif; font-size: 11px; }
+    .gal { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gal div { height: 96px; border-radius: 12px; background: var(--cream-deep) center/cover; }
+    .sticky { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px; padding: 10px 16px 14px; background: #fffffff2; border-top: 1px solid var(--rule); backdrop-filter: blur(8px); }
+    .pin { position: absolute; z-index: 40; background: #1f1a12; color: #fff; font: 600 11px/1.35 ui-sans-serif, system-ui, sans-serif; padding: 5px 8px; border-radius: 6px; max-width: 190px; }
+    .pin::after { content: ''; position: absolute; left: -5px; top: 9px; border: 5px solid transparent; border-right-color: #1f1a12; }
+  </style>
+</helmet>
+
+<!-- ШАПКА: было 33px белым по фото без крошек и без фактов над заголовком -->
+<section style="position: relative; height: 420px; background-image: url(./tourhead.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-hero);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg></div>
+  </div>
+
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 46px;">
+    <p class="crumbs" style="margin: 0 0 10px;"><a href="#">Туры</a> · <a href="#">Джип-туры</a> · Сердцем Крыма</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 33px; line-height: 1.2; letter-spacing: .04em; color: #fff;">Джип-тур экскурсия «Сердцем Крыма»</h1>
+    <p style="margin: 12px 0 0; display: flex; align-items: baseline; gap: 8px; font-family: 'Oswald', sans-serif; color: #fff;">
+      <span style="font-size: 21px; font-weight: 500;">от 10 500 ₽</span>
+      <span style="opacity: .5;">·</span><span style="font-size: 14px; opacity: .9;">4 часа</span>
+      <span style="opacity: .5;">·</span><span style="font-size: 14px; opacity: .9;">Бахчисарай</span>
+    </p>
+  </div>
+  <div class="pin" style="left: 200px; top: 300px;">Крошки и факт-строка новые: раньше над H1 не было ничего, а цену показывали только ниже, в плитках</div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: #fff; padding: 24px 16px 0;">
+
+  <!-- Плитки фактов. Убраны «Информация» и звезда 4,9/5 с тремя стоковыми аватарами:
+       рейтинг был захардкожен во всех шаблонах, включая страницы прокатов -->
+  <div style="display: flex; gap: 8px;">
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M2 11h20"/></svg>
+      <b>от 10 500 ₽</b><span>за машину</span>
+    </div>
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      <b>4 часа</b><span>экскурсия</span>
+    </div>
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c.6-3.4 3.2-5 6.5-5s5.9 1.6 6.5 5"/><path d="M16.5 6.2a3 3 0 0 1 0 5.6M18 14.4c2 .7 3.2 2.2 3.5 4.6"/></svg>
+      <b>до 6 чел.</b><span>в машине</span>
+    </div>
+  </div>
+  <div class="pin" style="left: 16px; top: 476px;">Плитки уже в коде. Ушли только «Информация» + мок-рейтинг над ними</div>
+
+  <p class="lead" style="margin-top: 22px;">Однодневный выезд по внутренней гряде: Бахчисарайские сфинксы, пещерный город Тепе-Кермен и Марсианское озеро. Дороги нет — только грунт и русло, поэтому едем на подготовленном внедорожнике.</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;">
+    <span class="tag">Бахчисарай</span><span class="tag">Пещерные города</span><span class="tag">Смотровые</span><span class="tag">Без подготовки</span>
+  </div>
+
+  <!-- Маршрут: у постов из базы это уже .et-route, у легаси-страниц маршрут лежит
+       сплошным абзацем с дефисами вместо списка -->
+  <h2 class="block-h" style="margin-top: 30px;">Маршрут</h2>
+  <div class="block" style="padding: 4px 16px;">
+    <div class="stop"><span class="num">1</span><div><b>Бахчисарайские сфинксы</b><p>Каменные останцы над Чурук-Су. Остановка 30 минут, подъём пешком 10 минут.</p></div></div>
+    <div class="stop"><span class="num">2</span><div><b>Тепе-Кермен</b><p>Пещерный город на конусовидной горе, 544 м. Подъём на джипе до седловины.</p></div></div>
+    <div class="stop"><span class="num">3</span><div><b>Марсианское озеро</b><p>Затопленный карьер с бирюзовой водой. Купание, пикник, 1 час.</p></div></div>
+  </div>
+
+  <h2 class="block-h" style="margin-top: 30px;">Стоимость</h2>
+  <div class="price-plate">
+    <div class="lbl">Цена за машину</div>
+    <div class="val">10 500 ₽</div>
+    <div class="note">до 6 человек · топливо и сборы включены</div>
+  </div>
+  <p style="margin: 10px 0 0; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Цена не делится на человека — платите за машину, сколько бы вас ни было.</p>
+
+  <h2 class="block-h" style="margin-top: 30px;">Что входит</h2>
+  <div class="block">
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Внедорожник с водителем-инструктором</span></div>
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Топливо, лесной и туристический сбор</span></div>
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Остановки по желанию группы <span class="free">без доплат</span></span></div>
+    <div class="inc" style="border-top: 1px solid var(--rule); margin-top: 4px; padding-top: 12px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9e3a25" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span style="color: var(--ink-muted);">Обед и входные билеты в пещерные города</span></div>
+  </div>
+
+  <h2 class="block-h" style="margin-top: 30px;">Фотографии</h2>
+  <div class="gal">
+    <div style="background-image: url(./card1.jpg)"></div>
+    <div style="background-image: url(./card2.jpg)"></div>
+    <div style="background-image: url(./card3.jpg)"></div>
+    <div style="background-image: url(./card4.jpg)"></div>
+  </div>
+  <p style="margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint);">Плитки заливаются кремом до загрузки: оригиналы с wp-content по 0,5 МБ</p>
+
+  <!-- Кнопка золотая. В коде на странице поста она тёмная (--ink) — это второй
+       язык кнопки, которого в Foundations нет -->
+  <div style="margin-top: 30px;">
+    <a class="cta" href="#">Забронировать тур</a>
+    <p style="margin: 8px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Ответим в течение часа · без предоплаты</p>
+  </div>
+  <div class="pin" style="left: 16px; top: 2138px;">Сейчас в коде эта кнопка тёмная, а не золотая — единственная такая на сайте</div>
+
+  <h2 class="block-h" style="margin-top: 34px;">Похожие туры</h2>
+  <p style="margin: -4px 0 12px; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Блока нет в коде: со страницы тура уйти можно только назад или в подвал</p>
+  <div style="display: flex; gap: 10px; overflow: hidden;">
+    <a style="flex: 0 0 210px; position: relative; height: 150px; border-radius: var(--r-card); overflow: hidden; background: url(./card2.jpg) center/cover; text-decoration: none;">
+      <span style="position: absolute; inset: 0; background: var(--scrim-card);"></span>
+      <span style="position: absolute; left: 12px; right: 12px; bottom: 10px; font-family: 'Poiret One', serif; font-size: 17px; color: #fff;">Легенды Мангуп-Кале<br><b style="font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500;">от 10 500 ₽</b></span>
+    </a>
+    <a style="flex: 0 0 210px; position: relative; height: 150px; border-radius: var(--r-card); overflow: hidden; background: url(./card3.jpg) center/cover; text-decoration: none;">
+      <span style="position: absolute; inset: 0; background: var(--scrim-card);"></span>
+      <span style="position: absolute; left: 12px; right: 12px; bottom: 10px; font-family: 'Poiret One', serif; font-size: 17px; color: #fff;">Три крепости<br><b style="font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500;">от 15 000 ₽</b></span>
+    </a>
+  </div>
+
+  <div style="height: 96px;"></div>
+</div>
+
+<!-- Липкая полоса брони: на длинной странице кнопка уезжает за экран -->
+<div class="sticky">
+  <div style="min-width: 0;">
+    <div style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500; line-height: 1.1;">10 500 ₽</div>
+    <div style="font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint);">за машину · 4 часа</div>
+  </div>
+  <a class="cta" style="flex: 1 1 auto;" href="#">Забронировать</a>
+</div>
+</x-dc>
+</body>
+</html>

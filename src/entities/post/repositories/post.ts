@@ -18,6 +18,12 @@ const getPost = <T extends Prisma.PostFindUniqueArgs>(
 
 const getPostsSlugs = () => dbClient.post.findMany({ select: { slug: true } });
 
+// То же, что getPostsSlugs, но с датами — для lastmod в sitemap.
+const getPostRefs = () =>
+  dbClient.post.findMany({
+    select: { slug: true, updatedAt: true, createdAt: true }
+  });
+
 const getPosts = <
   T extends Prisma.PostFindManyArgs & {
     select?: never;
@@ -73,6 +79,7 @@ const deletePost = (id: number): Promise<Post> =>
 
 export const postRepositories = {
   getPostsSlugs,
+  getPostRefs,
   getPostsCount,
   getPost,
   getPosts,

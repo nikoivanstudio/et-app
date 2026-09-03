@@ -2,15 +2,19 @@ import { ReviewDomain } from '@/entities/review';
 import { Role } from '@/entities/user/domain';
 
 // Роли, которые считаются «подтверждённым гидом» (создателем контента).
-const GUIDE_ROLES = new Set<string>([
+// Экспортируется массивом, а не только Set: тем же перечнем фильтруется
+// выборка гидов для sitemap (`role: { in: GUIDE_ROLES }`).
+export const GUIDE_ROLES: string[] = [
   Role.GUIDE,
   Role.SELLER,
   Role.ADMIN,
   Role.CONTRIBUTOR,
   Role.SUPER_ADMIN
-]);
+];
 
-export const isGuideRole = (role: string): boolean => GUIDE_ROLES.has(role);
+const GUIDE_ROLES_SET = new Set<string>(GUIDE_ROLES);
+
+export const isGuideRole = (role: string): boolean => GUIDE_ROLES_SET.has(role);
 
 // Компактные данные гида для карточки на странице тура.
 export type GuideSummary = {

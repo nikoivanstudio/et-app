@@ -1,10 +1,15 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { FC, PropsWithChildren } from 'react';
 
 import { sessionService } from '@/entities/user/services/session';
 
 import { cn } from '@/shared/lib/css';
+import { buildNoindexMetadata } from '@/shared/lib/seo/page-metadata';
 import { Button } from '@/shared/ui/button';
+
+// Приватный раздел: кабинет, дашборд, заявка партнёра.
+export const metadata: Metadata = buildNoindexMetadata('Личный кабинет');
 
 import { routes } from '@/kernel/routes';
 

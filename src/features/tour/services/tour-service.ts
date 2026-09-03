@@ -83,10 +83,16 @@ const getTourCards = async (
   return draftTourCards.map(draftTourToTourCardEntity);
 };
 
-const getToursIds = () =>
+// Ссылки на опубликованные туры для sitemap.
+//
+// Раньше метод назывался getToursIds и выбирал только { id: true }, а
+// sitemap строил из этого адреса вида /tour/{id}. Страница тура резолвится
+// по slug (tourServices.getTourBySlug), так что каждый такой адрес был 404.
+// Даты нужны для честного lastmod.
+const getPublishedTourRefs = () =>
   tourRepositories.getTours({
     where: { status: PUBLIC_TOUR_STATUS },
-    select: { id: true }
+    select: { slug: true, updatedAt: true, createdAt: true }
   });
 
 export const getTours = async (
@@ -172,7 +178,7 @@ export const tourService = {
   getTourCards,
   getPopularTourCards,
   getTours,
-  getToursIds,
+  getPublishedTourRefs,
   createTour,
   updateTour
 };

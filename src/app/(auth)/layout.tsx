@@ -1,9 +1,13 @@
-'use server';
-
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { FC, PropsWithChildren } from 'react';
 
 import logo from '@/shared/assets/images/logo.png';
+import { buildNoindexMetadata } from '@/shared/lib/seo/page-metadata';
+
+// robots.txt закрывает /sign-in и /sign-up от обхода, но прямая ссылка на
+// них всё равно может попасть в индекс — meta robots закрывает и этот путь.
+export const metadata: Metadata = buildNoindexMetadata('Вход');
 
 const AuthLayout: FC<PropsWithChildren> = async ({ children }) => (
   /* Было: белая shadcn-карточка на bg-zinc-800 без единого токена бренда —

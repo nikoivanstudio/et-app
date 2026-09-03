@@ -4,12 +4,15 @@ import { PropsWithChildren } from 'react';
 import { AppHeader } from '@/widgets/app-header/containers/app-header';
 import { ContactsWidget } from '@/widgets/contacts/containers/contacts-widget';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/shared/lib/seo/page-metadata';
+
+export const metadata: Metadata = buildPageMetadata({
   title:
     'Контакты — Джип туры и индивидуальные экскурсии по Крыму. Лучшие цены',
   description:
-    'Контакты — Джип туры и индивидуальные экскурсии по Крыму в г. Бахчисарай'
-};
+    'Контакты — Джип туры и индивидуальные экскурсии по Крыму в г. Бахчисарай',
+  path: '/kontakty'
+});
 
 export default function Layout({ children }: PropsWithChildren) {
   return (

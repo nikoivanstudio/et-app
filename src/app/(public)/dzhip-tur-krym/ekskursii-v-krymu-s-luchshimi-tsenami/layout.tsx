@@ -4,7 +4,9 @@ import { PropsWithChildren } from 'react';
 import { AppHeader } from '@/widgets/app-header/server';
 import { ContactsWidget } from '@/widgets/contacts/server';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/shared/lib/seo/page-metadata';
+
+export const metadata: Metadata = buildPageMetadata({
   title: 'Прокат велосипедов в Крыму',
   description: `У нас вы можете воспользоваться услугой <strong>прокат велосипедов</strong>. В прокате имеются велосипеды различных размеров. Для индивидуального подбора под рост человека.  Предоставляется на условиях:
 
@@ -38,8 +40,9 @@ export const metadata: Metadata = {
 
 Также дополнительно можно воспользоваться прокатом сопутствующего снаряжения. Информацию уточняйте у оператора.
 
-<img class="alignnone size-medium wp-image-4001" src="https://energy-tur.ru/wp-content/uploads/2016/01/velosiped-300x177.jpg" alt="Прокат велосипедов в Крыму" width="300" height="177" />`
-};
+<img class="alignnone size-medium wp-image-4001" src="https://energy-tur.ru/wp-content/uploads/2016/01/velosiped-300x177.jpg" alt="Прокат велосипедов в Крыму" width="300" height="177" />`,
+  path: '/dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami'
+});
 
 export default function Layout({ children }: PropsWithChildren) {
   return (

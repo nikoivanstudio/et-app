@@ -19,6 +19,13 @@ coverage
 *.tsbuildinfo
 
 # тесты и отчёты
+# ВАЖНО: co-located тесты (src/**/*.test.ts) тоже исключаются — иначе `next build`
+# в образе проверяет их типы, а jest.setup.ts (который подтягивал типы jest
+# через @testing-library/jest-dom) в образ не попадает, и сборка падает.
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
 tests
 tests-examples
 test-results

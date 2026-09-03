@@ -4,12 +4,15 @@ import { PropsWithChildren } from 'react';
 import { AppHeader } from '@/widgets/app-header/server';
 import { ContactsWidget } from '@/widgets/contacts/server';
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from '@/shared/lib/seo/page-metadata';
+
+export const metadata: Metadata = buildPageMetadata({
   title:
     'Все туры — Джип туры и индивидуальные экскурсии по Крыму. Лучшие цены',
   description:
-    'Все туры — Джип туры и индивидуальные экскурсии по Крыму. Лучшие цены'
-};
+    'Все туры — Джип туры и индивидуальные экскурсии по Крыму. Лучшие цены',
+  path: '/category/vse_tury'
+});
 
 export default function Layout({ children }: PropsWithChildren) {
   return (

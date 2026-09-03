@@ -8,6 +8,7 @@ import { PageMetaData } from '@/shared/model/types';
 
 import {
   buildDisplayName,
+  GUIDE_ROLES,
   GuideProfile,
   GuideReviewItem,
   GuideSummary,
@@ -118,7 +119,12 @@ async function getGuideBySlug(
       take: 20,
       include: {
         user: {
-          select: { firstName: true, lastName: true, login: true, avatarPhotoId: true }
+          select: {
+            firstName: true,
+            lastName: true,
+            login: true,
+            avatarPhotoId: true
+          }
         }
       }
     })
@@ -189,7 +195,33 @@ async function getGuideMetaData(
   });
 }
 
+/**
+ * Гиды для sitemap: slug (или id, если slug не задан) и дата правки.
+ *
+ * Раздел /guide/[slug] в sitemap не попадал вообще. Берём только гидов
+ * хотя бы с одним опубликованным туром: у остальных страница пустая, и в
+ * индексе ей делать нечего. `findGuideUser` умеет резолвить и числовой id,
+ * поэтому гид без slug получает адрес /guide/{id} — рабочий.
+ */
+async function getGuideRefs(): Promise<
+  { slug: string; lastModified: Date | null }[]
+> {
+  const users = await dbClient.user.findMany({
+    where: {
+      role: { in: GUIDE_ROLES },
+      tours: { some: { status: PUBLIC_TOUR_STATUS } }
+    },
+    select: { id: true, slug: true, updatedAt: true, createdAt: true }
+  });
+
+  return users.map(user => ({
+    slug: user.slug ?? String(user.id),
+    lastModified: user.updatedAt ?? user.createdAt
+  }));
+}
+
 export const guideServices = {
+  getGuideRefs,
   getGuideSummary,
   getGuideBySlug,
   getGuideMetaData
