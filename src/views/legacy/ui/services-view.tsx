@@ -8,6 +8,7 @@ import { CONTACTS } from '@/widgets/contacts/constants/contacts';
 
 import { SectionBody, SectionHead } from '@/entities/page-head/server';
 
+import { sectionCrumbs } from '@/shared/lib/seo/breadcrumbs';
 import { LegacyTourCard } from '@/shared/ui/legacy-tour-card';
 import { LinkButton } from '@/shared/ui/link-button';
 
@@ -36,7 +37,7 @@ export const ServicesView: FC = async () => (
         />
       }
       mainContent={
-        <SectionBody>
+        <SectionBody crumbs={sectionCrumbs('Услуги')}>
           <ul className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
             {services.map(({ id, ...rest }) => (
               <li key={id}>

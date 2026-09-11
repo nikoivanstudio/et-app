@@ -41,6 +41,27 @@ describe('схема организации', () => {
     expect(schema.image).toBe('https://energy-tur.ru/opengraph-image');
   });
 
+  test('в sameAs не попадают незаполненные ссылки', () => {
+    // Карточка в Яндекс.Бизнесе (G4) ждёт адреса из кабинета. Пустая
+    // строка в `sameAs` резолвится в корень сайта — организация
+    // объявила бы своим профилем саму себя.
+    expect(schema.sameAs).not.toContain('');
+    expect(schema.sameAs.every(Boolean)).toBe(true);
+  });
+
+  test('логотип — постоянный адрес из public, а не хеш сборки', () => {
+    // Хешированный путь `/_next/static/media/logo.<hash>.png` меняется
+    // при каждой пересборке: для поля, по которому поисковик забирает
+    // картинку организации, это то же самое, что битая ссылка.
+    expect(schema.logo).toEqual({
+      '@type': 'ImageObject',
+      url: 'https://energy-tur.ru/logo.png',
+      width: 204,
+      height: 228
+    });
+    expect(schema.logo.url).not.toContain('_next');
+  });
+
   test('нет выдуманных часов работы и координат', () => {
     // Данных нет, а выдуманные в разметке хуже отсутствующих.
     expect(schema).not.toHaveProperty('openingHours');

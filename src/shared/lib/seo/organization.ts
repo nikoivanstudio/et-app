@@ -2,6 +2,7 @@ import { CONTACTS } from '@/widgets/contacts/constants/contacts';
 
 import {
   absoluteUrl,
+  SITE_LOGO,
   SITE_NAME,
   SITE_URL
 } from '@/shared/constants/site-constants';
@@ -20,9 +21,13 @@ import {
  * и организует туры, а это ровно `TravelAgency`.
  *
  * Чего здесь сознательно нет: `openingHours` и `geo` — точных данных нет,
- * а выдуманные в разметке хуже отсутствующих. `logo` — логотип лежит
- * импортом модуля и получает хешированный путь, стабильного абсолютного
- * адреса под него пока не существует.
+ * а выдуманные в разметке хуже отсутствующих.
+ *
+ * `logo` появился после переезда файла в `public/` (C1): раньше логотип
+ * лежал импортом модуля и получал хешированный путь, который менялся
+ * от сборки к сборке. Для карточки организации это ключевое поле —
+ * по нему картинка попадает в панель знаний, — и непостоянный адрес
+ * в нём хуже, чем его отсутствие.
  */
 export const buildOrganizationJsonLd = () => ({
   '@context': 'https://schema.org',
@@ -33,6 +38,14 @@ export const buildOrganizationJsonLd = () => ({
   name: SITE_NAME,
   url: SITE_URL,
   image: absoluteUrl('/opengraph-image'),
+  // `ImageObject`, а не строка: с размерами поисковик знает пропорции,
+  // не скачивая файл, и не обрезает логотип под свою сетку.
+  logo: {
+    '@type': 'ImageObject',
+    url: absoluteUrl(SITE_LOGO.path),
+    width: SITE_LOGO.width,
+    height: SITE_LOGO.height
+  },
   description:
     'Джип-туры и индивидуальные экскурсии по Крыму с выездом из Бахчисарая, Севастополя и Ялты.',
   telephone: CONTACTS.phones[0],
@@ -53,5 +66,15 @@ export const buildOrganizationJsonLd = () => ({
     contactType: 'customer service',
     availableLanguage: 'Russian'
   })),
-  sameAs: [CONTACTS.telegram, CONTACTS.vk, CONTACTS.ruTube, CONTACTS.max]
+  // `filter` не для красоты: карточка в Яндекс.Бизнесе (G4) ждёт адреса
+  // из кабинета, и пустая строка в `sameAs` — это ссылка на корень
+  // сайта, то есть заявление «организация — это мы же».
+  sameAs: [
+    CONTACTS.telegram,
+    CONTACTS.vk,
+    CONTACTS.ruTube,
+    CONTACTS.max,
+    CONTACTS.yandexUslugi,
+    CONTACTS.yandexBusiness
+  ].filter(Boolean)
 });

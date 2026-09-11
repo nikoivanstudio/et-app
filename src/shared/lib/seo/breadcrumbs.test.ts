@@ -1,3 +1,6 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
 import {
   buildBreadcrumbJsonLd,
   geoCrumbs,
@@ -106,5 +109,26 @@ describe('разметка BreadcrumbList', () => {
 
   test('пустой путь даёт пустой список, а не сломанную разметку', () => {
     expect(buildBreadcrumbJsonLd([]).itemListElement).toEqual([]);
+  });
+});
+
+/**
+ * Три каталога остались без крошек, когда их ставили по сайту (C2): у `/tours`,
+ * `/posts` и `/uslugi` своя шапка, и общий компонент их не задел. Проверка
+ * по исходникам, а не по рендеру: отрисовать серверный `view` целиком —
+ * значит поднять базу, а вопрос здесь один — выведены ли крошки вообще.
+ */
+describe('крошки в каталогах', () => {
+  const CATALOGS = [
+    { path: '/tours', file: 'src/views/tours/ui/layout.tsx' },
+    { path: '/posts', file: 'src/views/posts/ui/layout.tsx' },
+    { path: '/uslugi', file: 'src/views/legacy/ui/services-view.tsx' }
+  ];
+
+  test.each(CATALOGS)('$path выводит крошки', ({ file }) => {
+    const source = readFileSync(join(process.cwd(), file), 'utf8');
+
+    expect(source).toContain('sectionCrumbs(');
+    expect(source).toMatch(/<Breadcrumbs|crumbs=\{/);
   });
 });

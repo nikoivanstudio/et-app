@@ -8,11 +8,21 @@ import { ServerPostCardList } from '@/widgets/posts/ui/server-post-card-list';
 
 import { SectionBody, SectionHead } from '@/entities/page-head/server';
 
+import { sectionCrumbs } from '@/shared/lib/seo/breadcrumbs';
+
 import { Pagination } from '@/views/posts/ui/pagination';
 
 type Props = {
   page?: string;
 };
+
+/**
+ * Крошки каталога: на нём, на `/tours` и на `/uslugi` их не было совсем —
+ * у трёх каталогов своя шапка, и C2 прошла мимо них. Для страницы,
+ * на которую ведут крошки со всех статей раздела, путь в сниппете —
+ * ровно то, ради чего разметка и ставилась.
+ */
+const POSTS_CRUMBS = sectionCrumbs('Интересное о Крыме');
 
 /**
  * Список статей.
@@ -30,7 +40,7 @@ export const PostsView: FC<Props> = async ({ page }) => {
       <AppMain
         mainHead={<SectionHead page='posts' title='Интересное о Крыме' />}
         mainContent={
-          <SectionBody>
+          <SectionBody crumbs={POSTS_CRUMBS}>
             <div className='border-rule bg-cream rounded-card border px-5 py-10 text-center'>
               <p className='font-caladea text-ink text-base font-bold'>
                 Статьи сейчас не загрузились
@@ -62,7 +72,7 @@ export const PostsView: FC<Props> = async ({ page }) => {
         />
       }
       mainContent={
-        <SectionBody>
+        <SectionBody crumbs={POSTS_CRUMBS}>
           <ServerPostCardList list={list} />
         </SectionBody>
       }

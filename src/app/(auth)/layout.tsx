@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { FC, PropsWithChildren } from 'react';
 
-import logo from '@/shared/assets/images/logo.png';
+import { SITE_LOGO } from '@/shared/constants/site-constants';
 import { buildNoindexMetadata } from '@/shared/lib/seo/page-metadata';
 
 // robots.txt закрывает /sign-in и /sign-up от обхода, но прямая ссылка на
@@ -15,7 +15,7 @@ const AuthLayout: FC<PropsWithChildren> = async ({ children }) => (
   <div className='flex min-h-screen w-full flex-col justify-center bg-ink px-4 py-12'>
     <div className='mx-auto mb-7 text-center'>
       <Image
-        src={logo}
+        src={SITE_LOGO.path}
         alt='Energy Tour'
         width={62}
         height={70}

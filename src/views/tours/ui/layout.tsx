@@ -7,6 +7,9 @@ import { AllTours } from '@/widgets/tours/server';
 
 import { PageHeadLayout } from '@/entities/page-head/server';
 
+import { sectionCrumbs } from '@/shared/lib/seo/breadcrumbs';
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
+
 export const ToursView: FC = async () => (
   <AppMain
     mainHead={
@@ -29,6 +32,13 @@ export const ToursView: FC = async () => (
     }
     mainContent={
       <div className='relative z-3 -mt-8 rounded-t-[32px] bg-page pt-6'>
+        {/* Крошки в той же колонке, что и карточки: у каталога своя шапка
+            и своё тело, поэтому `SectionBody` с его `crumbs` сюда
+            не подходит, а ширина и отступы должны совпадать с сеткой
+            туров — иначе путь висит отдельно от контента. */}
+        <div className='mx-auto max-w-[1120px] px-4'>
+          <Breadcrumbs className='mb-5' items={sectionCrumbs('Все туры')} />
+        </div>
         <AllTours />
       </div>
     }

@@ -6,8 +6,8 @@ import { FC, ReactNode } from 'react';
 
 import { CONTACTS } from '@/widgets/contacts/constants/contacts';
 
-import logo from '@/shared/assets/images/logo.png';
 import { hasRequisites, REQUISITES } from '@/shared/constants/legal-constants';
+import { SITE_LOGO } from '@/shared/constants/site-constants';
 import { getCurrentYear } from '@/shared/lib/seo/current-year';
 import { formatNumber } from '@/shared/lib/string-utils';
 import {
@@ -101,7 +101,7 @@ export const ContactsWidget: FC = async () => (
       <div className='md:flex md:gap-14'>
         <div className='md:w-[240px] md:shrink-0'>
           <Image
-            src={logo}
+            src={SITE_LOGO.path}
             alt='Energy Tour'
             width={44}
             height={50}

@@ -164,11 +164,20 @@ export const ContactsView: FC = async () => (
 
             <SectionHeading>Как добраться</SectionHeading>
             <YandexMap />
+            {/* Ведём на карточку организации, если её адрес заполнен (G4):
+                переход на свою карточку — поведенческий сигнал, который
+                Яндекс засчитывает ей, а поиск по слову «Бахчисарай» —
+                это переход на город и ничей больше. */}
             <a
               className='font-oswald text-gold-ink mt-2 inline-flex min-h-11 items-center text-[13px] hover:underline'
-              href='https://yandex.ru/maps/?text=Бахчисарай'
+              href={
+                CONTACTS.yandexBusiness ||
+                'https://yandex.ru/maps/?text=Бахчисарай'
+              }
             >
-              Открыть в Яндекс.Картах →
+              {CONTACTS.yandexBusiness
+                ? 'Мы на Яндекс.Картах →'
+                : 'Открыть в Яндекс.Картах →'}
             </a>
 
             <div className='border-rule bg-cream rounded-block mt-7 border p-5 text-center'>
