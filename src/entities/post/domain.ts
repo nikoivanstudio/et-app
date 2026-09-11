@@ -56,6 +56,12 @@ export type PostEntity = {
   price?: number;
   rating?: number;
   duration?: number;
+  // Даты приходят из postBaseSchema и всегда были в данных, но в типе их
+  // не было — и разметка Article не могла выставить datePublished.
+  // У материала 2018 года без даты шансов против свежей статьи конкурента
+  // нет, а с датой хотя бы видно, что его пора обновить (F3).
+  createdAt: Date;
+  updatedAt?: Date;
 };
 
 type UserSelectValue = true | { select: Prisma.UserSelect };

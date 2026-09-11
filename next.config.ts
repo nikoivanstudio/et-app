@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next';
 
+import { REMOTE_IMAGE_SOURCES } from './src/shared/config/image-sources';
+
 /**
  * Заголовки безопасности (MED-1).
  *
@@ -24,7 +26,7 @@ const cspDirectives = [
   // energy-tur.ru — источник всех фотографий постов и легаси-каталога
   // (и обложки, и картинки внутри content). Без него включение политики
   // (не Report-Only) обнулит фото на страницах туров.
-  `img-src 'self' data: blob: https://okryme.ru https://energy-tur.ru https://mc.yandex.ru ${s3Origin}`.trim(),
+  `img-src 'self' data: blob: ${REMOTE_IMAGE_SOURCES.map(({ hostname }) => `https://${hostname}`).join(' ')} https://mc.yandex.ru ${s3Origin}`.trim(),
   "font-src 'self' data:",
   `connect-src 'self' https://mc.yandex.ru https://challenges.cloudflare.com ${s3Origin}`.trim(),
   // Виджеты карты, капчи и видео
@@ -109,18 +111,16 @@ const nextConfig: NextConfig = {
     // sharp в образе есть: `@img/sharp-linuxmusl-x64` присутствует
     // в package-lock.json, а Dockerfile ставит зависимости через `npm ci`
     // на node:24-alpine.
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'okryme.ru',
-        pathname: '/wp-content/**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'energy-tur.ru',
-        pathname: '/wp-content/**'
-      }
-    ]
+    // Список источников общий с процессором картинок внутри текста статьи
+    // (D2, `src/shared/lib/content-images.ts`): адрес, переписанный на
+    // `/_next/image`, но не попавший сюда, отвечает 400 — и картинка молча
+    // исчезает со страницы. Разъезжаются такие списки незаметно, поэтому
+    // источник у них один.
+    remotePatterns: REMOTE_IMAGE_SOURCES.map(({ hostname, pathPrefix }) => ({
+      protocol: 'https' as const,
+      hostname,
+      pathname: `${pathPrefix}**`
+    }))
   }
 };
 

@@ -9,8 +9,16 @@ import { PostDomain } from '@/entities/post/server';
 
 import { cn } from '@/shared/lib/css';
 import { postCrumbs } from '@/shared/lib/seo/breadcrumbs';
+import { buildDescription } from '@/shared/lib/seo/description';
+import {
+  buildArticleJsonLd,
+  buildAttractionJsonLd
+} from '@/shared/lib/seo/json-ld';
+import { JsonLd } from '@/shared/ui/json-ld';
 import { TextContent } from '@/shared/ui/text-content';
+import { TourLinks } from '@/shared/ui/tour-links';
 
+import { placeServices } from '@/kernel/place/server';
 import { PageHeadPost } from '@/views/post/ui/page-head-post';
 import { PostStats } from '@/views/post/ui/post-stats';
 
@@ -20,14 +28,43 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
   const {
     id,
     title,
+    slug,
+    description,
     image,
     content,
+    metaDescription,
     metaDuration,
     metaPrice,
     price,
     duration,
-    status
+    status,
+    user,
+    createdAt,
+    updatedAt
   } = props;
+
+  /**
+   * Объект, о котором эта статья, — если он заведён (E1).
+   *
+   * Именно связь превращает справочник из энциклопедии в воронку: под
+   * текстом про Мангуп-Кале появляются туры, которые туда заезжают,
+   * а в разметке — `TouristAttraction` с координатами, то есть привязка
+   * к сущности, которую Яндекс уже знает по своим Картам.
+   *
+   * Пока объекты не заведены, обе добавки просто не выводятся, и страница
+   * остаётся ровно такой, какой была.
+   */
+  const place = await placeServices.getPlaceByPostId(id);
+  const placeView = place
+    ? await placeServices.getPlaceBySlug(place.slug)
+    : null;
+  const tours =
+    placeView?.type === 'right' ? placeView.value.tours : [];
+
+  const articleDescription = buildDescription(
+    metaDescription || description,
+    content
+  );
 
   return (
     <AppMain
@@ -53,6 +90,41 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
             'z-3'
           ])}
         >
+          {/* Справочная страница — это Article: до C5 на всех 868 адресах
+              сайта стояла одна и та же схема организации, вшитая
+              в провайдер, а схемы самой страницы не было нигде. */}
+          <JsonLd
+            data={buildArticleJsonLd({
+              title,
+              description: articleDescription,
+              path: `/${slug}`,
+              image,
+              datePublished: createdAt,
+              dateModified: updatedAt,
+              authorName:
+                [user?.firstName, user?.lastName].filter(Boolean).join(' ') ||
+                null
+            })}
+          />
+
+          {/* Координаты объекта — то, ради чего TouristAttraction вообще
+              нужен. Без них тип не даёт поисковику ничего сверх текста,
+              поэтому схема выводится только вместе с ними. */}
+          {!!place && place.latitude != null && place.longitude != null && (
+            <JsonLd
+              data={buildAttractionJsonLd({
+                title: place.title,
+                description: place.description ?? articleDescription,
+                path: `/${slug}`,
+                image: place.mainImage ?? image,
+                latitude: place.latitude,
+                longitude: place.longitude,
+                city: place.city,
+                district: place.district
+              })}
+            />
+          )}
+
           {/* Колонка та же, что у .et-post (720px), иначе на десктопе
               «Информация» и плитки статистики растягивались во всю ширину. */}
           <div className={cn('mx-auto', 'w-full', 'max-w-[720px]')}>
@@ -78,6 +150,13 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
                 legacy={status === 'legacy'}
               />
             </section>
+
+            <TourLinks
+              className='mt-4'
+              items={tours}
+              title={place ? `Туры с заездом: ${place.title}` : undefined}
+              lead='Маршруты, которые включают этот объект. Цена за машину до шести человек.'
+            />
           </div>
         </div>
       }

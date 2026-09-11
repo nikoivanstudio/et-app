@@ -31,11 +31,11 @@ source,destination,status,note
 # Пять Lorem ipsum и две со слагом-UUID. Замены у них нет и быть не может,
 # поэтому 410, а не 301: Яндекс и Google выбрасывают такой адрес из индекса
 # быстрее, чем 404, и перестают к нему возвращаться.
-/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit,,410,B3 тестовая страница
-/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-2,,410,B3 тестовая страница
-/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-3,,410,B3 тестовая страница
-/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-4,,410,B3 тестовая страница
-/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-5,,410,B3 тестовая страница
+/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit,,410,B3 тестовая страница
+/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-2,,410,B3 тестовая страница
+/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-3,,410,B3 тестовая страница
+/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-4,,410,B3 тестовая страница
+/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-5,,410,B3 тестовая страница
 /92a7b596-a1f2-4673-9124-af3db5a24fbf,,410,B3 слаг-UUID, H1 «джип тур крым»
 /1b24a56a-fe47-45bc-b765-7c6b8cc77ec8,,410,B3 слаг-UUID
 

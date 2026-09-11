@@ -4,6 +4,7 @@ import { cn } from '@bem-react/classname';
 import { FC } from 'react';
 
 import styles from '@/shared/assets/styles.module.scss';
+import { optimizeContentImages } from '@/shared/lib/content-images';
 import { legacyTextToHtml } from '@/shared/lib/legacy-text';
 import { sanitizeArticleHtml } from '@/shared/lib/sanitize';
 
@@ -40,11 +41,22 @@ export const TextContent: FC<TextContentProps> = async ({
             bold ? styles.caladea_text_bold : styles.text_caladea
           ]
     )}
-    // MED-3: контент из БД (в том числе перенесённый из WordPress) очищается
-    // по allowlist: script, iframe, style и любые обработчики on* удаляются
+    // Два шага, и порядок важен.
+    //
+    // MED-3: контент из БД (в том числе перенесённый из WordPress) сначала
+    // очищается по allowlist — script, iframe, style и любые обработчики on*
+    // удаляются.
+    //
+    // D2: затем картинки внутри текста переписываются на `/_next/image`
+    // и получают размеры и отложенную загрузку. Именно в этом порядке:
+    // санитайзер разбирает и пересобирает разметку, так что процессору
+    // достаётся предсказуемый HTML, а его собственные атрибуты уже никто
+    // не вырежет.
     dangerouslySetInnerHTML={{
-      __html: sanitizeArticleHtml(
-        legacy ? legacyTextToHtml(String(content)) : String(content)
+      __html: optimizeContentImages(
+        sanitizeArticleHtml(
+          legacy ? legacyTextToHtml(String(content)) : String(content)
+        )
       )
     }}
   ></div>

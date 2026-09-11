@@ -13,6 +13,9 @@
  * оператору — выдумывать условия и цены за бизнес нельзя.
  */
 
+import { OFFROAD_RENT_FAQ } from '@/shared/constants/faq-constants';
+import type { FaqItem } from '@/shared/lib/seo/json-ld';
+
 export type ServicePriceRow = {
   name: string;
   price: string;
@@ -32,6 +35,12 @@ export type ServiceDetails = {
   conditions?: string[];
   /** Показывать ли исходный текст из WordPress под разобранными блоками. */
   keepRawContent?: boolean;
+  /**
+   * Вопросы и ответы (C4). Заполняются только там, где ответ следует из
+   * текста самой страницы: FAQ, обещающий неподтверждённые условия,
+   * попадает в расширенный сниппет и читается как оферта.
+   */
+  faq?: FaqItem[];
 };
 
 export const SERVICE_DETAILS: Record<string, ServiceDetails> = {
@@ -50,6 +59,7 @@ export const SERVICE_DETAILS: Record<string, ServiceDetails> = {
   },
 
   'arenda-vnedorozhnika-s-voditelem-v-krymu': {
+    faq: OFFROAD_RENT_FAQ,
     lead: 'Nissan Patrol, Mitsubishi Pajero и L200, УАЗ — машины, подготовленные к жёсткому бездорожью, с водителем-инструктором. Цена за машину, а не с человека.',
     priceRows: [
       { name: '1 — 4 часа', price: '3 500 ₽', unit: 'в час' },

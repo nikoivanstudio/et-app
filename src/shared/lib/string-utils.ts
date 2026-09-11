@@ -90,3 +90,14 @@ export function translit(word: string): string {
 export function getUniqName(name: string): string {
   return `${v4()}-${name}`;
 }
+
+/**
+ * Цена рублями с разделителями разрядов: 8000 → «8 000 ₽».
+ *
+ * Одно форматирование на весь сайт: до этого `Intl.NumberFormat('ru-RU')`
+ * вызывался по месту в карточке тура, а в остальных списках цена
+ * печаталась как есть — «8000₽» рядом с «8 000 ₽» на соседних блоках.
+ */
+export function formatPrice(value: number): string {
+  return `${new Intl.NumberFormat('ru-RU').format(value)} ₽`;
+}

@@ -61,7 +61,20 @@ const articleOptions: sanitizeHtml.IOptions = {
   ],
   allowedAttributes: {
     a: ['href', 'title', 'target', 'rel'],
-    img: ['src', 'srcset', 'alt', 'title', 'width', 'height', 'loading'],
+    // `sizes` и `decoding` — для процессора картинок контента (D2):
+    // без них санитайзер вырезал бы ровно те атрибуты, ради которых
+    // теги и переписываются.
+    img: [
+      'src',
+      'srcset',
+      'sizes',
+      'alt',
+      'title',
+      'width',
+      'height',
+      'loading',
+      'decoding'
+    ],
     th: ['colspan', 'rowspan', 'scope'],
     td: ['colspan', 'rowspan'],
     col: ['span', 'width'],

@@ -6,8 +6,10 @@ import { FC } from 'react';
 import { AppMain } from '@/widgets/app-main/ui/app-main';
 import { CONTACTS } from '@/widgets/contacts/constants/contacts';
 
+import { JEEP_TOUR_FAQ } from '@/shared/constants/faq-constants';
 import { formatNumber } from '@/shared/lib/string-utils';
 import { DetailBlock, IncludeRow, PriceRow } from '@/shared/ui/detail-block';
+import { FaqSection } from '@/shared/ui/faq-section';
 import { LinkButton } from '@/shared/ui/link-button';
 import { SectionHeading } from '@/shared/ui/section-heading';
 import { TextContent } from '@/shared/ui/text-content';
@@ -188,6 +190,14 @@ export const ServiceMain: FC<ServiceViewProps> = async props => {
                 </div>
               </>
             )}
+
+            {/* C4. У услуги — свои вопросы, если они заведены; на
+                не-услугах (`/tury`, `/ekskursii-po-krymu`) — общий набор
+                по джип-турам. Пустого блока не будет: FaqSection сам
+                ничего не рендерит на пустом списке, и разметки тоже. */}
+            <FaqSection
+              items={details?.faq ?? (isService ? [] : JEEP_TOUR_FAQ)}
+            />
 
             {!!others.length && (
               <>

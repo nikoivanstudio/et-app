@@ -58,6 +58,8 @@ export const ModelName = {
   Otp: 'Otp',
   PartnerApplication: 'PartnerApplication',
   Photo: 'Photo',
+  Place: 'Place',
+  TourPlace: 'TourPlace',
   Post: 'Post',
   Redirect: 'Redirect',
   Review: 'Review',
@@ -201,6 +203,36 @@ export const PhotoScalarFieldEnum = {
 export type PhotoScalarFieldEnum = (typeof PhotoScalarFieldEnum)[keyof typeof PhotoScalarFieldEnum]
 
 
+export const PlaceScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  description: 'description',
+  content: 'content',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  city: 'city',
+  district: 'district',
+  kind: 'kind',
+  mainImage: 'mainImage',
+  postId: 'postId',
+  isPublished: 'isPublished',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlaceScalarFieldEnum = (typeof PlaceScalarFieldEnum)[keyof typeof PlaceScalarFieldEnum]
+
+
+export const TourPlaceScalarFieldEnum = {
+  tourId: 'tourId',
+  placeId: 'placeId',
+  position: 'position'
+} as const
+
+export type TourPlaceScalarFieldEnum = (typeof TourPlaceScalarFieldEnum)[keyof typeof TourPlaceScalarFieldEnum]
+
+
 export const PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -292,7 +324,15 @@ export const TourScalarFieldEnum = {
   updatedAt: 'updatedAt',
   rating: 'rating',
   descriptionText: 'descriptionText',
-  startPlace: 'startPlace'
+  startPlace: 'startPlace',
+  included: 'included',
+  excluded: 'excluded',
+  capacity: 'capacity',
+  difficulty: 'difficulty',
+  faq: 'faq',
+  seasons: 'seasons',
+  priceUnit: 'priceUnit',
+  startCity: 'startCity'
 } as const
 
 export type TourScalarFieldEnum = (typeof TourScalarFieldEnum)[keyof typeof TourScalarFieldEnum]
