@@ -9,6 +9,8 @@
     "lint": "eslint . --fix",
     "db:migrate:dev": "npx prisma migrate dev",
     "db:reset": "npx prisma migrate reset",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "db:migrate:status": "prisma migrate status",
     "prettier": "prettier -w .",
     "test": "jest --testMatch='**/*.test.ts'",
     "test:components": "jest --testMatch='**/*.test.tsx'",
