@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import { FC, PropsWithChildren } from 'react';
 
 import { queryClient } from '@/shared/api/query-client';
+import { WebVitals } from '@/shared/lib/analytics/web-vitals';
 import { YandexMetrika } from '@/shared/lib/analytics/yandex-metrika';
 
 /*
@@ -20,6 +21,10 @@ import { YandexMetrika } from '@/shared/lib/analytics/yandex-metrika';
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
   <>
     <YandexMetrika />
+    {/* D5: замер Core Web Vitals по реальным посетителям. Значения
+        уходят параметрами визита в тот же счётчик — своего хранилища
+        под метрики заводить незачем. */}
+    <WebVitals />
     <QueryClientProvider client={queryClient}>
       {/* Было defaultTheme='dark' + enableSystem: на <html> висел класс
           `dark`, и все токены shadcn переключались на тёмный набор. Отсюда

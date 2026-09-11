@@ -12,6 +12,15 @@ const config: Config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: { '^@/(.*)$': '<rootDir>/src/$1' },
   modulePathIgnorePatterns: ['<rootDir>/tests/'],
+  /**
+   * `uuid` и `jose` поставляются только в виде ES-модулей, а node_modules
+   * по умолчанию не проходит через трансформер. Без этого исключения
+   * падает любой тест, который импортирует маршрут целиком, — например
+   * проверка метаданных всех публичных страниц (H1): она поднимает
+   * дерево компонентов сегмента, а оттуда тянется `shared/lib/string-utils`
+   * с `uuid`.
+   */
+  transformIgnorePatterns: ['/node_modules/(?!(uuid|jose)/)'],
   testEnvironment: 'jsdom'
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],

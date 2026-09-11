@@ -9,7 +9,7 @@ import { buildPageMetadata } from '@/shared/lib/seo/page-metadata';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Гиды Energy Tour — кто водит джип-туры по Крыму',
   description:
-    'Водители-инструкторы Energy Tour: стаж, подготовленная техника, маршруты и отзывы по каждому гиду. Выбирайте, с кем поедете.',
+    'Водители-инструкторы Energy Tour: стаж, техника, маршруты и отзывы по каждому гиду. Выбирайте, с кем поедете.',
   path: '/guides'
 });
 

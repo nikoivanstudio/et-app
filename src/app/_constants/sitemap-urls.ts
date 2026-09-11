@@ -51,11 +51,9 @@ export const staticSitemapEntries: SitemapEntry[] = [
   // вместе с наполнением каталога.
   { path: '/category/vse_tury', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/dzhip-tur-krym', changeFrequency: 'monthly', priority: 0.6 },
-  {
-    path: '/dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami',
-    changeFrequency: 'monthly',
-    priority: 0.6
-  },
+  // `/dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami` убран:
+  // он рендерит то же содержимое, что `/uslugi/klassicheskie-ekskursii-po-krymu`,
+  // и закрыт от индексации до заливки 301 (нашла проверка H1).
   // Переименован из `/ekskursii_po_krymu`: подчёркивание не считается
   // разделителем слов.
   { path: '/ekskursii-po-krymu', changeFrequency: 'monthly', priority: 0.6 },

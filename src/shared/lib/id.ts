@@ -1,3 +1,17 @@
 import cuid from 'cuid';
+import { v4 } from 'uuid';
 
 export const createId = () => cuid();
+
+/**
+ * Уникальное имя файла при загрузке.
+ *
+ * Переехало сюда из `string-utils`, и не ради красоты: `uuid`
+ * поставляется только как ES-модуль, а `string-utils` импортируется
+ * почти отовсюду — включая форматирование цен и телефонов. Из-за одной
+ * этой строки любой тест, поднимающий дерево компонентов страницы,
+ * падал на разборе node_modules.
+ */
+export function getUniqName(name: string): string {
+  return `${v4()}-${name}`;
+}

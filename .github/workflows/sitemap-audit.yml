@@ -1,0 +1,32 @@
+# Обход адресов из sitemap (H2).
+#
+# Отдельно от основной проверки и по расписанию, а не на каждый push:
+# это сетевой обход восьмисот адресов живого сайта. В CI на каждый коммит
+# он стоил бы минут ожидания и лишней нагрузки на прод, а пользы добавил
+# бы ровно столько же — битые адреса появляются от правок данных, а не
+# от каждого коммита.
+name: Sitemap audit
+
+on:
+  schedule:
+    # Ежедневно в 04:20 UTC — 07:20 по Крыму, до дневного трафика.
+    - cron: '20 4 * * *'
+  workflow_dispatch:
+    inputs:
+      origin:
+        description: 'Адрес сайта'
+        required: false
+        default: 'https://energy-tur.ru'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.x.x
+          cache: npm
+      - run: npm ci
+      - name: Проверить адреса из sitemap
+        run: npx tsx scripts/check-sitemap-urls.ts ${{ inputs.origin || 'https://energy-tur.ru' }}

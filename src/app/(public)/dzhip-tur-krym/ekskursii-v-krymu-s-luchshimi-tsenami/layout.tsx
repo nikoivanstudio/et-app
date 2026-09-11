@@ -4,45 +4,33 @@ import { PropsWithChildren } from 'react';
 import { AppHeader } from '@/widgets/app-header/server';
 import { ContactsWidget } from '@/widgets/contacts/server';
 
-import { buildPageMetadata } from '@/shared/lib/seo/page-metadata';
+import {
+  buildPageMetadata,
+  withDuplicateRobots
+} from '@/shared/lib/seo/page-metadata';
 
-export const metadata: Metadata = buildPageMetadata({
-  title: 'Прокат велосипедов в Крыму',
-  description: `У нас вы можете воспользоваться услугой <strong>прокат велосипедов</strong>. В прокате имеются велосипеды различных размеров. Для индивидуального подбора под рост человека.  Предоставляется на условиях:
-
-- Залог за велосипед. Документы или денежный залог в сумме 30 000 рублей за каждый велосипед.
-
-- Залог за ремонт. Денежная сумма в размере 1000 рублей. Взымается на случай повреждения арендуемого оборудования. При отсутствии повреждений возвращается в полном объеме.
-
-Стоимость аренды велосипеда:
-<table>
-<tbody>
-<tr>
-<td>Время аренды</td>
-<td>Цена за единицу измерения</td>
-</tr>
-<tr>
-<td>1 час</td>
-<td>100 руб/час</td>
-</tr>
-<tr>
-<td>1 день (С утра и до вечера)</td>
-<td>500 руб/день</td>
-</tr>
-<tr>
-<td>24 часа</td>
-<td>600 руб/сутки</td>
-</tr>
-</tbody>
-</table>
-
-При аренде свыше 5 единиц времени, скидка 20%. Т.е. каждый 6-й час, день, сутки – бесплатные.
-
-Также дополнительно можно воспользоваться прокатом сопутствующего снаряжения. Информацию уточняйте у оператора.
-
-<img class="alignnone size-medium wp-image-4001" src="https://energy-tur.ru/wp-content/uploads/2016/01/velosiped-300x177.jpg" alt="Прокат велосипедов в Крыму" width="300" height="177" />`,
-  path: '/dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami'
-});
+/**
+ * Дубль страницы услуги.
+ *
+ * Адрес рендерит то же содержимое, что `/uslugi/klassicheskie-ekskursii-po-krymu`
+ * (см. `page.tsx`: тот же заголовок и тот же текст), то есть это две
+ * страницы под один материал. Сильнее сегмент услуг — там материал лежит
+ * по смыслу и оттуда на него ведут ссылки; 301 заведён
+ * в `prisma/data/redirects.csv`.
+ *
+ * До заливки правил страница закрыта от индексации. Заодно исправлены
+ * заголовок и описание: сюда были скопированы title и description
+ * страницы проката велосипедов — вместе с сырым `<strong>` и переносами
+ * строк внутри мета-тега (нашла проверка H1).
+ */
+export const metadata: Metadata = withDuplicateRobots(
+  buildPageMetadata({
+    title: 'Классические экскурсии по Крыму — цены',
+    description:
+      'Раздел объединён со страницей услуги «Классические экскурсии по Крыму»: маршруты, условия и цены — там.',
+    path: '/dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami'
+  })
+);
 
 export default function Layout({ children }: PropsWithChildren) {
   return (

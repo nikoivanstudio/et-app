@@ -16,6 +16,9 @@
     "test:components": "jest --testMatch='**/*.test.tsx'",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:seo": "jest --testMatch='**/{metadata,indexing,sitemap,json-ld,description,breadcrumbs,organization,content-images}.test.ts'",
+    "seo:check-sitemap": "tsx scripts/check-sitemap-urls.ts",
+    "perf:web-vitals": "playwright test tests/web-vitals.spec.ts --project=chromium",
     "test:bdd": "bddgen --config playwright.bdd.config.ts && playwright test --config playwright.bdd.config.ts",
     "test:bdd:ui": "bddgen --config playwright.bdd.config.ts && playwright test --config playwright.bdd.config.ts --ui"
   },

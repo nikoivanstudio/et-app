@@ -9,7 +9,7 @@ import { buildPageMetadata } from '@/shared/lib/seo/page-metadata';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Политика обработки персональных данных',
   description:
-    'Как Energy Tour обрабатывает персональные данные посетителей сайта: какие данные собираются формами, зачем используются, сколько хранятся и как их удалить.',
+    'Как Energy Tour обрабатывает персональные данные: что собирают формы сайта, зачем это нужно, сколько данные хранятся и как их удалить.',
   path: '/politika'
 });
 

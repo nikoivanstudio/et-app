@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { revalidatePath } from 'next/cache';
 
-import { getUniqName } from '@/shared/lib/string-utils';
+import { getUniqName } from '@/shared/lib/id';
 
 export const saveFileWithPath = async (
   file: File,
