@@ -10,10 +10,12 @@ source,destination,status,note
 # Строки, начинающиеся с #, и пустые строки игнорируются.
 #
 # ВАЖНО про очерёдность: правила из секции «каталоги» уводят с живых
-# страниц на /tours, который до наполнения каталога (A4) пуст. Заливать их
-# можно только после того, как на /tours появились карточки. Проверка —
-# в самом скрипте: он предупредит, если в таблице tour нет опубликованных
-# записей, и потребует флаг --force.
+# страниц на /tours, который до наполнения каталога (A4) пуст. Поэтому все
+# четыре помечены DRAFT и лежат в таблице выключенными: 301 с живого адреса
+# на страницу без единой карточки поисковик читает как мягкий 404 и обнуляет
+# накопленный вес — хуже, чем не делать ничего. Снять пометку после A4.
+# Проверка дублируется в самом скрипте: он предупредит, если действующее
+# правило ведёт на /tours, а опубликованных туров в базе нет.
 
 # --- B7. Конкурирующие каталоги -------------------------------------------
 # Семь адресов об одном и том же: /tours, /tury, /category/vse_tury (+ /page/2),
@@ -21,11 +23,11 @@ source,destination,status,note
 # /tours — каталог туров, /ekskursii-po-krymu — посадочная по экскурсиям.
 # /dzhip-tur-krym оставлен намеренно: это точное вхождение «джип тур крым»
 # с накопленным возрастом, склеивать его с каталогом нельзя.
-/tury,/tours,301,B7 каталог-заглушка: описание из 4 символов и пустой контент
-/category/vse_tury,/tours,301,B7 легаси-каталог WordPress
-/category/vse_tury/page/2,/tours,301,B7 пагинация легаси-каталога
+/tury,/tours,301,DRAFT B7 каталог-заглушка: описание из 4 символов и пустой контент — включить после A4
+/category/vse_tury,/tours,301,DRAFT B7 легаси-каталог WordPress — включить после A4
+/category/vse_tury/page/2,/tours,301,DRAFT B7 пагинация легаси-каталога — включить после A4
 /ekskursii_po_krymu,/ekskursii-po-krymu,301,B7 подчёркивание в слаге: поисковик не считает его разделителем слов
-/turisticheskie-priklyucheniya-v-krymu,/tours,301,B7 текст без предложения; дублирует каталог
+/turisticheskie-priklyucheniya-v-krymu,/tours,301,DRAFT B7 текст без предложения; дублирует каталог — включить после A4
 
 # --- B3. Тестовые страницы ------------------------------------------------
 # Пять Lorem ipsum и две со слагом-UUID. Замены у них нет и быть не может,
@@ -44,11 +46,24 @@ source,destination,status,note
 # окончательный выбор делается после выгрузки позиций (нужен Вебмастер, G1),
 # поэтому секция залита в таблицу, но выключена — is_active проставляется
 # скриптом только для строк без пометки DRAFT в note.
-/chufut-kale-2,/chufut-kale,301,DRAFT B6 дубль Чуфут-Кале
-/peshhernyj-gorod-chufut-kale,/chufut-kale,301,DRAFT B6 дубль Чуфут-Кале
-/mangup,/mangup-kale,301,DRAFT B6 дубль Мангуп-Кале
-/peshhernyj-gorod-mangup-kale,/mangup-kale,301,DRAFT B6 дубль Мангуп-Кале
-/legendy-mangup-kale,/mangup-kale,301,DRAFT B6 дубль Мангуп-Кале
+#
+# Склеиваются ТОЛЬКО страницы одного намерения: объект с объектом. Прежняя
+# редакция этой секции сводила в одну группу объект, экскурсию и тур —
+# и уводила /mangup (13 698 знаков, объект) на /mangup-kale (9 392,
+# экскурсия), то есть более полную страницу на менее полную, а
+# информационный запрос на коммерческий. Страницы экскурсий и туров
+# разбираются в A6 после наполнения каталога (A4):
+#   /chufut-kale-2         Экскурсия в пещерный город Чуфут Кале   9 336
+#   /mangup-kale           Экскурсия … Мангуп Кале на джипе        9 392
+#   /legendy-mangup-kale   Легенды Мангуп-Кале (расширенная)       3 738
+#   /dzhip-tur-chufut-kale Джип тур «Чуфут Кале»                   3 492
+# Им место на карточке тура, а не на странице объекта.
+#
+# Оба правила ниже остаются DRAFT и после выбора адреса: тексты в группах
+# не совпадают (3 768 и 6 507 знаков уникального материала), и 301 до
+# слияния текста выбросил бы его из индекса вместе с адресом.
+/peshhernyj-gorod-chufut-kale,/chufut-kale,301,DRAFT B6 дубль объекта Чуфут-Кале — слить текст перед включением
+/peshhernyj-gorod-mangup-kale,/mangup,301,DRAFT B6 дубль объекта Мангуп — слить текст перед включением
 
 # --- E3/E5. Родительский адрес ветки посадочных ---------------------------
 # `/dzhip-tury` сам по себе страницей не является: заводить под него ещё
@@ -61,3 +76,62 @@ source,destination,status,note
 # текстом. Сильнее сегмент услуг: там материал лежит по смыслу и оттуда
 # на него ведут ссылки из подвала и блока «другие услуги».
 /dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami,/uslugi/klassicheskie-ekskursii-po-krymu,301,H1 дубль страницы услуги
+
+# --- B8. Слаги с HTML-сущностями ------------------------------------------
+# Сорок четыре адреса, в которых из движка приехали токены HTML-сущностей:
+# `laquo`/`raquo` вместо кавычек, `mdash`/`8212` вместо тире, `nbsp` вместо
+# пробела. Адрес /chto-takoe-laquo-yajla-raquo читается человеком как мусор,
+# а поисковиком — как набор лишних слов в URL.
+#
+# Правила заводятся ПОСЛЕ переименования (prisma/scripts/rename-slugs.ts):
+# правило в прокси срабатывает раньше маршрутизации, и залитое заранее
+# уводило бы на слаг, которого ещё нет, то есть в 404.
+#
+# Ещё два испорченных слага сюда не попали: /fontan-laquo-noch-raquo
+# и /barelef-a-nbsp-s-nbsp-pushkina. Их новые адреса заняты страницами
+# о том же самом — это не переименование, а дубли, и они разбираются в B6.
+
+/chto-takoe-laquo-yajla-raquo,/chto-takoe-yajla,301,B8 кавычки в слаге (id 163)
+/chto-takoe-tip-laquo-bazilika-raquo,/chto-takoe-tip-bazilika,301,B8 кавычки в слаге (id 428)
+/dacha-e-l-korobinoj-laquo-selyam-raquo,/dacha-e-l-korobinoj-selyam,301,B8 кавычки в слаге (id 479)
+/dacha-gorbacheva-v-forose-obekt-laquo-zarya-raquo,/dacha-gorbacheva-v-forose-obekt-zarya,301,B8 кавычки в слаге (id 248)
+/dacha-lansere-laquo-hrizolit-raquo,/dacha-lansere-hrizolit,301,B8 кавычки в слаге (id 473)
+/dacha-laquo-omyur-raquo,/dacha-omyur,301,B8 кавычки в слаге (id 327)
+/dacha-laquo-saklya-saburova-raquo,/dacha-saklya-saburova,301,B8 кавычки в слаге (id 478)
+/dacha-stankevich-laquo-miro-mare-raquo,/dacha-stankevich-miro-mare,301,B8 кавычки в слаге (id 261)
+/doroga-yalta-mdash-aj-petri-mdash-bahchisaraj,/doroga-yalta-aj-petri-bahchisaraj,301,B8 тире в слаге (id 159)
+/gibel-parohoda-laquo-lenin-raquo,/gibel-parohoda-lenin,301,B8 кавычки в слаге (id 444)
+/gora-dvuh-udodov-8212-opuk,/gora-dvuh-udodov-opuk,301,B8 тире в слаге (id 732)
+/imenie-laquo-murad-avur-raquo-laquo-ispolnenie-zhelanij-raquo,/imenie-murad-avur-ispolnenie-zhelanij,301,B8 кавычки в слаге (id 237)
+/kanatnaya-doroga-mishor-mdash-aj-petri,/kanatnaya-doroga-mishor-aj-petri,301,B8 тире в слаге (id 160)
+/kastel-gora-mdash-pamyatnik-geologii,/kastel-gora-pamyatnik-geologii,301,B8 тире в слаге (id 724)
+/korabl-spetsialnogo-naznacheniya-laquo-krym-raquo,/korabl-spetsialnogo-naznacheniya-krym,301,B8 кавычки в слаге (id 264)
+/kromleh-mdash-sila-solntsa-na-zemle,/kromleh-sila-solntsa-na-zemle,301,B8 тире в слаге (id 521)
+/kurshlyuk-thinsp-mdash-thinsp-ubezhishha-na-bojke,/kurshlyuk-ubezhishha-na-bojke,301,B8 тире в слаге (id 605)
+/laquo-efirmaslo-raquo-nauchno-proizvodstvennoe-obedinenie,/efirmaslo-nauchno-proizvodstvennoe-obedinenie,301,B8 кавычки в слаге (id 449)
+/laquo-potemkinskie-derevni-raquo,/potemkinskie-derevni,301,B8 кавычки в слаге (id 492)
+/lesnoe-mdash-ischeznuvshee-selo-kryma,/lesnoe-ischeznuvshee-selo-kryma,301,B8 тире в слаге (id 522)
+/maltsovy-thinsp-mdash-thinsp-osnovateli-kurorta-simeiz,/maltsovy-osnovateli-kurorta-simeiz,301,B8 тире в слаге (id 259)
+/meteostantsiya-laquo-karabi-yajla-raquo,/meteostantsiya-karabi-yajla,301,B8 кавычки в слаге (id 368)
+/ognennye-yavleniya-na-chernom-more-laquo-kipenie-morya-raquo,/ognennye-yavleniya-na-chernom-more-kipenie-morya,301,B8 кавычки в слаге (id 542)
+/ot-karagolya-vdol-shosse-yalta-mdash-bahchisaraj,/ot-karagolya-vdol-shosse-yalta-bahchisaraj,301,B8 тире в слаге (id 284)
+/pansion-n-nbsp-k-nbsp-aleksandrova-dolnika,/pansion-n-k-aleksandrova-dolnika,301,B8 пробел в слаге (id 472)
+/partizanskij-rodnik-laquo-ladoshki-raquo,/partizanskij-rodnik-ladoshki,301,B8 кавычки в слаге (id 461)
+/peshehodno-velosipednaya-tropa-laquo-evrejskaya-raquo,/peshehodno-velosipednaya-tropa-evrejskaya,301,B8 кавычки в слаге (id 366)
+/peshhera-grifon-thinsp-mdash-thinsp-derivat-krasnoj-peshhery,/peshhera-grifon-derivat-krasnoj-peshhery,301,B8 тире в слаге (id 627)
+/peshhera-laquo-soldatskaya-raquo,/peshhera-soldatskaya,301,B8 кавычки в слаге (id 417)
+/put-v-yaltu-ekskursiya-po-doroge-simferopol-thinsp-mdash-thinsp-yalta,/put-v-yaltu-ekskursiya-po-doroge-simferopol-yalta,301,B8 тире в слаге (id 565)
+/skulpturnaya-kompozitsiya-laquo-devushka-arzy-i-razbojnik-ali-baba-raquo-i-laquo-rusalka-raquo,/skulpturnaya-kompozitsiya-devushka-arzy-i-razbojnik-ali-baba-i-rusalka,301,B8 кавычки в слаге (id 133)
+/tik-kuyu-thinsp-mdash-thinsp-osadnyj-kolodets-chufut-kale,/tik-kuyu-osadnyj-kolodets-chufut-kale,301,B8 тире в слаге (id 435)
+/usadba-mordvinova-laquo-horoshaya-pustosh-raquo,/usadba-mordvinova-horoshaya-pustosh,301,B8 кавычки в слаге (id 359)
+/usadba-ustinova-laquo-vasil-saraj-raquo,/usadba-ustinova-vasil-saraj,301,B8 кавычки в слаге (id 505)
+/villa-laquo-anastasiya-raquo,/villa-anastasiya,301,B8 кавычки в слаге (id 572)
+/villa-laquo-barbo-raquo-maevka,/villa-barbo-maevka,301,B8 кавычки в слаге (id 468)
+/villa-laquo-belyj-lebed-raquo-ampir,/villa-belyj-lebed-ampir,301,B8 кавычки в слаге (id 358)
+/villa-laquo-bolshoj-bogdan-raquo-n-n-bogdanova,/villa-bolshoj-bogdan-n-n-bogdanova,301,B8 кавычки в слаге (id 471)
+/villa-laquo-divo-raquo-dacha-semenova,/villa-divo-dacha-semenova,301,B8 кавычки в слаге (id 436)
+/villa-laquo-elena-raquo,/villa-elena,301,B8 кавычки в слаге (id 454)
+/villa-laquo-kameya-raquo,/villa-kameya,301,B8 кавычки в слаге (id 475)
+/villa-laquo-selbi-raquo,/villa-selbi,301,B8 кавычки в слаге (id 482)
+/villa-shlee-laquo-hajal-raquo,/villa-shlee-hajal,301,B8 кавычки в слаге (id 484)
+/vodopad-kobalar-kozyrek-laquo-peshhernyj-ovrag-raquo,/vodopad-kobalar-kozyrek-peshhernyj-ovrag,301,B8 кавычки в слаге (id 356)

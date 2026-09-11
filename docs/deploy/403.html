@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--
+  Страница отказа для Traefik-миддлвари `custom-403-page`.
+  Живёт в служебном nginx-контейнере на сервере (см. geoblock.md), здесь —
+  единственная версируемая копия. Правки здесь сами на сервер не попадают:
+  файл нужно залить руками, инструкция — в geoblock.md, раздел «Страница отказа».
+-->
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Доступ ограничен</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --bg-soft: #16213e;
+        --panel: rgba(15, 23, 42, 0.76);
+        --panel-border: rgba(148, 163, 184, 0.18);
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --accent: #f97316;
+        --accent-soft: rgba(249, 115, 22, 0.2);
+        --shadow: 0 24px 80px rgba(2, 6, 23, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at top left, rgba(249, 115, 22, 0.24), transparent 32%),
+          radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.18), transparent 30%),
+          linear-gradient(145deg, var(--bg) 0%, var(--bg-soft) 100%);
+        color: var(--text);
+        font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: auto;
+        border-radius: 50%;
+        pointer-events: none;
+        filter: blur(24px);
+      }
+
+      body::before {
+        width: 280px;
+        height: 280px;
+        top: -100px;
+        right: -80px;
+        background: rgba(249, 115, 22, 0.22);
+        animation: drift 10s ease-in-out infinite;
+      }
+
+      body::after {
+        width: 220px;
+        height: 220px;
+        bottom: -70px;
+        left: -60px;
+        background: rgba(14, 165, 233, 0.18);
+        animation: drift 12s ease-in-out infinite reverse;
+      }
+
+      main {
+        width: min(100%, 760px);
+      }
+
+      .card {
+        position: relative;
+        padding: 40px;
+        border: 1px solid var(--panel-border);
+        border-radius: 28px;
+        background: var(--panel);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+        animation: rise 0.7s ease-out both;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: #fed7aa;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .badge::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 16px rgba(249, 115, 22, 0.8);
+      }
+
+      h1 {
+        margin: 24px 0 16px;
+        font-size: clamp(2rem, 5vw, 3.8rem);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+      }
+
+      p {
+        margin: 0;
+        max-width: 38rem;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .icon-wrap {
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        width: 64px;
+        height: 64px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .icon {
+        width: 34px;
+        height: 34px;
+      }
+
+      .hint {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(148, 163, 184, 0.16);
+        font-size: 0.95rem;
+        color: #cbd5e1;
+      }
+
+      .hint a {
+        color: #fed7aa;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(254, 215, 170, 0.4);
+        white-space: nowrap;
+      }
+
+      .hint a:hover,
+      .hint a:focus-visible {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+        50% {
+          transform: translate3d(0, 18px, 0) scale(1.05);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .card,
+        body::before,
+        body::after {
+          animation: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 16px;
+        }
+
+        .card {
+          padding: 28px 22px;
+          border-radius: 24px;
+        }
+
+        .icon-wrap {
+          position: static;
+          margin-bottom: 20px;
+          width: 56px;
+          height: 56px;
+        }
+
+        h1 {
+          margin-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card" aria-labelledby="denied-title">
+        <div class="icon-wrap" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 3L4 6V11C4 16 7.4 20.7 12 22C16.6 20.7 20 16 20 11V6L12 3Z"
+              stroke="#F8FAFC"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9 9L15 15M15 9L9 15"
+              stroke="#F97316"
+              stroke-width="1.8"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+
+        <div class="badge">Ошибка 403</div>
+        <h1 id="denied-title">Доступ к этой странице ограничен</h1>
+        <p>
+          Сервер отклонил запрос по сетевым правилам. Сам сайт работает —
+          ограничение касается только этого обращения.
+        </p>
+        <div class="hint">
+          Считаете, что это ошибка? Позвоните
+          <a href="tel:+79787880753">+7&nbsp;(978)&nbsp;788-07-53</a>, напишите
+          в <a href="https://t.me/EnergyTourCrimea">Telegram</a> или
+          на <a href="mailto:infoenergytur@gmail.com">infoenergytur@gmail.com</a>.
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

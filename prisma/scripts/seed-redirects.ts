@@ -163,6 +163,42 @@ const hasPublishedTours = async (): Promise<boolean> => {
   return count > 0;
 };
 
+/**
+ * Правила, которые есть в базе, но которых уже нет в CSV.
+ *
+ * Заливка идёт upsert'ом и ничего не удаляет — это осознанно: правила
+ * заводят и руками, мимо файла. Но из-за этого строка, удалённая из CSV,
+ * продолжает действовать в бою, и увидеть это по файлу нельзя. Отсюда
+ * отчёт: скрипт не решает за человека, а показывает расхождение.
+ *
+ * Удалять такие правила сразу нельзя ещё и потому, что выключенное
+ * правило — это история решения, а не мусор.
+ */
+const reportOrphans = async (rules: ParsedRule[]) => {
+  const inFile = new Set(rules.map(rule => rule.source));
+
+  const stored = await dbClient.redirect.findMany({
+    select: { source: true, destination: true, isActive: true }
+  });
+
+  const orphans = stored.filter(rule => !inFile.has(rule.source));
+
+  if (!orphans.length) {
+    return;
+  }
+
+  console.warn(
+    `\nВ базе есть правила, которых нет в CSV: ${orphans.length}.` +
+      '\nЕсли они удалены из файла намеренно — снимите их и в базе.'
+  );
+  orphans.forEach(rule => {
+    console.warn(
+      `  ${rule.source} → ${rule.destination}` +
+        `${rule.isActive ? '' : ' (выключено)'}`
+    );
+  });
+};
+
 const main = async () => {
   const content = readFileSync(CSV_PATH, 'utf8');
 
@@ -232,6 +268,8 @@ const main = async () => {
   }
 
   console.log(`\nЗаписано правил: ${rules.length}`);
+
+  await reportOrphans(rules);
 };
 
 main()

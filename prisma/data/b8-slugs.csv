@@ -1,0 +1,62 @@
+# Слаги с HTML-сущностями: что на что переименовать (задача B8 в plan.md).
+#
+# Выгружено 11.09.2026 из дампа pg-dump-postgres-1789142207.dmp.
+# Колонки: id,old_slug,new_slug,action
+#
+#   rename       — переименовать и завести 301 со старого адреса на новый
+#   DUPLICATE:id — новый слаг уже занят записью с этим id, и она о том же
+#                  объекте. Это не переименование, а дубль: разбирается
+#                  в B6 (слить текст, 301 на выбранный адрес), не здесь.
+#
+# Преобразование: выкинуть токен сущности, склеить дефисы. Прогонять дважды —
+# у laquo-…-raquo сущности стоят по обе стороны, и за один проход регулярное
+# выражение съедает только первую из пары соседних.
+#
+# SQL, которым выгружено, — в restore.md.
+id,old_slug,new_slug,action
+179,barelef-a-nbsp-s-nbsp-pushkina,barelef-a-s-pushkina,DUPLICATE:708
+128,fontan-laquo-noch-raquo,fontan-noch,DUPLICATE:90
+163,chto-takoe-laquo-yajla-raquo,chto-takoe-yajla,rename
+428,chto-takoe-tip-laquo-bazilika-raquo,chto-takoe-tip-bazilika,rename
+479,dacha-e-l-korobinoj-laquo-selyam-raquo,dacha-e-l-korobinoj-selyam,rename
+248,dacha-gorbacheva-v-forose-obekt-laquo-zarya-raquo,dacha-gorbacheva-v-forose-obekt-zarya,rename
+473,dacha-lansere-laquo-hrizolit-raquo,dacha-lansere-hrizolit,rename
+327,dacha-laquo-omyur-raquo,dacha-omyur,rename
+478,dacha-laquo-saklya-saburova-raquo,dacha-saklya-saburova,rename
+261,dacha-stankevich-laquo-miro-mare-raquo,dacha-stankevich-miro-mare,rename
+159,doroga-yalta-mdash-aj-petri-mdash-bahchisaraj,doroga-yalta-aj-petri-bahchisaraj,rename
+444,gibel-parohoda-laquo-lenin-raquo,gibel-parohoda-lenin,rename
+732,gora-dvuh-udodov-8212-opuk,gora-dvuh-udodov-opuk,rename
+237,imenie-laquo-murad-avur-raquo-laquo-ispolnenie-zhelanij-raquo,imenie-murad-avur-ispolnenie-zhelanij,rename
+160,kanatnaya-doroga-mishor-mdash-aj-petri,kanatnaya-doroga-mishor-aj-petri,rename
+724,kastel-gora-mdash-pamyatnik-geologii,kastel-gora-pamyatnik-geologii,rename
+264,korabl-spetsialnogo-naznacheniya-laquo-krym-raquo,korabl-spetsialnogo-naznacheniya-krym,rename
+521,kromleh-mdash-sila-solntsa-na-zemle,kromleh-sila-solntsa-na-zemle,rename
+605,kurshlyuk-thinsp-mdash-thinsp-ubezhishha-na-bojke,kurshlyuk-ubezhishha-na-bojke,rename
+449,laquo-efirmaslo-raquo-nauchno-proizvodstvennoe-obedinenie,efirmaslo-nauchno-proizvodstvennoe-obedinenie,rename
+492,laquo-potemkinskie-derevni-raquo,potemkinskie-derevni,rename
+522,lesnoe-mdash-ischeznuvshee-selo-kryma,lesnoe-ischeznuvshee-selo-kryma,rename
+259,maltsovy-thinsp-mdash-thinsp-osnovateli-kurorta-simeiz,maltsovy-osnovateli-kurorta-simeiz,rename
+368,meteostantsiya-laquo-karabi-yajla-raquo,meteostantsiya-karabi-yajla,rename
+542,ognennye-yavleniya-na-chernom-more-laquo-kipenie-morya-raquo,ognennye-yavleniya-na-chernom-more-kipenie-morya,rename
+284,ot-karagolya-vdol-shosse-yalta-mdash-bahchisaraj,ot-karagolya-vdol-shosse-yalta-bahchisaraj,rename
+472,pansion-n-nbsp-k-nbsp-aleksandrova-dolnika,pansion-n-k-aleksandrova-dolnika,rename
+461,partizanskij-rodnik-laquo-ladoshki-raquo,partizanskij-rodnik-ladoshki,rename
+366,peshehodno-velosipednaya-tropa-laquo-evrejskaya-raquo,peshehodno-velosipednaya-tropa-evrejskaya,rename
+627,peshhera-grifon-thinsp-mdash-thinsp-derivat-krasnoj-peshhery,peshhera-grifon-derivat-krasnoj-peshhery,rename
+417,peshhera-laquo-soldatskaya-raquo,peshhera-soldatskaya,rename
+565,put-v-yaltu-ekskursiya-po-doroge-simferopol-thinsp-mdash-thinsp-yalta,put-v-yaltu-ekskursiya-po-doroge-simferopol-yalta,rename
+133,skulpturnaya-kompozitsiya-laquo-devushka-arzy-i-razbojnik-ali-baba-raquo-i-laquo-rusalka-raquo,skulpturnaya-kompozitsiya-devushka-arzy-i-razbojnik-ali-baba-i-rusalka,rename
+435,tik-kuyu-thinsp-mdash-thinsp-osadnyj-kolodets-chufut-kale,tik-kuyu-osadnyj-kolodets-chufut-kale,rename
+359,usadba-mordvinova-laquo-horoshaya-pustosh-raquo,usadba-mordvinova-horoshaya-pustosh,rename
+505,usadba-ustinova-laquo-vasil-saraj-raquo,usadba-ustinova-vasil-saraj,rename
+572,villa-laquo-anastasiya-raquo,villa-anastasiya,rename
+468,villa-laquo-barbo-raquo-maevka,villa-barbo-maevka,rename
+358,villa-laquo-belyj-lebed-raquo-ampir,villa-belyj-lebed-ampir,rename
+471,villa-laquo-bolshoj-bogdan-raquo-n-n-bogdanova,villa-bolshoj-bogdan-n-n-bogdanova,rename
+436,villa-laquo-divo-raquo-dacha-semenova,villa-divo-dacha-semenova,rename
+454,villa-laquo-elena-raquo,villa-elena,rename
+475,villa-laquo-kameya-raquo,villa-kameya,rename
+482,villa-laquo-selbi-raquo,villa-selbi,rename
+484,villa-shlee-laquo-hajal-raquo,villa-shlee-hajal,rename
+356,vodopad-kobalar-kozyrek-laquo-peshhernyj-ovrag-raquo,vodopad-kobalar-kozyrek-peshhernyj-ovrag,rename

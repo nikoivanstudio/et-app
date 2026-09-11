@@ -64,3 +64,6 @@ wp-base.json
 .claude/
 # temp dir from local scripting (dev server log, scratch files)
 .tmp-tri/
+
+# Документация и рабочие материалы — не в гит
+/docs/
