@@ -7,6 +7,7 @@ import { Toaster } from 'sonner';
 import { SITE_URL } from '@/shared/constants/site-constants';
 import { cn } from '@/shared/lib/css';
 import { AppProvider } from '@/shared/lib/providers/app-provider';
+import { getCurrentYear } from '@/shared/lib/seo/current-year';
 
 const oswald = Oswald({
   weight: ['400'],
@@ -26,38 +27,41 @@ const caladea = Caladea({
   subsets: ['latin']
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+// Функция, а не константа: описание содержит год, а константа вычисляется
+// один раз при загрузке модуля — на всё время жизни процесса.
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL(SITE_URL),
 
-  title: {
-    default: 'Джип туры и индивидуальные экскурсии по Крыму — Energy Tour',
-    template: '%s | Energy Tour'
-  },
+    title: {
+      default: 'Джип туры и индивидуальные экскурсии по Крыму — Energy Tour',
+      template: '%s | Energy Tour'
+    },
 
-  description:
-    'Джип туры и индивидуальные экскурсии по Крыму в 2026 году. Бахчисарай, Ялта, Севастополь. Организация отдыха под ключ. Лучшие цены +7 (978) 788-07-53',
+    description: `Джип туры и индивидуальные экскурсии по Крыму в ${getCurrentYear()} году. Бахчисарай, Ялта, Севастополь. Организация отдыха под ключ. Лучшие цены +7 (978) 788-07-53`,
 
-  // Здесь НЕТ ни `alternates`, ни `openGraph`, и это осознанно.
-  //
-  // Метаданные в Next наследуются вниз по дереву сегментов, поэтому бывший
-  // тут `alternates.canonical: '/'` объявлял канонической копией главной
-  // каждую страницу сайта, а `openGraph` главной подставлял её og:title и
-  // og:url всем остальным. Оба поля задаются посегментно — через
-  // `buildPageMetadata` (src/shared/lib/seo/page-metadata.ts).
-  //
-  // Картинка для соцсетей приходит из файловой конвенции
-  // `src/app/opengraph-image.tsx` — прежний openGraph.images ссылался на
-  // /og.jpg, которого в public/ нет и никогда не было.
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    // Здесь НЕТ ни `alternates`, ни `openGraph`, и это осознанно.
+    //
+    // Метаданные в Next наследуются вниз по дереву сегментов, поэтому бывший
+    // тут `alternates.canonical: '/'` объявлял канонической копией главной
+    // каждую страницу сайта, а `openGraph` главной подставлял её og:title и
+    // og:url всем остальным. Оба поля задаются посегментно — через
+    // `buildPageMetadata` (src/shared/lib/seo/page-metadata.ts).
+    //
+    // Картинка для соцсетей приходит из файловой конвенции
+    // `src/app/opengraph-image.tsx` — прежний openGraph.images ссылался на
+    // /og.jpg, которого в public/ нет и никогда не было.
+    robots: {
       index: true,
       follow: true,
-      'max-image-preview': 'large'
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large'
+      }
     }
-  }
-};
+  };
+}
 
 export default function RootLayout({
   children

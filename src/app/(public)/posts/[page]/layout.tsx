@@ -4,6 +4,7 @@ import { PropsWithChildren } from 'react';
 import { AppHeader } from '@/widgets/app-header/server';
 import { ContactsWidget } from '@/widgets/contacts/server';
 
+import { getCurrentYear } from '@/shared/lib/seo/current-year';
 import { buildPageMetadata } from '@/shared/lib/seo/page-metadata';
 
 /**
@@ -23,10 +24,11 @@ export async function generateMetadata({
   const pageNumber = Number(page);
   const isFirstPage = !Number.isFinite(pageNumber) || pageNumber <= 1;
 
+  const year = getCurrentYear();
+
   return buildPageMetadata({
-    title: 'Интересные статьи о Крыме в 2026',
-    description:
-      'Все туры в Крыму 2026. Организация туров и ваших развлечений. Мы предоставим лучшие цены для вас +7(978)7880753',
+    title: `Интересные статьи о Крыме в ${year}`,
+    description: `Все туры в Крыму ${year}. Организация туров и ваших развлечений. Мы предоставим лучшие цены для вас +7(978)7880753`,
     path: isFirstPage ? '/posts' : `/posts/${pageNumber}`
   });
 }

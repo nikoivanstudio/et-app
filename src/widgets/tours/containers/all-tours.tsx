@@ -5,6 +5,7 @@ import { FC } from 'react';
 
 import { tourService } from '@/features/tour/server';
 
+import { getCurrentYear } from '@/shared/lib/seo/current-year';
 import { EmptyState } from '@/shared/ui/empty-state';
 import { LinkButton } from '@/shared/ui/link-button';
 
@@ -32,7 +33,7 @@ export const AllTours: FC = async () => {
         ) : (
           <EmptyState
             title='Здесь пока пусто'
-            text='Каталог на 2026 год ещё собирается. Готовые маршруты с ценами и длительностью уже есть в списке всех туров.'
+            text={`Каталог на ${getCurrentYear()} год ещё собирается. Готовые маршруты с ценами и длительностью уже есть в списке всех туров.`}
             action={
               <LinkButton
                 className='w-full md:w-[260px]'

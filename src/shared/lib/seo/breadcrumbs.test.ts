@@ -59,7 +59,9 @@ describe('разметка BreadcrumbList', () => {
   });
 
   test('позиции нумеруются с единицы и по порядку', () => {
-    expect(jsonLd.itemListElement.map(item => item.position)).toEqual([1, 2, 3]);
+    expect(jsonLd.itemListElement.map(item => item.position)).toEqual([
+      1, 2, 3
+    ]);
   });
 
   test('адреса абсолютные — относительные схема не принимает', () => {
@@ -75,9 +77,9 @@ describe('разметка BreadcrumbList', () => {
   test('имена в разметке совпадают с видимыми подписями', () => {
     const crumbs = tourCrumbs('Джип тур «Сердцем Крыма»');
 
-    expect(buildBreadcrumbJsonLd(crumbs).itemListElement.map(i => i.name)).toEqual(
-      crumbs.map(c => c.label)
-    );
+    expect(
+      buildBreadcrumbJsonLd(crumbs).itemListElement.map(i => i.name)
+    ).toEqual(crumbs.map(c => c.label));
   });
 
   test('пустой путь даёт пустой список, а не сломанную разметку', () => {

@@ -7,6 +7,7 @@ import { FC, ReactNode } from 'react';
 import { CONTACTS } from '@/widgets/contacts/constants/contacts';
 
 import logo from '@/shared/assets/images/logo.png';
+import { getCurrentYear } from '@/shared/lib/seo/current-year';
 import { formatNumber } from '@/shared/lib/string-utils';
 import {
   MaxGlyph,
@@ -154,7 +155,7 @@ export const ContactsWidget: FC = async () => (
 
       <div className='mt-10 border-t border-white/12 pt-5'>
         <p className='font-oswald text-cream/45 text-[12px] tracking-wide'>
-          © 2026 Energy Tour
+          © {getCurrentYear()} Energy Tour
         </p>
       </div>
     </div>

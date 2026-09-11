@@ -21,8 +21,9 @@ describe('getPlainText', () => {
   });
 
   test('раскрывает сущности, которые встречаются в легаси-текстах', () => {
-    expect(getPlainText('<p>Фонтан&nbsp;&laquo;Ночь&raquo;&mdash;Бахчисарай</p>'))
-      .toBe('Фонтан «Ночь»—Бахчисарай');
+    expect(
+      getPlainText('<p>Фонтан&nbsp;&laquo;Ночь&raquo;&mdash;Бахчисарай</p>')
+    ).toBe('Фонтан «Ночь»—Бахчисарай');
   });
 
   test('раскрывает числовые сущности', () => {
@@ -65,8 +66,9 @@ describe('buildDescription', () => {
   });
 
   test('литерал «description» заглушкой не считается описанием', () => {
-    expect(buildDescription('description', '<p>Пещерный город Эски-Кермен</p>'))
-      .toBe('Пещерный город Эски-Кермен');
+    expect(
+      buildDescription('description', '<p>Пещерный город Эски-Кермен</p>')
+    ).toBe('Пещерный город Эски-Кермен');
   });
 
   test('заглушка распознаётся без учёта регистра и пробелов', () => {

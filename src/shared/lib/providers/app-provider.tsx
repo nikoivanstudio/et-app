@@ -8,25 +8,17 @@ import { FC, PropsWithChildren } from 'react';
 import { queryClient } from '@/shared/api/query-client';
 import { YandexMetrika } from '@/shared/lib/analytics/yandex-metrika';
 
+/*
+ * Схемы организации здесь больше нет.
+ *
+ * Провайдер оборачивает всё приложение, поэтому `TouristInformationCenter`
+ * выводился на каждой из 868 страниц — в том числе на статьях про пещеры,
+ * где организация к содержимому отношения не имеет. Теперь схема живёт
+ * в `shared/lib/seo/organization.ts` и выводится только на главной и
+ * контактах; тип заодно исправлен на `TravelAgency`.
+ */
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
   <>
-    <script
-      type='application/ld+json'
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'TouristInformationCenter',
-          name: 'Energy Tour',
-          url: 'https://energy-tur.ru',
-          telephone: '+79787880753',
-          address: {
-            '@type': 'PostalAddress',
-            addressCountry: 'RU',
-            addressRegion: 'Крым'
-          }
-        })
-      }}
-    />
     <YandexMetrika />
     <QueryClientProvider client={queryClient}>
       {/* Было defaultTheme='dark' + enableSystem: на <html> висел класс

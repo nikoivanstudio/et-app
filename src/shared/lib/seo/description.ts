@@ -97,7 +97,8 @@ export const truncate = (
 
   const head = value.slice(0, limit + 1);
   const lastSpace = head.lastIndexOf(' ');
-  const cut = lastSpace > limit / 2 ? head.slice(0, lastSpace) : head.slice(0, limit);
+  const cut =
+    lastSpace > limit / 2 ? head.slice(0, lastSpace) : head.slice(0, limit);
 
   return `${cut.replace(/[\s,.;:—–-]+$/, '')}…`;
 };
