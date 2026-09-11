@@ -93,12 +93,22 @@ const nextConfig: NextConfig = {
     workerThreads: false
   },
   images: {
-    unoptimized: true,
-    localPatterns: [
-      {
-        pathname: '/images/**'
-      }
-    ],
+    // Было `unoptimized: true` — оптимизация next/image была выключена
+    // глобально. Фото отдавались оригиналами: на карточке тура одна
+    // Chufut-Kale.jpg (1383×922) весила 449 КБ при отображении в 639 px
+    // и давала почти весь вес страницы.
+    //
+    // Снять флаг в одиночку было нельзя: `localPatterns` разрешал только
+    // `/images/**`, а такой папки в `public/` нет. Зато загруженные фото
+    // отдаются с `/api/files/content/...` (см. entities/file/lib/file-utils.ts),
+    // и с включённой оптимизацией каждый такой src отвечал бы 400.
+    // Поэтому `localPatterns` убран: действует значение по умолчанию —
+    // разрешены все локальные пути этого же origin. Внешние источники
+    // по-прежнему ограничены `remotePatterns` ниже.
+    //
+    // sharp в образе есть: `@img/sharp-linuxmusl-x64` присутствует
+    // в package-lock.json, а Dockerfile ставит зависимости через `npm ci`
+    // на node:24-alpine.
     remotePatterns: [
       {
         protocol: 'https',

@@ -6,6 +6,7 @@ import { PostPatch } from '@/entities/post';
 import { PostDomain, postRepositories } from '@/entities/post/server';
 
 import { Either, left, right } from '@/shared/lib/either';
+import { buildDescription } from '@/shared/lib/seo/description';
 import { PageMetaData } from '@/shared/model/types';
 
 const getPagesCount = async (where?: Prisma.PostWhereInput) => {
@@ -71,10 +72,15 @@ const getPostBySlug = async (
 const getPostMetaDataBySlug = async (
   slug: string
 ): Promise<Either<string, PageMetaData>> => {
+  // `content` выбирается ради описания: у легаси-постов заполненного
+  // описания нет, и единственный источник осмысленного текста — сам пост.
+  // Лишнее чтение той же строки заметно только на динамическом рендере;
+  // страницы постов объявлены ISR (`revalidate` в `[slug]/page.tsx`).
   const result: Prisma.PostGetPayload<{
     select: {
       title: true;
       description: true;
+      content: true;
       metaTitle: true;
       metaDescription: true;
       metaKeywords: true;
@@ -84,6 +90,7 @@ const getPostMetaDataBySlug = async (
     select: {
       title: true,
       description: true,
+      content: true,
       metaTitle: true,
       metaDescription: true,
       metaKeywords: true
@@ -96,7 +103,10 @@ const getPostMetaDataBySlug = async (
 
   return right({
     title: result.metaTitle || result.title,
-    description: result.metaDescription || result.description,
+    description: buildDescription(
+      result.metaDescription || result.description,
+      result.content
+    ),
     keywords: result.metaKeywords
   });
 };

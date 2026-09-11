@@ -1,6 +1,7 @@
 import { PUBLIC_TOUR_STATUS } from '@/entities/tour/domain';
 
 import { Either, left, right } from '@/shared/lib/either';
+import { buildDescription } from '@/shared/lib/seo/description';
 import { PageMetaData } from '@/shared/model/types';
 
 import { TourKernel, tourToKernelTour } from '@/kernel/tour/domain';
@@ -45,6 +46,7 @@ async function getTourMetaData(
     select: {
       title: true;
       description: true;
+      descriptionText: true;
       metaTitle: true;
       metaDescription: true;
       metaKeywords: true;
@@ -55,9 +57,15 @@ async function getTourMetaData(
     return left('Тур с указанным слоганом не найден');
   }
 
+  // Тот же фолбэк, что и у постов: заполненное описание → текст тура →
+  // пусто. Заглушки из импорта сюда не доезжали, но правило про описание
+  // на сайте должно быть одно, а не два.
   return right({
     title: tour.metaTitle || tour.title,
-    description: tour.metaDescription || tour.description,
+    description: buildDescription(
+      tour.metaDescription || tour.description,
+      tour.descriptionText
+    ),
     keywords: tour.metaKeywords
   });
 }

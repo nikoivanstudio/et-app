@@ -46,21 +46,31 @@ export const buildPageMetadata = ({
   description,
   path,
   keywords
-}: PageMetadataConfig): Metadata => ({
-  title,
-  description,
-  ...(keywords?.length ? { keywords } : {}),
-  alternates: { canonical: path },
-  openGraph: {
-    type: 'website',
-    locale: SITE_LOCALE,
-    siteName: SITE_NAME,
-    url: path,
+}: PageMetadataConfig): Metadata => {
+  // Пустое описание — это «тега нет», а не `content=""`. Пустой тег
+  // поисковик трактует хуже отсутствующего, а до фолбэка в
+  // `shared/lib/seo/description.ts` сюда приезжала строка-заглушка
+  // `'description'` — и она уходила в том числе в og:description,
+  // ломая превью ссылок в Telegram и VK.
+  const text = description.trim();
+  const withDescription = text ? { description: text } : {};
+
+  return {
     title,
-    description,
-    images: [OG_IMAGE]
-  }
-});
+    ...withDescription,
+    ...(keywords?.length ? { keywords } : {}),
+    alternates: { canonical: path },
+    openGraph: {
+      type: 'website',
+      locale: SITE_LOCALE,
+      siteName: SITE_NAME,
+      url: path,
+      title,
+      ...withDescription,
+      images: [OG_IMAGE]
+    }
+  };
+};
 
 /**
  * Метаданные для страниц, которых не должно быть в индексе: вход, личный
