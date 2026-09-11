@@ -39,10 +39,18 @@ export async function postCallbackRequest(req: NextRequest): Promise<Response> {
 
     const { name, phone, description } = callbackDataResult.data;
 
+    // `entityName` приходит рядом с полями формы и схемой не покрывается:
+    // это не пользовательский ввод, а подпись страницы из кода. Обрезаем
+    // на всякий случай — в письмо не должна уехать строка произвольной длины.
+    const source =
+      typeof body?.entityName === 'string'
+        ? body.entityName.slice(0, 180)
+        : undefined;
+
     const createEmailResponse = await emailNotifications.sendToEmail({
       to: process.env.CALLBACK_TO || '',
       subject: 'Заявка на обратный звонок',
-      reactNode: CallbackEmail({ name, phone, message: description })
+      reactNode: CallbackEmail({ name, phone, message: description, source })
     });
 
     if (!createEmailResponse.data?.id) {

@@ -94,7 +94,7 @@ export const Content: FC = async () => (
       {/* Было: bg-zinc-500 и текст 24px в рамке 8px — не кнопка и не в
           палитре. Теперь та же главная кнопка, что на главной. */}
       <div className='mt-6 mb-10 text-center'>
-        <LinkButton className='w-full md:w-[280px]' href='/category/vse_tury'>
+        <LinkButton className='w-full md:w-[280px]' href='/tours'>
           Посмотреть все туры
         </LinkButton>
       </div>

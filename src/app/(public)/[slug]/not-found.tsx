@@ -22,7 +22,7 @@ const NotFound: FC = () => (
       <div className='mt-8 flex flex-col items-center gap-2'>
         <Link
           className='bg-cta text-on-cta hover:bg-cta-press rounded-pill flex min-h-12 w-full max-w-[320px] items-center justify-center px-6 font-medium transition-colors'
-          href='/category/vse_tury'
+          href='/tours'
         >
           Все туры
         </Link>

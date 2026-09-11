@@ -1,10 +1,20 @@
+/**
+ * Контакты организации — единственный источник.
+ *
+ * Раньше телефон в шапке был захардкожен отдельно (`+79781113801`) и
+ * не совпадал ни с одним из номеров в подвале и в схеме организации:
+ * на каждой странице сайта человеку показывали один номер, а в разметке
+ * и в футере — другие.
+ */
 export const CONTACTS = {
   address: 'Республика Крым, г. Бахчисарай',
   email: 'infoenergytur@gmail.com',
   phones: ['+79787880753', '+79780542072'],
   telegram: 'https://t.me/EnergyTourCrimea',
   max: 'https://max.ru/+79787880753',
-  // whatsapp: 'https://api.whatsapp.com/send?phone=79787880753',
+  // WhatsApp был закомментирован. В нише это основной канал заявок
+  // наравне с Telegram (A7): в Крыму по нему пишут чаще, чем звонят.
+  whatsapp: 'https://wa.me/79787880753',
   vk: 'https://vk.com/dzhip_tur_krym',
   ruTube: 'https://www.youtube.com/@energy-tour675'
 };

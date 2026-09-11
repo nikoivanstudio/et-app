@@ -15,6 +15,7 @@ import {
   buildAttractionJsonLd
 } from '@/shared/lib/seo/json-ld';
 import { JsonLd } from '@/shared/ui/json-ld';
+import { LeadActions } from '@/shared/ui/lead-actions';
 import { TextContent } from '@/shared/ui/text-content';
 import { TourLinks } from '@/shared/ui/tour-links';
 
@@ -58,8 +59,7 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
   const placeView = place
     ? await placeServices.getPlaceBySlug(place.slug)
     : null;
-  const tours =
-    placeView?.type === 'right' ? placeView.value.tours : [];
+  const tours = placeView?.type === 'right' ? placeView.value.tours : [];
 
   const articleDescription = buildDescription(
     metaDescription || description,
@@ -156,6 +156,16 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
               items={tours}
               title={place ? `Туры с заездом: ${place.title}` : undefined}
               lead='Маршруты, которые включают этот объект. Цена за машину до шести человек.'
+            />
+
+            {/* A7. Именно эти страницы и стоят в индексе — а заявку
+                с них до сих пор оставить было нельзя: форма была только
+                на `/tour/[slug]`, а телефон — только в подвале. */}
+            <LeadActions
+              className='mt-9'
+              entityName={title}
+              entityId={slug}
+              note='Спросим про даты и подберём маршрут, который сюда заезжает'
             />
           </div>
         </div>

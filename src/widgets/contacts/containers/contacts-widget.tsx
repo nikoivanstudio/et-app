@@ -7,6 +7,7 @@ import { FC, ReactNode } from 'react';
 import { CONTACTS } from '@/widgets/contacts/constants/contacts';
 
 import logo from '@/shared/assets/images/logo.png';
+import { hasRequisites, REQUISITES } from '@/shared/constants/legal-constants';
 import { getCurrentYear } from '@/shared/lib/seo/current-year';
 import { formatNumber } from '@/shared/lib/string-utils';
 import {
@@ -20,8 +21,9 @@ const NAV: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: 'Туры',
     links: [
-      { label: 'Все туры', href: '/category/vse_tury' },
-      { label: 'Каталог туров', href: '/tours' },
+      // Было две строки на один раздел: «Все туры» вели
+      // в легаси-каталог, «Каталог туров» — в основной (B7, A5).
+      { label: 'Все туры', href: '/tours' },
       { label: 'Джип-туры по Крыму', href: '/dzhip-tur-krym' },
       { label: 'Экскурсии по Крыму', href: '/ekskursii-po-krymu' }
     ]
@@ -47,12 +49,28 @@ const NAV: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: 'О нас',
     links: [
+      // Разделы фазы E: объекты (E2), гиды (E6) и служебные страницы (E8).
+      // Без ссылок из подвала они обходились бы только из sitemap.
+      { label: 'О компании', href: '/o-nas' },
+      { label: 'Места Крыма', href: '/mesta' },
+      { label: 'Наши гиды', href: '/guides' },
       { label: 'Отзывы', href: '/otzyvy' },
       { label: 'Интересное о Крыме', href: '/posts' },
-      { label: 'Ближайшие выезды', href: '/activities' },
       { label: 'Контакты', href: '/kontakty' }
     ]
   }
+];
+
+/**
+ * Правовые документы (E8).
+ *
+ * Отдельной строкой под копирайтом, а не в навигации: для агрегатора,
+ * принимающего заявки, они обязательны по закону о защите прав
+ * потребителей, но искать по ним нечего — место им внизу.
+ */
+const LEGAL_LINKS = [
+  { label: 'Публичная оферта', href: '/oferta' },
+  { label: 'Обработка персональных данных', href: '/politika' }
 ];
 
 const SOCIALS: { href: string; label: string; icon: ReactNode }[] = [
@@ -154,9 +172,35 @@ export const ContactsWidget: FC = async () => (
       </div>
 
       <div className='mt-10 border-t border-white/12 pt-5'>
+        <ul className='mb-3 flex flex-wrap gap-x-5 gap-y-1'>
+          {LEGAL_LINKS.map(({ label, href }) => (
+            <li key={href}>
+              <Link
+                className='font-oswald text-cream/45 hover:text-gold-photo text-[12px] tracking-wide transition-colors'
+                href={href}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
         <p className='font-oswald text-cream/45 text-[12px] tracking-wide'>
           © {getCurrentYear()} Energy Tour
         </p>
+
+        {/* Реквизиты — требование закона к владельцам агрегаторов
+            и одновременно коммерческий фактор, который Яндекс считает
+            явно. Блок появляется, когда они заполнены: печатать
+            «ИНН: ___» в подвале нельзя. */}
+        {hasRequisites() && (
+          <p className='font-caladea text-cream/45 mt-1.5 text-[12.5px] leading-relaxed'>
+            {REQUISITES.legalName}
+            {!!REQUISITES.inn && ` · ИНН ${REQUISITES.inn}`}
+            {!!REQUISITES.ogrn && ` · ОГРН ${REQUISITES.ogrn}`}
+            {!!REQUISITES.legalAddress && ` · ${REQUISITES.legalAddress}`}
+          </p>
+        )}
       </div>
     </div>
   </div>

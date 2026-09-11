@@ -47,13 +47,39 @@ export const tourCrumbs = (title: string): Crumb[] => [
 /**
  * Профиль гида.
  *
- * Промежуточного раздела нет: листинга гидов на сайте пока не существует
- * (задача E6 в docs/seo/plan.md). Как только появится — сюда добавится
- * крошка «Гиды», и разметка подхватит её сама.
+ * Крошка «Гиды» появилась вместе с листингом `/guides` (E6): до него
+ * промежуточного раздела не существовало, и путь обрывался на главной.
  */
 export const guideCrumbs = (name: string): Crumb[] => [
   HOME_CRUMB,
+  { label: 'Гиды', href: '/guides' },
   currentCrumb(name)
+];
+
+/** Страница объекта: пещерный город, каньон, дворец (E2). */
+export const placeCrumbs = (title: string): Crumb[] => [
+  HOME_CRUMB,
+  { label: 'Места', href: '/mesta' },
+  currentCrumb(title)
+];
+
+/**
+ * Гео-страница: `/dzhip-tury/bahchisaray` (E3).
+ *
+ * Промежуточная крошка ведёт на `/dzhip-tur-krym` — посадочную по
+ * джип-турам, а не на каталог: именно она отвечает запросу «джип тур Крым»,
+ * и путь в сниппете должен повторять структуру раздела, а не файловую.
+ */
+export const geoCrumbs = (city: string): Crumb[] => [
+  HOME_CRUMB,
+  { label: 'Джип-туры', href: '/dzhip-tur-krym' },
+  currentCrumb(city)
+];
+
+/** Раздел без вложенности: каталог, листинг, служебная страница. */
+export const sectionCrumbs = (title: string): Crumb[] => [
+  HOME_CRUMB,
+  currentCrumb(title)
 ];
 
 type ListItem = {

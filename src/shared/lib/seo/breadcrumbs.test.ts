@@ -1,7 +1,9 @@
 import {
   buildBreadcrumbJsonLd,
+  geoCrumbs,
   guideCrumbs,
   HOME_CRUMB,
+  placeCrumbs,
   postCrumbs,
   tourCrumbs
 } from '@/shared/lib/seo/breadcrumbs';
@@ -22,11 +24,31 @@ describe('построение путей', () => {
     });
   });
 
-  test('у гида промежуточного раздела нет — листинга гидов не существует', () => {
+  test('гид лежит в разделе «Гиды»', () => {
+    // Раздела не существовало, пока не появился листинг `/guides` (E6):
+    // до него путь обрывался на главной.
     expect(guideCrumbs('Иван Петров')).toEqual([
       HOME_CRUMB,
+      { label: 'Гиды', href: '/guides' },
       { label: 'Иван Петров' }
     ]);
+  });
+
+  test('объект лежит в разделе «Места»', () => {
+    expect(placeCrumbs('Мангуп-Кале')).toEqual([
+      HOME_CRUMB,
+      { label: 'Места', href: '/mesta' },
+      { label: 'Мангуп-Кале' }
+    ]);
+  });
+
+  test('гео-страница ведёт на посадочную джип-туров, а не в каталог', () => {
+    // Путь в сниппете повторяет структуру раздела: запросу «джип тур Крым»
+    // отвечает `/dzhip-tur-krym`, а не `/tours`.
+    expect(geoCrumbs('Джип-туры из Бахчисарая')[1]).toEqual({
+      label: 'Джип-туры',
+      href: '/dzhip-tur-krym'
+    });
   });
 
   test('текущая страница всегда без href', () => {

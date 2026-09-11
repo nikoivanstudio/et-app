@@ -2,7 +2,7 @@ import { ActivityDomain } from '@/entities/activity/server';
 import { GeoPointDomain } from '@/entities/geo-point';
 import { isGeoPointEntity } from '@/entities/geo-point/lib/typeguadrs';
 import { ReviewDomain } from '@/entities/review';
-import { toTourContent,TourContent } from '@/entities/tour/model/content';
+import { toTourContent, TourContent } from '@/entities/tour/model/content';
 
 import type { FaqItem } from '@/shared/lib/seo/json-ld';
 

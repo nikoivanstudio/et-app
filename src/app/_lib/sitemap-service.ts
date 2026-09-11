@@ -4,7 +4,9 @@ import { type SitemapEntry, sitemapUtils } from '@/app/_lib/sitemap-utils';
 import { postServices } from '@/features/post/server';
 import { tourService } from '@/features/tour/server';
 
+import { getAllLandings } from '@/entities/landing/server';
 import { guideServices } from '@/kernel/guide/server';
+import { placeServices } from '@/kernel/place/server';
 
 /**
  * Разделы sitemap.
@@ -97,7 +99,44 @@ const getPostEntries = (): Promise<SitemapEntry[]> =>
     );
   });
 
-export type SitemapSectionId = 'static' | 'tours' | 'guides' | 'posts';
+// Страницы объектов: /mesta/{slug} (E2).
+const getPlaceEntries = (): Promise<SitemapEntry[]> =>
+  collect('объекты', async () => {
+    const places = await placeServices.getPublishedPlaces();
+
+    return places.map(place => ({
+      path: `/mesta/${place.slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+      lastModified: sitemapUtils.getLastModified(place)
+    }));
+  });
+
+/**
+ * Посадочные фазы E: гео-страницы, связки «откуда → куда», форматные.
+ *
+ * Список берётся из реестра, где заготовки без текста уже отсеяны:
+ * адрес, который в sitemap есть, а содержимого не имеет, — прямой повод
+ * для претензии к качеству сайта.
+ *
+ * В try/catch эта секция не нуждается: данные лежат в коде, а не в базе.
+ */
+const getLandingEntries = (): Promise<SitemapEntry[]> =>
+  Promise.resolve(
+    getAllLandings().map(landing => ({
+      path: landing.path,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8
+    }))
+  );
+
+export type SitemapSectionId =
+  | 'static'
+  | 'tours'
+  | 'landings'
+  | 'places'
+  | 'guides'
+  | 'posts';
 
 type SitemapSection = {
   id: SitemapSectionId;
@@ -107,6 +146,8 @@ type SitemapSection = {
 export const SITEMAP_SECTIONS: SitemapSection[] = [
   { id: 'static', load: getStaticEntries },
   { id: 'tours', load: getTourEntries },
+  { id: 'landings', load: getLandingEntries },
+  { id: 'places', load: getPlaceEntries },
   { id: 'guides', load: getGuideEntries },
   { id: 'posts', load: getPostEntries }
 ];

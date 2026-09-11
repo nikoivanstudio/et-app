@@ -3,11 +3,11 @@ import { FC } from 'react';
 import { cn } from '@/shared/lib/css';
 
 /** Пять звёзд: закрашено столько, сколько в оценке. */
-export const Stars: FC<{ value: number; size?: number; className?: string }> = ({
-  value,
-  size = 14,
-  className
-}) => (
+export const Stars: FC<{
+  value: number;
+  size?: number;
+  className?: string;
+}> = ({ value, size = 14, className }) => (
   <span
     className={cn('inline-flex items-center gap-0.5', className)}
     aria-label={`Оценка ${value.toFixed(1)} из 5`}

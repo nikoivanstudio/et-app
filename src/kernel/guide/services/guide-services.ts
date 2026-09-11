@@ -220,8 +220,33 @@ async function getGuideRefs(): Promise<
   }));
 }
 
+/**
+ * Список гидов для раздела `/guides` (E6).
+ *
+ * Берём тех, у кого есть опубликованный тур: карточка гида без единого
+ * маршрута — это пустая страница, а раздел, наполовину состоящий из
+ * пустых страниц, работает против себя.
+ *
+ * Зачем раздел вообще нужен: профили гидов со стажем, техникой и
+ * маршрутами — единственное, чего нет ни у одного федерального
+ * агрегатора, и прямой сигнал E-E-A-T. Маршрут `/guide/[slug]` был
+ * написан, но попасть на него было неоткуда: ни листинга, ни ссылки.
+ */
+async function getGuideList(): Promise<GuideSummary[]> {
+  const users = await dbClient.user.findMany({
+    where: {
+      role: { in: GUIDE_ROLES },
+      tours: { some: { status: PUBLIC_TOUR_STATUS } }
+    },
+    orderBy: { createdAt: 'asc' }
+  });
+
+  return Promise.all(users.map(buildSummary));
+}
+
 export const guideServices = {
   getGuideRefs,
+  getGuideList,
   getGuideSummary,
   getGuideBySlug,
   getGuideMetaData

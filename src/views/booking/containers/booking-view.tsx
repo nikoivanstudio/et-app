@@ -33,7 +33,8 @@ const STATUS_HINT: Record<string, string> = {
     'Заявка отправлена. Гид скоро свяжется с вами по телефону.',
   [BookingDomain.BookingStatus.CONTACTED]:
     'Гид связался с вами и обрабатывает заявку.',
-  [BookingDomain.BookingStatus.CONFIRMED]: 'Бронь подтверждена. До встречи на туре!',
+  [BookingDomain.BookingStatus.CONFIRMED]:
+    'Бронь подтверждена. До встречи на туре!',
   [BookingDomain.BookingStatus.COMPLETED]:
     'Тур завершён. Будем рады вашему отзыву!',
   [BookingDomain.BookingStatus.CANCELLED]: 'Заявка отменена.',
@@ -51,10 +52,7 @@ const formatDate = (iso: string | null): string | null => {
   }).format(new Date(iso));
 };
 
-const Row: FC<{ label: string; value?: string | null }> = ({
-  label,
-  value
-}) =>
+const Row: FC<{ label: string; value?: string | null }> = ({ label, value }) =>
   value ? (
     <div className='flex items-center justify-between border-b border-[var(--rule)] py-2.5 last:border-0'>
       <span className='font-oswald text-[12px] tracking-wide text-[var(--ink-muted)]'>
@@ -93,7 +91,9 @@ export const BookingView: FC<Props> = async ({ params }) => {
       <h1 className='mt-3 font-poiret text-[26px] leading-tight tracking-wide text-[var(--ink)]'>
         Заявка на тур
       </h1>
-      <p className='mt-2 text-[14px] text-[var(--ink-muted)]'>{STATUS_HINT[status]}</p>
+      <p className='mt-2 text-[14px] text-[var(--ink-muted)]'>
+        {STATUS_HINT[status]}
+      </p>
 
       <div className='mt-5 rounded-3xl border border-[var(--rule)] bg-white p-5'>
         <Link
@@ -108,7 +108,9 @@ export const BookingView: FC<Props> = async ({ params }) => {
           <Row label='Гостей' value={`${booking.peopleCount} чел.`} />
           <Row label='Имя' value={booking.guestName} />
           <Row label='Телефон' value={booking.guestPhone} />
-          {booking.guide && <Row label='Гид' value={booking.guide.displayName} />}
+          {booking.guide && (
+            <Row label='Гид' value={booking.guide.displayName} />
+          )}
           <Row label='Заявка создана' value={formatDate(booking.createdAt)} />
           {status === BookingDomain.BookingStatus.CANCELLED && (
             <Row label='Причина' value={booking.cancelReason} />

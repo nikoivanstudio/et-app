@@ -4,11 +4,14 @@ import * as React from 'react';
 export function CallbackEmail({
   name,
   phone,
-  message
+  message,
+  source
 }: {
   name: string;
   phone: string;
   message?: string;
+  /** Страница, с которой пришла заявка (A7). */
+  source?: string;
 }) {
   return (
     <Html lang='ru'>
@@ -23,6 +26,13 @@ export function CallbackEmail({
         {message && (
           <Text>
             <b>Комментарий:</b> {message}
+          </Text>
+        )}
+        {/* Источник: форма встала на все типы страниц (A7), и без него
+            оператор не знает, о каком маршруте спрашивают. */}
+        {source && (
+          <Text>
+            <b>Источник:</b> {source}
           </Text>
         )}
       </Section>

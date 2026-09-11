@@ -81,10 +81,7 @@ export const UpcomingActivities: FC = async () => {
                 Собираем группу под ваши даты — от четырёх человек выходит
                 дешевле, чем в сборной группе.
               </p>
-              <LinkButton
-                className='mt-5 w-full md:w-[260px]'
-                href='/category/vse_tury'
-              >
+              <LinkButton className='mt-5 w-full md:w-[260px]' href='/tours'>
                 Выбрать тур
               </LinkButton>
             </div>

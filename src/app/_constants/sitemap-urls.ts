@@ -21,8 +21,20 @@ export const staticSitemapEntries: SitemapEntry[] = [
   { path: '/posts', changeFrequency: 'daily', priority: 0.8 },
   { path: '/uslugi', changeFrequency: 'monthly', priority: 0.8 },
 
+  // Разделы фазы E: объекты (E2) и гиды (E6). Сами страницы разделов —
+  // здесь, их содержимое — в секциях `places` и `guides`.
+  { path: '/mesta', changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/guides', changeFrequency: 'weekly', priority: 0.7 },
+
   { path: '/kontakty', changeFrequency: 'yearly', priority: 0.5 },
   { path: '/otzyvy', changeFrequency: 'monthly', priority: 0.6 },
+
+  // Служебные страницы (E8). Для агрегатора, принимающего заявки, это
+  // требование закона о защите прав потребителей и коммерческий фактор,
+  // который Яндекс считает явно.
+  { path: '/o-nas', changeFrequency: 'yearly', priority: 0.6 },
+  { path: '/oferta', changeFrequency: 'yearly', priority: 0.3 },
+  { path: '/politika', changeFrequency: 'yearly', priority: 0.3 },
 
   // Легаси-лендинги, перенесённые с WordPress: контент статичен.
   //

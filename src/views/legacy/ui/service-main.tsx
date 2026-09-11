@@ -4,12 +4,11 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
-import { CONTACTS } from '@/widgets/contacts/constants/contacts';
 
 import { JEEP_TOUR_FAQ } from '@/shared/constants/faq-constants';
-import { formatNumber } from '@/shared/lib/string-utils';
 import { DetailBlock, IncludeRow, PriceRow } from '@/shared/ui/detail-block';
 import { FaqSection } from '@/shared/ui/faq-section';
+import { LeadActions } from '@/shared/ui/lead-actions';
 import { LinkButton } from '@/shared/ui/link-button';
 import { SectionHeading } from '@/shared/ui/section-heading';
 import { TextContent } from '@/shared/ui/text-content';
@@ -45,7 +44,6 @@ export const ServiceMain: FC<ServiceViewProps> = async props => {
   const others = isService
     ? services.filter(service => service !== card).slice(0, 3)
     : [];
-  const phone = CONTACTS.phones[0];
   const hasRawContent = content.trim().length >= RAW_CONTENT_MIN_LENGTH;
 
   return (
@@ -151,30 +149,25 @@ export const ServiceMain: FC<ServiceViewProps> = async props => {
               </>
             )}
 
-            {/* Заявка и телефон прямо на странице — до этого заказать услугу
-                можно было только из подвала. */}
-            <div className='mt-9 flex flex-col gap-2.5'>
-              {isService ? (
-                <LinkButton className='w-full' href={`tel:${phone}`}>
-                  Позвонить {formatNumber(phone)}
-                </LinkButton>
-              ) : (
-                <LinkButton className='w-full' href='/category/vse_tury'>
-                  Смотреть все туры
-                </LinkButton>
-              )}
-              <Link
-                className='border-rule text-ink hover:bg-cream-deep rounded-pill font-oswald inline-flex min-h-12 w-full items-center justify-center border bg-transparent text-[15px] tracking-wide transition-colors'
-                href={isService ? CONTACTS.telegram : `tel:${phone}`}
-              >
-                {isService
-                  ? 'Написать в Telegram'
-                  : `Позвонить ${formatNumber(phone)}`}
-              </Link>
-              <p className='font-oswald text-ink-faint mt-0.5 text-center text-[12.5px]'>
-                Расскажем про маршрут и подберём даты
-              </p>
-            </div>
+            {/* Заявка, телефон и мессенджеры прямо на странице (A7).
+                Было: у услуги — только кнопка звонка и ссылка в Telegram,
+                у не-услуг — кнопка в каталог; формы не было нигде, кроме
+                карточки тура. */}
+            {!isService && (
+              <LinkButton className='mt-9 w-full' href='/tours'>
+                Смотреть все туры
+              </LinkButton>
+            )}
+            <LeadActions
+              className={isService ? 'mt-9' : 'mt-2.5'}
+              entityName={title}
+              entityId={slug ?? ''}
+              note={
+                isService
+                  ? 'Ответим по условиям, срокам и залогу'
+                  : 'Расскажем про маршрут и подберём даты'
+              }
+            />
 
             {hasRawContent && (
               <>

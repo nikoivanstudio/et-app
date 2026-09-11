@@ -148,7 +148,10 @@ export const ReviewsView: FC<Props> = async ({ items, summary }) => (
                 Мы возим группы с 2016 года, но отзывы всё это время оставляли
                 во ВКонтакте. Переносим их сюда — а пока почитать можно там.
               </p>
-              <LinkButton className='mt-5 w-full md:w-[260px]' href={CONTACTS.vk}>
+              <LinkButton
+                className='mt-5 w-full md:w-[260px]'
+                href={CONTACTS.vk}
+              >
                 Читать отзывы во ВКонтакте
               </LinkButton>
             </div>

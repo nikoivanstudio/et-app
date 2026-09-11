@@ -43,9 +43,7 @@ export type PriceUnit = 'PER_CAR' | 'PER_PERSON';
  * Молчать нельзя: «от 8 000 ₽» за машину на шестерых и за человека —
  * это разница в шесть раз.
  */
-const priceUnitLabel = (
-  unit?: PriceUnit | null
-): string | undefined => {
+const priceUnitLabel = (unit?: PriceUnit | null): string | undefined => {
   if (unit === 'PER_CAR') return 'Цена за машину до 6 человек';
   if (unit === 'PER_PERSON') return 'Цена за одного человека';
 

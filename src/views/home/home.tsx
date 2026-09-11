@@ -31,9 +31,12 @@ export const HomeView: FC = async () => {
             <div className='absolute inset-x-0 bottom-22'>
               <div className='mx-auto w-full max-w-[1120px] px-4 text-center md:px-6'>
                 {/* Было: пилюля во всю ширину окна — 1372px на 1440. */}
+                {/* A5: ведёт в единственный каталог `/tours`, а не
+                    в легаси `/category/vse_tury` — один из семи
+                    конкурирующих каталогов (B7). */}
                 <LinkButton
                   className='w-full shadow-[0_6px_20px_#00000059] md:w-[280px]'
-                  href='/category/vse_tury'
+                  href='/tours'
                 >
                   Все туры
                 </LinkButton>

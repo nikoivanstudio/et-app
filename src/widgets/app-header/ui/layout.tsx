@@ -66,7 +66,10 @@ export const Layout: FC<LayoutProps> = ({
           <div className='hidden md:block md:grow md:pl-8'>{desktopNav}</div>
         )}
 
-        <div className='flex size-11 items-center justify-center'>
+        {/* Было `size-11` — ровно под одну иконку. В A7 рядом с телефоном
+            встали Telegram и WhatsApp, и фиксированная ширина сжимала их
+            в столбик. Высота строки касания сохранена. */}
+        <div className='flex min-h-11 items-center justify-end'>
           {rightNode}
         </div>
       </div>
