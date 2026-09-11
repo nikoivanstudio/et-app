@@ -405,6 +405,7 @@ export const ModelName = {
   PartnerApplication: 'PartnerApplication',
   Photo: 'Photo',
   Post: 'Post',
+  Redirect: 'Redirect',
   Review: 'Review',
   Session: 'Session',
   Tour: 'Tour',
@@ -425,7 +426,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "activity" | "booking" | "file" | "order" | "otp" | "partnerApplication" | "photo" | "post" | "review" | "session" | "tour" | "transaction" | "user"
+    modelProps: "activity" | "booking" | "file" | "order" | "otp" | "partnerApplication" | "photo" | "post" | "redirect" | "review" | "session" | "tour" | "transaction" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1021,6 +1022,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Redirect: {
+      payload: Prisma.$RedirectPayload<ExtArgs>
+      fields: Prisma.RedirectFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RedirectFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RedirectFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>
+        }
+        findFirst: {
+          args: Prisma.RedirectFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RedirectFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>
+        }
+        findMany: {
+          args: Prisma.RedirectFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>[]
+        }
+        create: {
+          args: Prisma.RedirectCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>
+        }
+        createMany: {
+          args: Prisma.RedirectCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RedirectCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>[]
+        }
+        delete: {
+          args: Prisma.RedirectDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>
+        }
+        update: {
+          args: Prisma.RedirectUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>
+        }
+        deleteMany: {
+          args: Prisma.RedirectDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RedirectUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RedirectUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>[]
+        }
+        upsert: {
+          args: Prisma.RedirectUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RedirectPayload>
+        }
+        aggregate: {
+          args: Prisma.RedirectAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRedirect>
+        }
+        groupBy: {
+          args: Prisma.RedirectGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RedirectGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RedirectCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RedirectCountAggregateOutputType> | number
+        }
+      }
+    }
     Review: {
       payload: Prisma.$ReviewPayload<ExtArgs>
       fields: Prisma.ReviewFieldRefs
@@ -1577,6 +1652,20 @@ export const PostScalarFieldEnum = {
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
+export const RedirectScalarFieldEnum = {
+  id: 'id',
+  source: 'source',
+  destination: 'destination',
+  statusCode: 'statusCode',
+  isActive: 'isActive',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RedirectScalarFieldEnum = (typeof RedirectScalarFieldEnum)[keyof typeof RedirectScalarFieldEnum]
+
+
 export const ReviewScalarFieldEnum = {
   id: 'id',
   content: 'content',
@@ -1963,6 +2052,7 @@ export type GlobalOmitConfig = {
   partnerApplication?: Prisma.PartnerApplicationOmit
   photo?: Prisma.PhotoOmit
   post?: Prisma.PostOmit
+  redirect?: Prisma.RedirectOmit
   review?: Prisma.ReviewOmit
   session?: Prisma.SessionOmit
   tour?: Prisma.TourOmit

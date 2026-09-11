@@ -51,14 +51,21 @@ export async function generateMetadata(): Promise<Metadata> {
     // Картинка для соцсетей приходит из файловой конвенции
     // `src/app/opengraph-image.tsx` — прежний openGraph.images ссылался на
     // /og.jpg, которого в public/ нет и никогда не было.
+    // Правила обхода задаются в ОБЩЕМ блоке, а не только для googleBot.
+    // Раньше `max-image-preview: large` стоял исключительно в googleBot —
+    // а Яндекс, на который у проекта приоритет, читает общее правило
+    // `robots` и директиву для чужого бота игнорирует. В результате
+    // фотографии из туров и справочника не попадали в расширенный сниппет
+    // Яндекса, хотя ради них снимали `images.unoptimized` (D1).
+    //
+    // `max-snippet: -1` и `max-video-preview: -1` — «без ограничения»:
+    // длину сниппета выбирает поисковик, а не мы.
     robots: {
       index: true,
       follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-image-preview': 'large'
-      }
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1
     }
   };
 }

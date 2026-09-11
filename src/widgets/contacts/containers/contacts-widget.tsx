@@ -23,7 +23,7 @@ const NAV: { title: string; links: { label: string; href: string }[] }[] = [
       { label: 'Все туры', href: '/category/vse_tury' },
       { label: 'Каталог туров', href: '/tours' },
       { label: 'Джип-туры по Крыму', href: '/dzhip-tur-krym' },
-      { label: 'Экскурсии по Крыму', href: '/ekskursii_po_krymu' }
+      { label: 'Экскурсии по Крыму', href: '/ekskursii-po-krymu' }
     ]
   },
   {

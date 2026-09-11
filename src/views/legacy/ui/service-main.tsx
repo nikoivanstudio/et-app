@@ -36,7 +36,7 @@ export const ServiceMain: FC<ServiceViewProps> = async props => {
 
   const details = slug ? SERVICE_DETAILS[slug] : undefined;
   const card = services.find(service => service.href.endsWith(`/${slug}`));
-  /* Этим же шаблоном рендерятся и не-услуги — /tury, /ekskursii_po_krymu,
+  /* Этим же шаблоном рендерятся и не-услуги — /tury, /ekskursii-po-krymu,
      /turisticheskie-priklyucheniya-v-krymu. Для них не нужны ни крошка
      «Услуги», ни блок «Другие услуги». */
   const isService = !!card;

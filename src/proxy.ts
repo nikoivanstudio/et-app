@@ -2,6 +2,13 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 import {
+  buildRedirectTarget,
+  isRedirectStatusCode,
+  normalizeRedirectSource
+} from '@/entities/redirect/lib/redirect-utils';
+
+import { findRedirect } from '@/shared/lib/redirects/redirect-map';
+import {
   AUTH_RATE_LIMIT_MAX,
   AUTH_RATE_LIMIT_WINDOW_MS,
   AUTH_SENSITIVE_PATHS,
@@ -33,7 +40,59 @@ const isAuthSensitive = (req: NextRequest): boolean =>
       req.nextUrl.pathname.startsWith(`${path}/`)
   );
 
-export function proxy(req: NextRequest) {
+/**
+ * Адреса, для которых таблица переадресаций не спрашивается.
+ *
+ * `/api` — обязательно: именно оттуда карта и загружается, и запрос к
+ * `/api/redirects` вызвал бы сам себя. Остальное — служебное, где правил
+ * быть не может, а лишний поиск исполняется на каждом запросе.
+ */
+const SKIP_REDIRECT_PREFIXES = ['/api', '/_next', '/sitemap', '/robots.txt'];
+
+/**
+ * Переадресация по таблице в базе (B5).
+ *
+ * Склеить предстоит около девятисот адресов: дубли справочника (B6),
+ * конкурирующие каталоги (B7), слаги с HTML-сущностями (B8). Списком
+ * в `next.config.ts` это не поддерживается — каждая правка означала бы
+ * деплой, а правится он по мере разбора справочника. Поэтому правила
+ * лежат данными, а прокси держит их карту в памяти (см. `redirect-map.ts`).
+ *
+ * Только безопасные методы: переадресовывать POST на другой адрес значит
+ * потерять тело запроса, а заявка с формы — последнее, что можно терять.
+ */
+const resolveRedirect = async (
+  req: NextRequest
+): Promise<NextResponse | null> => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    return null;
+  }
+
+  const { pathname, search, origin } = req.nextUrl;
+
+  if (SKIP_REDIRECT_PREFIXES.some(prefix => pathname.startsWith(prefix))) {
+    return null;
+  }
+
+  const rule = await findRedirect(origin, normalizeRedirectSource(pathname));
+
+  if (!rule || !isRedirectStatusCode(rule.statusCode)) {
+    return null;
+  }
+
+  // 410 Gone — для адресов, которые удалены без замены (тестовые страницы,
+  // страницы про украинскую таможню). Поисковик выбрасывает такой адрес
+  // из индекса быстрее, чем 404, и перестаёт к нему возвращаться.
+  if (rule.statusCode === 410) {
+    return new NextResponse(null, { status: 410 });
+  }
+
+  const target = buildRedirectTarget(rule.destination, search);
+
+  return NextResponse.redirect(new URL(target, req.nextUrl), rule.statusCode);
+};
+
+export async function proxy(req: NextRequest) {
   try {
     const { pathname } = req.nextUrl;
 
@@ -46,7 +105,10 @@ export function proxy(req: NextRequest) {
       : verifyLimit(req);
 
     if (!pathname.startsWith(PROTECTED_API_PREFIX)) {
-      return NextResponse.next();
+      // Переадресация проверяется после лимита, но до рендера: страница
+      // старого адреса не должна собираться только ради того, чтобы её
+      // выбросили.
+      return (await resolveRedirect(req)) ?? NextResponse.next();
     }
 
     const origin = verifyOrigin(req);

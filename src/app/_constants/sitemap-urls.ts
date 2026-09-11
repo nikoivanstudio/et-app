@@ -25,26 +25,28 @@ export const staticSitemapEntries: SitemapEntry[] = [
   { path: '/otzyvy', changeFrequency: 'monthly', priority: 0.6 },
 
   // Легаси-лендинги, перенесённые с WordPress: контент статичен.
+  //
+  // Список поредел после B7. Убраны адреса, которые отдают `noindex, follow`
+  // и ждут склейки: `/tury` (пустая страница с описанием в четыре символа),
+  // `/category/vse_tury/page/2` (пагинация с заголовком первой страницы) и
+  // `/turisticheskie-priklyucheniya-v-krymu` (пересказ каталога без единой
+  // ссылки на тур). Предлагать роботу обойти то, что мы сами закрыли от
+  // индексации, — противоречие, на которое Вебмастер отдельно указывает.
+  //
+  // `/category/vse_tury` пока остаётся: это ЕДИНСТВЕННЫЙ работающий
+  // каталог с карточками, пока в базе нет опубликованных туров (A4).
+  // Его 301 на `/tours` лежит в `prisma/data/redirects.csv` и включается
+  // вместе с наполнением каталога.
   { path: '/category/vse_tury', changeFrequency: 'monthly', priority: 0.6 },
-  {
-    // Вторая страница легаси-каталога: маршрут есть, а в sitemap не было.
-    path: '/category/vse_tury/page/2',
-    changeFrequency: 'monthly',
-    priority: 0.4
-  },
   { path: '/dzhip-tur-krym', changeFrequency: 'monthly', priority: 0.6 },
   {
     path: '/dzhip-tur-krym/ekskursii-v-krymu-s-luchshimi-tsenami',
     changeFrequency: 'monthly',
     priority: 0.6
   },
-  { path: '/ekskursii_po_krymu', changeFrequency: 'monthly', priority: 0.6 },
-  { path: '/tury', changeFrequency: 'monthly', priority: 0.6 },
-  {
-    path: '/turisticheskie-priklyucheniya-v-krymu',
-    changeFrequency: 'monthly',
-    priority: 0.6
-  },
+  // Переименован из `/ekskursii_po_krymu`: подчёркивание не считается
+  // разделителем слов.
+  { path: '/ekskursii-po-krymu', changeFrequency: 'monthly', priority: 0.6 },
 
   // Страницы услуг.
   {

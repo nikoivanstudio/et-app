@@ -1,45 +1,34 @@
-'use server';
-
 import { cn } from '@bem-react/classname';
 import Link from 'next/link';
 import { FC } from 'react';
 
 import { NAV_LINKS } from '@/widgets/app-header/model/links';
-
-import { sessionService } from '@/entities/user/services/session';
+import { AuthNavLink } from '@/widgets/app-header/ui/auth-nav-link';
 
 const cnMainNav = cn('MainNav');
 
-export const MainNav: FC = async () => {
-  const { session } = await sessionService.verifySession();
-  const linksToRender = !!session?.id
-    ? [...NAV_LINKS, { href: `/account/${session.id}`, title: 'Профиль' }]
-    : [
-        ...NAV_LINKS,
-        {
-          href: '/sign-in',
-          title: 'Войти'
-        }
-      ];
+const linkClassName = cnMainNav('Link', [
+  'flex min-h-11 items-center px-4 text-base',
+  'text-ink-muted transition-colors hover:text-ink'
+]);
 
-  return (
-    <nav
-      className={cnMainNav(null, [
-        'flex flex-col items-start gap-2 font-oswald'
-      ])}
-    >
-      {linksToRender.map(({ href, title }) => (
-        <Link
-          className={cnMainNav('Link', [
-            'flex min-h-11 items-center px-4 text-base',
-            'text-ink-muted transition-colors hover:text-ink'
-          ])}
-          href={href}
-          key={href}
-        >
-          {title}
-        </Link>
-      ))}
-    </nav>
-  );
-};
+/**
+ * Меню в бургере.
+ *
+ * Компонент больше не читает сессию: `verifySession()` вызывает `cookies()`,
+ * а это переводит весь маршрут в динамический рендер и обнуляет ISR
+ * (см. `ui/auth-nav-link.tsx`). Пункт, который зависит от входа, вынесен
+ * в клиентский `AuthNavLink`.
+ */
+export const MainNav: FC = () => (
+  <nav
+    className={cnMainNav(null, ['flex flex-col items-start gap-2 font-oswald'])}
+  >
+    {NAV_LINKS.map(({ href, title }) => (
+      <Link className={linkClassName} href={href} key={href}>
+        {title}
+      </Link>
+    ))}
+    <AuthNavLink className={linkClassName} />
+  </nav>
+);

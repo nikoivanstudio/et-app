@@ -59,6 +59,7 @@ export const ModelName = {
   PartnerApplication: 'PartnerApplication',
   Photo: 'Photo',
   Post: 'Post',
+  Redirect: 'Redirect',
   Review: 'Review',
   Session: 'Session',
   Tour: 'Tour',
@@ -227,6 +228,20 @@ export const PostScalarFieldEnum = {
 } as const
 
 export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
+
+
+export const RedirectScalarFieldEnum = {
+  id: 'id',
+  source: 'source',
+  destination: 'destination',
+  statusCode: 'statusCode',
+  isActive: 'isActive',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RedirectScalarFieldEnum = (typeof RedirectScalarFieldEnum)[keyof typeof RedirectScalarFieldEnum]
 
 
 export const ReviewScalarFieldEnum = {

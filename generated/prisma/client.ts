@@ -82,6 +82,16 @@ export type Photo = Prisma.PhotoModel
  */
 export type Post = Prisma.PostModel
 /**
+ * Model Redirect
+ * Таблица переадресаций.
+ * 
+ * В проекте не было ни `redirects()` в конфиге, ни таблицы: склеить
+ * предстоит около девятисот адресов (дубли справочника, слаги с HTML-
+ * сущностями, конкурирующие каталоги), и хардкод такого списка не
+ * поддерживается — каждая правка превращалась бы в деплой.
+ */
+export type Redirect = Prisma.RedirectModel
+/**
  * Model Review
  * 
  */

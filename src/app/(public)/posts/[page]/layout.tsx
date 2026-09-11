@@ -5,15 +5,32 @@ import { AppHeader } from '@/widgets/app-header/server';
 import { ContactsWidget } from '@/widgets/contacts/server';
 
 import { getCurrentYear } from '@/shared/lib/seo/current-year';
-import { buildPageMetadata } from '@/shared/lib/seo/page-metadata';
+import {
+  buildPageMetadata,
+  withPaginationRobots
+} from '@/shared/lib/seo/page-metadata';
 
 /**
- * Канонический адрес зависит от номера страницы, поэтому статическим
- * объектом его не задать.
+ * Метаданные страницы пагинации.
  *
- * Отдельно про первую страницу: пагинация из `/posts/2` уводит назад на
- * `/posts/1` — тот же список, что и на `/posts`. Показываем поисковику, что
- * это один адрес, иначе получаем гарантированный дубль.
+ * В sitemap было 76 адресов `/posts/2…77` с одинаковым title и собственным
+ * каноническим адресом — 76 страниц-близнецов в индексе, каждая из которых
+ * конкурирует с разделом. Намерение склеить их было описано в коде, но
+ * реализовано только для первой страницы.
+ *
+ * Что сделано:
+ *
+ * 1. `/posts/1` по-прежнему объявляет каноническим `/posts` — это буквально
+ *    тот же список, и пагинация из `/posts/2` уводит назад именно на `/posts/1`.
+ * 2. Страницы со второй и дальше уходят в `noindex, follow`: в индексе им
+ *    делать нечего, а обход по ссылкам на карточки должен продолжаться.
+ *    Канонический адрес у них свой: указывать canonical на `/posts` со
+ *    страницы с другим содержимым — заявка, которую поисковик всё равно
+ *    отклонит, а вместе с ней может отбросить и сигнал `noindex`.
+ * 3. Номер страницы попал в title: одинаковые заголовки у десятков адресов
+ *    Вебмастер считает отдельным дефектом, даже когда адреса закрыты.
+ *
+ * Из sitemap эти адреса убраны (см. `app/_lib/sitemap-service.ts`).
  */
 export async function generateMetadata({
   params
@@ -26,11 +43,17 @@ export async function generateMetadata({
 
   const year = getCurrentYear();
 
-  return buildPageMetadata({
-    title: `Интересные статьи о Крыме в ${year}`,
-    description: `Все туры в Крыму ${year}. Организация туров и ваших развлечений. Мы предоставим лучшие цены для вас +7(978)7880753`,
+  const metadata = buildPageMetadata({
+    title: isFirstPage
+      ? `Интересные статьи о Крыме в ${year}`
+      : `Интересные статьи о Крыме — страница ${pageNumber}`,
+    description: isFirstPage
+      ? `Статьи о Крыме в ${year} году: пещерные города, каньоны, плато и маршруты джип-туров. Куда съездить и что посмотреть на полуострове.`
+      : `Статьи о Крыме, страница ${pageNumber}: маршруты, объекты и полезное перед поездкой.`,
     path: isFirstPage ? '/posts' : `/posts/${pageNumber}`
   });
+
+  return isFirstPage ? metadata : withPaginationRobots(metadata);
 }
 
 export default function Layout({

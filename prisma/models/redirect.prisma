@@ -1,0 +1,31 @@
+/// Таблица переадресаций.
+///
+/// В проекте не было ни `redirects()` в конфиге, ни таблицы: склеить
+/// предстоит около девятисот адресов (дубли справочника, слаги с HTML-
+/// сущностями, конкурирующие каталоги), и хардкод такого списка не
+/// поддерживается — каждая правка превращалась бы в деплой.
+model Redirect {
+  id Int @id @default(autoincrement())
+
+  /// Откуда: путь от корня без строки запроса, в нижнем регистре,
+  /// без слэша на конце. Нормализация — в `redirect-utils.ts`.
+  source String @unique @db.VarChar(512)
+
+  /// Куда: путь от корня или абсолютный адрес.
+  destination String @db.VarChar(512)
+
+  /// 301 — постоянный (передаёт вес), 302 — временный, 410 — «удалено».
+  statusCode Int @default(301) @map("status_code")
+
+  /// Выключенное правило остаётся в таблице как история решения.
+  isActive Boolean @default(true) @map("is_active")
+
+  /// Зачем сделан редирект: «дубль Чуфут-Кале», «слаг с &laquo;».
+  note String? @db.VarChar(512)
+
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt DateTime? @updatedAt @map("updated_at") @db.Timestamp()
+
+  @@index([isActive])
+  @@map("redirect")
+}

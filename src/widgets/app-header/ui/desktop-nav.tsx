@@ -1,38 +1,30 @@
-'use server';
-
 import { cn } from '@bem-react/classname';
 import Link from 'next/link';
 import { FC } from 'react';
 
 import { NAV_LINKS } from '@/widgets/app-header/model/links';
-
-import { sessionService } from '@/entities/user/services/session';
+import { AuthNavLink } from '@/widgets/app-header/ui/auth-nav-link';
 
 const cnDesktopNav = cn('DesktopNav');
 
-/** Горизонтальное меню от md: — до v2 бургер был на любой ширине. */
-export const DesktopNav: FC = async () => {
-  const { session } = await sessionService.verifySession();
+const linkClassName = cnDesktopNav('Link', [
+  'text-[15px] text-white transition-colors hover:text-gold-photo'
+]);
 
-  const linksToRender = session?.id
-    ? [...NAV_LINKS, { href: `/account/${session.id}`, title: 'Профиль' }]
-    : [...NAV_LINKS, { href: '/sign-in', title: 'Войти' }];
-
-  return (
-    <nav
-      className={cnDesktopNav(null, ['flex items-center gap-6 font-oswald'])}
-    >
-      {linksToRender.map(({ href, title }) => (
-        <Link
-          className={cnDesktopNav('Link', [
-            'text-[15px] text-white transition-colors hover:text-gold-photo'
-          ])}
-          href={href}
-          key={href}
-        >
-          {title}
-        </Link>
-      ))}
-    </nav>
-  );
-};
+/**
+ * Горизонтальное меню от md: — до v2 бургер был на любой ширине.
+ *
+ * Сессию, как и `MainNav`, компонент не читает: пункт «Войти/Профиль»
+ * приходит из клиентского `AuthNavLink`, иначе `cookies()` в серверном
+ * рендере ломает ISR на всех публичных страницах.
+ */
+export const DesktopNav: FC = () => (
+  <nav className={cnDesktopNav(null, ['flex items-center gap-6 font-oswald'])}>
+    {NAV_LINKS.map(({ href, title }) => (
+      <Link className={linkClassName} href={href} key={href}>
+        {title}
+      </Link>
+    ))}
+    <AuthNavLink className={linkClassName} />
+  </nav>
+);

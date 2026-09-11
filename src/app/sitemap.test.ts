@@ -3,6 +3,10 @@
  * туров подставлен id вместо slug» или «lastmod у всех страниц одинаковый»
  * ничем не ловились. Здесь закреплено то, что ломалось.
  *
+ * С задачи B10 sitemap разбит на секции, и проверяется как содержимое
+ * каждой секции, так и сам XML: индекс, экранирование, отсутствие
+ * пагинации.
+ *
  * @jest-environment node
  */
 import { postServices } from '@/features/post/server';
@@ -14,18 +18,23 @@ jest.mock('@/features/tour/server', () => ({
   tourService: { getPublishedTourRefs: jest.fn() }
 }));
 jest.mock('@/features/post/server', () => ({
-  postServices: { getPostRefs: jest.fn(), getPostsPagesCount: jest.fn() }
+  postServices: { getPostRefs: jest.fn() }
 }));
 jest.mock('@/kernel/guide/server', () => ({
   guideServices: { getGuideRefs: jest.fn() }
 }));
 
-// Роут импортируем ПОСЛЕ объявления моков.
-import sitemap from './sitemap';
+// Модули импортируем ПОСЛЕ объявления моков.
+import {
+  SITEMAP_SECTIONS,
+  type SitemapSectionId,
+  sitemapService
+} from './_lib/sitemap-service';
+import type { SitemapEntry } from './_lib/sitemap-utils';
+import { renderSitemapIndex, renderUrlset } from './_lib/sitemap-xml';
 
 const mockTourRefs = tourService.getPublishedTourRefs as jest.Mock;
 const mockPostRefs = postServices.getPostRefs as jest.Mock;
-const mockPostsPagesCount = postServices.getPostsPagesCount as jest.Mock;
 const mockGuideRefs = guideServices.getGuideRefs as jest.Mock;
 
 const BASE = 'https://energy-tur.ru';
@@ -34,23 +43,31 @@ beforeEach(() => {
   jest.clearAllMocks();
   mockTourRefs.mockResolvedValue([]);
   mockPostRefs.mockResolvedValue([]);
-  mockPostsPagesCount.mockResolvedValue(1);
   mockGuideRefs.mockResolvedValue([]);
 });
 
-const findItem = (items: Awaited<ReturnType<typeof sitemap>>, url: string) =>
-  items.find(item => item.url === url);
+const section = (id: SitemapSectionId) => sitemapService.getSectionEntries(id);
 
-describe('sitemap', () => {
+const findEntry = (entries: SitemapEntry[], path: string) =>
+  entries.find(entry => entry.path === path);
+
+/** Все адреса сайта разом — как раньше выглядел единственный файл. */
+const allEntries = async (): Promise<SitemapEntry[]> => {
+  const groups = await Promise.all(
+    SITEMAP_SECTIONS.map(({ id }) => section(id))
+  );
+
+  return groups.flat();
+};
+
+describe('секции sitemap', () => {
   test('главная страница присутствует и без слэша на конце', async () => {
-    const items = await sitemap();
-    const home = findItem(items, BASE);
+    const entries = await section('static');
+    const home = findEntry(entries, '/');
 
     // Раньше список начинался с /activities: главной в sitemap не было.
     expect(home).toBeDefined();
     expect(home?.priority).toBe(1);
-    // Next резолвит canonical '/' в домен без слэша — адреса должны совпадать.
-    expect(findItem(items, `${BASE}/`)).toBeUndefined();
   });
 
   test('адреса туров построены по slug, а не по id', async () => {
@@ -58,11 +75,11 @@ describe('sitemap', () => {
       { slug: 'dzhip-tur-ai-petri', updatedAt: null, createdAt: new Date(0) }
     ]);
 
-    const items = await sitemap();
+    const entries = await section('tours');
 
-    expect(findItem(items, `${BASE}/tour/dzhip-tur-ai-petri`)).toBeDefined();
+    expect(findEntry(entries, '/tour/dzhip-tur-ai-petri')).toBeDefined();
     // Страница тура резолвится только по slug, так что /tour/{id} — это 404.
-    expect(items.some(item => /\/tour\/\d+$/.test(item.url))).toBe(false);
+    expect(entries.some(entry => /\/tour\/\d+$/.test(entry.path))).toBe(false);
   });
 
   test('lastModified берётся из updatedAt, иначе из createdAt', async () => {
@@ -74,60 +91,21 @@ describe('sitemap', () => {
       { slug: 'tolko-sozdan', updatedAt: null, createdAt }
     ]);
 
-    const items = await sitemap();
+    const entries = await section('tours');
 
-    expect(findItem(items, `${BASE}/tour/obnovlyonnyy`)?.lastModified).toEqual(
+    expect(findEntry(entries, '/tour/obnovlyonnyy')?.lastModified).toEqual(
       updatedAt
     );
-    expect(findItem(items, `${BASE}/tour/tolko-sozdan`)?.lastModified).toEqual(
+    expect(findEntry(entries, '/tour/tolko-sozdan')?.lastModified).toEqual(
       createdAt
     );
   });
 
   test('у статических страниц нет выдуманной даты', async () => {
-    const items = await sitemap();
+    const entries = await section('static');
 
     // Раньше всем без разбора ставился захардкоженный new Date(2026, 1, 1).
-    expect(findItem(items, `${BASE}/kontakty`)?.lastModified).toBeUndefined();
-  });
-
-  test('даты не совпадают у всех адресов подряд', async () => {
-    mockTourRefs.mockResolvedValue([
-      { slug: 'a', updatedAt: new Date('2026-03-01'), createdAt: null },
-      { slug: 'b', updatedAt: new Date('2026-07-11'), createdAt: null }
-    ]);
-
-    const items = await sitemap();
-    const dates = items
-      .map(item => item.lastModified)
-      .filter(Boolean)
-      .map(String);
-
-    expect(new Set(dates).size).toBe(dates.length);
-  });
-
-  test('пагинация постов перечисляется целиком', async () => {
-    mockPostsPagesCount.mockResolvedValue(4);
-
-    const items = await sitemap();
-
-    // Раньше в списке была захардкожена ровно одна страница — /posts/2.
-    expect(findItem(items, `${BASE}/posts/2`)).toBeDefined();
-    expect(findItem(items, `${BASE}/posts/3`)).toBeDefined();
-    expect(findItem(items, `${BASE}/posts/4`)).toBeDefined();
-    // Первой страницы нет: её адрес — /posts, туда же смотрит canonical.
-    expect(findItem(items, `${BASE}/posts/1`)).toBeUndefined();
-    expect(findItem(items, `${BASE}/posts/5`)).toBeUndefined();
-  });
-
-  test('единственная страница постов не даёт лишних адресов', async () => {
-    mockPostsPagesCount.mockResolvedValue(1);
-
-    const items = await sitemap();
-
-    expect(items.some(item => item.url.startsWith(`${BASE}/posts/`))).toBe(
-      false
-    );
+    expect(findEntry(entries, '/kontakty')?.lastModified).toBeUndefined();
   });
 
   test('гиды попадают в sitemap', async () => {
@@ -135,27 +113,23 @@ describe('sitemap', () => {
       { slug: 'ivan-gid', lastModified: new Date('2026-05-05') }
     ]);
 
-    const items = await sitemap();
+    const entries = await section('guides');
 
     // Раздел /guide/[slug] в sitemap не попадал вообще.
-    expect(findItem(items, `${BASE}/guide/ivan-gid`)).toBeDefined();
+    expect(findEntry(entries, '/guide/ivan-gid')).toBeDefined();
   });
 
-  test('посты живут в корне и не дублируют статические адреса', async () => {
+  test('посты живут в корне и не занимают адреса статических страниц', async () => {
     mockPostRefs.mockResolvedValue([
       { slug: 'kak-doehat-do-ai-petri', updatedAt: null, createdAt: null },
       // Легаси-пост может занять slug статической страницы.
       { slug: 'kontakty', updatedAt: null, createdAt: null }
     ]);
 
-    const items = await sitemap();
+    const entries = await section('posts');
 
-    expect(findItem(items, `${BASE}/kak-doehat-do-ai-petri`)).toBeDefined();
-    expect(items.filter(item => item.url === `${BASE}/kontakty`)).toHaveLength(
-      1
-    );
-    // Побеждает статическая запись — у неё свой changeFrequency.
-    expect(findItem(items, `${BASE}/kontakty`)?.changeFrequency).toBe('yearly');
+    expect(findEntry(entries, '/kak-doehat-do-ai-petri')).toBeDefined();
+    expect(findEntry(entries, '/kontakty')).toBeUndefined();
   });
 
   test('посты без slug пропускаются', async () => {
@@ -163,10 +137,19 @@ describe('sitemap', () => {
       { slug: '', updatedAt: null, createdAt: null }
     ]);
 
-    const items = await sitemap();
+    const entries = await section('posts');
 
-    expect(items.some(item => item.url === BASE)).toBe(true);
-    expect(items.filter(item => item.url === `${BASE}/`)).toHaveLength(0);
+    expect(entries).toHaveLength(0);
+  });
+
+  test('пагинации постов в sitemap нет', async () => {
+    // B4: 76 адресов /posts/N с одинаковым title теперь отдают
+    // noindex, follow — предлагать их роботу было бы противоречием.
+    const entries = await allEntries();
+
+    expect(entries.some(entry => /^\/posts\/\d+$/.test(entry.path))).toBe(
+      false
+    );
   });
 
   test('недоступность БД не обрушивает sitemap', async () => {
@@ -180,25 +163,80 @@ describe('sitemap', () => {
       { slug: 'zhivoy-post', updatedAt: null, createdAt: null }
     ]);
 
-    const items = await sitemap();
-
-    expect(findItem(items, BASE)).toBeDefined();
-    expect(findItem(items, `${BASE}/uslugi`)).toBeDefined();
-    // Раздел, который удалось получить, остаётся на месте.
-    expect(findItem(items, `${BASE}/zhivoy-post`)).toBeDefined();
-    expect(items.some(item => item.url.includes('/tour/'))).toBe(false);
+    expect(await section('tours')).toHaveLength(0);
+    // Разделы, которые удалось получить, остаются на месте.
+    expect(findEntry(await section('posts'), '/zhivoy-post')).toBeDefined();
+    expect(findEntry(await section('static'), '/uslugi')).toBeDefined();
   });
 
-  test('все адреса абсолютные и уникальные', async () => {
+  test('адреса уникальны внутри секции', async () => {
+    mockPostRefs.mockResolvedValue([
+      { slug: 'odin', updatedAt: null, createdAt: null },
+      { slug: 'odin', updatedAt: null, createdAt: null }
+    ]);
+
+    const paths = (await section('posts')).map(entry => entry.path);
+
+    expect(new Set(paths).size).toBe(paths.length);
+  });
+
+  test('дата секции — самая свежая из её адресов', async () => {
+    mockTourRefs.mockResolvedValue([
+      { slug: 'a', updatedAt: new Date('2026-03-01'), createdAt: null },
+      { slug: 'b', updatedAt: new Date('2026-07-11'), createdAt: null }
+    ]);
+
+    const lastModified = sitemapService.getSectionLastModified(
+      await section('tours')
+    );
+
+    expect(lastModified).toEqual(new Date('2026-07-11'));
+  });
+
+  test('у секции без настоящих дат lastmod отсутствует', async () => {
+    expect(
+      sitemapService.getSectionLastModified(await section('static'))
+    ).toBeNull();
+  });
+});
+
+describe('сериализация sitemap', () => {
+  test('адреса абсолютные', async () => {
     mockTourRefs.mockResolvedValue([
       { slug: 'tur', updatedAt: null, createdAt: null }
     ]);
-    mockPostsPagesCount.mockResolvedValue(3);
 
-    const items = await sitemap();
-    const urls = items.map(item => item.url);
+    const xml = renderUrlset(await section('tours'));
 
-    expect(urls.every(url => url.startsWith(BASE))).toBe(true);
-    expect(new Set(urls).size).toBe(urls.length);
+    expect(xml).toContain(`<loc>${BASE}/tour/tur</loc>`);
+  });
+
+  test('амперсанд в слаге экранируется', () => {
+    // В слагах справочника встречается мусор из HTML-сущностей (B8).
+    // Неэкранированный & делает файл невалидным XML целиком, а не
+    // один адрес: Вебмастер отвергает такой sitemap полностью.
+    const xml = renderUrlset([{ path: '/fontan-laquo&raquo-noch' }]);
+
+    expect(xml).toContain('&amp;raquo');
+    expect(xml).not.toMatch(/<loc>[^<]*[^&;]&(?!amp;)/);
+  });
+
+  test('lastmod не выводится, если настоящей даты нет', () => {
+    const xml = renderUrlset([{ path: '/kontakty' }]);
+
+    expect(xml).not.toContain('<lastmod>');
+  });
+
+  test('индекс перечисляет секции', () => {
+    const xml = renderSitemapIndex([
+      { path: '/sitemap/tours.xml', lastModified: new Date('2026-07-11') },
+      { path: '/sitemap/static.xml', lastModified: null }
+    ]);
+
+    expect(xml).toContain('<sitemapindex');
+    expect(xml).toContain(`<loc>${BASE}/sitemap/tours.xml</loc>`);
+    expect(xml).toContain(`<loc>${BASE}/sitemap/static.xml</loc>`);
+    // У статики настоящей даты нет — тега быть не должно.
+    expect(xml.match(/<lastmod>/g)).toHaveLength(1);
   });
 });
