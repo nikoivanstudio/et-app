@@ -10,6 +10,7 @@ import { BookingButton } from '@/features/booking';
 import { GuideCard, RatingPill } from '@/entities/guide';
 
 import { cn } from '@/shared/lib/css';
+import { tourCrumbs } from '@/shared/lib/seo/breadcrumbs';
 
 import { guideServices } from '@/kernel/guide/server';
 import { TourKernel } from '@/kernel/tour/domain';
@@ -37,7 +38,12 @@ export const TourMain: FC<TourKernel> = async props => {
 
   return (
     <AppMain
-      mainHead={<PageHeadPost {...{ id, title, mainPhoto }} />}
+      mainHead={
+        <PageHeadPost
+          {...{ id, title, mainPhoto }}
+          crumbs={tourCrumbs(title)}
+        />
+      }
       mainContent={
         <div
           className={cnPageTour('Content', [

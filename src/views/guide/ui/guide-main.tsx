@@ -6,6 +6,8 @@ import { RatingPill, yearsLabel } from '@/entities/guide';
 
 import styles from '@/shared/assets/styles.module.scss';
 import { cn } from '@/shared/lib/css';
+import { guideCrumbs } from '@/shared/lib/seo/breadcrumbs';
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 
 import type { GuideProfile } from '@/kernel/guide/domain';
 import { GuideHero } from '@/views/guide/ui/guide-hero';
@@ -43,6 +45,13 @@ export const GuideMain: FC<GuideProfile> = guide => {
       }
       mainContent={
         <div className='relative z-3 mt-[-3vh] rounded-4xl bg-white p-2'>
+          {/* Шапка гида своя, не PageHeadPost, поэтому крошки ставим
+              на бумаге под ней. Раздела-листинга гидов пока нет — в пути
+              только главная и сам гид (E6 в docs/seo/plan.md). */}
+          <Breadcrumbs
+            className='px-2 pt-2'
+            items={guideCrumbs(guide.displayName)}
+          />
           <section className='px-2 pt-2'>
             <div className='flex items-center justify-between'>
               <span className={cn(styles.poiret_text_black, 'block text-2xl')}>

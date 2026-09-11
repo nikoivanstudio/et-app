@@ -8,6 +8,7 @@ import { AppMain } from '@/widgets/app-main/ui/app-main';
 import { PostDomain } from '@/entities/post/server';
 
 import { cn } from '@/shared/lib/css';
+import { postCrumbs } from '@/shared/lib/seo/breadcrumbs';
 import { TextContent } from '@/shared/ui/text-content';
 
 import { PageHeadPost } from '@/views/post/ui/page-head-post';
@@ -30,7 +31,12 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
 
   return (
     <AppMain
-      mainHead={<PageHeadPost {...{ id, title, mainPhoto: image }} />}
+      mainHead={
+        <PageHeadPost
+          {...{ id, title, mainPhoto: image }}
+          crumbs={postCrumbs(title)}
+        />
+      }
       mainContent={
         /* Контент поднимается на 32px и закрывает фото скруглением сверху —
            как на главной, странице тура и в каталоге. */

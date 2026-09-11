@@ -2,17 +2,18 @@
 
 import { cn } from '@bem-react/classname';
 import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
-import { FC, Fragment, ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 import { PageHeadLayout } from '@/entities/page-head/ui/page-head-layout';
 
 import src from '@/shared/assets/images/backgrounds/bg-1.jpg';
+import type { Crumb } from '@/shared/lib/seo/breadcrumbs';
+import { Breadcrumbs } from '@/shared/ui/breadcrumbs';
 import { Title } from '@/shared/ui/title';
 
 import styles from '../assets/styles.module.scss';
 
-export type Crumb = { label: string; href?: string };
+export type { Crumb };
 
 type Props = {
   id: number;
@@ -93,22 +94,11 @@ export const PageHeadPost: FC<Props> = async ({
             ])}
           >
             {/* Крошек на страницах услуг и постов не было совсем: попав сюда
-                из поиска, подняться в раздел можно было только через бургер. */}
+                из поиска, подняться в раздел можно было только через бургер.
+                Разметка BreadcrumbList едет вместе с ними — внутри
+                компонента, из того же массива. */}
             {!!crumbs?.length && (
-              <p className='font-oswald mb-3 text-[12.5px] tracking-[1.2px] text-white'>
-                {crumbs.map(({ label, href }, idx) => (
-                  <Fragment key={label}>
-                    {idx > 0 && <span className='px-1.5 opacity-60'>·</span>}
-                    {href ? (
-                      <Link className='hover:text-gold-photo' href={href}>
-                        {label}
-                      </Link>
-                    ) : (
-                      <span>{label}</span>
-                    )}
-                  </Fragment>
-                ))}
-              </p>
+              <Breadcrumbs className='mb-3' items={crumbs} variant='photo' />
             )}
 
             <Title
