@@ -7,8 +7,7 @@ import { AppMain } from '@/widgets/app-main/ui/app-main';
 
 import { BookingButton } from '@/features/booking';
 
-import { GuideCard } from '@/entities/guide';
-import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
+import { GuideCard, RatingPill } from '@/entities/guide';
 
 import { cn } from '@/shared/lib/css';
 
@@ -52,24 +51,15 @@ export const TourMain: FC<TourKernel> = async props => {
             'max-w-[820px]'
           ])}
         >
+          {/* Было: «Информация» и рядом мок «★ 4,9/5» с тремя стоковыми
+              аватарами — при пустом rating он показывал 4,9 всегда. Теперь
+              пилюля появляется, только если оценка действительно есть. */}
           <section className={cnPageTour('DescriptionBlock')}>
-            <div className='flex justify-between pr-5'>
-              <span
-                className={cn(
-                  'font-poiret',
-                  'block',
-                  'p-2',
-                  'text-[26px]',
-                  'tracking-wide',
-                  'text-gold-head'
-                )}
-              >
-                Информация
-              </span>
-              <MockReviewsAvatars rating={rating || 4.9} />
-            </div>
+            {!!rating && (
+              <RatingPill className='mx-2 mb-3' rating={rating} withMax />
+            )}
             <PostStats
-              className={cn('mt-4', 'mx-2')}
+              className={cn('mx-2')}
               priceValue={price}
               durationValue={duration}
             />

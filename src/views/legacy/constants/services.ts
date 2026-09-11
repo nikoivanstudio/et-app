@@ -1,5 +1,7 @@
 import { LegacyServiceData } from '@/shared/model/types';
 
+import ekskursiiPhoto from '../assets/images/ekskursii.jpg';
+
 export const services: LegacyServiceData[] = [
   {
     id: 1,
@@ -81,7 +83,7 @@ Mitsubishi L200 – 4 места
     id: 3,
     title: 'Классические экскурсии по Крыму',
     content: 'Классические экскурсии в Крыму',
-    img: '/images/ekskursii.jpg',
+    img: ekskursiiPhoto,
     href: '/uslugi/klassicheskie-ekskursii-po-krymu',
     duration: 'от 1 экскурсии',
     price: 'от 2 000 ₽/экскурсия'
@@ -90,18 +92,21 @@ Mitsubishi L200 – 4 места
     id: 4,
     title: 'Прокат квадроциклов в Крыму',
     content:
-      'У нас вы можете воспользоваться услугой <strong>прокат квадроциклов</strong>или заказать <strong><a href="https://energy-tur.ru/tury-na-kvadrotsiklah-v-krymu/">туры на квадроциклах</a></strong> по заданному маршруту.\n' +
+      'У нас вы можете воспользоваться услугой <strong>прокат квадроциклов</strong> или заказать <strong><a href="https://energy-tur.ru/tury-na-kvadrotsiklah-v-krymu/">туры на квадроциклах</a></strong> по заданному маршруту.\n' +
       '\n' +
       'В прокате имеются 2-х местные квадроциклы с независимой подвеской и двигателем 500 куб см.\n' +
       '\n' +
-      'Стоимость прокат квадроцикла осуществляется по цене <strong>1500 рублей</strong> в час. При аренде 4 и более квадроциклов предусмотрены скидки для группы. В стоимость входит сопровождение инструктором на отдельномквадроцикле.\n' +
+      'Стоимость прокат квадроцикла осуществляется по цене <strong>1500 рублей</strong> в час. При аренде 4 и более квадроциклов предусмотрены скидки для группы. В стоимость входит сопровождение инструктором на отдельном квадроцикле.\n' +
       '\n' +
       'Но наиболее популярным способом <strong>проката квадроцикла</strong> является поездка по выбранному маршруту. Для этого у нас имеется огромный выбор ранее разработанных маршрутов, <strong>туры на квадроциклах.</strong>\n' +
       ' Также предлагаем вам воспользоваться нашими основными услугами <a href="https://energy-tur.ru/dzhip-tur-krym/">Джип туры по Крыму </a>\n' +
       '\n' +
-      `(<a href='/tury-na-kvadrotsiklah-v-krymu/'>Посмотреть все туры на квадроциклах</a>)!`,
-    img: '/images/kvadro.jpg',
-    href: 'uslugi/prokat-kvadrotsiklov-v-krymu',
+      `(<a href='/category/vse_tury'>Посмотреть все туры</a>)!`,
+    // Снимка квадроциклов в проекте нет: /images/kvadro.jpg отдавал 404,
+    // потому что каталога public/images не существует. Карточка отрисуется
+    // без фото, а не с чужим кадром.
+    img: null,
+    href: '/uslugi/prokat-kvadrotsiklov-v-krymu',
     duration: 'от 1 часа',
     price: 'от 3 000 ₽/час'
   },
@@ -273,7 +278,8 @@ Mitsubishi L200 – 4 места
     id: 7,
     title: 'Прокат зимнего снаряжения в Крыму',
     content: 'Прокат зимнего снаряжения в Крыму',
-    img: '/images/ekskursii.jpg',
+    // Тот же 404: снимка зимнего снаряжения в проекте нет.
+    img: null,
     href: '/uslugi/prokat-zimnego-snaryazheniya-v-krymu',
     duration: 'от 1 дня',
     price: 'от 800 ₽/день'

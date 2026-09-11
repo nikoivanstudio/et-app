@@ -27,7 +27,7 @@ export const AuthFields: FC = () => {
           id={passwordId}
           type='password'
           name='password'
-          placeholder='Введите адрес электронной почты'
+          placeholder='Введите пароль'
           required
         />
       </div>

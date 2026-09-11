@@ -620,3 +620,119 @@ h3 {
     font-size: 18px;
   }
 }
+
+/* ── Текст статей из WordPress в .et-post ────────────────────────────────
+   Абзацы, списки и таблицы приходят из legacyTextToHtml: до v2 весь этот
+   текст шёл одним блоком без интервалов, а таблицы — без рамок. */
+.et-post p {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.et-post p:last-child {
+  margin-bottom: 0;
+}
+.et-post h3 {
+  margin: 26px 0 10px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.et-post ul,
+.et-post ol {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.et-post ul {
+  list-style: none;
+  padding-left: 18px;
+}
+.et-post ul li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 7px;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.et-post ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold-plate);
+  border-radius: 50%;
+}
+.et-post ol li {
+  margin-bottom: 7px;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.et-post ol li::marker {
+  color: var(--gold-ink);
+  font-weight: 600;
+}
+.et-post table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 18px;
+  font-size: 14px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-block);
+  overflow: hidden;
+}
+.et-post table td,
+.et-post table th {
+  border-bottom: 1px solid var(--rule);
+  padding: 11px 14px;
+  text-align: left;
+}
+.et-post table tr:first-child td {
+  font-family: var(--oswald), sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.et-post table tr:last-child td {
+  border-bottom: none;
+}
+.et-post table td:last-child {
+  text-align: right;
+  white-space: nowrap;
+  font-family: var(--oswald), sans-serif;
+  font-weight: 500;
+}
+/* Было: `width="300"` в разметке из WordPress и float — картинка рвала
+   колонку и прижималась влево. */
+.et-post img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin: 6px 0 18px;
+  border-radius: var(--r-block);
+  background: var(--cream-deep);
+  float: none;
+}
+
+/* ── Фокус с клавиатуры ──────────────────────────────────────────────────
+   До v2 состояний фокуса не было: по табу кольцо рисовал только браузер,
+   а на тёмных шапках его не видно. Двойное кольцо — золото плюс светлый
+   зазор — читается и на бумаге, и на фото. */
+:where(a, button, [role='button'], summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--cta);
+  outline-offset: 2px;
+  border-radius: var(--r-control);
+}
+:where(input, textarea, select):focus-visible {
+  outline: 2px solid var(--cta);
+  outline-offset: 1px;
+}
+/* Поверх фото зазор делаем светлым, иначе золото по золоту сливается. */
+:where(.PageHead, .et-footer) :where(a, button):focus-visible {
+  outline-color: var(--gold-photo);
+  box-shadow: 0 0 0 4px rgba(20, 14, 6, 0.65);
+}

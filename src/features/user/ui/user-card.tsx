@@ -17,6 +17,8 @@ import {
 } from '@/shared/ui/card';
 import { Separator } from '@/shared/ui/separator';
 
+import mockAvatar from '@/views/profile/assets/images/mockAvatar.jpg';
+
 type Props = {
   onDelete(id: number): void;
   editAction?: ReactNode;
@@ -53,7 +55,7 @@ export const UserCard: FC<Props> = ({ user, onDelete, editAction }) => {
     <Card className='w-full shadow-md hover:shadow-lg transition-shadow'>
       <CardHeader className='flex flex-row items-center gap-4 pb-2'>
         <Avatar className='h-14 w-14 border'>
-          <AvatarImage src='/images/mockAvatar.jpg' alt={user.login} />
+          <AvatarImage src={mockAvatar.src} alt={user.login} />
           <AvatarFallback>{getInitials(user.login)}</AvatarFallback>
         </Avatar>
         <div className='flex flex-col gap-1'>

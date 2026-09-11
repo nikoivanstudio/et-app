@@ -18,13 +18,17 @@ export const ActivitiesLayout: FC<ActivitiesLayoutProps> = ({
   footer,
   className
 }) => (
-  <section className={cnActivities(null, ['px-4 py-20', className])}>
-    <div className={cnActivities('Header', [])}>
-      <Title type='h2' onPhoto className={cnActivities('Title')}>
-        {title}
-      </Title>
+  <section className={cnActivities(null, ['py-20', className])}>
+    {/* Контейнер 1120: строка «выбирай свои даты на …» прижималась к левому
+        краю окна, пока заголовок над ней был отцентрован. */}
+    <div className='mx-auto w-full max-w-[1120px] px-4 md:px-6'>
+      <div className={cnActivities('Header', [])}>
+        <Title type='h2' onPhoto className={cnActivities('Title')}>
+          {title}
+        </Title>
+      </div>
+      <div className={cnActivities('Main', ['mt-8'])}>{content}</div>
+      <div className={cnActivities('Footer')}>{footer}</div>
     </div>
-    <div className={cnActivities('Main', ['mt-8'])}>{content}</div>
-    <div className={cnActivities('Footer')}>{footer}</div>
   </section>
 );

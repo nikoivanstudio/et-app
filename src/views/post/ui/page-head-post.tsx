@@ -1,8 +1,9 @@
 'use server';
 
 import { cn } from '@bem-react/classname';
-import Image from 'next/image';
-import { FC } from 'react';
+import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
+import { FC, Fragment, ReactNode } from 'react';
 
 import { PageHeadLayout } from '@/entities/page-head/ui/page-head-layout';
 
@@ -11,16 +12,27 @@ import { Title } from '@/shared/ui/title';
 
 import styles from '../assets/styles.module.scss';
 
+export type Crumb = { label: string; href?: string };
+
 type Props = {
   id: number;
   title: string;
-  mainPhoto: string;
+  mainPhoto: string | StaticImageData | null;
+  /** Крошки над заголовком: раздел, в котором лежит страница. */
+  crumbs?: Crumb[];
+  /** Факт-ряд под заголовком: цена · длительность · место. */
+  facts?: ReactNode;
 };
 
 const cnPagePost = cn('PagePost');
 
-export const PageHeadPost: FC<Props> = async ({ title, mainPhoto }) => {
-  const imageSrc = !!mainPhoto ? mainPhoto : src;
+export const PageHeadPost: FC<Props> = async ({
+  title,
+  mainPhoto,
+  crumbs,
+  facts
+}) => {
+  const imageSrc = mainPhoto || src;
 
   return (
     <PageHeadLayout
@@ -80,6 +92,25 @@ export const PageHeadPost: FC<Props> = async ({ title, mainPhoto }) => {
               'md:px-6'
             ])}
           >
+            {/* Крошек на страницах услуг и постов не было совсем: попав сюда
+                из поиска, подняться в раздел можно было только через бургер. */}
+            {!!crumbs?.length && (
+              <p className='font-oswald mb-3 text-[12.5px] tracking-[1.2px] text-white'>
+                {crumbs.map(({ label, href }, idx) => (
+                  <Fragment key={label}>
+                    {idx > 0 && <span className='px-1.5 opacity-60'>·</span>}
+                    {href ? (
+                      <Link className='hover:text-gold-photo' href={href}>
+                        {label}
+                      </Link>
+                    ) : (
+                      <span>{label}</span>
+                    )}
+                  </Fragment>
+                ))}
+              </p>
+            )}
+
             <Title
               className={cnPagePost('Title', [
                 'text-left',
@@ -89,6 +120,12 @@ export const PageHeadPost: FC<Props> = async ({ title, mainPhoto }) => {
             >
               {title}
             </Title>
+
+            {!!facts && (
+              <p className='font-oswald mt-3 flex flex-wrap items-baseline gap-x-2 text-[14px] text-white'>
+                {facts}
+              </p>
+            )}
           </div>
         </div>
       }

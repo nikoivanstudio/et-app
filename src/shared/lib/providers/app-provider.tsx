@@ -29,10 +29,16 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => (
     />
     <YandexMetrika />
     <QueryClientProvider client={queryClient}>
+      {/* Было defaultTheme='dark' + enableSystem: на <html> висел класс
+          `dark`, и все токены shadcn переключались на тёмный набор. Отсюда
+          белые подписи полей на кремовой карточке входа — 1,06:1, текста на
+          экране просто не видно. Тёмной палитры в v2 нет: система одна —
+          крем и тушь, поэтому тема зафиксирована светлой. */}
       <ThemeProvider
         attribute='class'
-        defaultTheme='dark'
-        enableSystem
+        defaultTheme='light'
+        forcedTheme='light'
+        enableSystem={false}
         disableTransitionOnChange
       >
         {children}

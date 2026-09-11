@@ -35,6 +35,8 @@
     .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
     .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
     .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
     .crow { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); text-decoration: none; color: var(--ink); }
     .crow .ic { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 999px; background: var(--cream-deep); display: flex; align-items: center; justify-content: center; }
     .crow .lb { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-faint); }
@@ -45,8 +47,6 @@
     .hrow { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 14px; }
     .hrow:last-child { border-bottom: 0; }
     .hrow b { font-weight: 500; }
-    .pin { position: absolute; z-index: 40; background: #9e3a25; color: #fff; font: 600 11px/1.35 ui-sans-serif, system-ui, sans-serif; padding: 5px 8px; border-radius: 6px; max-width: 205px; }
-    .pin::after { content: ''; position: absolute; left: -5px; top: 9px; border: 5px solid transparent; border-right-color: #9e3a25; }
   </style>
 </helmet>
 
@@ -90,7 +90,7 @@
       <span style="flex: 1 1 auto; min-width: 0;"><span class="lb">Адрес</span><span class="vs" style="display: block;">Республика Крым, Бахчисарай, ул. Скалистая</span></span>
     </div>
   </div>
-  <div class="pin" style="left: 16px; top: 300px;">Этих карточек в коде нет вообще: адрес и телефоны есть только в подвале и в оверлее поверх карты</div>
+  <p class="note note-bad">Этих карточек в коде нет вообще: адрес и телефоны есть только в подвале и в оверлее поверх карты</p>
 
   <h2 class="block-h" style="margin-top: 26px;">Мессенджеры</h2>
   <div class="soc">

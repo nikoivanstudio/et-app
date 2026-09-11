@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    body { background: #f1efea; }
+    .sheet { padding: 32px 36px 60px; max-width: 1200px; }
+    h1.t { margin: 0 0 6px; font: 600 24px/1.25 ui-sans-serif, system-ui, sans-serif; letter-spacing: -.01em; }
+    p.sub { margin: 0 0 26px; font: 13.5px/1.6 ui-sans-serif, system-ui, sans-serif; color: #5f5747; max-width: 92ch; }
+    h2.s { margin: 34px 0 12px; font: 600 15px/1.3 ui-sans-serif, system-ui, sans-serif; padding-bottom: 8px; border-bottom: 1px solid #ddd8cd; }
+    table { width: 100%; border-collapse: collapse; font: 13px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    th { text-align: left; font-weight: 600; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #7f6f52; padding: 0 10px 8px 0; }
+    td { padding: 11px 10px 11px 0; border-top: 1px solid #e2ddd2; vertical-align: top; }
+    td.n { width: 26px; color: #9c907a; font-variant-numeric: tabular-nums; }
+    td.w { width: 210px; }
+    td.f { width: 108px; }
+    code { font: 12px/1.5 ui-monospace, SFMono-Regular, monospace; background: #e6e1d6; padding: 1px 4px; border-radius: 4px; }
+    .sev { display: inline-block; padding: 2px 8px; border-radius: 999px; font: 600 10.5px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+    .s3 { background: #f9e6e2; color: #9e3a25; }
+    .s2 { background: #f7ecd6; color: #8b6f3d; }
+    .s1 { background: #edf3e2; color: #4a6626; }
+    .cards { display: flex; flex-wrap: wrap; gap: 14px; }
+    .kpi { flex: 1 1 200px; background: #fff; border: 1px solid #ddd8cd; border-radius: 12px; padding: 14px 16px; }
+    .kpi b { display: block; font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.1; }
+    .kpi span { display: block; margin-top: 3px; font: 12px/1.45 ui-sans-serif, system-ui, sans-serif; color: #6b5f47; }
+    .shots { display: flex; flex-wrap: wrap; gap: 16px; }
+    .shot { width: 268px; }
+    .shot .fr { height: 190px; border-radius: 10px; border: 1px solid #ddd8cd; overflow: hidden; position: relative; background: #fff; }
+    .shot p { margin: 8px 0 0; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; color: #5f5747; }
+    .shot p b { color: #9e3a25; }
+    .plan { display: flex; flex-wrap: wrap; gap: 12px; }
+    .step { flex: 1 1 250px; background: #fff; border: 1px solid #ddd8cd; border-radius: 12px; padding: 14px 16px; }
+    .step b { display: block; font: 600 13px/1.4 ui-sans-serif, system-ui, sans-serif; margin-bottom: 6px; }
+    .step ul { margin: 0; padding-left: 17px; font: 12.5px/1.62 ui-sans-serif, system-ui, sans-serif; color: #5f5747; }
+  </style>
+</helmet>
+
+<div class="sheet">
+
+<h1 class="t">Ревью-2: что на сайте не совпало с макетом v2</h1>
+<p class="sub">Снято 3 сентября 2026 с локальной сборки: 24 публичных адреса при 390 и 1440 в системном Chrome, контраст мерился по пикселям кадра под текстом. Первое ревью касалось главной, каталога и страницы тура — они в код перенесены. Всё остальное осталось на старом языке. Ниже — только то, что видно на экране; данные и SEO в этот список не входят.</p>
+
+<div class="cards">
+  <div class="kpi"><b>12</b><span>страниц из 24 в дизайн v2 не переведены</span></div>
+  <div class="kpi"><b>5</b><span>страниц с одним и тем же фото в шапке — женщина в вечернем платье</span></div>
+  <div class="kpi"><b>2,48:1</b><span>худший участок H1 на /otzyvy при норме 3:1 для крупного текста</span></div>
+  <div class="kpi"><b>0×320</b><span>размер восьми карточек на /uslugi — страница выглядит пустой</span></div>
+  <div class="kpi"><b>7</b><span>адресов с битой картинкой: <code>public/images/</code> в проекте нет</span></div>
+</div>
+
+<h2 class="s">Критично — видно сразу, страница выглядит сломанной</h2>
+<table>
+<tr><th class="n"></th><th class="w">Где</th><th>Что видно</th><th class="f">Оценка</th></tr>
+<tr><td class="n">1</td><td class="w"><code>/uslugi</code></td><td>Между шапкой и подвалом 330px пустого белого места. Восемь карточек услуг отрисованы шириной 0 (flex-элементы без базиса), их подписи уезжают за правый край: «Подробнее →» на x=527 при ширине окна 390. Каталог услуг фактически недоступен.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">2</td><td class="w"><code>/kontakty</code></td><td>Блока контактов на странице нет: адрес, два телефона и мессенджеры висят полупрозрачным слоем поверх карты. H1 «КОНТАКТЫ» обрезан правым краем. На 1440 карта не отрисовывается вовсе — остаётся серая сетка на 1300px высоты.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">3</td><td class="w"><code>/posts</code></td><td>H1 «Интересные статьи о Крыме» полностью закрыт первой карточкой: шапка <code>pt-[35vh]</code>, контент поднят на <code>mt-[-90px]</code>. Заголовка на экране нет ни на 390, ни на 1440.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">4</td><td class="w"><code>/sign-in</code>, <code>/sign-up</code></td><td>Подписи полей белые на кремовой карточке — 1,06:1. «Адрес электронной почты», «Пароль», «Ваш телефон» есть в разметке, но на экране их нет. Плюс блок ошибки капчи в середине формы.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">5</td><td class="w">4 адреса + 3 карточки</td><td><code>public/images/</code> в проекте отсутствует, а на него ссылаются <code>/images/ekskursii.jpg</code> и <code>/images/kvadro.jpg</code>. На <code>/uslugi/prokat-kvadrotsiklov-v-krymu</code> вместо фото шапки — серый градиент с иконкой битой картинки, H1 падает до 3,4:1.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+</table>
+
+<h2 class="s">Расходится с макетом — старый визуальный язык</h2>
+<table>
+<tr><th class="n"></th><th class="w">Где</th><th>Что видно</th><th class="f">Оценка</th></tr>
+<tr><td class="n">6</td><td class="w">5 страниц: <code>/tours</code>, <code>/posts</code>, <code>/kontakty</code>, <code>/activities</code>, каталог</td><td>Одно и то же фото в шапке — женщина в вечернем платье на фоне лаванды (<code>bg-5.jpg</code> у типа <code>PageHead_type_tours</code>). К джип-турам отношения не имеет и заранее задаёт неверный тон. У <code>/uslugi</code> тот же механизм, но <code>bg-1.jpg</code>.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">7</td><td class="w">6 легаси-страниц</td><td>Шапка 85vh, H1 33px белым прямо по кадру без скрима. Замеры: <code>/otzyvy</code> — худшие 5% участка 5,78:1, минимум 2,48:1 (норма 3:1); <code>/uslugi/prokat-kvadrotsiklov</code> — 3,43:1; <code>/ekskursii_po_krymu</code> — 4,73:1. Скрим <code>--scrim-hero</code> в проекте есть, но эти шаблоны его не подключают.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">8</td><td class="w">Все легаси-страницы и страница поста</td><td>Заголовок «Информация» и захардкоженный мок «★ 4,9/5» с тремя стоковыми аватарами. Стоит в том числе на прокате квадроциклов и на странице отзывов. Компонент так и называется — <code>MockReviewsAvatars</code>.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">9</td><td class="w">Контент легаси-страниц</td><td>Сплошная стена текста на 40–50 строк: нет лида, нет заголовков внутри, «-» вместо маркеров списка, «В стоимость включено» жирным внутри абзаца, картинка 300px прижата влево и рвёт колонку. Система <code>.et-post</code> для этого уже есть, но её используют только посты из базы.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">10</td><td class="w">Все страницы услуг</td><td>Ни кнопки, ни телефона, ни цены отдельным блоком. Со страницы «Прокат квадроциклов» заказать нельзя — только доскроллить до подвала.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">11</td><td class="w"><code>/dzhip-tur-krym</code></td><td>«ПОСМОТРЕТЬ ВСЕ ТУРЫ» — серая плашка <code>bg-zinc-500</code> с белым текстом; заголовки слайдеров — такие же серые пилюли. Это последние два места, где живёт кнопка старого сайта. Плюс ролик YouTube показывает свою полосу с названием канала и обрезан справа.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">12</td><td class="w">Подвал, все страницы</td><td>Четыре разноцветных растровых логотипа соцсетей на серых кружках — единственное цветное пятно на сайте. Текст лежит на фото без скрима. Навигации нет, юридических ссылок нет, хотя на сайте есть формы с телефоном.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">13</td><td class="w">Страница поста</td><td>Кнопка «Забронировать тур» тёмная (<code>--ink</code>), а не золотая. Единственная такая кнопка на сайте — второй язык кнопки, которого в Foundations нет.</td><td class="f"><span class="sev s1">мелочь</span></td></tr>
+</table>
+
+<h2 class="s">Десктоп 1440 — сломано всё, кроме каталога</h2>
+<table>
+<tr><th class="n"></th><th class="w">Где</th><th>Что видно</th><th class="f">Оценка</th></tr>
+<tr><td class="n">14</td><td class="w">Главная</td><td>Кнопка «Все туры» — золотая пилюля шириной 1372px во всю ширину окна.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">15</td><td class="w">Все страницы с <code>PageTitle</code></td><td>H1 выровнен по правому краю без контейнера: «ИНТЕРЕСНЫЕ СТАТЬИ О КРЫМЕ» и «КОНТАКТЫ» упираются в край окна на x=1424 при vw=1440.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">16</td><td class="w"><code>/posts</code> и списки</td><td>Сетка карточек идёт от края до края окна (20…1420) вместо контейнера 1120 из артборда «Десктоп».</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">17</td><td class="w">Главная, полоса «Ближайшие туры»</td><td>«ВЫБИРАЙ СВОИ ДАТЫ НА СЕНТЯБРЬ» приклеено к левому краю окна на x=20, тогда как заголовок полосы и текст под ним отцентрованы. Перед строкой «Открой для себя мир путешествий» — 200px пустого крема вместо ритма 80.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+</table>
+
+<h2 class="s">Не нарисовано нигде — ни в коде, ни раньше в канвасе</h2>
+<table>
+<tr><th class="n"></th><th class="w">Что</th><th>Как выглядит сейчас</th><th class="f">Артборд</th></tr>
+<tr><td class="n">18</td><td class="w">Пустые состояния</td><td>«Предстоящих мероприятий нет» — одна строка на тёмной полосе; <code>/tours</code> без туров — пустая белая плашка; «Гид не найден» и «Возникла ошибка... попробуйте повторить действие позже» — голый текст системным шрифтом с кодом 200.</td><td class="f">Состояния</td></tr>
+<tr><td class="n">19</td><td class="w">Наведение, фокус, отключено</td><td>Не описано. У кнопок нет ни нажатого состояния, ни видимого фокуса — на фото контур теряется.</td><td class="f">Состояния</td></tr>
+<tr><td class="n">20</td><td class="w">Скелет загрузки</td><td><code>loading.tsx</code> рисует серые полосы <code>bg-zinc-600</code> — последний зинк из старого языка.</td><td class="f">Состояния</td></tr>
+<tr><td class="n">21</td><td class="w">Страница поста</td><td>Собрана в v2, но без крошек, без факт-строки над H1, без липкой кнопки брони и без блока «похожие туры» — уйти со страницы можно только назад.</td><td class="f">Пост</td></tr>
+<tr><td class="n">22</td><td class="w">Отзывы</td><td>Страница отзывов без отзывов: в теле лежит собственный заголовок страницы в рамке.</td><td class="f">Отзывы</td></tr>
+<tr><td class="n">23</td><td class="w"><code>/tury</code></td><td>В прод уехала заметка разработчика: в теле страницы написано «список туров в виде пиктограмм».</td><td class="f">—</td></tr>
+</table>
+
+<h2 class="s">Новые артборды в этом канвасе</h2>
+<div class="plan">
+  <div class="step"><b>Пост · 390</b><ul>
+    <li>Крошки и факт-строка над H1</li>
+    <li>«Информация» и мок-рейтинг убраны</li>
+    <li>Маршрут по остановкам, «что входит» с исключениями</li>
+    <li>Золотая кнопка вместо тёмной, липкая полоса брони</li>
+    <li>Блок «похожие туры»</li>
+  </ul></div>
+  <div class="step"><b>Услуга · 390</b><ul>
+    <li>Скрим в шапке, крошки, цена в факт-строке</li>
+    <li>Лид, прайс-блок, «что входит»</li>
+    <li>Список «как это проходит» вместо стены текста</li>
+    <li>Кнопка и телефон на странице</li>
+    <li>Перелинковка на другие услуги</li>
+  </ul></div>
+  <div class="step"><b>Услуги · 390</b><ul>
+    <li>Карточки с реальной шириной вместо 0×320</li>
+    <li>Шапка 300px, теги-фильтры</li>
+    <li>Фото шапки по смыслу страницы</li>
+  </ul></div>
+  <div class="step"><b>Контакты · 390</b><ul>
+    <li>Карточки телефонов, почты и адреса</li>
+    <li>Мессенджеры монохромными пилюлями 48px</li>
+    <li>Режим работы</li>
+    <li>Карта в карточке, а не во весь экран</li>
+  </ul></div>
+  <div class="step"><b>Отзывы · 390</b><ul>
+    <li>Сводка 4,9 и разбивка по звёздам</li>
+    <li>Карточки отзывов с автором, датой и туром</li>
+    <li>Источник отзыва: ВК, Яндекс, сайт</li>
+    <li>Кнопка «оставить отзыв»</li>
+  </ul></div>
+  <div class="step"><b>Интересное · 390</b><ul>
+    <li>Шапка 300px — заголовок видно</li>
+    <li>Теги-фильтры</li>
+    <li>Пагинация с тап-таргетом 44px</li>
+  </ul></div>
+  <div class="step"><b>Подвал · было и стало</b><ul>
+    <li>Подложка тушью вместо фото</li>
+    <li>Монохромные соцсети</li>
+    <li>Навигация и юридический блок</li>
+    <li>Раскладки 390 и 1440</li>
+  </ul></div>
+  <div class="step"><b>Состояния · 1120</b><ul>
+    <li>Наведение, фокус, отключено, отправка</li>
+    <li>Поля: подписи, фокус, ошибка, слот капчи</li>
+    <li>Четыре пустых состояния «было / стало»</li>
+    <li>Кремовый скелет загрузки</li>
+  </ul></div>
+  <div class="step"><b>Контентная страница · 1440</b><ul>
+    <li>Контейнер 1120, заголовок в колонке 720</li>
+    <li>Кнопка 260px вместо 1372px</li>
+    <li>Сетка 3 в ряд, ритм 80</li>
+    <li>Липкий прайс-блок сбоку</li>
+  </ul></div>
+</div>
+
+<h2 class="s">С чего начинать перенос</h2>
+<table>
+<tr><th class="n"></th><th class="w">Шаг</th><th>Что делаем</th><th class="f">Закрывает</th></tr>
+<tr><td class="n">1</td><td class="w">Картинки и фото шапок</td><td>Положить недостающие файлы и раздать шапкам фото по смыслу страницы, а не одно на пять адресов.</td><td class="f">5, 6</td></tr>
+<tr><td class="n">2</td><td class="w">Ширина карточек</td><td>Починить сетку на <code>/uslugi</code> — страница перестанет быть пустой.</td><td class="f">1</td></tr>
+<tr><td class="n">3</td><td class="w">Подписи полей</td><td>Убрать белый цвет подписей на кремовой карточке входа и регистрации.</td><td class="f">4</td></tr>
+<tr><td class="n">4</td><td class="w">Шаблон легаси-страницы</td><td>Скрим и крошки в шапку, убрать «Информация» и мок-рейтинг, перевести контент на <code>.et-post</code>, добавить прайс и кнопку.</td><td class="f">7–10, 13</td></tr>
+<tr><td class="n">5</td><td class="w">Контейнер 1120</td><td>Обернуть заголовки, сетки и кнопки в контейнер — десктоп перестанет расползаться.</td><td class="f">14–17</td></tr>
+<tr><td class="n">6</td><td class="w">Контакты и отзывы</td><td>Собрать по новым артбордам: это две страницы, которые сейчас пустые по смыслу.</td><td class="f">2, 22</td></tr>
+<tr><td class="n">7</td><td class="w">Состояния и подвал</td><td>Пустые состояния, фокус, скелет, подвал на туши.</td><td class="f">11, 12, 18–20</td></tr>
+</table>
+
+</div>
+</x-dc>
+</body>
+</html>

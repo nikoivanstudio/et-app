@@ -4,6 +4,7 @@ import { cn } from '@bem-react/classname';
 import { FC } from 'react';
 
 import styles from '@/shared/assets/styles.module.scss';
+import { legacyTextToHtml } from '@/shared/lib/legacy-text';
 import { sanitizeArticleHtml } from '@/shared/lib/sanitize';
 
 const cnTextContent = cn('TextContent');
@@ -12,12 +13,15 @@ type TextContentProps = {
   content: TrustedHTML;
   bold?: boolean;
   unstyled?: boolean;
+  /** Текст из WordPress: переносы строк разобрать на абзацы и списки. */
+  legacy?: boolean;
 };
 
 export const TextContent: FC<TextContentProps> = async ({
   content,
   bold,
-  unstyled
+  unstyled,
+  legacy
 }) => (
   <div
     className={cnTextContent(
@@ -38,6 +42,10 @@ export const TextContent: FC<TextContentProps> = async ({
     )}
     // MED-3: контент из БД (в том числе перенесённый из WordPress) очищается
     // по allowlist: script, iframe, style и любые обработчики on* удаляются
-    dangerouslySetInnerHTML={{ __html: sanitizeArticleHtml(String(content)) }}
+    dangerouslySetInnerHTML={{
+      __html: sanitizeArticleHtml(
+        legacy ? legacyTextToHtml(String(content)) : String(content)
+      )
+    }}
   ></div>
 );

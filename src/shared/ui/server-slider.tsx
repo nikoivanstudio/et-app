@@ -12,7 +12,9 @@ type Props = {
 
 export const ServerSlider: FC<Props> = async ({ title, slides, rounded }) => (
   <section className='flex flex-col items-center gap-6 py-8'>
-    <h2 className='text-2xl font-bold text-center bg-zinc-500 text-white px-6 py-2 rounded-xl'>
+    {/* Было: серая плашка bg-zinc-500 с белым текстом — последний осколок
+        старого языка, к палитре v2 отношения не имеющий. */}
+    <h2 className='font-poiret text-ink mx-auto max-w-[1120px] px-4 text-center text-2xl'>
       {title}
     </h2>
     <SliderControls rounded={rounded}>

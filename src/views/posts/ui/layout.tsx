@@ -6,10 +6,7 @@ import { AppMain } from '@/widgets/app-main/server';
 import { postsServices } from '@/widgets/posts/services/posts-services';
 import { ServerPostCardList } from '@/widgets/posts/ui/server-post-card-list';
 
-import { PageHeadLayout } from '@/entities/page-head/server';
-import { PageTitle } from '@/entities/page-title/server';
-
-import { cn } from '@/shared/lib/css';
+import { SectionBody, SectionHead } from '@/entities/page-head/server';
 
 import { Pagination } from '@/views/posts/ui/pagination';
 
@@ -17,34 +14,64 @@ type Props = {
   page?: string;
 };
 
+/**
+ * Список статей.
+ *
+ * Было: шапка `pt-[35vh]` с фото женщины в вечернем платье (тот же кадр, что
+ * на /tours, /kontakty и /activities), а контент поднят на −90px — заголовок
+ * «Интересные статьи о Крыме» целиком уходил под первую карточку, и на
+ * странице не было видно ни одного заголовка.
+ */
 export const PostsView: FC<Props> = async ({ page }) => {
   const result = await postsServices.getPaginatedPostCards({ page });
 
   if (result.type === 'left') {
-    return <div>Возникла ошибка... попробуйте повторить действие позже</div>;
+    return (
+      <AppMain
+        mainHead={<SectionHead page='posts' title='Интересное о Крыме' />}
+        mainContent={
+          <SectionBody>
+            <div className='border-rule bg-cream rounded-card border px-5 py-10 text-center'>
+              <p className='font-caladea text-ink text-base font-bold'>
+                Статьи сейчас не загрузились
+              </p>
+              <p className='font-caladea text-ink-muted mt-2 text-[14.5px]'>
+                Обновите страницу — или позвоните, и мы расскажем про маршруты
+                голосом.
+              </p>
+            </div>
+            <div className='h-14' />
+          </SectionBody>
+        }
+        mainBottom={null}
+      />
+    );
   }
 
-  const { list } = result.value;
+  const { list, totalPages, total } = result.value;
+  const currentPage = page ? Number(page) : 1;
 
   return (
     <AppMain
       mainHead={
-        <PageHeadLayout
-          className={cn('pt-[35vh]', 'px-4')}
-          title={<PageTitle topTitle={{ text: 'Интересные статьи о Крыме' }} />}
-          content={null}
-          page='tours'
+        <SectionHead
+          page='posts'
+          kicker={`${total} маршрутов · описания и цены`}
+          title='Интересное о Крыме'
+          lead='Куда едем, сколько это занимает и что смотрим по дороге — по каждому маршруту отдельно.'
         />
       }
       mainContent={
-        <div className={cn('p-4', 'mt-[-90px]')}>
+        <SectionBody>
           <ServerPostCardList list={list} />
-        </div>
+        </SectionBody>
       }
       mainBottom={
         <Pagination
-          currentPage={page ? Number(page) : 1}
-          totalPages={result.value.totalPages}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          total={total}
+          shown={list.length}
         />
       }
     />

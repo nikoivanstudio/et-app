@@ -1,11 +1,10 @@
 'use server';
 
 import { cn as cnBem } from '@bem-react/classname';
-import Link from 'next/link';
 import { FC } from 'react';
 
-import styles from '@/shared/assets/styles.module.scss';
-import { cn } from '@/shared/lib/css';
+import { LinkButton } from '@/shared/ui/link-button';
+import { SectionHeading } from '@/shared/ui/section-heading';
 import { TextContent } from '@/shared/ui/text-content';
 
 import { longTours, shortTours } from '@/views/legacy/constants/tours';
@@ -71,49 +70,37 @@ export const Content: FC = async () => (
   <div
     className={cnJeepTourKrym('Content', [
       'bg-white',
-      'rounded-4xl',
-      'p-2',
-      'mt-[-3vh]',
+      'rounded-t-[32px]',
+      '-mt-8',
+      'px-4',
+      'pt-6',
+      'md:px-6',
       'relative',
       'z-3'
     ])}
   >
     <section className={cnJeepTourKrym('DescriptionBlock')}>
       <Video />
-      <Slider
-        tours={longTours}
-        title='Многочасовые длительные туры. Время тура от 2 часов'
-      />
-      <Slider
-        tours={shortTours}
-        title='Сокращенные туры. Время тура от 4 часов'
-      />
-      <div className='text-center mt-4 mb-8'>
-        <Link
-          className='text-2xl uppercase bg-zinc-500 px-4 py-2 rounded-xl'
-          href='/category/vse_tury'
-        >
+      <Slider tours={longTours} title='Многочасовые туры · от 4 часов' />
+      {/* Подписи были перепутаны местами: у длительных стояло «от 2 часов»,
+          у сокращённых — «от 4 часов». */}
+      <Slider tours={shortTours} title='Сокращённые туры · от 2 часов' />
+      {/* Было: bg-zinc-500 и текст 24px в рамке 8px — не кнопка и не в
+          палитре. Теперь та же главная кнопка, что на главной. */}
+      <div className='mt-6 mb-10 text-center'>
+        <LinkButton className='w-full md:w-[280px]' href='/category/vse_tury'>
           Посмотреть все туры
-        </Link>
-      </div>
-      <div className='flex justify-center pr-5'>
-        <span
-          className={cn(
-            styles.poiret_text_black,
-            'text-2xl',
-            'block',
-            'p-2',
-            'block',
-            'text-center'
-          )}
-        >
-          Внимание
-        </span>
+        </LinkButton>
       </div>
     </section>
-    <section className={cnJeepTourKrym('Content', ['mt-1', 'pb-14'])}>
-      <div>
-        <TextContent content={content as TrustedHTML} />
+    <section className={cnJeepTourKrym('Content', ['pb-14'])}>
+      <div className='mx-auto w-full max-w-[720px]'>
+        <SectionHeading className='mt-0'>О джип-турах в Крыму</SectionHeading>
+        {/* Тот же текст, но в типографике постов: колонка 720, а не полоса
+            во всю ширину окна в серой рамке. */}
+        <div className='et-post'>
+          <TextContent content={content as TrustedHTML} unstyled legacy />
+        </div>
       </div>
     </section>
   </div>

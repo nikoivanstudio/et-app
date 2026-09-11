@@ -15,9 +15,10 @@ export const HomeView: FC = async () => {
     <AppMain
       mainHead={
         <PageHeadLayout
-          className='px-4'
           title={
-            <div className='pt-30'>
+            /* Контейнер 1120: на 1440 заголовок упирался в правый край окна
+               (x=1424), потому что PageTitle прижат вправо. */
+            <div className='mx-auto w-full max-w-[1120px] px-4 pt-30 md:px-6'>
               <PageTitle
                 topTitle={{ text: 'Джип туры' }}
                 middleTitle={{ text: 'Экскурсии по Крыму' }}
@@ -27,16 +28,19 @@ export const HomeView: FC = async () => {
           content={
             /* Кнопка внизу шапки, на плотной части скрима: там её находят
                пальцем, и она не висит посреди кадра. */
-            <div className='absolute inset-x-0 bottom-22 px-4 text-center'>
-              <LinkButton
-                className='w-full shadow-[0_6px_20px_#00000059]'
-                href='/category/vse_tury'
-              >
-                Все туры
-              </LinkButton>
-              <p className='font-oswald mt-3.5 text-[13px] tracking-widest text-white/85'>
-                Джип-туры и экскурсии · выезд из Бахчисарая и Севастополя
-              </p>
+            <div className='absolute inset-x-0 bottom-22'>
+              <div className='mx-auto w-full max-w-[1120px] px-4 text-center md:px-6'>
+                {/* Было: пилюля во всю ширину окна — 1372px на 1440. */}
+                <LinkButton
+                  className='w-full shadow-[0_6px_20px_#00000059] md:w-[280px]'
+                  href='/category/vse_tury'
+                >
+                  Все туры
+                </LinkButton>
+                <p className='font-oswald mt-3.5 text-[13px] tracking-widest text-white/85'>
+                  Джип-туры и экскурсии · выезд из Бахчисарая и Севастополя
+                </p>
+              </div>
             </div>
           }
         />
@@ -45,7 +49,7 @@ export const HomeView: FC = async () => {
         /* Единственное наложение на странице: контент поднимается на 32px и
            закрывает фото скруглением сверху — тот же приём, что на туре.
            Было -15vh и стопка отрицательных отступов внутри виджетов. */
-        <div className='relative z-3 -mt-8 rounded-t-[32px] bg-page pt-12'>
+        <div className='bg-page relative z-3 -mt-8 rounded-t-[32px] pt-12'>
           <PopularTours />
           <HomePosts />
           <UpcomingActivities />

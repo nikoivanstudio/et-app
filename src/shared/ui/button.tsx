@@ -5,21 +5,22 @@ import * as React from 'react';
 import { cn } from '@/shared/lib/css';
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-activities-none disabled:opacity-50 [&_svg]:pointer-activities-none [&_svg:not([class*='size-'])]:size-8 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-control text-sm font-medium transition-all disabled:pointer-activities-none disabled:opacity-50 [&_svg]:pointer-activities-none [&_svg:not([class*='size-'])]:size-8 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
     variants: {
       variant: {
-        default:
-          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
+        /* Одна кнопка на весь продукт — золото бренда, 5.96:1. Было
+           bg-primary: тёмно-серый из набора shadcn, из-за которого «Получить
+           код» и кнопки кабинета выпадали из палитры v2. */
+        default: 'bg-cta text-on-cta shadow-xs hover:bg-cta-press',
         destructive:
           'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
         outline:
-          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
-        secondary:
-          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
+          'border border-rule bg-transparent text-ink shadow-xs hover:bg-cream-deep',
+        secondary: 'bg-cream-deep text-ink shadow-xs hover:bg-rule/60',
         ghost:
           'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-        link: 'text-primary underline-offset-4 hover:underline'
+        link: 'text-gold-ink underline-offset-4 hover:underline'
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

@@ -35,6 +35,8 @@
     .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
     .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
     .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
     .stat { flex: 1 1 0; min-width: 0; background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 12px 10px; text-align: center; }
     .stat svg { display: block; margin: 0 auto 6px; }
     .stat b { display: block; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; }
@@ -48,15 +50,13 @@
     .price-plate { border-radius: var(--r-block); background: var(--cta); color: var(--on-cta); padding: 18px 16px; text-align: center; }
     .price-plate .lbl { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; opacity: .85; }
     .price-plate .val { font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 500; line-height: 1.15; margin-top: 2px; }
-    .price-plate .note { font-family: 'Oswald', sans-serif; font-size: 12px; opacity: .85; margin-top: 2px; }
+    .price-plate .note { font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--on-cta); opacity: .85; margin: 2px 0 0; }
     .inc { display: flex; gap: 9px; padding: 9px 0; font-family: 'Caladea', serif; font-size: 14.5px; }
     .inc svg { flex: 0 0 auto; margin-top: 3px; }
     .free { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: var(--r-pill); background: var(--free-bg); color: var(--free-ink); font-family: 'Oswald', sans-serif; font-size: 11px; }
     .gal { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .gal div { height: 96px; border-radius: 12px; background: var(--cream-deep) center/cover; }
-    .sticky { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px; padding: 10px 16px 14px; background: #fffffff2; border-top: 1px solid var(--rule); backdrop-filter: blur(8px); }
-    .pin { position: absolute; z-index: 40; background: #1f1a12; color: #fff; font: 600 11px/1.35 ui-sans-serif, system-ui, sans-serif; padding: 5px 8px; border-radius: 6px; max-width: 190px; }
-    .pin::after { content: ''; position: absolute; left: -5px; top: 9px; border: 5px solid transparent; border-right-color: #1f1a12; }
+    .sticky { position: relative; display: flex; align-items: center; gap: 12px; padding: 10px 16px 14px; background: #fffffff2; border-top: 1px solid var(--rule); backdrop-filter: blur(8px); }
   </style>
 </helmet>
 
@@ -84,7 +84,6 @@
       <span style="opacity: .5;">·</span><span style="font-size: 14px; opacity: .9;">Бахчисарай</span>
     </p>
   </div>
-  <div class="pin" style="left: 200px; top: 300px;">Крошки и факт-строка новые: раньше над H1 не было ничего, а цену показывали только ниже, в плитках</div>
 </section>
 
 <div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: #fff; padding: 24px 16px 0;">
@@ -105,7 +104,7 @@
       <b>до 6 чел.</b><span>в машине</span>
     </div>
   </div>
-  <div class="pin" style="left: 16px; top: 476px;">Плитки уже в коде. Ушли только «Информация» + мок-рейтинг над ними</div>
+  <p class="note note-bad">Крошки и факт-строка над H1 новые: раньше над заголовком не было ничего, а цену показывали только здесь, в плитках. «Информация» и мок-рейтинг «★ 4,9/5» с тремя стоковыми аватарами над плитками убраны</p>
 
   <p class="lead" style="margin-top: 22px;">Однодневный выезд по внутренней гряде: Бахчисарайские сфинксы, пещерный город Тепе-Кермен и Марсианское озеро. Дороги нет — только грунт и русло, поэтому едем на подготовленном внедорожнике.</p>
 
@@ -153,7 +152,7 @@
     <a class="cta" href="#">Забронировать тур</a>
     <p style="margin: 8px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Ответим в течение часа · без предоплаты</p>
   </div>
-  <div class="pin" style="left: 16px; top: 2138px;">Сейчас в коде эта кнопка тёмная, а не золотая — единственная такая на сайте</div>
+  <p class="note note-bad">Сейчас в коде эта кнопка тёмная, а не золотая — единственная такая на сайте</p>
 
   <h2 class="block-h" style="margin-top: 34px;">Похожие туры</h2>
   <p style="margin: -4px 0 12px; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Блока нет в коде: со страницы тура уйти можно только назад или в подвал</p>
@@ -168,10 +167,11 @@
     </a>
   </div>
 
-  <div style="height: 96px;"></div>
+  <div style="height: 24px;"></div>
 </div>
 
-<!-- Липкая полоса брони: на длинной странице кнопка уезжает за экран -->
+<!-- Липкая полоса брони: на длинной странице кнопка уезжает за экран.
+     В артборде показана блоком в конце — прижата к низу вьюпорта. -->
 <div class="sticky">
   <div style="min-width: 0;">
     <div style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500; line-height: 1.1;">10 500 ₽</div>

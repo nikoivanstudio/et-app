@@ -17,24 +17,52 @@
     height: 58vh;
   }
 
-  &_type_services {
-    background-image: url('../../../shared/assets/images/backgrounds/bg-1.jpg');
-  }
-
-  /* Каталог: было 100vh декора до первой карточки, стало компактная шапка —
-     под ней сразу фильтры и две карточки в первом экране. */
-  &_type_tours {
+  /* ── Шапки-полосы ──────────────────────────────────────────────────────
+     Было: /tours, /posts, /kontakty, /activities и /uslugi делили две
+     картинки на пятерых — на четырёх адресах подряд встречала одна и та же
+     женщина в платье на лавандовом поле. У каждого раздела свой кадр,
+     высота фиксированная (300/420), под ней сразу контент. */
+  &_type_tours,
+  &_type_services,
+  &_type_posts,
+  &_type_contacts,
+  &_type_reviews,
+  &_type_activities {
     height: 300px;
+    background-position: center;
 
     @media (width >= 48rem) {
       height: 420px;
     }
 
-    background-image: url('../../../shared/assets/images/backgrounds/bg-5.jpg');
-    background-position: center;
-
     .PageHead-Scrim {
       background: var(--scrim-band);
     }
+  }
+
+  /* bg-1.jpg = ekskursii.jpg, тот же кадр уже стоит в /category/vse_tury —
+     каталогу из базы отдан джип в броде. */
+  &_type_tours {
+    background-image: url('../../../shared/assets/images/backgrounds/bg-jeep.jpg');
+  }
+
+  &_type_services {
+    background-image: url('../../../shared/assets/images/backgrounds/bg-4.jpg');
+  }
+
+  &_type_posts {
+    background-image: url('../../../shared/assets/images/backgrounds/IMG_5800.jpg');
+  }
+
+  &_type_contacts {
+    background-image: url('../../../shared/assets/images/backgrounds/bg-7.jpg');
+  }
+
+  &_type_reviews {
+    background-image: url('../../../shared/assets/images/backgrounds/bg-2.jpg');
+  }
+
+  &_type_activities {
+    background-image: url('../../../shared/assets/images/backgrounds/bg-6.jpg');
   }
 }

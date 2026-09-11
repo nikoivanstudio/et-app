@@ -35,6 +35,8 @@
     .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
     .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
     .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
     .frow { display: flex; align-items: baseline; gap: 8px; padding: 13px 0; border-bottom: 1px solid var(--rule); }
     .frow:last-child { border-bottom: 0; padding-bottom: 0; }
     .fname { flex: 1 1 auto; min-width: 0; font-family: 'Caladea', serif; font-size: 14px; }
@@ -45,10 +47,6 @@
     .ul { margin: 0; padding: 0; list-style: none; }
     .ul li { position: relative; padding: 0 0 10px 18px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.6; }
     .ul li::before { content: ''; position: absolute; left: 3px; top: 10px; width: 5px; height: 5px; border-radius: 999px; background: var(--gold-plate); }
-    .pin { position: absolute; z-index: 40; background: #1f1a12; color: #fff; font: 600 11px/1.35 ui-sans-serif, system-ui, sans-serif; padding: 5px 8px; border-radius: 6px; max-width: 200px; }
-    .pin-bad { background: #9e3a25; }
-    .pin::after { content: ''; position: absolute; left: -5px; top: 9px; border: 5px solid transparent; border-right-color: #1f1a12; }
-    .pin-bad::after { border-right-color: #9e3a25; }
   </style>
 </helmet>
 
@@ -76,7 +74,7 @@
 <div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: #fff; padding: 26px 16px 0;">
 
   <p class="lead">Двухместные квадроциклы 500 см³ с независимой подвеской. Берём в прокат на час или собираем тур по маршруту — с сопровождением инструктора на отдельной машине.</p>
-  <div class="pin" style="left: 16px; top: 400px;">Лид новый. В коде первым абзацем идёт тот же текст, что и в глубине страницы — без вводной и без разбивки</div>
+  <p class="note note-bad">Лид новый. В коде первым абзацем идёт тот же текст, что и в глубине страницы — без вводной и без разбивки</p>
 
   <!-- Прайс вместо «1500 рублей в час» внутри абзаца -->
   <h2 class="block-h" style="margin-top: 28px;">Стоимость</h2>
@@ -101,7 +99,7 @@
     <li>Дальше маршрут: грунтовки, брод по Каче, смотровая над долиной.</li>
     <li>Возвращаемся к точке старта. Заезд в любое время, круглый год.</li>
   </ul>
-  <div class="pin pin-bad" style="left: 16px; top: 1148px;">В коде это сплошной абзац на 12 строк, с «-» вместо маркеров и склеенными словами: «прокат квадроцикловили заказать»</div>
+  <p class="note note-bad">В коде это сплошной абзац на 12 строк, с «-» вместо маркеров и склеенными словами: «прокат квадроцикловили заказать»</p>
 
   <h2 class="block-h" style="margin-top: 28px;">Фотографии</h2>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
@@ -115,7 +113,7 @@
     <a class="cta-ghost" href="#">+7 978 788-07-53</a>
     <p style="margin: 2px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Ответим в течение часа</p>
   </div>
-  <div class="pin pin-bad" style="left: 16px; top: 1524px;">На всех страницах услуг сейчас нет ни кнопки, ни телефона — только подвал</div>
+  <p class="note note-bad">На всех страницах услуг сейчас нет ни кнопки, ни телефона — только подвал</p>
 
   <h2 class="block-h" style="margin-top: 32px;">Другие услуги</h2>
   <div style="display: flex; flex-direction: column; gap: 8px;">

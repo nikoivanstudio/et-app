@@ -2,18 +2,12 @@
 
 import { FC } from 'react';
 
-import { ServiceView } from '@/views/legacy/server';
+import { reviewsService, ReviewsView } from '@/views/reviews/server';
 
-const service = {
-  id: 11,
-  title: 'Отзывы — Джип туры и индивидуальные экскурсии по Крыму. Лучшие цены',
-  content:
-    'Отзывы — Джип туры и индивидуальные экскурсии по Крыму. Лучшие цены',
-  mainImage:
-    'https://energy-tur.ru/wp-content/uploads/2018/06/Hram-sv.luki.laki.jpg',
-  images: []
+const ReviewsPage: FC = async () => {
+  const { items, summary } = await reviewsService.getSiteReviews();
+
+  return <ReviewsView items={items} summary={summary} />;
 };
 
-const LegacyPage: FC = async () => <ServiceView {...service} />;
-
-export default LegacyPage;
+export default ReviewsPage;

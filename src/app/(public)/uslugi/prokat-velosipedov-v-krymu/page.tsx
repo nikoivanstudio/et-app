@@ -4,6 +4,7 @@ import { ServiceView } from '@/views/legacy/server';
 
 const service = {
   id: 5,
+  slug: 'prokat-velosipedov-v-krymu',
   title: 'Прокат велосипедов в Крыму',
   content: `У нас вы можете воспользоваться услугой <strong>прокат велосипедов</strong>. В прокате имеются велосипеды различных размеров. Для индивидуального подбора под рост человека.  Предоставляется на условиях:
 

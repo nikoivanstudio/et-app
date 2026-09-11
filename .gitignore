@@ -16,6 +16,9 @@ migration.json
 
 # next.js
 /.next/
+# Сборки в отдельный каталог (NEXT_DIST_DIR): Tailwind сканирует всё, что не
+# в .gitignore, и спотыкается о бинарные кэши turbopack внутри них.
+/.next-*/
 /out/
 
 # production

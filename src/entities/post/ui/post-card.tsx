@@ -4,7 +4,6 @@ import { FC } from 'react';
 import { ServerDurationLabel } from '@/entities/duration/server';
 import { FavouriteLabel } from '@/entities/favourite';
 import { PostCardEntity } from '@/entities/post/domain';
-import { ServerRatingLabel } from '@/entities/rating/server';
 
 import reserveImage from '@/shared/assets/images/backgrounds/bg-1.jpg';
 import { BadgePrice } from '@/shared/ui/badge-price';
@@ -16,6 +15,7 @@ export const PostCard: FC<PostCardEntity> = async ({
   id,
   slug,
   price,
+  image,
   images,
   title,
   duration,
@@ -27,11 +27,10 @@ export const PostCard: FC<PostCardEntity> = async ({
     <CardLayout
       className={cnPostCard({ type: 'server' })}
       href={`/${slug}`}
-      bgImage={
-        images?.length && !!images[0]
-          ? images[0]
-          : (reserveImage as unknown as string)
-      }
+      /* Галерея, потом одиночная обложка, и только потом запасной кадр:
+         у части постов заполнено только `image`, и все карточки шли под
+         одним и тем же фото. */
+      bgImage={images?.[0] || image || (reserveImage as unknown as string)}
       title={title}
       favourite={<FavouriteLabel id={id} />}
       facts={
@@ -49,8 +48,8 @@ export const PostCard: FC<PostCardEntity> = async ({
               <ServerDurationLabel duration={duration} variant='fact' />
             </>
           )}
-          <span className='opacity-50'>·</span>
-          <ServerRatingLabel rating={4.9} variant='fact' />
+          {/* Было: `<ServerRatingLabel rating={4.9} />` — одна и та же
+              захардкоженная оценка на каждой карточке. Оценок у постов нет. */}
         </>
       }
     />

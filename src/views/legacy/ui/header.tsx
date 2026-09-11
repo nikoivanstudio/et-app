@@ -92,19 +92,19 @@ export const Header: FC<Props> = async ({
               )}
             </div>
           ) : (
-            <Title
-              className={cnJeepTourKrym('Title', [
-                'z-2',
-                'relative',
-                'px-4',
-                'mt-auto',
-                'text-center',
-                styles.JeepTourKrym__Title
-              ])}
-              type='h1'
-            >
-              {title}
-            </Title>
+            /* Заголовок в той же колонке 720, что и текст под шапкой: был
+               прижат к левому краю окна и обрывался на 344px. */
+            <div className='relative z-2 mx-auto mt-auto w-full max-w-[720px] px-4 md:px-6'>
+              <Title
+                className={cnJeepTourKrym('Title', [
+                  'text-left',
+                  styles.JeepTourKrym__Title
+                ])}
+                type='h1'
+              >
+                {title}
+              </Title>
+            </div>
           )}
         </div>
       }

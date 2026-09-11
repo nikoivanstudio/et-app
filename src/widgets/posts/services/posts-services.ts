@@ -9,6 +9,8 @@ import { postCardFields } from '../constants/request-constants';
 type PaginatedPostCardsResponse = {
   list: PostDomain.PostCardEntity[];
   totalPages: number;
+  /** Всего записей — для строки «Показано 12 из 17» под списком. */
+  total: number;
 };
 
 type PaginatedPostCardsConfig = {
@@ -44,7 +46,11 @@ const getPaginatedPostCards = async ({
     return left('Ошибка получения постов');
   }
 
-  return right({ totalPages: Math.ceil(postsCount / 10), list: postCards });
+  return right({
+    totalPages: Math.ceil(postsCount / 10),
+    total: postsCount,
+    list: postCards
+  });
 };
 
 export const postsServices = { getPostCards, getPaginatedPostCards };

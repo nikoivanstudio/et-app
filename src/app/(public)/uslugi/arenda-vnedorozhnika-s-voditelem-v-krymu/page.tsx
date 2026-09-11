@@ -4,6 +4,7 @@ import { ServiceView } from '@/views/legacy/server';
 
 const service = {
   id: 2,
+  slug: 'arenda-vnedorozhnika-s-voditelem-v-krymu',
   title: 'Аренда внедорожника с водителем в Крыму',
   content: `Вы можете арендовать внедорожник с водителем на заказ. В парке имеются различные внедорожники: Nissan Patrol, Mitsubishi Pajero, Mitsubishi L200, УАЗ. Все автомобили являются специально подготовленными к жесткому бездорожью и управляются профессиональными водителями.
 

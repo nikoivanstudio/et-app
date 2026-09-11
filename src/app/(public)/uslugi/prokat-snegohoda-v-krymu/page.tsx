@@ -4,6 +4,7 @@ import { ServiceView } from '@/views/legacy/server';
 
 const service = {
   id: 9,
+  slug: 'prokat-snegohoda-v-krymu',
   title: 'Прокат снегохода в Крыму',
   content:
     'В нашей компании имеется услуга прокат снегоходов. В прокате имеются различные снегоходы, различного назначения, мощности и вместимости. Такие как YamahaV-Max500, YamahaV-Max 700, Arctic Cat Crosstour и многие другие.\n' +

@@ -35,6 +35,8 @@
     .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
     .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
     .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
     .card { position: relative; display: block; width: 100%; height: 200px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
     .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
     .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px 14px 14px; }
@@ -46,8 +48,6 @@
     .card .more { margin-left: auto; font-size: 12.5px; color: var(--gold-photo); white-space: nowrap; }
     .chip { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13px; white-space: nowrap; text-decoration: none; }
     .chip-on { background: var(--cta); color: var(--on-cta); }
-    .pin { position: absolute; z-index: 40; background: #9e3a25; color: #fff; font: 600 11px/1.35 ui-sans-serif, system-ui, sans-serif; padding: 5px 8px; border-radius: 6px; max-width: 210px; }
-    .pin::after { content: ''; position: absolute; left: -5px; top: 9px; border: 5px solid transparent; border-right-color: #9e3a25; }
   </style>
 </helmet>
 
@@ -76,7 +76,7 @@
     <a class="chip chip-on" href="#">Все</a><a class="chip" href="#">Прокат</a><a class="chip" href="#">Аренда</a><a class="chip" href="#">Кемпинг</a>
   </div>
 
-  <div class="pin" style="left: 16px; top: 372px;">Здесь и была дыра: восемь карточек рендерятся шириной 0×320 (flex-элементы без базиса), текст уезжает за правый край. Страница выглядит пустой</div>
+  <p class="note note-bad">Здесь и была дыра: восемь карточек рендерятся шириной 0×320 (flex-элементы без базиса), текст уезжает за правый край. Страница выглядит пустой</p>
 
   <div style="display: flex; flex-direction: column; gap: 14px;">
     <a class="card" style="background-image: url(./card1.jpg)" href="#">

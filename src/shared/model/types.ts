@@ -1,3 +1,5 @@
+import type { StaticImageData } from 'next/image';
+
 export type PropsWithClassNames = { className?: string };
 
 export type ServerPostProps = {
@@ -26,7 +28,8 @@ export type GetApiData = {
 
 export type LegacyTourCardData = {
   title: string;
-  img: string;
+  /** Фото карточки. `null` — когда снимка для услуги пока нет. */
+  img: string | StaticImageData | null;
   duration: string;
   price: string;
   href: string;

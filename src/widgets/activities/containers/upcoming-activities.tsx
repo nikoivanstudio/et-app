@@ -10,6 +10,8 @@ import { Months } from '@/widgets/activities/ui/months';
 
 import { ActivityCard } from '@/entities/activity/server';
 
+import { LinkButton } from '@/shared/ui/link-button';
+
 import styles from '../assets/styles.module.scss';
 
 const cnUpcomingActivities = cn('UpcomingActivities');
@@ -30,7 +32,8 @@ export const UpcomingActivities: FC = async () => {
           <div
             className={cnUpcomingActivities('Description', [
               'mt-2',
-              'leading-4'
+              'leading-4',
+              'text-center'
             ])}
           >
             <span
@@ -67,15 +70,24 @@ export const UpcomingActivities: FC = async () => {
               )
             )}
           </ul>
+          {/* Было: одна строка «Предстоящих мероприятий нет» посреди фото и
+              никакого следующего шага. */}
           {!upcomingActivities.length && (
-            <span
-              className={cnUpcomingActivities('EmptyBadge', [
-                styles.UpcomingActivities_EmptyBadge,
-                'text-2xl'
-              ])}
-            >
-              Предстоящих мероприятий нет
-            </span>
+            <div className='mx-auto mt-12 max-w-[520px] rounded-card border border-white/15 bg-white/8 px-5 py-8 text-center'>
+              <p className='font-caladea text-base font-bold text-white'>
+                Групповых выездов на ближайшие дни нет
+              </p>
+              <p className='font-caladea mt-2 text-[14.5px] leading-relaxed text-white/75'>
+                Собираем группу под ваши даты — от четырёх человек выходит
+                дешевле, чем в сборной группе.
+              </p>
+              <LinkButton
+                className='mt-5 w-full md:w-[260px]'
+                href='/category/vse_tury'
+              >
+                Выбрать тур
+              </LinkButton>
+            </div>
           )}
         </div>
       }

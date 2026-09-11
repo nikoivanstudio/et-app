@@ -5,10 +5,8 @@ import { FC } from 'react';
 
 import { AppMain } from '@/widgets/app-main/ui/app-main';
 
-import { MockReviewsAvatars } from '@/entities/mock-reviews-avatars';
 import { PostDomain } from '@/entities/post/server';
 
-import styles from '@/shared/assets/styles.module.scss';
 import { cn } from '@/shared/lib/css';
 import { TextContent } from '@/shared/ui/text-content';
 
@@ -26,7 +24,8 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
     metaDuration,
     metaPrice,
     price,
-    duration
+    duration,
+    status
   } = props;
 
   return (
@@ -51,15 +50,12 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
           {/* Колонка та же, что у .et-post (720px), иначе на десктопе
               «Информация» и плитки статистики растягивались во всю ширину. */}
           <div className={cn('mx-auto', 'w-full', 'max-w-[720px]')}>
+            {/* Было: «Информация» и рядом мок «★ 4,9/5» с тремя стоковыми
+                аватарами — рейтинг, который никто не ставил, на каждой
+                странице сайта. */}
             <section className={cnPagePost('DescriptionBlock')}>
-              <div className='flex items-center justify-between gap-4'>
-                <span className={cn(styles.poiret_text_black, 'text-2xl')}>
-                  Информация
-                </span>
-                <MockReviewsAvatars rating={4.9} />
-              </div>
               <PostStats
-                className='mt-4'
+                className=''
                 priceValue={price}
                 price={metaPrice}
                 durationValue={duration}
@@ -67,7 +63,14 @@ export const PostMain: FC<PostDomain.PostEntity> = async props => {
               />
             </section>
             <section className={cnPagePost('Body', ['mt-8'])}>
-              <TextContent content={content as TrustedHTML} unstyled />
+              {/* Тексты, перенесённые из WordPress, лежат одной строкой с
+                  переносами — их разбираем на абзацы и списки. Посты нового
+                  формата уже размечены и проходят как есть. */}
+              <TextContent
+                content={content as TrustedHTML}
+                unstyled
+                legacy={status === 'legacy'}
+              />
             </section>
           </div>
         </div>

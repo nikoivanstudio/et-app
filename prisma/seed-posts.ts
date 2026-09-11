@@ -135,7 +135,9 @@ export const seedPosts = async (postAuthorId: number) => {
       postAuthorId,
       type: 'post',
       guid: slug.slice(0, 80),
-      image: tour.img,
+      // В константах туров `img` — либо URL, либо статический импорт;
+      // в базе хранится строка.
+      image: typeof tour.img === 'string' ? tour.img : (tour.img?.src ?? null),
       images: [],
       status: 'legacy',
       categories: ['tours'],

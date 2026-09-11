@@ -4,6 +4,7 @@ import { ServiceView } from '@/views/legacy/server';
 
 const service = {
   id: 8,
+  slug: 'prokat-palatki-v-krymu',
   title: 'Прокат палатки в Крыму',
   content:
     'У нас вы можете воспользоваться услугой проката походного снаряжения. Это прокат: палатки, спальный мешок и каримат.\n' +

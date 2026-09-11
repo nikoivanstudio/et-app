@@ -7,6 +7,8 @@ import { ServerLayout } from '@/widgets/tours/ui/server-layout';
 
 import { tourService } from '@/features/tour/server';
 
+import { EmptyState } from '@/shared/ui/empty-state';
+import { LinkButton } from '@/shared/ui/link-button';
 import { Title } from '@/shared/ui/title';
 
 import styles from '../assets/styles.module.scss';
@@ -29,10 +31,28 @@ export const PopularTours: FC = async () => {
         </Title>
       }
       list={
-        <ServerTourCardList
-          className='mt-12 flex flex-col gap-12 md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3'
-          tours={tours}
-        />
+        /* Пока в базе нет ни одного тура, здесь оставалось 280px белого
+           места между заголовком и следующим блоком. */
+        tours.length ? (
+          <ServerTourCardList
+            className='mt-10 flex flex-col gap-6 md:grid md:grid-cols-2 lg:grid-cols-3'
+            tours={tours}
+          />
+        ) : (
+          <EmptyState
+            className='mt-8'
+            title='Собираем расписание на сезон'
+            text='Готовые маршруты с ценами и длительностью уже есть в каталоге — оттуда можно записаться на любую дату.'
+            action={
+              <LinkButton
+                className='w-full md:w-[260px]'
+                href='/category/vse_tury'
+              >
+                Смотреть каталог
+              </LinkButton>
+            }
+          />
+        )
       }
     />
   );

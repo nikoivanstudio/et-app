@@ -19,17 +19,30 @@ import styles from '../assets/styles.module.scss';
 export const LegacyTourCard: FC<{ tour: LegacyTourCardData }> = async ({
   tour
 }) => (
+  /* `w-full` обязателен: в гриде и в слайдере у карточки нет собственной
+     ширины — всё внутри absolute, и без него она схлопывалась в 0×320.
+     Из-за этого /uslugi выглядела пустой страницей. */
   <Link
-    className='relative block h-80 overflow-hidden rounded-card'
+    className='rounded-card relative block h-80 w-full overflow-hidden'
     href={tour.href}
   >
-    <Image
-      className='absolute inset-0 z-1 h-full w-full object-cover object-center'
-      width={500}
-      height={500}
-      src={tour.img}
-      alt={tour.title}
-    />
+    {tour.img ? (
+      <Image
+        className='absolute inset-0 z-1 h-full w-full object-cover object-center'
+        width={500}
+        height={500}
+        src={tour.img}
+        alt={tour.title}
+      />
+    ) : (
+      /* Фото для услуги ещё нет — плашка на туши с маркой вместо чужого
+         кадра и вместо битой картинки. */
+      <div className='bg-ink absolute inset-0 z-1 flex items-center justify-center'>
+        <span className='font-poiret text-gold-photo/35 text-[64px] leading-none'>
+          ET
+        </span>
+      </div>
+    )}
     <div className={styles.CardScrim} />
     <div className='absolute inset-x-0 bottom-0 z-3 p-4'>
       {/* Названия здесь длинные, до 60 символов — обрезаем по трём строкам,
@@ -43,18 +56,23 @@ export const LegacyTourCard: FC<{ tour: LegacyTourCardData }> = async ({
         {tour.title}
       </h3>
       <div className='font-oswald mt-3 flex items-baseline gap-2 text-white'>
-        <span className='text-[21px] font-medium whitespace-nowrap'>
-          {tour.price}
+        {/* Длинные подписи вроде «от 2 000 ₽/экскурсия · от 1 экскурсии»
+            выдавливали «Подробнее» за край карточки — факты сжимаются, а
+            ссылка остаётся на месте. */}
+        <span className='flex min-w-0 items-baseline gap-2 overflow-hidden'>
+          <span className='text-[21px] font-medium whitespace-nowrap'>
+            {tour.price}
+          </span>
+          {!!tour.duration && (
+            <>
+              <span className='opacity-50'>·</span>
+              <span className='truncate text-sm opacity-90'>
+                {tour.duration}
+              </span>
+            </>
+          )}
         </span>
-        {!!tour.duration && (
-          <>
-            <span className='opacity-50'>·</span>
-            <span className='text-sm whitespace-nowrap opacity-90'>
-              {tour.duration}
-            </span>
-          </>
-        )}
-        <span className='text-gold-photo ml-auto text-[13px] whitespace-nowrap'>
+        <span className='text-gold-photo ml-auto shrink-0 pl-2 text-[13px] whitespace-nowrap'>
           Подробнее →
         </span>
       </div>

@@ -27,10 +27,10 @@
 <body>
 <header>
   <h1>Energy Tour — макеты основных экранов</h1>
-  <p>Применённая версия v2. Снято с кода, затем правки дизайна из артборда «Ревью».<br>Прежнее состояние (то, что сейчас в коде) лежит в docs/design/canvas/before/ и в истории версий этой ссылки.</p><p>Мобильная вёрстка осталась основной, но десктоп больше не «одна колонка 390px»: см. артборд «Десктоп — каталог 1440».<br>Контент 1120px, сетка карточек 3 в ряд, горизонтальное меню вместо бургера от md:.</p><p>Визуальные языки сведены: одна кнопка (золото + тёмная тушь), один набор радиусов, одни поля 48px, акцент дашборда сведён с золотом на фото.<br>Зелёный остался только статусом. Обводка текста убрана везде — контраст держит скрим.</p><p>Ревью снято с этих же артбордов. Контраст измерен по пикселям фото под текстом в Chrome, не на глаз.<br>Варианты нарисованы рядом с текущим состоянием — выбираем, потом рисуем полноценные артборды v2 и только затем правим код.</p><p>Это отдельная страница от артборда «Все туры» слева: /category/vse_tury — статический каталог на 17 туров, куда ведёт главный CTA.<br>В проде она осталась вёрсткой старого сайта: серые блоки zinc-500, «ПОДРОБНЕЕ» в рамке, фото по 50vh, одна карточка в ряд, прайс стеклянной таблицей поверх фото.</p>
+  <p>Применённая версия v2. Снято с кода, затем правки дизайна из артборда «Ревью».<br>Прежнее состояние (то, что сейчас в коде) лежит в docs/design/canvas/before/ и в истории версий этой ссылки.</p><p>Мобильная вёрстка осталась основной, но десктоп больше не «одна колонка 390px»: см. артборд «Десктоп — каталог 1440».<br>Контент 1120px, сетка карточек 3 в ряд, горизонтальное меню вместо бургера от md:.</p><p>Визуальные языки сведены: одна кнопка (золото + тёмная тушь), один набор радиусов, одни поля 48px, акцент дашборда сведён с золотом на фото.<br>Зелёный остался только статусом. Обводка текста убрана везде — контраст держит скрим.</p><p>Ревью снято с этих же артбордов. Контраст измерен по пикселям фото под текстом в Chrome, не на глаз.<br>Варианты нарисованы рядом с текущим состоянием — выбираем, потом рисуем полноценные артборды v2 и только затем правим код.</p><p>Это отдельная страница от артборда «Все туры» слева: /category/vse_tury — статический каталог на 17 туров, куда ведёт главный CTA.<br>В проде она осталась вёрсткой старого сайта: серые блоки zinc-500, «ПОДРОБНЕЕ» в рамке, фото по 50vh, одна карточка в ряд, прайс стеклянной таблицей поверх фото.</p><p>Второй заход: прошли все 24 публичных адреса, а не только главную, каталог и тур. Эти шесть экранов в коде остались на старом языке — фото женщины в вечернем платье в шапке, мок-рейтинг «4,9/5», стена текста, у /uslugi карточки нулевой ширины.<br>Красные подписи под блоками — что именно расходится с кодом. Полный список с замерами — в артборде «Ревью-2» справа.</p><p>Подвал, состояния и десктопная раскладка — то, чего в канвасе не было вообще.<br>Состояния: наведение, фокус, отключено, отправка, поля формы, четыре пустых экрана и скелет загрузки. Контентная страница 1440 — контейнер 1120: сейчас на десктопе H1 упирается в край окна, а кнопка «Все туры» растянута на 1372px.</p>
   <p>Живой канвас: <a class="link" href="https://claude.ai/code/artifact/c57b4036-c2ba-40c2-975c-6f1448d11df7">claude.ai/code/artifact/c57b4036…</a></p>
 </header>
-<nav><a href="#Foundations">Foundations</a><a href="#Main">Главная</a><a href="#Catalog">Все туры</a><a href="#Tour">Страница тура</a><a href="#Booking">Заявка на тур</a><a href="#BookingDone">Заявка отправлена</a><a href="#SignIn">Вход</a><a href="#Dashboard">Дашборд гида</a><a href="#Review">Ревью и предложения</a><a href="#Desktop">Десктоп</a><a href="#Tours">Все туры</a><a href="#ToursDesktop">Все туры</a></nav>
+<nav><a href="#Foundations">Foundations</a><a href="#Main">Главная</a><a href="#Catalog">Все туры</a><a href="#Tour">Страница тура</a><a href="#Booking">Заявка на тур</a><a href="#BookingDone">Заявка отправлена</a><a href="#SignIn">Вход</a><a href="#Dashboard">Дашборд гида</a><a href="#Review">Ревью и предложения</a><a href="#Desktop">Десктоп</a><a href="#Tours">Все туры</a><a href="#ToursDesktop">Все туры</a><a href="#Post">Пост</a><a href="#Service">Услуга</a><a href="#Services">Услуги</a><a href="#Contacts">Контакты</a><a href="#Reviews">Отзывы</a><a href="#Posts">Интересное</a><a href="#Footer">Подвал</a><a href="#States">Состояния и пустые экраны</a><a href="#ContentDesktop">Контентная страница</a><a href="#Audit">Ревью-2</a></nav>
 <main>
   <section class="board" id="Foundations">
     <h2>Foundations — токены и компоненты <span>1000×3400</span></h2>
@@ -2253,6 +2253,1580 @@
       <a class="page-btn" href="#" style="padding: 0 20px;">Вперёд →</a>
     </div>
   </div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Post">
+    <h2>Пост — страница тура <span>390×2420</span></h2>
+    <div class="frame" style="width:390px;height:2420px">
+      <script type="text/html" data-board="Post"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    .stat { flex: 1 1 0; min-width: 0; background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 12px 10px; text-align: center; }
+    .stat svg { display: block; margin: 0 auto 6px; }
+    .stat b { display: block; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; }
+    .stat span { display: block; margin-top: 2px; font-family: 'Oswald', sans-serif; font-size: 11px; color: var(--ink-faint); }
+    .tag { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--gold-ink); font-family: 'Oswald', sans-serif; font-size: 12px; }
+    .stop { display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+    .stop:last-child { border-bottom: 0; }
+    .num { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 999px; background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+    .stop b { display: block; font-family: 'Caladea', serif; font-size: 15px; }
+    .stop p { margin: 3px 0 0; font-family: 'Caladea', serif; font-size: 13.5px; line-height: 1.5; color: var(--ink-muted); }
+    .price-plate { border-radius: var(--r-block); background: var(--cta); color: var(--on-cta); padding: 18px 16px; text-align: center; }
+    .price-plate .lbl { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; opacity: .85; }
+    .price-plate .val { font-family: 'Oswald', sans-serif; font-size: 32px; font-weight: 500; line-height: 1.15; margin-top: 2px; }
+    .price-plate .note { font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--on-cta); opacity: .85; margin: 2px 0 0; }
+    .inc { display: flex; gap: 9px; padding: 9px 0; font-family: 'Caladea', serif; font-size: 14.5px; }
+    .inc svg { flex: 0 0 auto; margin-top: 3px; }
+    .free { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: var(--r-pill); background: var(--free-bg); color: var(--free-ink); font-family: 'Oswald', sans-serif; font-size: 11px; }
+    .gal { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gal div { height: 96px; border-radius: 12px; background: var(--cream-deep) center/cover; }
+    .sticky { position: relative; display: flex; align-items: center; gap: 12px; padding: 10px 16px 14px; background: #fffffff2; border-top: 1px solid var(--rule); backdrop-filter: blur(8px); }
+  </style>
+</helmet>
+
+<!-- ШАПКА: было 33px белым по фото без крошек и без фактов над заголовком -->
+<section style="position: relative; height: 420px; background-image: url(./tourhead.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-hero);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg></div>
+  </div>
+
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 46px;">
+    <p class="crumbs" style="margin: 0 0 10px;"><a href="#">Туры</a> · <a href="#">Джип-туры</a> · Сердцем Крыма</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 33px; line-height: 1.2; letter-spacing: .04em; color: #fff;">Джип-тур экскурсия «Сердцем Крыма»</h1>
+    <p style="margin: 12px 0 0; display: flex; align-items: baseline; gap: 8px; font-family: 'Oswald', sans-serif; color: #fff;">
+      <span style="font-size: 21px; font-weight: 500;">от 10 500 ₽</span>
+      <span style="opacity: .5;">·</span><span style="font-size: 14px; opacity: .9;">4 часа</span>
+      <span style="opacity: .5;">·</span><span style="font-size: 14px; opacity: .9;">Бахчисарай</span>
+    </p>
+  </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: #fff; padding: 24px 16px 0;">
+
+  <!-- Плитки фактов. Убраны «Информация» и звезда 4,9/5 с тремя стоковыми аватарами:
+       рейтинг был захардкожен во всех шаблонах, включая страницы прокатов -->
+  <div style="display: flex; gap: 8px;">
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M2 11h20"/></svg>
+      <b>от 10 500 ₽</b><span>за машину</span>
+    </div>
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      <b>4 часа</b><span>экскурсия</span>
+    </div>
+    <div class="stat">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19c.6-3.4 3.2-5 6.5-5s5.9 1.6 6.5 5"/><path d="M16.5 6.2a3 3 0 0 1 0 5.6M18 14.4c2 .7 3.2 2.2 3.5 4.6"/></svg>
+      <b>до 6 чел.</b><span>в машине</span>
+    </div>
+  </div>
+  <p class="note note-bad">Крошки и факт-строка над H1 новые: раньше над заголовком не было ничего, а цену показывали только здесь, в плитках. «Информация» и мок-рейтинг «★ 4,9/5» с тремя стоковыми аватарами над плитками убраны</p>
+
+  <p class="lead" style="margin-top: 22px;">Однодневный выезд по внутренней гряде: Бахчисарайские сфинксы, пещерный город Тепе-Кермен и Марсианское озеро. Дороги нет — только грунт и русло, поэтому едем на подготовленном внедорожнике.</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;">
+    <span class="tag">Бахчисарай</span><span class="tag">Пещерные города</span><span class="tag">Смотровые</span><span class="tag">Без подготовки</span>
+  </div>
+
+  <!-- Маршрут: у постов из базы это уже .et-route, у легаси-страниц маршрут лежит
+       сплошным абзацем с дефисами вместо списка -->
+  <h2 class="block-h" style="margin-top: 30px;">Маршрут</h2>
+  <div class="block" style="padding: 4px 16px;">
+    <div class="stop"><span class="num">1</span><div><b>Бахчисарайские сфинксы</b><p>Каменные останцы над Чурук-Су. Остановка 30 минут, подъём пешком 10 минут.</p></div></div>
+    <div class="stop"><span class="num">2</span><div><b>Тепе-Кермен</b><p>Пещерный город на конусовидной горе, 544 м. Подъём на джипе до седловины.</p></div></div>
+    <div class="stop"><span class="num">3</span><div><b>Марсианское озеро</b><p>Затопленный карьер с бирюзовой водой. Купание, пикник, 1 час.</p></div></div>
+  </div>
+
+  <h2 class="block-h" style="margin-top: 30px;">Стоимость</h2>
+  <div class="price-plate">
+    <div class="lbl">Цена за машину</div>
+    <div class="val">10 500 ₽</div>
+    <div class="note">до 6 человек · топливо и сборы включены</div>
+  </div>
+  <p style="margin: 10px 0 0; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Цена не делится на человека — платите за машину, сколько бы вас ни было.</p>
+
+  <h2 class="block-h" style="margin-top: 30px;">Что входит</h2>
+  <div class="block">
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Внедорожник с водителем-инструктором</span></div>
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Топливо, лесной и туристический сбор</span></div>
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Остановки по желанию группы <span class="free">без доплат</span></span></div>
+    <div class="inc" style="border-top: 1px solid var(--rule); margin-top: 4px; padding-top: 12px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9e3a25" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span style="color: var(--ink-muted);">Обед и входные билеты в пещерные города</span></div>
+  </div>
+
+  <h2 class="block-h" style="margin-top: 30px;">Фотографии</h2>
+  <div class="gal">
+    <div style="background-image: url(./card1.jpg)"></div>
+    <div style="background-image: url(./card2.jpg)"></div>
+    <div style="background-image: url(./card3.jpg)"></div>
+    <div style="background-image: url(./card4.jpg)"></div>
+  </div>
+  <p style="margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint);">Плитки заливаются кремом до загрузки: оригиналы с wp-content по 0,5 МБ</p>
+
+  <!-- Кнопка золотая. В коде на странице поста она тёмная (--ink) — это второй
+       язык кнопки, которого в Foundations нет -->
+  <div style="margin-top: 30px;">
+    <a class="cta" href="#">Забронировать тур</a>
+    <p style="margin: 8px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Ответим в течение часа · без предоплаты</p>
+  </div>
+  <p class="note note-bad">Сейчас в коде эта кнопка тёмная, а не золотая — единственная такая на сайте</p>
+
+  <h2 class="block-h" style="margin-top: 34px;">Похожие туры</h2>
+  <p style="margin: -4px 0 12px; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Блока нет в коде: со страницы тура уйти можно только назад или в подвал</p>
+  <div style="display: flex; gap: 10px; overflow: hidden;">
+    <a style="flex: 0 0 210px; position: relative; height: 150px; border-radius: var(--r-card); overflow: hidden; background: url(./card2.jpg) center/cover; text-decoration: none;">
+      <span style="position: absolute; inset: 0; background: var(--scrim-card);"></span>
+      <span style="position: absolute; left: 12px; right: 12px; bottom: 10px; font-family: 'Poiret One', serif; font-size: 17px; color: #fff;">Легенды Мангуп-Кале<br><b style="font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500;">от 10 500 ₽</b></span>
+    </a>
+    <a style="flex: 0 0 210px; position: relative; height: 150px; border-radius: var(--r-card); overflow: hidden; background: url(./card3.jpg) center/cover; text-decoration: none;">
+      <span style="position: absolute; inset: 0; background: var(--scrim-card);"></span>
+      <span style="position: absolute; left: 12px; right: 12px; bottom: 10px; font-family: 'Poiret One', serif; font-size: 17px; color: #fff;">Три крепости<br><b style="font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 500;">от 15 000 ₽</b></span>
+    </a>
+  </div>
+
+  <div style="height: 24px;"></div>
+</div>
+
+<!-- Липкая полоса брони: на длинной странице кнопка уезжает за экран.
+     В артборде показана блоком в конце — прижата к низу вьюпорта. -->
+<div class="sticky">
+  <div style="min-width: 0;">
+    <div style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500; line-height: 1.1;">10 500 ₽</div>
+    <div style="font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint);">за машину · 4 часа</div>
+  </div>
+  <a class="cta" style="flex: 1 1 auto;" href="#">Забронировать</a>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Service">
+    <h2>Услуга — страница услуги <span>390×2010</span></h2>
+    <div class="frame" style="width:390px;height:2010px">
+      <script type="text/html" data-board="Service"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    .frow { display: flex; align-items: baseline; gap: 8px; padding: 13px 0; border-bottom: 1px solid var(--rule); }
+    .frow:last-child { border-bottom: 0; padding-bottom: 0; }
+    .fname { flex: 1 1 auto; min-width: 0; font-family: 'Caladea', serif; font-size: 14px; }
+    .fprice { flex: 0 0 auto; font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 500; color: var(--gold-ink); white-space: nowrap; }
+    .funit { flex: 0 0 auto; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; }
+    .inc { display: flex; gap: 9px; padding: 9px 0; font-family: 'Caladea', serif; font-size: 14.5px; }
+    .inc svg { flex: 0 0 auto; margin-top: 3px; }
+    .ul { margin: 0; padding: 0; list-style: none; }
+    .ul li { position: relative; padding: 0 0 10px 18px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.6; }
+    .ul li::before { content: ''; position: absolute; left: 3px; top: 10px; width: 5px; height: 5px; border-radius: 999px; background: var(--gold-plate); }
+  </style>
+</helmet>
+
+<!-- Шапка: было 85vh фото без скрима, заголовок 33px белым прямо по кадру.
+     На /uslugi/prokat-kvadrotsiklov фото вообще не существует (/images/kvadro.jpg → 404),
+     и H1 лежал на серой заглушке с контрастом 3,4:1 -->
+<section style="position: relative; height: 340px; background-image: url(./services.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-hero);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+  </div>
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 46px;">
+    <p class="crumbs" style="margin: 0 0 10px;"><a href="#">Главная</a> · <a href="#">Услуги</a> · Прокат квадроциклов</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 31px; line-height: 1.2; letter-spacing: .04em; color: #fff;">Прокат квадроциклов в Крыму</h1>
+    <p style="margin: 10px 0 0; font-family: 'Oswald', sans-serif; font-size: 14px; color: #fff;"><span style="font-size: 20px; font-weight: 500;">1 500 ₽</span> <span style="opacity: .8;">за час</span> <span style="opacity: .5;">·</span> <span style="opacity: .9;">2 места</span></p>
+  </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: #fff; padding: 26px 16px 0;">
+
+  <p class="lead">Двухместные квадроциклы 500 см³ с независимой подвеской. Берём в прокат на час или собираем тур по маршруту — с сопровождением инструктора на отдельной машине.</p>
+  <p class="note note-bad">Лид новый. В коде первым абзацем идёт тот же текст, что и в глубине страницы — без вводной и без разбивки</p>
+
+  <!-- Прайс вместо «1500 рублей в час» внутри абзаца -->
+  <h2 class="block-h" style="margin-top: 28px;">Стоимость</h2>
+  <div class="block">
+    <div class="frow"><span class="fname">Один квадроцикл</span><span class="fprice">1 500 ₽</span><span class="funit">в час</span></div>
+    <div class="frow"><span class="fname">От 4 квадроциклов</span><span class="fprice">1 300 ₽</span><span class="funit">в час</span></div>
+    <div class="frow"><span class="fname">Сопровождение инструктора</span><span class="fprice">включено</span><span class="funit">&nbsp;</span></div>
+  </div>
+
+  <h2 class="block-h" style="margin-top: 28px;">Что входит</h2>
+  <div class="block">
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Топливо на весь маршрут</span></div>
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Шлемы и инструктаж перед выездом</span></div>
+    <div class="inc"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#4a6626" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span>Инструктор на отдельной машине</span></div>
+    <div class="inc" style="border-top: 1px solid var(--rule); margin-top: 4px; padding-top: 12px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9e3a25" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span style="color: var(--ink-muted);">Права категории A1 — не нужны, катаемся вне дорог</span></div>
+  </div>
+
+  <h2 class="block-h" style="margin-top: 28px;">Как это проходит</h2>
+  <ul class="ul">
+    <li>Собираемся в Бахчисарае или на точке, о которой договорились.</li>
+    <li>15 минут на инструктаж и пробный круг по полю.</li>
+    <li>Дальше маршрут: грунтовки, брод по Каче, смотровая над долиной.</li>
+    <li>Возвращаемся к точке старта. Заезд в любое время, круглый год.</li>
+  </ul>
+  <p class="note note-bad">В коде это сплошной абзац на 12 строк, с «-» вместо маркеров и склеенными словами: «прокат квадроцикловили заказать»</p>
+
+  <h2 class="block-h" style="margin-top: 28px;">Фотографии</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+    <div style="height: 96px; border-radius: 12px; background: url(./card4.jpg) center/cover;"></div>
+    <div style="height: 96px; border-radius: 12px; background: url(./activities.jpg) center/cover;"></div>
+  </div>
+  <p style="margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint);">Было: картинка из тела статьи шириной 300px, прижатая влево и рвущая колонку текста</p>
+
+  <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 8px;">
+    <a class="cta" href="#">Оставить заявку</a>
+    <a class="cta-ghost" href="#">+7 978 788-07-53</a>
+    <p style="margin: 2px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Ответим в течение часа</p>
+  </div>
+  <p class="note note-bad">На всех страницах услуг сейчас нет ни кнопки, ни телефона — только подвал</p>
+
+  <h2 class="block-h" style="margin-top: 32px;">Другие услуги</h2>
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <a style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--rule); border-radius: var(--r-block); background: var(--cream); text-decoration: none; color: var(--ink);">
+      <span style="flex: 0 0 auto; width: 54px; height: 54px; border-radius: 12px; background: url(./card1.jpg) center/cover;"></span>
+      <span style="flex: 1 1 auto; min-width: 0;"><b style="display: block; font-family: 'Caladea', serif; font-size: 14.5px;">Аренда внедорожника с водителем</b><span style="font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--gold-ink);">от 2 500 ₽ в час</span></span>
+      <span style="color: var(--gold-ink); font-size: 15px;">→</span>
+    </a>
+    <a style="display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--rule); border-radius: var(--r-block); background: var(--cream); text-decoration: none; color: var(--ink);">
+      <span style="flex: 0 0 auto; width: 54px; height: 54px; border-radius: 12px; background: url(./card2.jpg) center/cover;"></span>
+      <span style="flex: 1 1 auto; min-width: 0;"><b style="display: block; font-family: 'Caladea', serif; font-size: 14.5px;">Прокат палатки и снаряжения</b><span style="font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--gold-ink);">от 200 ₽ в сутки</span></span>
+      <span style="color: var(--gold-ink); font-size: 15px;">→</span>
+    </a>
+  </div>
+
+  <div style="height: 40px;"></div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Services">
+    <h2>Услуги — каталог /uslugi <span>390×2320</span></h2>
+    <div class="frame" style="width:390px;height:2320px">
+      <script type="text/html" data-board="Services"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    .card { position: relative; display: block; width: 100%; height: 200px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 16px 14px 14px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 21px; line-height: 1.22; color: #fff; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 10px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 18px; font-weight: 500; white-space: nowrap; }
+    .card .dim { font-size: 13px; opacity: .9; white-space: nowrap; }
+    .card .sep { opacity: .5; }
+    .card .more { margin-left: auto; font-size: 12.5px; color: var(--gold-photo); white-space: nowrap; }
+    .chip { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13px; white-space: nowrap; text-decoration: none; }
+    .chip-on { background: var(--cta); color: var(--on-cta); }
+  </style>
+</helmet>
+
+<!-- Шапка 300px как в каталоге. Было: 85vh фото (женщина в вечернем платье —
+     bg-1.jpg), «УСЛУГИ» золотом обрезано правым краем окна -->
+<section style="position: relative; height: 300px; background-image: url(./services.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+  </div>
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 46px;">
+    <p class="eyebrow" style="color: #ffffffcc;">8 услуг · прокат и аренда · Крым</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 38px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-photo); line-height: 1;">Услуги</h1>
+  </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: var(--page); padding: 22px 16px 0;">
+
+  <div style="display: flex; gap: 6px; overflow: hidden; margin-bottom: 18px;">
+    <a class="chip chip-on" href="#">Все</a><a class="chip" href="#">Прокат</a><a class="chip" href="#">Аренда</a><a class="chip" href="#">Кемпинг</a>
+  </div>
+
+  <p class="note note-bad">Здесь и была дыра: восемь карточек рендерятся шириной 0×320 (flex-элементы без базиса), текст уезжает за правый край. Страница выглядит пустой</p>
+
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <a class="card" style="background-image: url(./card1.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="body"><span class="t" style="display: block;">Аренда внедорожника с водителем</span>
+      <span class="facts"><span class="price">от 2 500 ₽</span><span class="sep">·</span><span class="dim">в час</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./card4.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="body"><span class="t" style="display: block;">Прокат квадроциклов</span>
+      <span class="facts"><span class="price">1 500 ₽</span><span class="sep">·</span><span class="dim">в час</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./activities.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="body"><span class="t" style="display: block;">Классические экскурсии по Крыму</span>
+      <span class="facts"><span class="price">от 1 200 ₽</span><span class="sep">·</span><span class="dim">с человека</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./card2.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="body"><span class="t" style="display: block;">Прокат палатки в Крыму</span>
+      <span class="facts"><span class="price">от 300 ₽</span><span class="sep">·</span><span class="dim">в сутки</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./card3.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="body"><span class="t" style="display: block;">Аренда места в кемпинге</span>
+      <span class="facts"><span class="price">от 200 ₽</span><span class="sep">·</span><span class="dim">за человека</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./tours.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="body"><span class="t" style="display: block;">Прокат велосипедов</span>
+      <span class="facts"><span class="price">от 500 ₽</span><span class="sep">·</span><span class="dim">в сутки</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./hero.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="body"><span class="t" style="display: block;">Прокат снегохода</span>
+      <span class="facts"><span class="price">от 3 000 ₽</span><span class="sep">·</span><span class="dim">в час</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./tourhead.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="body"><span class="t" style="display: block;">Прокат зимнего снаряжения</span>
+      <span class="facts"><span class="price">от 400 ₽</span><span class="sep">·</span><span class="dim">в сутки</span><span class="more">Подробнее →</span></span></span>
+    </a>
+  </div>
+
+  <div style="margin: 26px 0 0; padding: 18px 16px; border-radius: var(--r-block); background: var(--cream); border: 1px solid var(--rule); text-align: center;">
+    <p style="margin: 0 0 12px; font-family: 'Caladea', serif; font-size: 15px; color: var(--ink-muted);">Не нашли нужное? Соберём выезд под ваш запрос.</p>
+    <a class="cta" href="#">Написать нам</a>
+  </div>
+
+  <div style="height: 40px;"></div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Contacts">
+    <h2>Контакты <span>390×1590</span></h2>
+    <div class="frame" style="width:390px;height:1590px">
+      <script type="text/html" data-board="Contacts"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    .crow { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); text-decoration: none; color: var(--ink); }
+    .crow .ic { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 999px; background: var(--cream-deep); display: flex; align-items: center; justify-content: center; }
+    .crow .lb { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-faint); }
+    .crow .vl { font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500; margin-top: 1px; }
+    .crow .vs { font-family: 'Caladea', serif; font-size: 15px; margin-top: 1px; }
+    .soc { display: flex; gap: 8px; }
+    .soc a { flex: 1 1 0; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 7px; border-radius: var(--r-control); border: 1px solid var(--rule); background: var(--cream); color: var(--gold-ink); font-family: 'Oswald', sans-serif; font-size: 13px; text-decoration: none; }
+    .hrow { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 14px; }
+    .hrow:last-child { border-bottom: 0; }
+    .hrow b { font-weight: 500; }
+  </style>
+</helmet>
+
+<!-- Было: 85vh фото (женщина в вечернем платье), «КОНТАКТЫ» золотом обрезано
+     правым краем, ниже карта во весь экран, а адрес, телефоны и мессенджеры
+     висели поверх карты. Самого блока контактов на странице не было -->
+<section style="position: relative; height: 260px; background-image: url(./contacts.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+  </div>
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 44px;">
+    <p class="eyebrow" style="color: #ffffffcc;">Бахчисарай · выезд по всему Крыму</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 38px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-photo); line-height: 1;">Контакты</h1>
+  </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: var(--page); padding: 24px 16px 0;">
+
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <a class="crow" href="tel:+79787880753">
+      <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.7" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      <span style="flex: 1 1 auto; min-width: 0;"><span class="lb">Заказ тура</span><span class="vl" style="display: block;">+7 978 788-07-53</span></span>
+    </a>
+    <a class="crow" href="tel:+79780542072">
+      <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.7" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      <span style="flex: 1 1 auto; min-width: 0;"><span class="lb">Прокат и кемпинг</span><span class="vl" style="display: block;">+7 978 054-20-72</span></span>
+    </a>
+    <a class="crow" href="mailto:infoenergytur@gmail.com">
+      <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.7" stroke-linecap="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <span style="flex: 1 1 auto; min-width: 0;"><span class="lb">Почта</span><span class="vs" style="display: block;">infoenergytur@gmail.com</span></span>
+    </a>
+    <div class="crow">
+      <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.7" stroke-linecap="round"><path d="M12 22s7-5.6 7-12a7 7 0 1 0-14 0c0 6.4 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+      <span style="flex: 1 1 auto; min-width: 0;"><span class="lb">Адрес</span><span class="vs" style="display: block;">Республика Крым, Бахчисарай, ул. Скалистая</span></span>
+    </div>
+  </div>
+  <p class="note note-bad">Этих карточек в коде нет вообще: адрес и телефоны есть только в подвале и в оверлее поверх карты</p>
+
+  <h2 class="block-h" style="margin-top: 26px;">Мессенджеры</h2>
+  <div class="soc">
+    <a href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="#8b6f3d"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1 0 1.3l4.6 1.4 1.7 5.3c.2.6.5.7 1 .3l2.6-2.1 4.6 3.4c.6.4 1 .2 1.2-.5l3-14c.2-.8-.3-1.2-1.1-.9zM8.9 14l8.6-5.4c.4-.2.7 0 .4.3l-7 6.3-.3 3.2L8.9 14z"/></svg>Telegram</a>
+    <a href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="#8b6f3d"><path d="M12 2C6.5 2 2 6 2 11c0 2.8 1.4 5.3 3.7 7L5 21.5l3.7-1.4c1 .3 2.1.5 3.3.5 5.5 0 10-4 10-9s-4.5-9.6-10-9.6z"/></svg>MAX</a>
+    <a href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="#8b6f3d"><path d="M12.7 16.6c-5 0-8.2-3.6-8.3-9.4h2.6c.1 4.4 2.1 6.2 3.5 6.6V7.2h2.5v3.9c1.4-.2 2.8-1.7 3.3-3.9h2.5c-.4 2.6-1.9 4.2-2.9 4.8 1 .5 2.7 1.9 3.4 4.6h-2.7c-.5-1.8-1.8-3.2-3.6-3.4v3.4h-.3z"/></svg>ВКонтакте</a>
+  </div>
+  <p style="margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint);">Было: четыре разноцветных растровых логотипа на серых кружках поверх карты. Стали монохромными пилюлями 48px</p>
+
+  <h2 class="block-h" style="margin-top: 26px;">Когда работаем</h2>
+  <div class="block">
+    <div class="hrow"><span>Пн — Пт</span><b>08:00 — 21:00</b></div>
+    <div class="hrow"><span>Сб — Вс</span><b>08:00 — 21:00</b></div>
+    <div class="hrow"><span>Выезды</span><b>круглый год</b></div>
+  </div>
+
+  <h2 class="block-h" style="margin-top: 26px;">Как добраться</h2>
+  <div style="position: relative; height: 260px; border-radius: var(--r-card); overflow: hidden; border: 1px solid var(--rule); background: #e8e5df;">
+    <div style="position: absolute; inset: 0; background:
+      repeating-linear-gradient(90deg, #dedad2 0 1px, transparent 1px 44px),
+      repeating-linear-gradient(0deg, #dedad2 0 1px, transparent 1px 44px);"></div>
+    <div style="position: absolute; left: -20px; top: 120px; width: 440px; height: 16px; background: #efe9dd; transform: rotate(-8deg);"></div>
+    <div style="position: absolute; left: 150px; top: -20px; width: 14px; height: 320px; background: #efe9dd; transform: rotate(12deg);"></div>
+    <div style="position: absolute; left: 40px; top: 170px; width: 120px; height: 70px; background: #e2ecd6; border-radius: 8px;"></div>
+    <div style="position: absolute; left: 168px; top: 96px; display: flex; flex-direction: column; align-items: center;">
+      <span style="width: 34px; height: 34px; border-radius: 999px; background: var(--cta); border: 3px solid #fff; box-shadow: 0 3px 10px #00000030; display: flex; align-items: center; justify-content: center;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f1a12" stroke-width="2" stroke-linecap="round"><path d="M12 22s7-5.6 7-12a7 7 0 1 0-14 0c0 6.4 7 12 7 12z"/></svg>
+      </span>
+      <span style="margin-top: 6px; padding: 3px 8px; border-radius: 6px; background: #fff; font-family: 'Oswald', sans-serif; font-size: 11.5px; white-space: nowrap; box-shadow: 0 2px 8px #00000018;">Energy Tour</span>
+    </div>
+    <div style="position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; gap: 8px;">
+      <a class="cta" style="flex: 1 1 auto; min-height: 44px; font-size: 14px;" href="#">Открыть в Яндекс.Картах</a>
+    </div>
+  </div>
+  <p style="margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint);">Карта в карточке с радиусом и полями. На 1440 живая карта вообще не отрисовывается — остаётся серая сетка</p>
+
+  <div style="margin: 26px 0 0; padding: 18px 16px; border-radius: var(--r-block); background: var(--cream); border: 1px solid var(--rule); text-align: center;">
+    <p style="margin: 0 0 12px; font-family: 'Caladea', serif; font-size: 15px; color: var(--ink-muted);">Подберём маршрут под ваши даты и состав группы.</p>
+    <a class="cta" href="#">Позвонить</a>
+  </div>
+
+  <div style="height: 40px;"></div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Reviews">
+    <h2>Отзывы <span>390×1580</span></h2>
+    <div class="frame" style="width:390px;height:1580px">
+      <script type="text/html" data-board="Reviews"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    .sum { display: flex; gap: 16px; align-items: center; }
+    .big { font-family: 'Oswald', sans-serif; font-size: 44px; font-weight: 500; line-height: 1; }
+    .bar { display: flex; align-items: center; gap: 8px; font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--ink-faint); }
+    .bar i { flex: 1 1 auto; height: 6px; border-radius: 999px; background: var(--cream-deep); overflow: hidden; }
+    .bar i b { display: block; height: 100%; background: var(--cta); }
+    .rev { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 16px; }
+    .rev .top { display: flex; align-items: center; gap: 10px; }
+    .rev .av { width: 40px; height: 40px; border-radius: 999px; background: var(--cream-deep) center/cover; flex: 0 0 auto; }
+    .rev .nm { font-family: 'Oswald', sans-serif; font-size: 14.5px; font-weight: 500; }
+    .rev .dt { font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint); }
+    .rev .tx { margin: 12px 0 0; font-family: 'Caladea', serif; font-size: 15px; line-height: 1.62; }
+    .rev .tour { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 5px 10px; border-radius: var(--r-pill); background: #fff; border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--gold-ink); text-decoration: none; }
+    .stars { display: inline-flex; gap: 2px; }
+    .src { margin-left: auto; font-family: 'Oswald', sans-serif; font-size: 10.5px; letter-spacing: .8px; text-transform: uppercase; color: var(--ink-faint); }
+  </style>
+</helmet>
+
+<!-- Было: 85vh фото храма без скрима, H1 «Отзывы — Джип туры и индивидуальные
+     экскурсии по Крыму. Лучшие цены» белым по светлому кадру (худший участок
+     2,48:1 при норме 3:1 для крупного текста), а в теле — та же строка
+     заголовка в рамке. Ни одного отзыва на странице отзывов -->
+<section style="position: relative; height: 260px; background-image: url(./hero.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+  </div>
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 44px;">
+    <p class="eyebrow" style="color: #ffffffcc;">Что пишут после выезда</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 38px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-photo); line-height: 1;">Отзывы</h1>
+  </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: var(--page); padding: 24px 16px 0;">
+
+  <!-- Сводка вместо захардкоженной звезды «4.9/5» с тремя стоковыми аватарами -->
+  <div class="block">
+    <div class="sum">
+      <div style="flex: 0 0 auto; text-align: center;">
+        <div class="big">4,9</div>
+        <div class="stars" style="margin-top: 4px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        </div>
+        <div style="margin-top: 5px; font-family: 'Oswald', sans-serif; font-size: 11.5px; color: var(--ink-faint);">147 отзывов</div>
+      </div>
+      <div style="flex: 1 1 auto; min-width: 0;">
+        <div class="bar"><span>5</span><i><b style="width: 92%"></b></i><span>135</span></div>
+        <div class="bar" style="margin-top: 6px;"><span>4</span><i><b style="width: 7%"></b></i><span>10</span></div>
+        <div class="bar" style="margin-top: 6px;"><span>3</span><i><b style="width: 1.5%"></b></i><span>2</span></div>
+        <div class="bar" style="margin-top: 6px;"><span>2</span><i><b style="width: 0%"></b></i><span>0</span></div>
+        <div class="bar" style="margin-top: 6px;"><span>1</span><i><b style="width: 0%"></b></i><span>0</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="note note-bad">Сводка и разбивка новые. В коде на этой странице стоит тот же мок «★ 4.9/5» с тремя стоковыми аватарами, что и на прокате квадроциклов</p>
+
+  <div style="display: flex; gap: 6px; overflow: hidden; margin: 20px 0 16px;">
+    <span style="display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 13px;">Все</span>
+    <span style="display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13px; white-space: nowrap;">Джип-туры</span>
+    <span style="display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13px; white-space: nowrap;">Прокат</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    <div class="rev">
+      <div class="top">
+        <span class="av" style="background-image: url(./ava1.jpg)"></span>
+        <span style="flex: 1 1 auto; min-width: 0;"><span class="nm" style="display: block;">Ирина</span><span class="dt">14 августа 2026</span></span>
+        <span class="src">ВКонтакте</span>
+      </div>
+      <div class="stars" style="margin-top: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+      </div>
+      <p class="tx">Ездили вчетвером с детьми. Водитель забрал от дома в Бахчисарае, ждал нас на каждой смотровой столько, сколько хотелось. Броды дети вспоминают до сих пор.</p>
+      <a class="tour" href="#">Сердцем Крыма →</a>
+    </div>
+
+    <div class="rev">
+      <div class="top">
+        <span class="av" style="background-image: url(./ava2.jpg)"></span>
+        <span style="flex: 1 1 auto; min-width: 0;"><span class="nm" style="display: block;">Алексей</span><span class="dt">2 августа 2026</span></span>
+        <span class="src">Яндекс</span>
+      </div>
+      <div class="stars" style="margin-top: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+      </div>
+      <p class="tx">Брали внедорожник на день под свой маршрут. Цена за машину, а не с человека, — в итоге вышло дешевле любой групповой экскурсии.</p>
+      <a class="tour" href="#">Аренда внедорожника →</a>
+    </div>
+
+    <div class="rev">
+      <div class="top">
+        <span class="av" style="background-image: url(./ava3.jpg)"></span>
+        <span style="flex: 1 1 auto; min-width: 0;"><span class="nm" style="display: block;">Марина</span><span class="dt">28 июля 2026</span></span>
+        <span class="src">Сайт</span>
+      </div>
+      <div class="stars" style="margin-top: 10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#b8915a"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e2d5b7"><path d="m12 2 3 6.5 7 .9-5 4.8 1.3 7L12 17.8 5.7 21.2 7 14.2 2 9.4l7-.9L12 2z"/></svg>
+      </div>
+      <p class="tx">Всё понравилось, но выехали на полчаса позже — ждали вторую машину. В остальном маршрут и обед на природе выше ожиданий.</p>
+      <a class="tour" href="#">Три крепости →</a>
+    </div>
+  </div>
+
+  <div style="margin-top: 16px;">
+    <a class="cta-ghost" href="#">Показать ещё 144 отзыва</a>
+  </div>
+
+  <div style="margin: 24px 0 0; padding: 18px 16px; border-radius: var(--r-block); background: var(--cream); border: 1px solid var(--rule); text-align: center;">
+    <p style="margin: 0 0 4px; font-family: 'Caladea', serif; font-weight: 700; font-size: 16px;">Были с нами?</p>
+    <p style="margin: 0 0 12px; font-family: 'Caladea', serif; font-size: 14.5px; color: var(--ink-muted);">Расскажите, как прошёл выезд, — это помогает следующим.</p>
+    <a class="cta" href="#">Оставить отзыв</a>
+  </div>
+
+  <div style="height: 40px;"></div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Posts">
+    <h2>Интересное — список постов <span>390×1910</span></h2>
+    <div class="frame" style="width:390px;height:1910px">
+      <script type="text/html" data-board="Posts"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    .card { position: relative; display: block; width: 100%; height: 300px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 23px; line-height: 1.22; color: #fff; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 12px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 20px; font-weight: 500; white-space: nowrap; }
+    .card .dim { font-size: 13.5px; opacity: .9; white-space: nowrap; }
+    .card .sep { opacity: .5; }
+    .card .more { margin-left: auto; font-size: 12.5px; color: var(--gold-photo); white-space: nowrap; }
+    .fav { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 999px; background: #ffffff26; backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; }
+    .chip { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: var(--r-pill); background: var(--cream-deep); color: var(--ink-muted); font-family: 'Oswald', sans-serif; font-size: 13px; white-space: nowrap; text-decoration: none; }
+    .chip-on { background: var(--cta); color: var(--on-cta); }
+    .page-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 44px; padding: 0 14px; border-radius: var(--r-pill); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; color: var(--ink-muted); text-decoration: none; }
+    .page-on { background: var(--cta); border-color: var(--cta); color: var(--on-cta); font-weight: 600; }
+  </style>
+</helmet>
+
+<!-- Было: шапка pt-[35vh] с фото женщины в вечернем платье, а контент поднят
+     на mt-[-90px] — H1 «Интересные статьи о Крыме» полностью уезжал под первую
+     карточку. Заголовка на странице не видно вообще -->
+<section style="position: relative; height: 300px; background-image: url(./tours.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+  <div class="hdr">
+    <div class="hdr-btn"><svg width="26" height="18" viewBox="0 0 26 18" fill="none" aria-hidden="true">
+      <path d="M25 3H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M25 9H12" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M14 15H1" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg></div>
+    <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+    <div class="hdr-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+  </div>
+  <div style="position: absolute; left: 16px; right: 16px; bottom: 44px;">
+    <p class="eyebrow" style="color: #ffffffcc;">17 маршрутов · описания и цены</p>
+    <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 34px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-photo); line-height: 1.05;">Интересное<br>о Крыме</h1>
+  </div>
+</section>
+
+<div style="position: relative; z-index: 3; margin-top: -32px; border-radius: 32px 32px 0 0; background: var(--page); padding: 22px 16px 0;">
+
+  <p class="note note-bad" style="margin: 0 0 16px;">Заголовок стало видно: шапка — фиксированные 300px, контент наезжает на −32px. В коде шапка <code>pt-[35vh]</code>, а контент поднят на −90px, и H1 целиком уходит под первую карточку</p>
+
+  <div style="display: flex; gap: 6px; overflow: hidden; margin-bottom: 18px;">
+    <a class="chip chip-on" href="#">Все</a><a class="chip" href="#">Пещерные города</a><a class="chip" href="#">Смотровые</a><a class="chip" href="#">Зимой</a>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 18px;">
+    <a class="card" style="background-image: url(./card1.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="fav"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M12 20.5S3.5 15 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 5.8-8.5 11.3-8.5 11.3z"/></svg></span>
+      <span class="body"><span class="t" style="display: block;">Джип-тур экскурсия «Сердцем Крыма»</span>
+      <span class="facts"><span class="price">от 10 500 ₽</span><span class="sep">·</span><span class="dim">4 ч</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./card2.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="fav"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M12 20.5S3.5 15 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 5.8-8.5 11.3-8.5 11.3z"/></svg></span>
+      <span class="body"><span class="t" style="display: block;">Легенды Мангуп-Кале (расширенная экскурсия)</span>
+      <span class="facts"><span class="price">от 10 500 ₽</span><span class="sep">·</span><span class="dim">4 ч</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./card3.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="fav"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M12 20.5S3.5 15 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 5.8-8.5 11.3-8.5 11.3z"/></svg></span>
+      <span class="body"><span class="t" style="display: block;">Путешествие по Качинской долине</span>
+      <span class="facts"><span class="price">от 11 000 ₽</span><span class="sep">·</span><span class="dim">5 ч</span><span class="more">Подробнее →</span></span></span>
+    </a>
+    <a class="card" style="background-image: url(./card4.jpg)" href="#">
+      <span class="sc"></span>
+      <span class="fav"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"><path d="M12 20.5S3.5 15 3.5 9.2A4.7 4.7 0 0 1 12 6.4a4.7 4.7 0 0 1 8.5 2.8c0 5.8-8.5 11.3-8.5 11.3z"/></svg></span>
+      <span class="body"><span class="t" style="display: block;">Сфинксы, крепость и Марсианское озеро</span>
+      <span class="facts"><span class="price">от 11 000 ₽</span><span class="sep">·</span><span class="dim">6 ч</span><span class="more">Подробнее →</span></span></span>
+    </a>
+  </div>
+  <p class="note note-bad">Локально все карточки под одним фото: сид заполняет image, а карточка читает images[0]. Данные, не дизайн — но на макет смотреть невозможно</p>
+
+  <!-- Пагинация: было «1 / 2 ›» тонкой стрелкой без тап-таргета -->
+  <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 26px 0 0;">
+    <span class="page-btn page-on">1</span>
+    <a class="page-btn" href="#">2</a>
+    <a class="page-btn" href="#">Дальше →</a>
+  </div>
+  <p style="margin: 10px 0 0; text-align: center; font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--ink-faint);">Показано 12 из 17</p>
+
+  <div style="height: 40px;"></div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Footer">
+    <h2>Подвал — было и стало <span>1440×1300</span></h2>
+    <div class="frame" style="width:1440px;height:1300px">
+      <script type="text/html" data-board="Footer"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    body { background: #e9e7e2; }
+    .wrap { padding: 28px; }
+    .row2 { display: flex; gap: 40px; align-items: flex-start; margin-bottom: 40px; }
+    .cap { margin: 0 0 10px; font: 600 12px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: #6b5f47; }
+    .ft { background: var(--ink); color: #f4ecdd; }
+    .ft h3 { margin: 0 0 12px; font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold-photo); }
+    .ft a { color: #f4ecddcc; text-decoration: none; font-family: 'Caladea', serif; font-size: 14.5px; display: block; padding: 5px 0; }
+    .ft .tel { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 500; color: #f4ecdd; padding: 3px 0; }
+    .ft .soc { display: flex; gap: 8px; margin-top: 12px; }
+    .ft .soc a { width: 44px; height: 44px; border-radius: 999px; border: 1px solid #f4ecdd33; display: flex; align-items: center; justify-content: center; padding: 0; }
+    .ft .rule { height: 1px; background: #f4ecdd1f; }
+    .ft .legal { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+    .ft .legal a, .ft .legal span { font-family: 'Oswald', sans-serif; font-size: 11.5px; letter-spacing: .4px; color: #f4ecdd80; padding: 0; }
+    .bad { position: relative; }
+    .bad::after { content: attr(data-note); position: absolute; left: 0; right: 0; bottom: -30px; font: 600 11px/1.35 ui-sans-serif, system-ui, sans-serif; color: #9e3a25; }
+  </style>
+</helmet>
+
+<div class="wrap">
+
+<div class="row2">
+  <!-- БЫЛО -->
+  <div style="flex: 0 0 340px;">
+    <p class="cap">Было — как в коде сейчас</p>
+    <div style="position: relative; width: 340px; height: 430px; border-radius: 10px; overflow: hidden; background: url(./hero.jpg) center/cover;">
+      <div style="position: absolute; inset: 0; background: rgba(20,14,6,.42);"></div>
+      <div style="position: absolute; inset: 0; padding: 46px 20px; text-align: center;">
+        <p style="margin: 0 0 18px; font-family: 'Poiret One', serif; font-size: 25px; color: var(--gold-photo);">Контакты</p>
+        <p style="margin: 0 0 10px; font-family: 'Poiret One', serif; font-size: 14px; color: #fff; letter-spacing: 1px;">Республика Крым, г. Бахчисарай</p>
+        <p style="margin: 0 0 10px; font-family: 'Poiret One', serif; font-size: 14px; color: #fff; letter-spacing: 1px;">infoenergytur@gmail.com</p>
+        <p style="margin: 0 0 10px; font-family: 'Poiret One', serif; font-size: 15px; color: var(--gold-photo); letter-spacing: 1px;">+7-978-788-07-53</p>
+        <p style="margin: 0 0 22px; font-family: 'Poiret One', serif; font-size: 15px; color: var(--gold-photo); letter-spacing: 1px;">+7-978-054-20-72</p>
+        <div style="display: flex; justify-content: center; gap: 12px;">
+          <span style="width: 44px; height: 44px; border-radius: 999px; background: #ffffff30; display: flex; align-items: center; justify-content: center; font-size: 19px;">✈️</span>
+          <span style="width: 44px; height: 44px; border-radius: 999px; background: #6c3ce8; display: flex; align-items: center; justify-content: center; font-size: 19px;">💬</span>
+          <span style="width: 44px; height: 44px; border-radius: 999px; background: #ffffff30; display: flex; align-items: center; justify-content: center; font-family: sans-serif; font-weight: 700; color: #0077ff;">VK</span>
+          <span style="width: 44px; height: 44px; border-radius: 999px; background: #ffffff30; display: flex; align-items: center; justify-content: center; font-family: sans-serif; font-weight: 700; color: #22252a;">R</span>
+        </div>
+        <p style="margin: 22px 0 0; font-family: 'Oswald', sans-serif; font-size: 12px; color: #ffffff99;">© 2026 Energy-Tour</p>
+      </div>
+    </div>
+    <ul style="margin: 14px 0 0; padding-left: 18px; font: 12px/1.6 ui-sans-serif, system-ui, sans-serif; color: #9e3a25;">
+      <li>Четыре разноцветных растровых логотипа — единственное цветное пятно на сайте</li>
+      <li>Текст лежит на фото без скрима: «Республика Крым…» уходит в 3,1:1</li>
+      <li>Нет навигации: с любой страницы уйти можно только в шапку</li>
+      <li>Нет юридических ссылок и ИП/ИНН, хотя на сайте есть форма с телефоном</li>
+      <li>Заголовок «Контакты» дублирует одноимённую страницу</li>
+    </ul>
+  </div>
+
+  <!-- СТАЛО, мобильный -->
+  <div style="flex: 0 0 340px;">
+    <p class="cap">Стало — 390</p>
+    <div class="ft" style="width: 340px; border-radius: 10px; overflow: hidden; padding: 26px 20px 20px;">
+      <img src="./logo.png" alt="Energy Tour" style="width: 44px; height: 50px; object-fit: contain;">
+      <p style="margin: 10px 0 0; font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-photo);">Energy Tour · Крым</p>
+      <p style="margin: 6px 0 0; font-family: 'Caladea', serif; font-size: 14px; line-height: 1.55; color: #f4ecddb3;">Джип-туры и индивидуальные экскурсии. Выезд из Бахчисарая, Севастополя и Ялты.</p>
+
+      <div class="rule" style="margin: 20px 0 18px;"></div>
+
+      <h3>Позвонить</h3>
+      <a class="tel" href="tel:+79787880753">+7 978 788-07-53</a>
+      <a class="tel" href="tel:+79780542072">+7 978 054-20-72</a>
+      <a href="mailto:infoenergytur@gmail.com" style="padding-top: 8px;">infoenergytur@gmail.com</a>
+      <div class="soc">
+        <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e8b055"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1 0 1.3l4.6 1.4 1.7 5.3c.2.6.5.7 1 .3l2.6-2.1 4.6 3.4c.6.4 1 .2 1.2-.5l3-14c.2-.8-.3-1.2-1.1-.9zM8.9 14l8.6-5.4c.4-.2.7 0 .4.3l-7 6.3-.3 3.2L8.9 14z"/></svg></a>
+        <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e8b055"><path d="M12 2C6.5 2 2 6 2 11c0 2.8 1.4 5.3 3.7 7L5 21.5l3.7-1.4c1 .3 2.1.5 3.3.5 5.5 0 10-4 10-9s-4.5-9.6-10-9.6z"/></svg></a>
+        <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e8b055"><path d="M12.7 16.6c-5 0-8.2-3.6-8.3-9.4h2.6c.1 4.4 2.1 6.2 3.5 6.6V7.2h2.5v3.9c1.4-.2 2.8-1.7 3.3-3.9h2.5c-.4 2.6-1.9 4.2-2.9 4.8 1 .5 2.7 1.9 3.4 4.6h-2.7c-.5-1.8-1.8-3.2-3.6-3.4v3.4h-.3z"/></svg></a>
+        <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e8b055"><path d="M4 5h6.5c3 0 4.8 1.6 4.8 4.1 0 1.9-1 3.2-2.7 3.8L16 19h-3.1l-2.9-5.4H7V19H4V5zm3 2.4v3.9h3c1.4 0 2.2-.7 2.2-1.9s-.8-2-2.2-2H7zM17.4 5H21v3.6h-3.6V5z"/></svg></a>
+      </div>
+
+      <div class="rule" style="margin: 20px 0 18px;"></div>
+
+      <h3>Куда идти</h3>
+      <a href="#">Все туры</a>
+      <a href="#">Услуги и прокат</a>
+      <a href="#">Интересное о Крыме</a>
+      <a href="#">Отзывы</a>
+      <a href="#">Контакты</a>
+
+      <div class="rule" style="margin: 18px 0 14px;"></div>
+
+      <div class="legal">
+        <span>© 2026 Energy Tour</span>
+        <a href="#">Политика обработки данных</a>
+        <a href="#">Согласие на рассылку</a>
+        <span>ИП Николаенко · ИНН 910000000000</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <!-- СТАЛО, десктоп -->
+  <div>
+    <p class="cap">Стало — 1440, контейнер 1120</p>
+    <div class="ft" style="border-radius: 10px; overflow: hidden; padding: 40px 40px 24px;">
+      <div style="display: flex; gap: 56px; align-items: flex-start;">
+        <div style="flex: 0 0 240px;">
+          <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+          <p style="margin: 10px 0 0; font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-photo);">Energy Tour · Крым</p>
+          <p style="margin: 6px 0 0; font-family: 'Caladea', serif; font-size: 14px; line-height: 1.55; color: #f4ecddb3;">Джип-туры и индивидуальные экскурсии по Крыму с 2016 года.</p>
+          <div class="soc">
+            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e8b055"><path d="M21.9 4.3 2.9 11.6c-1 .4-1 1 0 1.3l4.6 1.4 1.7 5.3c.2.6.5.7 1 .3l2.6-2.1 4.6 3.4c.6.4 1 .2 1.2-.5l3-14c.2-.8-.3-1.2-1.1-.9zM8.9 14l8.6-5.4c.4-.2.7 0 .4.3l-7 6.3-.3 3.2L8.9 14z"/></svg></a>
+            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e8b055"><path d="M12 2C6.5 2 2 6 2 11c0 2.8 1.4 5.3 3.7 7L5 21.5l3.7-1.4c1 .3 2.1.5 3.3.5 5.5 0 10-4 10-9s-4.5-9.6-10-9.6z"/></svg></a>
+            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e8b055"><path d="M12.7 16.6c-5 0-8.2-3.6-8.3-9.4h2.6c.1 4.4 2.1 6.2 3.5 6.6V7.2h2.5v3.9c1.4-.2 2.8-1.7 3.3-3.9h2.5c-.4 2.6-1.9 4.2-2.9 4.8 1 .5 2.7 1.9 3.4 4.6h-2.7c-.5-1.8-1.8-3.2-3.6-3.4v3.4h-.3z"/></svg></a>
+            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e8b055"><path d="M4 5h6.5c3 0 4.8 1.6 4.8 4.1 0 1.9-1 3.2-2.7 3.8L16 19h-3.1l-2.9-5.4H7V19H4V5zm3 2.4v3.9h3c1.4 0 2.2-.7 2.2-1.9s-.8-2-2.2-2H7zM17.4 5H21v3.6h-3.6V5z"/></svg></a>
+          </div>
+        </div>
+        <div style="flex: 1 1 0;">
+          <h3>Туры</h3>
+          <a href="#">Все туры</a><a href="#">Джип-туры</a><a href="#">Пещерные города</a><a href="#">Индивидуальные</a>
+        </div>
+        <div style="flex: 1 1 0;">
+          <h3>Услуги</h3>
+          <a href="#">Аренда внедорожника</a><a href="#">Прокат квадроциклов</a><a href="#">Кемпинг</a><a href="#">Снаряжение</a>
+        </div>
+        <div style="flex: 1 1 0;">
+          <h3>О нас</h3>
+          <a href="#">Отзывы</a><a href="#">Интересное о Крыме</a><a href="#">Контакты</a><a href="#">Стать партнёром</a>
+        </div>
+        <div style="flex: 0 0 220px;">
+          <h3>Позвонить</h3>
+          <a class="tel" href="tel:+79787880753">+7 978 788-07-53</a>
+          <a class="tel" href="tel:+79780542072">+7 978 054-20-72</a>
+          <a href="mailto:infoenergytur@gmail.com" style="padding-top: 6px;">infoenergytur@gmail.com</a>
+          <p style="margin: 10px 0 0; font-family: 'Oswald', sans-serif; font-size: 12px; color: #f4ecdd80;">Ежедневно 08:00 — 21:00</p>
+        </div>
+      </div>
+      <div class="rule" style="margin: 26px 0 14px;"></div>
+      <div class="legal">
+        <span>© 2026 Energy Tour</span>
+        <a href="#">Политика обработки персональных данных</a>
+        <a href="#">Согласие на рассылку</a>
+        <span>ИП Николаенко · ИНН 910000000000</span>
+      </div>
+    </div>
+    <ul style="margin: 14px 0 0; padding-left: 18px; font: 12px/1.6 ui-sans-serif, system-ui, sans-serif; color: #6b5f47;">
+      <li>Подложка — тушь <code>--ink</code>, а не фото: текст всегда читается, вес страницы меньше на 460 КБ</li>
+      <li>Соцсети монохромные, 44px, обводка вместо заливки</li>
+      <li>Появилась навигация и юридический блок — на сайте есть формы с телефоном</li>
+      <li>Телефоны — <code>Oswald 18px</code>, это самый частый тап в подвале</li>
+    </ul>
+  </div>
+
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="States">
+    <h2>Состояния и пустые экраны <span>1120×2360</span></h2>
+    <div class="frame" style="width:1120px;height:2360px">
+      <script type="text/html" data-board="States"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    body { background: #e9e7e2; }
+    .sheet { padding: 28px; }
+    .h { margin: 0 0 4px; font: 600 15px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .sub { margin: 0 0 16px; font: 12.5px/1.5 ui-sans-serif, system-ui, sans-serif; color: #6b5f47; max-width: 78ch; }
+    .grid { display: flex; flex-wrap: wrap; gap: 16px; }
+    .cell { background: #fff; border: 1px solid #dcd7cd; border-radius: 12px; padding: 16px; }
+    .cap { margin: 0 0 10px; font: 600 11px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: #7f6f52; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; border: 0; }
+    .btn-hover { background: var(--cta-press); }
+    .btn-focus { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--gold-head); }
+    .btn-dis { background: var(--cream-deep); color: #a6957a; }
+    .btn-load { background: var(--cta-press); color: #1f1a1299; }
+    .ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; }
+    .ghost-hover { border-color: var(--cta); background: var(--cream); }
+    .fld { width: 250px; }
+    .lbl { display: block; margin: 0 0 6px; font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-muted); }
+    .lbl-bad { color: #fff; }
+    .inp { width: 100%; min-height: 48px; border-radius: var(--r-control); border: 1px solid var(--rule); background: #fff; padding: 0 14px; font-family: 'Caladea', serif; font-size: 15px; color: var(--ink); display: flex; align-items: center; }
+    .inp-ph { color: #a6957a; }
+    .inp-focus { border-color: var(--cta); box-shadow: 0 0 0 3px #b8915a26; }
+    .inp-err { border-color: var(--alert-ink); }
+    .err { margin: 6px 0 0; font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--alert-ink); }
+    .empty { width: 330px; padding: 26px 20px; border-radius: var(--r-card); background: var(--cream); border: 1px dashed var(--rule); text-align: center; }
+    .empty .ic { width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 999px; background: var(--cream-deep); display: flex; align-items: center; justify-content: center; }
+    .empty b { display: block; font-family: 'Caladea', serif; font-size: 16.5px; }
+    .empty p { margin: 6px 0 16px; font-family: 'Caladea', serif; font-size: 14px; line-height: 1.55; color: var(--ink-muted); }
+    .was { width: 330px; padding: 26px 20px; border-radius: 12px; background: #fff; border: 1px solid #dcd7cd; }
+    .was code { font: 12.5px/1.6 ui-monospace, monospace; color: #9e3a25; }
+    .skel { width: 330px; }
+    .skel .im { height: 150px; border-radius: var(--r-card); background: linear-gradient(90deg, #f0ebe1, #e6dfd1, #f0ebe1); }
+    .skel .ln { height: 13px; border-radius: 999px; background: #e6dfd1; margin-top: 10px; }
+    .note { margin: 10px 0 0; font: 11.5px/1.5 ui-sans-serif, system-ui, sans-serif; color: #9e3a25; }
+  </style>
+</helmet>
+
+<div class="sheet">
+
+  <p class="h">Состояния кнопок</p>
+  <p class="sub">В канвасе до этого была только базовая кнопка. Нажатие — <code>--cta-press #a67f4a</code>, фокус — двойное кольцо (белое + <code>--gold-head</code>), чтобы контур был виден и на креме, и на фото. Отключённая — крем с текстом 3,1:1: намеренно не проходит AA, потому что читать её не нужно, а кликать нельзя.</p>
+  <div class="grid" style="margin-bottom: 30px;">
+    <div class="cell"><p class="cap">Основная</p><div class="row">
+      <span class="btn">Забронировать</span>
+      <span class="btn btn-hover">Наведение</span>
+      <span class="btn btn-focus">Фокус</span>
+      <span class="btn btn-dis">Недоступно</span>
+      <span class="btn btn-load">Отправляем…</span>
+    </div></div>
+    <div class="cell"><p class="cap">Второстепенная</p><div class="row">
+      <span class="ghost">Показать ещё</span>
+      <span class="ghost ghost-hover">Наведение</span>
+      <span class="ghost" style="border-color: var(--cta); box-shadow: 0 0 0 3px #b8915a26;">Фокус</span>
+      <span class="ghost" style="color: #a6957a; border-color: #ece3d2;">Недоступно</span>
+    </div></div>
+  </div>
+
+  <p class="h">Поля формы: белые подписи на креме</p>
+  <p class="sub">Живой баг на <code>/sign-in</code> и <code>/sign-up</code>: карточка формы стала кремовой, а подписи полей остались белыми от тёмного слоя — «Адрес электронной почты», «Пароль», «Ваш телефон» на экране не видно вообще. Ниже — как должно быть.</p>
+  <div class="grid" style="margin-bottom: 30px;">
+    <div class="cell" style="background: var(--cream);"><p class="cap" style="color: #9e3a25;">Было</p>
+      <div class="fld">
+        <span class="lbl lbl-bad">Адрес электронной почты</span>
+        <span class="inp inp-ph">Адрес электронной почты</span>
+      </div>
+      <p class="note">Подпись есть в разметке, но белая на <code>#fbf7ee</code> — 1,06:1</p>
+    </div>
+    <div class="cell" style="background: var(--cream);"><p class="cap">Стало</p>
+      <div class="fld">
+        <span class="lbl">Адрес электронной почты</span>
+        <span class="inp inp-ph">you@example.com</span>
+      </div>
+    </div>
+    <div class="cell" style="background: var(--cream);"><p class="cap">Фокус и ошибка</p>
+      <div class="fld">
+        <span class="lbl">Телефон</span>
+        <span class="inp inp-focus">+7 978 788-07-53</span>
+      </div>
+      <div class="fld" style="margin-top: 14px;">
+        <span class="lbl">Код подтверждения</span>
+        <span class="inp inp-err inp-ph">4 цифры из СМС</span>
+        <p class="err">Код не совпал — запросите новый</p>
+      </div>
+    </div>
+    <div class="cell" style="background: var(--cream);"><p class="cap">Слот капчи</p>
+      <div class="fld">
+        <div style="min-height: 66px; border-radius: var(--r-control); border: 1px dashed var(--rule); display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-size: 12.5px; color: var(--ink-faint);">Проверка Cloudflare</div>
+        <p class="err" style="color: var(--ink-faint);">Не загрузилась — кнопка остаётся активной, проверим на сервере</p>
+      </div>
+      <p class="note">Сейчас при недоступной капче в середину формы падает белый блок с «Устранение неполадок»</p>
+    </div>
+  </div>
+
+  <p class="h">Пустые состояния</p>
+  <p class="sub">Ни одно из них не нарисовано и в коде выглядит как строка текста без оформления. Слева — то, что видно сейчас, справа — предлагаемое.</p>
+
+  <div class="grid" style="margin-bottom: 18px;">
+    <div class="was"><p class="cap" style="color: #9e3a25;">Было · /activities и полоса на главной</p>
+      <p style="margin: 26px 0; text-align: center; font-family: 'Poiret One', serif; font-size: 19px; color: #6b5f47;">Предстоящих мероприятий нет</p>
+      <code>Одна строка по центру тёмной полосы. Дальше подвал</code>
+    </div>
+    <div class="empty">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 11h18"/></svg></div>
+      <b>Групповых выездов пока нет</b>
+      <p>Даты на сентябрь ещё собираем. Индивидуальный выезд можно взять на любой день — цена та же, за машину.</p>
+      <span class="btn" style="width: 100%;">Собрать выезд под свои даты</span>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-bottom: 18px;">
+    <div class="was"><p class="cap" style="color: #9e3a25;">Было · /tours, когда в базе нет туров</p>
+      <div style="height: 120px; border-radius: var(--r-card); background: #fbfbfa; border: 1px solid #f0efec;"></div>
+      <code>Пустая белая плашка под шапкой. Ни строки текста</code>
+    </div>
+    <div class="empty">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8b6f3d" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg></div>
+      <b>По этому фильтру туров нет</b>
+      <p>Снимите фильтры или посмотрите весь каталог — 17 маршрутов.</p>
+      <span class="ghost" style="width: 100%;">Показать все туры</span>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-bottom: 18px;">
+    <div class="was"><p class="cap" style="color: #9e3a25;">Было · гид не найден и ошибка загрузки</p>
+      <p style="margin: 20px 0 8px; text-align: center; font: 14px/1.5 ui-sans-serif, system-ui, sans-serif;">Гид не найден</p>
+      <p style="margin: 0 0 20px; text-align: center; font: 14px/1.5 ui-sans-serif, system-ui, sans-serif;">Возникла ошибка... попробуйте повторить действие позже</p>
+      <code>Голый текст системным шрифтом, HTTP 200. У страницы поста это уже починено, у гида и списка постов — нет</code>
+    </div>
+    <div class="empty" style="border-style: solid; background: var(--alert-bg); border-color: #eecfc8;">
+      <div class="ic" style="background: #f6ded8;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9e3a25" stroke-width="1.7" stroke-linecap="round"><path d="M12 8v5M12 16.5v.5"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <b style="color: var(--alert-ink);">Не удалось загрузить</b>
+      <p style="color: #7d4033;">Связь с сервером пропала. Данные не потеряны — попробуйте ещё раз.</p>
+      <span class="btn" style="width: 100%;">Повторить</span>
+      <p style="margin: 12px 0 0; font-family: 'Oswald', sans-serif; font-size: 12px; color: #7d4033;">Или позвоните: +7 978 788-07-53</p>
+    </div>
+  </div>
+
+  <p class="h" style="margin-top: 30px;">Скелет загрузки</p>
+  <p class="sub">Сейчас <code>loading.tsx</code> рисует серые полосы <code>bg-zinc-600</code> — единственное место, где остался зинк из старого языка. Скелет должен быть кремовым, тех же радиусов, что и карточка.</p>
+  <div class="grid">
+    <div class="cell" style="background: #fbfbfa;"><p class="cap" style="color: #9e3a25;">Было</p>
+      <div style="width: 300px;">
+        <div style="height: 130px; border-radius: 16px; background: #52525b;"></div>
+        <div style="height: 13px; border-radius: 4px; background: #52525b; margin-top: 10px;"></div>
+        <div style="height: 13px; width: 60%; border-radius: 4px; background: #52525b; margin-top: 8px;"></div>
+      </div>
+    </div>
+    <div class="cell"><p class="cap">Стало</p>
+      <div class="skel">
+        <div class="im"></div>
+        <div class="ln" style="width: 82%;"></div>
+        <div class="ln" style="width: 54%;"></div>
+      </div>
+    </div>
+  </div>
+
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="ContentDesktop">
+    <h2>Контентная страница — десктоп 1440 <span>1440×1690</span></h2>
+    <div class="frame" style="width:1440px;height:1690px">
+      <script type="text/html" data-board="ContentDesktop"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    .cont { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .nav { display: flex; align-items: center; gap: 28px; }
+    .nav a { font-family: 'Oswald', sans-serif; font-size: 14px; color: #fff; text-decoration: none; }
+    .nav a.on { color: var(--gold-photo); }
+    .card { position: relative; display: block; height: 300px; border-radius: var(--r-card); overflow: hidden; background-size: cover; background-position: center; text-decoration: none; }
+    .card .sc { position: absolute; inset: 0; background: var(--scrim-card); }
+    .card .body { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px; }
+    .card .t { font-family: 'Poiret One', serif; font-size: 22px; line-height: 1.24; color: #fff; }
+    .card .facts { display: flex; align-items: baseline; gap: 8px; margin-top: 10px; font-family: 'Oswald', sans-serif; color: #fff; }
+    .card .price { font-size: 19px; font-weight: 500; }
+    .card .dim { font-size: 13px; opacity: .9; }
+    .card .more { margin-left: auto; font-size: 12.5px; color: var(--gold-photo); }
+    .gd { position: absolute; top: 0; bottom: 0; width: 1px; background: #b8915a55; }
+    .article { max-width: 720px; }
+  </style>
+</helmet>
+
+<!-- Шапка. Горизонтальное меню уже в коде и работает; сломано всё, что ниже -->
+<section style="position: relative; height: 460px; background-image: url(./hero.jpg); background-size: cover; background-position: center;">
+  <div style="position: absolute; inset: 0; background: var(--scrim-hero);"></div>
+  <div style="position: absolute; top: 0; left: 0; right: 0; z-index: 10;">
+    <div class="cont" style="display: flex; align-items: center; justify-content: space-between; padding-top: 14px; padding-bottom: 14px;">
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <img src="./logo.png" alt="Energy Tour" style="width: 48px; height: 54px; object-fit: contain;">
+        <nav class="nav"><a href="#">Экскурсии</a><a class="on" href="#">Джип туры</a><a href="#">Услуги</a><a href="#">Интересное</a><a href="#">Отзывы</a><a href="#">Контакты</a></nav>
+      </div>
+      <a href="tel:+79787880753" style="display: flex; align-items: center; gap: 9px; font-family: 'Oswald', sans-serif; font-size: 16px; color: #fff; text-decoration: none;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#e8b055" stroke-width="1.7" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +7 978 788-07-53
+      </a>
+    </div>
+  </div>
+
+  <!-- Заголовок в контейнере 1120. Было: text-align right без контейнера — буквы
+       упирались в правый край окна (x=1424 при vw=1440) -->
+  <div style="position: absolute; left: 0; right: 0; bottom: 60px;">
+    <div class="cont" style="max-width: 1120px;">
+      <div style="max-width: 720px;">
+        <p class="eyebrow" style="color: #ffffffcc;">Джип-туры · выезд из Бахчисарая</p>
+        <h1 style="margin: 0; font-family: 'Poiret One', serif; font-weight: 400; font-size: 52px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-photo); line-height: 1.02;">Джип туры<br>в Крыму</h1>
+        <p style="margin: 16px 0 0; font-family: 'Poiret One', serif; font-size: 22px; letter-spacing: .5px; color: #fff;">Пещерные города, смотровые и броды — на подготовленном внедорожнике</p>
+        <div style="display: flex; gap: 12px; margin-top: 26px;">
+          <a class="cta" style="width: 260px;" href="#">Все туры</a>
+          <a class="cta-ghost" style="width: 220px; color: #fff; border-color: #ffffff59;" href="#">+7 978 788-07-53</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- границы контейнера -->
+  <div class="gd" style="left: 160px;"></div>
+  <div class="gd" style="right: 160px;"></div>
+</section>
+
+<div style="background: var(--page); padding: 40px 0 0;">
+  <div class="cont">
+
+    <p class="note note-bad" style="margin: 0 0 24px;">Что поменялось против кода: H1 и лид лежат в контейнере 1120 в колонке 720, а не выровнены по правому краю окна (в коде буквы упираются в x=1424 при vw=1440). Кнопка «Все туры» — 260px, а не пилюля во всю ширину окна на 1372px. Сетка карточек внутри 1120, а не от края до края. Между блоками ритм 80, а не 200px пустого крема.</p>
+
+    <!-- Сетка 3 в ряд внутри 1120. Было: карточки от края до края окна (20…1420) -->
+    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px;">
+      <h2 style="margin: 0; font-family: 'Poiret One', serif; font-size: 30px; letter-spacing: 1px; color: var(--gold-head);">Популярные туры</h2>
+      <a href="#" style="font-family: 'Oswald', sans-serif; font-size: 14px; color: var(--gold-ink); text-decoration: none;">Все 17 маршрутов →</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+      <a class="card" style="background-image: url(./card1.jpg)" href="#"><span class="sc"></span><span class="body"><span class="t" style="display: block;">Джип-тур «Сердцем Крыма»</span><span class="facts"><span class="price">от 10 500 ₽</span><span style="opacity:.5">·</span><span class="dim">4 ч</span><span class="more">Подробнее →</span></span></span></a>
+      <a class="card" style="background-image: url(./card2.jpg)" href="#"><span class="sc"></span><span class="body"><span class="t" style="display: block;">Легенды Мангуп-Кале</span><span class="facts"><span class="price">от 10 500 ₽</span><span style="opacity:.5">·</span><span class="dim">4 ч</span><span class="more">Подробнее →</span></span></span></a>
+      <a class="card" style="background-image: url(./card3.jpg)" href="#"><span class="sc"></span><span class="body"><span class="t" style="display: block;">Качинская долина</span><span class="facts"><span class="price">от 11 000 ₽</span><span style="opacity:.5">·</span><span class="dim">5 ч</span><span class="more">Подробнее →</span></span></span></a>
+    </div>
+
+    <!-- Ритм 80. Было: 200px пустого крема перед строкой «Открой для себя мир путешествий» -->
+    <div style="height: 80px;"></div>
+
+    <div style="display: flex; gap: 40px; align-items: flex-start;">
+      <div class="article">
+        <h2 style="margin: 0 0 14px; font-family: 'Caladea', serif; font-weight: 700; font-size: 26px;">Что такое джиппинг в Крыму</h2>
+        <p class="p">Крым — это не только море и набережные. Самые виды лежат там, куда не идёт асфальт: внутренняя гряда, пещерные города, русла Качи и Бельбека. Туда мы и едем.</p>
+        <p class="p">Машины подготовлены под бездорожье: лифт, экспедиционный багажник, лебёдка. За рулём — водитель-инструктор, который знает броды в любую воду.</p>
+        <p class="p">Длительность и число остановок зависят только от группы: захотели купаться на Марсианском — стоим час, захотели пикник — накрываем на смотровой.</p>
+      </div>
+      <aside style="flex: 1 1 auto; min-width: 0;">
+        <div class="block" style="position: sticky; top: 20px;">
+          <h3 class="block-h">Форматы и цены</h3>
+          <div style="display: flex; align-items: baseline; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--rule);"><span style="flex: 1 1 auto; font-family: 'Caladea', serif; font-size: 14px;">Заказ внедорожника</span><span style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500; color: var(--gold-ink);">от 2 000 ₽</span><span style="font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--ink-faint);">в час</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--rule);"><span style="flex: 1 1 auto; font-family: 'Caladea', serif; font-size: 14px;">Джип-тур</span><span style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500; color: var(--gold-ink);">от 5 000 ₽</span><span style="font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--ink-faint);">за тур</span></div>
+          <div style="display: flex; align-items: baseline; gap: 8px; padding: 12px 0;"><span style="flex: 1 1 auto; font-family: 'Caladea', serif; font-size: 14px;">Экспедиция</span><span style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 500; color: var(--gold-ink);">от 20 000 ₽</span><span style="font-family: 'Oswald', sans-serif; font-size: 12px; color: var(--ink-faint);">в день</span></div>
+          <a class="cta" style="margin-top: 14px;" href="#">Оставить заявку</a>
+        </div>
+      </aside>
+    </div>
+
+    <div style="height: 80px;"></div>
+
+    <!-- Полоса «Ближайшие туры». Было: заголовок по центру, а подзаголовок
+         «ВЫБИРАЙ СВОИ ДАТЫ НА СЕНТЯБРЬ» приклеен к левому краю окна на x=20 -->
+    <div style="position: relative; border-radius: var(--r-card); overflow: hidden; background: url(./activities.jpg) center/cover;">
+      <div style="position: absolute; inset: 0; background: var(--scrim-band);"></div>
+      <div style="position: relative; padding: 44px 40px; display: flex; align-items: center; gap: 32px;">
+        <div style="flex: 1 1 auto;">
+          <p class="eyebrow" style="color: var(--gold-photo);">Ближайшие туры</p>
+          <p style="margin: 0; font-family: 'Poiret One', serif; font-size: 30px; color: #fff;">Выбирайте свои даты на сентябрь</p>
+          <p style="margin: 8px 0 0; font-family: 'Caladea', serif; font-size: 15px; color: #ffffffcc;">Групповых выездов на эти даты пока нет — соберём индивидуальный, цена та же.</p>
+        </div>
+        <a class="cta" style="flex: 0 0 240px;" href="#">Подобрать дату</a>
+      </div>
+    </div>
+
+    <p class="note note-bad">В коде подзаголовок этой полосы «ВЫБИРАЙ СВОИ ДАТЫ НА СЕНТЯБРЬ» приклеен к левому краю окна на x=20, тогда как заголовок и текст под ним отцентрованы. Пустое состояние «Предстоящих мероприятий нет» — одна строка без оформления, см. артборд «Состояния».</p>
+
+    <div style="height: 60px;"></div>
+  </div>
+</div></body></html></script>
+    </div>
+  </section>
+  <section class="board" id="Audit">
+    <h2>Ревью-2 — что не совпало <span>1200×3340</span></h2>
+    <div class="frame" style="width:1200px;height:3340px">
+      <script type="text/html" data-board="Audit"><!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Oswald:wght@300;400;500;600&family=Caladea:wght@400;700&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --cta: #b8915a; --cta-press: #a67f4a; --on-cta: #1f1a12;
+      --gold-photo: #e8b055; --gold-head: #8b6f3d; --gold-ink: #7d6234; --gold-plate: #b8915a;
+      --ink: #1f1a12; --ink-muted: #6b5f47; --ink-faint: #7f6f52;
+      --cream: #fbf7ee; --cream-deep: #f4ecdd; --rule: #e2d5b7; --page: #f7f6f3;
+      --free-bg: #edf3e2; --free-ink: #4a6626;
+      --alert-bg: #f9e6e2; --alert-ink: #9e3a25;
+      --scrim-hero: linear-gradient(180deg, rgba(20,14,6,.84) 0%, rgba(20,14,6,.7) 32%, rgba(20,14,6,.36) 58%, rgba(20,14,6,.78) 100%);
+      --scrim-card: linear-gradient(180deg, rgba(20,14,6,.35) 0%, rgba(20,14,6,0) 34%, rgba(20,14,6,.86) 100%);
+      --scrim-band: linear-gradient(180deg, rgba(20,14,6,.62), rgba(20,14,6,.82));
+      --r-pill: 999px; --r-card: 24px; --r-block: 16px; --r-control: 10px;
+    }
+    body { margin: 0; background: var(--page); font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; color: var(--ink); }
+    .hdr { position: absolute; top: 0; left: 0; width: 100%; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; }
+    .hdr-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .cta { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: var(--cta); color: var(--on-cta); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; text-decoration: none; border: 0; }
+    .cta-ghost { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: var(--r-pill); background: transparent; color: var(--gold-ink); border: 1px solid var(--rule); font-family: 'Oswald', sans-serif; font-size: 15px; text-decoration: none; }
+    .block { background: var(--cream); border: 1px solid var(--rule); border-radius: var(--r-block); padding: 18px 16px; }
+    .block-h { margin: 0 0 10px; font-family: 'Caladea', serif; font-weight: 700; font-size: 17px; position: relative; padding-left: 13px; }
+    .block-h::before { content: ''; position: absolute; left: 0; top: 3px; width: 4px; height: 18px; background: var(--gold-plate); border-radius: 2px; }
+    .lead { margin: 0; font-family: 'Caladea', serif; font-size: 16.5px; line-height: 1.6; color: var(--ink-muted); }
+    .p { margin: 0 0 14px; font-family: 'Caladea', serif; font-size: 15.5px; line-height: 1.68; color: var(--ink); }
+    .eyebrow { margin: 0 0 8px; font-family: 'Oswald', sans-serif; font-size: 12.5px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .crumbs { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: .6px; color: #ffffffb3; }
+    .crumbs a { color: #ffffffb3; text-decoration: none; }
+    .note { margin: 8px 0 0; font-family: 'Oswald', sans-serif; font-size: 11.5px; line-height: 1.5; color: var(--ink-faint); }
+    .note-bad { color: #9e3a25; }
+    body { background: #f1efea; }
+    .sheet { padding: 32px 36px 60px; max-width: 1200px; }
+    h1.t { margin: 0 0 6px; font: 600 24px/1.25 ui-sans-serif, system-ui, sans-serif; letter-spacing: -.01em; }
+    p.sub { margin: 0 0 26px; font: 13.5px/1.6 ui-sans-serif, system-ui, sans-serif; color: #5f5747; max-width: 92ch; }
+    h2.s { margin: 34px 0 12px; font: 600 15px/1.3 ui-sans-serif, system-ui, sans-serif; padding-bottom: 8px; border-bottom: 1px solid #ddd8cd; }
+    table { width: 100%; border-collapse: collapse; font: 13px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    th { text-align: left; font-weight: 600; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #7f6f52; padding: 0 10px 8px 0; }
+    td { padding: 11px 10px 11px 0; border-top: 1px solid #e2ddd2; vertical-align: top; }
+    td.n { width: 26px; color: #9c907a; font-variant-numeric: tabular-nums; }
+    td.w { width: 210px; }
+    td.f { width: 108px; }
+    code { font: 12px/1.5 ui-monospace, SFMono-Regular, monospace; background: #e6e1d6; padding: 1px 4px; border-radius: 4px; }
+    .sev { display: inline-block; padding: 2px 8px; border-radius: 999px; font: 600 10.5px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+    .s3 { background: #f9e6e2; color: #9e3a25; }
+    .s2 { background: #f7ecd6; color: #8b6f3d; }
+    .s1 { background: #edf3e2; color: #4a6626; }
+    .cards { display: flex; flex-wrap: wrap; gap: 14px; }
+    .kpi { flex: 1 1 200px; background: #fff; border: 1px solid #ddd8cd; border-radius: 12px; padding: 14px 16px; }
+    .kpi b { display: block; font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 500; line-height: 1.1; }
+    .kpi span { display: block; margin-top: 3px; font: 12px/1.45 ui-sans-serif, system-ui, sans-serif; color: #6b5f47; }
+    .shots { display: flex; flex-wrap: wrap; gap: 16px; }
+    .shot { width: 268px; }
+    .shot .fr { height: 190px; border-radius: 10px; border: 1px solid #ddd8cd; overflow: hidden; position: relative; background: #fff; }
+    .shot p { margin: 8px 0 0; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; color: #5f5747; }
+    .shot p b { color: #9e3a25; }
+    .plan { display: flex; flex-wrap: wrap; gap: 12px; }
+    .step { flex: 1 1 250px; background: #fff; border: 1px solid #ddd8cd; border-radius: 12px; padding: 14px 16px; }
+    .step b { display: block; font: 600 13px/1.4 ui-sans-serif, system-ui, sans-serif; margin-bottom: 6px; }
+    .step ul { margin: 0; padding-left: 17px; font: 12.5px/1.62 ui-sans-serif, system-ui, sans-serif; color: #5f5747; }
+  </style>
+</helmet>
+
+<div class="sheet">
+
+<h1 class="t">Ревью-2: что на сайте не совпало с макетом v2</h1>
+<p class="sub">Снято 3 сентября 2026 с локальной сборки: 24 публичных адреса при 390 и 1440 в системном Chrome, контраст мерился по пикселям кадра под текстом. Первое ревью касалось главной, каталога и страницы тура — они в код перенесены. Всё остальное осталось на старом языке. Ниже — только то, что видно на экране; данные и SEO в этот список не входят.</p>
+
+<div class="cards">
+  <div class="kpi"><b>12</b><span>страниц из 24 в дизайн v2 не переведены</span></div>
+  <div class="kpi"><b>5</b><span>страниц с одним и тем же фото в шапке — женщина в вечернем платье</span></div>
+  <div class="kpi"><b>2,48:1</b><span>худший участок H1 на /otzyvy при норме 3:1 для крупного текста</span></div>
+  <div class="kpi"><b>0×320</b><span>размер восьми карточек на /uslugi — страница выглядит пустой</span></div>
+  <div class="kpi"><b>7</b><span>адресов с битой картинкой: <code>public/images/</code> в проекте нет</span></div>
+</div>
+
+<h2 class="s">Критично — видно сразу, страница выглядит сломанной</h2>
+<table>
+<tr><th class="n"></th><th class="w">Где</th><th>Что видно</th><th class="f">Оценка</th></tr>
+<tr><td class="n">1</td><td class="w"><code>/uslugi</code></td><td>Между шапкой и подвалом 330px пустого белого места. Восемь карточек услуг отрисованы шириной 0 (flex-элементы без базиса), их подписи уезжают за правый край: «Подробнее →» на x=527 при ширине окна 390. Каталог услуг фактически недоступен.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">2</td><td class="w"><code>/kontakty</code></td><td>Блока контактов на странице нет: адрес, два телефона и мессенджеры висят полупрозрачным слоем поверх карты. H1 «КОНТАКТЫ» обрезан правым краем. На 1440 карта не отрисовывается вовсе — остаётся серая сетка на 1300px высоты.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">3</td><td class="w"><code>/posts</code></td><td>H1 «Интересные статьи о Крыме» полностью закрыт первой карточкой: шапка <code>pt-[35vh]</code>, контент поднят на <code>mt-[-90px]</code>. Заголовка на экране нет ни на 390, ни на 1440.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">4</td><td class="w"><code>/sign-in</code>, <code>/sign-up</code></td><td>Подписи полей белые на кремовой карточке — 1,06:1. «Адрес электронной почты», «Пароль», «Ваш телефон» есть в разметке, но на экране их нет. Плюс блок ошибки капчи в середине формы.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">5</td><td class="w">4 адреса + 3 карточки</td><td><code>public/images/</code> в проекте отсутствует, а на него ссылаются <code>/images/ekskursii.jpg</code> и <code>/images/kvadro.jpg</code>. На <code>/uslugi/prokat-kvadrotsiklov-v-krymu</code> вместо фото шапки — серый градиент с иконкой битой картинки, H1 падает до 3,4:1.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+</table>
+
+<h2 class="s">Расходится с макетом — старый визуальный язык</h2>
+<table>
+<tr><th class="n"></th><th class="w">Где</th><th>Что видно</th><th class="f">Оценка</th></tr>
+<tr><td class="n">6</td><td class="w">5 страниц: <code>/tours</code>, <code>/posts</code>, <code>/kontakty</code>, <code>/activities</code>, каталог</td><td>Одно и то же фото в шапке — женщина в вечернем платье на фоне лаванды (<code>bg-5.jpg</code> у типа <code>PageHead_type_tours</code>). К джип-турам отношения не имеет и заранее задаёт неверный тон. У <code>/uslugi</code> тот же механизм, но <code>bg-1.jpg</code>.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">7</td><td class="w">6 легаси-страниц</td><td>Шапка 85vh, H1 33px белым прямо по кадру без скрима. Замеры: <code>/otzyvy</code> — худшие 5% участка 5,78:1, минимум 2,48:1 (норма 3:1); <code>/uslugi/prokat-kvadrotsiklov</code> — 3,43:1; <code>/ekskursii_po_krymu</code> — 4,73:1. Скрим <code>--scrim-hero</code> в проекте есть, но эти шаблоны его не подключают.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">8</td><td class="w">Все легаси-страницы и страница поста</td><td>Заголовок «Информация» и захардкоженный мок «★ 4,9/5» с тремя стоковыми аватарами. Стоит в том числе на прокате квадроциклов и на странице отзывов. Компонент так и называется — <code>MockReviewsAvatars</code>.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">9</td><td class="w">Контент легаси-страниц</td><td>Сплошная стена текста на 40–50 строк: нет лида, нет заголовков внутри, «-» вместо маркеров списка, «В стоимость включено» жирным внутри абзаца, картинка 300px прижата влево и рвёт колонку. Система <code>.et-post</code> для этого уже есть, но её используют только посты из базы.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">10</td><td class="w">Все страницы услуг</td><td>Ни кнопки, ни телефона, ни цены отдельным блоком. Со страницы «Прокат квадроциклов» заказать нельзя — только доскроллить до подвала.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">11</td><td class="w"><code>/dzhip-tur-krym</code></td><td>«ПОСМОТРЕТЬ ВСЕ ТУРЫ» — серая плашка <code>bg-zinc-500</code> с белым текстом; заголовки слайдеров — такие же серые пилюли. Это последние два места, где живёт кнопка старого сайта. Плюс ролик YouTube показывает свою полосу с названием канала и обрезан справа.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">12</td><td class="w">Подвал, все страницы</td><td>Четыре разноцветных растровых логотипа соцсетей на серых кружках — единственное цветное пятно на сайте. Текст лежит на фото без скрима. Навигации нет, юридических ссылок нет, хотя на сайте есть формы с телефоном.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">13</td><td class="w">Страница поста</td><td>Кнопка «Забронировать тур» тёмная (<code>--ink</code>), а не золотая. Единственная такая кнопка на сайте — второй язык кнопки, которого в Foundations нет.</td><td class="f"><span class="sev s1">мелочь</span></td></tr>
+</table>
+
+<h2 class="s">Десктоп 1440 — сломано всё, кроме каталога</h2>
+<table>
+<tr><th class="n"></th><th class="w">Где</th><th>Что видно</th><th class="f">Оценка</th></tr>
+<tr><td class="n">14</td><td class="w">Главная</td><td>Кнопка «Все туры» — золотая пилюля шириной 1372px во всю ширину окна.</td><td class="f"><span class="sev s3">критично</span></td></tr>
+<tr><td class="n">15</td><td class="w">Все страницы с <code>PageTitle</code></td><td>H1 выровнен по правому краю без контейнера: «ИНТЕРЕСНЫЕ СТАТЬИ О КРЫМЕ» и «КОНТАКТЫ» упираются в край окна на x=1424 при vw=1440.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">16</td><td class="w"><code>/posts</code> и списки</td><td>Сетка карточек идёт от края до края окна (20…1420) вместо контейнера 1120 из артборда «Десктоп».</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+<tr><td class="n">17</td><td class="w">Главная, полоса «Ближайшие туры»</td><td>«ВЫБИРАЙ СВОИ ДАТЫ НА СЕНТЯБРЬ» приклеено к левому краю окна на x=20, тогда как заголовок полосы и текст под ним отцентрованы. Перед строкой «Открой для себя мир путешествий» — 200px пустого крема вместо ритма 80.</td><td class="f"><span class="sev s2">заметно</span></td></tr>
+</table>
+
+<h2 class="s">Не нарисовано нигде — ни в коде, ни раньше в канвасе</h2>
+<table>
+<tr><th class="n"></th><th class="w">Что</th><th>Как выглядит сейчас</th><th class="f">Артборд</th></tr>
+<tr><td class="n">18</td><td class="w">Пустые состояния</td><td>«Предстоящих мероприятий нет» — одна строка на тёмной полосе; <code>/tours</code> без туров — пустая белая плашка; «Гид не найден» и «Возникла ошибка... попробуйте повторить действие позже» — голый текст системным шрифтом с кодом 200.</td><td class="f">Состояния</td></tr>
+<tr><td class="n">19</td><td class="w">Наведение, фокус, отключено</td><td>Не описано. У кнопок нет ни нажатого состояния, ни видимого фокуса — на фото контур теряется.</td><td class="f">Состояния</td></tr>
+<tr><td class="n">20</td><td class="w">Скелет загрузки</td><td><code>loading.tsx</code> рисует серые полосы <code>bg-zinc-600</code> — последний зинк из старого языка.</td><td class="f">Состояния</td></tr>
+<tr><td class="n">21</td><td class="w">Страница поста</td><td>Собрана в v2, но без крошек, без факт-строки над H1, без липкой кнопки брони и без блока «похожие туры» — уйти со страницы можно только назад.</td><td class="f">Пост</td></tr>
+<tr><td class="n">22</td><td class="w">Отзывы</td><td>Страница отзывов без отзывов: в теле лежит собственный заголовок страницы в рамке.</td><td class="f">Отзывы</td></tr>
+<tr><td class="n">23</td><td class="w"><code>/tury</code></td><td>В прод уехала заметка разработчика: в теле страницы написано «список туров в виде пиктограмм».</td><td class="f">—</td></tr>
+</table>
+
+<h2 class="s">Новые артборды в этом канвасе</h2>
+<div class="plan">
+  <div class="step"><b>Пост · 390</b><ul>
+    <li>Крошки и факт-строка над H1</li>
+    <li>«Информация» и мок-рейтинг убраны</li>
+    <li>Маршрут по остановкам, «что входит» с исключениями</li>
+    <li>Золотая кнопка вместо тёмной, липкая полоса брони</li>
+    <li>Блок «похожие туры»</li>
+  </ul></div>
+  <div class="step"><b>Услуга · 390</b><ul>
+    <li>Скрим в шапке, крошки, цена в факт-строке</li>
+    <li>Лид, прайс-блок, «что входит»</li>
+    <li>Список «как это проходит» вместо стены текста</li>
+    <li>Кнопка и телефон на странице</li>
+    <li>Перелинковка на другие услуги</li>
+  </ul></div>
+  <div class="step"><b>Услуги · 390</b><ul>
+    <li>Карточки с реальной шириной вместо 0×320</li>
+    <li>Шапка 300px, теги-фильтры</li>
+    <li>Фото шапки по смыслу страницы</li>
+  </ul></div>
+  <div class="step"><b>Контакты · 390</b><ul>
+    <li>Карточки телефонов, почты и адреса</li>
+    <li>Мессенджеры монохромными пилюлями 48px</li>
+    <li>Режим работы</li>
+    <li>Карта в карточке, а не во весь экран</li>
+  </ul></div>
+  <div class="step"><b>Отзывы · 390</b><ul>
+    <li>Сводка 4,9 и разбивка по звёздам</li>
+    <li>Карточки отзывов с автором, датой и туром</li>
+    <li>Источник отзыва: ВК, Яндекс, сайт</li>
+    <li>Кнопка «оставить отзыв»</li>
+  </ul></div>
+  <div class="step"><b>Интересное · 390</b><ul>
+    <li>Шапка 300px — заголовок видно</li>
+    <li>Теги-фильтры</li>
+    <li>Пагинация с тап-таргетом 44px</li>
+  </ul></div>
+  <div class="step"><b>Подвал · было и стало</b><ul>
+    <li>Подложка тушью вместо фото</li>
+    <li>Монохромные соцсети</li>
+    <li>Навигация и юридический блок</li>
+    <li>Раскладки 390 и 1440</li>
+  </ul></div>
+  <div class="step"><b>Состояния · 1120</b><ul>
+    <li>Наведение, фокус, отключено, отправка</li>
+    <li>Поля: подписи, фокус, ошибка, слот капчи</li>
+    <li>Четыре пустых состояния «было / стало»</li>
+    <li>Кремовый скелет загрузки</li>
+  </ul></div>
+  <div class="step"><b>Контентная страница · 1440</b><ul>
+    <li>Контейнер 1120, заголовок в колонке 720</li>
+    <li>Кнопка 260px вместо 1372px</li>
+    <li>Сетка 3 в ряд, ритм 80</li>
+    <li>Липкий прайс-блок сбоку</li>
+  </ul></div>
+</div>
+
+<h2 class="s">С чего начинать перенос</h2>
+<table>
+<tr><th class="n"></th><th class="w">Шаг</th><th>Что делаем</th><th class="f">Закрывает</th></tr>
+<tr><td class="n">1</td><td class="w">Картинки и фото шапок</td><td>Положить недостающие файлы и раздать шапкам фото по смыслу страницы, а не одно на пять адресов.</td><td class="f">5, 6</td></tr>
+<tr><td class="n">2</td><td class="w">Ширина карточек</td><td>Починить сетку на <code>/uslugi</code> — страница перестанет быть пустой.</td><td class="f">1</td></tr>
+<tr><td class="n">3</td><td class="w">Подписи полей</td><td>Убрать белый цвет подписей на кремовой карточке входа и регистрации.</td><td class="f">4</td></tr>
+<tr><td class="n">4</td><td class="w">Шаблон легаси-страницы</td><td>Скрим и крошки в шапку, убрать «Информация» и мок-рейтинг, перевести контент на <code>.et-post</code>, добавить прайс и кнопку.</td><td class="f">7–10, 13</td></tr>
+<tr><td class="n">5</td><td class="w">Контейнер 1120</td><td>Обернуть заголовки, сетки и кнопки в контейнер — десктоп перестанет расползаться.</td><td class="f">14–17</td></tr>
+<tr><td class="n">6</td><td class="w">Контакты и отзывы</td><td>Собрать по новым артбордам: это две страницы, которые сейчас пустые по смыслу.</td><td class="f">2, 22</td></tr>
+<tr><td class="n">7</td><td class="w">Состояния и подвал</td><td>Пустые состояния, фокус, скелет, подвал на туши.</td><td class="f">11, 12, 18–20</td></tr>
+</table>
+
 </div></body></html></script>
     </div>
   </section></main>

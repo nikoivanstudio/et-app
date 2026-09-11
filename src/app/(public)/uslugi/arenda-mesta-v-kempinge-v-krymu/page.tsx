@@ -4,6 +4,7 @@ import { ServiceView } from '@/views/legacy/server';
 
 const service = {
   id: 1,
+  slug: 'arenda-mesta-v-kempinge-v-krymu',
   title: 'Аренда места в кемпинге в Крыму',
   content:
     'Наша организация предоставляет возможность аренды места в кемпинге.\n' +
