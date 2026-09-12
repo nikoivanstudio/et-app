@@ -1,434 +1,437 @@
 batch,tier,slug,words,dup_pct,title,src
-1,T1,ekskursiya-na-goru-kastel,1043,94,"Экскурсия на гору Кастель",https://jalita.com/big_yalta/alushta/kastel_path.shtml
-1,T1,ekskursiya-v-emine-bair-hosar,1375,90,"Экскурсия в Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_desc.shtml
-1,T1,dzhip-tury,1788,0,"Джип Тур Крым",
-1,T1,individualnye-ekskursii-po-krymu,1294,0,"Индивидуальные экскурсии по Крыму в 2026 из Ялты Севастополя Бахчисарая",
-1,T1,put-v-yaltu-ekskursiya-po-doroge-simferopol-yalta,678,0,"Путь в Ялту. Экскурсия по дороге Симферополь — Ялта",
-1,T1,ekskursii-po-krymu-s-luchshimi-tsenami-2019-iz-yalty-simferopolya-sevastopolya,665,0,"Экскурсии по Крыму с лучшими ценами 2026 из Ялты Симферополя Севастополя",
-1,T1,ekskursii-v-bahchisarae,542,0,"Экскурсии Бахчисарай в 2026 из Ялты Севастополя Симферополя",
-1,T1,tury-vyhodnogo-dnya-v-krymu,489,0,"Туры выходного дня в Крыму",
-1,T1,tury-na-kvadrotsiklah-v-krymu,406,0,"Туры на квадроциклах в Крыму",
-1,T1,dzhip-tur-po-vershinam-kryma,361,0,"Экскурсия и тур по горам Крыма. Это выше Ай-Петри и Демерджи",
-2,T1,korporativnyj-otdyh-v-krymu,293,0,"Корпоративный отдых в Крыму",
+1,T1,dzhip-tury,1131,0,"Джип-туры по Крыму на подготовленных внедорожниках — маршруты и цены",
+1,T1,ekskursiya-v-emine-bair-hosar,876,0,"Экскурсия в пещеру Эмине-Баир-Хосар на Чатыр-Даге",
+1,T1,individualnye-ekskursii-po-krymu,812,0,"Индивидуальные экскурсии по Крыму на внедорожнике — маршрут под вас",
+1,T1,ekskursiya-na-goru-kastel,739,0,"Гора Кастель под Алуштой: подъём, легенда о царице Феодоре и что видно с вершины",https://jalita.com/big_yalta/alushta/kastel_path.shtml
+1,T1,put-v-yaltu-ekskursiya-po-doroge-simferopol-yalta,657,0,"Дорога Симферополь — Ялта: что видно из окна и где стоит остановиться",
+1,T1,ekskursii-v-bahchisarae,487,0,"Экскурсии в Бахчисарае: пять маршрутов, которые стоят вашего дня",
+1,T1,ekskursii-po-krymu-s-luchshimi-tsenami-2019-iz-yalty-simferopolya-sevastopolya,477,0,"Экскурсии по Крыму из Ялты, Симферополя и Севастополя — цены и маршруты",
+1,T1,tury-vyhodnogo-dnya-v-krymu,441,0,"Туры выходного дня в Крыму: Большой каньон и Ай-Петри за один-два дня",
+1,T1,dzhip-tur-po-vershinam-kryma,410,0,"Джип-тур по вершинам Крыма: главная гряда и четвёртая вершина полуострова",
+1,T1,tury-na-kvadrotsiklah-v-krymu,358,0,"Туры на квадроциклах в Крыму: маршруты по Бойко, Бельбеку и Большому каньону",
+2,T1,korporativnyj-otdyh-v-krymu,450,0,"Корпоративный отдых в Крыму: выезды на внедорожниках для коллектива",
 2,T1,individualnaya-ekskursiya-po-krymu-tur-bezlimitnyj,291,0,"Индивидуальная экскурсия по Крыму - Тур ""Безлимитный""",
-2,T1,dikie-tury-v-krymu,278,0,"«Дикие» Туры в Крыму",
+2,T1,dikie-tury-v-krymu,440,0,"«Дикие» туры в Крыму: отдых с палатками под присмотром инструктора",
 2,T1,dzhip-tur-ekskursiya-serdtsem-kryma,266,0,"Джип-тур экскурсия Сердцем Крыма",
-2,T1,dzhip-tur-chufut-kale,253,0,"Джип тур «Чуфут Кале»",
-2,T2,meteostantsiya-na-aj-petri,280,95,"Метеостанция на Ай-Петри",https://jalita.com/big_yalta/alupka/ai-petry_weather_station.shtml
-2,T2,peshhernye-goroda-kryma,686,90,"Пещерные города Крыма",https://jalita.com/guidebook/cave/index.shtml
-2,T2,dostoprimechatelnosti-kyz-kermena,1478,88,"Достопримечательности Кыз-Кермена",https://jalita.com/guidebook/cave/kyz-kermen_places.shtml
-2,T2,eski-kermen,2893,86,"Эски-Кермен",https://jalita.com/guidebook/cave/eski-kermen_desc.shtml
-2,T2,tik-kuyu-osadnyj-kolodets-chufut-kale,924,84,"Тик-Кую — осадный колодец Чуфут-Кале",https://jalita.com/guidebook/cave/chufut-kale_tik_kueu.shtml
-3,T2,tserkovnyj-grot-kachi-kalona,309,83,"Церковный грот Качи-Кальона",https://jalita.com/guidebook/cave/kachi-kalion_grotto.shtml
-3,T2,kyz-kermen,945,80,"Кыз-Кермен",https://jalita.com/guidebook/cave/kyz-kermen.shtml
-3,T2,put-v-yaltu-iz-bahchisaraya-cherez-aj-petri,520,75,"Путь в Ялту из Бахчисарая через Ай-Петри",https://jalita.com/big_yalta/road/to_yalta_bakhchisaray.shtml
-3,T2,mangup,1724,74,"Мангуп",https://jalita.com/guidebook/cave/mangup.shtml
-3,T2,bakla,703,73,"Бакла",https://jalita.com/guidebook/cave/bakla.shtml
-3,T2,tepe-kermen,336,53,"Тепе-Кермен",https://jalita.com/guidebook/cave/tepe-kermen.shtml
-3,T2,bolshoj-kanon-kryma,724,5,"Большой Каньон Крыма",https://jalita.com/guidebook/landscape/big_canyon_crimea.shtml
-3,T2,peshhernyj-gorod-mangup-kale,848,4,"Пещерный город Мангуп Кале - крепость Феодоро в Крыму",https://jalita.com/guidebook/cave/mangup.shtml
-3,T2,dostoprimechatelnosti-aj-petri,425,1,"Достопримечательности Ай-Петри",https://jalita.com/guidebook/cave_crimea/trokhglazka.shtml
-3,T2,chufut-kale,5313,0,"Чуфут Кале пещерный город Крыма в Бахчисарае с фото и историей",https://jalita.com/guidebook/cave/uspenskiy.shtml
-4,T2,aj-petri-poezdki-na-goru-dobiraemsya-v-kompanii-i-individualno,1012,0,"Поездки на гору Ай-Петри из Севастополя Симферополя на машине",
-4,T2,cherez-sedam-kayu-na-aj-petri,894,0,"Через Седам-Каю на Ай-Петри",
-4,T2,aj-petri-gora,859,0,"Ай-Петри, гора",
-4,T2,klimat-na-massive-aj-petri,631,0,"Климат на массиве Ай-Петри",https://jalita.com/guidebook/bakhchisaray/grand_canyon_crimea.shtml
-4,T2,peshhernyj-gorod-kalamita,546,0,"ПЕЩЕРНЫЙ ГОРОД КАЛАМИТА",
-4,T2,kanatnaya-doroga-mishor-aj-petri,531,0,"Канатная дорога Мисхор — Ай-Петри",
-4,T2,hanskij-dvorets,478,0,"Ханский дворец",
+2,T1,dzhip-tur-chufut-kale,394,0,"Джип-тур «Чуфут-Кале» из Бахчисарая: маршрут на два часа",
+2,T2,cherez-sedam-kayu-na-aj-petri,987,1,"Через Седам-Каю на Ай-Петри: маршрут от Соколиного до Чайного домика",https://jalita.com/big_yalta/forest/sedam-kaya_ai-petri.shtml
+2,T2,meteostantsiya-na-aj-petri,514,1,"Метеостанция на Ай-Петри: история наблюдений и ай-петринские ветры",https://jalita.com/big_yalta/alupka/ai-petry_weather_station.shtml
+2,T2,dostoprimechatelnosti-aj-petri,614,1,"Достопримечательности Ай-Петри: зубцы, меридиан, Трёхглазка и буковая роща",https://jalita.com/big_yalta/alupka/ai-petry_places.shtml
+2,T2,peshhernye-goroda-kryma,750,3,"Пещерные города Крыма: список, три группы памятников и как их смотреть",https://jalita.com/guidebook/cave/index.shtml
+2,T2,dostoprimechatelnosti-kyz-kermena,1444,1,"Достопримечательности Кыз-Кермена: грот Черепаха, стена, тарапаны и пещеры",https://jalita.com/guidebook/cave/kyz-kermen_places.shtml
+3,T2,klimat-na-massive-aj-petri,787,6,"Климат Ай-Петри: погода на плато по сезонам",https://jalita.com/big_yalta/alupka/ai-petry_climate.shtml
+3,T2,belbekskij-kanon,572,1,"Бельбекский каньон (Бельбекские ворота): что смотреть и как доехать",https://jalita.com/guidebook/crimea/belbek_canyon.shtml
+3,T2,eski-kermen,2814,7,"Эски-Кермен — пещерный город: осадный колодец, храмы, как добраться",https://jalita.com/guidebook/cave/eski-kermen_desc.shtml
+3,T2,aj-petri-gora,936,5,"Гора Ай-Петри: высота, зубцы, как подняться и что смотреть",https://jalita.com/big_yalta/alupka/ai-petry.shtml
+3,T2,tik-kuyu-osadnyj-kolodets-chufut-kale,1056,8,"Тик-Кую — осадный колодец Чуфут-Кале: как открыли и что смотреть",https://jalita.com/guidebook/cave/chufut-kale_tik_kueu.shtml
+3,T2,danilcha-koba,542,6,"Данильча-Коба — пещера-грот с подземным озером на Седам-Кая",https://jalita.com/guidebook/cave_crimea/danilcha-koba.shtml
+3,T2,tserkovnyj-grot-kachi-kalona,598,4,"Церковный грот Качи-Кальона и источник святой Анастасии",https://jalita.com/guidebook/cave/kachi-kalion_grotto.shtml
+3,T2,kyz-kermen,1130,7,"Кыз-Кермен — городище над Качинской долиной напротив Тепе-Кермена",https://jalita.com/guidebook/cave/kyz-kermen.shtml
+3,T2,put-v-yaltu-iz-bahchisaraya-cherez-aj-petri,736,5,"Дорога из Бахчисарая в Ялту через Ай-Петри: что смотреть по пути",https://jalita.com/big_yalta/road/to_yalta_bakhchisaray.shtml
+3,T2,mangup,1689,6,"Мангуп (Мангуп-Кале): столица княжества Феодоро — что смотреть",https://jalita.com/guidebook/cave/mangup.shtml
+4,T2,bakla,848,3,"Бакла — пещерный город под Симферополем: зерновые ямы, цитадель и тоннель",https://jalita.com/guidebook/cave/bakla.shtml
+4,T2,kanatnaya-doroga-mishor-aj-petri,590,1,"Канатная дорога Мисхор — Ай-Петри: станции, безопорный пролёт, история",https://jalita.com/big_yalta/mishor/rope_road_ai-petry.shtml
+4,T2,bolshoj-kanon-kryma,974,0,"Большой каньон Крыма: тропа, Ванна молодости, сезон и как доехать",
+4,T2,peshhernyj-gorod-mangup-kale,848,4,"Пещерный город Мангуп Кале - крепость Феодоро в Крыму",https://jalita.com/guidebook/cave/mangup.shtml
+4,T2,tepe-kermen,578,2,"Тепе-Кермен — пещерный город под Бахчисараем: как добраться и что смотреть",https://jalita.com/guidebook/cave/tepe-kermen.shtml
+4,T2,chufut-kale,5057,0,"Чуфут-Кале — пещерный город под Бахчисараем: маршрут, стены, колодцы, кладбище",
+4,T2,aj-petri-poezdki-na-goru-dobiraemsya-v-kompanii-i-individualno,1031,0,"Поездки на Ай-Петри зимой: доставка на плато, трассы и прокат",
+4,T2,peshhernyj-gorod-kalamita,919,0,"Каламита — крепость над Инкерманом: шесть башен, порт Авлита и монастырь",
+4,T2,hanskij-dvorets,911,0,"Ханский дворец в Бахчисарае: что сохранилось, что смотреть и сколько это займёт",
 4,T2,peshhernyj-gorod-tepe-kermen,441,0,"Тепе Кермен пещерный город Крыма в Бахчисарае с фото",
-4,T2,peshhernyj-gorod-chufut-kale,437,0,"Пещерный город Чуфут-Кале",
-4,T2,kachi-kalon,423,0,"Качи-Кальон",
+5,T2,peshhernyj-gorod-chufut-kale,437,0,"Пещерный город Чуфут-Кале",
+5,T2,kachi-kalon,714,0,"Качи-Кальон — пещерный монастырь и тарапаны в долине Качи",
 5,T2,chufut-kale-2,422,0,"Экскурсия в пещерный город Чуфут Кале",
 5,T2,mangup-kale,411,0,"Экскурсия в пещерный город Крыма Мангуп Кале на джипе",
-5,T2,peshhernyj-monastyr-chelter-koba,396,0,"Пещерный монастырь Челтер-Коба",
+5,T2,peshhernyj-monastyr-chelter-koba,614,0,"Челтер-Коба — пещерный монастырь святого Феодора на мысе Ай-Тодор",
 5,T2,peshhernyj-gorod-eski-kermen,395,0,"Пещерный город Эски-Кермен",
 5,T2,gora-aj-petri,394,0,"Гора Ай-Петри",
 5,T2,peshhernyj-gorod-bakla,392,0,"Пещерный город Бакла",
-5,T2,alimova-balka,378,0,"Алимова балка",
-5,T2,peshhernyj-monastyr-chelter-marmara,378,0,"Пещерный монастырь Челтер-Мармара",
-5,T2,peshhernyj-gorod-kyz-kermen,376,0,"Пещерный город Кыз-Кермен",
-5,T2,kolodets-tik-kuyu,349,0,"Колодец Тик-Кую",
-6,T2,danilcha-koba,323,0,"Данильча-Коба",
+5,T2,alimova-balka,662,0,"Алимова балка — ущелье с наскальными рисунками рядом с Качи-Кальоном",
+5,T2,peshhernyj-monastyr-chelter-marmara,688,0,"Челтер-Мармара — пещерный монастырь в пять ярусов над Шульской долиной",
+6,T2,peshhernyj-gorod-kyz-kermen,376,0,"Пещерный город Кыз-Кермен",
+6,T2,kolodets-tik-kuyu,349,0,"Колодец Тик-Кую",
 6,T2,drevnij-belbek,323,0,"Экскурсия в пещерные города Крыма -  Три Крепости",
-6,T2,kokkozka-goluboy-pritok-reki-belbek-krymskogo-poluostrova,317,0,"Коккозка: самая мощная река крымского полуострова",
-6,T2,belbekskij-kanon,299,0,"Бельбекский каньон",
+6,T2,kokkozka-goluboy-pritok-reki-belbek-krymskogo-poluostrova,713,0,"Коккозка — «голубой глаз» под Соколиным: пороги, тропа, купание",
 6,T2,sfinksy-krepost-i-marsianskoe-ozero,291,0,"Экскурсия на джипе к Марсианскому Озеру, Сфинксам и Крепости",
-6,T2,dostoprimechatelnosti-bahchisaraya-s-opisaniem-i-foto-v-krymu,284,0,"Достопримечательности Бахчисарая с описанием и фото в Крыму",
-6,T2,puteshestvie-po-kachinskoj-doline,281,0,"Путешествие по Качинской долине",
+6,T2,dostoprimechatelnosti-bahchisaraya-s-opisaniem-i-foto-v-krymu,752,0,"Достопримечательности Бахчисарая: что посмотреть в городе и вокруг",
+6,T2,puteshestvie-po-kachinskoj-doline,473,0,"Путешествие по Качинской долине: джип-тур из Бахчисарая на 5 часов",
 6,T2,uspenskij-monastyr,279,0,"Успенский монастырь",
 6,T2,eski-kermen-2,256,0,"Экскурсия в пещерный город Эски Кермен на машине",
-6,T2,syujrenskaya-krepost,256,0,"Сюйреньская крепость",
+6,T2,syujrenskaya-krepost,601,0,"Сюйреньская крепость — башня Феодоро над Бельбекской долиной",
 7,T2,tepe-kermen-2,250,0,"Экскурсия в пещерный город Крыма Тепе Кермен в Бахчисарае",
+7,T3,zolotaya-rossyp-u-chatyr-daga,1261,99,"Золотая россыпь у Чатыр-дага",https://jalita.com/guidebook/legends/zolotaya_rossip_chatyr-dag.shtml
+7,T3,skaly-bliznetsy-u-gurzufa,594,98,"Скалы близнецы у Гурзуфа",https://jalita.com/guidebook/legends/adalary.shtml
 7,T3,interery-livadijskogo-dvortsa-1-j-etazh,1703,97,"Интерьеры Ливадийского дворца, 1-й этаж",https://jalita.com/big_yalta/livadia/interior_livadia_1_floor.shtml
 7,T3,ekspozitsiya-massandrovskogo-dvortsa-muzeya-5,2202,95,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/cabinet_his_majesty.shtml
 7,T3,a-p-chekhov-house-museum-in-yalta,973,95,"A. P. Chekhov house-museum in Yalta",https://jalita.com/big_yalta/chehov/index_eng.shtml
+7,T3,ayu-dag-medved-gora,963,95,"Аю-Даг (Медведь-гора)",https://jalita.com/big_yalta/gurzuf/geography_3.shtml
 7,T3,ot-karagolya-vdol-shosse-yalta-bahchisaraj,721,95,"От Караголя вдоль шоссе Ялта — Бахчисарай",https://jalita.com/big_yalta/forest/karagol_path.shtml
+7,T3,prirodnye-dostoprimechatelnosti-simeiza,675,95,"Природные достопримечательности Симеиза",https://jalita.com/big_yalta/simeiz/natural_resources.shtml
 7,T3,gurzuf-literaturnyj,1266,94,"Гурзуф литературный",https://jalita.com/big_yalta/gurzuf/literature_1.shtml
-7,T3,forosskij-park,985,94,"Форосский парк",https://jalita.com/big_yalta/simeiz/foros_park.shtml
-7,T3,arhitektura-vorontsovskogo-dvortsa,955,94,"Архитектура Воронцовского дворца",https://jalita.com/big_yalta/alupka/architecture_palace.shtml
-7,T3,skelet-mamonta-v-peshhere-emine-bair-hosar,816,93,"Скелет мамонта в пещере Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_mamont.shtml
-7,T3,vodopad-uchan-su,671,93,"Водопад Учан-Су",https://jalita.com/big_yalta/yalta/uchan-su.shtml
+8,T3,forosskij-park,985,94,"Форосский парк",https://jalita.com/big_yalta/simeiz/foros_park.shtml
+8,T3,naberezhnaya-gurzufa,956,94,"Набережная Гурзуфа",https://jalita.com/big_yalta/gurzuf/naberejnaya.shtml
+8,T3,arhitektura-vorontsovskogo-dvortsa,955,94,"Архитектура Воронцовского дворца",https://jalita.com/big_yalta/alupka/architecture_palace.shtml
+8,T3,kak-voznikla-yalta,271,94,"Как возникла Ялта?",https://jalita.com/guidebook/legends/yalta.shtml
+8,T3,gurzufskaya-dolina,1807,93,"Гурзуфская долина",https://jalita.com/big_yalta/gurzuf/gurzufskaya_dolina.shtml
+8,T3,skelet-mamonta-v-peshhere-emine-bair-hosar,816,93,"Скелет мамонта в пещере Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_mamont.shtml
+8,T3,vodopad-uchan-su,671,93,"Водопад Учан-Су",https://jalita.com/big_yalta/yalta/uchan-su.shtml
+8,T3,stranitsy-istorii-gurzufa,4570,92,"Страницы истории Гурзуфа",https://jalita.com/big_yalta/gurzuf/history_1.shtml
+8,T3,artek,1223,92,"Артек",https://jalita.com/big_yalta/gurzuf/artek.shtml
 8,T3,arhitektura-livadijskogo-dvortsa-2,818,92,"Архитектура Ливадийского дворца",https://jalita.com/big_yalta/livadia/architecture_livadia.shtml
-8,T3,adalary-skaly-bliznetsy-u-gurzufa,612,92,"Адалары, скалы близнецы у Гурзуфа",https://jalita.com/big_yalta/gurzuf/adalary.shtml
-8,T3,istoriya-otkrytiya-emine-bair-hosar,509,92,"История открытия Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_history.shtml
-8,T3,starinnye-usadby-dachi-villy-simeiza,423,92,"Старинные усадьбы, дачи, виллы Симеиза",https://jalita.com/big_yalta/simeiz/villa.shtml
-8,T3,sovremennye-geologicheskie-yavleniya-na-chatyr-dage,1401,91,"Современные геологические явления на Чатыр-Даге",https://jalita.com/big_yalta/forest/chatyr-dag_geology_mod.shtml
-8,T3,hozyajstvennaya-deyatelnost-cheloveka-na-chatyr-dage,461,91,"Хозяйственная деятельность человека на Чатыр-Даге",https://jalita.com/big_yalta/forest/chatyr-dag_agro.shtml
-8,T3,ot-simeiza-do-buhty-laspi,1066,90,"От Симеиза до бухты Ласпи",https://jalita.com/big_yalta/simeiz/index.shtml
-8,T3,dostoprimechatelnosti-gurzufa,1193,89,"Достопримечательности Гурзуфа",https://jalita.com/big_yalta/gurzuf/places.shtml
-8,T3,tavrskoe-svyatilishhe-u-gurzufskogo-sedla,873,89,"Таврское святилище у Гурзуфского седла",https://jalita.com/big_yalta/gurzuf/tavr_sanctuary.shtml
-8,T3,uchan-su-reka-vodopadnaya,345,89,"Учан-Су, река (Водопадная)",https://jalita.com/big_yalta/yalta/uchan-su_river.shtml
-9,T3,geologicheskoe-stroenie-chatyr-daga,1046,88,"Геологическое строение Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_geology.shtml
-9,T3,zolotoj-plyazh-i-lastochkino-gnezdo,518,88,"Золотой пляж и Ласточкино гнездо",https://jalita.com/big_yalta/swallow_nest/zolotoy_plyazh.shtml
-9,T3,klimat-i-vody-chatyr-daga,349,88,"Климат и воды Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_climate.shtml
-9,T3,stranitsy-istorii-gurzufa,4570,85,"Страницы истории Гурзуфа",https://jalita.com/big_yalta/gurzuf/history_1.shtml
-9,T3,tektonika-chatyr-daga,387,85,"Тектоника Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_tektonik.shtml
-9,T3,v-yaltu-iz-sevastopolya-cherez-bajdarskie-vorota,815,84,"В Ялту из Севастополя через Байдарские ворота",https://jalita.com/big_yalta/road/to_yalta_sevas.shtml
-9,T3,ekspozitsiya-vorontsovskogo-dvortsa-2,461,84,"Экспозиция Воронцовского дворца",https://jalita.com/big_yalta/alupka/billiard_room.shtml
-9,T3,kak-ranshe-na-more-ezdili-cherez-simferopol,905,83,"Как раньше на море ездили через Симферополь",https://jalita.com/big_yalta/road/old_path_to_yalta.shtml
-9,T3,geograficheskoe-polozhenie-chatyr-daga,359,82,"Географическое положение Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_geografy.shtml
-9,T3,gurzufskoe-sedlo,279,82,"Гурзуфское седло",https://jalita.com/big_yalta/gurzuf/gurzuf_saddle.shtml
-10,T3,interery-livadijskogo-dvortsa,471,80,"Интерьеры Ливадийского дворца",https://jalita.com/big_yalta/livadia/interior_livadia.shtml
-10,T3,kak-dobratsya-do-emine-bair-hosar,360,80,"Как добраться до Эмине-Баир-Хосар?",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_path.shtml
-10,T3,laspi,669,78,"Ласпи",https://jalita.com/big_yalta/laspi/index.shtml
-10,T3,livadijskij-organ,584,78,"Ливадийский орган",https://jalita.com/big_yalta/livadia/organ.shtml
-10,T3,mastera-oformlyavshie-massandrovskij-dvorets,279,75,"Мастера, оформлявшие Массандровский дворец",https://jalita.com/big_yalta/massandra/mesmaher.shtml
-10,T3,chatyr-dag-shater-gora,1124,72,"Чатыр-Даг (Шатер-Гора)",https://jalita.com/big_yalta/forest/chatyr-dag.shtml
-10,T3,interery-livadijskogo-dvortsa-2-j-etazh,1716,66,"Интерьеры Ливадийского дворца, 2-й этаж",https://jalita.com/big_yalta/livadia/interior_livadia_2_floor.shtml
-10,T3,peshhery-chatyr-daga,659,64,"Пещеры Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_cave.shtml
-10,T3,istoriya-stroitelstva-massandrovskogo-dvortsa,1245,60,"История строительства Массандровского дворца",https://jalita.com/big_yalta/massandra/bushar.shtml
-10,T3,genuezskaya-krepost-v-gurzufe,422,50,"Генуэзская крепость в Гурзуфе",https://jalita.com/big_yalta/gurzuf/history_1.shtml
-11,T3,klimat-laspi,310,40,"Климат Ласпи",https://jalita.com/big_yalta/laspi/index.shtml
-11,T3,alupka,1130,39,"Алупка",https://jalita.com/big_yalta/alupka/alupka_1.shtml
-11,T3,massandrovskij-park,714,35,"Массандровский парк",https://jalita.com/big_yalta/massandra/park_massandra.shtml
-11,T3,skaly-bliznetsy-u-gurzufa,594,30,"Скалы близнецы у Гурзуфа",https://jalita.com/big_yalta/gurzuf/adalary.shtml
-11,T3,gurzufskaya-dolina,1807,29,"Гурзуфская долина",https://jalita.com/big_yalta/gurzuf/roman-kosh.shtml
-11,T3,bajdarskie-vorota,457,17,"Байдарские ворота",https://jalita.com/big_yalta/simeiz/index.shtml
-11,T3,lastochkino-gnezdo,1730,8,"Ласточкино гнездо",https://jalita.com/big_yalta/swallow_nest/earthquake.shtml
-11,T3,nikitskij-botanicheskij-sad-rekordy-interesnye-fakty,641,7,"Никитский ботанический сад: рекорды, интересные факты",https://jalita.com/guidebook/facts/index.shtml
-11,T3,gurzuf,2082,3,"Гурзуф",https://jalita.com/big_yalta/gurzuf/literature_1.shtml
-11,T3,nikitskij-botanicheskij-sad,1507,3,"Никитский ботанический сад",https://jalita.com/guidebook/fortness/ruskofil-kale.shtml
-12,T3,ayu-dag-medved-gora,963,3,"Аю-Даг (Медведь-гора)",https://jalita.com/guidebook/landscape/au-dag.shtml
-12,T3,prirodnye-dostoprimechatelnosti-simeiza,675,3,"Природные достопримечательности Симеиза",https://jalita.com/guidebook/landscape/rock_ifigenia.shtml
-12,T3,simeiz,1813,2,"Симеиз",https://jalita.com/guidebook/palace.shtml
-12,T3,foros,750,2,"Форос",https://jalita.com/big_yalta/simeiz/index.shtml
-12,T3,zolotaya-rossyp-u-chatyr-daga,1261,1,"Золотая россыпь у Чатыр-дага",https://jalita.com/big_yalta/forest/chatyr-dag.shtml
-12,T3,livadijskij-park,1147,1,"Ливадийский парк",https://jalita.com/big_yalta/livadia/livadia.shtml
-12,T3,prirodnye-dostoprimechatelnosti-gurzufskogo-amfiteatra,523,1,"Природные достопримечательности гурзуфского амфитеатра",https://jalita.com/guidebook/landscape/au-dag.shtml
-12,T3,maltsovy-osnovateli-kurorta-simeiz,1630,0,"Мальцовы — основатели курорта Симеиз",
-12,T3,yalta-2,1370,0,"Ялта",
-12,T3,artek,1223,0,"Артек",
-13,T3,poezdka-iz-yalty-v-simferopol,1123,0,"Поездка из Ялты в Симферополь",
-13,T3,zemletryasenie-1927-goda-v-sevastopole,979,0,"Землетрясение 1927 года в Севастополе",
-13,T3,chertova-lestnitsa-shajtan-merdven,960,0,"Чертова лестница (Шайтан-Мердвен)",https://jalita.com/guidebook/fortness/isar-kaya.shtml
-13,T3,naberezhnaya-gurzufa,956,0,"Набережная Гурзуфа",
-13,T3,pereval-gurzufskoe-sedlo,853,0,"Перевал Гурзуфское седло",
-13,T3,bajdarskaya-dolina,749,0,"Байдарская долина",
-13,T3,simeizskaya-observatoriya,719,0,"Симеизская обсерватория",
-13,T3,gosdacha-4-yusupovskij-dvorets,670,0,"Госдача № 4. Юсуповский дворец",
-13,T3,sarychskij-forosskij-mayak,661,0,"Сарычский (Форосский) маяк",
-13,T3,dolina-prividenij,564,0,"Долина привидений",
-14,T3,restavratsiya-lastochkinogo-gnezda,527,0,"Реставрация Ласточкиного гнезда",
-14,T3,klimat-simeiza,523,0,"Климат Симеиза",
+9,T3,gosdacha-4-yusupovskij-dvorets,670,92,"Госдача № 4. Юсуповский дворец",https://jalita.com/big_yalta/mishor/vip_cottage_4.shtml
+9,T3,adalary-skaly-bliznetsy-u-gurzufa,612,92,"Адалары, скалы близнецы у Гурзуфа",https://jalita.com/big_yalta/gurzuf/adalary.shtml
+9,T3,istoriya-otkrytiya-emine-bair-hosar,509,92,"История открытия Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_history.shtml
+9,T3,starinnye-usadby-dachi-villy-simeiza,423,92,"Старинные усадьбы, дачи, виллы Симеиза",https://jalita.com/big_yalta/simeiz/villa.shtml
+9,T3,sovremennye-geologicheskie-yavleniya-na-chatyr-dage,1401,91,"Современные геологические явления на Чатыр-Даге",https://jalita.com/big_yalta/forest/chatyr-dag_geology_mod.shtml
+9,T3,hozyajstvennaya-deyatelnost-cheloveka-na-chatyr-dage,461,91,"Хозяйственная деятельность человека на Чатыр-Даге",https://jalita.com/big_yalta/forest/chatyr-dag_agro.shtml
+9,T3,ot-simeiza-do-buhty-laspi,1066,90,"От Симеиза до бухты Ласпи",https://jalita.com/big_yalta/simeiz/index.shtml
+9,T3,genuezskaya-krepost-v-gurzufe,422,90,"Генуэзская крепость в Гурзуфе",https://jalita.com/big_yalta/gurzuf/djenevez-kaya_fort.shtml
+9,T3,nikitskij-botanicheskij-sad,1507,89,"Никитский ботанический сад",https://jalita.com/big_yalta/nikita/index.shtml
+9,T3,dostoprimechatelnosti-gurzufa,1193,89,"Достопримечательности Гурзуфа",https://jalita.com/big_yalta/gurzuf/places.shtml
+10,T3,tavrskoe-svyatilishhe-u-gurzufskogo-sedla,873,89,"Таврское святилище у Гурзуфского седла",https://jalita.com/big_yalta/gurzuf/tavr_sanctuary.shtml
+10,T3,uchan-su-reka-vodopadnaya,345,89,"Учан-Су, река (Водопадная)",https://jalita.com/big_yalta/yalta/uchan-su_river.shtml
+10,T3,geologicheskoe-stroenie-chatyr-daga,1046,88,"Геологическое строение Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_geology.shtml
+10,T3,chertova-lestnitsa-shajtan-merdven,960,88,"Чертова лестница (Шайтан-Мердвен)",https://jalita.com/big_yalta/simeiz/shajtan_merdven.shtml
+10,T3,simeizskaya-observatoriya,719,88,"Симеизская обсерватория",https://jalita.com/big_yalta/simeiz/observatory.shtml
+10,T3,sarychskij-forosskij-mayak,661,88,"Сарычский (Форосский) маяк",https://jalita.com/big_yalta/simeiz/foros_lighthouse.shtml
+10,T3,zolotoj-plyazh-i-lastochkino-gnezdo,518,88,"Золотой пляж и Ласточкино гнездо",https://jalita.com/big_yalta/swallow_nest/zolotoy_plyazh.shtml
+10,T3,klimat-i-vody-chatyr-daga,349,88,"Климат и воды Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_climate.shtml
+10,T3,zemletryasenie-1927-goda-v-sevastopole,979,87,"Землетрясение 1927 года в Севастополе",https://jalita.com/guidebook/crimea/earthquake_sebastopol.shtml
+10,T3,restavratsiya-lastochkinogo-gnezda,527,87,"Реставрация Ласточкиного гнезда",https://jalita.com/big_yalta/swallow_nest/project.shtml
+11,T3,klimat-simeiza,523,86,"Климат Симеиза",https://jalita.com/big_yalta/simeiz/simeiz_climate.shtml
+11,T3,maltsovy-osnovateli-kurorta-simeiz,1630,85,"Мальцовы — основатели курорта Симеиз",https://jalita.com/big_yalta/simeiz/simeiz_maltsov.shtml
+11,T3,dasha-sevastopolskaya,448,85,"Даша Севастопольская",https://jalita.com/guidebook/crimea/dasha_sevastopolskaya.shtml
+11,T3,tektonika-chatyr-daga,387,85,"Тектоника Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_tektonik.shtml
+11,T3,gurzuf,2082,84,"Гурзуф",https://jalita.com/big_yalta/gurzuf/gurzuf.shtml
+11,T3,v-yaltu-iz-sevastopolya-cherez-bajdarskie-vorota,815,84,"В Ялту из Севастополя через Байдарские ворота",https://jalita.com/big_yalta/road/to_yalta_sevas.shtml
+11,T3,foros,750,84,"Форос",https://jalita.com/big_yalta/simeiz/foros.shtml
+11,T3,ekspozitsiya-vorontsovskogo-dvortsa-2,461,84,"Экспозиция Воронцовского дворца",https://jalita.com/big_yalta/alupka/billiard_room.shtml
+11,T3,kak-ranshe-na-more-ezdili-cherez-simferopol,905,83,"Как раньше на море ездили через Симферополь",https://jalita.com/big_yalta/road/old_path_to_yalta.shtml
+11,T3,nikitskij-botanicheskij-sad-rekordy-interesnye-fakty,641,83,"Никитский ботанический сад: рекорды, интересные факты",https://jalita.com/big_yalta/nikita/records.shtml
+12,T3,geograficheskoe-polozhenie-chatyr-daga,359,82,"Географическое положение Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_geografy.shtml
+12,T3,gurzufskoe-sedlo,279,82,"Гурзуфское седло",https://jalita.com/big_yalta/gurzuf/gurzuf_saddle.shtml
+12,T3,alupka,1130,81,"Алупка",https://jalita.com/big_yalta/alupka/alupka.shtml
+12,T3,interery-livadijskogo-dvortsa,471,80,"Интерьеры Ливадийского дворца",https://jalita.com/big_yalta/livadia/interior_livadia.shtml
+12,T3,kak-dobratsya-do-emine-bair-hosar,360,80,"Как добраться до Эмине-Баир-Хосар?",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_path.shtml
+12,T3,laspi,669,78,"Ласпи",https://jalita.com/big_yalta/laspi/index.shtml
+12,T3,livadijskij-organ,584,78,"Ливадийский орган",https://jalita.com/big_yalta/livadia/organ.shtml
+12,T3,bajdarskie-vorota,457,78,"Байдарские ворота",https://jalita.com/big_yalta/simeiz/baidarskie_vorota.shtml
+12,T3,buhta-laspi,318,78,"Бухта Ласпи",https://jalita.com/big_yalta/laspi/laspi_bay.shtml
+12,T3,mastera-oformlyavshie-massandrovskij-dvorets,279,75,"Мастера, оформлявшие Массандровский дворец",https://jalita.com/big_yalta/massandra/mesmaher.shtml
+13,T3,chatyr-dag-shater-gora,1124,72,"Чатыр-Даг (Шатер-Гора)",https://jalita.com/big_yalta/forest/chatyr-dag.shtml
+13,T3,bajdarskaya-dolina,749,70,"Байдарская долина",https://jalita.com/big_yalta/simeiz/baidarskie_vale.shtml
+13,T3,interery-livadijskogo-dvortsa-2-j-etazh,1716,66,"Интерьеры Ливадийского дворца, 2-й этаж",https://jalita.com/big_yalta/livadia/interior_livadia_2_floor.shtml
+13,T3,peshhery-chatyr-daga,659,64,"Пещеры Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_cave.shtml
+13,T3,istoriya-stroitelstva-massandrovskogo-dvortsa,1245,60,"История строительства Массандровского дворца",https://jalita.com/big_yalta/massandra/bushar.shtml
+13,T3,yalta-2,1370,59,"Ялта",https://jalita.com/big_yalta/yalta/yalta.shtml
+13,T3,livadijskij-park,1147,59,"Ливадийский парк",https://jalita.com/big_yalta/livadia/park_livadia.shtml
+13,T3,klimat-laspi,310,40,"Климат Ласпи",https://jalita.com/big_yalta/laspi/index.shtml
+13,T3,massandrovskij-park,714,35,"Массандровский парк",https://jalita.com/big_yalta/massandra/park_massandra.shtml
+13,T3,bolshaya-yalta,422,33,"Большая Ялта",https://jalita.com/guidebook/crimea/big_yalta.shtml
+14,T3,prirodnye-dostoprimechatelnosti-gurzufskogo-amfiteatra,523,20,"Природные достопримечательности гурзуфского амфитеатра",https://jalita.com/big_yalta/gurzuf/geography_3.shtml
+14,T3,lastochkino-gnezdo,1730,11,"Ласточкино гнездо",https://jalita.com/big_yalta/swallow_nest/earthquake.shtml
+14,T3,proishozhdenie-nazvaniya-bolshaya-yalta,376,4,"Происхождение названия Большая Ялта",https://jalita.com/guidebook/crimea/big_yalta.shtml
+14,T3,yusupovskij-dvorets,366,3,"Юсуповский дворец",https://jalita.com/big_yalta/mishor/yusupov_palace.shtml
+14,T3,simeiz,1813,2,"Симеиз",https://jalita.com/guidebook/palace.shtml
+14,T3,poezdka-iz-yalty-v-simferopol,1123,0,"Поездка из Ялты в Симферополь",
+14,T3,pereval-gurzufskoe-sedlo,853,0,"Перевал Гурзуфское седло",
+14,T3,dolina-prividenij,564,0,"Долина привидений",
 14,T3,gora-chatyr-dag,453,0,"Гора Чатыр-Даг",
-14,T3,dasha-sevastopolskaya,448,0,"Даша Севастопольская",
-14,T3,bolshaya-yalta,422,0,"Большая Ялта",https://jalita.com/guidebook/alushta/index.shtml
 14,T3,gurzufskaya-buhta,405,0,"Гурзуфская бухта",
-14,T3,gora-demerdzhi,388,0,"Гора Демерджи",
-14,T3,gora-kara-dag-vulkanicheskij-massiv,379,0,"Гора Кара-Даг (вулканический массив)",
-14,T3,proishozhdenie-nazvaniya-bolshaya-yalta,376,0,"Происхождение названия Большая Ялта",
-14,T3,genuezskaya-krepost-v-sudake,369,0,"Генуэзская крепость в Судаке",
-15,T3,yusupovskij-dvorets,366,0,"Юсуповский дворец",https://jalita.com/guidebook/bakhchisaray/sokolinoe_yusupov_dom.shtml
+15,T3,gora-demerdzhi,388,0,"Гора Демерджи",
+15,T3,gora-kara-dag-vulkanicheskij-massiv,379,0,"Гора Кара-Даг (вулканический массив)",
+15,T3,genuezskaya-krepost-v-sudake,369,0,"Генуэзская крепость в Судаке",
 15,T3,muzej-kosmonavtiki-v-arteke,327,0,"Музей космонавтики в Артеке",
 15,T3,livadijskij-organnyj-zal,325,0,"Ливадийский органный зал",
-15,T3,buhta-laspi,318,0,"Бухта Ласпи",
-15,T3,kak-voznikla-yalta,271,0,"Как возникла Ялта?",
 15,T3,gora-ayu-dag-medved-gora,270,0,"Гора Аю-Даг (Медведь гора)",
-15,T4,ptitsa-schastya,862,99,"Птица Счастья",https://jalita.com/guidebook/legends/bird_of_fortuna.shtml
-15,T4,dobycha-nefti-v-krymu,912,97,"Добыча нефти в Крыму",https://jalita.com/guidebook/crimea/oil.shtml
-15,T4,kupchaya-s-n-n-titushkinym-na-uchastok-zemli-v-krymu-ot-6-marta-1909-g,533,97,"Купчая с Н. Н. Титушкиным на участок земли в Крыму, от 6 марта 1909 г.",https://jalita.com/big_yalta/mishor/murad-avur_buy.shtml
-15,T4,istochnik-vernosti,514,97,"Источник верности",https://jalita.com/guidebook/legends/spring_perchem.shtml
-16,T4,lesnoe-ischeznuvshee-selo-kryma,386,97,"Лесное — исчезнувшее село Крыма",https://jalita.com/guidebook/crimea/lesnoe.shtml
-16,T4,krymskie-partizany,915,96,"Крымские партизаны",https://jalita.com/guidebook/crimea/partisan.shtml
-16,T4,yaltinskij-gidrotonnel,588,96,"Ялтинский гидротоннель",https://jalita.com/big_yalta/yalta/yalta_water_tunnel.shtml
-16,T4,verhij-kastropol-v-gody-velikoj-otechestvennoj-vojny,559,96,"Верхий Кастрополь в годы Великой Отечественной войны",https://jalita.com/big_yalta/kastropol/sevas.shtml
-16,T4,gibel-parohoda-lenin,825,95,"Гибель парохода «Ленин»",https://jalita.com/big_yalta/laspi/sarych_lenin.shtml
-16,T4,istoriya-nemetskoj-lyuteranskoj-tserkvi-v-krymu,783,95,"История немецкой лютеранской церкви в Крыму",https://jalita.com/guidebook/crimea/luterane.shtml
-16,T4,potemkinskie-derevni,613,95,"«Потемкинские деревни»",https://jalita.com/guidebook/crimea/potemkin_village.shtml
-16,T4,kurgan-slavy-nadpisi-na-pamyatnike,603,95,"Курган Славы. Надписи на памятнике",https://jalita.com/guidebook/crimea/dolgoruk-yayla_barrow.shtml
-16,T4,s-imenem-yalty-na-bortu,392,95,"С именем Ялты на борту",https://jalita.com/big_yalta/yalta/with_name_yalta.shtml
-16,T4,alupkinskij-park-verhnij-park,1492,94,"Алупкинский парк. Верхний парк",https://jalita.com/big_yalta/alupka/upper_park.shtml
-17,T4,alupkinskij-park-nizhnij-park,1005,94,"Алупкинский парк. Нижний парк",https://jalita.com/big_yalta/alupka/lower_park.shtml
-17,T4,hram-devy,654,94,"Храм Девы",https://jalita.com/guidebook/crimea/temple_virgin.shtml
-17,T4,dom-muzej-antona-pavlovicha-chehova,622,94,"Дом-музей Антона Павловича Чехова",https://jalita.com/big_yalta/chehov/index.shtml
-17,T4,arabatka-kurortnaya,577,94,"Арабатка курортная",https://jalita.com/guidebook/crimea/arabat_health_resort.shtml
-17,T4,v-zujskij-les-k-partizanskomu-memorialu,1593,93,"В Зуйский лес, к партизанскому мемориалу",https://jalita.com/guidebook/crimea/dolgoruk-yayla_path.shtml
-17,T4,alupkinskij-park,1110,93,"Алупкинский парк",https://jalita.com/big_yalta/alupka/creation_park.shtml
-17,T4,kastel-gora,948,93,"Кастель, гора",https://jalita.com/big_yalta/alushta/kastel.shtml
-17,T4,solyanoj-promysel-na-sivashe,886,93,"Соляной промысел на Сиваше",https://jalita.com/guidebook/crimea/sivash_salt.shtml
-17,T4,arheologicheskie-pamyatniki-dolgorukovskoj-yajly,861,93,"Археологические памятники Долгоруковской яйлы",https://jalita.com/guidebook/crimea/dolgoruk-yayla_antiquities.shtml
-17,T4,ekspozitsiya-alupkinskogo-dvortsa-3,517,93,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/lobby.shtml
-18,T4,tavrskie-mogilniki-v-krymu,510,93,"Таврские могильники в Крыму",https://jalita.com/guidebook/crimea/tavr_mogil.shtml
-18,T4,pushkinskij-fontan,346,93,"Пушкинский фонтан",https://jalita.com/big_yalta/gurzuf/pushkin_fountain.shtml
-18,T4,avunda-reka,298,93,"Авунда, река",https://jalita.com/big_yalta/gurzuf/avunda_river.shtml
-18,T4,dom-muzej-a-p-chehova-v-yalte,3231,92,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/cabinet_chehov.shtml
-18,T4,haraks,1203,92,"Харакс",https://jalita.com/big_yalta/swallow_nest/charax_fortress.shtml
-18,T4,kastel-gora-pamyatnik-geologii,921,92,"Кастель, гора — памятник геологии",https://jalita.com/big_yalta/alushta/kastel_geology.shtml
-18,T4,kromleh-sila-solntsa-na-zemle,688,92,"Кромлех — Сила Солнца на Земле",https://jalita.com/guidebook/crimea/kromlex.shtml
-18,T4,pochvy-rastitelnost-i-zhivotnyj-mir-chatyrdagskoj-yajly,436,92,"Почвы, растительность и животный мир Чатырдагской Яйлы",https://jalita.com/big_yalta/forest/chatyr-dag_nature.shtml
-18,T4,villa-mechta,433,92,"Вилла Мечта",https://jalita.com/big_yalta/simeiz/villa_mechta.shtml
-18,T4,imenie-haraks,999,91,"Имение Харакс",https://jalita.com/big_yalta/mishor/charax.shtml
-19,T4,chasovnya-na-naberezhnoj-yalty,367,91,"Часовня на набережной Ялты",https://jalita.com/big_yalta/yalta/chapel.shtml
-19,T4,gryazevye-vulkany-kryma,667,90,"Грязевые вулканы Крыма",https://jalita.com/guidebook/crimea/sopki.shtml
-19,T4,efirmaslo-nauchno-proizvodstvennoe-obedinenie,542,90,"«Эфирмасло», научно-производственное объединение",https://jalita.com/guidebook/crimea/efirmaslo.shtml
-19,T4,chehovskij-sad,466,90,"Чеховский сад",https://jalita.com/big_yalta/chehov/garden.shtml
-19,T4,issledovanie-zmeinoj-peshhery,457,90,"Исследование Змеиной пещеры",https://jalita.com/guidebook/cave_crimea/snake_research.shtml
-19,T4,marshruty-v-uch-kosh,1080,89,"Маршруты в Уч-Кош",https://jalita.com/big_yalta/yalta/uch-kosh_path.shtml
-19,T4,aj-todor-mys,737,89,"Ай-Тодор, мыс",https://jalita.com/big_yalta/swallow_nest/ai-todor.shtml
-19,T4,taraktashskaya-tropa,684,89,"Таракташская тропа",https://jalita.com/big_yalta/yalta/taraktash_path.shtml
-19,T4,angarskij-pereval,522,89,"Ангарский перевал",https://jalita.com/big_yalta/road/angarskiy_pass.shtml
-19,T4,issledovanie-adzhimushkajskih-kamenolomen,460,89,"Исследование Аджимушкайских каменоломен",https://jalita.com/guidebook/crimea/adjimushkay_research.shtml
-20,T4,villa-elena,401,89,"Вилла «Елена»",https://jalita.com/big_yalta/yalta/villa_elena.shtml
-20,T4,kupalni-roffe,261,89,"Купальни Роффе",https://jalita.com/big_yalta/yalta/roffe.shtml
-20,T4,griby-v-krymu,923,88,"Грибы в Крыму",https://jalita.com/guidebook/crimea/fungi.shtml
-20,T4,massandra,789,88,"Массандра",https://jalita.com/big_yalta/massandra/index.shtml
-20,T4,gory-nad-kastropolem,710,88,"Горы над Кастрополем",https://jalita.com/big_yalta/kastropol/kastropol_mountin.shtml
-20,T4,usadba-mordvinova-horoshaya-pustosh,702,88,"Усадьба Мордвинова («Хорошая пустошь»)",https://jalita.com/big_yalta/yalta/mordvinov.shtml
-20,T4,imenie-murad-avur-ispolnenie-zhelanij,336,88,"Имение «Мурад-Авур» («Исполнение желаний»)",https://jalita.com/big_yalta/mishor/murad-avur_cottage.shtml
-20,T4,villa-kseniya,259,88,"Вилла Ксения",https://jalita.com/big_yalta/simeiz/villa_kseniya.shtml
-20,T4,krymskie-gory,1830,87,"Крымские горы",https://jalita.com/guidebook/crimea/mountain.shtml
-20,T4,kastropol,1177,87,"Кастрополь",https://jalita.com/big_yalta/kastropol/index.shtml
-21,T4,samoletostroenie-v-krymu,708,87,"Самолетостроение в Крыму",https://jalita.com/guidebook/crimea/air.shtml
-21,T4,sopochnaya-gryaz,522,87,"Сопочная грязь",https://jalita.com/guidebook/crimea/mud.shtml
-21,T4,vasilevka,430,87,"Васильевка",https://jalita.com/big_yalta/yalta/vasilievka.shtml
-21,T4,villa-bolshoj-bogdan-n-n-bogdanova,339,87,"Вилла «Большой Богдан» Н. Н. Богданова",https://jalita.com/big_yalta/simeiz/villa_big_bogdan.shtml
-21,T4,pansion-n-k-aleksandrova-dolnika,302,87,"Пансион Н. К. Александрова-Дольника",https://jalita.com/big_yalta/simeiz/villa_dolnikova.shtml
-21,T4,villa-belyj-lebed-ampir,281,87,"Вилла «Белый лебедь» (Ампир)",https://jalita.com/big_yalta/simeiz/villa_ampir.shtml
-21,T4,villa-shlee-hajal,265,87,"Вилла Шлее «Хайал»",https://jalita.com/big_yalta/simeiz/villa_shlee.shtml
-21,T4,roman-kosh,762,86,"Роман-Кош",https://jalita.com/big_yalta/gurzuf/roman-kosh.shtml
-21,T4,ponizovka,639,86,"Понизовка",https://jalita.com/big_yalta/simeiz/ponizovka.shtml
-21,T4,tash-koj-kamennaya-derevnya,518,86,"Таш-Кой (Каменная деревня)",https://jalita.com/big_yalta/simeiz/tash-koi.shtml
-22,T4,villa-divo-dacha-semenova,291,86,"Вилла «Диво» (дача Семенова)",https://jalita.com/big_yalta/simeiz/villa_divo.shtml
-22,T4,adzhimushkajskie-kamenolomni,723,85,"Аджимушкайские каменоломни",https://jalita.com/guidebook/crimea/adjimushkay.shtml
-22,T4,imenie-baryatinskih-selbillyar-kiparisovaya-roshha,409,85,"Имение Барятинских, Сельбилляр (Кипарисовая роща)",https://jalita.com/big_yalta/yalta/selbiar.shtml
-22,T4,shtangeevskaya-tropa,301,85,"Штангеевская тропа",https://jalita.com/big_yalta/yalta/shtangeev_path.shtml
-22,T4,krymskoe-hanstvo,817,84,"Крымское ханство",https://jalita.com/guidebook/crimea/crimean_khanate.shtml
-22,T4,shajtan-koba,323,84,"Шайтан-Коба",https://jalita.com/guidebook/crimea/shaitan_koba.shtml
-22,T4,villa-kameya,271,84,"Вилла «Камея»",https://jalita.com/big_yalta/simeiz/villa_kameya.shtml
-22,T4,arabatskaya-strelka-kosa,1152,83,"Арабатская стрелка (коса)",https://jalita.com/guidebook/crimea/arabat.shtml
-22,T4,sivash-ili-gniloe-more,943,83,"Сиваш или Гнилое море",https://jalita.com/guidebook/crimea/sivash.shtml
-22,T4,bulganakskie-sopki,564,83,"Булганакские сопки",https://jalita.com/guidebook/crimea/bulganakskie.shtml
-23,T4,dzhanike-hanym,552,83,"Джанике-ханым",https://jalita.com/guidebook/cave/djanikee.shtml
-23,T4,romanovskaya-doroga,880,82,"Романовская дорога",https://jalita.com/big_yalta/road/roman_road.shtml
-23,T4,najdennye-v-krymu-klady,803,82,"Найденные в Крыму клады",https://jalita.com/guidebook/crimea/treasure.shtml
-23,T4,tavry,636,82,"Тавры",https://jalita.com/guidebook/crimea/tavry.shtml
-23,T4,krymskaya-gornaya-trollejbusnaya-trassa,621,82,"Крымская горная троллейбусная трасса",https://jalita.com/big_yalta/road/trolleybus_route.shtml
-23,T4,ushhele-uch-kosh,516,82,"Ущелье Уч-Кош",https://jalita.com/big_yalta/yalta/uch-kosh.shtml
-23,T4,zhanna-de-lya-mott-afera-veka,408,82,"Жанна де ля Мотт. Афера века",https://jalita.com/big_yalta/gurzuf/swindle.shtml
-23,T4,krymskij-zapovednik,870,81,"Крымский заповедник",https://jalita.com/big_yalta/forest/index.shtml
-23,T4,issledovanie-kosmosa-v-krymu,812,80,"Исследование космоса в Крыму",https://jalita.com/guidebook/crimea/space.shtml
-23,T4,krymskie-nazvaniya-v-parizhe,810,80,"Крымские названия в Париже",https://jalita.com/guidebook/crimea/name_paris.shtml
-24,T4,chernorechenskij-kanon,612,80,"Чернореченский каньон",https://jalita.com/big_yalta/simeiz/chernorechensk_canyon.shtml
-24,T4,ivanenkovskij-partizanskij-aerodrom,388,80,"Иваненковский партизанский аэродром",https://jalita.com/guidebook/crimea/dolgoruk-yayla_aerodrome.shtml
-24,T4,shaan-kaya-gora,361,80,"Шаан-Кая, гора",https://jalita.com/big_yalta/alupka/shaan-kaya.shtml
-24,T4,kanony-v-krymu,321,79,"Каньоны в Крыму",https://jalita.com/guidebook/crimea/canyons.shtml
-24,T4,partizanskij-aerodrom,854,78,"Партизанский аэродром",https://jalita.com/guidebook/crimea/karabi-yayla_aerodrome.shtml
-24,T4,5-samyh-zagadochnyh-nenajdennyh-kladov,356,78,"5 самых загадочных ненайденных кладов",https://jalita.com/guidebook/crimea/treasure_notfound.shtml
-24,T4,oreanda,305,78,"Ореанда",https://jalita.com/big_yalta/oreanda/index.shtml
-24,T4,efiromaslichnoe-proizvodstvo-v-krymu,857,76,"Эфиромасличное производство в Крыму",https://jalita.com/guidebook/crimea/efir_branch.shtml
-24,T4,tsarskij-kurgan,603,76,"Царский курган",https://jalita.com/guidebook/crimea/tsar_barrow.shtml
-24,T4,gryazevoj-vulkan-dzhau-tepe,495,76,"Грязевой вулкан Джау-Тепе",https://jalita.com/guidebook/crimea/djau-tepe.shtml
-25,T4,dzhenevez-kaya-skala,280,76,"Дженевез-Кая, скала",https://jalita.com/big_yalta/gurzuf/djenevez-kaya.shtml
-25,T4,yaltinskij-luk,623,75,"Ялтинский лук",https://jalita.com/guidebook/crimea/yalta_onion.shtml
-25,T4,kazachya-veha,477,75,"Казачья веха",https://jalita.com/big_yalta/oreanda/kazak_veha.shtml
-25,T4,efirnoe-maslo-kryma,474,75,"Эфирное масло Крыма",https://jalita.com/guidebook/crimea/efir_oil.shtml
-25,T4,glavnaya-gryada-krymskih-gor,666,74,"Главная гряда Крымских гор",https://jalita.com/guidebook/crimea/main_range.shtml
-25,T4,ilyas-kaya-gora,472,74,"Ильяс-Кая, гора",https://jalita.com/big_yalta/laspi/ilyas-kaya.shtml
-25,T4,hram-treh-vsadnikov,395,74,"Храм Трех всадников",https://jalita.com/guidebook/cave/eski-kermen_tri_vsadnika.shtml
-25,T4,aj-todorskij-mayak,844,73,"Ай-Тодорский маяк",https://jalita.com/big_yalta/swallow_nest/lighthouse.shtml
-25,T4,krasnokamenka-2,587,73,"Краснокаменка",https://jalita.com/big_yalta/gurzuf/krasnokamenka.shtml
-25,T4,parad-hrizantem-v-nikitskom-botanicheskom-sadu,275,73,"Парад хризантем в Никитском ботаническом саду",https://jalita.com/big_yalta/nikita/chrysanthemum.shtml
-26,T4,urochishhe-besh-tekne,268,73,"Урочище Беш-Текне",https://jalita.com/big_yalta/forest/besh-tekne.shtml
-26,T4,mishor-koreiz-gaspra,875,71,"Мисхор, Кореиз, Гаспра",https://jalita.com/big_yalta/mishor/index.shtml
-26,T4,izvestnye-gorozhane-yalty,789,70,"Известные горожане Ялты",https://jalita.com/big_yalta/yalta/culturalworkers.shtml
-26,T4,klimat-arabatskoj-strelki,445,70,"Климат Арабатской стрелки",https://jalita.com/guidebook/crimea/arabat_climate.shtml
-26,T4,shhepinskij-askold-aleksandrovich,675,67,"Щепинский, Аскольд Александрович",https://jalita.com/guidebook/crimea/schepinskiy.shtml
-26,T4,balanyn-kayasy,456,66,"Баланын-Каясы",https://jalita.com/big_yalta/yalta/balanyn-kayasy.shtml
-26,T4,stoyanki-pervobytnogo-cheloveka-shan-koba-i-fatma-koba,490,65,"Стоянки первобытного человека Шан-Коба и Фатьма-Коба",https://jalita.com/big_yalta/simeiz/shan-koba.shtml
-26,T4,drevnosti-dolgorukovskoj-yajly,963,53,"Древности Долгоруковской яйлы",https://jalita.com/guidebook/crimea/dolgoruk-yayla_ancient.shtml
-26,T4,kurgan-slavy,424,44,"Курган Славы",https://jalita.com/guidebook/crimea/partisan.shtml
-26,T4,prirodnye-dostoprimechatelnosti-mysa-aj-todor,428,24,"Природные достопримечательности мыса Ай-тодор",https://jalita.com/big_yalta/swallow_nest/ai-todor.shtml
-27,T4,zmeinaya-peshhera-grot,522,20,"Змеиная пещера (грот)",https://jalita.com/guidebook/cave_crimea/snake_cave.shtml
-27,T4,otrog-limen-burun,456,13,"Отрог Лимен-Бурун",https://jalita.com/big_yalta/swallow_nest/ai-todor.shtml
-27,T4,krasnyj-kamen-skala,718,10,"Красный камень, скала",https://jalita.com/big_yalta/gurzuf/krasnokamenka.shtml
-27,T4,gaspra,596,7,"Гаспра",https://jalita.com/big_yalta/mishor/index.shtml
-27,T4,skelskie-mengiry,445,7,"Скельские менгиры",https://jalita.com/guidebook/balaklava/rodnikovoe.shtml
-27,T4,verhnij-kastropol-i-skala-ifigeniya,434,5,"Верхний Кастрополь и скала Ифигения",https://jalita.com/big_yalta/kastropol/index.shtml
-27,T4,ifigeniya-skala,370,5,"Ифигения, скала",https://jalita.com/guidebook/landscape/rock_ifigenia.shtml
-27,T4,uzenbashskaya-tropa-po-otrogu-iograf-i-nagoryu,985,4,"Узенбашская тропа (по отрогу Иограф и нагорью)",https://jalita.com/guidebook/cave_crimea/iograf.shtml
-27,T4,avunda-avinda-gora,312,4,"Авунда (Авинда), гора",https://jalita.com/big_yalta/gurzuf/gurzuf_saddle.shtml
-27,T4,sandyk-kaya-gora,731,3,"Сандык-Кая, гора",https://jalita.com/guidebook/fortness/sandyk-kaya.shtml
-28,T4,dubki-krymskogo-predgorya,674,3,"Дубки Крымского предгорья",https://jalita.com/guidebook/landscape/dubki.shtml
-28,T4,besedka-vetrov-2,561,3,"Беседка ветров",https://jalita.com/big_yalta/gurzuf/gurzuf_saddle.shtml
-28,T4,aj-nikola-gora,417,2,"Ай-Никола, гора",https://jalita.com/big_yalta/oreanda/kazak_veha.shtml
-28,T4,pushkinskij-kiparis,301,2,"Пушкинский кипарис",https://jalita.com/big_yalta/gurzuf/literature_1.shtml
-28,T4,rastitelnyj-mir-kryma,2567,1,"Растительный мир Крыма",https://jalita.com/guidebook/flora/pinus_nigra_pallasiana.shtml
-28,T4,skazanie-o-dzhanyke-iz-kyrk-ora,1165,1,"Сказание о Джаныке из Кырк-ора",https://jalita.com/guidebook/bakhchisaray/muzey_arkheologii_i_peshchernykh_gorodov.shtml
-28,T4,gora-dvuh-udodov-opuk,1003,1,"Гора двух удодов — Опук",https://jalita.com/guidebook/landscape/opuk.shtml
-28,T4,kamennye-parusniki-elken-kaya,753,1,"Каменные парусники (Элькен-Кая)",https://jalita.com/guidebook/landscape/opuk.shtml
-28,T4,krymskoe-predgore,711,1,"Крымское предгорье",https://jalita.com/big_yalta/gurzuf/pushkin_grotto.shtml
-28,T4,peshhery-gory-basman,697,1,"Пещеры горы Басман",https://jalita.com/big_yalta/forest/basman_index.shtml
-29,T4,pirodnye-dostoprimechatelnosti,656,1,"Пиродные достопримечательности",https://jalita.com/guidebook/landscape/juniper_forest.shtml
-29,T4,nikita-poselok,428,1,"Никита, поселок",https://jalita.com/guidebook/alushta/zaprudnoe.shtml
-29,T4,angar-bogaz-angarskij-pereval,297,1,"Ангар-Богаз (Ангарский перевал)",https://jalita.com/guidebook/bakhchisaray/svitskiy_korpus.shtml
-29,T4,velotury-v-krymu,2636,0,"Велотуры в Крыму",
-29,T4,istoriya-nikitskogo-botanicheskogo-sada,1878,0,"История Никитского ботанического сада",https://jalita.com/big_yalta/gurzuf/history_1.shtml
-29,T4,zapovednik-mys-martyan,1573,0,"Заповедник Мыс Мартьян",
-29,T4,poleznye-iskopaemye-kryma,1450,0,"Полезные ископаемые Крыма",
-29,T4,prisoedinenie-kryma-k-rossii-v-2014-godu,1403,0,"Присоединение Крыма к России в 2014 году",
-29,T4,krym-obshhie-svedeniya,1301,0,"Крым. Общие сведения",
-29,T4,partizanskaya-rechka,1155,0,"Партизанская речка",
-30,T4,tamozhnya-ukrainy,1107,0,"Таможня Украины",
-30,T4,sklep-berezinyh-v-suuk-su,1102,0,"Склеп Березиных в Суук-Су",
-30,T4,prekrasnaya-feodora,1097,0,"Прекрасная Феодора",
-30,T4,pravila-peresecheniya-granitsy-ukrainy,1069,0,"Правила пересечения границы Украины",
-30,T4,o-rusalke-i-fontane-u-mishora,1064,0,"О русалке и фонтане у Мисхора",https://jalita.com/big_yalta/mishor/index.shtml
-30,T4,alternativnaya-energetika,1050,0,"Альтернативная энергетика",
-30,T4,ifigeniya-v-tavride,1015,0,"Ифигения в Тавриде",
-30,T4,livadiya,1008,0,"Ливадия",
-30,T4,peshie-tury-v-krymu,995,0,"Треккинг или пешеходные туры в Крыму",
-30,T4,mys-ili,986,0,"Мыс Ильи",
-31,T4,geologiya-i-buhty-geraklejskogo-poluostrova,950,0,"Геология и бухты Гераклейского полуострова",
-31,T4,klimat-yuzhnogo-berega-kryma,943,0,"Климат Южного берега Крыма",
-31,T4,opolznevoe,940,0,"Оползневое",https://jalita.com/big_yalta/kastropol/index.shtml
-31,T4,eni-sala-2-koj,939,0,"Ени-Сала 2 (Кой)",
-31,T4,delikli-kaya,933,0,"Деликли-Кая",
-31,T4,krymskie-zemletryaseniya,925,0,"Крымские землетрясения",
-31,T4,beshujskie-kopi,888,0,"Бешуйские копи",
-31,T4,massiv-bojka,877,0,"Массив Бойка",
-31,T4,pamyatniki-na-pole-alminskogo-srazheniya,852,0,"Памятники на поле Альминского сражения",
-31,T4,kil-v-meditsine,848,0,"Кил в медицине",
-32,T4,istoriya-issledovaniya-peshhery-mar-hosar-marchenko,835,0,"История исследования пещеры Мар-Хосар (Марченко)",
-32,T4,karabi-yajla-2,835,0,"Караби-яйла",
-32,T4,solnechnaya-tropa-tsarskaya-tropa,830,0,"Солнечная тропа (Царская тропа)",https://jalita.com/big_yalta/livadia/dvorets.shtml
-32,T4,zemletryasenie-1927-goda-v-alushte,822,0,"Землетрясение 1927 года в Алуште",
-32,T4,nikitskaya-rasselina-2,802,0,"Никитская расселина",
-32,T4,krymbalskij-kamen-izvestnyak,783,0,"Крымбальский камень (известняк)",
-32,T4,neobychnye-mesta-v-krymu,768,0,"Необычные места в Крыму, которые стоит посетить, самые интересные",
-32,T4,tyulpany-v-krymu,767,0,"Тюльпаны в Крыму",
-32,T4,kil,759,0,"Кил",
-32,T4,dlinnaya-krepost,756,0,"Длинная крепость",
-33,T4,gde-v-krymu-pokatatsya-na-sankah-lyzhah-i-snoubordah,751,0,"Где в Крыму покататься на санках, лыжах и сноубордах?",https://jalita.com/big_yalta/road/angarskiy_pass.shtml
-33,T4,tavricheskaya-uchyonaya-arhivnaya-komissiya-tuak,750,0,"Таврическая учёная архивная комиссия (ТУАК)",
-33,T4,multiaktivnye-tury-po-krymu,748,0,"Мультиактивные туры по Крыму",
-33,T4,rimskaya-doroga-kalendskaya-tropa,740,0,"Римская дорога (Календская тропа)",
-33,T4,dokolonizatsionnyj-period-geraklejskogo-poluostrova,731,0,"Доколонизационный период Гераклейского полуострова",
-33,T4,hajtarma,719,0,"Хайтарма",
-33,T4,koreiz,718,0,"Кореиз",https://jalita.com/big_yalta/alupka/main_cabinet.shtml
-33,T4,parkovoe-park,712,0,"Парковое. Парк",
-33,T4,kosmo-damianovskij-istochnik,711,0,"Косьмо-Дамиановский источник",
-33,T4,alushtit,703,0,"Алуштит",
-34,T4,fiziko-himicheskie-svojstva-kila,695,0,"Физико-химические свойства кила",
-34,T4,gora-paragilmen,679,0,"Гора Парагильмен",
-34,T4,yuzhnyj-bereg-kryma,673,0,"Южный берег Крыма",https://jalita.com/guidebook/bakhchisaray/alimov_pictures.shtml
-34,T4,progulka-na-goru-koshka,669,0,"Прогулка на гору Кошка",
-34,T4,magobi-gora,655,0,"Магоби, гора",
-34,T4,istoriko-kraevedcheskij-muzej-goroda-saki,654,0,"Историко-краеведческий музей города Саки",
-34,T4,k-peshhere-syundyurlyu-koba,653,0,"К пещере Сюндюрлю-Коба",
-34,T4,hrustalnyj-dvorets,641,0,"Хрустальный дворец",
-34,T4,vodopad-serebryanye-strui,633,0,"Водопад Серебряные струи",
-34,T4,vanny-molodosti-v-krymu,628,0,"Ванны молодости в Крыму",
-35,T4,koreizskaya-tropa,617,0,"Кореизская тропа",
-35,T4,kuchuk-isar,616,0,"Кучук-Исар",
-35,T4,mys-svyatoj-troitsy,615,0,"Мыс Святой Троицы",
-35,T4,yaltinskij-port,611,0,"Ялтинский порт",
-35,T4,alminskoe-srazhenie,601,0,"Альминское сражение",
-35,T4,ekaterininskie-mili-2,601,0,"Екатерининские мили",
-35,T4,lev-nikolaevich-tolstoj-v-gaspre,578,0,"Лев Николаевич Толстой в Гаспре",
-35,T4,prirodnye-dostoprimechatelnosti,575,0,"Природные достопримечательности",
-35,T4,a-m-gorkij-v-krymu,572,0,"А. М. Горький в Крыму",
-35,T4,gora-kuznets,572,0,"Гора-кузнец",
-36,T4,panea-skala,572,0,"Панеа, скала",
-36,T4,muhalatka-sanatornoe-melas,570,0,"Мухалатка (Санаторное, Мелас)",
-36,T4,na-sedam-kayu-cherez-vodopad-serebryanye-strui,564,0,"На Седам-Каю через водопад Серебряные струи",
-36,T4,katsiveli,545,0,"Кацивели",
-36,T4,gruppa-peshher-eni-sala,543,0,"Группа пещер Ени-Сала",
-36,T4,shahty-chair-krymskij-ischeznuvshee-selo-kryma,542,0,"Шахты (Чаир, Крымский) исчезнувшее село Крыма",
-36,T4,hram-ilii-proroka-v-solnechnoj-doline,537,0,"Храм Илии Пророка в Солнечной Долине",
-36,T4,inkermanskij-peshhernyj-monastyr,537,0,"Инкерманский пещерный монастырь",
-36,T4,mys-ajya,520,0,"Мыс Айя",
-36,T4,soldatskaya-shahta,512,0,"Солдатская шахта",
-37,T4,hram-pokrova-presvyatoj-bogoroditsy,511,0,"Храм Покрова Пресвятой Богородицы",
-37,T4,sedam-kaya-orlinyj-zalet,511,0,"Седам-Кая (Орлиный залет)",
-37,T4,pushkinskaya-tropa-doroga-nikuda,508,0,"Пушкинская тропа. Дорога никуда",
-37,T4,krymskoe-zemletryasenie-1927-goda,498,0,"Крымское землетрясение 1927 года",
-37,T4,mys-sarych-2,497,0,"Мыс Сарыч",
-37,T4,rastitelnyj-mir-na-syuyuryu-kaya,469,0,"Растительный мир на Сююрю-Кая",
-37,T4,istoriya-veloturizma-v-krymu,468,0,"История велотуризма в Крыму",
-37,T4,derekojka-reka,467,0,"Дерекойка, река",
-37,T4,pamyatnik-yulianu-semenovu,464,0,"Памятник Юлиану Семенову",
-37,T4,chajnyj-domik,443,0,"Чайный домик",
-38,T4,parkovoe,442,0,"Парковое",https://jalita.com/big_yalta/kastropol/index.shtml
-38,T4,rasteniya-nikitskogo-botanicheskogo-sada,437,0,"Растения Никитского ботанического сада",
-38,T4,vglub-zmeinoj-peshhery,434,0,"Вглубь Змеиной пещеры",
-38,T4,bezdonnaya-peshhera-kolodets,428,0,"Бездонная пещера/колодец",https://jalita.com/guidebook/cave_crimea/kizil-koba/describe.shtml
-38,T4,aj-savva,425,0,"Ай-Савва",
-38,T4,urochishhe-ayazma,425,0,"Урочище Аязьма",
-38,T4,poseleniya-bojki,423,0,"Поселения Бойки",
-38,T4,skelskaya-peshhera-2,422,0,"Скельская пещера",https://jalita.com/guidebook/landscape/skelsk_cave.shtml
-38,T4,mys-alchak,419,0,"Мыс Алчак",
-38,T4,at-bash-gora,412,0,"Ат-Баш, гора",
-39,T4,vanna-molodosti-kara-gol,410,0,"Ванна молодости Кара-Голь",
-39,T4,ognennye-yavleniya-na-chernom-more-kipenie-morya,406,0,"Огненные явления на Черном море («кипение моря»)",
-39,T4,gora-roman-kosh,390,0,"Гора Роман-Кош",
-39,T4,syuyuryu-kaya,390,0,"Сююрю-Кая",
-39,T4,bashnya-choban-kule,389,0,"Башня Чобан-Куле",
-39,T4,zamok-kyz-kule,378,0,"Замок Кыз-Куле",
-39,T4,skala-svidanij,376,0,"Скала свиданий",
-39,T4,gora-koshka-2,374,0,"Гора Кошка",
-39,T4,hram-donatorov,373,0,"Храм Донаторов",
-39,T4,peshhernyj-monastyr-shuldan,372,0,"Пещерный монастырь Шулдан",
-40,T4,studencheskaya-shahta,371,0,"Студенческая шахта",
-40,T4,syuyuryu-kaya-skala,371,0,"Сююрю-Кая, скала",https://jalita.com/guidebook/fortness/suuru-kaya_isar.shtml
-40,T4,kiziltashskij-muzhskoj-monastyr,370,0,"Кизилташский мужской монастырь",
-40,T4,batiliman-urochishhe,368,0,"Батилиман, урочище",
-40,T4,skala-biyuk-isar,368,0,"Скала Биюк-Исар",
-40,T4,alminskij-memorial,360,0,"Альминский мемориал",
-40,T4,devlet-saraj,358,0,"Девлет-Сарай",
-40,T4,armyanskaya-tserkov-v-yalte,355,0,"Армянская церковь в Ялте",
-40,T4,gora-perchem,355,0,"Гора Перчем",
-40,T4,melasskij-park,354,0,"Меласский парк",
-41,T4,tropa-kurchatova,353,0,"Тропа Курчатова",
-41,T4,kaskadnaya-peshhera-shahta,352,0,"Каскадная пещера/шахта",
-41,T4,hristianstvo-v-krymu,351,0,"Христианство в Крыму",
-41,T4,svyato-uspenskij-peshhernyj-monastyr-v-krymu,351,0,"Свято-Успенский пещерный монастырь в Крыму",
-41,T4,krym-kurortnyj,350,0,"Крым курортный",
-41,T4,lodochniki,350,0,"Лодочники",
-41,T4,echki-dag,345,0,"Эчки-Даг",
-41,T4,skala-diva-2,345,0,"Скала Дива",https://jalita.com/guidebook/legends/index.shtml
-41,T4,hory-na-geraklejskom-poluostrove,341,0,"Хоры на Гераклейском полуострове",
-41,T4,reka-auzun-uzen,339,0,"Река Аузун-Узень",
-42,T4,skala-diva-monah-i-koshka,338,0,"Скала Дива, Монах и Кошка",
-42,T4,tri-religii,334,0,"Обзорная экскурсия по Бахчисараю в Крыму с хорошей ценой и отзывами",
-42,T4,hram-arhangelov-mihaila-i-gavriila,333,0,"Храм Архангелов Михаила и Гавриила",
-42,T4,kemal-egerek,331,0,"Кемаль-Эгерек",
-42,T4,polyana-kermen-na-gore-basman,330,0,"Поляна Кермен на горе Басман",
-42,T4,mys-meganom,324,0,"Мыс Меганом",
-42,T4,speleoturizm-v-krymu,320,0,"Спелеотуризм в Крыму",
-42,T4,balka-sotera,316,0,"Балка Сотера",
-42,T4,suuk-koba,313,0,"Суук-Коба",
-42,T4,gora-kastel,312,0,"Гора Кастель",
-43,T4,hram-hrista-spasitelya,308,0,"Храм Христа-Спасителя",
-43,T4,geraklejskij-poluostrov,306,0,"Гераклейский полуостров",
+15,T4,aj-savva,425,100,"Ай-Савва",https://jalita.com/guidebook/legends/ai-savva.shtml
+15,T4,skazanie-o-dzhanyke-iz-kyrk-ora,1165,99,"Сказание о Джаныке из Кырк-ора",https://jalita.com/guidebook/legends/djanike.shtml
+15,T4,prekrasnaya-feodora,1097,99,"Прекрасная Феодора",https://jalita.com/guidebook/legends/beautiful_feodora.shtml
+15,T4,o-rusalke-i-fontane-u-mishora,1064,99,"О русалке и фонтане у Мисхора",https://jalita.com/guidebook/legends/mermaid_mishor.shtml
+16,T4,ifigeniya-v-tavride,1015,99,"Ифигения в Тавриде",https://jalita.com/guidebook/legends/ifigeniya_at_tavrida.shtml
+16,T4,gora-dvuh-udodov-opuk,1003,99,"Гора двух удодов — Опук",https://jalita.com/guidebook/legends/rock_opuk.shtml
+16,T4,delikli-kaya,933,99,"Деликли-Кая",https://jalita.com/guidebook/legends/delekli-kaya.shtml
+16,T4,ptitsa-schastya,862,99,"Птица Счастья",https://jalita.com/guidebook/legends/bird_of_fortuna.shtml
+16,T4,dlinnaya-krepost,756,98,"Длинная крепость",https://jalita.com/guidebook/legends/kazantip.shtml
+16,T4,kamennye-parusniki-elken-kaya,753,98,"Каменные парусники (Элькен-Кая)",https://jalita.com/guidebook/legends/stone_sailers.shtml
+16,T4,gora-kuznets,572,98,"Гора-кузнец",https://jalita.com/guidebook/legends/rock_kuznets.shtml
+16,T4,hristianstvo-v-krymu,351,98,"Христианство в Крыму",https://jalita.com/guidebook/crimea/christianity.shtml
+16,T4,mys-ili,986,97,"Мыс Ильи",https://jalita.com/guidebook/legends/mys_ilii.shtml
+16,T4,dobycha-nefti-v-krymu,912,97,"Добыча нефти в Крыму",https://jalita.com/guidebook/crimea/oil.shtml
+17,T4,kosmo-damianovskij-istochnik,711,97,"Косьмо-Дамиановский источник",https://jalita.com/guidebook/legends/kosmo-damian.shtml
+17,T4,kupchaya-s-n-n-titushkinym-na-uchastok-zemli-v-krymu-ot-6-marta-1909-g,533,97,"Купчая с Н. Н. Титушкиным на участок земли в Крыму, от 6 марта 1909 г.",https://jalita.com/big_yalta/mishor/murad-avur_buy.shtml
+17,T4,istochnik-vernosti,514,97,"Источник верности",https://jalita.com/guidebook/legends/spring_perchem.shtml
+17,T4,rastitelnyj-mir-na-syuyuryu-kaya,469,97,"Растительный мир на Сююрю-Кая",https://jalita.com/big_yalta/forest/suuru-kaya_flora.shtml
+17,T4,lesnoe-ischeznuvshee-selo-kryma,386,97,"Лесное — исчезнувшее село Крыма",https://jalita.com/guidebook/crimea/lesnoe.shtml
+17,T4,klimat-yuzhnogo-berega-kryma,943,96,"Климат Южного берега Крыма",https://jalita.com/guidebook/crimea/ybk_climate.shtml
+17,T4,krymskie-partizany,915,96,"Крымские партизаны",https://jalita.com/guidebook/crimea/partisan.shtml
+17,T4,parkovoe-park,712,96,"Парковое. Парк",https://jalita.com/big_yalta/simeiz/parkovoe_park.shtml
+17,T4,alushtit,703,96,"Алуштит",https://jalita.com/guidebook/crimea/alushtit.shtml
+17,T4,yaltinskij-gidrotonnel,588,96,"Ялтинский гидротоннель",https://jalita.com/big_yalta/yalta/yalta_water_tunnel.shtml
+18,T4,verhij-kastropol-v-gody-velikoj-otechestvennoj-vojny,559,96,"Верхий Кастрополь в годы Великой Отечественной войны",https://jalita.com/big_yalta/kastropol/sevas.shtml
+18,T4,skala-diva-monah-i-koshka,338,96,"Скала Дива, Монах и Кошка",https://jalita.com/guidebook/legends/diva_monah_koshka.shtml
+18,T4,sklep-berezinyh-v-suuk-su,1102,95,"Склеп Березиных в Суук-Су",https://jalita.com/big_yalta/gurzuf/crypt_suuk-su.shtml
+18,T4,gibel-parohoda-lenin,825,95,"Гибель парохода «Ленин»",https://jalita.com/big_yalta/laspi/sarych_lenin.shtml
+18,T4,istoriya-nemetskoj-lyuteranskoj-tserkvi-v-krymu,783,95,"История немецкой лютеранской церкви в Крыму",https://jalita.com/guidebook/crimea/luterane.shtml
+18,T4,krymskoe-predgore,711,95,"Крымское предгорье",https://jalita.com/guidebook/crimea/predgorie.shtml
+18,T4,potemkinskie-derevni,613,95,"«Потемкинские деревни»",https://jalita.com/guidebook/crimea/potemkin_village.shtml
+18,T4,kurgan-slavy-nadpisi-na-pamyatnike,603,95,"Курган Славы. Надписи на памятнике",https://jalita.com/guidebook/crimea/dolgoruk-yayla_barrow.shtml
+18,T4,na-sedam-kayu-cherez-vodopad-serebryanye-strui,564,95,"На Седам-Каю через водопад Серебряные струи",https://jalita.com/big_yalta/forest/sedam-kaya_waterfall.shtml
+18,T4,s-imenem-yalty-na-bortu,392,95,"С именем Ялты на борту",https://jalita.com/big_yalta/yalta/with_name_yalta.shtml
+19,T4,alupkinskij-park-verhnij-park,1492,94,"Алупкинский парк. Верхний парк",https://jalita.com/big_yalta/alupka/upper_park.shtml
+19,T4,alupkinskij-park-nizhnij-park,1005,94,"Алупкинский парк. Нижний парк",https://jalita.com/big_yalta/alupka/lower_park.shtml
+19,T4,dubki-krymskogo-predgorya,674,94,"Дубки Крымского предгорья",https://jalita.com/guidebook/crimea/dubki.shtml
+19,T4,hram-devy,654,94,"Храм Девы",https://jalita.com/guidebook/crimea/temple_virgin.shtml
+19,T4,vodopad-serebryanye-strui,633,94,"Водопад Серебряные струи",https://jalita.com/big_yalta/forest/silver_waterfall.shtml
+19,T4,dom-muzej-antona-pavlovicha-chehova,622,94,"Дом-музей Антона Павловича Чехова",https://jalita.com/big_yalta/chehov/index.shtml
+19,T4,kuchuk-isar,616,94,"Кучук-Исар",https://jalita.com/big_yalta/kastropol/kuchuk-isar.shtml
+19,T4,arabatka-kurortnaya,577,94,"Арабатка курортная",https://jalita.com/guidebook/crimea/arabat_health_resort.shtml
+19,T4,pushkinskaya-tropa-doroga-nikuda,508,94,"Пушкинская тропа. Дорога никуда",https://jalita.com/big_yalta/gurzuf/pushkin_path.shtml
+19,T4,melasskij-park,354,94,"Меласский парк",https://jalita.com/big_yalta/simeiz/melas_park.shtml
+20,T4,v-zujskij-les-k-partizanskomu-memorialu,1593,93,"В Зуйский лес, к партизанскому мемориалу",https://jalita.com/guidebook/crimea/dolgoruk-yayla_path.shtml
+20,T4,alupkinskij-park,1110,93,"Алупкинский парк",https://jalita.com/big_yalta/alupka/creation_park.shtml
+20,T4,kastel-gora,948,93,"Кастель, гора",https://jalita.com/big_yalta/alushta/kastel.shtml
+20,T4,solyanoj-promysel-na-sivashe,886,93,"Соляной промысел на Сиваше",https://jalita.com/guidebook/crimea/sivash_salt.shtml
+20,T4,arheologicheskie-pamyatniki-dolgorukovskoj-yajly,861,93,"Археологические памятники Долгоруковской яйлы",https://jalita.com/guidebook/crimea/dolgoruk-yayla_antiquities.shtml
+20,T4,koreizskaya-tropa,617,93,"Кореизская тропа",https://jalita.com/big_yalta/mishor/koreiz_path.shtml
+20,T4,mys-svyatoj-troitsy,615,93,"Мыс Святой Троицы",https://jalita.com/big_yalta/kastropol/troica.shtml
+20,T4,shahty-chair-krymskij-ischeznuvshee-selo-kryma,542,93,"Шахты (Чаир, Крымский) исчезнувшее село Крыма",https://jalita.com/guidebook/crimea/krymskiy.shtml
+20,T4,ekspozitsiya-alupkinskogo-dvortsa-3,517,93,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/lobby.shtml
+20,T4,tavrskie-mogilniki-v-krymu,510,93,"Таврские могильники в Крыму",https://jalita.com/guidebook/crimea/tavr_mogil.shtml
+21,T4,pushkinskij-fontan,346,93,"Пушкинский фонтан",https://jalita.com/big_yalta/gurzuf/pushkin_fountain.shtml
+21,T4,avunda-reka,298,93,"Авунда, река",https://jalita.com/big_yalta/gurzuf/avunda_river.shtml
+21,T4,dom-muzej-a-p-chehova-v-yalte,3231,92,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/cabinet_chehov.shtml
+21,T4,rastitelnyj-mir-kryma,2567,92,"Растительный мир Крыма",https://jalita.com/guidebook/crimea/flora.shtml
+21,T4,haraks,1203,92,"Харакс",https://jalita.com/big_yalta/swallow_nest/charax_fortress.shtml
+21,T4,kastel-gora-pamyatnik-geologii,921,92,"Кастель, гора — памятник геологии",https://jalita.com/big_yalta/alushta/kastel_geology.shtml
+21,T4,kromleh-sila-solntsa-na-zemle,688,92,"Кромлех — Сила Солнца на Земле",https://jalita.com/guidebook/crimea/kromlex.shtml
+21,T4,panea-skala,572,92,"Панеа, скала",https://jalita.com/big_yalta/simeiz/panea.shtml
+21,T4,pochvy-rastitelnost-i-zhivotnyj-mir-chatyrdagskoj-yajly,436,92,"Почвы, растительность и животный мир Чатырдагской Яйлы",https://jalita.com/big_yalta/forest/chatyr-dag_nature.shtml
+21,T4,villa-mechta,433,92,"Вилла Мечта",https://jalita.com/big_yalta/simeiz/villa_mechta.shtml
+22,T4,syuyuryu-kaya-skala,371,92,"Сююрю-Кая, скала",https://jalita.com/big_yalta/forest/suuru-kaya.shtml
+22,T4,imenie-haraks,999,91,"Имение Харакс",https://jalita.com/big_yalta/mishor/charax.shtml
+22,T4,opolznevoe,940,91,"Оползневое",https://jalita.com/big_yalta/simeiz/opolznevoe.shtml
+22,T4,zemletryasenie-1927-goda-v-alushte,822,91,"Землетрясение 1927 года в Алуште",https://jalita.com/guidebook/crimea/earthquake_alushta.shtml
+22,T4,nikitskaya-rasselina-2,802,91,"Никитская расселина",https://jalita.com/big_yalta/nikita/rasselina.shtml
+22,T4,koreiz,718,91,"Кореиз",https://jalita.com/big_yalta/mishor/koreiz.shtml
+22,T4,yaltinskij-port,611,91,"Ялтинский порт",https://jalita.com/big_yalta/yalta/port.shtml
+22,T4,krymskoe-zemletryasenie-1927-goda,498,91,"Крымское землетрясение 1927 года",https://jalita.com/guidebook/crimea/earthquake_1927.shtml
+22,T4,pamyatnik-yulianu-semenovu,464,91,"Памятник Юлиану Семенову",https://jalita.com/big_yalta/yalta/pamyatnik_yulianu_semenovu.shtml
+22,T4,ognennye-yavleniya-na-chernom-more-kipenie-morya,406,91,"Огненные явления на Черном море («кипение моря»)",https://jalita.com/guidebook/crimea/earthquake_sea.shtml
+23,T4,chasovnya-na-naberezhnoj-yalty,367,91,"Часовня на набережной Ялты",https://jalita.com/big_yalta/yalta/chapel.shtml
+23,T4,speleoturizm-v-krymu,320,91,"Спелеотуризм в Крыму",https://jalita.com/guidebook/crimea/speleoturizm.shtml
+23,T4,zapovednik-mys-martyan,1573,90,"Заповедник Мыс Мартьян",https://jalita.com/big_yalta/nikita/forest_martyan.shtml
+23,T4,gryazevye-vulkany-kryma,667,90,"Грязевые вулканы Крыма",https://jalita.com/guidebook/crimea/sopki.shtml
+23,T4,magobi-gora,655,90,"Магоби, гора",https://jalita.com/big_yalta/yalta/mogabi.shtml
+23,T4,muhalatka-sanatornoe-melas,570,90,"Мухалатка (Санаторное, Мелас)",https://jalita.com/big_yalta/simeiz/muhalatka.shtml
+23,T4,efirmaslo-nauchno-proizvodstvennoe-obedinenie,542,90,"«Эфирмасло», научно-производственное объединение",https://jalita.com/guidebook/crimea/efirmaslo.shtml
+23,T4,chehovskij-sad,466,90,"Чеховский сад",https://jalita.com/big_yalta/chehov/garden.shtml
+23,T4,issledovanie-zmeinoj-peshhery,457,90,"Исследование Змеиной пещеры",https://jalita.com/guidebook/cave_crimea/snake_research.shtml
+23,T4,pushkinskij-kiparis,301,90,"Пушкинский кипарис",https://jalita.com/big_yalta/gurzuf/pushkin_cypres.shtml
+24,T4,shahta-im-v-g-eny,261,90,"Шахта им. В. Г. Ены",https://jalita.com/guidebook/cave_crimea/eny.shtml
+24,T4,prisoedinenie-kryma-k-rossii-v-2014-godu,1403,89,"Присоединение Крыма к России в 2014 году",https://jalita.com/guidebook/crimea/accession_to_russia_2014.shtml
+24,T4,marshruty-v-uch-kosh,1080,89,"Маршруты в Уч-Кош",https://jalita.com/big_yalta/yalta/uch-kosh_path.shtml
+24,T4,geologiya-i-buhty-geraklejskogo-poluostrova,950,89,"Геология и бухты Гераклейского полуострова",https://jalita.com/guidebook/crimea/gerakleiskiy_geology.shtml
+24,T4,kil-v-meditsine,848,89,"Кил в медицине",https://jalita.com/guidebook/crimea/kil_medicine.shtml
+24,T4,aj-todor-mys,737,89,"Ай-Тодор, мыс",https://jalita.com/big_yalta/swallow_nest/ai-todor.shtml
+24,T4,taraktashskaya-tropa,684,89,"Таракташская тропа",https://jalita.com/big_yalta/yalta/taraktash_path.shtml
+24,T4,gruppa-peshher-eni-sala,543,89,"Группа пещер Ени-Сала",https://jalita.com/guidebook/cave_crimea/eni-sala.shtml
+24,T4,angarskij-pereval,522,89,"Ангарский перевал",https://jalita.com/big_yalta/road/angarskiy_pass.shtml
+24,T4,issledovanie-adzhimushkajskih-kamenolomen,460,89,"Исследование Аджимушкайских каменоломен",https://jalita.com/guidebook/crimea/adjimushkay_research.shtml
+25,T4,villa-elena,401,89,"Вилла «Елена»",https://jalita.com/big_yalta/yalta/villa_elena.shtml
+25,T4,kupalni-roffe,261,89,"Купальни Роффе",https://jalita.com/big_yalta/yalta/roffe.shtml
+25,T4,griby-v-krymu,923,88,"Грибы в Крыму",https://jalita.com/guidebook/crimea/fungi.shtml
+25,T4,massandra,789,88,"Массандра",https://jalita.com/big_yalta/massandra/index.shtml
+25,T4,gory-nad-kastropolem,710,88,"Горы над Кастрополем",https://jalita.com/big_yalta/kastropol/kastropol_mountin.shtml
+25,T4,usadba-mordvinova-horoshaya-pustosh,702,88,"Усадьба Мордвинова («Хорошая пустошь»)",https://jalita.com/big_yalta/yalta/mordvinov.shtml
+25,T4,sedam-kaya-orlinyj-zalet,511,88,"Седам-Кая (Орлиный залет)",https://jalita.com/big_yalta/forest/sedam-kaya.shtml
+25,T4,skelskie-mengiry,445,88,"Скельские менгиры",https://jalita.com/big_yalta/simeiz/skelsk_menhir.shtml
+25,T4,imenie-murad-avur-ispolnenie-zhelanij,336,88,"Имение «Мурад-Авур» («Исполнение желаний»)",https://jalita.com/big_yalta/mishor/murad-avur_cottage.shtml
+25,T4,villa-kseniya,259,88,"Вилла Ксения",https://jalita.com/big_yalta/simeiz/villa_kseniya.shtml
+26,T4,krymskie-gory,1830,87,"Крымские горы",https://jalita.com/guidebook/crimea/mountain.shtml
+26,T4,kastropol,1177,87,"Кастрополь",https://jalita.com/big_yalta/kastropol/index.shtml
+26,T4,eni-sala-2-koj,939,87,"Ени-Сала 2 (Кой)",https://jalita.com/guidebook/cave_crimea/eni-sala-2.shtml
+26,T4,samoletostroenie-v-krymu,708,87,"Самолетостроение в Крыму",https://jalita.com/guidebook/crimea/air.shtml
+26,T4,ekaterininskie-mili-2,601,87,"Екатерининские мили",https://jalita.com/guidebook/crimea/ekatirina_mile.shtml
+26,T4,sopochnaya-gryaz,522,87,"Сопочная грязь",https://jalita.com/guidebook/crimea/mud.shtml
+26,T4,vasilevka,430,87,"Васильевка",https://jalita.com/big_yalta/yalta/vasilievka.shtml
+26,T4,nikita-poselok,428,87,"Никита, поселок",https://jalita.com/big_yalta/nikita/nikita.shtml
+26,T4,gora-koshka-2,374,87,"Гора Кошка",https://jalita.com/big_yalta/simeiz/mountain_cat.shtml
+26,T4,villa-bolshoj-bogdan-n-n-bogdanova,339,87,"Вилла «Большой Богдан» Н. Н. Богданова",https://jalita.com/big_yalta/simeiz/villa_big_bogdan.shtml
+27,T4,pansion-n-k-aleksandrova-dolnika,302,87,"Пансион Н. К. Александрова-Дольника",https://jalita.com/big_yalta/simeiz/villa_dolnikova.shtml
+27,T4,villa-belyj-lebed-ampir,281,87,"Вилла «Белый лебедь» (Ампир)",https://jalita.com/big_yalta/simeiz/villa_ampir.shtml
+27,T4,villa-shlee-hajal,265,87,"Вилла Шлее «Хайал»",https://jalita.com/big_yalta/simeiz/villa_shlee.shtml
+27,T4,istoriya-nikitskogo-botanicheskogo-sada,1878,86,"История Никитского ботанического сада",https://jalita.com/big_yalta/nikita/nbc_history.shtml
+27,T4,roman-kosh,762,86,"Роман-Кош",https://jalita.com/big_yalta/gurzuf/roman-kosh.shtml
+27,T4,hrustalnyj-dvorets,641,86,"Хрустальный дворец",https://jalita.com/big_yalta/simeiz/simeiz_dvorec.shtml
+27,T4,ponizovka,639,86,"Понизовка",https://jalita.com/big_yalta/simeiz/ponizovka.shtml
+27,T4,a-m-gorkij-v-krymu,572,86,"А. М. Горький в Крыму",https://jalita.com/guidebook/crimea/gorky.shtml
+27,T4,tash-koj-kamennaya-derevnya,518,86,"Таш-Кой (Каменная деревня)",https://jalita.com/big_yalta/simeiz/tash-koi.shtml
+27,T4,poseleniya-bojki,423,86,"Поселения Бойки",https://jalita.com/big_yalta/forest/boika_villages.shtml
+28,T4,villa-divo-dacha-semenova,291,86,"Вилла «Диво» (дача Семенова)",https://jalita.com/big_yalta/simeiz/villa_divo.shtml
+28,T4,krym-obshhie-svedeniya,1301,85,"Крым. Общие сведения",https://jalita.com/guidebook/crimea/total_information.shtml
+28,T4,krymbalskij-kamen-izvestnyak,783,85,"Крымбальский камень (известняк)",https://jalita.com/guidebook/crimea/krymbalskij_kamen.shtml
+28,T4,rimskaya-doroga-kalendskaya-tropa,740,85,"Римская дорога (Календская тропа)",https://jalita.com/big_yalta/simeiz/kalendskaya_path.shtml
+28,T4,adzhimushkajskie-kamenolomni,723,85,"Аджимушкайские каменоломни",https://jalita.com/guidebook/crimea/adjimushkay.shtml
+28,T4,imenie-baryatinskih-selbillyar-kiparisovaya-roshha,409,85,"Имение Барятинских, Сельбилляр (Кипарисовая роща)",https://jalita.com/big_yalta/yalta/selbiar.shtml
+28,T4,reka-auzun-uzen,339,85,"Река Аузун-Узень",https://jalita.com/guidebook/river/auzun-uzen.shtml
+28,T4,shtangeevskaya-tropa,301,85,"Штангеевская тропа",https://jalita.com/big_yalta/yalta/shtangeev_path.shtml
+28,T4,uzenbashskaya-tropa-po-otrogu-iograf-i-nagoryu,985,84,"Узенбашская тропа (по отрогу Иограф и нагорью)",https://jalita.com/big_yalta/yalta/uzenbashskaya_path.shtml
+28,T4,krymskie-zemletryaseniya,925,84,"Крымские землетрясения",https://jalita.com/guidebook/crimea/earthquake.shtml
+29,T4,massiv-bojka,877,84,"Массив Бойка",https://jalita.com/big_yalta/forest/boika.shtml
+29,T4,pamyatniki-na-pole-alminskogo-srazheniya,852,84,"Памятники на поле Альминского сражения",https://jalita.com/guidebook/crimea/alma_monuments.shtml
+29,T4,krymskoe-hanstvo,817,84,"Крымское ханство",https://jalita.com/guidebook/crimea/crimean_khanate.shtml
+29,T4,shajtan-koba,323,84,"Шайтан-Коба",https://jalita.com/guidebook/crimea/shaitan_koba.shtml
+29,T4,villa-kameya,271,84,"Вилла «Камея»",https://jalita.com/big_yalta/simeiz/villa_kameya.shtml
+29,T4,bazarov-aleksandr-ivanovich,250,84,"Базаров Александр Иванович",https://jalita.com/big_yalta/nikita/bazarov_a_i.shtml
+29,T4,arabatskaya-strelka-kosa,1152,83,"Арабатская стрелка (коса)",https://jalita.com/guidebook/crimea/arabat.shtml
+29,T4,sivash-ili-gniloe-more,943,83,"Сиваш или Гнилое море",https://jalita.com/guidebook/crimea/sivash.shtml
+29,T4,bulganakskie-sopki,564,83,"Булганакские сопки",https://jalita.com/guidebook/crimea/bulganakskie.shtml
+29,T4,dzhanike-hanym,552,83,"Джанике-ханым",https://jalita.com/guidebook/cave/djanikee.shtml
+30,T4,at-bash-gora,412,83,"Ат-Баш, гора",https://jalita.com/big_yalta/simeiz/at-bash.shtml
+30,T4,beshujskie-kopi,888,82,"Бешуйские копи",https://jalita.com/big_yalta/forest/beshui.shtml
+30,T4,romanovskaya-doroga,880,82,"Романовская дорога",https://jalita.com/big_yalta/road/roman_road.shtml
+30,T4,najdennye-v-krymu-klady,803,82,"Найденные в Крыму клады",https://jalita.com/guidebook/crimea/treasure.shtml
+30,T4,tavry,636,82,"Тавры",https://jalita.com/guidebook/crimea/tavry.shtml
+30,T4,krymskaya-gornaya-trollejbusnaya-trassa,621,82,"Крымская горная троллейбусная трасса",https://jalita.com/big_yalta/road/trolleybus_route.shtml
+30,T4,alminskoe-srazhenie,601,82,"Альминское сражение",https://jalita.com/guidebook/crimea/alma_battle.shtml
+30,T4,katsiveli,545,82,"Кацивели",https://jalita.com/big_yalta/simeiz/kaciveli.shtml
+30,T4,ushhele-uch-kosh,516,82,"Ущелье Уч-Кош",https://jalita.com/big_yalta/yalta/uch-kosh.shtml
+30,T4,zhanna-de-lya-mott-afera-veka,408,82,"Жанна де ля Мотт. Афера века",https://jalita.com/big_yalta/gurzuf/swindle.shtml
+31,T4,kaskadnaya-peshhera-shahta,352,82,"Каскадная пещера/шахта",https://jalita.com/guidebook/cave_crimea/kaskadnaya.shtml
+31,T4,kemal-egerek,331,82,"Кемаль-Эгерек",https://jalita.com/big_yalta/forest/kemal-egerek.shtml
+31,T4,suuk-koba,313,82,"Суук-Коба",https://jalita.com/guidebook/cave_crimea/suuk-koba.shtml
+31,T4,krymskij-zapovednik,870,81,"Крымский заповедник",https://jalita.com/big_yalta/forest/index.shtml
+31,T4,solnechnaya-tropa-tsarskaya-tropa,830,81,"Солнечная тропа (Царская тропа)",https://jalita.com/big_yalta/livadia/royal_path.shtml
+31,T4,tyulpany-v-krymu,767,81,"Тюльпаны в Крыму",https://jalita.com/guidebook/crimea/tulips.shtml
+31,T4,sandyk-kaya-gora,731,81,"Сандык-Кая, гора",https://jalita.com/big_yalta/simeiz/sandyk-kaya.shtml
+31,T4,lev-nikolaevich-tolstoj-v-gaspre,578,81,"Лев Николаевич Толстой в Гаспре",https://jalita.com/big_yalta/mishor/gaspra_tolstoi.shtml
+31,T4,bezdonnaya-peshhera-kolodets,428,81,"Бездонная пещера/колодец",https://jalita.com/guidebook/cave_crimea/bezdonnaya.shtml
+31,T4,armyanskaya-tserkov-v-yalte,355,81,"Армянская церковь в Ялте",https://jalita.com/big_yalta/yalta/armyan_church.shtml
+32,T4,alternativnaya-energetika,1050,80,"Альтернативная энергетика",https://jalita.com/guidebook/crimea/alternative_energy.shtml
+32,T4,istoriya-issledovaniya-peshhery-mar-hosar-marchenko,835,80,"История исследования пещеры Мар-Хосар (Марченко)",https://jalita.com/guidebook/cave_crimea/marchenko_history.shtml
+32,T4,issledovanie-kosmosa-v-krymu,812,80,"Исследование космоса в Крыму",https://jalita.com/guidebook/crimea/space.shtml
+32,T4,krymskie-nazvaniya-v-parizhe,810,80,"Крымские названия в Париже",https://jalita.com/guidebook/crimea/name_paris.shtml
+32,T4,tavricheskaya-uchyonaya-arhivnaya-komissiya-tuak,750,80,"Таврическая учёная архивная комиссия (ТУАК)",https://jalita.com/guidebook/crimea/tuak.shtml
+32,T4,krasnyj-kamen-skala,718,80,"Красный камень, скала",https://jalita.com/big_yalta/gurzuf/geography_4.shtml
+32,T4,chernorechenskij-kanon,612,80,"Чернореченский каньон",https://jalita.com/big_yalta/simeiz/chernorechensk_canyon.shtml
+32,T4,istoriya-veloturizma-v-krymu,468,80,"История велотуризма в Крыму",https://jalita.com/guidebook/crimea/velo_history.shtml
+32,T4,ivanenkovskij-partizanskij-aerodrom,388,80,"Иваненковский партизанский аэродром",https://jalita.com/guidebook/crimea/dolgoruk-yayla_aerodrome.shtml
+32,T4,shaan-kaya-gora,361,80,"Шаан-Кая, гора",https://jalita.com/big_yalta/alupka/shaan-kaya.shtml
+33,T4,kil,759,79,"Кил",https://jalita.com/guidebook/crimea/kil.shtml
+33,T4,yuzhnyj-bereg-kryma,673,79,"Южный берег Крыма",https://jalita.com/guidebook/crimea/ybk.shtml
+33,T4,k-peshhere-syundyurlyu-koba,653,79,"К пещере Сюндюрлю-Коба",https://jalita.com/guidebook/cave_crimea/sundurlu-koba_path.shtml
+33,T4,vanny-molodosti-v-krymu,628,79,"Ванны молодости в Крыму",https://jalita.com/guidebook/crimea/vanna_molodosti.shtml
+33,T4,chajnyj-domik,443,79,"Чайный домик",https://jalita.com/big_yalta/forest/teahouse.shtml
+33,T4,hory-na-geraklejskom-poluostrove,341,79,"Хоры на Гераклейском полуострове",https://jalita.com/guidebook/crimea/gerakleiskiy_hora.shtml
+33,T4,kanony-v-krymu,321,79,"Каньоны в Крыму",https://jalita.com/guidebook/crimea/canyons.shtml
+33,T4,partizanskij-aerodrom,854,78,"Партизанский аэродром",https://jalita.com/guidebook/crimea/karabi-yayla_aerodrome.shtml
+33,T4,dokolonizatsionnyj-period-geraklejskogo-poluostrova,731,78,"Доколонизационный период Гераклейского полуострова",https://jalita.com/guidebook/crimea/gerakleiskiy_dokolon.shtml
+33,T4,hajtarma,719,78,"Хайтарма",https://jalita.com/guidebook/crimea/haitarma.shtml
+34,T4,fiziko-himicheskie-svojstva-kila,695,78,"Физико-химические свойства кила",https://jalita.com/guidebook/crimea/kil_property.shtml
+34,T4,otrog-limen-burun,456,78,"Отрог Лимен-Бурун",https://jalita.com/big_yalta/swallow_nest/limena-burun.shtml
+34,T4,batiliman-urochishhe,368,78,"Батилиман, урочище",https://jalita.com/big_yalta/laspi/batiliman.shtml
+34,T4,5-samyh-zagadochnyh-nenajdennyh-kladov,356,78,"5 самых загадочных ненайденных кладов",https://jalita.com/guidebook/crimea/treasure_notfound.shtml
+34,T4,oreanda,305,78,"Ореанда",https://jalita.com/big_yalta/oreanda/index.shtml
+34,T4,tropa-kurchatova,353,77,"Тропа Курчатова",https://jalita.com/big_yalta/oreanda/tropa_kurchatova.shtml
+34,T4,skala-diva-2,345,77,"Скала Дива",https://jalita.com/big_yalta/simeiz/rock_diva.shtml
+34,T4,partizanskaya-rechka,1155,76,"Партизанская речка",https://jalita.com/guidebook/legends/partizan_river.shtml
+34,T4,efiromaslichnoe-proizvodstvo-v-krymu,857,76,"Эфиромасличное производство в Крыму",https://jalita.com/guidebook/crimea/efir_branch.shtml
+34,T4,tsarskij-kurgan,603,76,"Царский курган",https://jalita.com/guidebook/crimea/tsar_barrow.shtml
+35,T4,gryazevoj-vulkan-dzhau-tepe,495,76,"Грязевой вулкан Джау-Тепе",https://jalita.com/guidebook/crimea/djau-tepe.shtml
+35,T4,dzhenevez-kaya-skala,280,76,"Дженевез-Кая, скала",https://jalita.com/big_yalta/gurzuf/djenevez-kaya.shtml
+35,T4,gde-v-krymu-pokatatsya-na-sankah-lyzhah-i-snoubordah,751,75,"Где в Крыму покататься на санках, лыжах и сноубордах?",https://jalita.com/guidebook/crimea/snow_ski.shtml
+35,T4,peshhery-gory-basman,697,75,"Пещеры горы Басман",https://jalita.com/big_yalta/forest/basman_cave.shtml
+35,T4,progulka-na-goru-koshka,669,75,"Прогулка на гору Кошка",https://jalita.com/big_yalta/simeiz/path_cat.shtml
+35,T4,yaltinskij-luk,623,75,"Ялтинский лук",https://jalita.com/guidebook/crimea/yalta_onion.shtml
+35,T4,kazachya-veha,477,75,"Казачья веха",https://jalita.com/big_yalta/oreanda/kazak_veha.shtml
+35,T4,efirnoe-maslo-kryma,474,75,"Эфирное масло Крыма",https://jalita.com/guidebook/crimea/efir_oil.shtml
+35,T4,glavnaya-gryada-krymskih-gor,666,74,"Главная гряда Крымских гор",https://jalita.com/guidebook/crimea/main_range.shtml
+35,T4,krasnokamenka-2,587,74,"Краснокаменка",https://jalita.com/big_yalta/gurzuf/krasnokamenka.shtml
+36,T4,ilyas-kaya-gora,472,74,"Ильяс-Кая, гора",https://jalita.com/big_yalta/laspi/ilyas-kaya.shtml
+36,T4,parkovoe,442,74,"Парковое",https://jalita.com/big_yalta/simeiz/parkovoe.shtml
+36,T4,hram-treh-vsadnikov,395,74,"Храм Трех всадников",https://jalita.com/guidebook/cave/eski-kermen_tri_vsadnika.shtml
+36,T4,polyana-kermen-na-gore-basman,330,74,"Поляна Кермен на горе Басман",https://jalita.com/big_yalta/forest/basman_kermen.shtml
+36,T4,aj-todorskij-mayak,844,73,"Ай-Тодорский маяк",https://jalita.com/big_yalta/swallow_nest/lighthouse.shtml
+36,T4,gaspra,596,73,"Гаспра",https://jalita.com/big_yalta/mishor/gaspra.shtml
+36,T4,syuyuryu-kaya,390,73,"Сююрю-Кая",https://jalita.com/big_yalta/forest/suuru-kaya_climber.shtml
+36,T4,parad-hrizantem-v-nikitskom-botanicheskom-sadu,275,73,"Парад хризантем в Никитском ботаническом саду",https://jalita.com/big_yalta/nikita/chrysanthemum.shtml
+36,T4,urochishhe-besh-tekne,268,73,"Урочище Беш-Текне",https://jalita.com/big_yalta/forest/besh-tekne.shtml
+36,T4,mys-sarych-2,497,72,"Мыс Сарыч",https://jalita.com/big_yalta/simeiz/sarych.shtml
+37,T4,mishor-koreiz-gaspra,875,71,"Мисхор, Кореиз, Гаспра",https://jalita.com/big_yalta/mishor/index.shtml
+37,T4,izvestnye-gorozhane-yalty,789,70,"Известные горожане Ялты",https://jalita.com/big_yalta/yalta/culturalworkers.shtml
+37,T4,soldatskaya-shahta,512,70,"Солдатская шахта",https://jalita.com/guidebook/cave_crimea/soldatskaya.shtml
+37,T4,klimat-arabatskoj-strelki,445,70,"Климат Арабатской стрелки",https://jalita.com/guidebook/crimea/arabat_climate.shtml
+37,T4,aj-nikola-gora,417,70,"Ай-Никола, гора",https://jalita.com/big_yalta/oreanda/ai-nikola.shtml
+37,T4,studencheskaya-shahta,371,70,"Студенческая шахта",https://jalita.com/guidebook/cave_crimea/stud.shtml
+37,T4,besedka-vetrov-2,561,69,"Беседка ветров",https://jalita.com/big_yalta/gurzuf/wind_rotonda.shtml
+37,T4,stoyanki-pervobytnogo-cheloveka-shan-koba-i-fatma-koba,490,69,"Стоянки первобытного человека Шан-Коба и Фатьма-Коба",https://jalita.com/big_yalta/simeiz/shan-koba.shtml
+37,T4,derekojka-reka,467,69,"Дерекойка, река",https://jalita.com/big_yalta/yalta/derekoika.shtml
+37,T4,skelskaya-peshhera-2,422,69,"Скельская пещера",https://jalita.com/big_yalta/simeiz/skelsk_cave.shtml
+38,T4,poleznye-iskopaemye-kryma,1450,68,"Полезные ископаемые Крыма",https://jalita.com/guidebook/crimea/minerals.shtml
+38,T4,shhepinskij-askold-aleksandrovich,675,67,"Щепинский, Аскольд Александрович",https://jalita.com/guidebook/crimea/schepinskiy.shtml
+38,T4,geraklejskij-poluostrov,306,67,"Гераклейский полуостров",https://jalita.com/guidebook/crimea/gerakleiskiy.shtml
+38,T4,balanyn-kayasy,456,66,"Баланын-Каясы",https://jalita.com/big_yalta/yalta/balanyn-kayasy.shtml
+38,T4,bolshoj-buzluk,283,66,"Большой Бузлук",https://jalita.com/guidebook/cave_crimea/buzluk.shtml
+38,T4,avunda-avinda-gora,312,64,"Авунда (Авинда), гора",https://jalita.com/big_yalta/gurzuf/gurzufskaya_dolina.shtml
+38,T4,karabi-yajla-2,835,62,"Караби-яйла",https://jalita.com/guidebook/crimea/karabi-yayla.shtml
+38,T4,ifigeniya-skala,370,62,"Ифигения, скала",https://jalita.com/big_yalta/simeiz/ifigeniya.shtml
+38,T4,livadiya,1008,58,"Ливадия",https://jalita.com/big_yalta/livadia/index.shtml
+38,T4,prirodnye-dostoprimechatelnosti,575,55,"Природные достопримечательности",https://jalita.com/big_yalta/parki.shtml
+39,T4,hram-hrista-spasitelya,308,55,"Храм Христа-Спасителя",https://jalita.com/big_yalta/forest/boika_temple.shtml
+39,T4,kurshlyuk-ubezhishha-na-bojke,259,55,"Куршлюк — убежища на Бойке",https://jalita.com/big_yalta/forest/boika_kurshluk.shtml
+39,T4,drevnosti-dolgorukovskoj-yajly,963,53,"Древности Долгоруковской яйлы",https://jalita.com/guidebook/crimea/dolgoruk-yayla_ancient.shtml
+39,T4,lodochniki,350,45,"Лодочники",https://jalita.com/big_yalta/yalta/boatman.shtml
+39,T4,kurgan-slavy,424,44,"Курган Славы",https://jalita.com/guidebook/crimea/partisan.shtml
+39,T4,verhnij-kastropol-i-skala-ifigeniya,434,36,"Верхний Кастрополь и скала Ифигения",https://jalita.com/big_yalta/simeiz/ifigeniya.shtml
+39,T4,pirodnye-dostoprimechatelnosti,656,28,"Пиродные достопримечательности",https://jalita.com/big_yalta/nikita/rasselina.shtml
+39,T4,prirodnye-dostoprimechatelnosti-mysa-aj-todor,428,24,"Природные достопримечательности мыса Ай-тодор",https://jalita.com/big_yalta/swallow_nest/ai-todor.shtml
+39,T4,zmeinaya-peshhera-grot,522,20,"Змеиная пещера (грот)",https://jalita.com/guidebook/cave_crimea/snake_cave.shtml
+39,T4,mys-ajya,520,17,"Мыс Айя",https://jalita.com/big_yalta/simeiz/aiya.shtml
+40,T4,rasteniya-nikitskogo-botanicheskogo-sada,437,9,"Растения Никитского ботанического сада",https://jalita.com/big_yalta/nikita/plants.shtml
+40,T4,angar-bogaz-angarskij-pereval,297,1,"Ангар-Богаз (Ангарский перевал)",https://jalita.com/guidebook/bakhchisaray/svitskiy_korpus.shtml
+40,T4,velotury-v-krymu,2636,0,"Велотуры в Крыму",
+40,T4,tamozhnya-ukrainy,1107,0,"Таможня Украины",
+40,T4,pravila-peresecheniya-granitsy-ukrainy,1069,0,"Правила пересечения границы Украины",
+40,T4,peshie-tury-v-krymu,995,0,"Треккинг или пешеходные туры в Крыму",
+40,T4,neobychnye-mesta-v-krymu,768,0,"Необычные места в Крыму, которые стоит посетить, самые интересные",
+40,T4,multiaktivnye-tury-po-krymu,748,0,"Мультиактивные туры по Крыму",
+40,T4,gora-paragilmen,679,0,"Гора Парагильмен",
+40,T4,istoriko-kraevedcheskij-muzej-goroda-saki,654,0,"Историко-краеведческий музей города Саки",
+41,T4,hram-ilii-proroka-v-solnechnoj-doline,537,0,"Храм Илии Пророка в Солнечной Долине",
+41,T4,inkermanskij-peshhernyj-monastyr,537,0,"Инкерманский пещерный монастырь",
+41,T4,hram-pokrova-presvyatoj-bogoroditsy,511,0,"Храм Покрова Пресвятой Богородицы",
+41,T4,vglub-zmeinoj-peshhery,434,0,"Вглубь Змеиной пещеры",
+41,T4,urochishhe-ayazma,425,0,"Урочище Аязьма",
+41,T4,mys-alchak,419,0,"Мыс Алчак",
+41,T4,vanna-molodosti-kara-gol,410,0,"Ванна молодости Кара-Голь",
+41,T4,gora-roman-kosh,390,0,"Гора Роман-Кош",
+41,T4,bashnya-choban-kule,389,0,"Башня Чобан-Куле",
+41,T4,zamok-kyz-kule,378,0,"Замок Кыз-Куле",
+42,T4,skala-svidanij,376,0,"Скала свиданий",
+42,T4,hram-donatorov,373,0,"Храм Донаторов",
+42,T4,peshhernyj-monastyr-shuldan,372,0,"Пещерный монастырь Шулдан",
+42,T4,kiziltashskij-muzhskoj-monastyr,370,0,"Кизилташский мужской монастырь",
+42,T4,skala-biyuk-isar,368,0,"Скала Биюк-Исар",
+42,T4,alminskij-memorial,360,0,"Альминский мемориал",
+42,T4,devlet-saraj,358,0,"Девлет-Сарай",
+42,T4,gora-perchem,355,0,"Гора Перчем",
+42,T4,svyato-uspenskij-peshhernyj-monastyr-v-krymu,875,0,"Свято-Успенский пещерный монастырь в Бахчисарае: что смотреть",
+42,T4,krym-kurortnyj,350,0,"Крым курортный",https://jalita.com/big_yalta/mishor/dulber.shtml
+43,T4,echki-dag,345,0,"Эчки-Даг",
+43,T4,tri-religii,334,0,"Обзорная экскурсия по Бахчисараю в Крыму с хорошей ценой и отзывами",
+43,T4,hram-arhangelov-mihaila-i-gavriila,333,0,"Храм Архангелов Михаила и Гавриила",
+43,T4,mys-meganom,324,0,"Мыс Меганом",
+43,T4,balka-sotera,316,0,"Балка Сотера",
+43,T4,gora-kastel,312,0,"Гора Кастель",
 43,T4,taraktash,302,0,"Таракташ",
 43,T4,gora-aj-georgij,298,0,"Гора Ай-Георгий",
 43,T4,fontan-rahil,291,0,"Фонтан Рахиль",
 43,T4,skala-parus,290,0,"Скала Парус",
-43,T4,gora-bakatash,287,0,"Гора Бакаташ",
-43,T4,bolshoj-buzluk,283,0,"Большой Бузлук",https://jalita.com/guidebook/landscape/buzluk-koba.shtml
-43,T4,kuchuk-kojskij-opolzen,283,0,"Кучук-Койский оползень",
-43,T4,dom-muzej-shampanskih-vin-v-novom-svete,280,0,"Дом-музей шампанских вин в Новом Свете",
+44,T4,gora-bakatash,287,0,"Гора Бакаташ",
+44,T4,kuchuk-kojskij-opolzen,283,0,"Кучук-Койский оползень",
+44,T4,dom-muzej-shampanskih-vin-v-novom-svete,280,0,"Дом-музей шампанских вин в Новом Свете",
 44,T4,ak-kaya,275,0,"Ак-Кая",
 44,T4,safari-progulki-na-vnedorozhnikah-i-dzhipah-po-krymu-v-2020,275,0,"Сафари прогулки на внедорожниках и джипах по Крыму в 2026",
 44,T4,mavzolej-abdel-aziz-babaa,267,0,"Мавзолей Абдель-Азиз-Бабаа",
@@ -436,266 +439,263 @@ batch,tier,slug,words,dup_pct,title,src
 44,T4,po-mestam-sily-sokrashhennyj,265,0,"Тур по энергетическим местам силы в Крыму",
 44,T4,mys-plaka,264,0,"Мыс Плака",
 44,T4,kuchuk-lambatskij-haos,261,0,"Кучук-Ламбатский хаос",
-44,T4,shahta-im-v-g-eny,261,0,"Шахта им. В. Г. Ены",
-44,T4,kurshlyuk-ubezhishha-na-bojke,259,0,"Куршлюк — убежища на Бойке",
-44,T4,mavzolej-ben-yude-sultan,259,0,"Мавзолей Бен-Юде-Султан",
+45,T4,mavzolej-ben-yude-sultan,259,0,"Мавзолей Бен-Юде-Султан",
 45,T4,skala-krest-ili-skala-krestovaya,253,0,"Скала Крест или скала Крестовая",
 45,T4,fontan-noch,252,0,"Фонтан Ночь",
 45,T4,mavzolej-eski-dyurbe,251,0,"Мавзолей Эски-Дюрбе",
-45,T4,bazarov-aleksandr-ivanovich,250,0,"Базаров Александр Иванович",
+45,T5,kizil-kaya,195,100,"Кизил-Кая",https://jalita.com/big_yalta/forest/kizil-kaya.shtml
+45,T5,peshhera-tysyachegolovaya-na-chatyr-dage,698,99,"Пещера тысячеголовая на Чатыр-даге",https://jalita.com/guidebook/legends/chatyr_dag.shtml
 45,T5,dacha-sabashnikova,291,99,"Дача Сабашникова",https://jalita.com/big_yalta/simeiz/villa_sabashnikov.shtml
+45,T5,legenda-o-kolybeli-spryatannoj-na-gore-basman,1015,98,"Легенда о колыбели, спрятанной на горе Басман",https://jalita.com/guidebook/legends/basman.shtml
 45,T5,villa-selbi,137,98,"Вилла «Сельби»",https://jalita.com/big_yalta/simeiz/villa_selbi.shtml
-45,T5,dacha-akademika-kurchatova-v-mishore,705,97,"Дача академика Курчатова в Мисхоре",https://jalita.com/big_yalta/mishor/kurchatov_cottage.shtml
-45,T5,legenda-o-velikom-medvede,669,96,"Легенда о Великом Медведе",https://jalita.com/guidebook/legends/au-dag_great.shtml
-45,T5,dinastiya-sabashnikovyh,226,95,"Династия Сабашниковых",https://jalita.com/big_yalta/simeiz/sabashnikov.shtml
-45,T5,dacha-sviyagina,337,92,"Дача Свиягина",https://jalita.com/big_yalta/simeiz/villa_sviyagina.shtml
+45,T5,tatar-jolu,109,98,"Татар-Йолу",https://jalita.com/guidebook/crimea/tatar-iolu.shtml
+46,T5,dacha-akademika-kurchatova-v-mishore,705,97,"Дача академика Курчатова в Мисхоре",https://jalita.com/big_yalta/mishor/kurchatov_cottage.shtml
+46,T5,legenda-o-velikom-medvede,669,96,"Легенда о Великом Медведе",https://jalita.com/guidebook/legends/au-dag_great.shtml
+46,T5,partizanskaya-peshhera,515,95,"Партизанская пещера",https://jalita.com/guidebook/cave_crimea/partizanskaya.shtml
+46,T5,dinastiya-sabashnikovyh,226,95,"Династия Сабашниковых",https://jalita.com/big_yalta/simeiz/sabashnikov.shtml
+46,T5,peshhery-dolgorukovskoj-yajly,150,95,"Пещеры Долгоруковской яйлы",https://jalita.com/guidebook/crimea/dolgoruk-yayla_cave.shtml
+46,T5,legenda-o-vozniknovenii-georgievskogo-monastyrya,409,94,"Легенда о возникновении Георгиевского монастыря",https://jalita.com/guidebook/legends/legend_georgy.shtml
+46,T5,dacha-sviyagina,337,92,"Дача Свиягина",https://jalita.com/big_yalta/simeiz/villa_sviyagina.shtml
 46,T5,orografiya-i-osobennosti-relefa-chatyr-daga,231,92,"Орография и особенности рельефа Чатыр-Дага",https://jalita.com/big_yalta/forest/chatyr-dag_relief.shtml
-46,T5,dacha-e-l-korobinoj-selyam,322,90,"Дача Е. Л. Коробьиной «Селям»",https://jalita.com/big_yalta/simeiz/villa_selyam.shtml
-46,T5,dacha-lansere-hrizolit,247,90,"Дача Лансере «Хризолит»",https://jalita.com/big_yalta/simeiz/villa_hrizolit.shtml
-46,T5,pamyatnik-s-kurseitovu,167,90,"Памятник С. Курсеитову",https://jalita.com/guidebook/crimea/dolgoruk-yayla_kurseitov.shtml
-46,T5,dacha-nyukta,165,90,"Дача Нюкта",https://jalita.com/big_yalta/simeiz/villa_nukta.shtml
-46,T5,istoriya-alupki,103,90,"История Алупки",https://jalita.com/big_yalta/alupka/alupka_1.shtml
-46,T5,chasovnya-vo-imya-svyatogo-nikolaya,173,89,"Часовня во имя святого Николая",https://jalita.com/big_yalta/yalta/chapel_sea.shtml
-46,T5,dinastiya-komstadiusov,894,88,"Династия Комстадиусов",https://jalita.com/big_yalta/mishor/komstadius.shtml
-46,T5,dacha-stankevich-miro-mare,261,88,"Дача Станкевич «Миро-Маре»",https://jalita.com/big_yalta/simeiz/villa_miro-mare.shtml
-46,T5,dinastiya-shlee-v-simeize,236,88,"Династия Шлее в Симеизе",https://jalita.com/big_yalta/simeiz/shlee.shtml
-47,T5,mavzolej-dzhanike-hanym,235,88,"Мавзолей Джанике-ханым",https://jalita.com/guidebook/cave/mausoleum_djanikee.shtml
-47,T5,krymskij-gornyj-klub,159,88,"Крымский горный клуб",https://jalita.com/big_yalta/yalta/crimea_mount_club.shtml
-47,T5,tavrskie-yashhiki-okolo-gory-aj-nikola,136,88,"Таврские ящики около горы Ай-Никола",https://jalita.com/big_yalta/oreanda/ai-nikola_mogil.shtml
-47,T5,grot-cherepaha,245,87,"Грот Черепаха",https://jalita.com/guidebook/cave/kyz-kermen_cherepaha.shtml
-47,T5,dacha-subbotinoj,185,87,"Дача Субботиной",https://jalita.com/big_yalta/simeiz/villa_subbotinoy.shtml
-47,T5,legenda-o-paragilmene,532,86,"Легенда о Парагильмене",https://jalita.com/guidebook/legends/paragilmen.shtml
-47,T5,tavrskie-mogilniki-na-gore-koshka,238,86,"Таврские могильники на горе Кошка",https://jalita.com/big_yalta/simeiz/mountain_cat_mogil.shtml
-47,T5,peshhera-emine-bair-hosar-2,793,85,"Пещера Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar.shtml
-47,T5,bolshoj-grot-s-istochnikom-kyz-kermen,249,85,"Большой грот с источником (Кыз-Кермен)",https://jalita.com/guidebook/cave/kyz-kermen_spring.shtml
-47,T5,mastreiz-pritok,171,83,"Мастреиз, приток",https://jalita.com/big_yalta/yalta/mastreiz.shtml
-48,T5,nizhnij-kastropol-i-lesnaya-zona,157,83,"Нижний Кастрополь и лесная зона",https://jalita.com/big_yalta/kastropol/index.shtml
-48,T5,villa-barbo-maevka,148,83,"Вилла «Барбо» (Маевка)",https://jalita.com/big_yalta/mishor/maevka.shtml
-48,T5,vodohranilishhe-sikorskogo,242,82,"Водохранилище Сикорского",https://jalita.com/big_yalta/alupka/reservoir_sikorskiy.shtml
-48,T5,zub-drevnego-nosoroga-v-peshhere-emine-bair-hosar,239,82,"Зуб древнего носорога в пещере Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_tooth.shtml
-48,T5,legendy-kryma,315,81,"Легенды Крыма",https://jalita.com/guidebook/legends/index.shtml
-48,T5,usadba-ustinova-vasil-saraj,208,81,"Усадьба Устинова «Василь-Сарай»",https://jalita.com/big_yalta/massandra/ustinov.shtml
-48,T5,dolgorukovskaya-yajla,669,80,"Долгоруковская яйла",https://jalita.com/guidebook/crimea/dolgoruk-yayla.shtml
-48,T5,barelef-a-nbsp-s-nbsp-pushkina,514,80,"Барельеф А. С. Пушкина",https://jalita.com/big_yalta/gurzuf/pushkin_bareljef.shtml
-48,T5,dacha-saklya-saburova,140,80,"Дача «Сакля Сабурова»",https://jalita.com/big_yalta/simeiz/villa_saburov.shtml
-48,T5,vystavka-irisov-v-nikitskom-botanicheskom-sadu,224,79,"Выставка ирисов в Никитском ботаническом саду",https://jalita.com/big_yalta/nikita/iris.shtml
-49,T5,babugan-yajla,605,76,"Бабуган-яйла",https://jalita.com/big_yalta/gurzuf/babugan-yaila.shtml
-49,T5,kush-kaya-gora,186,74,"Куш-Кая, гора",https://jalita.com/big_yalta/laspi/kush-kaya.shtml
-49,T5,villa-anastasiya,173,74,"Вилла «Анастасия»",https://jalita.com/big_yalta/yalta/villa_anastasiya.shtml
-49,T5,dacha-zykovoj,133,73,"Дача Зыковой",https://jalita.com/big_yalta/simeiz/villa_zykovoy.shtml
-49,T5,stavrikajskaya-tropa,118,73,"Ставрикайская тропа",https://jalita.com/big_yalta/yalta/stavrikaya_path.shtml
-49,T5,voshod-poselok,176,72,"Восход, поселок",https://jalita.com/big_yalta/massandra/voshod.shtml
-49,T5,chto-takoe-tip-bazilika,87,72,"Что такое тип «базилика»?",https://jalita.com/guidebook/crimea/bazilika.shtml
-49,T5,alimova-peshhera,175,70,"Алимова пещера",https://jalita.com/guidebook/cave_crimea/alimova_simf.shtml
-49,T5,kutuzovskij-fontan,96,70,"Кутузовский фонтан",https://jalita.com/big_yalta/road/kutuzov.shtml
-49,T5,klimat-dolgorukovskoj-yajly,190,69,"Климат Долгоруковской яйлы",https://jalita.com/guidebook/crimea/dolgoruk-yayla_climate.shtml
-50,T5,pushkinskij-grot-i-skala,205,66,"Пушкинский грот и скала",https://jalita.com/big_yalta/gurzuf/pushkin_grotto.shtml
-50,T5,peshhera-dzhur-dzhur,208,63,"Пещера Джур-Джур",https://jalita.com/guidebook/cave_crimea/djur-djur_cave.shtml
-50,T5,obelisk-v-alushte-nad-bratskoj-mogiloj,101,61,"Обелиск в Алуште над братской могилой",https://jalita.com/big_yalta/road/alushta.shtml
-50,T5,fontan-slyoz-v-nikitskom-botanicheskom-sadu,86,61,"Фонтан слёз в Никитском ботаническом саду",https://jalita.com/big_yalta/nikita/monuments.shtml
-50,T5,partizanskij-rodnik-ladoshki,244,60,"Партизанский родник «Ладошки»",https://jalita.com/guidebook/crimea/dolgoruk-yayla_slide.shtml
-50,T5,peshehodno-velosipednaya-tropa-evrejskaya,232,54,"Пешеходно-велосипедная тропа «Еврейская»",https://jalita.com/big_yalta/simeiz/evreika.shtml
-50,T5,balan-kaya,75,51,"Балан-Кая",https://jalita.com/big_yalta/yalta/balan-kaya.shtml
-50,T5,zemlyatresenie-1927-goda-v-yalte,152,50,"Землятресение 1927 года в Ялте",https://jalita.com/big_yalta/swallow_nest/earthquake.shtml
-50,T5,korabl-spetsialnogo-naznacheniya-krym,120,46,"Корабль специального назначения «Крым»",https://jalita.com/big_yalta/yalta/ship_crimea.shtml
-50,T5,peshhera-kizil-koba-krasnaya,459,30,"Пещера Кизил-Коба (Красная)",https://jalita.com/guidebook/landscape/kizil-koba.shtml
-51,T5,bedene-kyr,136,27,"Бедене-Кыр",https://jalita.com/big_yalta/forest/bedene-kyr.shtml
-51,T5,peshhery-dolgorukovskoj-yajly,150,18,"Пещеры Долгоруковской яйлы",https://jalita.com/guidebook/crimea/dolgoruk-yayla.shtml
-51,T5,ayanskaya-peshhera,437,14,"Аянская пещера",https://jalita.com/guidebook/river/ayan.shtml
-51,T5,peshhery-yaltinskoj-yajly,92,13,"Пещеры Ялтинской яйлы",https://jalita.com/guidebook/cave_crimea/iograf.shtml
-51,T5,kiziltash,211,11,"Кизилташ",https://jalita.com/big_yalta/gurzuf/krasnokamenka.shtml
-51,T5,otradnoe,197,10,"Отрадное",https://jalita.com/big_yalta/massandra/otradnoe.shtml
-51,T5,peshhery-babugana,176,7,"Пещеры Бабугана",https://jalita.com/big_yalta/gurzuf/babugan-yaila.shtml
-51,T5,muzei-kryma,76,6,"Музеи Крыма",https://jalita.com/guidebook/bakhchisaray/muzey_nagayevskoy_romma.shtml
-51,T5,peshhera-adzhi-koba,319,2,"Пещера Аджи-Коба",https://jalita.com/guidebook/crimea/karabi-yayla_aerodrome.shtml
-51,T5,ke-105-peshhera,93,2,"КЭ-105, пещера",https://jalita.com/guidebook/cave_crimea/kizil-koba/describe.shtml
-52,T5,peshhera-emine-bair-koba,456,1,"Пещера Эмине-Баир-Коба",https://jalita.com/guidebook/cave_crimea/kizil-koba/describe.shtml
-52,T5,aj-petrinskaya-yajla,378,1,"Ай-Петринская яйла",https://jalita.com/big_yalta/alupka/reservoir_sikorskiy.shtml
-52,T5,gurzufskaya-yajla,376,1,"Гурзуфская яйла",https://jalita.com/big_yalta/gurzuf/tavr_sanctuary.shtml
-52,T5,zimnie-tury-v-krymu,232,1,"Зимние Туры в Крыму",https://jalita.com/guidebook/bakhchisaray/grand_canyon_crimea.shtml
-52,T5,ostanki-bizona-v-peshhere-emine-bair-hosar,186,1,"Останки бизона в пещере Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_index.shtml
-52,T5,skulpturnaya-kompozitsiya-devushka-arzy-i-razbojnik-ali-baba-i-rusalka,177,1,"Скульптурная композиция «Девушка Арзы и разбойник Али-Баба» и «Русалка»",https://jalita.com/big_yalta/alupka/ai-petry_monument_partizan.shtml
-52,T5,stratogaj,153,1,"Стратогай",https://jalita.com/big_yalta/gurzuf/babugan-yaila_index.shtml
-52,T5,legenda-o-kolybeli-spryatannoj-na-gore-basman,1015,0,"Легенда о колыбели, спрятанной на горе Басман",
-52,T5,peshhera-hod-konem,767,0,"Пещера Ход конем",
-52,T5,basman,760,0,"Басман",
-53,T5,peshhery-na-karabi-yajla,713,0,"Пещеры на Караби-яйла",
-53,T5,peshhera-tysyachegolovaya-na-chatyr-dage,698,0,"Пещера тысячеголовая на Чатыр-даге",
-53,T5,peshhera-soldatskaya,663,0,"Пещера «Солдатская»",
-53,T5,mramornaya-peshhera,659,0,"Мраморная пещера",
-53,T5,peshhera-golubinaya,641,0,"Пещера Голубиная",
-53,T5,aj-nikolskaya-peshhera,578,0,"Ай-Никольская пещера",
-53,T5,legendy-kiziltasha,558,0,"Легенды Кизилташа",
-53,T5,peshhera-grifon-derivat-krasnoj-peshhery,556,0,"Пещера Грифон — дериват Красной пещеры",
-53,T5,syundyurlyu-koba-potuhshaya-peshhera,530,0,"Сюндюрлю-Коба (Потухшая пещера)",
-53,T5,legenda-o-medved-gore,518,0,"Легенда о Медведь-горе",
-54,T5,partizanskaya-peshhera,515,0,"Партизанская пещера",
-54,T5,tavrskaya-peshhera,508,0,"Таврская пещера",
-54,T5,dacha-omyur,469,0,"Дача «Омюр»",
-54,T5,peshhera-paniya,444,0,"Пещера Пания",
-54,T5,dacha-gorbacheva-v-forose-obekt-zarya,443,0,"Дача Горбачева в Форосе, объект «Заря»",https://jalita.com/guidebook/gorbachev_foros.shtml
-54,T5,peshhera-monastyr-chokrak-su-teshigi,438,0,"Пещера Монастырь-Чокрак (Су-Тешиги)",https://jalita.com/guidebook/cave_crimea/kizil-koba/describe.shtml
-54,T5,peshhera-aleshina-voda,424,0,"Пещера Алешина вода",
-54,T5,peshhera-mramornaya,413,0,"Пещера Мраморная",
-54,T5,peshhera-eni-sala-2,410,0,"Пещера Ени-Сала-2",
-54,T5,legenda-o-vozniknovenii-georgievskogo-monastyrya,409,0,"Легенда о возникновении Георгиевского монастыря",
-55,T5,peshhera-krasnaya-kizil-koba,405,0,"Пещера Красная (Кизил-Коба)",
-55,T5,soldatskaya-peshhera,380,0,"Солдатская пещера",
-55,T5,peshhera-mar-hosar-marchenko,378,0,"Пещера Мар-Хосар (Марченко)",
-55,T5,peshhera-iograf,371,0,"Пещера Иограф",
-55,T5,zmeinaya-peshhera,362,0,"Змеиная пещера",
-55,T5,peshhera-syundyurlyu-kobasy,357,0,"Пещера Сюндюрлю-Кобасы",
-55,T5,proval-peshhera,342,0,"Провал, пещера",
-55,T5,peshhera-bezdonnaya,312,0,"Пещера Бездонная",
-55,T5,peshhera-binbash-koba,305,0,"Пещера Бинбаш-Коба",
-55,T5,peshhera-trehglazka,302,0,"Пещера «Трехглазка»",
-56,T5,karani-hoba-peshhera,296,0,"Карани-Хоба, пещера",
-56,T5,binbash-koba-tysyachegolovaya-peshhera,272,0,"Бинбаш-коба (Тысячеголовая пещера)",
-56,T5,peshhera-uzundzha,269,0,"Пещера Узунджа",
-56,T5,peshhera-pastuhova,256,0,"Пещера Пастухова",
-56,T5,peshhera-vyalova,249,0,"Пещера Вялова",
-56,T5,skala-shishko,249,0,"Скала Шишко",
-56,T5,konnye-tury-v-krymu,247,0,"Конные туры в Крыму",
-56,T5,vodopad-kozyrek,247,0,"Водопад Козырек",
-56,T5,peshhera-gvozdetskogo,246,0,"Пещера Гвоздецкого",
-56,T5,ekskursiya-puteshestvie-po-kachinskoj-doline-kryma,245,0,"Экскурсия – «Путешествие по Качинской долине Крыма»",
-57,T5,peshhera-kara-murza,245,0,"Пещера Кара-Мурза",
-57,T5,dzhip-tur-po-peshhernym-gorodam-kryma,244,0,"Джип тур «По пещерным городам Крыма»",
-57,T5,doroga-yalta-aj-petri-bahchisaraj,243,0,"Дорога Ялта — Ай-Петри — Бахчисарай",
-57,T5,chto-takoe-yajla,242,0,"Что такое «яйла»?",
-57,T5,karaul-oba,242,0,"Караул-Оба",
-57,T5,legendy-mangup-kale,238,0,"Легенды Мангуп-Кале (расширенная экскурсия)",
-57,T5,peshhera-mamina,237,0,"Пещера Мамина",
-57,T5,pravila-bronirovanija-turov,236,0,"Правила бронирования туров",
-57,T5,kil-v-doline-kachi,230,0,"Кил в долине Качи",
-57,T5,mogila-n-p-krivoshty,230,0,"Могила Н. П. Кривошты",
-58,T5,yaltinskaya-yajla,228,0,"Ялтинская яйла",https://jalita.com/guidebook/cave_crimea/iograf.shtml
-58,T5,yusupovskoe-ozero,226,0,"Юсуповское озеро",
-58,T5,krymskie-zemletryaseniya-v-literature,225,0,"Крымские землетрясения в литературе",
-58,T5,arpatskij-kanon,224,0,"Арпатский каньон",
-58,T5,hrebet-drakon-ili-aj-yuri,224,0,"Хребет Дракон или Ай-Юри",
-58,T5,vodopad-dzhur-dzhur,223,0,"Водопад Джур-Джур",
-58,T5,basman-5-im-dombrovskogo,222,0,"Басман-5 им. Домбровского",
-58,T5,bychya-peshhera,221,0,"Бычья пещера",
-58,T5,gugerdzhin-hosar-golubinyj-kolodets,218,0,"Гугерджин-Хосар (Голубиный колодец)",
-58,T5,peshhera-zhyoltaya-sary-koba,217,0,"Пещера Жёлтая (Сары-коба)",
-59,T5,pamyatnik-koshke-v-gurzufe,216,0,"Памятник кошке в Гурзуфе",
-59,T5,ekskursiya-v-nikitskij-botanicheskij-sad,215,0,"Экскурсия в Никитский ботанический сад",
-59,T5,nikitskaya-rasshhelina,211,0,"Никитская расщелина",
-59,T5,belbekskij-kanon-i-syujrenskaya-krepost,210,0,"Сюйреньская крепость и Бельбекский каньон Крыма экскурсия на джипе",
-59,T5,nikitskaya-yajla,209,0,"Никитская яйла",
-59,T5,kachi-kalon-i-skit-svyatoj-anastasii,207,0,"Экскурсия в пещерный город Качи Кальон и Бисерный Храм Анастасии Узорешительницы",
-59,T5,shahta-imeni-a-a-krubera,206,0,"Шахта имени А. А. Крубера",
-59,T5,shahta-kristalnaya-peshhera-maksimovicha,203,0,"Шахта Кристальная (пещера Максимовича)",
-59,T5,kizil-kaya,195,0,"Кизил-Кая",
-59,T5,peshhera-sezam,192,0,"Пещера Сезам",
-60,T5,treshhinnaya-im-dorofeeva-shahta,192,0,"Трещинная им. Дорофеева шахта",
-60,T5,molodezhnaya-peshhera,190,0,"Молодежная пещера",
-60,T5,averkieva-peshhera,189,0,"Аверкиева пещера",
-60,T5,skaly-adalary,189,0,"Скалы Адалары",
-60,T5,obval-v-kuchuk-koe-kuchuk-kojskij-opolzen,188,0,"Обвал в Кучук-Кое (Кучук-Койский оползень)",
-60,T5,shahta-im-norbera-kastere,188,0,"Шахта им. Норбера Кастере",
-60,T5,demir-kapu,185,0,"Демир-Капу",
-60,T5,pamyatnik-amet-hanu-sultanu,185,0,"Памятник Амет-хану Султану",
-60,T5,peshhera-terpi-koba,185,0,"Пещера Терпи-Коба",
-60,T5,peshhera-mira,181,0,"Пещера Мира",
-61,T5,taj-koba-gora,181,0,"Тай-Коба, гора",
-61,T5,pereval-gavrel-bogaz,180,0,"Перевал Гаврель-богаз",
-61,T5,cheremisovskie-vodopady,177,0,"Черемисовские водопады",
-61,T5,chernomorskij-kraevedcheskij-muzej,174,0,"Черноморский краеведческий музей",
-61,T5,skala-shalyapina,172,0,"Скала Шаляпина",
-61,T5,ekskursii-po-krymu,170,0,"Экскурсии по Крыму",
-61,T5,yaltinskaya-peshhera,169,0,"«Ялтинская» пещера",
-61,T5,basman-3-im-golovkinskogo,168,0,"Басман-3 им. Головкинского",
-61,T5,200-let-simferopolyu,166,0,"200 лет Симферополю",
-61,T5,vodopad-kobalar-kozyrek-peshhernyj-ovrag,166,0,"Водопад Кобалар (Козырек, «пещерный овраг»)",
-62,T5,mys-martyan,164,0,"Мыс Мартьян",
-62,T5,stratogaj-gol-1,164,0,"Стратогай-Голь 1",
-62,T5,peshhera-preobrazhenskogo,161,0,"Пещера Преображенского",
-62,T5,nahimovskaya-shahta,160,0,"Нахимовская шахта",
-62,T5,meteostantsiya-karabi-yajla,156,0,"Метеостанция «Караби-яйла»",
-62,T5,krymskaya-peshhera,154,0,"Крымская пещера",
-62,T5,pushkinskij-dub,154,0,"Пушкинский дуб",
-62,T5,serebryanaya-besedka,154,0,"Серебряная беседка",
-62,T5,basman-7-im-bachinskogo,153,0,"Басман-7 им. Бачинского",
-62,T5,aj-petrinskij-meridian,152,0,"Ай-Петринский меридиан",
-63,T5,peshhera-dublyanskogo,152,0,"Пещера Дублянского",
-63,T5,peshhera-nassonova-anlyusha,152,0,"Пещера Нассонова (Анлюша)",
-63,T5,krepost-asandra,148,0,"Крепость Асандра",
-63,T5,peshhera-imeni-radzievskogo,148,0,"Пещера имени Радзиевского",
-63,T5,shherbakov-mihail-fedorovich,147,0,"Щербаков Михаил Федорович",
-63,T5,suvorovskaya-peshhera,147,0,"Суворовская пещера",
-63,T5,tsabel-nikolaj-egorovich,143,0,"Цабель Николай Егорович",
-63,T5,shahta-syuyuryu-kaya,139,0,"Шахта Сююрю-Кая",
-63,T5,sevastopolskaya-peshhera,138,0,"Севастопольская пещера",
-63,T5,malaya-kaskadnaya-peshhera,136,0,"Малая Каскадная пещера",
-64,T5,kutlakskaya-krepost,135,0,"Кутлакская крепость",
-64,T5,mikryukovy,135,0,"Микрюковы",
-64,T5,kizil-kaya-bogaz,130,0,"Кизил-Кая-Богаз",
-64,T5,ushakovskaya-peshhera,129,0,"Ушаковская пещера",
-64,T5,gora-sokol,126,0,"Гора Сокол",
-64,T5,belbekskaya-tisovaya-roshha,125,0,"Бельбекская тисовая роща",
-64,T5,venta,122,0,"Вента",
-64,T5,stavrikajskaya-peshhera,120,0,"Ставрикайская пещера",
-64,T5,basman-6,118,0,"Басман-6",
-64,T5,mamontova-peshhera,118,0,"Мамонтова пещера",
-65,T5,peshhera-druzhba,118,0,"Пещера Дружба",
-65,T5,aryk-bashskaya-peshhera,116,0,"Арык-Башская пещера",
-65,T5,muzej-kamnya-partenit,116,0,"Музей камня (Партенит)",
-65,T5,snezhnaya-peshhera,116,0,"Снежная пещера",
-65,T5,karstovaya-shahta-kyoppena,113,0,"Карстовая шахта Кёппена",
-65,T5,peshhera-lyu-hosar,113,0,"Пещера Лю-Хосар",
-65,T5,70-let-sssr,111,0,"70 лет СССР",
-65,T5,vernadskogo-shahta,111,0,"Вернадского шахта",
-65,T5,peshhera-yubilejnaya,109,0,"Пещера Юбилейная",
-65,T5,tatar-jolu,109,0,"Татар-Йолу",
-66,T5,babuganskaya-peshhera,108,0,"Бабуганская пещера",
-66,T5,peshhera-zajtseva,108,0,"Пещера Зайцева",
-66,T5,peshhera-karabijskaya-1-telyachya,105,0,"Пещера Карабийская-1/Телячья",
-66,T5,peshhera-karabijskaya-3,105,0,"Пещера Карабийская-3",
-66,T5,kolonnada-v-nikitskom-botanicheskom-sadu,103,0,"Колоннада в Никитском ботаническом саду",
-66,T5,romanticheskie-ugolki-kryma-mesta-dlya-potseluev,102,0,"Романтические уголки Крыма: места для поцелуев",
-66,T5,peshhera-im-prof-bagrova,100,0,"Пещера им. проф. Багрова",
-66,T5,profsoyuznaya-peshhera,98,0,"Профсоюзная пещера",
-66,T5,kamnepadnaya-peshhera,95,0,"Камнепадная пещера",
-66,T5,dubovaya-peshhera,93,0,"Дубовая пещера",
-67,T5,peshhera-grot-kobazi,93,0,"Пещера (грот) Кобази",
-67,T5,stratogaj-gol-2,90,0,"Стратогай-Голь 2",
-67,T5,peshhera-elektra,87,0,"Пещера Электра",
-67,T5,peshhera-karabijskaya-2-im-kozina,87,0,"Пещера Карабийская-2 (им. Козина)",
-67,T5,rezonansnaya-peshhera,87,0,"Резонансная пещера",
-67,T5,nikitskij-pereval,86,0,"Никитский перевал",
-67,T5,shahta-gablitsa,86,0,"Шахта Габлица",
-67,T5,vizovskaya-peshhera,86,0,"Визовская пещера",
-67,T5,muzej-prirody-karadaga,83,0,"Музей природы Карадага",
-67,T5,peshhera-viola-egiz-tinah-3,83,0,"Пещера Виола (Эгиз-Тинах-3)",
-68,T5,shahta-morozova,81,0,"Шахта Морозова",
-68,T5,sotira-gora,80,0,"Сотира, гора",
-68,T5,fetta-gol,77,0,"Фетта-Голь",
-68,T5,peshhera-skazka,75,0,"Пещера Сказка",
-68,T5,vorontsovskij-dvorets,75,0,"Воронцовский дворец",
-68,T5,peshhera-kopchinskogo,72,0,"Пещера Копчинского",
-68,T5,peshhera-pallasa,72,0,"Пещера Палласа",
-68,T5,peshhera-vahrusheva,72,0,"Пещера Вахрушева",
-68,T5,shahta-vulfa,72,0,"Шахта Вульфа",
-68,T5,dubovaya-shahta,71,0,"Дубовая шахта",
-69,T5,karaul-kaya,71,0,"Караул-Кая",
-69,T5,shahta-troitskogo-harkovskaya,69,0,"Шахта Троицкого (Харьковская)",
-69,T5,ustreya-bogaz-astreya-bogaz-nikitskij-bogaz,69,0,"Устрея-Богаз, Астрея-Богаз, Никитский богаз",
-69,T5,palmovaya-alleya-v-nikitskom-botanicheskom-sadu,66,0,"Пальмовая аллея в Никитском ботаническом саду",
-69,T5,peshhera-kirillovskaya,65,0,"Пещера Кирилловская",
-69,T5,kurushlyuk-burun,62,0,"Курушлюк-Бурун",
-69,T5,moskovskaya,61,0,"Московская",
-69,T5,peshhera-vysotskogo,61,0,"Пещера Высоцкого",
-69,T5,gora-krokodil,57,0,"Гора Крокодил",
-69,T5,peshhera-shherbakova,57,0,"Пещера Щербакова",
-70,T5,matuba,56,0,"Матуба",
-70,T5,tropa-gavrel-bogaz,52,0,"Тропа Гаврель-богаз",
+46,T5,averkieva-peshhera,189,91,"Аверкиева пещера",https://jalita.com/guidebook/cave_crimea/averkieva.shtml
+46,T5,peshhery-babugana,176,91,"Пещеры Бабугана",https://jalita.com/big_yalta/gurzuf/babugan-yaila_cave.shtml
+47,T5,peshhery-yaltinskoj-yajly,92,91,"Пещеры Ялтинской яйлы",https://jalita.com/guidebook/crimea/yalta_yayla_cave.shtml
+47,T5,dacha-omyur,469,90,"Дача «Омюр»",https://jalita.com/big_yalta/chehov/omur.shtml
+47,T5,gurzufskaya-yajla,376,90,"Гурзуфская яйла",https://jalita.com/big_yalta/gurzuf/gurzufskaya_yaila.shtml
+47,T5,dacha-e-l-korobinoj-selyam,322,90,"Дача Е. Л. Коробьиной «Селям»",https://jalita.com/big_yalta/simeiz/villa_selyam.shtml
+47,T5,dacha-lansere-hrizolit,247,90,"Дача Лансере «Хризолит»",https://jalita.com/big_yalta/simeiz/villa_hrizolit.shtml
+47,T5,obval-v-kuchuk-koe-kuchuk-kojskij-opolzen,188,90,"Обвал в Кучук-Кое (Кучук-Койский оползень)",https://jalita.com/big_yalta/simeiz/landslip_story.shtml
+47,T5,pamyatnik-s-kurseitovu,167,90,"Памятник С. Курсеитову",https://jalita.com/guidebook/crimea/dolgoruk-yayla_kurseitov.shtml
+47,T5,dacha-nyukta,165,90,"Дача Нюкта",https://jalita.com/big_yalta/simeiz/villa_nukta.shtml
+47,T5,istoriya-alupki,103,90,"История Алупки",https://jalita.com/big_yalta/alupka/alupka.shtml
+47,T5,peshhera-aleshina-voda,424,89,"Пещера Алешина вода",https://jalita.com/guidebook/cave_crimea/alesha_water.shtml
+48,T5,chasovnya-vo-imya-svyatogo-nikolaya,173,89,"Часовня во имя святого Николая",https://jalita.com/big_yalta/yalta/chapel_sea.shtml
+48,T5,dinastiya-komstadiusov,894,88,"Династия Комстадиусов",https://jalita.com/big_yalta/mishor/komstadius.shtml
+48,T5,legenda-o-medved-gore,518,88,"Легенда о Медведь-горе",https://jalita.com/guidebook/legends/au-dag.shtml
+48,T5,ayanskaya-peshhera,437,88,"Аянская пещера",https://jalita.com/guidebook/cave_crimea/ayanskaya.shtml
+48,T5,dacha-stankevich-miro-mare,261,88,"Дача Станкевич «Миро-Маре»",https://jalita.com/big_yalta/simeiz/villa_miro-mare.shtml
+48,T5,dinastiya-shlee-v-simeize,236,88,"Династия Шлее в Симеизе",https://jalita.com/big_yalta/simeiz/shlee.shtml
+48,T5,mavzolej-dzhanike-hanym,235,88,"Мавзолей Джанике-ханым",https://jalita.com/guidebook/cave/mausoleum_djanikee.shtml
+48,T5,krymskie-zemletryaseniya-v-literature,225,88,"Крымские землетрясения в литературе",https://jalita.com/guidebook/crimea/earthquake.shtml
+48,T5,krymskij-gornyj-klub,159,88,"Крымский горный клуб",https://jalita.com/big_yalta/yalta/crimea_mount_club.shtml
+48,T5,pushkinskij-dub,154,88,"Пушкинский дуб",https://jalita.com/big_yalta/gurzuf/pushkin_oak.shtml
+49,T5,tavrskie-yashhiki-okolo-gory-aj-nikola,136,88,"Таврские ящики около горы Ай-Никола",https://jalita.com/big_yalta/oreanda/ai-nikola_mogil.shtml
+49,T5,peshhera-paniya,444,87,"Пещера Пания",https://jalita.com/guidebook/cave_crimea/pania.shtml
+49,T5,grot-cherepaha,245,87,"Грот Черепаха",https://jalita.com/guidebook/cave/kyz-kermen_cherepaha.shtml
+49,T5,dacha-subbotinoj,185,87,"Дача Субботиной",https://jalita.com/big_yalta/simeiz/villa_subbotinoy.shtml
+49,T5,snezhnaya-peshhera,116,87,"Снежная пещера",https://jalita.com/guidebook/cave_crimea/snejnaya.shtml
+49,T5,legenda-o-paragilmene,532,86,"Легенда о Парагильмене",https://jalita.com/guidebook/legends/paragilmen.shtml
+49,T5,skala-shishko,249,86,"Скала Шишко",https://jalita.com/big_yalta/forest/shishko.shtml
+49,T5,tavrskie-mogilniki-na-gore-koshka,238,86,"Таврские могильники на горе Кошка",https://jalita.com/big_yalta/simeiz/mountain_cat_mogil.shtml
+49,T5,yusupovskoe-ozero,226,86,"Юсуповское озеро",https://jalita.com/big_yalta/forest/usupov_lake.shtml
+49,T5,peshhera-emine-bair-hosar-2,793,85,"Пещера Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar.shtml
+50,T5,mramornaya-peshhera,659,85,"Мраморная пещера",https://jalita.com/guidebook/cave_crimea/marmoreal_cave.shtml
+50,T5,bolshoj-grot-s-istochnikom-kyz-kermen,249,85,"Большой грот с источником (Кыз-Кермен)",https://jalita.com/guidebook/cave/kyz-kermen_spring.shtml
+50,T5,basman-5-im-dombrovskogo,222,84,"Басман-5 им. Домбровского",https://jalita.com/guidebook/cave_crimea/basman-5.shtml
+50,T5,shherbakov-mihail-fedorovich,147,84,"Щербаков Михаил Федорович",https://jalita.com/big_yalta/nikita/scherbakov_m_f.shtml
+50,T5,ustreya-bogaz-astreya-bogaz-nikitskij-bogaz,69,84,"Устрея-Богаз, Астрея-Богаз, Никитский богаз",https://jalita.com/big_yalta/nikita/ustreya_bogaz.shtml
+50,T5,mastreiz-pritok,171,83,"Мастреиз, приток",https://jalita.com/big_yalta/yalta/mastreiz.shtml
+50,T5,nizhnij-kastropol-i-lesnaya-zona,157,83,"Нижний Кастрополь и лесная зона",https://jalita.com/big_yalta/kastropol/index.shtml
+50,T5,stratogaj,153,83,"Стратогай",https://jalita.com/big_yalta/gurzuf/stratogai.shtml
+50,T5,villa-barbo-maevka,148,83,"Вилла «Барбо» (Маевка)",https://jalita.com/big_yalta/mishor/maevka.shtml
+50,T5,tavrskaya-peshhera,508,82,"Таврская пещера",https://jalita.com/guidebook/cave_crimea/tavrskaya.shtml
+51,T5,peshhera-emine-bair-koba,456,82,"Пещера Эмине-Баир-Коба",https://jalita.com/guidebook/cave_crimea/emine-bair-koba.shtml
+51,T5,vodohranilishhe-sikorskogo,242,82,"Водохранилище Сикорского",https://jalita.com/big_yalta/alupka/reservoir_sikorskiy.shtml
+51,T5,zub-drevnego-nosoroga-v-peshhere-emine-bair-hosar,239,82,"Зуб древнего носорога в пещере Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_tooth.shtml
+51,T5,basman-3-im-golovkinskogo,168,82,"Басман-3 им. Головкинского",https://jalita.com/guidebook/cave_crimea/basman-3.shtml
+51,T5,peshhera-zajtseva,108,82,"Пещера Зайцева",https://jalita.com/guidebook/cave_crimea/zayceva.shtml
+51,T5,legendy-kryma,315,81,"Легенды Крыма",https://jalita.com/guidebook/legends/index.shtml
+51,T5,usadba-ustinova-vasil-saraj,208,81,"Усадьба Устинова «Василь-Сарай»",https://jalita.com/big_yalta/massandra/ustinov.shtml
+51,T5,dolgorukovskaya-yajla,669,80,"Долгоруковская яйла",https://jalita.com/guidebook/crimea/dolgoruk-yayla.shtml
+51,T5,barelef-a-nbsp-s-nbsp-pushkina,514,80,"Барельеф А. С. Пушкина",https://jalita.com/big_yalta/gurzuf/pushkin_bareljef.shtml
+51,T5,skala-shalyapina,172,80,"Скала Шаляпина",https://jalita.com/big_yalta/gurzuf/skala_shalyapina.shtml
+52,T5,stratogaj-gol-1,164,80,"Стратогай-Голь 1",https://jalita.com/big_yalta/gurzuf/stratogai.shtml
+52,T5,serebryanaya-besedka,154,80,"Серебряная беседка",https://jalita.com/big_yalta/forest/silver_rotonda.shtml
+52,T5,tsabel-nikolaj-egorovich,143,80,"Цабель Николай Егорович",https://jalita.com/big_yalta/nikita/tsabel_n_e.shtml
+52,T5,dacha-saklya-saburova,140,80,"Дача «Сакля Сабурова»",https://jalita.com/big_yalta/simeiz/villa_saburov.shtml
+52,T5,stavrikajskaya-peshhera,120,80,"Ставрикайская пещера",https://jalita.com/guidebook/cave_crimea/stavrikaiskaya.shtml
+52,T5,peshhera-viola-egiz-tinah-3,83,80,"Пещера Виола (Эгиз-Тинах-3)",https://jalita.com/guidebook/cave_crimea/viola.shtml
+52,T5,fetta-gol,77,80,"Фетта-Голь",https://jalita.com/guidebook/crimea/yalta_yayla_fetta_gol.shtml
+52,T5,peshhera-pastuhova,256,79,"Пещера Пастухова",https://jalita.com/guidebook/cave_crimea/pastuhova.shtml
+52,T5,doroga-yalta-aj-petri-bahchisaraj,243,79,"Дорога Ялта — Ай-Петри — Бахчисарай",https://jalita.com/big_yalta/forest/road_yalta_bahchisarai.shtml
+52,T5,vystavka-irisov-v-nikitskom-botanicheskom-sadu,224,79,"Выставка ирисов в Никитском ботаническом саду",https://jalita.com/big_yalta/nikita/iris.shtml
+53,T5,kiziltash,211,79,"Кизилташ",https://jalita.com/guidebook/crimea/kiziltash.shtml
+53,T5,stratogaj-gol-2,90,79,"Стратогай-Голь 2",https://jalita.com/big_yalta/gurzuf/stratogai.shtml
+53,T5,legendy-kiziltasha,558,78,"Легенды Кизилташа",https://jalita.com/guidebook/legends/kiziltash.shtml
+53,T5,kil-v-doline-kachi,230,78,"Кил в долине Качи",https://jalita.com/guidebook/crimea/kil_kacha.shtml
+53,T5,pamyatnik-koshke-v-gurzufe,216,78,"Памятник кошке в Гурзуфе",https://jalita.com/big_yalta/gurzuf/monument_cat.shtml
+53,T5,basman-7-im-bachinskogo,153,78,"Басман-7 им. Бачинского",https://jalita.com/guidebook/cave_crimea/basman-7.shtml
+53,T5,vorontsovskij-dvorets,75,78,"Воронцовский дворец",https://jalita.com/big_yalta/alupka/ab_castle.shtml
+53,T5,palmovaya-alleya-v-nikitskom-botanicheskom-sadu,66,78,"Пальмовая аллея в Никитском ботаническом саду",https://jalita.com/big_yalta/nikita/palm_path.shtml
+53,T5,peshhery-na-karabi-yajla,713,77,"Пещеры на Караби-яйла",https://jalita.com/guidebook/crimea/karabi-yayla_cave.shtml
+53,T5,peshhera-grifon-derivat-krasnoj-peshhery,556,77,"Пещера Грифон — дериват Красной пещеры",https://jalita.com/guidebook/cave_crimea/grifon.shtml
+54,T5,peshhera-sezam,192,77,"Пещера Сезам",https://jalita.com/guidebook/cave_crimea/sezam.shtml
+54,T5,krymskaya-peshhera,154,77,"Крымская пещера",https://jalita.com/guidebook/cave_crimea/krymskaya.shtml
+54,T5,peshhera-hod-konem,767,76,"Пещера Ход конем",https://jalita.com/guidebook/cave_crimea/hod_konem.shtml
+54,T5,peshhera-soldatskaya,663,76,"Пещера «Солдатская»",https://jalita.com/guidebook/cave_crimea/soldatskaya_pravda.shtml
+54,T5,babugan-yajla,605,76,"Бабуган-яйла",https://jalita.com/big_yalta/gurzuf/babugan-yaila.shtml
+54,T5,peshhera-uzundzha,269,76,"Пещера Узунджа",https://jalita.com/guidebook/cave_crimea/uzundja.shtml
+54,T5,yaltinskaya-yajla,228,76,"Ялтинская яйла",https://jalita.com/guidebook/crimea/yalta_yayla.shtml
+54,T5,ekskursiya-v-nikitskij-botanicheskij-sad,215,76,"Экскурсия в Никитский ботанический сад",https://jalita.com/big_yalta/nikita/excursion.shtml
+54,T5,dubovaya-shahta,71,76,"Дубовая шахта",https://jalita.com/guidebook/cave_crimea/dubovaya_chatyr-dag.shtml
+54,T5,karani-hoba-peshhera,296,75,"Карани-Хоба, пещера",https://jalita.com/guidebook/cave_crimea/karani-koba.shtml
+55,T5,bychya-peshhera,221,75,"Бычья пещера",https://jalita.com/guidebook/cave_crimea/bishya.shtml
+55,T5,treshhinnaya-im-dorofeeva-shahta,192,75,"Трещинная им. Дорофеева шахта",https://jalita.com/guidebook/cave_crimea/dorofeeva.shtml
+55,T5,peshhera-terpi-koba,185,75,"Пещера Терпи-Коба",https://jalita.com/guidebook/cave_crimea/terpi-koba.shtml
+55,T5,aj-petrinskij-meridian,152,75,"Ай-Петринский меридиан",https://jalita.com/big_yalta/alupka/ai-petry_meridian.shtml
+55,T5,peshhera-karabijskaya-3,105,75,"Пещера Карабийская-3",https://jalita.com/guidebook/cave_crimea/karabi-3.shtml
+55,T5,romanticheskie-ugolki-kryma-mesta-dlya-potseluev,102,75,"Романтические уголки Крыма: места для поцелуев",https://jalita.com/guidebook/crimea/romantic.shtml
+55,T5,basman,760,74,"Басман",https://jalita.com/big_yalta/forest/basman.shtml
+55,T5,aj-nikolskaya-peshhera,578,74,"Ай-Никольская пещера",https://jalita.com/guidebook/cave_crimea/ai-nikola.shtml
+55,T5,peshhera-gvozdetskogo,246,74,"Пещера Гвоздецкого",https://jalita.com/guidebook/cave_crimea/gvozdetskogo.shtml
+55,T5,kush-kaya-gora,186,74,"Куш-Кая, гора",https://jalita.com/big_yalta/laspi/kush-kaya.shtml
+56,T5,villa-anastasiya,173,74,"Вилла «Анастасия»",https://jalita.com/big_yalta/yalta/villa_anastasiya.shtml
+56,T5,mikryukovy,135,74,"Микрюковы",https://jalita.com/guidebook/crimea/mikrukovy.shtml
+56,T5,muzei-kryma,76,74,"Музеи Крыма",https://jalita.com/guidebook/crimea/musems.shtml
+56,T5,peshhera-golubinaya,641,73,"Пещера Голубиная",https://jalita.com/guidebook/cave_crimea/golubinaya.shtml
+56,T5,chto-takoe-yajla,242,73,"Что такое «яйла»?",https://jalita.com/guidebook/crimea/mountain_pasture.shtml
+56,T5,peshhera-preobrazhenskogo,161,73,"Пещера Преображенского",https://jalita.com/guidebook/cave_crimea/preobrajenskogo.shtml
+56,T5,dacha-zykovoj,133,73,"Дача Зыковой",https://jalita.com/big_yalta/simeiz/villa_zykovoy.shtml
+56,T5,stavrikajskaya-tropa,118,73,"Ставрикайская тропа",https://jalita.com/big_yalta/yalta/stavrikaya_path.shtml
+56,T5,peshhera-lyu-hosar,113,73,"Пещера Лю-Хосар",https://jalita.com/guidebook/cave_crimea/lu-hosar.shtml
+56,T5,peshhera-yubilejnaya,109,73,"Пещера Юбилейная",https://jalita.com/guidebook/cave_crimea/jubileinaya.shtml
+57,T5,syundyurlyu-koba-potuhshaya-peshhera,530,72,"Сюндюрлю-Коба (Потухшая пещера)",https://jalita.com/guidebook/cave_crimea/sundurlu-koba.shtml
+57,T5,binbash-koba-tysyachegolovaya-peshhera,272,72,"Бинбаш-коба (Тысячеголовая пещера)",https://jalita.com/guidebook/cave_crimea/binbash-koba.shtml
+57,T5,peshhera-kara-murza,245,72,"Пещера Кара-Мурза",https://jalita.com/guidebook/cave_crimea/kara-murza.shtml
+57,T5,molodezhnaya-peshhera,190,72,"Молодежная пещера",https://jalita.com/guidebook/cave_crimea/molodejnaya.shtml
+57,T5,voshod-poselok,176,72,"Восход, поселок",https://jalita.com/big_yalta/massandra/voshod.shtml
+57,T5,70-let-sssr,111,72,"70 лет СССР",https://jalita.com/guidebook/cave_crimea/70_ussr.shtml
+57,T5,peshhera-grot-kobazi,93,72,"Пещера (грот) Кобази",https://jalita.com/guidebook/cave_crimea/kobazi.shtml
+57,T5,chto-takoe-tip-bazilika,87,72,"Что такое тип «базилика»?",https://jalita.com/guidebook/crimea/bazilika.shtml
+57,T5,tropa-gavrel-bogaz,52,72,"Тропа Гаврель-богаз",https://jalita.com/big_yalta/forest/gavrel-bogaz.shtml
+57,T5,peshhera-kizil-koba-krasnaya,459,71,"Пещера Кизил-Коба (Красная)",https://jalita.com/guidebook/cave_crimea/kizil-koba/index.shtml
+58,T5,dacha-gorbacheva-v-forose-obekt-zarya,443,71,"Дача Горбачева в Форосе, объект «Заря»",https://jalita.com/big_yalta/simeiz/villa_gorbacheva.shtml
+58,T5,shahta-kristalnaya-peshhera-maksimovicha,203,71,"Шахта Кристальная (пещера Максимовича)",https://jalita.com/guidebook/cave_crimea/kristalnaya.shtml
+58,T5,peshhera-imeni-radzievskogo,148,71,"Пещера имени Радзиевского",https://jalita.com/guidebook/cave_crimea/radzievskogo.shtml
+58,T5,moskovskaya,61,71,"Московская",https://jalita.com/guidebook/cave_crimea/moscow.shtml
+58,T5,peshhera-monastyr-chokrak-su-teshigi,438,70,"Пещера Монастырь-Чокрак (Су-Тешиги)",https://jalita.com/guidebook/cave_crimea/monastyr-chokrak.shtml
+58,T5,peshhera-mar-hosar-marchenko,378,70,"Пещера Мар-Хосар (Марченко)",https://jalita.com/guidebook/cave_crimea/marchenko.shtml
+58,T5,peshhera-vyalova,249,70,"Пещера Вялова",https://jalita.com/guidebook/cave_crimea/vyalova.shtml
+58,T5,alimova-peshhera,175,70,"Алимова пещера",https://jalita.com/guidebook/cave_crimea/alimova_simf.shtml
+58,T5,peshhera-dublyanskogo,152,70,"Пещера Дублянского",https://jalita.com/guidebook/cave_crimea/dublyanskogo_karabi.shtml
+58,T5,karstovaya-shahta-kyoppena,113,70,"Карстовая шахта Кёппена",https://jalita.com/guidebook/cave_crimea/keppen.shtml
+59,T5,kutuzovskij-fontan,96,70,"Кутузовский фонтан",https://jalita.com/big_yalta/road/kutuzov.shtml
+59,T5,peshhera-adzhi-koba,319,69,"Пещера Аджи-Коба",https://jalita.com/guidebook/cave_crimea/adji-koba.shtml
+59,T5,gugerdzhin-hosar-golubinyj-kolodets,218,69,"Гугерджин-Хосар (Голубиный колодец)",https://jalita.com/guidebook/cave_crimea/gugerdjin.shtml
+59,T5,klimat-dolgorukovskoj-yajly,190,69,"Климат Долгоруковской яйлы",https://jalita.com/guidebook/crimea/dolgoruk-yayla_climate.shtml
+59,T5,kamnepadnaya-peshhera,95,69,"Камнепадная пещера",https://jalita.com/guidebook/cave_crimea/kamnepadnaya.shtml
+59,T5,karaul-kaya,71,69,"Караул-Кая",https://jalita.com/big_yalta/forest/boika_karaul-kaya.shtml
+59,T5,shahta-syuyuryu-kaya,139,68,"Шахта Сююрю-Кая",https://jalita.com/guidebook/cave_crimea/suruu.shtml
+59,T5,kurushlyuk-burun,62,68,"Курушлюк-Бурун",https://jalita.com/big_yalta/forest/boika_kurushluk.shtml
+59,T5,200-let-simferopolyu,166,67,"200 лет Симферополю",https://jalita.com/guidebook/cave_crimea/200_simferopol.shtml
+59,T5,kizil-kaya-bogaz,130,67,"Кизил-Кая-Богаз",https://jalita.com/big_yalta/forest/kizil-kaya_bogaz.shtml
+60,T5,pushkinskij-grot-i-skala,205,66,"Пушкинский грот и скала",https://jalita.com/big_yalta/gurzuf/pushkin_grotto.shtml
+60,T5,matuba,56,66,"Матуба",https://jalita.com/guidebook/cave_crimea/matuba.shtml
+60,T5,peshhera-mamina,237,65,"Пещера Мамина",https://jalita.com/guidebook/cave_crimea/mamina.shtml
+60,T5,pereval-gavrel-bogaz,180,65,"Перевал Гаврель-богаз",https://jalita.com/big_yalta/forest/gavrel-bogaz.shtml
+60,T5,peshhera-nassonova-anlyusha,152,65,"Пещера Нассонова (Анлюша)",https://jalita.com/guidebook/cave_crimea/nassonova.shtml
+60,T5,shahta-troitskogo-harkovskaya,69,65,"Шахта Троицкого (Харьковская)",https://jalita.com/guidebook/cave_crimea/troickogo.shtml
+60,T5,peshhera-skazka,75,64,"Пещера Сказка",https://jalita.com/guidebook/cave_crimea/skazka_karabi.shtml
+60,T5,peshhera-dzhur-dzhur,208,63,"Пещера Джур-Джур",https://jalita.com/guidebook/cave_crimea/djur-djur_cave.shtml
+60,T5,shahta-imeni-a-a-krubera,206,63,"Шахта имени А. А. Крубера",https://jalita.com/guidebook/cave_crimea/krubera.shtml
+60,T5,peshhera-mira,181,63,"Пещера Мира",https://jalita.com/guidebook/cave_crimea/mira.shtml
+61,T5,dubovaya-peshhera,93,63,"Дубовая пещера",https://jalita.com/guidebook/cave_crimea/dubovaya.shtml
+61,T5,nikitskij-pereval,86,63,"Никитский перевал",https://jalita.com/big_yalta/nikita/nikita_pass.shtml
+61,T5,shahta-morozova,81,63,"Шахта Морозова",https://jalita.com/guidebook/cave_crimea/morozova.shtml
+61,T5,proval-peshhera,342,62,"Провал, пещера",https://jalita.com/guidebook/cave_crimea/proval.shtml
+61,T5,suvorovskaya-peshhera,147,62,"Суворовская пещера",https://jalita.com/guidebook/cave_crimea/suvorov.shtml
+61,T5,sotira-gora,80,62,"Сотира, гора",https://jalita.com/big_yalta/forest/boika_sotira.shtml
+61,T5,aj-petrinskaya-yajla,378,61,"Ай-Петринская яйла",https://jalita.com/big_yalta/alupka/ai-petry_yayla.shtml
+61,T5,babuganskaya-peshhera,108,61,"Бабуганская пещера",https://jalita.com/guidebook/cave_crimea/babuganskaya.shtml
+61,T5,obelisk-v-alushte-nad-bratskoj-mogiloj,101,61,"Обелиск в Алуште над братской могилой",https://jalita.com/big_yalta/road/alushta.shtml
+61,T5,fontan-slyoz-v-nikitskom-botanicheskom-sadu,86,61,"Фонтан слёз в Никитском ботаническом саду",https://jalita.com/big_yalta/nikita/monuments.shtml
+62,T5,partizanskij-rodnik-ladoshki,244,60,"Партизанский родник «Ладошки»",https://jalita.com/guidebook/crimea/dolgoruk-yayla_slide.shtml
+62,T5,nikitskaya-yajla,209,60,"Никитская яйла",https://jalita.com/big_yalta/nikita/nikita_yaila.shtml
+62,T5,nahimovskaya-shahta,160,60,"Нахимовская шахта",https://jalita.com/guidebook/cave_crimea/nahimova.shtml
+62,T5,taj-koba-gora,181,59,"Тай-Коба, гора",https://jalita.com/guidebook/crimea/tay_koba.shtml
+62,T5,vodopad-kobalar-kozyrek-peshhernyj-ovrag,166,59,"Водопад Кобалар (Козырек, «пещерный овраг»)",https://jalita.com/big_yalta/simeiz/waterfall_kobalar-su.shtml
+62,T5,peshhera-im-prof-bagrova,100,59,"Пещера им. проф. Багрова",https://jalita.com/guidebook/cave_crimea/bagrova.shtml
+62,T5,peshhera-vahrusheva,72,59,"Пещера Вахрушева",https://jalita.com/guidebook/cave_crimea/vahrusheva.shtml
+62,T5,ostanki-bizona-v-peshhere-emine-bair-hosar,186,58,"Останки бизона в пещере Эмине-Баир-Хосар",https://jalita.com/guidebook/cave_crimea/emine-bair-hosar_bizon.shtml
+62,T5,peshhera-shherbakova,57,57,"Пещера Щербакова",https://jalita.com/guidebook/cave_crimea/scherbaka.shtml
+62,T5,shahta-im-norbera-kastere,188,56,"Шахта им. Норбера Кастере",https://jalita.com/guidebook/cave_crimea/kastere.shtml
+63,T5,demir-kapu,185,56,"Демир-Капу",https://jalita.com/big_yalta/forest/demir-kapu_mountin.shtml
+63,T5,belbekskaya-tisovaya-roshha,125,56,"Бельбекская тисовая роща",https://jalita.com/guidebook/crimea/belbek_tis.shtml
+63,T5,mys-martyan,164,55,"Мыс Мартьян",https://jalita.com/big_yalta/nikita/forest_martyan.shtml
+63,T5,sevastopolskaya-peshhera,138,55,"Севастопольская пещера",https://jalita.com/guidebook/cave_crimea/sevastopolskaya.shtml
+63,T5,venta,122,55,"Вента",https://jalita.com/guidebook/cave_crimea/venta.shtml
+63,T5,shahta-gablitsa,86,55,"Шахта Габлица",https://jalita.com/guidebook/cave_crimea/gablica.shtml
+63,T5,peshehodno-velosipednaya-tropa-evrejskaya,232,54,"Пешеходно-велосипедная тропа «Еврейская»",https://jalita.com/big_yalta/simeiz/evreika.shtml
+63,T5,mogila-n-p-krivoshty,230,53,"Могила Н. П. Кривошты",https://jalita.com/big_yalta/forest/basman_krivoshta.shtml
+63,T5,skulpturnaya-kompozitsiya-devushka-arzy-i-razbojnik-ali-baba-i-rusalka,177,53,"Скульптурная композиция «Девушка Арзы и разбойник Али-Баба» и «Русалка»",https://jalita.com/big_yalta/mishor/mermaid.shtml
+63,T5,malaya-kaskadnaya-peshhera,136,53,"Малая Каскадная пещера",https://jalita.com/guidebook/cave_crimea/mal_kaskad.shtml
+64,T5,vernadskogo-shahta,111,53,"Вернадского шахта",https://jalita.com/guidebook/cave_crimea/vernadskogo.shtml
+64,T5,peshhera-pestovskogo,34,53,"Пещера Пестовского",https://jalita.com/guidebook/cave_crimea/pestovskogo.shtml
+64,T5,aryk-bashskaya-peshhera,116,52,"Арык-Башская пещера",https://jalita.com/guidebook/cave_crimea/aryk-bashskaya.shtml
+64,T5,peshhera-kirillovskaya,65,52,"Пещера Кирилловская",https://jalita.com/guidebook/cave_crimea/kirilovskaya.shtml
+64,T5,peshhera-zhyoltaya-sary-koba,217,51,"Пещера Жёлтая (Сары-коба)",https://jalita.com/guidebook/cave_crimea/yellow.shtml
+64,T5,peshhera-druzhba,118,51,"Пещера Дружба",https://jalita.com/guidebook/cave_crimea/drujba.shtml
+64,T5,balan-kaya,75,51,"Балан-Кая",https://jalita.com/big_yalta/yalta/balan-kaya.shtml
+64,T5,zemlyatresenie-1927-goda-v-yalte,152,50,"Землятресение 1927 года в Ялте",https://jalita.com/big_yalta/swallow_nest/earthquake.shtml
+64,T5,peshhera-karabijskaya-1-telyachya,105,50,"Пещера Карабийская-1/Телячья",https://jalita.com/guidebook/cave_crimea/karabi-1.shtml
+64,T5,kolonnada-v-nikitskom-botanicheskom-sadu,103,50,"Колоннада в Никитском ботаническом саду",https://jalita.com/big_yalta/nikita/colonnade.shtml
+65,T5,ushakovskaya-peshhera,129,49,"Ушаковская пещера",https://jalita.com/guidebook/cave_crimea/ushakov.shtml
+65,T5,peshhera-karabijskaya-2-im-kozina,87,49,"Пещера Карабийская-2 (им. Козина)",https://jalita.com/guidebook/cave_crimea/karabi-2.shtml
+65,T5,shahta-vulfa,72,49,"Шахта Вульфа",https://jalita.com/guidebook/cave_crimea/vulfa.shtml
+65,T5,rezonansnaya-peshhera,87,47,"Резонансная пещера",https://jalita.com/guidebook/cave_crimea/rezonansnaya.shtml
+65,T5,peshhera-pallasa,72,47,"Пещера Палласа",https://jalita.com/guidebook/cave_crimea/pallasa.shtml
+65,T5,korabl-spetsialnogo-naznacheniya-krym,120,46,"Корабль специального назначения «Крым»",https://jalita.com/big_yalta/yalta/ship_crimea.shtml
+65,T5,profsoyuznaya-peshhera,98,46,"Профсоюзная пещера",https://jalita.com/guidebook/cave_crimea/profsouznaya.shtml
+65,T5,peshhera-afanaseva,48,46,"Пещера Афанасьева",https://jalita.com/guidebook/cave_crimea/afanasiev.shtml
+65,T5,vizovskaya-peshhera,86,44,"Визовская пещера",https://jalita.com/guidebook/cave_crimea/vizovskaya.shtml
+65,T5,peshhera-vysotskogo,61,43,"Пещера Высоцкого",https://jalita.com/guidebook/cave_crimea/vysockiy.shtml
+66,T5,meteostantsiya-karabi-yajla,156,42,"Метеостанция «Караби-яйла»",https://jalita.com/guidebook/crimea/karabi-yayla_meteo.shtml
+66,T5,basman-6,118,41,"Басман-6",https://jalita.com/guidebook/cave_crimea/basman-6.shtml
+66,T5,ke-105-peshhera,93,41,"КЭ-105, пещера",https://jalita.com/guidebook/cave_crimea/ke-105.shtml
+66,T5,mamontova-peshhera,118,40,"Мамонтова пещера",https://jalita.com/guidebook/cave_crimea/mamontova.shtml
+66,T5,peshhera-elektra,87,40,"Пещера Электра",https://jalita.com/guidebook/cave_crimea/elektra.shtml
+66,T5,peshhera-grina,32,35,"Пещера Грина",https://jalita.com/guidebook/cave_crimea/grina.shtml
+66,T5,bedene-kyr,136,27,"Бедене-Кыр",https://jalita.com/big_yalta/forest/bedene-kyr.shtml
+66,T5,peshhera-boj-chukan,32,26,"Пещера Бой-Чукан",https://jalita.com/guidebook/cave_crimea/boi-chukan.shtml
+66,T5,peshhera-kopchinskogo,72,18,"Пещера Копчинского",https://jalita.com/guidebook/cave_crimea/kopchinskogo.shtml
+66,T5,otradnoe,197,10,"Отрадное",https://jalita.com/big_yalta/massandra/otradnoe.shtml
+67,T5,zimnie-tury-v-krymu,232,1,"Зимние Туры в Крыму",https://jalita.com/big_yalta/alupka/ai-petry_climate.shtml
+67,T5,peshhera-mramornaya,413,0,"Пещера Мраморная",
+67,T5,peshhera-eni-sala-2,410,0,"Пещера Ени-Сала-2",
+67,T5,peshhera-krasnaya-kizil-koba,405,0,"Пещера Красная (Кизил-Коба)",
+67,T5,soldatskaya-peshhera,380,0,"Солдатская пещера",
+67,T5,peshhera-iograf,371,0,"Пещера Иограф",
+67,T5,zmeinaya-peshhera,362,0,"Змеиная пещера",
+67,T5,peshhera-syundyurlyu-kobasy,357,0,"Пещера Сюндюрлю-Кобасы",
+67,T5,peshhera-bezdonnaya,312,0,"Пещера Бездонная",
+67,T5,peshhera-binbash-koba,305,0,"Пещера Бинбаш-Коба",
+68,T5,peshhera-trehglazka,302,0,"Пещера «Трехглазка»",
+68,T5,konnye-tury-v-krymu,247,0,"Конные туры в Крыму",
+68,T5,vodopad-kozyrek,247,0,"Водопад Козырек",
+68,T5,ekskursiya-puteshestvie-po-kachinskoj-doline-kryma,245,0,"Экскурсия – «Путешествие по Качинской долине Крыма»",
+68,T5,dzhip-tur-po-peshhernym-gorodam-kryma,244,0,"Джип тур «По пещерным городам Крыма»",
+68,T5,karaul-oba,242,0,"Караул-Оба",
+68,T5,legendy-mangup-kale,238,0,"Легенды Мангуп-Кале (расширенная экскурсия)",
+68,T5,pravila-bronirovanija-turov,236,0,"Правила бронирования туров",
+68,T5,arpatskij-kanon,224,0,"Арпатский каньон",
+68,T5,hrebet-drakon-ili-aj-yuri,224,0,"Хребет Дракон или Ай-Юри",
+69,T5,vodopad-dzhur-dzhur,223,0,"Водопад Джур-Джур",
+69,T5,nikitskaya-rasshhelina,211,0,"Никитская расщелина",
+69,T5,belbekskij-kanon-i-syujrenskaya-krepost,210,0,"Сюйреньская крепость и Бельбекский каньон Крыма экскурсия на джипе",
+69,T5,kachi-kalon-i-skit-svyatoj-anastasii,207,0,"Экскурсия в пещерный город Качи Кальон и Бисерный Храм Анастасии Узорешительницы",
+69,T5,skaly-adalary,189,0,"Скалы Адалары",
+69,T5,pamyatnik-amet-hanu-sultanu,185,0,"Памятник Амет-хану Султану",
+69,T5,cheremisovskie-vodopady,177,0,"Черемисовские водопады",
+69,T5,chernomorskij-kraevedcheskij-muzej,174,0,"Черноморский краеведческий музей",
+69,T5,ekskursii-po-krymu,170,0,"Экскурсии по Крыму",
+69,T5,yaltinskaya-peshhera,169,0,"«Ялтинская» пещера",
+70,T5,krepost-asandra,148,0,"Крепость Асандра",
+70,T5,kutlakskaya-krepost,135,0,"Кутлакская крепость",
+70,T5,gora-sokol,126,0,"Гора Сокол",
+70,T5,muzej-kamnya-partenit,116,0,"Музей камня (Партенит)",
+70,T5,muzej-prirody-karadaga,83,0,"Музей природы Карадага",
+70,T5,gora-krokodil,57,0,"Гора Крокодил",
 70,T5,otzyvy-o-ekskursiyah-bahchisaraj-kompanii-energy-tour,48,0,"Отзывы о экскурсиях Бахчисарай компании Energy-Tour",
-70,T5,peshhera-afanaseva,48,0,"Пещера Афанасьева",
-70,T5,peshhera-pestovskogo,34,0,"Пещера Пестовского",
-70,T5,peshhera-boj-chukan,32,0,"Пещера Бой-Чукан",
-70,T5,peshhera-grina,32,0,"Пещера Грина",
 70,T6,istoriya-stroitelstva-massandrovskogo-dvortsa-3,775,98,"История строительства Массандровского дворца",https://jalita.com/big_yalta/massandra/palace_alexandr_1.shtml
 70,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-8,618,97,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/main_dining_room.shtml
 70,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-2,527,97,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/bathroom.shtml
@@ -707,8 +707,10 @@ batch,tier,slug,words,dup_pct,title,src
 71,T6,dolgorukovskaya-yajla-2,493,95,"Долгоруковская яйла",https://jalita.com/guidebook/crimea/dolgoruk-yayla_flora.shtml
 71,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-10,89,95,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/exposition.shtml
 71,T6,dom-muzej-a-p-chehova-v-yalte-8,788,94,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/room_knipper.shtml
+71,T6,arhitektura-vorontsovskogo-dvortsa-2,598,94,"Архитектура Воронцовского дворца",https://jalita.com/big_yalta/alupka/ab_castle.shtml
 71,T6,dom-muzej-a-p-chehova-v-yalte-9,525,94,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/room_relation.shtml
-71,T6,ekspozitsiya-alupkinskogo-dvortsa-5,360,94,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/lounge.shtml
+72,T6,pushkinskaya-tropa-doroga-nikuda-2,504,94,"Пушкинская тропа. Дорога никуда",https://jalita.com/big_yalta/gurzuf/pushkin_path.shtml
+72,T6,ekspozitsiya-alupkinskogo-dvortsa-5,360,94,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/lounge.shtml
 72,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-4,1291,93,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/billiard_room.shtml
 72,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-11,234,93,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/waiting_room_her_majesty.shtml
 72,T6,istoriya-stroitelstva-massandrovskogo-dvortsa-2,1157,92,"История строительства Массандровского дворца",https://jalita.com/big_yalta/massandra/palace_alexandr.shtml
@@ -717,8 +719,8 @@ batch,tier,slug,words,dup_pct,title,src
 72,T6,dom-muzej-a-p-chehova-v-yalte-6,601,92,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/room_eachehova.shtml
 72,T6,barelef-a-s-pushkina,499,92,"Барельеф А. С. Пушкина",https://jalita.com/big_yalta/gurzuf/pushkin_bareljef.shtml
 72,T6,dom-muzej-a-p-chehova-v-yalte-3,470,92,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/dining_room.shtml
-72,T6,dom-muzej-a-p-chehova-v-yalte-11,115,92,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/second_floor.shtml
-72,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-9,1392,91,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/cabinet_her_majesty.shtml
+73,T6,dom-muzej-a-p-chehova-v-yalte-11,115,92,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/second_floor.shtml
+73,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-9,1392,91,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/cabinet_her_majesty.shtml
 73,T6,ekspozitsiya-vorontsovskogo-dvortsa-3,414,91,"Экспозиция Воронцовского дворца",https://jalita.com/big_yalta/alupka/dining_room.shtml
 73,T6,ekspozitsiya-alupkinskogo-dvortsa-2,351,91,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/library.shtml
 73,T6,dom-muzej-a-p-chehova-v-yalte-10,122,91,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/veranda.shtml
@@ -727,33 +729,31 @@ batch,tier,slug,words,dup_pct,title,src
 73,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-3,496,89,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/bedchamber_their_majesty.shtml
 73,T6,arhitektura-livadijskogo-dvortsa-3,471,89,"Архитектура Ливадийского дворца",https://jalita.com/big_yalta/livadia/architecture_livadia_2.shtml
 73,T6,ekspozitsiya-vorontsovskogo-dvortsa,318,89,"Экспозиция Воронцовского дворца",https://jalita.com/big_yalta/alupka/chinese_cabinet.shtml
-73,T6,fontan-laquo-noch-raquo,193,89,"Фонтан «Ночь»",https://jalita.com/big_yalta/gurzuf/fountain_night.shtml
-73,T6,dom-muzej-a-p-chehova-v-yalte-7,1107,88,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/room_guest.shtml
+74,T6,fontan-laquo-noch-raquo,193,89,"Фонтан «Ночь»",https://jalita.com/big_yalta/gurzuf/fountain_night.shtml
+74,T6,dom-muzej-a-p-chehova-v-yalte-7,1107,88,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/room_guest.shtml
 74,T6,gurzuf-2,992,88,"Гурзуф",https://jalita.com/big_yalta/gurzuf/index.shtml
 74,T6,nikitskij-botanicheskij-sad-2,425,88,"Никитский ботанический сад",https://jalita.com/big_yalta/nikita/calendar.shtml
 74,T6,ekspozitsiya-alupkinskogo-dvortsa,361,88,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/exposition.shtml
 74,T6,ekspozitsiya-alupkinskogo-dvortsa-4,391,87,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/main_cabinet.shtml
 74,T6,arhitektura-livadijskogo-dvortsa-4,206,87,"Архитектура Ливадийского дворца",https://jalita.com/big_yalta/livadia/architecture_livadia.shtml
+74,T6,alupka-2,874,86,"Алупка",https://jalita.com/big_yalta/alupka/index.shtml
 74,T6,ekspozitsiya-alupkinskogo-dvortsa-7,350,86,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/upholstered_room.shtml
 74,T6,ekspozitsiya-alupkinskogo-dvortsa-6,293,86,"Экспозиция Алупкинского дворца",https://jalita.com/big_yalta/alupka/winter_garden.shtml
-74,T6,dom-muzej-a-p-chehova-v-yalte-2,592,85,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/bedroom.shtml
-74,T6,ekspozitsiya-vorontsovskogo-dvortsa-4,218,83,"Экспозиция Воронцовского дворца",https://jalita.com/big_yalta/alupka/dressing_room.shtml
-74,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-12,1936,80,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/waiting_room_his_majesty.shtml
+75,T6,dom-muzej-a-p-chehova-v-yalte-2,592,85,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/bedroom.shtml
+75,T6,ekspozitsiya-vorontsovskogo-dvortsa-4,218,83,"Экспозиция Воронцовского дворца",https://jalita.com/big_yalta/alupka/dressing_room.shtml
+75,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-12,1936,80,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/waiting_room_his_majesty.shtml
 75,T6,arhitektura-livadijskogo-dvortsa-5,293,79,"Архитектура Ливадийского дворца",https://jalita.com/big_yalta/livadia/architecture_livadia_4.shtml
-75,T6,skala-parus-2,142,78,"Скала Парус",https://jalita.com/big_yalta/swallow_nest/rock_parus.shtml
-75,T6,krasnokamenka,587,73,"Краснокаменка",https://jalita.com/big_yalta/gurzuf/krasnokamenka.shtml
+75,T6,skala-parus-2,142,79,"Скала Парус",https://jalita.com/big_yalta/swallow_nest/rock_parus.shtml
+75,T6,simeiz-2,1403,75,"Симеиз",https://jalita.com/big_yalta/simeiz/simeiz.shtml
+75,T6,krasnokamenka,587,74,"Краснокаменка",https://jalita.com/big_yalta/gurzuf/krasnokamenka.shtml
 75,T6,livadiya-2,631,71,"Ливадия",https://jalita.com/big_yalta/livadia/livadia.shtml
 75,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya,884,64,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/exposition.shtml
 75,T6,ekspozitsiya-massandrovskogo-dvortsa-muzeya-6,279,63,"Экспозиция Массандровского дворца-музея",https://jalita.com/big_yalta/massandra/exposition.shtml
-75,T6,dom-muzej-a-p-chehova-v-yalte-5,1148,60,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/living_room.shtml
-75,T6,kachi-kalon-2,245,15,"Качи-Кальон",https://jalita.com/guidebook/cave/kachi-kalion.shtml
-75,T6,simeiz-3,1813,2,"Симеиз",https://jalita.com/guidebook/palace.shtml
-75,T6,simeiz-2,1403,0,"Симеиз",https://jalita.com/big_yalta/simeiz/ponizovka.shtml
-76,T6,yalta,1034,0,"Ялта",
-76,T6,alupka-2,874,0,"Алупка",
+76,T6,dom-muzej-a-p-chehova-v-yalte-5,1148,60,"Дом-музей А. П. Чехова в Ялте",https://jalita.com/big_yalta/chehov/living_room.shtml
+76,T5,kachi-kalon-2,245,15,"Качи-Кальон",https://jalita.com/guidebook/cave/kachi-kalion.shtml
+76,T6,yalta,1034,11,"Ялта",https://jalita.com/big_yalta/yalta/yalta.shtml
+76,T6,simeiz-3,1813,2,"Симеиз",https://jalita.com/guidebook/palace.shtml
 76,T6,peshhera-emine-bair-hosar,642,0,"Пещера Эмине Баир Хосар",
-76,T6,arhitektura-vorontsovskogo-dvortsa-2,598,0,"Архитектура Воронцовского дворца",
-76,T6,pushkinskaya-tropa-doroga-nikuda-2,504,0,"Пушкинская тропа. Дорога никуда",
 76,T6,skelskaya-peshhera,431,0,"Скельская пещера",
 76,T6,ekaterininskie-mili,329,0,"Екатерининские мили",
 76,T6,besedka-vetrov,274,0,"Беседка ветров",

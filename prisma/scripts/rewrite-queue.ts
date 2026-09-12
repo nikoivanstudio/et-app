@@ -107,6 +107,17 @@ const readDuplicates = async (): Promise<
   return map;
 };
 
+/** Порядок слагов из уже собранной очереди, если она есть. */
+const readOrder = async (): Promise<string[]> => {
+  if (!existsSync(QUEUE)) {
+    return [];
+  }
+
+  const [, ...lines] = (await readFile(QUEUE, 'utf8')).trim().split('\n');
+
+  return lines.map(line => line.split(',')[2]).filter(Boolean);
+};
+
 const main = async () => {
   const duplicates = await readDuplicates();
 
@@ -172,6 +183,30 @@ const main = async () => {
       b.pct - a.pct ||
       b.words - a.words
   );
+
+  // Порядок страниц, уже стоявших в очереди, сохраняется.
+  //
+  // Иначе пересборка после залитой порции перетасовывала бы номера:
+  // у переписанной страницы доля совпадения падает до нуля, она
+  // проваливается в конец своего уровня и тянет за собой остальные.
+  // «Порция 3» тогда означала бы разное до и после работы, а именно
+  // по номеру порция и заказывается.
+  const previous = await readOrder();
+
+  if (previous.length) {
+    const known = new Map(previous.map((slug, index) => [slug, index]));
+    const fresh = rows.filter(row => !known.has(row.slug)).length;
+
+    rows.sort(
+      (a, b) =>
+        (known.get(a.slug) ?? Infinity) - (known.get(b.slug) ?? Infinity)
+    );
+
+    console.log(
+      `Очередь уже была: порядок ${previous.length} страниц сохранён` +
+        (fresh ? `, новых в хвост: ${fresh}` : '')
+    );
+  }
 
   await writeFile(
     QUEUE,
