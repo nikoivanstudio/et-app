@@ -20,10 +20,10 @@ export const useCreateActivity = (props?: Props) => {
 
       queryClient.invalidateQueries({ queryKey: [activityApi.baseKey] });
 
-      props?.onSuccess && props.onSuccess();
+      props?.onSuccess?.();
     },
     onError: error => {
-      props?.onError && props.onError(error);
+      props?.onError?.(error);
     }
   });
 

@@ -45,7 +45,11 @@ class GherkinReporter implements Reporter {
   }
 
   onTestEnd(_test: TestCase, result: TestResult) {
-    result.status === 'passed' ? this.passed++ : this.failed++;
+    if (result.status === 'passed') {
+      this.passed++;
+    } else {
+      this.failed++;
+    }
   }
 
   onEnd(result: FullResult) {

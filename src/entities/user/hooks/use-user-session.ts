@@ -13,10 +13,7 @@ export function useUserSession() {
     (async () => {
       const { session: newSession } = await getSessionRequest();
 
-      if (session !== newSession) {
-        setSession(newSession);
-      }
-
+      setSession(newSession);
       setLoading(false);
     })();
   }, []);

@@ -1,36 +1,36 @@
 model Tour {
-  id              Int        @id @default(autoincrement())
-  title           String     @db.VarChar(180)
-  description     String
+  id               Int        @id @default(autoincrement())
+  title            String     @db.VarChar(180)
+  description      String
   /// Главное фото. Необязательное: черновик заводится на первом шаге
   /// редактора, когда фотографий ещё нет, а публичной страницы у него
   /// не будет до одобрения (status = APPROVED).
-  mainPhotoId     Int?       @map("main_photo_id")
-  price           Int
-  duration        Int
-  content         Json       @map("content")
-  slug            String     @unique
-  categories      String[]
-  metaKeywords    String[]   @map("meta_keywords")
-  tags            String[]
-  tourRoute       Json[]     @map("tour_route")
-  authorId        Int        @map("author_id")
-  createdAt       DateTime   @default(now()) @map("created_at") @db.Timestamp()
-  author          User       @relation(fields: [authorId], references: [id])
-  reviews         Review[]
-  activities      Activity[]
-  orders          Order[]
-  bookings        Booking[]
-  photos          Photo[]
-  about           String?   @db.VarChar(512)
-  status          String?
-  rejectionComment String?   @map("rejection_comment")
-  metaTitle       String?    @map("meta_title")
-  metaDescription String?    @map("meta_description")
-  updatedAt       DateTime?  @updatedAt @map("updated_at") @db.Timestamp()
-  rating          Float?
-  descriptionText String?    @map("description_text")
-  startPlace      Json?      @map("start_place")
+  mainPhotoId      Int?       @map("main_photo_id")
+  price            Int
+  duration         Int
+  content          Json       @map("content")
+  slug             String     @unique
+  categories       String[]
+  metaKeywords     String[]   @map("meta_keywords")
+  tags             String[]
+  tourRoute        Json[]     @map("tour_route")
+  authorId         Int        @map("author_id")
+  createdAt        DateTime   @default(now()) @map("created_at") @db.Timestamp()
+  author           User       @relation(fields: [authorId], references: [id])
+  reviews          Review[]
+  activities       Activity[]
+  orders           Order[]
+  bookings         Booking[]
+  photos           Photo[]
+  about            String?    @db.VarChar(512)
+  status           String?
+  rejectionComment String?    @map("rejection_comment")
+  metaTitle        String?    @map("meta_title")
+  metaDescription  String?    @map("meta_description")
+  updatedAt        DateTime?  @updatedAt @map("updated_at") @db.Timestamp()
+  rating           Float?
+  descriptionText  String?    @map("description_text")
+  startPlace       Json?      @map("start_place")
 
   // --- A3. Поля, без которых не собрать ни карточку, ни разметку ---------
   //
@@ -75,6 +75,15 @@ model Tour {
   /// строятся гео-страницы `/dzhip-tury/{gorod}` (E3) и связки
   /// «откуда → куда» (E4), а координаты для группировки не годятся.
   startCity String? @map("start_city") @db.VarChar(120)
+
+  /// Город выезда ключом — то, по чему идёт выборка.
+  ///
+  /// Строка выше осталась и продолжает заполняться: удалить колонку в том же
+  /// деплое нельзя (expand-contract, см. `docs/deploy/migrations.md`), а после
+  /// выкладки она становится денормализованным названием — его пишет тот же
+  /// код, что и ключ, и берёт из справочника. Удаляется задачей 1-К.
+  startCityId  Int?  @map("start_city_id")
+  startCityRef City? @relation("TourStartCity", fields: [startCityId], references: [id], onDelete: SetNull)
 
   /// Объекты, которые тур посещает. Связь, ради которой заведена
   /// модель Place: из неё строятся и блок «туры сюда» (E2),
@@ -124,5 +133,10 @@ model Tour {
   /// подборки «джип-туры из …» (E3), поэтому это список, а не текст.
   pickupCities String[] @default([]) @map("pickup_cities")
 
+  /// Те же города ключами. Причина та же, что у `startCityId`: по городам
+  /// подбора идёт выборка, а выборка по массиву строк не сходится.
+  pickupCityLinks TourPickupCity[]
+
+  @@index([startCityId])
   @@map("tour")
 }

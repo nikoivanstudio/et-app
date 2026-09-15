@@ -1,4 +1,5 @@
 import { BookingDomain } from '@/entities/booking';
+import type { CityEntity } from '@/entities/city/domain';
 import { serverPhotoUtils } from '@/entities/photo/server';
 import { normalizeRedirectSource } from '@/entities/redirect/lib/redirect-utils';
 import { TourStatus } from '@/entities/tour/domain';
@@ -12,6 +13,7 @@ import { dbClient } from '@/shared/lib/db';
 import { Either, left, right } from '@/shared/lib/either';
 import { translit } from '@/shared/lib/string-utils';
 
+import { geoServices } from '@/kernel/geo/server';
 import { routes } from '@/kernel/routes';
 
 import { Prisma } from '../../../../generated/prisma/client';
@@ -64,7 +66,11 @@ const uniqueSlug = async (title: string, tourId?: number): Promise<string> => {
 const ownTour = async (tourId: number, guideId: number) => {
   const tour = await dbClient.tour.findUnique({
     where: { id: tourId },
-    include: { photos: true }
+    include: {
+      photos: true,
+      startCityRef: true,
+      pickupCityLinks: { include: { city: true } }
+    }
   });
 
   if (!tour) return left('Тур не найден');
@@ -75,6 +81,8 @@ const ownTour = async (tourId: number, guideId: number) => {
 
 type TourRow = Awaited<ReturnType<typeof dbClient.tour.findUniqueOrThrow>> & {
   photos: { id: number; title: string; source: string }[];
+  startCityRef?: { slug: string } | null;
+  pickupCityLinks?: { city: { slug: string } }[];
 };
 
 const toEditorData = (
@@ -86,7 +94,7 @@ const toEditorData = (
   slug: tour.slug,
   about: tour.about ?? '',
   description: tour.descriptionText ?? tour.description ?? '',
-  startCity: tour.startCity ?? '',
+  startCitySlug: tour.startCityRef?.slug ?? '',
   durationHours: Math.max(1, Math.round((tour.duration ?? HOUR) / HOUR)),
   capacity: tour.capacity,
   difficulty: tour.difficulty ?? '',
@@ -106,7 +114,7 @@ const toEditorData = (
   blockedDates: (tour.blockedDates ?? []).map(date => date.toISOString()),
   meetingAddress: tour.meetingAddress ?? '',
   meetingNote: tour.meetingNote ?? '',
-  pickupCities: tour.pickupCities ?? [],
+  pickupCitySlugs: (tour.pickupCityLinks ?? []).map(link => link.city.slug),
   metaTitle: tour.metaTitle ?? '',
   metaDescription: tour.metaDescription ?? '',
   photos: tour.photos.map((photo): EditorPhoto => ({
@@ -197,15 +205,46 @@ const mergeContent = (
   };
 };
 
+/**
+ * Город выезда: ключ и прежняя строка.
+ *
+ * Правило целиком — в `geoServices.resolveCityWrite`; здесь оно только
+ * раскладывается по именам колонок тура. Строка `start_city` живёт до
+ * задачи 1-К (expand-contract, см. `docs/deploy/migrations.md`), и пока
+ * она жива, сохранение тура не должно её терять.
+ */
+const startCityColumns = (
+  payload: SaveTourPayload,
+  cities: Map<string, CityEntity>,
+  existingStartCityId?: number | null
+) => {
+  const write = geoServices.resolveCityWrite(
+    cities.get(payload.startCitySlug),
+    existingStartCityId
+  );
+
+  return write ? { startCityId: write.id, startCity: write.title } : {};
+};
+
+/**
+ * Колонки тура.
+ *
+ * Города приходят разрешёнными: ключ — то, по чему идёт выборка, строка —
+ * денормализованное название из справочника, а не из того, что набрал гид:
+ * иначе строка снова разъедется с ключом, а ради устранения этого
+ * расхождения всё и затевалось.
+ */
 const toColumns = (
   payload: SaveTourPayload,
+  cities: Map<string, CityEntity>,
+  existingStartCityId?: number | null,
   currentContent?: Prisma.JsonValue | null
 ) => ({
+  ...startCityColumns(payload, cities, existingStartCityId),
   title: payload.title,
   about: payload.about || null,
   description: payload.description,
   descriptionText: payload.description,
-  startCity: payload.startCity || null,
   duration: payload.durationHours * HOUR,
   capacity: payload.capacity,
   difficulty: payload.difficulty,
@@ -225,7 +264,10 @@ const toColumns = (
   blockedDates: payload.blockedDates.map(date => new Date(date)),
   meetingAddress: payload.meetingAddress || null,
   meetingNote: payload.meetingNote || null,
-  pickupCities: payload.pickupCities,
+  pickupCities: payload.pickupCitySlugs
+    .filter(slug => slug !== payload.startCitySlug)
+    .map(slug => cities.get(slug)?.title)
+    .filter((title): title is string => !!title),
   metaTitle: payload.metaTitle || null,
   metaDescription: payload.metaDescription || null,
   // Публичная страница собирается из content — держим его в согласии
@@ -265,6 +307,35 @@ const rememberSlugChange = async (from: string, to: string): Promise<void> => {
 };
 
 /**
+ * Города тура из справочника — по слагам, пришедшим из формы.
+ *
+ * Слаг, которого в справочнике нет, просто не находится: тур сохранится
+ * без города, а не с выдуманным. Подставить сюда произвольную строку
+ * форма больше не может — в кабинете выбор, а не ввод.
+ */
+const resolveTourCities = (payload: SaveTourPayload) =>
+  geoServices.resolveCities(
+    [payload.startCitySlug, ...payload.pickupCitySlugs].filter(Boolean)
+  );
+
+/**
+ * Города подбора связями.
+ *
+ * Город старта отсюда выбрасывается: из него и так выезжают, а в форме он
+ * из списка скрыт — оставшаяся связь была бы той, которую гид не видит
+ * и потому не может снять.
+ */
+const pickupLinks = (
+  payload: SaveTourPayload,
+  cities: Map<string, CityEntity>
+) =>
+  payload.pickupCitySlugs
+    .filter(slug => slug !== payload.startCitySlug)
+    .map(slug => cities.get(slug)?.id)
+    .filter((id): id is number => !!id)
+    .map(cityId => ({ cityId }));
+
+/**
  * Сохранение черновика.
  *
  * Правка опубликованного тура возвращает его на модерацию — то же правило,
@@ -275,10 +346,13 @@ async function saveTour(
   payload: SaveTourPayload,
   guideId: number
 ): Promise<Either<string, { id: number; status: string | null }>> {
+  const cities = await resolveTourCities(payload);
+
   if (!payload.id) {
     const tour = await dbClient.tour.create({
       data: {
-        ...toColumns(payload),
+        ...toColumns(payload, cities),
+        pickupCityLinks: { create: pickupLinks(payload, cities) },
         slug: await uniqueSlug(payload.title),
         authorId: guideId,
         status: null,
@@ -309,7 +383,19 @@ async function saveTour(
   const tour = await dbClient.tour.update({
     where: { id: payload.id },
     data: {
-      ...toColumns(payload, existing.value.content),
+      ...toColumns(
+        payload,
+        cities,
+        existing.value.startCityId,
+        existing.value.content
+      ),
+      // Список городов подбора правится целиком: связи, которых в форме
+      // не осталось, должны исчезнуть, иначе снятый город продолжал бы
+      // тянуть тур в чужую подборку.
+      pickupCityLinks: {
+        deleteMany: {},
+        create: pickupLinks(payload, cities)
+      },
       slug,
       ...(wasApproved
         ? { status: TourStatus.PENDING, rejectionComment: null }
@@ -429,6 +515,7 @@ async function duplicateTour(
       faq: source.faq ?? undefined,
       seasons: source.seasons,
       startCity: source.startCity,
+      startCityId: source.startCityId,
       startPlace: source.startPlace ?? undefined,
       priceOptions: source.priceOptions ?? undefined,
       minGroupSize: source.minGroupSize,
@@ -438,6 +525,11 @@ async function duplicateTour(
       meetingAddress: source.meetingAddress,
       meetingNote: source.meetingNote,
       pickupCities: source.pickupCities,
+      pickupCityLinks: {
+        create: (source.pickupCityLinks ?? []).map(link => ({
+          cityId: link.cityId
+        }))
+      },
       authorId: guideId,
       status: null
     },
@@ -575,6 +667,8 @@ async function getGuideTours(
     where: { authorId: guideId },
     include: {
       photos: true,
+      startCityRef: true,
+      pickupCityLinks: { include: { city: true } },
       _count: { select: { reviews: true } }
     },
     orderBy: [{ status: 'asc' }, { updatedAt: 'desc' }]

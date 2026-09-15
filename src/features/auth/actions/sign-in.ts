@@ -26,7 +26,7 @@ const formDataSchema = z.object({
 });
 
 export const signInAction = async (
-  state: SignInFormState,
+  _state: SignInFormState,
   formData: FormData
 ): Promise<SignInFormState> => {
   const data = Object.fromEntries(formData.entries());

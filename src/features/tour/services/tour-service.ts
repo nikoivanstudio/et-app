@@ -66,17 +66,38 @@ const getPopularTourCards = async (): Promise<TourCardEntity[]> => {
   return draftPopularTours.map(draftTourToTourCardEntity);
 };
 
+/**
+ * Карточки каталога.
+ *
+ * `regionSlug` задаётся разделом, а не выбором посетителя: каталог
+ * пререндерится, а чтение cookie в серверном рендере переводит маршрут
+ * в динамику и обнуляет ISR — ровно тем, чем это уже оборачивалось
+ * в шапке (см. `widgets/app-header/containers/app-header.tsx`). Поэтому
+ * регион приходит сверху: у раздела региона он свой и известен на сборке,
+ * а на общем каталоге его нет и показываются все опубликованные регионы.
+ */
 const getTourCards = async (
-  params?: Prisma.TourFindManyArgs & { page?: number }
+  params?: Prisma.TourFindManyArgs & { page?: number; regionSlug?: string }
 ) => {
+  const { regionSlug, ...queryParams } = params ?? {};
+
+  // `regionSlug` — не параметр запроса к базе, и остаток может оказаться
+  // пустым. Пустой объект отдавать нельзя: `getDbQueryParamsByPage({})`
+  // вернёт `take: 10`, и каталог региона молча обрезался бы на десяти
+  // турах, тогда как вызов без региона отдаёт все.
+  const hasQuery = Object.keys(queryParams).length > 0;
+
   const dbQueryParams = dbQueryUtils.getDbQueryParamsByPage<
     Prisma.TourInclude | undefined
-  >(params);
+  >(hasQuery ? queryParams : undefined);
 
   // Публично показываем только одобренные туры.
   const draftTourCards = await tourRepositories.getTours({
     ...(dbQueryParams ?? {}),
-    where: { status: PUBLIC_TOUR_STATUS },
+    where: {
+      status: PUBLIC_TOUR_STATUS,
+      ...(regionSlug ? { startCityRef: { regionSlug } } : {})
+    },
     select: tourCardsSelect
   });
 

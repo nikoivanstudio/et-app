@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 
 import { tourChip } from '@/features/cabinet/lib/format';
 
+import type { CityOption } from '@/entities/city/domain';
 import { TourStatus } from '@/entities/tour/domain';
 
 import { cn } from '@/shared/lib/css';
@@ -46,7 +47,7 @@ const toPayload = (tour: TourEditorData) => ({
   title: tour.title,
   about: tour.about,
   description: tour.description,
-  startCity: tour.startCity,
+  startCitySlug: tour.startCitySlug,
   durationHours: tour.durationHours,
   capacity: tour.capacity,
   difficulty: tour.difficulty || null,
@@ -66,7 +67,7 @@ const toPayload = (tour: TourEditorData) => ({
   blockedDates: tour.blockedDates,
   meetingAddress: tour.meetingAddress,
   meetingNote: tour.meetingNote,
-  pickupCities: tour.pickupCities,
+  pickupCitySlugs: tour.pickupCitySlugs,
   metaTitle: tour.metaTitle,
   metaDescription: tour.metaDescription
 });
@@ -82,7 +83,9 @@ export const TourEditorForm: FC<{
   userId: number;
   /** Тур приходит с сервера — отрисованным, а не загружаемым на клиенте. */
   initial: TourEditorData;
-}> = ({ userId, initial }) => {
+  /** Справочник городов: гид выбирает из него, а не набирает руками. */
+  cities: CityOption[];
+}> = ({ userId, initial, cities }) => {
   const { save, isSaving } = useSaveTour(userId);
   const { setStatus, isPending: isStatusPending } = useTourStatus();
 
@@ -94,7 +97,20 @@ export const TourEditorForm: FC<{
     key: K,
     value: TourEditorData[K]
   ) => {
-    setDraft(current => ({ ...current, [key]: value }));
+    setDraft(current => {
+      const next = { ...current, [key]: value };
+
+      // Город старта не может быть ещё и городом подбора: из него и так
+      // выезжают, и в списке подбора он скрыт. Не сняв его здесь, мы бы
+      // оставили отметку, которую гид не видит и потому не может убрать.
+      if (key === 'startCitySlug') {
+        next.pickupCitySlugs = next.pickupCitySlugs.filter(
+          slug => slug !== value
+        );
+      }
+
+      return next;
+    });
     setDirty(true);
   };
 
@@ -206,7 +222,9 @@ export const TourEditorForm: FC<{
 
       <div className='grid gap-4 xl:grid-cols-[minmax(0,1fr)_372px] xl:items-start'>
         <div className='flex flex-col gap-4'>
-          {step === 'basics' && <BasicsStep tour={draft} set={set} />}
+          {step === 'basics' && (
+            <BasicsStep tour={draft} cities={cities} set={set} />
+          )}
           {step === 'description' && <DescriptionStep tour={draft} set={set} />}
           {step === 'pricing' && <PricingStep tour={draft} set={set} />}
           {step === 'calendar' && <CalendarStep tour={draft} set={set} />}
@@ -219,7 +237,9 @@ export const TourEditorForm: FC<{
               onRemove={photos.remove}
             />
           )}
-          {step === 'meeting' && <MeetingStep tour={draft} set={set} />}
+          {step === 'meeting' && (
+            <MeetingStep tour={draft} cities={cities} set={set} />
+          )}
 
           <div className='border-cab-gold/34 from-cab-gold/10 to-cab-panel flex flex-col gap-4 rounded-2xl border bg-linear-120 p-4 sm:p-5 lg:flex-row lg:items-center'>
             <div className='min-w-0'>
@@ -299,7 +319,7 @@ export const TourEditorForm: FC<{
           )}
         </div>
 
-        <EditorAside tour={draft} />
+        <EditorAside tour={draft} cities={cities} />
       </div>
     </div>
   );

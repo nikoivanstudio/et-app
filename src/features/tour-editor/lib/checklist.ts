@@ -23,7 +23,7 @@ export const buildTourChecklist = (tour: TourEditorData): ChecklistItem[] => [
   {
     id: 'basics',
     label: 'Название, город и длительность',
-    done: tour.title.length >= 10 && !!tour.startCity && tour.durationHours > 0,
+    done: tour.title.length >= 10 && !!tour.startCitySlug && tour.durationHours > 0,
     required: true
   },
   {

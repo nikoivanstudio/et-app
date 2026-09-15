@@ -27,10 +27,10 @@ export const useDeleteTour = <E>({
     },
 
     onError: error => {
-      !!onError && onError(error);
+      onError?.(error);
     },
     onSettled: data => {
-      !!onSettled && onSettled(data);
+      onSettled?.(data);
     }
   });
 

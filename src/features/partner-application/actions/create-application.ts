@@ -18,7 +18,7 @@ export type CreateApplicationFormState = {
 };
 
 export const createApplicationAction = async (
-  state: CreateApplicationFormState,
+  _state: CreateApplicationFormState,
   formData: FormData
 ): Promise<CreateApplicationFormState> => {
   const data = Object.fromEntries(formData.entries());

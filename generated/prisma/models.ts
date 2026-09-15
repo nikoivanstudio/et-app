@@ -10,6 +10,8 @@
  */
 export type * from './models/Activity'
 export type * from './models/Booking'
+export type * from './models/City'
+export type * from './models/TourPickupCity'
 export type * from './models/File'
 export type * from './models/Message'
 export type * from './models/Order'

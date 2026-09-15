@@ -53,6 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   Activity: 'Activity',
   Booking: 'Booking',
+  City: 'City',
+  TourPickupCity: 'TourPickupCity',
   File: 'File',
   Message: 'Message',
   Order: 'Order',
@@ -135,6 +137,30 @@ export const BookingScalarFieldEnum = {
 } as const
 
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+export const CityScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  regionSlug: 'regionSlug',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  isPublished: 'isPublished',
+  position: 'position',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CityScalarFieldEnum = (typeof CityScalarFieldEnum)[keyof typeof CityScalarFieldEnum]
+
+
+export const TourPickupCityScalarFieldEnum = {
+  tourId: 'tourId',
+  cityId: 'cityId'
+} as const
+
+export type TourPickupCityScalarFieldEnum = (typeof TourPickupCityScalarFieldEnum)[keyof typeof TourPickupCityScalarFieldEnum]
 
 
 export const FileScalarFieldEnum = {
@@ -228,6 +254,7 @@ export const PlaceScalarFieldEnum = {
   latitude: 'latitude',
   longitude: 'longitude',
   city: 'city',
+  cityId: 'cityId',
   district: 'district',
   kind: 'kind',
   mainImage: 'mainImage',
@@ -351,6 +378,7 @@ export const TourScalarFieldEnum = {
   seasons: 'seasons',
   priceUnit: 'priceUnit',
   startCity: 'startCity',
+  startCityId: 'startCityId',
   priceOptions: 'priceOptions',
   minGroupSize: 'minGroupSize',
   bookingLeadDays: 'bookingLeadDays',
@@ -397,6 +425,7 @@ export const UserScalarFieldEnum = {
   specializations: 'specializations',
   experienceSince: 'experienceSince',
   city: 'city',
+  cityId: 'cityId',
   vehicle: 'vehicle',
   notifyNewBooking: 'notifyNewBooking',
   notifyNewMessage: 'notifyNewMessage',

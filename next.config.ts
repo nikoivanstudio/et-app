@@ -90,7 +90,6 @@ const nextConfig: NextConfig = {
     ];
   },
   experimental: {
-    useCache: true,
     cpus: 4,
     workerThreads: false
   },

@@ -128,7 +128,19 @@ const eslintConfig = [
         {
           vars: 'all',
           args: 'all',
-          ignoreRestSiblings: false
+          // Подчёркивание — общепринятая пометка «параметр обязателен
+          // по сигнатуре, но не нужен». Такие места есть там, где форму
+          // диктует чужой API: первый аргумент `useActionState`,
+          // `(req, res)` у обработчика, колбэки репортёра Playwright.
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          // Выкидывание ключа через rest — единственный способ убрать поле
+          // из объекта без мутации: `const { passwordHash, ...rest } = user`.
+          // С `false` каждый такой отброс считался ошибкой, хотя ровно
+          // в отбросе и была цель.
+          ignoreRestSiblings: true
         }
       ]
     }

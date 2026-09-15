@@ -2,13 +2,6 @@ import { dbClient } from '@/shared/lib/db';
 
 import { Prisma } from '../../../../generated/prisma/client';
 
-type Params = {
-  where: Prisma.TourWhereInput;
-  include?: Prisma.TourInclude;
-  select?: Prisma.TourSelect;
-  orderBy?: Prisma.TourOrderByWithRelationInput;
-};
-
 type TourConditionType =
   | {
       select?: Prisma.TourSelect;

@@ -23,7 +23,7 @@ export const FilesLibraryDashboard: FC<Props> = ({ session }) => {
       fileList={
         <>
           <UploadFile session={session} />
-          <FilesList session={session} actions={[DeleteFile]} />
+          <FilesList actions={[DeleteFile]} />
         </>
       }
     />

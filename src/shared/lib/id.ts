@@ -1,7 +1,4 @@
-import cuid from 'cuid';
 import { v4 } from 'uuid';
-
-export const createId = () => cuid();
 
 /**
  * Уникальное имя файла при загрузке.

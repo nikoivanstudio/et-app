@@ -8,18 +8,6 @@ import { TourKernel, tourToKernelTour } from '@/kernel/tour/domain';
 import { TourWR } from '@/kernel/tour/model/types';
 import { tourRepository } from '@/kernel/tour/repositories/tour';
 
-async function getTourById(id: number): Promise<Either<string, TourKernel>> {
-  const tour = await tourRepository.getTour({ where: { id } });
-
-  if (!tour) {
-    return left('Тур с указанным идентификатором не найден');
-  }
-
-  const kernalTour = tourToKernelTour(tour as TourWR);
-
-  return right(kernalTour);
-}
-
 async function getTourBySlug(
   slug: string
 ): Promise<Either<string, TourKernel>> {

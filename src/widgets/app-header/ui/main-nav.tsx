@@ -6,6 +6,10 @@ import { NAV_LINKS } from '@/widgets/app-header/model/links';
 import { AuthNavLink } from '@/widgets/app-header/ui/auth-nav-link';
 import { MyBookingsNavLink } from '@/widgets/app-header/ui/my-bookings-nav-link';
 
+import { RegionSwitcher } from '@/features/region/region-switcher';
+
+import { getPublishedRegions } from '@/entities/region/server';
+
 const cnMainNav = cn('MainNav');
 
 const linkClassName = cnMainNav('Link', [
@@ -30,6 +34,12 @@ export const MainNav: FC = () => (
         {title}
       </Link>
     ))}
+    {/* Пока регион один, переключатель не рендерится: выбор из одного
+        пункта — не выбор. Регион задаётся реестром, а не базой, поэтому
+        условие считается на сборке и в динамику маршрут не переводит. */}
+    {getPublishedRegions().length > 1 && (
+      <RegionSwitcher className={linkClassName} />
+    )}
     <MyBookingsNavLink className={linkClassName} />
     <AuthNavLink className={linkClassName} />
   </nav>

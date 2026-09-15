@@ -28,7 +28,7 @@ export type ChangePasswordFormState = {
 };
 
 export const changePasswordAction = async (
-  state: ChangePasswordFormState,
+  _state: ChangePasswordFormState,
   formData: FormData
 ): Promise<ChangePasswordFormState> => {
   const data = Object.fromEntries(formData.entries());

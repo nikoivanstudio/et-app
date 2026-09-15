@@ -9,6 +9,9 @@ import { toast } from 'sonner';
 
 import { ChipsInput } from '@/features/tour-editor/ui/chips-input';
 
+import type { CityOption } from '@/entities/city/domain';
+import { CitySelect } from '@/entities/city/ui/city-select';
+
 import { apiClient } from '@/shared/api/api-client';
 import { cn } from '@/shared/lib/css';
 import {
@@ -113,9 +116,13 @@ const Toggle: FC<{
 export const GuideProfileForm: FC<{
   profile: GuideProfileData;
   sessions: CabinetSession[];
-}> = ({ profile, sessions }) => {
+  /** Справочник городов: гид выбирает из него, а не набирает руками. */
+  cities: CityOption[];
+}> = ({ profile, sessions, cities }) => {
   const router = useRouter();
   const [form, setForm] = useState(profile);
+  // В форме лежит слаг, а в карточке показывается название.
+  const cityTitle = cities.find(city => city.slug === form.citySlug)?.title;
   const [isSaving, setSaving] = useState(false);
   const avatarInput = useRef<HTMLInputElement>(null);
   const coverInput = useRef<HTMLInputElement>(null);
@@ -313,12 +320,11 @@ export const GuideProfileForm: FC<{
 
           <div className='mt-4 grid gap-4 sm:grid-cols-3'>
             <Field label='Город' htmlFor='profile-city'>
-              <input
+              <CitySelect
                 id='profile-city'
-                value={form.city}
-                onChange={event => set('city', event.target.value)}
-                maxLength={120}
-                className={cabinetInput}
+                value={form.citySlug}
+                cities={cities}
+                onChange={slug => set('citySlug', slug)}
               />
             </Field>
             <Field label='Вожу с' htmlFor='profile-since'>
@@ -505,7 +511,7 @@ export const GuideProfileForm: FC<{
               {form.headline || 'Пара слов о себе'}
             </p>
             <div className='mt-2.5 flex flex-wrap gap-2'>
-              {!!form.city && <Chip tone='done'>{form.city}</Chip>}
+              {!!cityTitle && <Chip tone='done'>{cityTitle}</Chip>}
               {!!form.experienceSince && (
                 <Chip tone='done'>вожу с {form.experienceSince}</Chip>
               )}

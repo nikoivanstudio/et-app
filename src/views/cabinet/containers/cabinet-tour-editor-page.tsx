@@ -8,14 +8,17 @@ import { CabinetBadges, CabinetIdentity } from '@/features/cabinet/server';
 import type { TourEditorData } from '@/features/tour-editor';
 import { TourEditorForm } from '@/features/tour-editor';
 
+import type { CityOption } from '@/entities/city/domain';
+
 import { routes } from '@/kernel/routes';
 
 export const CabinetTourEditorPage: FC<{
   identity: CabinetIdentity;
   badges: CabinetBadges;
   tour: TourEditorData;
+  cities: CityOption[];
   title: string;
-}> = ({ identity, badges, tour, title }) => (
+}> = ({ identity, badges, tour, cities, title }) => (
   <CabinetShell
     identity={identity}
     badges={badges}
@@ -32,6 +35,6 @@ export const CabinetTourEditorPage: FC<{
       </Link>
     }
   >
-    <TourEditorForm userId={identity.id} initial={tour} />
+    <TourEditorForm userId={identity.id} initial={tour} cities={cities} />
   </CabinetShell>
 );

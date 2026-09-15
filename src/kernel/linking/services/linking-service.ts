@@ -1,3 +1,5 @@
+import { Prisma } from 'generated/prisma/client';
+
 import { getAllLandings } from '@/entities/landing/lib/landing-registry';
 import type { Landing } from '@/entities/landing/model/types';
 import { type PlaceEntity } from '@/entities/place/domain';
@@ -9,6 +11,8 @@ import { placeRepositories } from '@/entities/place/repositories/place';
 import { PUBLIC_TOUR_STATUS } from '@/entities/tour/domain';
 
 import { dbClient } from '@/shared/lib/db';
+
+import { buildLandingWhere } from '@/kernel/linking/lib/landing-where';
 
 /**
  * Перелинковка по правилам, а не руками (задача E7).
@@ -142,50 +146,84 @@ export const getLandingPlaces = async (
  * Два правила и именно в этом порядке: сначала туры, которые выезжают
  * из этого города, затем — заезжающие на перечисленные объекты. Второе
  * нужно для форматных страниц (E5), у которых города нет вовсе.
+ *
+ * Запрос идёт к турам, а не к `tour_place`, и это исправление, а не
+ * перестановка. Раньше подборка строилась обходом связей с объектами,
+ * то есть **тур без единого привязанного объекта не попадал на страницу
+ * своего города даже при совпадении города выезда**. В Крыму со
+ * справочником на 780 объектов это незаметно; в регионе, где объекты ещё
+ * не заведены, гео-страницы пустовали бы с первого дня — при том что туры
+ * оттуда есть. Теперь условия сложены через `OR`: выезжает отсюда **или**
+ * заезжает на объект.
+ *
+ * Как складываются условия для каждого вида посадочной и почему форматная
+ * страница берёт весь регион — в `kernel/linking/lib/landing-where.ts`.
  */
 export const getLandingTours = async (landing: Landing) => {
-  const rows = await dbClient.tourPlace.findMany({
-    where: {
-      tour: {
-        status: PUBLIC_TOUR_STATUS,
-        ...(landing.startCity ? { startCity: landing.startCity } : {})
-      },
-      ...(landing.placeSlugs?.length
-        ? { place: { slug: { in: landing.placeSlugs } } }
-        : {})
-    },
-    orderBy: { position: 'asc' },
+  const placeSlugs = landing.placeSlugs ?? [];
+
+  // Подбор идёт по цели связки, а показ объектов — по всему списку:
+  // у «Из Ялты в Большой каньон» в списке стоит ещё и Ай-Петри, через
+  // который идёт дорога, и по нему на страницу каньона попадал тур,
+  // который в каньон не спускается.
+  const matchSlugs = landing.destinationSlugs ?? placeSlugs;
+
+  const byCity: Prisma.TourWhereInput | undefined = landing.citySlug
+    ? { startCityRef: { slug: landing.citySlug } }
+    : undefined;
+
+  const byPlace: Prisma.TourWhereInput | undefined = matchSlugs.length
+    ? { places: { some: { place: { slug: { in: matchSlugs } } } } }
+    : undefined;
+
+  const where = buildLandingWhere(landing, byCity, byPlace);
+
+  // Подбирать не по чему: города нет, объектов нет — или связка задана
+  // наполовину. Без этой проверки пустое условие вернуло бы вообще все
+  // опубликованные туры.
+  if (!where) {
+    return [];
+  }
+
+  const rows = await dbClient.tour.findMany({
+    where: { status: PUBLIC_TOUR_STATUS, ...where },
+    // Порядок внутри группы задаётся номером остановки, но у форматной
+    // страницы объектов нет и все номера равны нулю. Без сортировки
+    // в запросе порядок туров на такой странице определяла бы база,
+    // то есть он менялся бы от перестройки к перестройке.
+    orderBy: { id: 'desc' },
     select: {
-      position: true,
-      tour: {
-        select: {
-          id: true,
-          slug: true,
-          title: true,
-          price: true,
-          duration: true,
-          mainPhotoId: true,
-          photos: { select: { id: true, source: true } }
-        }
+      id: true,
+      slug: true,
+      title: true,
+      price: true,
+      duration: true,
+      mainPhotoId: true,
+      photos: { select: { id: true, source: true } },
+      startCityRef: { select: { slug: true } },
+      // Номер остановки нужен только для порядка внутри второй группы,
+      // поэтому берём первый совпавший объект, а не весь маршрут.
+      places: {
+        where: { place: { slug: { in: matchSlugs } } },
+        orderBy: { position: 'asc' },
+        take: 1,
+        select: { position: true }
       }
     }
   });
 
-  // Один тур заезжает на несколько объектов посадочной и пришёл бы
-  // несколько раз.
-  const seen = new Set<number>();
-
   return rows
-    .map(row => tourToPlaceTourCard(row.tour, row.position))
-    .filter(tour => {
-      if (seen.has(tour.id)) {
-        return false;
-      }
-
-      seen.add(tour.id);
-
-      return true;
-    });
+    .map(tour => ({
+      card: tourToPlaceTourCard(tour, tour.places[0]?.position ?? 0),
+      // 0 — выезжает отсюда, 1 — только заезжает. Порядок групп тот же,
+      // что был: город важнее объекта. У посадочной без города групп нет:
+      // сравнение `undefined === undefined` иначе поднимало бы наверх туры
+      // вообще без города выезда.
+      group:
+        landing.citySlug && tour.startCityRef?.slug === landing.citySlug ? 0 : 1
+    }))
+    .sort((a, b) => a.group - b.group || a.card.position - b.card.position)
+    .map(item => item.card);
 };
 
 /**
@@ -205,7 +243,7 @@ export const getRelatedLandings = (landing: Landing, limit = 4): Landing[] => {
         places.has(slug)
       ).length;
       const sameCity =
-        !!landing.startCity && candidate.startCity === landing.startCity;
+        !!landing.citySlug && candidate.citySlug === landing.citySlug;
 
       return { candidate, score: sharedPlaces + (sameCity ? 2 : 0) };
     })

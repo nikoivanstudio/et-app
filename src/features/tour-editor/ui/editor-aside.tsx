@@ -10,6 +10,8 @@ import {
   formatPriceUnit
 } from '@/features/cabinet/lib/format';
 
+import type { CityOption } from '@/entities/city/domain';
+
 import { cn } from '@/shared/lib/css';
 import { cabinetAction, CabinetPanel } from '@/shared/ui/cabinet';
 
@@ -21,8 +23,13 @@ import { TourEditorData } from '../model/types';
  * карточка попадёт в поиск. Всё три блока считаются из тех же полей формы,
  * так что гид видит последствия правки сразу, а не после модерации.
  */
-export const EditorAside: FC<{ tour: TourEditorData }> = ({ tour }) => {
+export const EditorAside: FC<{ tour: TourEditorData; cities: CityOption[] }> = ({
+  tour,
+  cities
+}) => {
   const checklist = buildTourChecklist(tour);
+  // В форме лежит слаг, а клиенту показывается название.
+  const startCity = cities.find(city => city.slug === tour.startCitySlug);
   const percent = tourCompleteness(checklist);
   const cover = tour.photos.find(photo => photo.isMain) ?? tour.photos[0];
 
@@ -52,7 +59,7 @@ export const EditorAside: FC<{ tour: TourEditorData }> = ({ tour }) => {
             {tour.title || 'Название тура'}
           </h3>
           <div className='text-cab-faint mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-[12px]'>
-            {!!tour.startCity && <span>{tour.startCity}</span>}
+            {!!startCity && <span>{startCity.title}</span>}
             <span>{formatDuration(tour.durationHours * 3600)}</span>
             {!!tour.capacity && <span>до {tour.capacity} чел.</span>}
           </div>

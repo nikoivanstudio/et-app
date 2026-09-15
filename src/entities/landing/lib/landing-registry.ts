@@ -2,6 +2,7 @@ import { FORMAT_LANDINGS } from '@/entities/landing/constants/format-landings';
 import { GEO_LANDINGS } from '@/entities/landing/constants/geo-landings';
 import { ROUTE_LANDINGS } from '@/entities/landing/constants/route-landings';
 import type { Landing } from '@/entities/landing/model/types';
+import { isRegionPublished } from '@/entities/region/server';
 
 /**
  * Реестр посадочных фазы E.
@@ -15,8 +16,23 @@ import type { Landing } from '@/entities/landing/model/types';
 
 const DZHIP_TURY_LANDINGS: Landing[] = [...GEO_LANDINGS, ...FORMAT_LANDINGS];
 
+/**
+ * Отсев перед выдачей наружу.
+ *
+ * Три условия, и каждое отсекает свой вид недоделки: выключенная запись,
+ * заготовка без текста и посадочная региона, которого на сайте ещё нет.
+ * Последнее — то самое включение региона одним флагом: пока
+ * `isPublished` у региона стоит `false`, его посадочные не отдаются
+ * ни маршрутом, ни sitemap, ни блоком «смотрите также», сколько бы их
+ * ни было заведено в реестре.
+ */
 const published = (landings: Landing[]): Landing[] =>
-  landings.filter(landing => landing.isPublished && landing.intro.length > 0);
+  landings.filter(
+    landing =>
+      landing.isPublished &&
+      landing.intro.length > 0 &&
+      isRegionPublished(landing.regionSlug)
+  );
 
 /** Опубликованные страницы `/dzhip-tury/{slug}`. */
 export const getDzhipTuryLandings = (): Landing[] =>

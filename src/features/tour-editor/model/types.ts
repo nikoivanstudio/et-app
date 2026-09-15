@@ -29,7 +29,13 @@ export type TourEditorData = {
   slug: string;
   about: string;
   description: string;
-  startCity: string;
+  /**
+   * Город выезда — слаг из справочника, а не набранное название.
+   *
+   * Форма держит слаг, а показывает название: замена «Ялты» на «Большую
+   * Ялту» в справочнике не должна отвязывать от города десяток туров.
+   */
+  startCitySlug: string;
   durationHours: number;
   capacity: number | null;
   difficulty: string;
@@ -49,7 +55,7 @@ export type TourEditorData = {
   blockedDates: string[];
   meetingAddress: string;
   meetingNote: string;
-  pickupCities: string[];
+  pickupCitySlugs: string[];
   metaTitle: string;
   metaDescription: string;
   photos: EditorPhoto[];

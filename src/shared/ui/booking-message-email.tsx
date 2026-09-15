@@ -1,5 +1,6 @@
-import { Heading, Html, Link, Section, Text } from '@react-email/components';
 import * as React from 'react';
+
+import { Heading, Html, Link, Section, Text } from '@/shared/ui/email-primitives';
 
 type Props = {
   authorName: string;

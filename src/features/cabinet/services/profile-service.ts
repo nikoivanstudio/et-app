@@ -1,3 +1,4 @@
+import type { CityEntity } from '@/entities/city/domain';
 import { photoRepository } from '@/entities/photo/repositories/photo';
 import { serverPhotoUtils } from '@/entities/photo/server';
 import { userRepository } from '@/entities/user/repositories/user';
@@ -5,6 +6,8 @@ import { userRepository } from '@/entities/user/repositories/user';
 import { dbClient } from '@/shared/lib/db';
 import { Either, left, right } from '@/shared/lib/either';
 import { translit } from '@/shared/lib/string-utils';
+
+import { geoServices } from '@/kernel/geo/server';
 
 import { GuideProfilePayload } from '../model/profile-schemas';
 
@@ -49,7 +52,7 @@ async function getProfile(
     lastName: user.lastName ?? '',
     headline: user.headline ?? '',
     bio: user.bio ?? '',
-    city: user.city ?? '',
+    citySlug: await geoServices.getCitySlug(user.cityId),
     vehicle: user.vehicle ?? '',
     email: user.email ?? '',
     languages: user.languages ?? [],
@@ -98,16 +101,39 @@ const buildSlug = async (
   }
 };
 
+/**
+ * Город гида: ключ и прежняя строка.
+ *
+ * Правило целиком — в `geoServices.resolveCityWrite`; здесь оно только
+ * раскладывается по именам колонок пользователя. Без этого профиль писал
+ * бы одну строку, и `user.city_id` устаревал бы на первой же правке
+ * профиля — молча, потому что проверка `geo:check-cities` ищет пустые
+ * ключи, а не разошедшиеся.
+ */
+const cityColumns = (
+  city: CityEntity | undefined,
+  existingCityId?: number | null
+) => {
+  const write = geoServices.resolveCityWrite(city, existingCityId);
+
+  return write ? { cityId: write.id, city: write.title } : {};
+};
+
 async function saveProfile(
   userId: number,
   payload: GuideProfilePayload
 ): Promise<Either<string, { id: number }>> {
   const user = await dbClient.user.findUnique({
     where: { id: userId },
-    select: { slug: true }
+    select: { slug: true, cityId: true }
   });
 
   if (!user) return left('Пользователь не найден');
+
+  const cities = await geoServices.resolveCities(
+    payload.citySlug ? [payload.citySlug] : []
+  );
+  const city = cities.get(payload.citySlug);
 
   const slug =
     user.slug ??
@@ -120,7 +146,7 @@ async function saveProfile(
       lastName: payload.lastName || null,
       headline: payload.headline || null,
       bio: payload.bio || null,
-      city: payload.city || null,
+      ...cityColumns(city, user.cityId),
       vehicle: payload.vehicle || null,
       email: payload.email || null,
       languages: payload.languages,

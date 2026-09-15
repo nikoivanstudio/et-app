@@ -27,7 +27,7 @@ export const FavouriteLabelIcon: FC<FavouriteLabelIconProps> = ({
     if (!id && !secondId) {
       setTimeout(changeIds, 0);
     }
-  }, []);
+  }, [id, secondId]);
 
   return (
     // Была <span onClick> — с клавиатуры недоступна и без имени для скринридера.

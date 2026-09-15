@@ -25,10 +25,10 @@ export const useEditTour = (props: Props) => {
 
       queryClient.invalidateQueries({ queryKey: [tourApi.baseKey] });
 
-      props?.onSuccess && props.onSuccess();
+      props?.onSuccess?.();
     },
     onError: error => {
-      props?.onError && props.onError(error);
+      props?.onError?.(error);
     }
   });
 

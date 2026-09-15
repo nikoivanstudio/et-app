@@ -25,9 +25,9 @@ model Booking {
   /// по каждому направлению отдельно (см. booking-mailer).
   clientNotifiedAt DateTime? @map("client_notified_at") @db.Timestamp()
   guideNotifiedAt  DateTime? @map("guide_notified_at") @db.Timestamp()
-  processedAt   DateTime? @map("processed_at") @db.Timestamp()
-  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamp()
-  updatedAt     DateTime? @updatedAt @map("updated_at") @db.Timestamp()
+  processedAt      DateTime? @map("processed_at") @db.Timestamp()
+  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt        DateTime? @updatedAt @map("updated_at") @db.Timestamp()
 
   @@index([guideId, status])
   @@map("booking")

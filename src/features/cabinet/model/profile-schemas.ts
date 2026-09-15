@@ -13,7 +13,10 @@ export const guideProfileSchema = z.object({
   lastName: trimmed(60).default(''),
   headline: trimmed(160).default(''),
   bio: trimmed(2000).default(''),
-  city: trimmed(120).default(''),
+  // Слаг города из справочника, а не набранное название: по городу гид
+  // попадает в подборки региона, и опечатка в нём ничего не ломает
+  // видимо — просто оставляет гида вне подборки.
+  citySlug: trimmed(120).default(''),
   vehicle: trimmed(200).default(''),
   email: z.email('Неверный email').or(z.literal('')).default(''),
   languages: z.array(trimmed(60).min(1)).max(10).default([]),

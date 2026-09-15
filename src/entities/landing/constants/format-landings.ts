@@ -24,6 +24,8 @@ export const FORMAT_LANDINGS: Landing[] = [
   {
     slug: 'na-zakat',
     path: '/dzhip-tury/na-zakat',
+    regionSlug: 'krym',
+    kind: 'format',
     title: 'Джип-туры на закат',
     metaTitle: 'Джип-туры на закат в Крыму — выезд к вечеру',
     metaDescription:
@@ -40,6 +42,8 @@ export const FORMAT_LANDINGS: Landing[] = [
   {
     slug: 'individualnye',
     path: '/dzhip-tury/individualnye',
+    regionSlug: 'krym',
+    kind: 'format',
     title: 'Индивидуальные джип-туры',
     metaTitle: 'Индивидуальные джип-туры по Крыму — маршрут под вас',
     metaDescription:
@@ -56,6 +60,8 @@ export const FORMAT_LANDINGS: Landing[] = [
   {
     slug: 's-detmi',
     path: '/dzhip-tury/s-detmi',
+    regionSlug: 'krym',
+    kind: 'format',
     title: 'Джип-туры с детьми',
     metaTitle: 'Джип-туры по Крыму с детьми — короткие маршруты и остановки',
     metaDescription:
@@ -72,6 +78,8 @@ export const FORMAT_LANDINGS: Landing[] = [
   {
     slug: 'na-uaz',
     path: '/dzhip-tury/na-uaz',
+    regionSlug: 'krym',
+    kind: 'format',
     title: 'Джип-туры на УАЗе',
     metaTitle: 'Джип-туры на УАЗе по Крыму — подготовленные машины',
     metaDescription:
@@ -88,6 +96,8 @@ export const FORMAT_LANDINGS: Landing[] = [
   {
     slug: 'odnodnevnye',
     path: '/dzhip-tury/odnodnevnye',
+    regionSlug: 'krym',
+    kind: 'format',
     title: 'Однодневные джип-туры',
     metaTitle: 'Однодневные джип-туры по Крыму — полный день на маршруте',
     metaDescription:

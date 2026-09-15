@@ -399,6 +399,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   Activity: 'Activity',
   Booking: 'Booking',
+  City: 'City',
+  TourPickupCity: 'TourPickupCity',
   File: 'File',
   Message: 'Message',
   Order: 'Order',
@@ -429,7 +431,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "activity" | "booking" | "file" | "message" | "order" | "otp" | "partnerApplication" | "photo" | "place" | "tourPlace" | "post" | "redirect" | "review" | "session" | "tour" | "transaction" | "user"
+    modelProps: "activity" | "booking" | "city" | "tourPickupCity" | "file" | "message" | "order" | "otp" | "partnerApplication" | "photo" | "place" | "tourPlace" | "post" | "redirect" | "review" | "session" | "tour" | "transaction" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -578,6 +580,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.BookingCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.BookingCountAggregateOutputType> | number
+        }
+      }
+    }
+    City: {
+      payload: Prisma.$CityPayload<ExtArgs>
+      fields: Prisma.CityFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CityFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CityFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>
+        }
+        findFirst: {
+          args: Prisma.CityFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CityFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>
+        }
+        findMany: {
+          args: Prisma.CityFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>[]
+        }
+        create: {
+          args: Prisma.CityCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>
+        }
+        createMany: {
+          args: Prisma.CityCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CityCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>[]
+        }
+        delete: {
+          args: Prisma.CityDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>
+        }
+        update: {
+          args: Prisma.CityUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>
+        }
+        deleteMany: {
+          args: Prisma.CityDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CityUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CityUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>[]
+        }
+        upsert: {
+          args: Prisma.CityUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CityPayload>
+        }
+        aggregate: {
+          args: Prisma.CityAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCity>
+        }
+        groupBy: {
+          args: Prisma.CityGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CityGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CityCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CityCountAggregateOutputType> | number
+        }
+      }
+    }
+    TourPickupCity: {
+      payload: Prisma.$TourPickupCityPayload<ExtArgs>
+      fields: Prisma.TourPickupCityFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TourPickupCityFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TourPickupCityFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>
+        }
+        findFirst: {
+          args: Prisma.TourPickupCityFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TourPickupCityFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>
+        }
+        findMany: {
+          args: Prisma.TourPickupCityFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>[]
+        }
+        create: {
+          args: Prisma.TourPickupCityCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>
+        }
+        createMany: {
+          args: Prisma.TourPickupCityCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TourPickupCityCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>[]
+        }
+        delete: {
+          args: Prisma.TourPickupCityDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>
+        }
+        update: {
+          args: Prisma.TourPickupCityUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>
+        }
+        deleteMany: {
+          args: Prisma.TourPickupCityDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TourPickupCityUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TourPickupCityUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>[]
+        }
+        upsert: {
+          args: Prisma.TourPickupCityUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TourPickupCityPayload>
+        }
+        aggregate: {
+          args: Prisma.TourPickupCityAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTourPickupCity>
+        }
+        groupBy: {
+          args: Prisma.TourPickupCityGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TourPickupCityGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TourPickupCityCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TourPickupCityCountAggregateOutputType> | number
         }
       }
     }
@@ -1781,6 +1931,30 @@ export const BookingScalarFieldEnum = {
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
 
 
+export const CityScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  regionSlug: 'regionSlug',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  isPublished: 'isPublished',
+  position: 'position',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CityScalarFieldEnum = (typeof CityScalarFieldEnum)[keyof typeof CityScalarFieldEnum]
+
+
+export const TourPickupCityScalarFieldEnum = {
+  tourId: 'tourId',
+  cityId: 'cityId'
+} as const
+
+export type TourPickupCityScalarFieldEnum = (typeof TourPickupCityScalarFieldEnum)[keyof typeof TourPickupCityScalarFieldEnum]
+
+
 export const FileScalarFieldEnum = {
   id: 'id',
   bucket: 'bucket',
@@ -1872,6 +2046,7 @@ export const PlaceScalarFieldEnum = {
   latitude: 'latitude',
   longitude: 'longitude',
   city: 'city',
+  cityId: 'cityId',
   district: 'district',
   kind: 'kind',
   mainImage: 'mainImage',
@@ -1995,6 +2170,7 @@ export const TourScalarFieldEnum = {
   seasons: 'seasons',
   priceUnit: 'priceUnit',
   startCity: 'startCity',
+  startCityId: 'startCityId',
   priceOptions: 'priceOptions',
   minGroupSize: 'minGroupSize',
   bookingLeadDays: 'bookingLeadDays',
@@ -2041,6 +2217,7 @@ export const UserScalarFieldEnum = {
   specializations: 'specializations',
   experienceSince: 'experienceSince',
   city: 'city',
+  cityId: 'cityId',
   vehicle: 'vehicle',
   notifyNewBooking: 'notifyNewBooking',
   notifyNewMessage: 'notifyNewMessage',
@@ -2341,6 +2518,8 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   activity?: Prisma.ActivityOmit
   booking?: Prisma.BookingOmit
+  city?: Prisma.CityOmit
+  tourPickupCity?: Prisma.TourPickupCityOmit
   file?: Prisma.FileOmit
   message?: Prisma.MessageOmit
   order?: Prisma.OrderOmit

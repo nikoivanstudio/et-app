@@ -4,6 +4,9 @@ import { FC } from 'react';
 
 import { MONTHS_SHORT_LABELS } from '@/features/cabinet/lib/format';
 
+import type { CityOption } from '@/entities/city/domain';
+import { CitySelect } from '@/entities/city/ui/city-select';
+
 import { cn } from '@/shared/lib/css';
 import { cabinetInput, Field } from '@/shared/ui/cabinet';
 
@@ -25,8 +28,9 @@ const toggle = (values: number[], value: number): number[] =>
 
 export const BasicsStep: FC<{
   tour: TourEditorData;
+  cities: CityOption[];
   set: <K extends keyof TourEditorData>(key: K, value: TourEditorData[K]) => void;
-}> = ({ tour, set }) => (
+}> = ({ tour, cities, set }) => (
   <StepShell title='Шаг 1. Основное' hint='С этого начинается карточка тура'>
     <Field
       label='Название тура'
@@ -61,13 +65,11 @@ export const BasicsStep: FC<{
 
     <div className='grid gap-4 sm:grid-cols-3'>
       <Field label='Город старта' htmlFor='tour-city'>
-        <input
+        <CitySelect
           id='tour-city'
-          value={tour.startCity}
-          onChange={event => set('startCity', event.target.value)}
-          maxLength={120}
-          placeholder='Ялта'
-          className={cabinetInput}
+          value={tour.startCitySlug}
+          cities={cities}
+          onChange={slug => set('startCitySlug', slug)}
         />
       </Field>
       <Field label='Длительность, часов' htmlFor='tour-duration'>

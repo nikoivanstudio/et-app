@@ -11,7 +11,7 @@ const filledTour = () => ({
   ...emptyTourEditorData(),
   id: 1,
   title: 'Джип-тур на Ай-Петри из Ялты',
-  startCity: 'Ялта',
+  startCitySlug: 'yalta',
   durationHours: 7,
   about: 'Поднимаемся на плато по старой военной дороге и заезжаем к водопаду.',
   description:

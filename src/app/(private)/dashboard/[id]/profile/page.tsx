@@ -3,6 +3,7 @@ import { FC } from 'react';
 
 import { cabinetProfileService, loadCabinetContext } from '@/features/cabinet/server';
 
+import { geoServices } from '@/kernel/geo/server';
 import { CabinetProfilePage } from '@/views/cabinet/server';
 
 type Props = { params: Promise<{ id: string }> };
@@ -11,9 +12,10 @@ const Page: FC<Props> = async ({ params }) => {
   const { id } = await params;
   const { identity, badges, session } = await loadCabinetContext(id);
 
-  const [profile, sessions] = await Promise.all([
+  const [profile, sessions, cities] = await Promise.all([
     cabinetProfileService.getProfile(session.id),
-    cabinetProfileService.getSessions(session.id, session.sid)
+    cabinetProfileService.getSessions(session.id, session.sid),
+    geoServices.getCityOptions()
   ]);
 
   if (profile.type === 'left') notFound();
@@ -24,6 +26,7 @@ const Page: FC<Props> = async ({ params }) => {
       badges={badges}
       profile={profile.value}
       sessions={sessions}
+      cities={cities}
     />
   );
 };

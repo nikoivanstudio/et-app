@@ -22,12 +22,14 @@ export const GEO_LANDINGS: Landing[] = [
   {
     slug: 'bahchisaray',
     path: '/dzhip-tury/bahchisaray',
+    regionSlug: 'krym',
+    kind: 'geo',
     title: 'Джип-туры из Бахчисарая',
     metaTitle: 'Джип-туры из Бахчисарая — маршруты, цены, выезд от жилья',
     metaDescription:
       'Джип-туры из Бахчисарая на подготовленных внедорожниках: Чуфут-Кале, Тепе-Кермен, Качи-Кальон, Мангуп. Забираем от жилья, цена за машину до шести человек.',
     kicker: 'Крым · Бахчисарайский район',
-    startCity: 'Бахчисарай',
+    citySlug: 'bahchisaray',
     placeSlugs: [
       'chufut-kale',
       'tepe-kermen',
@@ -46,12 +48,14 @@ export const GEO_LANDINGS: Landing[] = [
   {
     slug: 'sevastopol',
     path: '/dzhip-tury/sevastopol',
+    regionSlug: 'krym',
+    kind: 'geo',
     title: 'Джип-туры из Севастополя',
     metaTitle: 'Джип-туры из Севастополя — пещерные города и каньоны',
     metaDescription:
       'Джип-туры из Севастополя на внедорожниках: Эски-Кермен, Мангуп-Кале, Бельбекский каньон, Челтер-Мармара. Выезд от жилья, цена за машину до шести человек.',
     kicker: 'Крым · Севастополь',
-    startCity: 'Севастополь',
+    citySlug: 'sevastopol',
     placeSlugs: [
       'eski-kermen',
       'mangup-kale',
@@ -69,12 +73,14 @@ export const GEO_LANDINGS: Landing[] = [
   {
     slug: 'simferopol',
     path: '/dzhip-tury/simferopol',
+    regionSlug: 'krym',
+    kind: 'geo',
     title: 'Джип-туры из Симферополя',
     metaTitle: 'Джип-туры из Симферополя — выезд в день прилёта',
     metaDescription:
       'Джип-туры из Симферополя на внедорожниках: пещерные города Бахчисарайского района, Чатыр-Даг, Ак-Кая. Забираем от аэропорта или жилья, цена за машину.',
     kicker: 'Крым · Симферополь',
-    startCity: 'Симферополь',
+    citySlug: 'simferopol',
     placeSlugs: ['chufut-kale', 'tepe-kermen', 'ak-kaya'],
     intro: [
       'Симферополь удобен тем, что стоит посередине. Отсюда одинаково недалеко и до пещерных городов на западе, и до Долгоруковской яйлы с Чатыр-Дагом на юго-востоке, и до Белогорья с его Белой скалой. Для тех, кто прилетел, это ещё и способ не терять первый день: выехать можно прямо из аэропорта, с вещами в багажнике, а закончить уже на побережье.',
@@ -87,12 +93,14 @@ export const GEO_LANDINGS: Landing[] = [
   {
     slug: 'yalta',
     path: '/dzhip-tury/yalta',
+    regionSlug: 'krym',
+    kind: 'geo',
     title: 'Джип-туры из Ялты',
     metaTitle: 'Джип-туры из Ялты — Ай-Петри, яйлы и водопады',
     metaDescription:
       'Джип-туры из Ялты на внедорожниках: подъём на Ай-Петри по старой дороге, яйлы, водопад Учан-Су, Большой каньон Крыма. Цена за машину до шести человек.',
     kicker: 'Крым · Южный берег',
-    startCity: 'Ялта',
+    citySlug: 'yalta',
     placeSlugs: ['ai-petri', 'uchan-su', 'bolshoy-kanon-kryma'],
     intro: [
       'Из Ялты все дороги ведут вверх. Город зажат между морем и стеной Главной гряды, и уже через двадцать минут после выезда вы оказываетесь на высоте в километр — там, где вместо субтропиков начинается голая яйла с буковым криволесьем по краям.',
@@ -110,31 +118,37 @@ export const GEO_LANDINGS: Landing[] = [
   {
     slug: 'evpatoriya',
     path: '/dzhip-tury/evpatoriya',
+    regionSlug: 'krym',
+    kind: 'geo',
     title: 'Джип-туры из Евпатории',
     metaTitle: 'Джип-туры из Евпатории',
     metaDescription: '',
     intro: [],
-    startCity: 'Евпатория',
+    citySlug: 'evpatoriya',
     isPublished: false
   },
   {
     slug: 'alushta',
     path: '/dzhip-tury/alushta',
+    regionSlug: 'krym',
+    kind: 'geo',
     title: 'Джип-туры из Алушты',
     metaTitle: 'Джип-туры из Алушты',
     metaDescription: '',
     intro: [],
-    startCity: 'Алушта',
+    citySlug: 'alushta',
     isPublished: false
   },
   {
     slug: 'sudak',
     path: '/dzhip-tury/sudak',
+    regionSlug: 'krym',
+    kind: 'geo',
     title: 'Джип-туры из Судака',
     metaTitle: 'Джип-туры из Судака',
     metaDescription: '',
     intro: [],
-    startCity: 'Судак',
+    citySlug: 'sudak',
     isPublished: false
   }
 ];

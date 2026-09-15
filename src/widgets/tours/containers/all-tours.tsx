@@ -35,8 +35,17 @@ const gridClassName =
  * когда в базе появится первый тур (A4), и трогать код для этого
  * не придётся.
  */
-export const AllTours: FC = async () => {
-  const tours = await tourService.getTourCards();
+export const AllTours: FC<{
+  /**
+   * Регион раздела. Задаётся адресом, а не выбором посетителя: каталог
+   * пререндерится, и чтение cookie здесь обнулило бы ISR. Пока опубликован
+   * один регион, параметр не передаётся и каталог показывает всё.
+   */
+  regionSlug?: string;
+}> = async ({ regionSlug }) => {
+  const tours = await tourService.getTourCards(
+    regionSlug ? { regionSlug } : undefined
+  );
   const legacyTours = tours.length ? [] : [...firstPage, ...secondPage];
 
   return (

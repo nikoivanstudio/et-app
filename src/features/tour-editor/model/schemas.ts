@@ -38,7 +38,7 @@ export const tourDraftSchema = z.object({
     .max(180, 'Название тура длиннее 180 символов'),
   about: z.string().trim().max(512).default(''),
   description: z.string().trim().max(20_000).default(''),
-  startCity: z.string().trim().max(120).default(''),
+  startCitySlug: z.string().trim().max(120).default(''),
   durationHours: z.number().int().min(1).max(24).default(1),
   capacity: z.number().int().min(1).max(100).nullable().default(null),
   difficulty: z.enum(['EASY', 'MEDIUM', 'HARD']).nullable().default(null),
@@ -62,7 +62,7 @@ export const tourDraftSchema = z.object({
   blockedDates: z.array(z.string()).max(365).default([]),
   meetingAddress: z.string().trim().max(300).default(''),
   meetingNote: z.string().trim().max(1000).default(''),
-  pickupCities: list(20, 120),
+  pickupCitySlugs: list(20, 120),
   metaTitle: z.string().trim().max(180).default(''),
   metaDescription: z.string().trim().max(400).default('')
 });

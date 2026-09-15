@@ -49,13 +49,19 @@ async function main() {
   const author = await dbClient.user.findUniqueOrThrow({ where: { id: GUIDE_ID } });
   console.log('гид:', author.login);
 
+  // Города берём из справочника: демо-данные должны выглядеть так же,
+  // как данные, заведённые через кабинет, иначе проверка кабинета ничего
+  // не проверяет.
+  const cities = await dbClient.city.findMany({ where: { regionSlug: 'krym' } });
+  const cityByTitle = new Map(cities.map(city => [city.title, city]));
+
   await dbClient.user.update({
     where: { id: GUIDE_ID },
     data: {
       firstName: 'Иван', lastName: 'Николаенко', slug: 'demo-ivan-nikolaenko',
       headline: 'Джип-туры по Крыму с 2014 года. Внедорожник, горы, пещерные города.',
       bio: 'Вожу группы по Крыму двенадцатый сезон. Свой Mitsubishi Pajero на шесть мест: плато Ай-Петри, пещерные города Бахчисарайского района, Марсианское озеро и крепости Севастополя.\n\nБеру семьи с детьми: темп спокойный, пешие участки короткие, в машине детское кресло.',
-      city: 'Ялта', vehicle: 'Mitsubishi Pajero, 6 мест, кондиционер, детское кресло',
+      city: 'Ялта', cityId: cityByTitle.get('Ялта')?.id ?? null, vehicle: 'Mitsubishi Pajero, 6 мест, кондиционер, детское кресло',
       languages: ['Русский', 'Английский'], specializations: ['Джиппинг', 'Пещерные города', 'Туры с детьми'],
       experienceSince: 2014, phone: author.phone ?? '+7 978 788-07-53', email: author.email ?? 'ivan@extreme-sport.ru'
     }
@@ -84,7 +90,8 @@ async function main() {
         content: { lead: 'Поднимаемся на плато по старой военной дороге, заезжаем к водопаду и зубцам.', tags: [], routeStops: [], tickets: [], info: [], awaitsParagraphs: [], awaitsHighlights: [] },
         mainPhotoId: photo.id, price: t.price, priceUnit: t.priceUnit, duration: t.duration,
         categories: ['dzhip-tury'], metaKeywords: [], tags: [], tourRoute: [], authorId: GUIDE_ID,
-        status: t.status, rejectionComment: t.rejection, startCity: t.startCity, capacity: t.capacity,
+        status: t.status, rejectionComment: t.rejection, capacity: t.capacity,
+        startCity: t.startCity, startCityId: cityByTitle.get(t.startCity)?.id ?? null,
         difficulty: t.difficulty, seasons: t.seasons, rating: 4.9,
         included: ['Внедорожник и топливо', 'Услуги гида-водителя', 'Экологический сбор'],
         excluded: t.status === 'REJECTED' ? [] : ['Обед', 'Входные билеты'],
@@ -92,7 +99,13 @@ async function main() {
         startTime: '08:00', weekdays: [1,2,3,4,5,6], bookingLeadDays: 2, minGroupSize: 2,
         meetingAddress: 'ул. Московская, 8, автовокзал',
         meetingNote: 'Площадка у касс междугородних рейсов, ориентир — синий внедорожник с наклейкой Energy Tour.',
-        pickupCities: ['Алупка', 'Гаспра'], blockedDates: [day(10), day(11)]
+        pickupCities: ['Алупка'],
+        pickupCityLinks: {
+          create: cityByTitle.has('Алупка')
+            ? [{ cityId: cityByTitle.get('Алупка')!.id }]
+            : []
+        },
+        blockedDates: [day(10), day(11)]
       }
     });
     await dbClient.photo.update({ where: { id: photo.id }, data: { tourId: tour.id } });

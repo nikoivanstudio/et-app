@@ -12,7 +12,7 @@ export const useEditPost = (id?: number) => {
   const queryClient = useQueryClient();
   const mutation = useMutation<string, Error, PostPatch>({
     mutationFn: postApi.editPost,
-    onSuccess: message => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [postApi.baseKey] });
     },
 

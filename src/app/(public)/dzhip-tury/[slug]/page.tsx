@@ -39,7 +39,7 @@ const Page: FC<{ params: Promise<{ slug: string }> }> = async ({ params }) => {
     <LandingView
       landing={landing}
       crumbs={geoCrumbs(landing.title)}
-      page={landing.startCity ? 'geo' : 'tours'}
+      page={landing.kind === 'geo' ? 'geo' : 'tours'}
     />
   );
 };

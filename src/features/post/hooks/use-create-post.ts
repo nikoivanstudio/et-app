@@ -24,10 +24,10 @@ export const useCreatePost = <E>(config?: HookConfig<E>) => {
       config.onSuccess(message);
     },
     onSettled: message => {
-      !!config?.onSettled && config.onSettled(message);
+      config?.onSettled?.(message);
     },
     onError: error => {
-      !!config?.onError && config.onError(error);
+      config?.onError?.(error);
     }
   });
 

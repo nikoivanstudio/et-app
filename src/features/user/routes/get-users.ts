@@ -10,13 +10,9 @@ import { Either } from '@/shared/lib/either';
 import { handleError, handleForbidden, handleSuccess, handleUnauthorized } from '@/shared/lib/response-utils';
 
 import { GetUserResponse } from '../domain';
-import { searchParamsUtils } from '../lib/search-params-utils';
 
 export async function getUsers(req: NextRequest): Promise<Response> {
   try {
-    const searchParams = req.nextUrl.searchParams;
-    const params = searchParamsUtils.getParamsBySearchParams(searchParams);
-
     const cookies = req.cookies.get(SESSION_COOKIE_NAME)?.value;
 
     if (!cookies) {

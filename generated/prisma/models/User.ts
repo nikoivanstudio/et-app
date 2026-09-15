@@ -32,6 +32,7 @@ export type UserAvgAggregateOutputType = {
   rating: number | null
   coverPhotoId: number | null
   experienceSince: number | null
+  cityId: number | null
 }
 
 export type UserSumAggregateOutputType = {
@@ -40,6 +41,7 @@ export type UserSumAggregateOutputType = {
   rating: number | null
   coverPhotoId: number | null
   experienceSince: number | null
+  cityId: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -62,6 +64,7 @@ export type UserMinAggregateOutputType = {
   coverPhotoId: number | null
   experienceSince: number | null
   city: string | null
+  cityId: number | null
   vehicle: string | null
   notifyNewBooking: boolean | null
   notifyNewMessage: boolean | null
@@ -89,6 +92,7 @@ export type UserMaxAggregateOutputType = {
   coverPhotoId: number | null
   experienceSince: number | null
   city: string | null
+  cityId: number | null
   vehicle: string | null
   notifyNewBooking: boolean | null
   notifyNewMessage: boolean | null
@@ -118,6 +122,7 @@ export type UserCountAggregateOutputType = {
   specializations: number
   experienceSince: number
   city: number
+  cityId: number
   vehicle: number
   notifyNewBooking: number
   notifyNewMessage: number
@@ -133,6 +138,7 @@ export type UserAvgAggregateInputType = {
   rating?: true
   coverPhotoId?: true
   experienceSince?: true
+  cityId?: true
 }
 
 export type UserSumAggregateInputType = {
@@ -141,6 +147,7 @@ export type UserSumAggregateInputType = {
   rating?: true
   coverPhotoId?: true
   experienceSince?: true
+  cityId?: true
 }
 
 export type UserMinAggregateInputType = {
@@ -163,6 +170,7 @@ export type UserMinAggregateInputType = {
   coverPhotoId?: true
   experienceSince?: true
   city?: true
+  cityId?: true
   vehicle?: true
   notifyNewBooking?: true
   notifyNewMessage?: true
@@ -190,6 +198,7 @@ export type UserMaxAggregateInputType = {
   coverPhotoId?: true
   experienceSince?: true
   city?: true
+  cityId?: true
   vehicle?: true
   notifyNewBooking?: true
   notifyNewMessage?: true
@@ -219,6 +228,7 @@ export type UserCountAggregateInputType = {
   specializations?: true
   experienceSince?: true
   city?: true
+  cityId?: true
   vehicle?: true
   notifyNewBooking?: true
   notifyNewMessage?: true
@@ -335,6 +345,7 @@ export type UserGroupByOutputType = {
   specializations: string[]
   experienceSince: number | null
   city: string | null
+  cityId: number | null
   vehicle: string | null
   notifyNewBooking: boolean
   notifyNewMessage: boolean
@@ -387,11 +398,13 @@ export type UserWhereInput = {
   specializations?: Prisma.StringNullableListFilter<"User">
   experienceSince?: Prisma.IntNullableFilter<"User"> | number | null
   city?: Prisma.StringNullableFilter<"User"> | string | null
+  cityId?: Prisma.IntNullableFilter<"User"> | number | null
   vehicle?: Prisma.StringNullableFilter<"User"> | string | null
   notifyNewBooking?: Prisma.BoolFilter<"User"> | boolean
   notifyNewMessage?: Prisma.BoolFilter<"User"> | boolean
   notifyTripReminder?: Prisma.BoolFilter<"User"> | boolean
   notifyNews?: Prisma.BoolFilter<"User"> | boolean
+  cityRef?: Prisma.XOR<Prisma.CityNullableScalarRelationFilter, Prisma.CityWhereInput> | null
   posts?: Prisma.PostListRelationFilter
   tours?: Prisma.TourListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
@@ -429,11 +442,13 @@ export type UserOrderByWithRelationInput = {
   specializations?: Prisma.SortOrder
   experienceSince?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
+  cityId?: Prisma.SortOrderInput | Prisma.SortOrder
   vehicle?: Prisma.SortOrderInput | Prisma.SortOrder
   notifyNewBooking?: Prisma.SortOrder
   notifyNewMessage?: Prisma.SortOrder
   notifyTripReminder?: Prisma.SortOrder
   notifyNews?: Prisma.SortOrder
+  cityRef?: Prisma.CityOrderByWithRelationInput
   posts?: Prisma.PostOrderByRelationAggregateInput
   tours?: Prisma.TourOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
@@ -474,11 +489,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   specializations?: Prisma.StringNullableListFilter<"User">
   experienceSince?: Prisma.IntNullableFilter<"User"> | number | null
   city?: Prisma.StringNullableFilter<"User"> | string | null
+  cityId?: Prisma.IntNullableFilter<"User"> | number | null
   vehicle?: Prisma.StringNullableFilter<"User"> | string | null
   notifyNewBooking?: Prisma.BoolFilter<"User"> | boolean
   notifyNewMessage?: Prisma.BoolFilter<"User"> | boolean
   notifyTripReminder?: Prisma.BoolFilter<"User"> | boolean
   notifyNews?: Prisma.BoolFilter<"User"> | boolean
+  cityRef?: Prisma.XOR<Prisma.CityNullableScalarRelationFilter, Prisma.CityWhereInput> | null
   posts?: Prisma.PostListRelationFilter
   tours?: Prisma.TourListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
@@ -516,6 +533,7 @@ export type UserOrderByWithAggregationInput = {
   specializations?: Prisma.SortOrder
   experienceSince?: Prisma.SortOrderInput | Prisma.SortOrder
   city?: Prisma.SortOrderInput | Prisma.SortOrder
+  cityId?: Prisma.SortOrderInput | Prisma.SortOrder
   vehicle?: Prisma.SortOrderInput | Prisma.SortOrder
   notifyNewBooking?: Prisma.SortOrder
   notifyNewMessage?: Prisma.SortOrder
@@ -553,6 +571,7 @@ export type UserScalarWhereWithAggregatesInput = {
   specializations?: Prisma.StringNullableListFilter<"User">
   experienceSince?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
   city?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  cityId?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
   vehicle?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   notifyNewBooking?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   notifyNewMessage?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
@@ -586,6 +605,7 @@ export type UserCreateInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -623,6 +643,7 @@ export type UserUncheckedCreateInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -669,6 +690,7 @@ export type UserUpdateInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -706,6 +728,7 @@ export type UserUncheckedUpdateInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -748,6 +771,7 @@ export type UserCreateManyInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -805,6 +829,7 @@ export type UserUncheckedUpdateManyInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -820,6 +845,16 @@ export type UserScalarRelationFilter = {
 export type UserNullableScalarRelationFilter = {
   is?: Prisma.UserWhereInput | null
   isNot?: Prisma.UserWhereInput | null
+}
+
+export type UserListRelationFilter = {
+  every?: Prisma.UserWhereInput
+  some?: Prisma.UserWhereInput
+  none?: Prisma.UserWhereInput
+}
+
+export type UserOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -844,6 +879,7 @@ export type UserCountOrderByAggregateInput = {
   specializations?: Prisma.SortOrder
   experienceSince?: Prisma.SortOrder
   city?: Prisma.SortOrder
+  cityId?: Prisma.SortOrder
   vehicle?: Prisma.SortOrder
   notifyNewBooking?: Prisma.SortOrder
   notifyNewMessage?: Prisma.SortOrder
@@ -857,6 +893,7 @@ export type UserAvgOrderByAggregateInput = {
   rating?: Prisma.SortOrder
   coverPhotoId?: Prisma.SortOrder
   experienceSince?: Prisma.SortOrder
+  cityId?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -879,6 +916,7 @@ export type UserMaxOrderByAggregateInput = {
   coverPhotoId?: Prisma.SortOrder
   experienceSince?: Prisma.SortOrder
   city?: Prisma.SortOrder
+  cityId?: Prisma.SortOrder
   vehicle?: Prisma.SortOrder
   notifyNewBooking?: Prisma.SortOrder
   notifyNewMessage?: Prisma.SortOrder
@@ -906,6 +944,7 @@ export type UserMinOrderByAggregateInput = {
   coverPhotoId?: Prisma.SortOrder
   experienceSince?: Prisma.SortOrder
   city?: Prisma.SortOrder
+  cityId?: Prisma.SortOrder
   vehicle?: Prisma.SortOrder
   notifyNewBooking?: Prisma.SortOrder
   notifyNewMessage?: Prisma.SortOrder
@@ -919,6 +958,7 @@ export type UserSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
   coverPhotoId?: Prisma.SortOrder
   experienceSince?: Prisma.SortOrder
+  cityId?: Prisma.SortOrder
 }
 
 export type UserCreateNestedOneWithoutActivitiesInput = {
@@ -963,6 +1003,48 @@ export type UserUpdateOneWithoutClientBookingsNestedInput = {
   delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutClientBookingsInput, Prisma.UserUpdateWithoutClientBookingsInput>, Prisma.UserUncheckedUpdateWithoutClientBookingsInput>
+}
+
+export type UserCreateNestedManyWithoutCityRefInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCityRefInput, Prisma.UserUncheckedCreateWithoutCityRefInput> | Prisma.UserCreateWithoutCityRefInput[] | Prisma.UserUncheckedCreateWithoutCityRefInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCityRefInput | Prisma.UserCreateOrConnectWithoutCityRefInput[]
+  createMany?: Prisma.UserCreateManyCityRefInputEnvelope
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUncheckedCreateNestedManyWithoutCityRefInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCityRefInput, Prisma.UserUncheckedCreateWithoutCityRefInput> | Prisma.UserCreateWithoutCityRefInput[] | Prisma.UserUncheckedCreateWithoutCityRefInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCityRefInput | Prisma.UserCreateOrConnectWithoutCityRefInput[]
+  createMany?: Prisma.UserCreateManyCityRefInputEnvelope
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUpdateManyWithoutCityRefNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCityRefInput, Prisma.UserUncheckedCreateWithoutCityRefInput> | Prisma.UserCreateWithoutCityRefInput[] | Prisma.UserUncheckedCreateWithoutCityRefInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCityRefInput | Prisma.UserCreateOrConnectWithoutCityRefInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutCityRefInput | Prisma.UserUpsertWithWhereUniqueWithoutCityRefInput[]
+  createMany?: Prisma.UserCreateManyCityRefInputEnvelope
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutCityRefInput | Prisma.UserUpdateWithWhereUniqueWithoutCityRefInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutCityRefInput | Prisma.UserUpdateManyWithWhereWithoutCityRefInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type UserUncheckedUpdateManyWithoutCityRefNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCityRefInput, Prisma.UserUncheckedCreateWithoutCityRefInput> | Prisma.UserCreateWithoutCityRefInput[] | Prisma.UserUncheckedCreateWithoutCityRefInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCityRefInput | Prisma.UserCreateOrConnectWithoutCityRefInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutCityRefInput | Prisma.UserUpsertWithWhereUniqueWithoutCityRefInput[]
+  createMany?: Prisma.UserCreateManyCityRefInputEnvelope
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutCityRefInput | Prisma.UserUpdateWithWhereUniqueWithoutCityRefInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutCityRefInput | Prisma.UserUpdateManyWithWhereWithoutCityRefInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
 export type UserCreateNestedOneWithoutFilesInput = {
@@ -1151,6 +1233,7 @@ export type UserCreateWithoutActivitiesInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -1187,6 +1270,7 @@ export type UserUncheckedCreateWithoutActivitiesInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -1248,6 +1332,7 @@ export type UserUpdateWithoutActivitiesInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -1284,6 +1369,7 @@ export type UserUncheckedUpdateWithoutActivitiesInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1329,6 +1415,7 @@ export type UserCreateWithoutGuideBookingsInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -1365,6 +1452,7 @@ export type UserUncheckedCreateWithoutGuideBookingsInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -1415,6 +1503,7 @@ export type UserCreateWithoutClientBookingsInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -1451,6 +1540,7 @@ export type UserUncheckedCreateWithoutClientBookingsInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -1512,6 +1602,7 @@ export type UserUpdateWithoutGuideBookingsInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -1548,6 +1639,7 @@ export type UserUncheckedUpdateWithoutGuideBookingsInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1604,6 +1696,7 @@ export type UserUpdateWithoutClientBookingsInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -1640,6 +1733,7 @@ export type UserUncheckedUpdateWithoutClientBookingsInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1657,6 +1751,148 @@ export type UserUncheckedUpdateWithoutClientBookingsInput = {
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateWithoutCityRefInput = {
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  slug?: string | null
+  headline?: string | null
+  bio?: string | null
+  coverPhotoId?: number | null
+  languages?: Prisma.UserCreatelanguagesInput | string[]
+  specializations?: Prisma.UserCreatespecializationsInput | string[]
+  experienceSince?: number | null
+  city?: string | null
+  vehicle?: string | null
+  notifyNewBooking?: boolean
+  notifyNewMessage?: boolean
+  notifyTripReminder?: boolean
+  notifyNews?: boolean
+  posts?: Prisma.PostCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoCreateNestedManyWithoutUserInput
+  files?: Prisma.FileCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  guideBookings?: Prisma.BookingCreateNestedManyWithoutGuideInput
+  clientBookings?: Prisma.BookingCreateNestedManyWithoutClientInput
+  messages?: Prisma.MessageCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutCityRefInput = {
+  id?: number
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  slug?: string | null
+  headline?: string | null
+  bio?: string | null
+  coverPhotoId?: number | null
+  languages?: Prisma.UserCreatelanguagesInput | string[]
+  specializations?: Prisma.UserCreatespecializationsInput | string[]
+  experienceSince?: number | null
+  city?: string | null
+  vehicle?: string | null
+  notifyNewBooking?: boolean
+  notifyNewMessage?: boolean
+  notifyTripReminder?: boolean
+  notifyNews?: boolean
+  posts?: Prisma.PostUncheckedCreateNestedManyWithoutUserInput
+  tours?: Prisma.TourUncheckedCreateNestedManyWithoutAuthorInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutAuthorInput
+  transactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutAuthorInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  photos?: Prisma.PhotoUncheckedCreateNestedManyWithoutUserInput
+  files?: Prisma.FileUncheckedCreateNestedManyWithoutAuthorInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  guideBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutGuideInput
+  clientBookings?: Prisma.BookingUncheckedCreateNestedManyWithoutClientInput
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutCityRefInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCityRefInput, Prisma.UserUncheckedCreateWithoutCityRefInput>
+}
+
+export type UserCreateManyCityRefInputEnvelope = {
+  data: Prisma.UserCreateManyCityRefInput | Prisma.UserCreateManyCityRefInput[]
+  skipDuplicates?: boolean
+}
+
+export type UserUpsertWithWhereUniqueWithoutCityRefInput = {
+  where: Prisma.UserWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCityRefInput, Prisma.UserUncheckedUpdateWithoutCityRefInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCityRefInput, Prisma.UserUncheckedCreateWithoutCityRefInput>
+}
+
+export type UserUpdateWithWhereUniqueWithoutCityRefInput = {
+  where: Prisma.UserWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCityRefInput, Prisma.UserUncheckedUpdateWithoutCityRefInput>
+}
+
+export type UserUpdateManyWithWhereWithoutCityRefInput = {
+  where: Prisma.UserScalarWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutCityRefInput>
+}
+
+export type UserScalarWhereInput = {
+  AND?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  OR?: Prisma.UserScalarWhereInput[]
+  NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  id?: Prisma.IntFilter<"User"> | number
+  login?: Prisma.StringFilter<"User"> | string
+  passwordHash?: Prisma.StringFilter<"User"> | string
+  salt?: Prisma.StringFilter<"User"> | string
+  role?: Prisma.StringFilter<"User"> | string
+  phone?: Prisma.StringNullableFilter<"User"> | string | null
+  firstName?: Prisma.StringNullableFilter<"User"> | string | null
+  lastName?: Prisma.StringNullableFilter<"User"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  avatarPhotoId?: Prisma.IntNullableFilter<"User"> | number | null
+  email?: Prisma.StringNullableFilter<"User"> | string | null
+  rating?: Prisma.FloatNullableFilter<"User"> | number | null
+  slug?: Prisma.StringNullableFilter<"User"> | string | null
+  headline?: Prisma.StringNullableFilter<"User"> | string | null
+  bio?: Prisma.StringNullableFilter<"User"> | string | null
+  coverPhotoId?: Prisma.IntNullableFilter<"User"> | number | null
+  languages?: Prisma.StringNullableListFilter<"User">
+  specializations?: Prisma.StringNullableListFilter<"User">
+  experienceSince?: Prisma.IntNullableFilter<"User"> | number | null
+  city?: Prisma.StringNullableFilter<"User"> | string | null
+  cityId?: Prisma.IntNullableFilter<"User"> | number | null
+  vehicle?: Prisma.StringNullableFilter<"User"> | string | null
+  notifyNewBooking?: Prisma.BoolFilter<"User"> | boolean
+  notifyNewMessage?: Prisma.BoolFilter<"User"> | boolean
+  notifyTripReminder?: Prisma.BoolFilter<"User"> | boolean
+  notifyNews?: Prisma.BoolFilter<"User"> | boolean
 }
 
 export type UserCreateWithoutFilesInput = {
@@ -1685,6 +1921,7 @@ export type UserCreateWithoutFilesInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -1721,6 +1958,7 @@ export type UserUncheckedCreateWithoutFilesInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -1782,6 +2020,7 @@ export type UserUpdateWithoutFilesInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -1818,6 +2057,7 @@ export type UserUncheckedUpdateWithoutFilesInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1863,6 +2103,7 @@ export type UserCreateWithoutMessagesInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -1899,6 +2140,7 @@ export type UserUncheckedCreateWithoutMessagesInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -1960,6 +2202,7 @@ export type UserUpdateWithoutMessagesInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -1996,6 +2239,7 @@ export type UserUncheckedUpdateWithoutMessagesInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2041,6 +2285,7 @@ export type UserCreateWithoutOrdersInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -2077,6 +2322,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -2138,6 +2384,7 @@ export type UserUpdateWithoutOrdersInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -2174,6 +2421,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2219,6 +2467,7 @@ export type UserCreateWithoutPartnerApplicationsInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -2255,6 +2504,7 @@ export type UserUncheckedCreateWithoutPartnerApplicationsInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -2316,6 +2566,7 @@ export type UserUpdateWithoutPartnerApplicationsInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -2352,6 +2603,7 @@ export type UserUncheckedUpdateWithoutPartnerApplicationsInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2397,6 +2649,7 @@ export type UserCreateWithoutPhotosInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -2433,6 +2686,7 @@ export type UserUncheckedCreateWithoutPhotosInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -2494,6 +2748,7 @@ export type UserUpdateWithoutPhotosInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -2530,6 +2785,7 @@ export type UserUncheckedUpdateWithoutPhotosInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2575,6 +2831,7 @@ export type UserCreateWithoutPostsInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
@@ -2611,6 +2868,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -2672,6 +2930,7 @@ export type UserUpdateWithoutPostsInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
@@ -2708,6 +2967,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2753,6 +3013,7 @@ export type UserCreateWithoutReviewsInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
@@ -2789,6 +3050,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -2850,6 +3112,7 @@ export type UserUpdateWithoutReviewsInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
@@ -2886,6 +3149,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -2931,6 +3195,7 @@ export type UserCreateWithoutSessionsInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -2967,6 +3232,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -3028,6 +3294,7 @@ export type UserUpdateWithoutSessionsInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -3064,6 +3331,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -3109,6 +3377,7 @@ export type UserCreateWithoutToursInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
   activities?: Prisma.ActivityCreateNestedManyWithoutAuthorInput
@@ -3145,6 +3414,7 @@ export type UserUncheckedCreateWithoutToursInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -3206,6 +3476,7 @@ export type UserUpdateWithoutToursInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
@@ -3242,6 +3513,7 @@ export type UserUncheckedUpdateWithoutToursInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -3287,6 +3559,7 @@ export type UserCreateWithoutTransactionsInput = {
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: Prisma.CityCreateNestedOneWithoutGuidesInput
   posts?: Prisma.PostCreateNestedManyWithoutUserInput
   tours?: Prisma.TourCreateNestedManyWithoutAuthorInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
@@ -3323,6 +3596,7 @@ export type UserUncheckedCreateWithoutTransactionsInput = {
   specializations?: Prisma.UserCreatespecializationsInput | string[]
   experienceSince?: number | null
   city?: string | null
+  cityId?: number | null
   vehicle?: string | null
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -3384,6 +3658,7 @@ export type UserUpdateWithoutTransactionsInput = {
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cityRef?: Prisma.CityUpdateOneWithoutGuidesNestedInput
   posts?: Prisma.PostUpdateManyWithoutUserNestedInput
   tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
@@ -3420,6 +3695,7 @@ export type UserUncheckedUpdateWithoutTransactionsInput = {
   specializations?: Prisma.UserUpdatespecializationsInput | string[]
   experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cityId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
   notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -3437,6 +3713,147 @@ export type UserUncheckedUpdateWithoutTransactionsInput = {
   guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
   clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
   messages?: Prisma.MessageUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserCreateManyCityRefInput = {
+  id?: number
+  login: string
+  passwordHash: string
+  salt: string
+  role: string
+  phone?: string | null
+  firstName?: string | null
+  lastName?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  avatarPhotoId?: number | null
+  email?: string | null
+  rating?: number | null
+  slug?: string | null
+  headline?: string | null
+  bio?: string | null
+  coverPhotoId?: number | null
+  languages?: Prisma.UserCreatelanguagesInput | string[]
+  specializations?: Prisma.UserCreatespecializationsInput | string[]
+  experienceSince?: number | null
+  city?: string | null
+  vehicle?: string | null
+  notifyNewBooking?: boolean
+  notifyNewMessage?: boolean
+  notifyTripReminder?: boolean
+  notifyNews?: boolean
+}
+
+export type UserUpdateWithoutCityRefInput = {
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  languages?: Prisma.UserUpdatelanguagesInput | string[]
+  specializations?: Prisma.UserUpdatespecializationsInput | string[]
+  experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.PostUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  guideBookings?: Prisma.BookingUpdateManyWithoutGuideNestedInput
+  clientBookings?: Prisma.BookingUpdateManyWithoutClientNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCityRefInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  languages?: Prisma.UserUpdatelanguagesInput | string[]
+  specializations?: Prisma.UserUpdatespecializationsInput | string[]
+  experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  posts?: Prisma.PostUncheckedUpdateManyWithoutUserNestedInput
+  tours?: Prisma.TourUncheckedUpdateManyWithoutAuthorNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutAuthorNestedInput
+  transactions?: Prisma.TransactionUncheckedUpdateManyWithoutAuthorNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  photos?: Prisma.PhotoUncheckedUpdateManyWithoutUserNestedInput
+  files?: Prisma.FileUncheckedUpdateManyWithoutAuthorNestedInput
+  partnerApplications?: Prisma.PartnerApplicationUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  guideBookings?: Prisma.BookingUncheckedUpdateManyWithoutGuideNestedInput
+  clientBookings?: Prisma.BookingUncheckedUpdateManyWithoutClientNestedInput
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateManyWithoutCityRefInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  salt?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  avatarPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rating?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  slug?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  headline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  languages?: Prisma.UserUpdatelanguagesInput | string[]
+  specializations?: Prisma.UserUpdatespecializationsInput | string[]
+  experienceSince?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vehicle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notifyNewBooking?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyNewMessage?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyTripReminder?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  notifyNews?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -3600,11 +4017,13 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   specializations?: boolean
   experienceSince?: boolean
   city?: boolean
+  cityId?: boolean
   vehicle?: boolean
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: boolean | Prisma.User$cityRefArgs<ExtArgs>
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
   tours?: boolean | Prisma.User$toursArgs<ExtArgs>
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
@@ -3643,11 +4062,13 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   specializations?: boolean
   experienceSince?: boolean
   city?: boolean
+  cityId?: boolean
   vehicle?: boolean
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: boolean | Prisma.User$cityRefArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -3672,11 +4093,13 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   specializations?: boolean
   experienceSince?: boolean
   city?: boolean
+  cityId?: boolean
   vehicle?: boolean
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
   notifyTripReminder?: boolean
   notifyNews?: boolean
+  cityRef?: boolean | Prisma.User$cityRefArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -3701,6 +4124,7 @@ export type UserSelectScalar = {
   specializations?: boolean
   experienceSince?: boolean
   city?: boolean
+  cityId?: boolean
   vehicle?: boolean
   notifyNewBooking?: boolean
   notifyNewMessage?: boolean
@@ -3708,8 +4132,9 @@ export type UserSelectScalar = {
   notifyNews?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "login" | "passwordHash" | "salt" | "role" | "phone" | "firstName" | "lastName" | "createdAt" | "updatedAt" | "avatarPhotoId" | "email" | "rating" | "slug" | "headline" | "bio" | "coverPhotoId" | "languages" | "specializations" | "experienceSince" | "city" | "vehicle" | "notifyNewBooking" | "notifyNewMessage" | "notifyTripReminder" | "notifyNews", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "login" | "passwordHash" | "salt" | "role" | "phone" | "firstName" | "lastName" | "createdAt" | "updatedAt" | "avatarPhotoId" | "email" | "rating" | "slug" | "headline" | "bio" | "coverPhotoId" | "languages" | "specializations" | "experienceSince" | "city" | "cityId" | "vehicle" | "notifyNewBooking" | "notifyNewMessage" | "notifyTripReminder" | "notifyNews", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  cityRef?: boolean | Prisma.User$cityRefArgs<ExtArgs>
   posts?: boolean | Prisma.User$postsArgs<ExtArgs>
   tours?: boolean | Prisma.User$toursArgs<ExtArgs>
   reviews?: boolean | Prisma.User$reviewsArgs<ExtArgs>
@@ -3725,12 +4150,17 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   messages?: boolean | Prisma.User$messagesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  cityRef?: boolean | Prisma.User$cityRefArgs<ExtArgs>
+}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  cityRef?: boolean | Prisma.User$cityRefArgs<ExtArgs>
+}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
+    cityRef: Prisma.$CityPayload<ExtArgs> | null
     posts: Prisma.$PostPayload<ExtArgs>[]
     tours: Prisma.$TourPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
@@ -3771,6 +4201,11 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
      * и в каталоге гидов его нечем было показать.
      */
     city: string | null
+    /**
+     * Тот же город ключом: по нему гид попадает в подборки региона.
+     * Строка выше остаётся до задачи 1-К.
+     */
+    cityId: number | null
     /**
      * Машина: «Mitsubishi Pajero, 6 мест, детское кресло». Вместимость
      * задаётся у тура (capacity), а это описание техники для карточки гида.
@@ -4179,6 +4614,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  cityRef<T extends Prisma.User$cityRefArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$cityRefArgs<ExtArgs>>): Prisma.Prisma__CityClient<runtime.Types.Result.GetResult<Prisma.$CityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   posts<T extends Prisma.User$postsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tours<T extends Prisma.User$toursArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$toursArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TourPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.User$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -4242,6 +4678,7 @@ export interface UserFieldRefs {
   readonly specializations: Prisma.FieldRef<"User", 'String[]'>
   readonly experienceSince: Prisma.FieldRef<"User", 'Int'>
   readonly city: Prisma.FieldRef<"User", 'String'>
+  readonly cityId: Prisma.FieldRef<"User", 'Int'>
   readonly vehicle: Prisma.FieldRef<"User", 'String'>
   readonly notifyNewBooking: Prisma.FieldRef<"User", 'Boolean'>
   readonly notifyNewMessage: Prisma.FieldRef<"User", 'Boolean'>
@@ -4501,6 +4938,10 @@ export type UserCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    */
   data: Prisma.UserCreateManyInput | Prisma.UserCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -4571,6 +5012,10 @@ export type UserUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many Users to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -4637,6 +5082,25 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Users to delete.
    */
   limit?: number
+}
+
+/**
+ * User.cityRef
+ */
+export type User$cityRefArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the City
+   */
+  select?: Prisma.CitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the City
+   */
+  omit?: Prisma.CityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CityInclude<ExtArgs> | null
+  where?: Prisma.CityWhereInput
 }
 
 /**

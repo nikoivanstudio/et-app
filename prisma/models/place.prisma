@@ -39,6 +39,11 @@ model Place {
   /// Ближайший город — ось гео-страниц (E3) и связок «откуда → куда» (E4).
   city String? @db.VarChar(120)
 
+  /// Тот же город ключом. Строка выше остаётся до задачи 1-К
+  /// (expand-contract, см. `docs/deploy/migrations.md`).
+  cityId  Int?  @map("city_id")
+  cityRef City? @relation(fields: [cityId], references: [id], onDelete: SetNull)
+
   /// Район или городской округ: «Бахчисарайский район».
   district String? @db.VarChar(120)
 
@@ -60,6 +65,7 @@ model Place {
   updatedAt DateTime? @updatedAt @map("updated_at") @db.Timestamp()
 
   @@index([city])
+  @@index([cityId])
   @@index([isPublished])
   @@map("place")
 }

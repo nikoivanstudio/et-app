@@ -34,6 +34,11 @@ export type UserEntity = {
   experienceSince?: number;
   /** Город гида и его машина — публичная карточка в каталоге гидов. */
   city?: string;
+  /**
+   * Тот же город ключом. Строка выше остаётся до задачи 1-К
+   * (см. `docs/geo/plan.md`) и служит подписью, а выборка идёт по ключу.
+   */
+  cityId?: number;
   vehicle?: string;
   /** Какие письма слать: настраивается в профиле кабинета. */
   notifyNewBooking?: boolean;

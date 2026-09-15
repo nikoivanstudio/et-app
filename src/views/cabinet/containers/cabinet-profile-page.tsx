@@ -10,12 +10,15 @@ import {
   GuideProfileData
 } from '@/features/cabinet/server';
 
+import type { CityOption } from '@/entities/city/domain';
+
 export const CabinetProfilePage: FC<{
   identity: CabinetIdentity;
   badges: CabinetBadges;
   profile: GuideProfileData;
   sessions: CabinetSession[];
-}> = ({ identity, badges, profile, sessions }) => (
+  cities: CityOption[];
+}> = ({ identity, badges, profile, sessions, cities }) => (
   <CabinetShell
     identity={identity}
     badges={badges}
@@ -23,6 +26,6 @@ export const CabinetProfilePage: FC<{
     title='Профиль'
     subtitle='Всё, что клиент видит о вас до заявки, и всё, чем вы управляете после: контакты, письма и вход в кабинет.'
   >
-    <GuideProfileForm profile={profile} sessions={sessions} />
+    <GuideProfileForm profile={profile} sessions={sessions} cities={cities} />
   </CabinetShell>
 );

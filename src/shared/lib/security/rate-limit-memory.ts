@@ -66,13 +66,11 @@ export function startRateLimitCleanup(options: {
 
   setInterval(() => {
     const now = Date.now();
-    let removed = 0;
 
     for (const [key, record] of store.entries()) {
       const age = now - record.start;
       if (age > maxAgeMs) {
         store.delete(key);
-        removed++;
       }
     }
   }, intervalMs).unref?.();

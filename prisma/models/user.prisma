@@ -1,17 +1,17 @@
 model User {
-  id            Int           @id @default(autoincrement())
-  login         String        @unique
-  passwordHash  String        @map("password_hash")
-  salt          String        @db.VarChar(800)
-  role          String        @db.VarChar(80)
-  phone         String?       @db.VarChar(80)
-  firstName     String?       @map("first_name")
-  lastName      String?       @map("last_name")
-  createdAt     DateTime      @default(now()) @map("created_at") @db.Timestamp()
-  updatedAt     DateTime?     @updatedAt @map("updated_at") @db.Timestamp()
-  avatarPhotoId Int?          @map("avatar_photo_id")
-  email         String?
-  rating        Float?
+  id              Int       @id @default(autoincrement())
+  login           String    @unique
+  passwordHash    String    @map("password_hash")
+  salt            String    @db.VarChar(800)
+  role            String    @db.VarChar(80)
+  phone           String?   @db.VarChar(80)
+  firstName       String?   @map("first_name")
+  lastName        String?   @map("last_name")
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamp()
+  updatedAt       DateTime? @updatedAt @map("updated_at") @db.Timestamp()
+  avatarPhotoId   Int?      @map("avatar_photo_id")
+  email           String?
+  rating          Float?
   slug            String?   @unique
   headline        String?   @db.VarChar(160)
   bio             String?   @db.VarChar(2000)
@@ -24,32 +24,37 @@ model User {
 
   /// Город гида. У тура есть startCity, а у самого гида города не было —
   /// и в каталоге гидов его нечем было показать.
-  city            String?   @db.VarChar(120)
+  city String? @db.VarChar(120)
+
+  /// Тот же город ключом: по нему гид попадает в подборки региона.
+  /// Строка выше остаётся до задачи 1-К.
+  cityId  Int?  @map("city_id")
+  cityRef City? @relation(fields: [cityId], references: [id], onDelete: SetNull)
 
   /// Машина: «Mitsubishi Pajero, 6 мест, детское кресло». Вместимость
   /// задаётся у тура (capacity), а это описание техники для карточки гида.
-  vehicle         String?   @db.VarChar(200)
+  vehicle String? @db.VarChar(200)
 
   /// Какие письма слать. Раньше письмо о новой заявке и о новом сообщении
   /// уходили всегда: отписаться было нельзя, и гиды заводили фильтры в почте.
   /// Четыре флага, а не json: по ним же фильтруется рассылка запросом.
-  notifyNewBooking   Boolean @default(true)  @map("notify_new_booking")
-  notifyNewMessage   Boolean @default(true)  @map("notify_new_message")
-  notifyTripReminder Boolean @default(true)  @map("notify_trip_reminder")
-  notifyNews         Boolean @default(false) @map("notify_news")
-  posts         Post[]
-  tours         Tour[]
-  reviews       Review[]
-  activities    Activity[]
-  transactions  Transaction[]
-  orders        Order[]
-  photos        Photo[]
-  files         File[]
+  notifyNewBooking    Boolean              @default(true) @map("notify_new_booking")
+  notifyNewMessage    Boolean              @default(true) @map("notify_new_message")
+  notifyTripReminder  Boolean              @default(true) @map("notify_trip_reminder")
+  notifyNews          Boolean              @default(false) @map("notify_news")
+  posts               Post[]
+  tours               Tour[]
+  reviews             Review[]
+  activities          Activity[]
+  transactions        Transaction[]
+  orders              Order[]
+  photos              Photo[]
+  files               File[]
   partnerApplications PartnerApplication[]
-  sessions       Session[]
-  guideBookings  Booking[] @relation("GuideBookings")
-  clientBookings Booking[] @relation("ClientBookings")
-  messages       Message[]
+  sessions            Session[]
+  guideBookings       Booking[]            @relation("GuideBookings")
+  clientBookings      Booking[]            @relation("ClientBookings")
+  messages            Message[]
 
   @@map("user")
 }
