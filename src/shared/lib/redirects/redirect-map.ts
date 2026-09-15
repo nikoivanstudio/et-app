@@ -23,6 +23,18 @@ import type { RedirectRule } from '@/entities/redirect/server';
 /** Время жизни кеша: минута — компромисс между свежестью и числом запросов. */
 const TTL_MS = 60_000;
 
+/**
+ * Пауза между попытками, пока карта не загрузилась.
+ *
+ * Отдельная от `TTL_MS` и намного короче: неудача не должна замораживать
+ * пустую карту на минуту — именно так на проде 15.09.2026 переадресации
+ * не работали вовсе. При этом на каждый запрос ломиться тоже нельзя.
+ */
+const RETRY_MS = 5_000;
+
+/** Ждать ответа дольше нечего: на холодной карте в этом ожидании висит запрос. */
+const LOAD_TIMEOUT_MS = 1_500;
+
 /** Защита от разрастания: столько правил помещается в память без вопросов. */
 const MAX_RULES = 20_000;
 
@@ -33,10 +45,13 @@ type RedirectTarget = {
 
 type CacheState = {
   rules: Map<string, RedirectTarget>;
+  /** Время последней УСПЕШНОЙ загрузки. Ноль — карты нет. */
   loadedAt: number;
+  /** Время последней попытки, удачной или нет. Ограничивает частоту повторов. */
+  attemptedAt: number;
 };
 
-const cache: CacheState = { rules: new Map(), loadedAt: 0 };
+const cache: CacheState = { rules: new Map(), loadedAt: 0, attemptedAt: 0 };
 
 /**
  * Незавершённая загрузка.
@@ -46,6 +61,24 @@ const cache: CacheState = { rules: new Map(), loadedAt: 0 };
  * обращений к базе.
  */
 let pending: Promise<void> | null = null;
+
+/**
+ * Собственный адрес приложения изнутри контейнера.
+ *
+ * Ходить за картой по публичному адресу нельзя: `req.nextUrl.origin` для
+ * внешнего посетителя — это `https://energy-tur.ru`, то есть контейнер
+ * обращался бы к себе наружу, через DNS на публичный IP и обратно через
+ * обратный прокси. Такая петля заворачивается не везде; там, где не
+ * заворачивается, `fetch` падает и переадресаций нет вообще.
+ */
+const internalOrigin = (): string =>
+  process.env.REDIRECT_MAP_ORIGIN ??
+  `http://127.0.0.1:${process.env.PORT ?? '3000'}`;
+
+/** Внутренний адрес первым, адрес запроса — запасным. */
+const candidates = (requestOrigin: string): string[] => [
+  ...new Set([internalOrigin(), requestOrigin])
+];
 
 const toMap = (rules: RedirectRule[]): Map<string, RedirectTarget> =>
   new Map(
@@ -57,31 +90,43 @@ const toMap = (rules: RedirectRule[]): Map<string, RedirectTarget> =>
       ])
   );
 
-const load = async (origin: string): Promise<void> => {
+const fetchRules = async (origin: string): Promise<RedirectRule[] | null> => {
   try {
     const response = await fetch(`${origin}/api/redirects`, {
       cache: 'no-store',
-      headers: { accept: 'application/json' }
+      headers: { accept: 'application/json' },
+      signal: AbortSignal.timeout(LOAD_TIMEOUT_MS)
     });
 
     if (!response.ok) {
-      return;
+      return null;
     }
 
-    const rules = (await response.json()) as RedirectRule[];
+    const rules = await response.json();
 
-    if (!Array.isArray(rules)) {
-      return;
+    return Array.isArray(rules) ? (rules as RedirectRule[]) : null;
+  } catch {
+    return null;
+  }
+};
+
+const load = async (requestOrigin: string): Promise<void> => {
+  cache.attemptedAt = Date.now();
+
+  for (const origin of candidates(requestOrigin)) {
+    const rules = await fetchRules(origin);
+
+    if (!rules) {
+      continue;
     }
 
     cache.rules = toMap(rules);
-  } catch {
-    // Оставляем прежнюю карту: устаревшие правила лучше их отсутствия.
-  } finally {
-    // Метку времени ставим в любом случае, в том числе после ошибки:
-    // иначе недоступная база означала бы попытку загрузки на каждый запрос.
     cache.loadedAt = Date.now();
+
+    return;
   }
+
+  // Прежнюю карту не трогаем: устаревшие правила лучше их отсутствия.
 };
 
 const refresh = (origin: string): Promise<void> => {
@@ -105,13 +150,16 @@ export const findRedirect = async (
   origin: string,
   source: string
 ): Promise<RedirectTarget | undefined> => {
-  const isCold = !cache.loadedAt;
-  const isStale = Date.now() - cache.loadedAt > TTL_MS;
+  const now = Date.now();
+  const isStale = now - cache.loadedAt > TTL_MS;
+  const isThrottled = now - cache.attemptedAt < RETRY_MS;
 
-  if (isCold) {
-    await refresh(origin);
-  } else if (isStale) {
-    void refresh(origin);
+  if (isStale && !isThrottled) {
+    if (!cache.loadedAt) {
+      await refresh(origin);
+    } else {
+      void refresh(origin);
+    }
   }
 
   return cache.rules.get(source);
@@ -121,5 +169,6 @@ export const findRedirect = async (
 export const resetRedirectCache = (): void => {
   cache.rules = new Map();
   cache.loadedAt = 0;
+  cache.attemptedAt = 0;
   pending = null;
 };

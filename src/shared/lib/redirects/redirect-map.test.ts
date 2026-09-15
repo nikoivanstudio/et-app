@@ -80,14 +80,44 @@ describe('findRedirect', () => {
   });
 
   test('ошибка ответа не приводит к попытке на каждый запрос', async () => {
-    // Метка времени ставится и после неудачи: иначе лежащая база означала бы
-    // запрос к ней на каждый просмотр страницы.
+    // После неудачи попытки повторяются не чаще раза в RETRY_MS: лежащая
+    // база иначе означала бы запрос к ней на каждый просмотр страницы.
+    // Две попытки на один заход — это два адреса, внутренний и запасной.
     const fetchMock = mockFetch(null, { ok: false });
 
     await findRedirect(ORIGIN, '/tury');
     await findRedirect(ORIGIN, '/tury');
 
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  test('карта грузится с внутреннего адреса, а не с адреса запроса', async () => {
+    // Публичный origin изнутри контейнера может быть недостижим — петля
+    // наружу через DNS и обратный прокси заворачивается не везде.
+    const fetchMock = mockFetch(RULES);
+
+    await findRedirect(ORIGIN, '/tury');
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://127.0.0.1:3000/api/redirects',
+      expect.anything()
+    );
+  });
+
+  test('недоступный внутренний адрес — карта грузится с адреса запроса', async () => {
+    const fetchMock = jest.fn(async (url: string) =>
+      url.startsWith(ORIGIN)
+        ? { ok: true, json: async () => RULES }
+        : Promise.reject(new Error('connection refused'))
+    );
+
+    global.fetch = fetchMock as unknown as typeof fetch;
+
+    expect(await findRedirect(ORIGIN, '/tury')).toEqual({
+      destination: '/tours',
+      statusCode: 301
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
   test('мусор вместо списка правил игнорируется', async () => {
