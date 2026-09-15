@@ -7,12 +7,17 @@ import { tourService } from '@/features/tour/services/tour-service';
 import { PhotoDomain } from '@/entities/photo';
 import { serverPhotoUtils } from '@/entities/photo/server';
 import { TourStatus } from '@/entities/tour/domain';
+import { tourRepositories } from '@/entities/tour/server';
 import { roleUtils } from '@/entities/user';
 import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
 import { Role } from '@/entities/user/domain';
 import { sessionUtils } from '@/entities/user/lib/session-utils';
 
-import { handleError, handleSuccess } from '@/shared/lib/response-utils';
+import {
+  handleError,
+  handleForbidden,
+  handleSuccess
+} from '@/shared/lib/response-utils';
 
 export async function patchTour(req: NextRequest): Promise<Response> {
   try {
@@ -20,9 +25,15 @@ export async function patchTour(req: NextRequest): Promise<Response> {
       req.cookies.get(SESSION_COOKIE_NAME)?.value
     );
 
-    const canUpdate = roleUtils.userHasPermissionOn(session?.role, 'updateTour');
+    const canUpdate = roleUtils.userHasPermissionOn(
+      session?.role,
+      'updateTour'
+    );
     // Модераторы (reviewTour) могут редактировать любой тур, в т.ч. чужой.
-    const canReview = roleUtils.userHasPermissionOn(session?.role, 'reviewTour');
+    const canReview = roleUtils.userHasPermissionOn(
+      session?.role,
+      'reviewTour'
+    );
 
     if (!canUpdate && !canReview) {
       return handleError({
@@ -39,18 +50,40 @@ export async function patchTour(req: NextRequest): Promise<Response> {
       });
     }
 
-    const hasPermissionOnEdit =
-      session.role === Role.SUPER_ADMIN ||
-      session.id === data.authorId ||
-      canReview;
+    const { title, mainPhoto, photos, id, ...rest } = data;
 
-    if (!hasPermissionOnEdit) {
+    if (typeof id !== 'number') {
       return handleError({
-        body: 'У вас нет полномочий на редактирование этого тура'
+        body: 'Невозможно обновить запись. Данные не валидны'
       });
     }
 
-    const { title, authorId, mainPhoto, photos, id, ...rest } = data;
+    /**
+     * Автор берётся из базы, а не из формы.
+     *
+     * Раньше право на правку проверялось по `authorId` из тела запроса:
+     * достаточно было прислать чужой `id` тура вместе со своим `authorId`,
+     * чтобы проверка сошлась, — а этот же `authorId` уезжал в обновление,
+     * то есть тур менял владельца. Увести чужой тур мог любой гид.
+     */
+    const existingTour = await tourRepositories.getTour(id);
+
+    if (!existingTour) {
+      return handleError({ body: 'Тур не найден' });
+    }
+
+    const authorId = existingTour.authorId;
+    const hasPermissionOnEdit =
+      session.role === Role.SUPER_ADMIN || session.id === authorId || canReview;
+
+    if (!hasPermissionOnEdit) {
+      return handleForbidden(
+        'У вас нет полномочий на редактирование этого тура'
+      );
+    }
+
+    // Смена автора через форму не предусмотрена ничем, кроме подлога.
+    delete (rest as Record<string, unknown>).authorId;
 
     // Теги может назначать только администратор (assignTourTags) —
     // у остальных значение из формы игнорируем.
@@ -63,46 +96,40 @@ export async function patchTour(req: NextRequest): Promise<Response> {
       (rest as Record<string, unknown>).status = TourStatus.PENDING;
     }
 
-    if (typeof authorId !== 'number' || typeof id !== 'number') {
-      return handleError({
-        body: 'Невозможно обновить запись. Данные не валидны'
-      });
-    }
-
     const mainPhotoFile =
       Array.isArray(mainPhoto) && mainPhoto[0] instanceof File
         ? mainPhoto[0]
         : undefined;
 
     const uploadedPhotos = Array.isArray(photos)
-      ? (photos as unknown[]).filter((photo): photo is File => photo instanceof File)
+      ? (photos as unknown[]).filter(
+          (photo): photo is File => photo instanceof File
+        )
       : [];
 
-    const mainPhotoEntity =
-      mainPhotoFile
-        ? await serverPhotoUtils.getPhotoEntity({
-            title,
-            keywords: [],
-            authorId: session.id,
-            file: mainPhotoFile
-          })
-        : undefined;
+    const mainPhotoEntity = mainPhotoFile
+      ? await serverPhotoUtils.getPhotoEntity({
+          title,
+          keywords: [],
+          authorId: session.id,
+          file: mainPhotoFile
+        })
+      : undefined;
 
-    const photosEntities =
-      uploadedPhotos.length
-        ? await Promise.all(
-            uploadedPhotos
-              .map(
-                async file =>
-                  await serverPhotoUtils.getPhotoEntity({
-                    file,
-                    authorId: session.id,
-                    keywords: []
-                  })
-              )
-              .filter(Boolean)
-          )
-        : undefined;
+    const photosEntities = uploadedPhotos.length
+      ? await Promise.all(
+          uploadedPhotos
+            .map(
+              async file =>
+                await serverPhotoUtils.getPhotoEntity({
+                  file,
+                  authorId: session.id,
+                  keywords: []
+                })
+            )
+            .filter(Boolean)
+        )
+      : undefined;
 
     const tourEditData: Partial<
       Omit<CreateTourData, 'mainPhoto' | 'photos'>
@@ -112,9 +139,12 @@ export async function patchTour(req: NextRequest): Promise<Response> {
       mainPhoto?: Omit<PhotoDomain.PhotoEntity, 'id'>;
       photos?: Omit<PhotoDomain.PhotoEntity, 'id'>[];
     } = {
+      ...rest,
       id,
       authorId,
-      ...rest
+      // Заголовок вынимался из данных ради главного фото и дальше нигде
+      // не использовался: переименовать тур через форму было нельзя.
+      ...(title ? { title } : {})
     };
 
     if (!!mainPhotoEntity) {

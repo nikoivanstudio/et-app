@@ -6,6 +6,8 @@ import { CreateBookingPayload } from '../model/schemas';
 export type CreateBookingResult = {
   accessToken: string;
   guideName: string;
+  /** Ушло ли клиенту письмо со ссылкой: от этого зависит текст на экране. */
+  emailSent: boolean;
 };
 
 type HookProps = {
@@ -13,7 +15,11 @@ type HookProps = {
 };
 
 export const useCreateBooking = ({ onSuccess }: HookProps = {}) => {
-  const mutation = useMutation<CreateBookingResult, Error, CreateBookingPayload>({
+  const mutation = useMutation<
+    CreateBookingResult,
+    Error,
+    CreateBookingPayload
+  >({
     mutationFn: payload =>
       bookingApi.createBooking<CreateBookingResult>(payload),
     onSuccess

@@ -21,6 +21,9 @@ const labelCls =
 const inputCls =
   'w-full min-h-12 rounded-control border border-rule bg-[#fffdf8] px-3.5 py-3 text-sm text-ink outline-none placeholder:text-ink-faint focus:border-[1.5px] focus:border-cta';
 
+/** Сегодняшний день в формате поля `input[type=date]`. */
+const todayValue = (): string => new Date().toISOString().slice(0, 10);
+
 export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -31,6 +34,7 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
   const [agreement, setAgreement] = useState(true);
   const [company, setCompany] = useState(''); // honeypot
   const [localError, setLocalError] = useState('');
+  const today = todayValue();
 
   const { createBooking, isPending, error } = useCreateBooking({ onSuccess });
 
@@ -113,6 +117,8 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
             id='bk-date'
             type='date'
             className={inputCls}
+            // Сервер прошедшую дату не примет: календарь не предлагает её.
+            min={today}
             value={desiredDate}
             onChange={e => setDesiredDate(e.target.value)}
           />
@@ -128,9 +134,7 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
             >
               <Minus className='size-4' />
             </button>
-            <b className='font-oswald text-base text-ink'>
-              {peopleCount}
-            </b>
+            <b className='font-oswald text-base text-ink'>{peopleCount}</b>
             <button
               type='button'
               aria-label='Больше гостей'
@@ -145,7 +149,8 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
 
       <div className='mt-3'>
         <label className={labelCls} htmlFor='bk-email'>
-          Email <span className='text-ink-faint'>(для входа и истории)</span>
+          Email{' '}
+          <span className='text-ink-faint'>— пришлём ссылку на заявку</span>
         </label>
         <input
           id='bk-email'
@@ -153,7 +158,7 @@ export const BookingForm: FC<Props> = ({ tourId, priceLabel, onSuccess }) => {
           className={inputCls}
           value={email}
           onChange={e => setEmail(e.target.value)}
-          placeholder='по желанию'
+          placeholder='чтобы не потерять переписку с гидом'
           autoComplete='email'
         />
       </div>

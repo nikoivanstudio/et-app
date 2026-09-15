@@ -32,6 +32,14 @@ export type UserEntity = {
   languages?: string[];
   specializations?: string[];
   experienceSince?: number;
+  /** Город гида и его машина — публичная карточка в каталоге гидов. */
+  city?: string;
+  vehicle?: string;
+  /** Какие письма слать: настраивается в профиле кабинета. */
+  notifyNewBooking?: boolean;
+  notifyNewMessage?: boolean;
+  notifyTripReminder?: boolean;
+  notifyNews?: boolean;
 };
 
 export type UserEntityUpdate = Partial<UserEntity> & { id: number };

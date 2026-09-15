@@ -33,15 +33,41 @@
 | `States.dc.html`         | Состояния и пустые экраны          | 1120×2360 | новое — в коде не нарисовано                         |
 | `ContentDesktop.dc.html` | Контентная страница — десктоп      | 1440×1690 | новое — раскладки 1440 в коде нет                    |
 | `Audit.dc.html`          | Ревью-2: что не совпало с макетом  | 1200×3340 | замеры по всем 24 адресам                            |
+| `Chat.dc.html`           | Переписка — клиент                 | 390×844   | `src/views/booking`, `features/booking-chat`         |
+| `ChatBlocked.dc.html`    | Переписка — телефон не пропущен    | 390×844   | `entities/message/lib/phone-guard.ts`                |
+| `ChatGuide.dc.html`      | Переписка — кабинет гида           | 1440×850  | `features/booking/ui/booking-card.tsx`               |
+| `GuideHome.dc.html`      | Кабинет гида — обзор               | 1440×1030 | новое — в коде нет                                   |
+| `GuideRequests.dc.html`  | Кабинет гида — заявки              | 1440×1330 | `entities/booking/domain.ts`, `features/booking`     |
+| `GuideMessages.dc.html`  | Кабинет гида — сообщения           | 1440×1010 | `prisma/models/message.prisma`, `phone-guard.ts`     |
+| `GuideTours.dc.html`     | Кабинет гида — мои туры            | 1440×1830 | `templates/guide-dashboard/guide-tours-page.tsx`     |
+| `GuideTourEditor.dc.html`| Создание тура — шаги 1–2           | 1440×1930 | `guide-tour-editor-page.tsx`, `prisma/models/tour`   |
+| `GuideTourSchedule.dc.html` | Создание тура — шаги 3–6        | 1440×2700 | то же                                                |
+| `GuideProfile.dc.html`   | Кабинет гида — профиль             | 1440×1980 | `prisma/models/user.prisma`, `views/guide`           |
+| `GuideReviews.dc.html`   | Кабинет гида — отзывы              | 1440×1550 | `entities/review`, `views/guide/ui/guide-reviews`    |
+| `GuideMobile.dc.html`    | Кабинет гида на телефоне           | 1330×1120 | новое — кабинета под 390 в коде нет                  |
+| `GuideStates.dc.html`    | Кабинет гида — состояния           | 1240×1530 | новое — пустые экраны и ошибки                       |
 
 `canvas.json` — раскладка артбордов, стикеры и стартовый вид.
+
+Десять артбордов `Guide*` — кабинет гида целиком: обзор, заявки, переписка, туры,
+редактор тура в шесть шагов, профиль, отзывы, мобильная раскладка и состояния.
+Лежат на канвасе отдельным блоком, начиная с `y = 17400`. Поля и статусы взяты из
+моделей (`Booking`, `Message`, `Tour`, `Review`, `User`), ничего несуществующего
+не нарисовано.
+
+**Эти артборды перенесены в код** — см. [`docs/guide-cabinet.md`](../../guide-cabinet.md):
+кабинет живёт на `/dashboard/[id]`, прежняя страница гида и заготовки
+`src/templates/guide-dashboard` удалены.
+
+Папка `docs/` целиком в `.gitignore`, файлы канваса добавлены принудительно: новые
+артборды коммитить через `git add -f docs/design/canvas/<файл>`.
 
 ## Как открыть
 
 - В терминале Claude Code: `/artifacts` (`o` — открыть, `c` — скопировать ссылку).
 - В браузере: ссылка выше, или галерея `claude.ai/code/artifacts`.
 - **Локально, без интернета: открыть `index.html`** — все артборды на одной странице,
-  307 КБ, лежит в гите. Собирается из `*.dc.html` + `canvas.json`: `node build-index.mjs`.
+  605 КБ, лежит в гите. Собирается из `*.dc.html` + `canvas.json`: `node build-index.mjs`.
   Пересобирать после любой правки артборда.
 - `energy-tour-screens.html` — тот же канвас с редактором внутри (3 МБ, не в гите,
   пересоздаётся сидером). Открывается в браузере в режиме просмотра и экспорта PNG/PDF.

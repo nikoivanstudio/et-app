@@ -400,6 +400,7 @@ export const ModelName = {
   Activity: 'Activity',
   Booking: 'Booking',
   File: 'File',
+  Message: 'Message',
   Order: 'Order',
   Otp: 'Otp',
   PartnerApplication: 'PartnerApplication',
@@ -428,7 +429,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "activity" | "booking" | "file" | "order" | "otp" | "partnerApplication" | "photo" | "place" | "tourPlace" | "post" | "redirect" | "review" | "session" | "tour" | "transaction" | "user"
+    modelProps: "activity" | "booking" | "file" | "message" | "order" | "otp" | "partnerApplication" | "photo" | "place" | "tourPlace" | "post" | "redirect" | "review" | "session" | "tour" | "transaction" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -651,6 +652,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.FileCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.FileCountAggregateOutputType> | number
+        }
+      }
+    }
+    Message: {
+      payload: Prisma.$MessagePayload<ExtArgs>
+      fields: Prisma.MessageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MessageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MessageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        findFirst: {
+          args: Prisma.MessageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MessageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        findMany: {
+          args: Prisma.MessageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+        }
+        create: {
+          args: Prisma.MessageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        createMany: {
+          args: Prisma.MessageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.MessageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+        }
+        delete: {
+          args: Prisma.MessageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        update: {
+          args: Prisma.MessageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        deleteMany: {
+          args: Prisma.MessageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MessageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.MessageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>[]
+        }
+        upsert: {
+          args: Prisma.MessageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagePayload>
+        }
+        aggregate: {
+          args: Prisma.MessageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMessage>
+        }
+        groupBy: {
+          args: Prisma.MessageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MessageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MessageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MessageCountAggregateOutputType> | number
         }
       }
     }
@@ -1696,6 +1771,8 @@ export const BookingScalarFieldEnum = {
   guideNote: 'guideNote',
   statusHistory: 'statusHistory',
   phoneVerified: 'phoneVerified',
+  clientNotifiedAt: 'clientNotifiedAt',
+  guideNotifiedAt: 'guideNotifiedAt',
   processedAt: 'processedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1717,6 +1794,19 @@ export const FileScalarFieldEnum = {
 } as const
 
 export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  authorRole: 'authorRole',
+  authorId: 'authorId',
+  text: 'text',
+  readAt: 'readAt',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
 export const OrderScalarFieldEnum = {
@@ -1853,6 +1943,8 @@ export const ReviewScalarFieldEnum = {
   estimateValue: 'estimateValue',
   authorId: 'authorId',
   tourId: 'tourId',
+  guideReply: 'guideReply',
+  guideReplyAt: 'guideReplyAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -1902,7 +1994,16 @@ export const TourScalarFieldEnum = {
   faq: 'faq',
   seasons: 'seasons',
   priceUnit: 'priceUnit',
-  startCity: 'startCity'
+  startCity: 'startCity',
+  priceOptions: 'priceOptions',
+  minGroupSize: 'minGroupSize',
+  bookingLeadDays: 'bookingLeadDays',
+  startTime: 'startTime',
+  weekdays: 'weekdays',
+  blockedDates: 'blockedDates',
+  meetingAddress: 'meetingAddress',
+  meetingNote: 'meetingNote',
+  pickupCities: 'pickupCities'
 } as const
 
 export type TourScalarFieldEnum = (typeof TourScalarFieldEnum)[keyof typeof TourScalarFieldEnum]
@@ -1938,7 +2039,13 @@ export const UserScalarFieldEnum = {
   coverPhotoId: 'coverPhotoId',
   languages: 'languages',
   specializations: 'specializations',
-  experienceSince: 'experienceSince'
+  experienceSince: 'experienceSince',
+  city: 'city',
+  vehicle: 'vehicle',
+  notifyNewBooking: 'notifyNewBooking',
+  notifyNewMessage: 'notifyNewMessage',
+  notifyTripReminder: 'notifyTripReminder',
+  notifyNews: 'notifyNews'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -2235,6 +2342,7 @@ export type GlobalOmitConfig = {
   activity?: Prisma.ActivityOmit
   booking?: Prisma.BookingOmit
   file?: Prisma.FileOmit
+  message?: Prisma.MessageOmit
   order?: Prisma.OrderOmit
   otp?: Prisma.OtpOmit
   partnerApplication?: Prisma.PartnerApplicationOmit

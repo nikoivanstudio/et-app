@@ -57,6 +57,16 @@ export type Booking = Prisma.BookingModel
  */
 export type File = Prisma.FileModel
 /**
+ * Model Message
+ * Сообщение в переписке клиента и гида по конкретной заявке.
+ * 
+ * Переписка привязана к заявке, а не к паре «клиент — гид»: заявка уже
+ * содержит и тур, и гида, и способ входа для клиента без аккаунта
+ * (accessToken). Отдельная сущность «диалог» не заведена намеренно —
+ * она повторяла бы заявку один в один.
+ */
+export type Message = Prisma.MessageModel
+/**
  * Model Order
  * 
  */

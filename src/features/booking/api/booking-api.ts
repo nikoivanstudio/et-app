@@ -28,6 +28,21 @@ const updateBooking = <T>(payload: UpdateBookingPayload) =>
     headers: { 'Content-Type': 'application/json' }
   });
 
+/** Заявки этого устройства: токены из localStorage → актуальные статусы. */
+const getBookingsByTokens = <T>(tokens: string[], signal?: AbortSignal) =>
+  apiClient.get<T>({
+    url: `${baseUrl}/tokens`,
+    queryParams: { tokens: tokens.join(',') },
+    signal
+  });
+
+const getBookingsByTokensQueryOption = <T>(tokens: string[]) =>
+  queryOptions({
+    queryKey: [baseKey, 'by-tokens', tokens.join(',')],
+    queryFn: ({ signal }) => getBookingsByTokens<T>(tokens, signal),
+    enabled: tokens.length > 0
+  });
+
 const getBookingsQueryOption = <T>(scope?: 'all') =>
   queryOptions({
     queryKey: [baseKey, scope ?? 'mine'],
@@ -39,6 +54,8 @@ const getBookingsQueryOption = <T>(scope?: 'all') =>
 export const bookingApi = {
   baseKey,
   createBooking,
+  getBookingsByTokens,
+  getBookingsByTokensQueryOption,
   getBookings,
   updateBooking,
   getBookingsQueryOption

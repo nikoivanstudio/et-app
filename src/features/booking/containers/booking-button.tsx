@@ -6,6 +6,11 @@ import { FC, useState } from 'react';
 import { toast } from 'sonner';
 
 import {
+  MY_BOOKINGS_PATH,
+  rememberBookingToken
+} from '@/entities/booking/lib/local-bookings';
+
+import {
   Dialog,
   DialogContent,
   DialogHeader,
@@ -22,21 +27,6 @@ type Props = {
   className?: string;
 };
 
-// Сохраняем токен заявки на устройстве — «мои брони».
-const rememberBooking = (token: string) => {
-  if (!token) return;
-  try {
-    const key = 'my-bookings';
-    const list = JSON.parse(localStorage.getItem(key) || '[]') as string[];
-
-    if (!list.includes(token)) {
-      localStorage.setItem(key, JSON.stringify([token, ...list].slice(0, 50)));
-    }
-  } catch {
-    // localStorage недоступен — не критично
-  }
-};
-
 export const BookingButton: FC<Props> = ({ tourId, priceLabel, className }) => {
   const [open, setOpen] = useState(false);
   const [result, setResult] = useState<CreateBookingResult | null>(null);
@@ -44,7 +34,7 @@ export const BookingButton: FC<Props> = ({ tourId, priceLabel, className }) => {
   const bookingPath = result ? `/booking/${result.accessToken}` : '';
 
   const onSuccess = (data: CreateBookingResult) => {
-    rememberBooking(data.accessToken);
+    rememberBookingToken(data.accessToken);
     setResult(data);
   };
 
@@ -99,8 +89,9 @@ export const BookingButton: FC<Props> = ({ tourId, priceLabel, className }) => {
             </button>
 
             <p className='mt-3 text-left text-[12px] text-[var(--ink-muted)]'>
-              По этой ссылке вы сможете отслеживать статус заявки. Мы сохранили
-              её на этом устройстве.
+              {result.emailSent
+                ? 'По этой ссылке вы будете видеть статус заявки и переписываться с гидом. Мы отправили её вам на почту и сохранили на этом устройстве.'
+                : 'По этой ссылке вы будете видеть статус заявки и переписываться с гидом. Мы сохранили её на этом устройстве — с другого она не откроется, поэтому лучше скопируйте ссылку себе.'}
             </p>
 
             <Link
@@ -108,6 +99,13 @@ export const BookingButton: FC<Props> = ({ tourId, priceLabel, className }) => {
               className='mt-4 block w-full min-h-12 rounded-pill bg-cta px-4 font-oswald text-base font-medium tracking-wide text-on-cta hover:bg-cta-press'
             >
               Перейти к заявке
+            </Link>
+
+            <Link
+              href={MY_BOOKINGS_PATH}
+              className='mt-2 block font-oswald text-[12.5px] tracking-wide text-[var(--gold-head)] underline-offset-2 hover:underline'
+            >
+              Все мои заявки
             </Link>
           </div>
         ) : (

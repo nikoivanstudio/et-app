@@ -2,7 +2,10 @@ model Tour {
   id              Int        @id @default(autoincrement())
   title           String     @db.VarChar(180)
   description     String
-  mainPhotoId     Int        @map("main_photo_id")
+  /// Главное фото. Необязательное: черновик заводится на первом шаге
+  /// редактора, когда фотографий ещё нет, а публичной страницы у него
+  /// не будет до одобрения (status = APPROVED).
+  mainPhotoId     Int?       @map("main_photo_id")
   price           Int
   duration        Int
   content         Json       @map("content")
@@ -77,6 +80,49 @@ model Tour {
   /// модель Place: из неё строятся и блок «туры сюда» (E2),
   /// и перелинковка по правилам (E7).
   places TourPlace[]
+
+  // --- Кабинет гида: расписание, варианты цен и место встречи --------------
+  //
+  // Шаги 3, 4 и 6 редактора тура (docs/design/canvas, артборд
+  // GuideTourSchedule). До этого гид мог задать только одну цену и ничего —
+  // про расписание: «во сколько выезжаем» и «в эти дни не берём» жили
+  // в переписке, а не в туре.
+
+  /// Варианты билетов: [{ label, unit, durationHours, price }].
+  /// jsonb, а не таблица: список правится целиком вместе с туром и никогда
+  /// не запрашивается отдельно от него — как faq и tourRoute рядом.
+  /// Поле `price` в модели остаётся базовым: по нему сортируется каталог.
+  priceOptions Json? @map("price_options")
+
+  /// Со скольких человек выезд состоится. Без него гид отменяет заявку
+  /// на двоих уже после подтверждения.
+  minGroupSize Int? @map("min_group_size")
+
+  /// За сколько дней до выезда перестаём принимать заявки.
+  bookingLeadDays Int? @map("booking_lead_days")
+
+  /// Обычное время старта, «08:00». Строкой, а не DateTime: это время суток
+  /// без даты, и в заявке оно всё равно показывается текстом.
+  startTime String? @map("start_time") @db.VarChar(5)
+
+  /// Дни недели, когда тур идёт: 1 — понедельник, 7 — воскресенье.
+  /// Пустой массив — любой день.
+  weekdays Int[] @default([])
+
+  /// Даты, закрытые гидом вручную. Занятые выезды сюда не попадают —
+  /// они и так считаются по подтверждённым заявкам (booking.desiredDate).
+  blockedDates DateTime[] @default([]) @map("blocked_dates")
+
+  /// Адрес места встречи. Город лежит в startCity, координаты — в startPlace,
+  /// а строку «ул. Московская, 8, автовокзал» негде было хранить.
+  meetingAddress String? @map("meeting_address") @db.VarChar(300)
+
+  /// Как добраться до места встречи и по какому ориентиру искать гида.
+  meetingNote String? @map("meeting_note") @db.VarChar(1000)
+
+  /// Города, из которых гид готов забрать группу. Из них же строятся
+  /// подборки «джип-туры из …» (E3), поэтому это список, а не текст.
+  pickupCities String[] @default([]) @map("pickup_cities")
 
   @@map("tour")
 }
