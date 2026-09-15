@@ -9,8 +9,15 @@ export const createBookingSchema = z.object({
   phone: z.string().regex(phoneRegex, 'Неверный формат телефона'),
   email: z.email('Неверный email').optional().or(z.literal('')),
   desiredDate: z.string().optional(),
-  peopleCount: z.number().int().min(1).max(100).default(1),
-  comment: z.string().max(1000).optional(),
+  // Сообщения заданы явно: текст ошибки из схемы показывается в форме,
+  // а по умолчанию zod отвечает по-английски («Too small: expected …»).
+  peopleCount: z
+    .number('Укажите число гостей')
+    .int('Гостей может быть только целое число')
+    .min(1, 'Хотя бы один гость')
+    .max(100, 'Не больше 100 гостей')
+    .default(1),
+  comment: z.string().max(1000, 'Комментарий длиннее 1000 символов').optional(),
   agreement: z
     .union([z.literal('on'), z.literal('true'), z.boolean()])
     .refine(value => value === 'on' || value === 'true' || value === true, {

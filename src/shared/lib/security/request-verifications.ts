@@ -60,6 +60,29 @@ export const verifyLimit = (
  * при `SameSite=Lax` не отправит cookie сессии в кросс-сайтовом подзапросе,
  * поэтому чужая страница не сможет прочитать данные от имени пользователя.
  */
+/**
+ * Собственный адрес приложения по заголовкам запроса.
+ *
+ * Нужен рядом со списком доменов: проверка источника до этой правки
+ * не работала вовсе (см. `PROTECTED_API_PREFIX`), и включать её, опираясь
+ * только на жёсткий список, значит поставить работу форм в зависимость
+ * от того, не забыли ли туда дописать домен — включая `www.` и адрес
+ * предпросмотра. Подделать заголовок может кто угодно, но смысла в этом
+ * нет: защита здесь именно от чужой страницы в браузере, а браузер
+ * проставляет `Origin` сам и подменить его скриптом не даёт.
+ */
+const getSelfOrigin = (req: NextRequest): string | null => {
+  const host = req.headers.get('x-forwarded-host') ?? req.headers.get('host');
+
+  if (!host) return null;
+
+  const protocol =
+    req.headers.get('x-forwarded-proto') ??
+    req.nextUrl.protocol.replace(':', '');
+
+  return `${protocol}://${host}`;
+};
+
 export const verifyOrigin = (req: NextRequest): string | null => {
   const origin = req.headers.get('origin');
   const referer = req.headers.get('referer');
@@ -68,13 +91,17 @@ export const verifyOrigin = (req: NextRequest): string | null => {
     return origin;
   }
 
-  const isAllowedOrigin = origin !== null && ALLOWED_ORIGINS.includes(origin);
+  const allowed = [...ALLOWED_ORIGINS, getSelfOrigin(req)].filter(
+    (value): value is string => !!value
+  );
+
+  const isAllowedOrigin = origin !== null && allowed.includes(origin);
 
   // Часть клиентов не присылает Origin; тогда опираемся на Referer
   const isAllowedReferer =
     origin === null &&
     referer !== null &&
-    ALLOWED_ORIGINS.some(allowed => referer.startsWith(`${allowed}/`));
+    allowed.some(value => referer.startsWith(`${value}/`));
 
   if (!isAllowedOrigin && !isAllowedReferer) {
     throw new SecurityOriginException('Origin not allowed');

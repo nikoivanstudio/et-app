@@ -19,6 +19,24 @@ model User {
   languages       String[]  @default([])
   specializations String[]  @default([])
   experienceSince Int?      @map("experience_since")
+
+  // --- Кабинет гида: профиль и письма -------------------------------------
+
+  /// Город гида. У тура есть startCity, а у самого гида города не было —
+  /// и в каталоге гидов его нечем было показать.
+  city            String?   @db.VarChar(120)
+
+  /// Машина: «Mitsubishi Pajero, 6 мест, детское кресло». Вместимость
+  /// задаётся у тура (capacity), а это описание техники для карточки гида.
+  vehicle         String?   @db.VarChar(200)
+
+  /// Какие письма слать. Раньше письмо о новой заявке и о новом сообщении
+  /// уходили всегда: отписаться было нельзя, и гиды заводили фильтры в почте.
+  /// Четыре флага, а не json: по ним же фильтруется рассылка запросом.
+  notifyNewBooking   Boolean @default(true)  @map("notify_new_booking")
+  notifyNewMessage   Boolean @default(true)  @map("notify_new_message")
+  notifyTripReminder Boolean @default(true)  @map("notify_trip_reminder")
+  notifyNews         Boolean @default(false) @map("notify_news")
   posts         Post[]
   tours         Tour[]
   reviews       Review[]
@@ -31,6 +49,7 @@ model User {
   sessions       Session[]
   guideBookings  Booking[] @relation("GuideBookings")
   clientBookings Booking[] @relation("ClientBookings")
+  messages       Message[]
 
   @@map("user")
 }

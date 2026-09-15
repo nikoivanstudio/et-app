@@ -4,6 +4,7 @@ import { FC } from 'react';
 
 import { NAV_LINKS } from '@/widgets/app-header/model/links';
 import { AuthNavLink } from '@/widgets/app-header/ui/auth-nav-link';
+import { MyBookingsNavLink } from '@/widgets/app-header/ui/my-bookings-nav-link';
 
 const cnMainNav = cn('MainNav');
 
@@ -29,6 +30,7 @@ export const MainNav: FC = () => (
         {title}
       </Link>
     ))}
+    <MyBookingsNavLink className={linkClassName} />
     <AuthNavLink className={linkClassName} />
   </nav>
 );

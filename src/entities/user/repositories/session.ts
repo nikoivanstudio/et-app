@@ -21,6 +21,19 @@ const revokeSession = (id: string) =>
     data: { revokedAt: new Date() }
   });
 
+/**
+ * Отзыв одной сессии пользователя.
+ *
+ * userId в условии обязателен: по кнопке «завершить» в профиле приходит
+ * идентификатор записи, и без проверки владельца ей можно было бы закрыть
+ * чужую сессию.
+ */
+const revokeUserSession = (userId: number, id: string) =>
+  dbClient.session.updateMany({
+    where: { id, userId, revokedAt: null },
+    data: { revokedAt: new Date() }
+  });
+
 /** Используется при смене пароля и по кнопке «выйти на всех устройствах». */
 const revokeAllUserSessions = (userId: number) =>
   dbClient.session.updateMany({
@@ -35,6 +48,7 @@ export const sessionRepository = {
   createSession,
   getActiveSession,
   revokeSession,
+  revokeUserSession,
   revokeAllUserSessions,
   deleteExpiredSessions
 };

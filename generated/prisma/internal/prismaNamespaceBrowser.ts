@@ -54,6 +54,7 @@ export const ModelName = {
   Activity: 'Activity',
   Booking: 'Booking',
   File: 'File',
+  Message: 'Message',
   Order: 'Order',
   Otp: 'Otp',
   PartnerApplication: 'PartnerApplication',
@@ -126,6 +127,8 @@ export const BookingScalarFieldEnum = {
   guideNote: 'guideNote',
   statusHistory: 'statusHistory',
   phoneVerified: 'phoneVerified',
+  clientNotifiedAt: 'clientNotifiedAt',
+  guideNotifiedAt: 'guideNotifiedAt',
   processedAt: 'processedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -147,6 +150,19 @@ export const FileScalarFieldEnum = {
 } as const
 
 export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+
+
+export const MessageScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  authorRole: 'authorRole',
+  authorId: 'authorId',
+  text: 'text',
+  readAt: 'readAt',
+  createdAt: 'createdAt'
+} as const
+
+export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
 
 
 export const OrderScalarFieldEnum = {
@@ -283,6 +299,8 @@ export const ReviewScalarFieldEnum = {
   estimateValue: 'estimateValue',
   authorId: 'authorId',
   tourId: 'tourId',
+  guideReply: 'guideReply',
+  guideReplyAt: 'guideReplyAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -332,7 +350,16 @@ export const TourScalarFieldEnum = {
   faq: 'faq',
   seasons: 'seasons',
   priceUnit: 'priceUnit',
-  startCity: 'startCity'
+  startCity: 'startCity',
+  priceOptions: 'priceOptions',
+  minGroupSize: 'minGroupSize',
+  bookingLeadDays: 'bookingLeadDays',
+  startTime: 'startTime',
+  weekdays: 'weekdays',
+  blockedDates: 'blockedDates',
+  meetingAddress: 'meetingAddress',
+  meetingNote: 'meetingNote',
+  pickupCities: 'pickupCities'
 } as const
 
 export type TourScalarFieldEnum = (typeof TourScalarFieldEnum)[keyof typeof TourScalarFieldEnum]
@@ -368,7 +395,13 @@ export const UserScalarFieldEnum = {
   coverPhotoId: 'coverPhotoId',
   languages: 'languages',
   specializations: 'specializations',
-  experienceSince: 'experienceSince'
+  experienceSince: 'experienceSince',
+  city: 'city',
+  vehicle: 'vehicle',
+  notifyNewBooking: 'notifyNewBooking',
+  notifyNewMessage: 'notifyNewMessage',
+  notifyTripReminder: 'notifyTripReminder',
+  notifyNews: 'notifyNews'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]

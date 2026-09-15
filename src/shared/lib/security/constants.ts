@@ -29,7 +29,16 @@ export const AUTH_SENSITIVE_PATHS = [
   '/api/callback'
 ];
 
-export const PROTECTED_API_PREFIX = process.env.API_ROUTE || '/api/';
+/**
+ * Префикс, начиная с которого запрос проверяется на источник (Origin).
+ *
+ * Раньше значение бралось из `API_ROUTE` — переменной, которой задаётся
+ * базовый адрес для клиентских запросов. В рабочем окружении там стоит
+ * `/API`, и проверка не срабатывала ни разу: путь `/api/bookings`
+ * не начинается с `/API`. Адрес маршрутов задан каталогом `src/app/api`
+ * и переменной не управляется, поэтому и префикс здесь постоянный.
+ */
+export const PROTECTED_API_PREFIX = '/api/';
 
 /** Методы, не изменяющие состояние: для них проверка Origin не требуется. */
 export const SAFE_HTTP_METHODS = ['GET', 'HEAD', 'OPTIONS'];

@@ -57,6 +57,23 @@
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-ink-faint: var(--ink-faint);
+  /* кабинет гида — тёмная тема, см. docs/design/canvas (артборды Guide*) */
+  --color-cab-bg: var(--cab-bg);
+  --color-cab-panel: var(--cab-panel);
+  --color-cab-raise: var(--cab-raise);
+  --color-cab-line: var(--cab-line);
+  --color-cab-line-soft: var(--cab-line-soft);
+  --color-cab-ink: var(--cab-ink);
+  --color-cab-dim: var(--cab-dim);
+  --color-cab-faint: var(--cab-faint);
+  --color-cab-mute: var(--cab-mute);
+  --color-cab-gold: var(--cab-gold);
+  --color-cab-on-gold: var(--cab-on-gold);
+  --color-cab-ok: var(--cab-ok);
+  --color-cab-info: var(--cab-info);
+  --color-cab-bad: var(--cab-bad);
+  --color-cab-wait: var(--cab-wait);
+
   --color-cream: var(--cream);
   --color-cream-deep: var(--cream-deep);
   --color-rule: var(--rule);
@@ -132,6 +149,27 @@
   --cream-deep: #f4ecdd;
   --rule: #e2d5b7;
   --page: #f7f6f3;
+
+  /* ── Кабинет гида ──────────────────────────────────────────────────────
+     Кабинет тёмный и живёт по своим токенам: публичная палитра построена
+     на креме, а на кремовом фоне таблица заявок читается хуже, чем на
+     тёмном. Золото здесь то же самое, что на фото сайта (--gold-photo):
+     на #141417 оно даёт 8.1:1. Значения — из артбордов Guide*.          */
+  --cab-bg: #09090b;
+  --cab-panel: #141417;
+  --cab-raise: #17171b;
+  --cab-line: #23232a;
+  --cab-line-soft: #1e1e24;
+  --cab-ink: #fafafa;
+  --cab-dim: #a1a1aa;
+  --cab-faint: #8a8a93;
+  --cab-mute: #6b6b74;
+  --cab-gold: #e8b055;
+  --cab-on-gold: #1c1305;
+  --cab-ok: #6ee7b7;
+  --cab-info: #93c5fd;
+  --cab-bad: #fca5a5;
+  --cab-wait: #c4b5fd;
 
   /* зелёный и красный — только статус, не действие */
   --free-ink: #4a6626;

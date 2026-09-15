@@ -58,6 +58,8 @@ export type BookingMinAggregateOutputType = {
   cancelReason: string | null
   guideNote: string | null
   phoneVerified: boolean | null
+  clientNotifiedAt: Date | null
+  guideNotifiedAt: Date | null
   processedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -79,6 +81,8 @@ export type BookingMaxAggregateOutputType = {
   cancelReason: string | null
   guideNote: string | null
   phoneVerified: boolean | null
+  clientNotifiedAt: Date | null
+  guideNotifiedAt: Date | null
   processedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -101,6 +105,8 @@ export type BookingCountAggregateOutputType = {
   guideNote: number
   statusHistory: number
   phoneVerified: number
+  clientNotifiedAt: number
+  guideNotifiedAt: number
   processedAt: number
   createdAt: number
   updatedAt: number
@@ -140,6 +146,8 @@ export type BookingMinAggregateInputType = {
   cancelReason?: true
   guideNote?: true
   phoneVerified?: true
+  clientNotifiedAt?: true
+  guideNotifiedAt?: true
   processedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -161,6 +169,8 @@ export type BookingMaxAggregateInputType = {
   cancelReason?: true
   guideNote?: true
   phoneVerified?: true
+  clientNotifiedAt?: true
+  guideNotifiedAt?: true
   processedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -183,6 +193,8 @@ export type BookingCountAggregateInputType = {
   guideNote?: true
   statusHistory?: true
   phoneVerified?: true
+  clientNotifiedAt?: true
+  guideNotifiedAt?: true
   processedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -292,6 +304,8 @@ export type BookingGroupByOutputType = {
   guideNote: string | null
   statusHistory: runtime.JsonValue
   phoneVerified: boolean
+  clientNotifiedAt: Date | null
+  guideNotifiedAt: Date | null
   processedAt: Date | null
   createdAt: Date
   updatedAt: Date | null
@@ -337,12 +351,15 @@ export type BookingWhereInput = {
   guideNote?: Prisma.StringNullableFilter<"Booking"> | string | null
   statusHistory?: Prisma.JsonFilter<"Booking">
   phoneVerified?: Prisma.BoolFilter<"Booking"> | boolean
+  clientNotifiedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  guideNotifiedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   processedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   tour?: Prisma.XOR<Prisma.TourScalarRelationFilter, Prisma.TourWhereInput>
   guide?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   client?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  messages?: Prisma.MessageListRelationFilter
 }
 
 export type BookingOrderByWithRelationInput = {
@@ -362,12 +379,15 @@ export type BookingOrderByWithRelationInput = {
   guideNote?: Prisma.SortOrderInput | Prisma.SortOrder
   statusHistory?: Prisma.SortOrder
   phoneVerified?: Prisma.SortOrder
+  clientNotifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  guideNotifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   processedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   tour?: Prisma.TourOrderByWithRelationInput
   guide?: Prisma.UserOrderByWithRelationInput
   client?: Prisma.UserOrderByWithRelationInput
+  messages?: Prisma.MessageOrderByRelationAggregateInput
 }
 
 export type BookingWhereUniqueInput = Prisma.AtLeast<{
@@ -390,12 +410,15 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   guideNote?: Prisma.StringNullableFilter<"Booking"> | string | null
   statusHistory?: Prisma.JsonFilter<"Booking">
   phoneVerified?: Prisma.BoolFilter<"Booking"> | boolean
+  clientNotifiedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  guideNotifiedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   processedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   tour?: Prisma.XOR<Prisma.TourScalarRelationFilter, Prisma.TourWhereInput>
   guide?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   client?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  messages?: Prisma.MessageListRelationFilter
 }, "id" | "accessToken">
 
 export type BookingOrderByWithAggregationInput = {
@@ -415,6 +438,8 @@ export type BookingOrderByWithAggregationInput = {
   guideNote?: Prisma.SortOrderInput | Prisma.SortOrder
   statusHistory?: Prisma.SortOrder
   phoneVerified?: Prisma.SortOrder
+  clientNotifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  guideNotifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   processedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -445,6 +470,8 @@ export type BookingScalarWhereWithAggregatesInput = {
   guideNote?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   statusHistory?: Prisma.JsonWithAggregatesFilter<"Booking">
   phoneVerified?: Prisma.BoolWithAggregatesFilter<"Booking"> | boolean
+  clientNotifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
+  guideNotifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
   processedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
@@ -463,12 +490,15 @@ export type BookingCreateInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
   tour: Prisma.TourCreateNestedOneWithoutBookingsInput
   guide: Prisma.UserCreateNestedOneWithoutGuideBookingsInput
   client?: Prisma.UserCreateNestedOneWithoutClientBookingsInput
+  messages?: Prisma.MessageCreateNestedManyWithoutBookingInput
 }
 
 export type BookingUncheckedCreateInput = {
@@ -488,9 +518,12 @@ export type BookingUncheckedCreateInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutBookingInput
 }
 
 export type BookingUpdateInput = {
@@ -506,12 +539,15 @@ export type BookingUpdateInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tour?: Prisma.TourUpdateOneRequiredWithoutBookingsNestedInput
   guide?: Prisma.UserUpdateOneRequiredWithoutGuideBookingsNestedInput
   client?: Prisma.UserUpdateOneWithoutClientBookingsNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateInput = {
@@ -531,9 +567,12 @@ export type BookingUncheckedUpdateInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutBookingNestedInput
 }
 
 export type BookingCreateManyInput = {
@@ -553,6 +592,8 @@ export type BookingCreateManyInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -571,6 +612,8 @@ export type BookingUpdateManyMutationInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -593,6 +636,8 @@ export type BookingUncheckedUpdateManyInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -615,6 +660,8 @@ export type BookingCountOrderByAggregateInput = {
   guideNote?: Prisma.SortOrder
   statusHistory?: Prisma.SortOrder
   phoneVerified?: Prisma.SortOrder
+  clientNotifiedAt?: Prisma.SortOrder
+  guideNotifiedAt?: Prisma.SortOrder
   processedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -644,6 +691,8 @@ export type BookingMaxOrderByAggregateInput = {
   cancelReason?: Prisma.SortOrder
   guideNote?: Prisma.SortOrder
   phoneVerified?: Prisma.SortOrder
+  clientNotifiedAt?: Prisma.SortOrder
+  guideNotifiedAt?: Prisma.SortOrder
   processedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -665,6 +714,8 @@ export type BookingMinOrderByAggregateInput = {
   cancelReason?: Prisma.SortOrder
   guideNote?: Prisma.SortOrder
   phoneVerified?: Prisma.SortOrder
+  clientNotifiedAt?: Prisma.SortOrder
+  guideNotifiedAt?: Prisma.SortOrder
   processedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -676,6 +727,11 @@ export type BookingSumOrderByAggregateInput = {
   guideId?: Prisma.SortOrder
   clientUserId?: Prisma.SortOrder
   peopleCount?: Prisma.SortOrder
+}
+
+export type BookingScalarRelationFilter = {
+  is?: Prisma.BookingWhereInput
+  isNot?: Prisma.BookingWhereInput
 }
 
 export type BookingListRelationFilter = {
@@ -694,6 +750,20 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
+}
+
+export type BookingCreateNestedOneWithoutMessagesInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutMessagesInput, Prisma.BookingUncheckedCreateWithoutMessagesInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutMessagesInput
+  connect?: Prisma.BookingWhereUniqueInput
+}
+
+export type BookingUpdateOneRequiredWithoutMessagesNestedInput = {
+  create?: Prisma.XOR<Prisma.BookingCreateWithoutMessagesInput, Prisma.BookingUncheckedCreateWithoutMessagesInput>
+  connectOrCreate?: Prisma.BookingCreateOrConnectWithoutMessagesInput
+  upsert?: Prisma.BookingUpsertWithoutMessagesInput
+  connect?: Prisma.BookingWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BookingUpdateToOneWithWhereWithoutMessagesInput, Prisma.BookingUpdateWithoutMessagesInput>, Prisma.BookingUncheckedUpdateWithoutMessagesInput>
 }
 
 export type BookingCreateNestedManyWithoutTourInput = {
@@ -822,6 +892,116 @@ export type BookingUncheckedUpdateManyWithoutClientNestedInput = {
   deleteMany?: Prisma.BookingScalarWhereInput | Prisma.BookingScalarWhereInput[]
 }
 
+export type BookingCreateWithoutMessagesInput = {
+  guestName: string
+  guestPhone: string
+  guestEmail?: string | null
+  desiredDate?: Date | string | null
+  peopleCount?: number
+  comment?: string | null
+  status?: string
+  accessToken: string
+  cancelReason?: string | null
+  guideNote?: string | null
+  statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
+  processedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+  tour: Prisma.TourCreateNestedOneWithoutBookingsInput
+  guide: Prisma.UserCreateNestedOneWithoutGuideBookingsInput
+  client?: Prisma.UserCreateNestedOneWithoutClientBookingsInput
+}
+
+export type BookingUncheckedCreateWithoutMessagesInput = {
+  id?: number
+  tourId: number
+  guideId: number
+  clientUserId?: number | null
+  guestName: string
+  guestPhone: string
+  guestEmail?: string | null
+  desiredDate?: Date | string | null
+  peopleCount?: number
+  comment?: string | null
+  status?: string
+  accessToken: string
+  cancelReason?: string | null
+  guideNote?: string | null
+  statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
+  processedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string | null
+}
+
+export type BookingCreateOrConnectWithoutMessagesInput = {
+  where: Prisma.BookingWhereUniqueInput
+  create: Prisma.XOR<Prisma.BookingCreateWithoutMessagesInput, Prisma.BookingUncheckedCreateWithoutMessagesInput>
+}
+
+export type BookingUpsertWithoutMessagesInput = {
+  update: Prisma.XOR<Prisma.BookingUpdateWithoutMessagesInput, Prisma.BookingUncheckedUpdateWithoutMessagesInput>
+  create: Prisma.XOR<Prisma.BookingCreateWithoutMessagesInput, Prisma.BookingUncheckedCreateWithoutMessagesInput>
+  where?: Prisma.BookingWhereInput
+}
+
+export type BookingUpdateToOneWithWhereWithoutMessagesInput = {
+  where?: Prisma.BookingWhereInput
+  data: Prisma.XOR<Prisma.BookingUpdateWithoutMessagesInput, Prisma.BookingUncheckedUpdateWithoutMessagesInput>
+}
+
+export type BookingUpdateWithoutMessagesInput = {
+  guestName?: Prisma.StringFieldUpdateOperationsInput | string
+  guestPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  guestEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  desiredDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  peopleCount?: Prisma.IntFieldUpdateOperationsInput | number
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  accessToken?: Prisma.StringFieldUpdateOperationsInput | string
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  tour?: Prisma.TourUpdateOneRequiredWithoutBookingsNestedInput
+  guide?: Prisma.UserUpdateOneRequiredWithoutGuideBookingsNestedInput
+  client?: Prisma.UserUpdateOneWithoutClientBookingsNestedInput
+}
+
+export type BookingUncheckedUpdateWithoutMessagesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  tourId?: Prisma.IntFieldUpdateOperationsInput | number
+  guideId?: Prisma.IntFieldUpdateOperationsInput | number
+  clientUserId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  guestName?: Prisma.StringFieldUpdateOperationsInput | string
+  guestPhone?: Prisma.StringFieldUpdateOperationsInput | string
+  guestEmail?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  desiredDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  peopleCount?: Prisma.IntFieldUpdateOperationsInput | number
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  accessToken?: Prisma.StringFieldUpdateOperationsInput | string
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
 export type BookingCreateWithoutTourInput = {
   guestName: string
   guestPhone: string
@@ -835,11 +1015,14 @@ export type BookingCreateWithoutTourInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
   guide: Prisma.UserCreateNestedOneWithoutGuideBookingsInput
   client?: Prisma.UserCreateNestedOneWithoutClientBookingsInput
+  messages?: Prisma.MessageCreateNestedManyWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutTourInput = {
@@ -858,9 +1041,12 @@ export type BookingUncheckedCreateWithoutTourInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutTourInput = {
@@ -909,6 +1095,8 @@ export type BookingScalarWhereInput = {
   guideNote?: Prisma.StringNullableFilter<"Booking"> | string | null
   statusHistory?: Prisma.JsonFilter<"Booking">
   phoneVerified?: Prisma.BoolFilter<"Booking"> | boolean
+  clientNotifiedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
+  guideNotifiedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   processedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -927,11 +1115,14 @@ export type BookingCreateWithoutGuideInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
   tour: Prisma.TourCreateNestedOneWithoutBookingsInput
   client?: Prisma.UserCreateNestedOneWithoutClientBookingsInput
+  messages?: Prisma.MessageCreateNestedManyWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutGuideInput = {
@@ -950,9 +1141,12 @@ export type BookingUncheckedCreateWithoutGuideInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutGuideInput = {
@@ -978,11 +1172,14 @@ export type BookingCreateWithoutClientInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
   tour: Prisma.TourCreateNestedOneWithoutBookingsInput
   guide: Prisma.UserCreateNestedOneWithoutGuideBookingsInput
+  messages?: Prisma.MessageCreateNestedManyWithoutBookingInput
 }
 
 export type BookingUncheckedCreateWithoutClientInput = {
@@ -1001,9 +1198,12 @@ export type BookingUncheckedCreateWithoutClientInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
+  messages?: Prisma.MessageUncheckedCreateNestedManyWithoutBookingInput
 }
 
 export type BookingCreateOrConnectWithoutClientInput = {
@@ -1064,6 +1264,8 @@ export type BookingCreateManyTourInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -1082,11 +1284,14 @@ export type BookingUpdateWithoutTourInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   guide?: Prisma.UserUpdateOneRequiredWithoutGuideBookingsNestedInput
   client?: Prisma.UserUpdateOneWithoutClientBookingsNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutTourInput = {
@@ -1105,9 +1310,12 @@ export type BookingUncheckedUpdateWithoutTourInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutTourInput = {
@@ -1126,6 +1334,8 @@ export type BookingUncheckedUpdateManyWithoutTourInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1147,6 +1357,8 @@ export type BookingCreateManyGuideInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -1168,6 +1380,8 @@ export type BookingCreateManyClientInput = {
   guideNote?: string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: boolean
+  clientNotifiedAt?: Date | string | null
+  guideNotifiedAt?: Date | string | null
   processedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
@@ -1186,11 +1400,14 @@ export type BookingUpdateWithoutGuideInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tour?: Prisma.TourUpdateOneRequiredWithoutBookingsNestedInput
   client?: Prisma.UserUpdateOneWithoutClientBookingsNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutGuideInput = {
@@ -1209,9 +1426,12 @@ export type BookingUncheckedUpdateWithoutGuideInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutGuideInput = {
@@ -1230,6 +1450,8 @@ export type BookingUncheckedUpdateManyWithoutGuideInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1248,11 +1470,14 @@ export type BookingUpdateWithoutClientInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tour?: Prisma.TourUpdateOneRequiredWithoutBookingsNestedInput
   guide?: Prisma.UserUpdateOneRequiredWithoutGuideBookingsNestedInput
+  messages?: Prisma.MessageUpdateManyWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateWithoutClientInput = {
@@ -1271,9 +1496,12 @@ export type BookingUncheckedUpdateWithoutClientInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  messages?: Prisma.MessageUncheckedUpdateManyWithoutBookingNestedInput
 }
 
 export type BookingUncheckedUpdateManyWithoutClientInput = {
@@ -1292,11 +1520,42 @@ export type BookingUncheckedUpdateManyWithoutClientInput = {
   guideNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   statusHistory?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clientNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  guideNotifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   processedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
+
+/**
+ * Count Type BookingCountOutputType
+ */
+
+export type BookingCountOutputType = {
+  messages: number
+}
+
+export type BookingCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  messages?: boolean | BookingCountOutputTypeCountMessagesArgs
+}
+
+/**
+ * BookingCountOutputType without action
+ */
+export type BookingCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BookingCountOutputType
+   */
+  select?: Prisma.BookingCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * BookingCountOutputType without action
+ */
+export type BookingCountOutputTypeCountMessagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.MessageWhereInput
+}
 
 
 export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1316,12 +1575,16 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   guideNote?: boolean
   statusHistory?: boolean
   phoneVerified?: boolean
+  clientNotifiedAt?: boolean
+  guideNotifiedAt?: boolean
   processedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   tour?: boolean | Prisma.TourDefaultArgs<ExtArgs>
   guide?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   client?: boolean | Prisma.Booking$clientArgs<ExtArgs>
+  messages?: boolean | Prisma.Booking$messagesArgs<ExtArgs>
+  _count?: boolean | Prisma.BookingCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1341,6 +1604,8 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   guideNote?: boolean
   statusHistory?: boolean
   phoneVerified?: boolean
+  clientNotifiedAt?: boolean
+  guideNotifiedAt?: boolean
   processedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1366,6 +1631,8 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   guideNote?: boolean
   statusHistory?: boolean
   phoneVerified?: boolean
+  clientNotifiedAt?: boolean
+  guideNotifiedAt?: boolean
   processedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1391,16 +1658,20 @@ export type BookingSelectScalar = {
   guideNote?: boolean
   statusHistory?: boolean
   phoneVerified?: boolean
+  clientNotifiedAt?: boolean
+  guideNotifiedAt?: boolean
   processedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tourId" | "guideId" | "clientUserId" | "guestName" | "guestPhone" | "guestEmail" | "desiredDate" | "peopleCount" | "comment" | "status" | "accessToken" | "cancelReason" | "guideNote" | "statusHistory" | "phoneVerified" | "processedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tourId" | "guideId" | "clientUserId" | "guestName" | "guestPhone" | "guestEmail" | "desiredDate" | "peopleCount" | "comment" | "status" | "accessToken" | "cancelReason" | "guideNote" | "statusHistory" | "phoneVerified" | "clientNotifiedAt" | "guideNotifiedAt" | "processedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tour?: boolean | Prisma.TourDefaultArgs<ExtArgs>
   guide?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   client?: boolean | Prisma.Booking$clientArgs<ExtArgs>
+  messages?: boolean | Prisma.Booking$messagesArgs<ExtArgs>
+  _count?: boolean | Prisma.BookingCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BookingIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tour?: boolean | Prisma.TourDefaultArgs<ExtArgs>
@@ -1419,6 +1690,7 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     tour: Prisma.$TourPayload<ExtArgs>
     guide: Prisma.$UserPayload<ExtArgs>
     client: Prisma.$UserPayload<ExtArgs> | null
+    messages: Prisma.$MessagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1437,6 +1709,13 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     guideNote: string | null
     statusHistory: runtime.JsonValue
     phoneVerified: boolean
+    /**
+     * Когда стороне в последний раз уходило письмо о новом сообщении.
+     * Нужны обе отметки: переписка двусторонняя, а письма считаются
+     * по каждому направлению отдельно (см. booking-mailer).
+     */
+    clientNotifiedAt: Date | null
+    guideNotifiedAt: Date | null
     processedAt: Date | null
     createdAt: Date
     updatedAt: Date | null
@@ -1837,6 +2116,7 @@ export interface Prisma__BookingClient<T, Null = never, ExtArgs extends runtime.
   tour<T extends Prisma.TourDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TourDefaultArgs<ExtArgs>>): Prisma.Prisma__TourClient<runtime.Types.Result.GetResult<Prisma.$TourPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   guide<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   client<T extends Prisma.Booking$clientArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$clientArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  messages<T extends Prisma.Booking$messagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Booking$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1882,6 +2162,8 @@ export interface BookingFieldRefs {
   readonly guideNote: Prisma.FieldRef<"Booking", 'String'>
   readonly statusHistory: Prisma.FieldRef<"Booking", 'Json'>
   readonly phoneVerified: Prisma.FieldRef<"Booking", 'Boolean'>
+  readonly clientNotifiedAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly guideNotifiedAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly processedAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Booking", 'DateTime'>
@@ -2302,6 +2584,30 @@ export type Booking$clientArgs<ExtArgs extends runtime.Types.Extensions.Internal
    */
   include?: Prisma.UserInclude<ExtArgs> | null
   where?: Prisma.UserWhereInput
+}
+
+/**
+ * Booking.messages
+ */
+export type Booking$messagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Message
+   */
+  select?: Prisma.MessageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Message
+   */
+  omit?: Prisma.MessageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.MessageInclude<ExtArgs> | null
+  where?: Prisma.MessageWhereInput
+  orderBy?: Prisma.MessageOrderByWithRelationInput | Prisma.MessageOrderByWithRelationInput[]
+  cursor?: Prisma.MessageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.MessageScalarFieldEnum | Prisma.MessageScalarFieldEnum[]
 }
 
 /**

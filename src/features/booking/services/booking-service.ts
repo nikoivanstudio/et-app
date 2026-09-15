@@ -2,6 +2,8 @@ import { v4 } from 'uuid';
 
 import { BookingDomain } from '@/entities/booking';
 import { bookingRepository } from '@/entities/booking/server';
+import { MessageDomain } from '@/entities/message';
+import { messageRepository } from '@/entities/message/server';
 import { PUBLIC_TOUR_STATUS } from '@/entities/tour/domain';
 
 import { dbClient } from '@/shared/lib/db';
@@ -12,23 +14,26 @@ import { buildDisplayName } from '@/kernel/guide/domain';
 import { Booking, Prisma } from '../../../../generated/prisma/client';
 import { CreateBookingPayload, UpdateBookingPayload } from '../model/schemas';
 
+import { bookingMailer } from './booking-mailer';
+
 const { BookingStatus } = BookingDomain;
 
 // Какое действие к какому статусу приводит (null — статус не меняется).
-const ACTION_TO_STATUS: Record<
-  BookingDomain.BookingActionType,
-  string | null
-> = {
-  contact: BookingStatus.CONTACTED,
-  confirm: BookingStatus.CONFIRMED,
-  complete: BookingStatus.COMPLETED,
-  cancel: BookingStatus.CANCELLED,
-  spam: BookingStatus.SPAM,
-  reschedule: null,
-  note: null
-};
+const ACTION_TO_STATUS: Record<BookingDomain.BookingActionType, string | null> =
+  {
+    contact: BookingStatus.CONTACTED,
+    confirm: BookingStatus.CONFIRMED,
+    complete: BookingStatus.COMPLETED,
+    cancel: BookingStatus.CANCELLED,
+    spam: BookingStatus.SPAM,
+    reschedule: null,
+    note: null
+  };
 
 type Actor = { id: number; role: string; canManageAny: boolean };
+
+/** Сколько заявок разом отдаём по токенам — столько же их и хранится локально. */
+const MAX_TOKENS_PER_REQUEST = 50;
 
 const tourSelect = { id: true, title: true, slug: true };
 const guideSelect = {
@@ -53,7 +58,8 @@ type BookingWithRelations = Booking & {
 };
 
 const toListItem = (
-  booking: BookingWithRelations
+  booking: BookingWithRelations,
+  unreadCount = 0
 ): BookingDomain.BookingListItem => ({
   id: booking.id,
   status: booking.status,
@@ -70,6 +76,11 @@ const toListItem = (
   accessToken: booking.accessToken,
   createdAt: booking.createdAt.toISOString(),
   processedAt: booking.processedAt?.toISOString() ?? null,
+  unreadCount,
+  phoneVerified: booking.phoneVerified,
+  statusHistory: Array.isArray(booking.statusHistory)
+    ? (booking.statusHistory as unknown as BookingDomain.StatusHistoryItem[])
+    : [],
   tour: booking.tour,
   guide: booking.guide
     ? {
@@ -78,6 +89,22 @@ const toListItem = (
         slug: booking.guide.slug ?? String(booking.guide.id)
       }
     : undefined
+});
+
+/**
+ * Та же заявка, но для клиента: без внутренней кухни гида.
+ *
+ * Заметка помечена в кабинете как «клиент этого не видит», а история
+ * статусов хранит id и роли тех, кто заявку вёл, и текст причин — всё это
+ * уезжало бы в браузер любому, у кого есть токен заявки.
+ */
+const toClientItem = (
+  booking: BookingWithRelations,
+  unreadCount = 0
+): BookingDomain.BookingListItem => ({
+  ...toListItem(booking, unreadCount),
+  guideNote: null,
+  statusHistory: []
 });
 
 // Сортировка: новые сверху, затем по дате создания (свежие выше).
@@ -95,7 +122,8 @@ const sortBookings = (
   a: BookingDomain.BookingListItem,
   b: BookingDomain.BookingListItem
 ): number => {
-  const byStatus = (STATUS_ORDER[a.status] ?? 9) - (STATUS_ORDER[b.status] ?? 9);
+  const byStatus =
+    (STATUS_ORDER[a.status] ?? 9) - (STATUS_ORDER[b.status] ?? 9);
 
   if (byStatus !== 0) return byStatus;
 
@@ -103,11 +131,14 @@ const sortBookings = (
 };
 
 async function createBooking(
-  payload: CreateBookingPayload
-): Promise<Either<string, { accessToken: string; guideName: string }>> {
+  payload: CreateBookingPayload,
+  clientUserId: number | null = null
+): Promise<
+  Either<string, { accessToken: string; guideName: string; emailSent: boolean }>
+> {
   const tour = await dbClient.tour.findUnique({
     where: { id: payload.tourId },
-    select: { id: true, authorId: true, status: true }
+    select: { id: true, authorId: true, status: true, title: true }
   });
 
   if (!tour || tour.status !== PUBLIC_TOUR_STATUS) {
@@ -129,10 +160,11 @@ async function createBooking(
     { status: BookingStatus.NEW, at: now.toISOString() }
   ];
 
-  const desiredDate =
-    payload.desiredDate && !Number.isNaN(Date.parse(payload.desiredDate))
-      ? new Date(payload.desiredDate)
-      : null;
+  const desiredDate = BookingDomain.parseDesiredDate(payload.desiredDate);
+
+  if (!desiredDate.ok) {
+    return left(desiredDate.error);
+  }
 
   const booking = await bookingRepository.createBooking({
     tourId: tour.id,
@@ -140,7 +172,10 @@ async function createBooking(
     guestName: payload.name,
     guestPhone: payload.phone,
     guestEmail: payload.email || null,
-    desiredDate,
+    // Заявка авторизованного клиента привязывается к его аккаунту: по этой
+    // связи он попадает в переписку и без ссылки с токеном.
+    clientUserId,
+    desiredDate: desiredDate.date,
     peopleCount: payload.peopleCount,
     comment: payload.comment || null,
     status: BookingStatus.NEW,
@@ -150,14 +185,63 @@ async function createBooking(
 
   const guide = await dbClient.user.findUnique({
     where: { id: tour.authorId },
-    select: { firstName: true, lastName: true, login: true }
+    select: {
+      firstName: true,
+      lastName: true,
+      login: true,
+      email: true,
+      notifyNewBooking: true
+    }
+  });
+
+  const guideName = guide ? buildDisplayName(guide) : 'Гид';
+
+  // Письмо клиенту — единственный способ вернуться к заявке с другого
+  // устройства: ссылка с токеном больше нигде не хранится.
+  const { clientEmailed } = await bookingMailer.sendBookingCreated({
+    accessToken: booking.accessToken,
+    guestName: booking.guestName,
+    guestPhone: booking.guestPhone,
+    guestEmail: booking.guestEmail,
+    desiredDate: booking.desiredDate,
+    peopleCount: booking.peopleCount,
+    comment: booking.comment,
+    tourTitle: tour.title,
+    guideId: tour.authorId,
+    guideName,
+    // Тумблер «Письмо о новой заявке» в профиле гида — не украшение:
+    // выключенный, он должен письмо отменять.
+    guideEmail:
+      guide?.notifyNewBooking === false ? null : (guide?.email ?? null)
   });
 
   return right({
     accessToken: booking.accessToken,
-    guideName: guide ? buildDisplayName(guide) : 'Гид'
+    guideName,
+    emailSent: clientEmailed
   });
 }
+
+/**
+ * Непрочитанные сообщения клиента по каждой заявке.
+ *
+ * Одним запросом на весь список: без этого карточка заявки не отличает
+ * «клиент ждёт ответа» от «переписки не было», а гид узнаёт о вопросе,
+ * только открыв каждую заявку по очереди.
+ */
+const getUnreadMap = async (
+  bookingIds: number[],
+  readerRole: string = MessageDomain.MessageAuthorRole.GUIDE
+): Promise<Map<number, number>> => {
+  if (!bookingIds.length) return new Map();
+
+  const rows = await messageRepository.countUnreadByBooking(
+    bookingIds,
+    readerRole
+  );
+
+  return new Map(rows.map(row => [row.bookingId, row._count._all]));
+};
 
 async function getGuideBookings(
   guideId: number
@@ -168,7 +252,13 @@ async function getGuideBookings(
     orderBy: { createdAt: 'desc' }
   })) as unknown as BookingWithRelations[];
 
-  return right({ bookings: rows.map(toListItem).sort(sortBookings) });
+  const unread = await getUnreadMap(rows.map(row => row.id));
+
+  return right({
+    bookings: rows
+      .map(row => toListItem(row, unread.get(row.id) ?? 0))
+      .sort(sortBookings)
+  });
 }
 
 async function getAllBookingsGrouped(): Promise<
@@ -180,9 +270,10 @@ async function getAllBookingsGrouped(): Promise<
   })) as unknown as BookingWithRelations[];
 
   const groups = new Map<number, BookingDomain.GuideBookingsGroup>();
+  const unread = await getUnreadMap(rows.map(row => row.id));
 
   for (const row of rows) {
-    const item = toListItem(row);
+    const item = toListItem(row, unread.get(row.id) ?? 0);
     const guide = row.guide;
 
     if (!guide) continue;
@@ -233,6 +324,14 @@ async function updateBookingStatus(
     return left('Это не ваша заявка');
   }
 
+  if (!BookingDomain.isActionAllowed(booking.status, payload.action)) {
+    return left(
+      `Действие недоступно для заявки в статусе «${
+        BookingDomain.BOOKING_STATUS_LABELS[booking.status] ?? booking.status
+      }»`
+    );
+  }
+
   const nextStatus = ACTION_TO_STATUS[payload.action];
   const data: Prisma.BookingUpdateInput = {};
 
@@ -241,10 +340,12 @@ async function updateBookingStatus(
   if (payload.action === 'note') data.guideNote = payload.note ?? null;
 
   if (payload.action === 'reschedule') {
-    if (!payload.desiredDate || Number.isNaN(Date.parse(payload.desiredDate))) {
-      return left('Укажите корректную дату');
-    }
-    data.desiredDate = new Date(payload.desiredDate);
+    const desiredDate = BookingDomain.parseDesiredDate(payload.desiredDate);
+
+    if (!desiredDate.ok) return left(desiredDate.error);
+    if (!desiredDate.date) return left('Укажите корректную дату');
+
+    data.desiredDate = desiredDate.date;
   }
 
   // Первая обработка снимает «новизну».
@@ -274,6 +375,42 @@ async function updateBookingStatus(
   return right(toListItem(updated));
 }
 
+/**
+ * Заявки по списку токенов — для страницы «Мои заявки».
+ *
+ * Проверки прав здесь нет намеренно: токен заявки и есть право доступа,
+ * тот же, по которому открывается страница самой заявки. Ограничение —
+ * количество: список на устройстве, а не выгрузка базы по перебору.
+ */
+async function getBookingsByTokens(
+  tokens: string[]
+): Promise<Either<string, { bookings: BookingDomain.BookingListItem[] }>> {
+  const unique = [...new Set(tokens.filter(Boolean))].slice(
+    0,
+    MAX_TOKENS_PER_REQUEST
+  );
+
+  if (!unique.length) {
+    return right({ bookings: [] });
+  }
+
+  const rows = (await bookingRepository.getBookings({
+    where: { accessToken: { in: unique } },
+    include: { tour: { select: tourSelect }, guide: { select: guideSelect } },
+    orderBy: { createdAt: 'desc' }
+  })) as unknown as BookingWithRelations[];
+
+  // Клиент считает непрочитанным то, что написал гид.
+  const unread = await getUnreadMap(
+    rows.map(row => row.id),
+    MessageDomain.MessageAuthorRole.CLIENT
+  );
+
+  return right({
+    bookings: rows.map(row => toClientItem(row, unread.get(row.id) ?? 0))
+  });
+}
+
 async function getBookingByToken(
   token: string
 ): Promise<Either<string, BookingDomain.BookingListItem>> {
@@ -286,11 +423,12 @@ async function getBookingByToken(
     return left('Заявка не найдена');
   }
 
-  return right(toListItem(row));
+  return right(toClientItem(row));
 }
 
 export const bookingService = {
   createBooking,
+  getBookingsByTokens,
   getGuideBookings,
   getAllBookingsGrouped,
   updateBookingStatus,

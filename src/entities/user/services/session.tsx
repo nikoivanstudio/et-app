@@ -118,6 +118,13 @@ async function deleteSession(): Promise<void> {
 }
 
 /** Завершение всех сессий пользователя. */
+/** Завершить одно устройство из профиля. Чужую сессию закрыть нельзя. */
+async function revokeSessionById(userId: number, sid: string): Promise<boolean> {
+  const result = await sessionRepository.revokeUserSession(userId, sid);
+
+  return result.count > 0;
+}
+
 async function revokeAllSessions(userId: number): Promise<void> {
   await sessionRepository.revokeAllUserSessions(userId);
 }
@@ -171,6 +178,7 @@ export const sessionService = {
   updateSession,
   deleteSession,
   revokeAllSessions,
+  revokeSessionById,
   verifySession,
   verifySessionWithRedirect
 };

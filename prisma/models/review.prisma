@@ -7,6 +7,12 @@ model Review {
   tourId        Int       @map("tour_id")
   user          User      @relation(fields: [authorId], references: [id])
   tour          Tour      @relation(fields: [tourId], references: [id])
+  /// Ответ гида на отзыв. Отзыв удалить нельзя — можно только ответить,
+  /// и ответ виден всем на странице тура. Одно поле, а не таблица: ответ
+  /// у отзыва ровно один и правится вместе с ним.
+  guideReply    String?   @map("guide_reply") @db.VarChar(1000)
+  guideReplyAt  DateTime? @map("guide_reply_at") @db.Timestamp()
+
   createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamp()
   updatedAt     DateTime? @updatedAt @map("updated_at") @db.Timestamp()
 

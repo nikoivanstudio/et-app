@@ -35,6 +35,9 @@ export type TourAvgAggregateOutputType = {
   rating: number | null
   capacity: number | null
   seasons: number | null
+  minGroupSize: number | null
+  bookingLeadDays: number | null
+  weekdays: number | null
 }
 
 export type TourSumAggregateOutputType = {
@@ -46,6 +49,9 @@ export type TourSumAggregateOutputType = {
   rating: number | null
   capacity: number | null
   seasons: number[]
+  minGroupSize: number | null
+  bookingLeadDays: number | null
+  weekdays: number[]
 }
 
 export type TourMinAggregateOutputType = {
@@ -70,6 +76,11 @@ export type TourMinAggregateOutputType = {
   difficulty: string | null
   priceUnit: string | null
   startCity: string | null
+  minGroupSize: number | null
+  bookingLeadDays: number | null
+  startTime: string | null
+  meetingAddress: string | null
+  meetingNote: string | null
 }
 
 export type TourMaxAggregateOutputType = {
@@ -94,6 +105,11 @@ export type TourMaxAggregateOutputType = {
   difficulty: string | null
   priceUnit: string | null
   startCity: string | null
+  minGroupSize: number | null
+  bookingLeadDays: number | null
+  startTime: string | null
+  meetingAddress: string | null
+  meetingNote: string | null
 }
 
 export type TourCountAggregateOutputType = {
@@ -128,6 +144,15 @@ export type TourCountAggregateOutputType = {
   seasons: number
   priceUnit: number
   startCity: number
+  priceOptions: number
+  minGroupSize: number
+  bookingLeadDays: number
+  startTime: number
+  weekdays: number
+  blockedDates: number
+  meetingAddress: number
+  meetingNote: number
+  pickupCities: number
   _all: number
 }
 
@@ -141,6 +166,9 @@ export type TourAvgAggregateInputType = {
   rating?: true
   capacity?: true
   seasons?: true
+  minGroupSize?: true
+  bookingLeadDays?: true
+  weekdays?: true
 }
 
 export type TourSumAggregateInputType = {
@@ -152,6 +180,9 @@ export type TourSumAggregateInputType = {
   rating?: true
   capacity?: true
   seasons?: true
+  minGroupSize?: true
+  bookingLeadDays?: true
+  weekdays?: true
 }
 
 export type TourMinAggregateInputType = {
@@ -176,6 +207,11 @@ export type TourMinAggregateInputType = {
   difficulty?: true
   priceUnit?: true
   startCity?: true
+  minGroupSize?: true
+  bookingLeadDays?: true
+  startTime?: true
+  meetingAddress?: true
+  meetingNote?: true
 }
 
 export type TourMaxAggregateInputType = {
@@ -200,6 +236,11 @@ export type TourMaxAggregateInputType = {
   difficulty?: true
   priceUnit?: true
   startCity?: true
+  minGroupSize?: true
+  bookingLeadDays?: true
+  startTime?: true
+  meetingAddress?: true
+  meetingNote?: true
 }
 
 export type TourCountAggregateInputType = {
@@ -234,6 +275,15 @@ export type TourCountAggregateInputType = {
   seasons?: true
   priceUnit?: true
   startCity?: true
+  priceOptions?: true
+  minGroupSize?: true
+  bookingLeadDays?: true
+  startTime?: true
+  weekdays?: true
+  blockedDates?: true
+  meetingAddress?: true
+  meetingNote?: true
+  pickupCities?: true
   _all?: true
 }
 
@@ -327,7 +377,7 @@ export type TourGroupByOutputType = {
   id: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId: number | null
   price: number
   duration: number
   content: runtime.JsonValue
@@ -355,6 +405,15 @@ export type TourGroupByOutputType = {
   seasons: number[]
   priceUnit: string | null
   startCity: string | null
+  priceOptions: runtime.JsonValue | null
+  minGroupSize: number | null
+  bookingLeadDays: number | null
+  startTime: string | null
+  weekdays: number[]
+  blockedDates: Date[]
+  meetingAddress: string | null
+  meetingNote: string | null
+  pickupCities: string[]
   _count: TourCountAggregateOutputType | null
   _avg: TourAvgAggregateOutputType | null
   _sum: TourSumAggregateOutputType | null
@@ -384,7 +443,7 @@ export type TourWhereInput = {
   id?: Prisma.IntFilter<"Tour"> | number
   title?: Prisma.StringFilter<"Tour"> | string
   description?: Prisma.StringFilter<"Tour"> | string
-  mainPhotoId?: Prisma.IntFilter<"Tour"> | number
+  mainPhotoId?: Prisma.IntNullableFilter<"Tour"> | number | null
   price?: Prisma.IntFilter<"Tour"> | number
   duration?: Prisma.IntFilter<"Tour"> | number
   content?: Prisma.JsonFilter<"Tour">
@@ -412,6 +471,15 @@ export type TourWhereInput = {
   seasons?: Prisma.IntNullableListFilter<"Tour">
   priceUnit?: Prisma.StringNullableFilter<"Tour"> | string | null
   startCity?: Prisma.StringNullableFilter<"Tour"> | string | null
+  priceOptions?: Prisma.JsonNullableFilter<"Tour">
+  minGroupSize?: Prisma.IntNullableFilter<"Tour"> | number | null
+  bookingLeadDays?: Prisma.IntNullableFilter<"Tour"> | number | null
+  startTime?: Prisma.StringNullableFilter<"Tour"> | string | null
+  weekdays?: Prisma.IntNullableListFilter<"Tour">
+  blockedDates?: Prisma.DateTimeNullableListFilter<"Tour">
+  meetingAddress?: Prisma.StringNullableFilter<"Tour"> | string | null
+  meetingNote?: Prisma.StringNullableFilter<"Tour"> | string | null
+  pickupCities?: Prisma.StringNullableListFilter<"Tour">
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   reviews?: Prisma.ReviewListRelationFilter
   activities?: Prisma.ActivityListRelationFilter
@@ -425,7 +493,7 @@ export type TourOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  mainPhotoId?: Prisma.SortOrder
+  mainPhotoId?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   duration?: Prisma.SortOrder
   content?: Prisma.SortOrder
@@ -453,6 +521,15 @@ export type TourOrderByWithRelationInput = {
   seasons?: Prisma.SortOrder
   priceUnit?: Prisma.SortOrderInput | Prisma.SortOrder
   startCity?: Prisma.SortOrderInput | Prisma.SortOrder
+  priceOptions?: Prisma.SortOrderInput | Prisma.SortOrder
+  minGroupSize?: Prisma.SortOrderInput | Prisma.SortOrder
+  bookingLeadDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  startTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  weekdays?: Prisma.SortOrder
+  blockedDates?: Prisma.SortOrder
+  meetingAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  meetingNote?: Prisma.SortOrderInput | Prisma.SortOrder
+  pickupCities?: Prisma.SortOrder
   author?: Prisma.UserOrderByWithRelationInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
   activities?: Prisma.ActivityOrderByRelationAggregateInput
@@ -470,7 +547,7 @@ export type TourWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.TourWhereInput | Prisma.TourWhereInput[]
   title?: Prisma.StringFilter<"Tour"> | string
   description?: Prisma.StringFilter<"Tour"> | string
-  mainPhotoId?: Prisma.IntFilter<"Tour"> | number
+  mainPhotoId?: Prisma.IntNullableFilter<"Tour"> | number | null
   price?: Prisma.IntFilter<"Tour"> | number
   duration?: Prisma.IntFilter<"Tour"> | number
   content?: Prisma.JsonFilter<"Tour">
@@ -497,6 +574,15 @@ export type TourWhereUniqueInput = Prisma.AtLeast<{
   seasons?: Prisma.IntNullableListFilter<"Tour">
   priceUnit?: Prisma.StringNullableFilter<"Tour"> | string | null
   startCity?: Prisma.StringNullableFilter<"Tour"> | string | null
+  priceOptions?: Prisma.JsonNullableFilter<"Tour">
+  minGroupSize?: Prisma.IntNullableFilter<"Tour"> | number | null
+  bookingLeadDays?: Prisma.IntNullableFilter<"Tour"> | number | null
+  startTime?: Prisma.StringNullableFilter<"Tour"> | string | null
+  weekdays?: Prisma.IntNullableListFilter<"Tour">
+  blockedDates?: Prisma.DateTimeNullableListFilter<"Tour">
+  meetingAddress?: Prisma.StringNullableFilter<"Tour"> | string | null
+  meetingNote?: Prisma.StringNullableFilter<"Tour"> | string | null
+  pickupCities?: Prisma.StringNullableListFilter<"Tour">
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   reviews?: Prisma.ReviewListRelationFilter
   activities?: Prisma.ActivityListRelationFilter
@@ -510,7 +596,7 @@ export type TourOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  mainPhotoId?: Prisma.SortOrder
+  mainPhotoId?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   duration?: Prisma.SortOrder
   content?: Prisma.SortOrder
@@ -538,6 +624,15 @@ export type TourOrderByWithAggregationInput = {
   seasons?: Prisma.SortOrder
   priceUnit?: Prisma.SortOrderInput | Prisma.SortOrder
   startCity?: Prisma.SortOrderInput | Prisma.SortOrder
+  priceOptions?: Prisma.SortOrderInput | Prisma.SortOrder
+  minGroupSize?: Prisma.SortOrderInput | Prisma.SortOrder
+  bookingLeadDays?: Prisma.SortOrderInput | Prisma.SortOrder
+  startTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  weekdays?: Prisma.SortOrder
+  blockedDates?: Prisma.SortOrder
+  meetingAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  meetingNote?: Prisma.SortOrderInput | Prisma.SortOrder
+  pickupCities?: Prisma.SortOrder
   _count?: Prisma.TourCountOrderByAggregateInput
   _avg?: Prisma.TourAvgOrderByAggregateInput
   _max?: Prisma.TourMaxOrderByAggregateInput
@@ -552,7 +647,7 @@ export type TourScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Tour"> | number
   title?: Prisma.StringWithAggregatesFilter<"Tour"> | string
   description?: Prisma.StringWithAggregatesFilter<"Tour"> | string
-  mainPhotoId?: Prisma.IntWithAggregatesFilter<"Tour"> | number
+  mainPhotoId?: Prisma.IntNullableWithAggregatesFilter<"Tour"> | number | null
   price?: Prisma.IntWithAggregatesFilter<"Tour"> | number
   duration?: Prisma.IntWithAggregatesFilter<"Tour"> | number
   content?: Prisma.JsonWithAggregatesFilter<"Tour">
@@ -580,12 +675,21 @@ export type TourScalarWhereWithAggregatesInput = {
   seasons?: Prisma.IntNullableListFilter<"Tour">
   priceUnit?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
   startCity?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
+  priceOptions?: Prisma.JsonNullableWithAggregatesFilter<"Tour">
+  minGroupSize?: Prisma.IntNullableWithAggregatesFilter<"Tour"> | number | null
+  bookingLeadDays?: Prisma.IntNullableWithAggregatesFilter<"Tour"> | number | null
+  startTime?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
+  weekdays?: Prisma.IntNullableListFilter<"Tour">
+  blockedDates?: Prisma.DateTimeNullableListFilter<"Tour">
+  meetingAddress?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
+  meetingNote?: Prisma.StringNullableWithAggregatesFilter<"Tour"> | string | null
+  pickupCities?: Prisma.StringNullableListFilter<"Tour">
 }
 
 export type TourCreateInput = {
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -612,6 +716,15 @@ export type TourCreateInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   author: Prisma.UserCreateNestedOneWithoutToursInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
@@ -625,7 +738,7 @@ export type TourUncheckedCreateInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -653,6 +766,15 @@ export type TourUncheckedCreateInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
@@ -664,7 +786,7 @@ export type TourUncheckedCreateInput = {
 export type TourUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -691,6 +813,15 @@ export type TourUpdateInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
@@ -704,7 +835,7 @@ export type TourUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -732,6 +863,15 @@ export type TourUncheckedUpdateInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
@@ -744,7 +884,7 @@ export type TourCreateManyInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -772,12 +912,21 @@ export type TourCreateManyInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
 }
 
 export type TourUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -804,13 +953,22 @@ export type TourUpdateManyMutationInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
 }
 
 export type TourUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -838,6 +996,15 @@ export type TourUncheckedUpdateManyInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
 }
 
 export type TourScalarRelationFilter = {
@@ -862,6 +1029,14 @@ export type JsonNullableListFilterBase<$PrismaModel = never> = {
   has?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | null
   hasEvery?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel>
   hasSome?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
+}
+
+export type DateTimeNullableListFilter<$PrismaModel = never> = {
+  equals?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel> | null
+  has?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel> | null
+  hasEvery?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
+  hasSome?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
   isEmpty?: boolean
 }
 
@@ -897,6 +1072,15 @@ export type TourCountOrderByAggregateInput = {
   seasons?: Prisma.SortOrder
   priceUnit?: Prisma.SortOrder
   startCity?: Prisma.SortOrder
+  priceOptions?: Prisma.SortOrder
+  minGroupSize?: Prisma.SortOrder
+  bookingLeadDays?: Prisma.SortOrder
+  startTime?: Prisma.SortOrder
+  weekdays?: Prisma.SortOrder
+  blockedDates?: Prisma.SortOrder
+  meetingAddress?: Prisma.SortOrder
+  meetingNote?: Prisma.SortOrder
+  pickupCities?: Prisma.SortOrder
 }
 
 export type TourAvgOrderByAggregateInput = {
@@ -908,6 +1092,9 @@ export type TourAvgOrderByAggregateInput = {
   rating?: Prisma.SortOrder
   capacity?: Prisma.SortOrder
   seasons?: Prisma.SortOrder
+  minGroupSize?: Prisma.SortOrder
+  bookingLeadDays?: Prisma.SortOrder
+  weekdays?: Prisma.SortOrder
 }
 
 export type TourMaxOrderByAggregateInput = {
@@ -932,6 +1119,11 @@ export type TourMaxOrderByAggregateInput = {
   difficulty?: Prisma.SortOrder
   priceUnit?: Prisma.SortOrder
   startCity?: Prisma.SortOrder
+  minGroupSize?: Prisma.SortOrder
+  bookingLeadDays?: Prisma.SortOrder
+  startTime?: Prisma.SortOrder
+  meetingAddress?: Prisma.SortOrder
+  meetingNote?: Prisma.SortOrder
 }
 
 export type TourMinOrderByAggregateInput = {
@@ -956,6 +1148,11 @@ export type TourMinOrderByAggregateInput = {
   difficulty?: Prisma.SortOrder
   priceUnit?: Prisma.SortOrder
   startCity?: Prisma.SortOrder
+  minGroupSize?: Prisma.SortOrder
+  bookingLeadDays?: Prisma.SortOrder
+  startTime?: Prisma.SortOrder
+  meetingAddress?: Prisma.SortOrder
+  meetingNote?: Prisma.SortOrder
 }
 
 export type TourSumOrderByAggregateInput = {
@@ -967,6 +1164,9 @@ export type TourSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
   capacity?: Prisma.SortOrder
   seasons?: Prisma.SortOrder
+  minGroupSize?: Prisma.SortOrder
+  bookingLeadDays?: Prisma.SortOrder
+  weekdays?: Prisma.SortOrder
 }
 
 export type TourListRelationFilter = {
@@ -1095,6 +1295,18 @@ export type TourCreateseasonsInput = {
   set: number[]
 }
 
+export type TourCreateweekdaysInput = {
+  set: number[]
+}
+
+export type TourCreateblockedDatesInput = {
+  set: Date[] | string[]
+}
+
+export type TourCreatepickupCitiesInput = {
+  set: string[]
+}
+
 export type TourUpdatecategoriesInput = {
   set?: string[]
   push?: string | string[]
@@ -1128,6 +1340,21 @@ export type TourUpdateexcludedInput = {
 export type TourUpdateseasonsInput = {
   set?: number[]
   push?: number | number[]
+}
+
+export type TourUpdateweekdaysInput = {
+  set?: number[]
+  push?: number | number[]
+}
+
+export type TourUpdateblockedDatesInput = {
+  set?: Date[] | string[]
+  push?: Date | string | Date[] | string[]
+}
+
+export type TourUpdatepickupCitiesInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 export type TourCreateNestedManyWithoutAuthorInput = {
@@ -1175,7 +1402,7 @@ export type TourUncheckedUpdateManyWithoutAuthorNestedInput = {
 export type TourCreateWithoutActivitiesInput = {
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1202,6 +1429,15 @@ export type TourCreateWithoutActivitiesInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   author: Prisma.UserCreateNestedOneWithoutToursInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderCreateNestedManyWithoutTourInput
@@ -1214,7 +1450,7 @@ export type TourUncheckedCreateWithoutActivitiesInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1242,6 +1478,15 @@ export type TourUncheckedCreateWithoutActivitiesInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutTourInput
@@ -1268,7 +1513,7 @@ export type TourUpdateToOneWithWhereWithoutActivitiesInput = {
 export type TourUpdateWithoutActivitiesInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1295,6 +1540,15 @@ export type TourUpdateWithoutActivitiesInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUpdateManyWithoutTourNestedInput
@@ -1307,7 +1561,7 @@ export type TourUncheckedUpdateWithoutActivitiesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1335,6 +1589,15 @@ export type TourUncheckedUpdateWithoutActivitiesInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutTourNestedInput
@@ -1345,7 +1608,7 @@ export type TourUncheckedUpdateWithoutActivitiesInput = {
 export type TourCreateWithoutBookingsInput = {
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1372,6 +1635,15 @@ export type TourCreateWithoutBookingsInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   author: Prisma.UserCreateNestedOneWithoutToursInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
@@ -1384,7 +1656,7 @@ export type TourUncheckedCreateWithoutBookingsInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1412,6 +1684,15 @@ export type TourUncheckedCreateWithoutBookingsInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
@@ -1438,7 +1719,7 @@ export type TourUpdateToOneWithWhereWithoutBookingsInput = {
 export type TourUpdateWithoutBookingsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1465,6 +1746,15 @@ export type TourUpdateWithoutBookingsInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
@@ -1477,7 +1767,7 @@ export type TourUncheckedUpdateWithoutBookingsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1505,6 +1795,15 @@ export type TourUncheckedUpdateWithoutBookingsInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
@@ -1515,7 +1814,7 @@ export type TourUncheckedUpdateWithoutBookingsInput = {
 export type TourCreateWithoutOrdersInput = {
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1542,6 +1841,15 @@ export type TourCreateWithoutOrdersInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   author: Prisma.UserCreateNestedOneWithoutToursInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
@@ -1554,7 +1862,7 @@ export type TourUncheckedCreateWithoutOrdersInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1582,6 +1890,15 @@ export type TourUncheckedCreateWithoutOrdersInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutTourInput
@@ -1608,7 +1925,7 @@ export type TourUpdateToOneWithWhereWithoutOrdersInput = {
 export type TourUpdateWithoutOrdersInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1635,6 +1952,15 @@ export type TourUpdateWithoutOrdersInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
@@ -1647,7 +1973,7 @@ export type TourUncheckedUpdateWithoutOrdersInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1675,6 +2001,15 @@ export type TourUncheckedUpdateWithoutOrdersInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutTourNestedInput
@@ -1685,7 +2020,7 @@ export type TourUncheckedUpdateWithoutOrdersInput = {
 export type TourCreateWithoutPhotosInput = {
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1712,6 +2047,15 @@ export type TourCreateWithoutPhotosInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   author: Prisma.UserCreateNestedOneWithoutToursInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
@@ -1724,7 +2068,7 @@ export type TourUncheckedCreateWithoutPhotosInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1752,6 +2096,15 @@ export type TourUncheckedCreateWithoutPhotosInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
@@ -1778,7 +2131,7 @@ export type TourUpdateToOneWithWhereWithoutPhotosInput = {
 export type TourUpdateWithoutPhotosInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1805,6 +2158,15 @@ export type TourUpdateWithoutPhotosInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
@@ -1817,7 +2179,7 @@ export type TourUncheckedUpdateWithoutPhotosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1845,6 +2207,15 @@ export type TourUncheckedUpdateWithoutPhotosInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
@@ -1855,7 +2226,7 @@ export type TourUncheckedUpdateWithoutPhotosInput = {
 export type TourCreateWithoutPlacesInput = {
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1882,6 +2253,15 @@ export type TourCreateWithoutPlacesInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   author: Prisma.UserCreateNestedOneWithoutToursInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
@@ -1894,7 +2274,7 @@ export type TourUncheckedCreateWithoutPlacesInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1922,6 +2302,15 @@ export type TourUncheckedCreateWithoutPlacesInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
@@ -1948,7 +2337,7 @@ export type TourUpdateToOneWithWhereWithoutPlacesInput = {
 export type TourUpdateWithoutPlacesInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -1975,6 +2364,15 @@ export type TourUpdateWithoutPlacesInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
@@ -1987,7 +2385,7 @@ export type TourUncheckedUpdateWithoutPlacesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2015,6 +2413,15 @@ export type TourUncheckedUpdateWithoutPlacesInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
@@ -2025,7 +2432,7 @@ export type TourUncheckedUpdateWithoutPlacesInput = {
 export type TourCreateWithoutReviewsInput = {
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2052,6 +2459,15 @@ export type TourCreateWithoutReviewsInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   author: Prisma.UserCreateNestedOneWithoutToursInput
   activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderCreateNestedManyWithoutTourInput
@@ -2064,7 +2480,7 @@ export type TourUncheckedCreateWithoutReviewsInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2092,6 +2508,15 @@ export type TourUncheckedCreateWithoutReviewsInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
   bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutTourInput
@@ -2118,7 +2543,7 @@ export type TourUpdateToOneWithWhereWithoutReviewsInput = {
 export type TourUpdateWithoutReviewsInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2145,6 +2570,15 @@ export type TourUpdateWithoutReviewsInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   author?: Prisma.UserUpdateOneRequiredWithoutToursNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUpdateManyWithoutTourNestedInput
@@ -2157,7 +2591,7 @@ export type TourUncheckedUpdateWithoutReviewsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2185,6 +2619,15 @@ export type TourUncheckedUpdateWithoutReviewsInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
   bookings?: Prisma.BookingUncheckedUpdateManyWithoutTourNestedInput
@@ -2195,7 +2638,7 @@ export type TourUncheckedUpdateWithoutReviewsInput = {
 export type TourCreateWithoutAuthorInput = {
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2222,6 +2665,15 @@ export type TourCreateWithoutAuthorInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderCreateNestedManyWithoutTourInput
@@ -2234,7 +2686,7 @@ export type TourUncheckedCreateWithoutAuthorInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2261,6 +2713,15 @@ export type TourUncheckedCreateWithoutAuthorInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutTourInput
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutTourInput
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutTourInput
@@ -2302,7 +2763,7 @@ export type TourScalarWhereInput = {
   id?: Prisma.IntFilter<"Tour"> | number
   title?: Prisma.StringFilter<"Tour"> | string
   description?: Prisma.StringFilter<"Tour"> | string
-  mainPhotoId?: Prisma.IntFilter<"Tour"> | number
+  mainPhotoId?: Prisma.IntNullableFilter<"Tour"> | number | null
   price?: Prisma.IntFilter<"Tour"> | number
   duration?: Prisma.IntFilter<"Tour"> | number
   content?: Prisma.JsonFilter<"Tour">
@@ -2330,13 +2791,22 @@ export type TourScalarWhereInput = {
   seasons?: Prisma.IntNullableListFilter<"Tour">
   priceUnit?: Prisma.StringNullableFilter<"Tour"> | string | null
   startCity?: Prisma.StringNullableFilter<"Tour"> | string | null
+  priceOptions?: Prisma.JsonNullableFilter<"Tour">
+  minGroupSize?: Prisma.IntNullableFilter<"Tour"> | number | null
+  bookingLeadDays?: Prisma.IntNullableFilter<"Tour"> | number | null
+  startTime?: Prisma.StringNullableFilter<"Tour"> | string | null
+  weekdays?: Prisma.IntNullableListFilter<"Tour">
+  blockedDates?: Prisma.DateTimeNullableListFilter<"Tour">
+  meetingAddress?: Prisma.StringNullableFilter<"Tour"> | string | null
+  meetingNote?: Prisma.StringNullableFilter<"Tour"> | string | null
+  pickupCities?: Prisma.StringNullableListFilter<"Tour">
 }
 
 export type TourCreateManyAuthorInput = {
   id?: number
   title: string
   description: string
-  mainPhotoId: number
+  mainPhotoId?: number | null
   price: number
   duration: number
   content: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2363,12 +2833,21 @@ export type TourCreateManyAuthorInput = {
   seasons?: Prisma.TourCreateseasonsInput | number[]
   priceUnit?: string | null
   startCity?: string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: number | null
+  bookingLeadDays?: number | null
+  startTime?: string | null
+  weekdays?: Prisma.TourCreateweekdaysInput | number[]
+  blockedDates?: Prisma.TourCreateblockedDatesInput | Date[] | string[]
+  meetingAddress?: string | null
+  meetingNote?: string | null
+  pickupCities?: Prisma.TourCreatepickupCitiesInput | string[]
 }
 
 export type TourUpdateWithoutAuthorInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2395,6 +2874,15 @@ export type TourUpdateWithoutAuthorInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUpdateManyWithoutTourNestedInput
@@ -2407,7 +2895,7 @@ export type TourUncheckedUpdateWithoutAuthorInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2434,6 +2922,15 @@ export type TourUncheckedUpdateWithoutAuthorInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutTourNestedInput
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutTourNestedInput
   orders?: Prisma.OrderUncheckedUpdateManyWithoutTourNestedInput
@@ -2446,7 +2943,7 @@ export type TourUncheckedUpdateManyWithoutAuthorInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  mainPhotoId?: Prisma.IntFieldUpdateOperationsInput | number
+  mainPhotoId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   price?: Prisma.IntFieldUpdateOperationsInput | number
   duration?: Prisma.IntFieldUpdateOperationsInput | number
   content?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -2473,6 +2970,15 @@ export type TourUncheckedUpdateManyWithoutAuthorInput = {
   seasons?: Prisma.TourUpdateseasonsInput | number[]
   priceUnit?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startCity?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  priceOptions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  minGroupSize?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  bookingLeadDays?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  startTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  weekdays?: Prisma.TourUpdateweekdaysInput | number[]
+  blockedDates?: Prisma.TourUpdateblockedDatesInput | Date[] | string[]
+  meetingAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meetingNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pickupCities?: Prisma.TourUpdatepickupCitiesInput | string[]
 }
 
 
@@ -2583,6 +3089,15 @@ export type TourSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   seasons?: boolean
   priceUnit?: boolean
   startCity?: boolean
+  priceOptions?: boolean
+  minGroupSize?: boolean
+  bookingLeadDays?: boolean
+  startTime?: boolean
+  weekdays?: boolean
+  blockedDates?: boolean
+  meetingAddress?: boolean
+  meetingNote?: boolean
+  pickupCities?: boolean
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   reviews?: boolean | Prisma.Tour$reviewsArgs<ExtArgs>
   activities?: boolean | Prisma.Tour$activitiesArgs<ExtArgs>
@@ -2625,6 +3140,15 @@ export type TourSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   seasons?: boolean
   priceUnit?: boolean
   startCity?: boolean
+  priceOptions?: boolean
+  minGroupSize?: boolean
+  bookingLeadDays?: boolean
+  startTime?: boolean
+  weekdays?: boolean
+  blockedDates?: boolean
+  meetingAddress?: boolean
+  meetingNote?: boolean
+  pickupCities?: boolean
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tour"]>
 
@@ -2660,6 +3184,15 @@ export type TourSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   seasons?: boolean
   priceUnit?: boolean
   startCity?: boolean
+  priceOptions?: boolean
+  minGroupSize?: boolean
+  bookingLeadDays?: boolean
+  startTime?: boolean
+  weekdays?: boolean
+  blockedDates?: boolean
+  meetingAddress?: boolean
+  meetingNote?: boolean
+  pickupCities?: boolean
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tour"]>
 
@@ -2695,9 +3228,18 @@ export type TourSelectScalar = {
   seasons?: boolean
   priceUnit?: boolean
   startCity?: boolean
+  priceOptions?: boolean
+  minGroupSize?: boolean
+  bookingLeadDays?: boolean
+  startTime?: boolean
+  weekdays?: boolean
+  blockedDates?: boolean
+  meetingAddress?: boolean
+  meetingNote?: boolean
+  pickupCities?: boolean
 }
 
-export type TourOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "mainPhotoId" | "price" | "duration" | "content" | "slug" | "categories" | "metaKeywords" | "tags" | "tourRoute" | "authorId" | "createdAt" | "about" | "status" | "rejectionComment" | "metaTitle" | "metaDescription" | "updatedAt" | "rating" | "descriptionText" | "startPlace" | "included" | "excluded" | "capacity" | "difficulty" | "faq" | "seasons" | "priceUnit" | "startCity", ExtArgs["result"]["tour"]>
+export type TourOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "mainPhotoId" | "price" | "duration" | "content" | "slug" | "categories" | "metaKeywords" | "tags" | "tourRoute" | "authorId" | "createdAt" | "about" | "status" | "rejectionComment" | "metaTitle" | "metaDescription" | "updatedAt" | "rating" | "descriptionText" | "startPlace" | "included" | "excluded" | "capacity" | "difficulty" | "faq" | "seasons" | "priceUnit" | "startCity" | "priceOptions" | "minGroupSize" | "bookingLeadDays" | "startTime" | "weekdays" | "blockedDates" | "meetingAddress" | "meetingNote" | "pickupCities", ExtArgs["result"]["tour"]>
 export type TourInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   reviews?: boolean | Prisma.Tour$reviewsArgs<ExtArgs>
@@ -2735,7 +3277,12 @@ export type $TourPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: number
     title: string
     description: string
-    mainPhotoId: number
+    /**
+     * Главное фото. Необязательное: черновик заводится на первом шаге
+     * редактора, когда фотографий ещё нет, а публичной страницы у него
+     * не будет до одобрения (status = APPROVED).
+     */
+    mainPhotoId: number | null
     price: number
     duration: number
     content: runtime.JsonValue
@@ -2801,6 +3348,51 @@ export type $TourPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
      * «откуда → куда» (E4), а координаты для группировки не годятся.
      */
     startCity: string | null
+    /**
+     * Варианты билетов: [{ label, unit, durationHours, price }].
+     * jsonb, а не таблица: список правится целиком вместе с туром и никогда
+     * не запрашивается отдельно от него — как faq и tourRoute рядом.
+     * Поле `price` в модели остаётся базовым: по нему сортируется каталог.
+     */
+    priceOptions: runtime.JsonValue | null
+    /**
+     * Со скольких человек выезд состоится. Без него гид отменяет заявку
+     * на двоих уже после подтверждения.
+     */
+    minGroupSize: number | null
+    /**
+     * За сколько дней до выезда перестаём принимать заявки.
+     */
+    bookingLeadDays: number | null
+    /**
+     * Обычное время старта, «08:00». Строкой, а не DateTime: это время суток
+     * без даты, и в заявке оно всё равно показывается текстом.
+     */
+    startTime: string | null
+    /**
+     * Дни недели, когда тур идёт: 1 — понедельник, 7 — воскресенье.
+     * Пустой массив — любой день.
+     */
+    weekdays: number[]
+    /**
+     * Даты, закрытые гидом вручную. Занятые выезды сюда не попадают —
+     * они и так считаются по подтверждённым заявкам (booking.desiredDate).
+     */
+    blockedDates: Date[]
+    /**
+     * Адрес места встречи. Город лежит в startCity, координаты — в startPlace,
+     * а строку «ул. Московская, 8, автовокзал» негде было хранить.
+     */
+    meetingAddress: string | null
+    /**
+     * Как добраться до места встречи и по какому ориентиру искать гида.
+     */
+    meetingNote: string | null
+    /**
+     * Города, из которых гид готов забрать группу. Из них же строятся
+     * подборки «джип-туры из …» (E3), поэтому это список, а не текст.
+     */
+    pickupCities: string[]
   }, ExtArgs["result"]["tour"]>
   composites: {}
 }
@@ -3262,6 +3854,15 @@ export interface TourFieldRefs {
   readonly seasons: Prisma.FieldRef<"Tour", 'Int[]'>
   readonly priceUnit: Prisma.FieldRef<"Tour", 'String'>
   readonly startCity: Prisma.FieldRef<"Tour", 'String'>
+  readonly priceOptions: Prisma.FieldRef<"Tour", 'Json'>
+  readonly minGroupSize: Prisma.FieldRef<"Tour", 'Int'>
+  readonly bookingLeadDays: Prisma.FieldRef<"Tour", 'Int'>
+  readonly startTime: Prisma.FieldRef<"Tour", 'String'>
+  readonly weekdays: Prisma.FieldRef<"Tour", 'Int[]'>
+  readonly blockedDates: Prisma.FieldRef<"Tour", 'DateTime[]'>
+  readonly meetingAddress: Prisma.FieldRef<"Tour", 'String'>
+  readonly meetingNote: Prisma.FieldRef<"Tour", 'String'>
+  readonly pickupCities: Prisma.FieldRef<"Tour", 'String[]'>
 }
     
 

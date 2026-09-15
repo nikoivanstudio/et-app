@@ -1,9 +1,7 @@
-'use server';
-
 import { FC } from 'react';
 
-import { LoadingView } from '@/views/loading/server';
+import { CabinetLoading } from '@/views/cabinet/server';
 
-const Loading: FC = async () => <LoadingView />;
+const Loading: FC = () => <CabinetLoading />;
 
 export default Loading;

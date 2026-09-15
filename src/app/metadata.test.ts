@@ -137,6 +137,13 @@ describe('метаданные публичных страниц', () => {
       expect(title.length).toBeLessThanOrEqual(TITLE_MAX);
       expect(PLACEHOLDERS.has(title.trim().toLowerCase())).toBe(false);
 
+      // Закрытому от индексации разделу (заявки, переписка с гидом)
+      // описание и сниппет не нужны: в выдачу он не попадает вовсе.
+      // Заголовок всё равно проверяем — его видно во вкладке браузера.
+      if (isNoindex(metadata)) {
+        return;
+      }
+
       expect(description).not.toBe('');
       expect(PLACEHOLDERS.has(description.trim().toLowerCase())).toBe(false);
       expect(description.length).toBeLessThanOrEqual(DESCRIPTION_MAX);
@@ -152,6 +159,15 @@ describe('метаданные публичных страниц', () => {
     '%s: канонический адрес совпадает с маршрутом',
     async (path, route) => {
       const metadata = await loadMetadata(route);
+
+      // Страница вне индекса объявлять канонический адрес не обязана:
+      // у пагинации и склеенных лендингов он есть (обход по ссылкам им
+      // нужен), у раздела заявок — нет. Но если объявлен, то свой.
+      if (isNoindex(metadata)) {
+        expect(getCanonical(metadata) ?? path).toBe(path);
+
+        return;
+      }
 
       // Относительный путь — намеренно: Next разворачивает его по
       // metadataBase. Проверяем именно совпадение с адресом сегмента,

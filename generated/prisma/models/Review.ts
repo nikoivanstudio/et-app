@@ -46,6 +46,8 @@ export type ReviewMinAggregateOutputType = {
   estimateValue: number | null
   authorId: number | null
   tourId: number | null
+  guideReply: string | null
+  guideReplyAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +58,8 @@ export type ReviewMaxAggregateOutputType = {
   estimateValue: number | null
   authorId: number | null
   tourId: number | null
+  guideReply: string | null
+  guideReplyAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -67,6 +71,8 @@ export type ReviewCountAggregateOutputType = {
   estimateValue: number
   authorId: number
   tourId: number
+  guideReply: number
+  guideReplyAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -93,6 +99,8 @@ export type ReviewMinAggregateInputType = {
   estimateValue?: true
   authorId?: true
   tourId?: true
+  guideReply?: true
+  guideReplyAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -103,6 +111,8 @@ export type ReviewMaxAggregateInputType = {
   estimateValue?: true
   authorId?: true
   tourId?: true
+  guideReply?: true
+  guideReplyAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -114,6 +124,8 @@ export type ReviewCountAggregateInputType = {
   estimateValue?: true
   authorId?: true
   tourId?: true
+  guideReply?: true
+  guideReplyAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -212,6 +224,8 @@ export type ReviewGroupByOutputType = {
   estimateValue: number
   authorId: number
   tourId: number
+  guideReply: string | null
+  guideReplyAt: Date | null
   createdAt: Date
   updatedAt: Date | null
   _count: ReviewCountAggregateOutputType | null
@@ -246,6 +260,8 @@ export type ReviewWhereInput = {
   estimateValue?: Prisma.IntFilter<"Review"> | number
   authorId?: Prisma.IntFilter<"Review"> | number
   tourId?: Prisma.IntFilter<"Review"> | number
+  guideReply?: Prisma.StringNullableFilter<"Review"> | string | null
+  guideReplyAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -259,6 +275,8 @@ export type ReviewOrderByWithRelationInput = {
   estimateValue?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   tourId?: Prisma.SortOrder
+  guideReply?: Prisma.SortOrderInput | Prisma.SortOrder
+  guideReplyAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -275,6 +293,8 @@ export type ReviewWhereUniqueInput = Prisma.AtLeast<{
   estimateValue?: Prisma.IntFilter<"Review"> | number
   authorId?: Prisma.IntFilter<"Review"> | number
   tourId?: Prisma.IntFilter<"Review"> | number
+  guideReply?: Prisma.StringNullableFilter<"Review"> | string | null
+  guideReplyAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -288,6 +308,8 @@ export type ReviewOrderByWithAggregationInput = {
   estimateValue?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   tourId?: Prisma.SortOrder
+  guideReply?: Prisma.SortOrderInput | Prisma.SortOrder
+  guideReplyAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.ReviewCountOrderByAggregateInput
@@ -307,6 +329,8 @@ export type ReviewScalarWhereWithAggregatesInput = {
   estimateValue?: Prisma.IntWithAggregatesFilter<"Review"> | number
   authorId?: Prisma.IntWithAggregatesFilter<"Review"> | number
   tourId?: Prisma.IntWithAggregatesFilter<"Review"> | number
+  guideReply?: Prisma.StringNullableWithAggregatesFilter<"Review"> | string | null
+  guideReplyAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Review"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Review"> | Date | string
   updatedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Review"> | Date | string | null
 }
@@ -315,6 +339,8 @@ export type ReviewCreateInput = {
   content: string
   estimation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutReviewsInput
@@ -328,6 +354,8 @@ export type ReviewUncheckedCreateInput = {
   estimateValue: number
   authorId: number
   tourId: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
 }
@@ -336,6 +364,8 @@ export type ReviewUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   estimation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput
@@ -349,6 +379,8 @@ export type ReviewUncheckedUpdateInput = {
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   tourId?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -360,6 +392,8 @@ export type ReviewCreateManyInput = {
   estimateValue: number
   authorId: number
   tourId: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
 }
@@ -368,6 +402,8 @@ export type ReviewUpdateManyMutationInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   estimation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -379,6 +415,8 @@ export type ReviewUncheckedUpdateManyInput = {
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   tourId?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -390,6 +428,8 @@ export type ReviewCountOrderByAggregateInput = {
   estimateValue?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   tourId?: Prisma.SortOrder
+  guideReply?: Prisma.SortOrder
+  guideReplyAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -407,6 +447,8 @@ export type ReviewMaxOrderByAggregateInput = {
   estimateValue?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   tourId?: Prisma.SortOrder
+  guideReply?: Prisma.SortOrder
+  guideReplyAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -417,6 +459,8 @@ export type ReviewMinOrderByAggregateInput = {
   estimateValue?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   tourId?: Prisma.SortOrder
+  guideReply?: Prisma.SortOrder
+  guideReplyAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -526,6 +570,8 @@ export type ReviewCreateWithoutTourInput = {
   content: string
   estimation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
   user: Prisma.UserCreateNestedOneWithoutReviewsInput
@@ -537,6 +583,8 @@ export type ReviewUncheckedCreateWithoutTourInput = {
   estimation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue: number
   authorId: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
 }
@@ -577,6 +625,8 @@ export type ReviewScalarWhereInput = {
   estimateValue?: Prisma.IntFilter<"Review"> | number
   authorId?: Prisma.IntFilter<"Review"> | number
   tourId?: Prisma.IntFilter<"Review"> | number
+  guideReply?: Prisma.StringNullableFilter<"Review"> | string | null
+  guideReplyAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Review"> | Date | string
   updatedAt?: Prisma.DateTimeNullableFilter<"Review"> | Date | string | null
 }
@@ -585,6 +635,8 @@ export type ReviewCreateWithoutUserInput = {
   content: string
   estimation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
   tour: Prisma.TourCreateNestedOneWithoutReviewsInput
@@ -596,6 +648,8 @@ export type ReviewUncheckedCreateWithoutUserInput = {
   estimation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue: number
   tourId: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
 }
@@ -632,6 +686,8 @@ export type ReviewCreateManyTourInput = {
   estimation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue: number
   authorId: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
 }
@@ -640,6 +696,8 @@ export type ReviewUpdateWithoutTourInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   estimation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutReviewsNestedInput
@@ -651,6 +709,8 @@ export type ReviewUncheckedUpdateWithoutTourInput = {
   estimation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -661,6 +721,8 @@ export type ReviewUncheckedUpdateManyWithoutTourInput = {
   estimation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -671,6 +733,8 @@ export type ReviewCreateManyUserInput = {
   estimation: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue: number
   tourId: number
+  guideReply?: string | null
+  guideReplyAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string | null
 }
@@ -679,6 +743,8 @@ export type ReviewUpdateWithoutUserInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   estimation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   tour?: Prisma.TourUpdateOneRequiredWithoutReviewsNestedInput
@@ -690,6 +756,8 @@ export type ReviewUncheckedUpdateWithoutUserInput = {
   estimation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
   tourId?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -700,6 +768,8 @@ export type ReviewUncheckedUpdateManyWithoutUserInput = {
   estimation?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   estimateValue?: Prisma.IntFieldUpdateOperationsInput | number
   tourId?: Prisma.IntFieldUpdateOperationsInput | number
+  guideReply?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guideReplyAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -713,6 +783,8 @@ export type ReviewSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   estimateValue?: boolean
   authorId?: boolean
   tourId?: boolean
+  guideReply?: boolean
+  guideReplyAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -726,6 +798,8 @@ export type ReviewSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   estimateValue?: boolean
   authorId?: boolean
   tourId?: boolean
+  guideReply?: boolean
+  guideReplyAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -739,6 +813,8 @@ export type ReviewSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   estimateValue?: boolean
   authorId?: boolean
   tourId?: boolean
+  guideReply?: boolean
+  guideReplyAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -752,11 +828,13 @@ export type ReviewSelectScalar = {
   estimateValue?: boolean
   authorId?: boolean
   tourId?: boolean
+  guideReply?: boolean
+  guideReplyAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "content" | "estimation" | "estimateValue" | "authorId" | "tourId" | "createdAt" | "updatedAt", ExtArgs["result"]["review"]>
+export type ReviewOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "content" | "estimation" | "estimateValue" | "authorId" | "tourId" | "guideReply" | "guideReplyAt" | "createdAt" | "updatedAt", ExtArgs["result"]["review"]>
 export type ReviewInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   tour?: boolean | Prisma.TourDefaultArgs<ExtArgs>
@@ -783,6 +861,13 @@ export type $ReviewPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     estimateValue: number
     authorId: number
     tourId: number
+    /**
+     * Ответ гида на отзыв. Отзыв удалить нельзя — можно только ответить,
+     * и ответ виден всем на странице тура. Одно поле, а не таблица: ответ
+     * у отзыва ровно один и правится вместе с ним.
+     */
+    guideReply: string | null
+    guideReplyAt: Date | null
     createdAt: Date
     updatedAt: Date | null
   }, ExtArgs["result"]["review"]>
@@ -1216,6 +1301,8 @@ export interface ReviewFieldRefs {
   readonly estimateValue: Prisma.FieldRef<"Review", 'Int'>
   readonly authorId: Prisma.FieldRef<"Review", 'Int'>
   readonly tourId: Prisma.FieldRef<"Review", 'Int'>
+  readonly guideReply: Prisma.FieldRef<"Review", 'String'>
+  readonly guideReplyAt: Prisma.FieldRef<"Review", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Review", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Review", 'DateTime'>
 }

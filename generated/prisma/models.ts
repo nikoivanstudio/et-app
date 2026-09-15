@@ -11,6 +11,7 @@
 export type * from './models/Activity'
 export type * from './models/Booking'
 export type * from './models/File'
+export type * from './models/Message'
 export type * from './models/Order'
 export type * from './models/Otp'
 export type * from './models/PartnerApplication'

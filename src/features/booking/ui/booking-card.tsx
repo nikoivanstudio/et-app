@@ -4,11 +4,14 @@ import {
   CalendarClock,
   Check,
   Flag,
+  MessageSquare,
   Phone,
   StickyNote,
   X
 } from 'lucide-react';
 import { FC, useState } from 'react';
+
+import { GuideChat } from '@/features/booking-chat';
 
 import { BookingDomain } from '@/entities/booking';
 
@@ -96,6 +99,7 @@ export const BookingCard: FC<Props> = ({ booking, isPending, onAction }) => {
   } | null>(null);
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
+  const [isChatOpen, setChatOpen] = useState(false);
 
   const act = (action: Action, extra?: Partial<UpdateBookingPayload>) =>
     onAction({ id: booking.id, action, ...extra });
@@ -105,7 +109,7 @@ export const BookingCard: FC<Props> = ({ booking, isPending, onAction }) => {
     title: string,
     field: 'reason' | 'note' | 'date'
   ) => {
-    setText(field === 'note' ? booking.guideNote ?? '' : '');
+    setText(field === 'note' ? (booking.guideNote ?? '') : '');
     setDate('');
     setDialog({ action, title, field });
   };
@@ -168,6 +172,33 @@ export const BookingCard: FC<Props> = ({ booking, isPending, onAction }) => {
         <p className='mb-3 text-[12px] text-amber-300/80'>
           📝 {booking.guideNote}
         </p>
+      )}
+
+      <div className='mb-3'>
+        <button
+          type='button'
+          onClick={() => setChatOpen(open => !open)}
+          className={cn(
+            btn,
+            booking.unreadCount
+              ? 'border-[#d19331] text-[#e0a955]'
+              : 'border-[#2C2C33] text-zinc-300'
+          )}
+        >
+          <MessageSquare className='size-3.5' />
+          {isChatOpen ? 'Скрыть переписку' : 'Переписка'}
+          {!!booking.unreadCount && (
+            <span className='ml-1 rounded-full bg-[#d19331] px-1.5 text-[11px] font-semibold text-[#1c1305]'>
+              {booking.unreadCount}
+            </span>
+          )}
+        </button>
+      </div>
+
+      {isChatOpen && (
+        <div className='mb-3'>
+          <GuideChat bookingId={booking.id} />
+        </div>
       )}
 
       {!isTerminal && (
@@ -247,6 +278,7 @@ export const BookingCard: FC<Props> = ({ booking, isPending, onAction }) => {
           {dialog?.field === 'date' ? (
             <input
               type='date'
+              min={new Date().toISOString().slice(0, 10)}
               value={date}
               onChange={e => setDate(e.target.value)}
               className='w-full rounded-lg border border-[#2C2C33] bg-[#202026] px-3 py-2.5 text-sm text-zinc-100 outline-none'

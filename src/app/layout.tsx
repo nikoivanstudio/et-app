@@ -66,6 +66,14 @@ export async function generateMetadata(): Promise<Metadata> {
       'max-image-preview': 'large',
       'max-snippet': -1,
       'max-video-preview': -1
+    },
+
+    // Подтверждение прав в Яндекс.Вебмастере для кабинета 309094434.
+    // Код выдан Вебмастером под хост https:energy-tur.ru:443 и привязан
+    // к аккаунту — снимать его после подтверждения нельзя: Яндекс
+    // перепроверяет метку и при её пропаже снимает права (G1).
+    verification: {
+      yandex: 'd5e2324a3c645086'
     }
   };
 }

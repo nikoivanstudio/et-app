@@ -1,5 +1,8 @@
 import { NextRequest } from 'next/server';
 
+import { SESSION_COOKIE_NAME } from '@/entities/user/constants/session-cookie';
+import { sessionService } from '@/entities/user/server';
+
 import { handleError, handleSuccess } from '@/shared/lib/response-utils';
 
 import { createBookingSchema } from '../model/schemas';
@@ -23,7 +26,17 @@ export async function postBooking(req: NextRequest): Promise<Response> {
       return handleSuccess({ body: { accessToken: '', guideName: '' } });
     }
 
-    const eitherResult = await bookingService.createBooking(result.data);
+    // Заявку оставляют и без аккаунта. Но если человек вошёл, заявка
+    // связывается с ним: иначе переписку по ней он найдёт только по ссылке.
+    const cookie = req.cookies.get(SESSION_COOKIE_NAME)?.value;
+    const session = cookie
+      ? (await sessionService.verifySession(cookie)).session
+      : null;
+
+    const eitherResult = await bookingService.createBooking(
+      result.data,
+      session?.id ?? null
+    );
 
     if (eitherResult.type === 'left') {
       return handleError({ body: eitherResult.error });

@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
+import { RememberBooking } from '@/features/booking/containers/remember-booking';
 import { bookingService } from '@/features/booking/server';
+import { BookingChat } from '@/features/booking-chat';
 
 import { BookingDomain } from '@/entities/booking';
+import { MY_BOOKINGS_PATH } from '@/entities/booking/lib/local-bookings';
 
 import { cn } from '@/shared/lib/css';
 
@@ -127,9 +130,20 @@ export const BookingView: FC<Props> = async ({ params }) => {
         </Link>
       )}
 
-      <p className='mt-6 text-center text-[12px] text-[#9b8e72]'>
-        Чат с гидом появится здесь в ближайшее время.
-      </p>
+      <div className='mt-4'>
+        <BookingChat token={token} />
+      </div>
+
+      <Link
+        href={MY_BOOKINGS_PATH}
+        className='mt-4 block text-center font-oswald text-[12.5px] tracking-wide text-[var(--gold-head)] underline-offset-2 hover:underline'
+      >
+        Все мои заявки
+      </Link>
+
+      {/* Заявка, открытая по ссылке из письма, попадает в список этого
+          устройства — иначе на новом устройстве её снова негде было бы найти. */}
+      <RememberBooking token={token} />
     </div>
   );
 };
