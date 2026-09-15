@@ -153,8 +153,8 @@ describe('секции sitemap', () => {
   });
 
   test('недоступность БД не обрушивает sitemap', async () => {
-    // Образ собирается без DATABASE_URL, а роут пререндерится на сборке:
-    // упавший запрос не должен ни валить сборку, ни обнулять остальное.
+    // Роут пререндерится на сборке: упавший запрос к БД не должен ни валить
+    // сборку, ни обнулять остальные разделы.
     mockTourRefs.mockRejectedValue(new Error('no database'));
     mockGuideRefs.mockRejectedValue(new Error('no database'));
     jest.spyOn(console, 'error').mockImplementation(() => {});
